@@ -5,6 +5,7 @@ export interface CharacterIconProps {
   name: string
   rarity: Rarity
   icon: string
+  type: string
   unlocked: boolean
 }
 
@@ -52,10 +53,13 @@ const GetHighlightColor = computed(() => {
 
 <template>
   <div
-    class="group relative cursor-pointer border border-white/14 rounded-md bg-black/14"
+    class="group relative cursor-pointer border border-white/14 rounded-md bg-black/14 transition-duration-100 hover:filter-grayscale-0"
     :class="{ 'filter-grayscale-100': !unlocked }"
   >
-    <div class="relative min-h-32 w-32 flex items-center justify-center overflow-clip rounded-b">
+    <div class="relative min-h-32 w-32 flex items-center justify-center overflow-clip">
+      <div class="absolute right-0 top-0 z-2 grayscale-0!">
+        <NuxtImg width="32" height="32" :src="type" style="color: transparent;" />
+      </div>
       <div class="absolute bottom-0">
         <NuxtImg
           width="160"
@@ -79,6 +83,9 @@ const GetHighlightColor = computed(() => {
         </div>
         <div class="h-[3px]" :class="GetHighlightColor" />
       </div>
+    </div>
+    <div class="py-1 text-center text-xs">
+      {{ name }}
     </div>
   </div>
 </template>

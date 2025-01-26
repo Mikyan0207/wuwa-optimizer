@@ -11,6 +11,7 @@ export default interface ICharacter {
   Name: string
   Icon: string
   SplashArt: string
+  Background?: string
   Rarity: Rarity
   Type: CharacterType
   WeaponType?: WeaponType

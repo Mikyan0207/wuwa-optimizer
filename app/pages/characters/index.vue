@@ -2,6 +2,10 @@
 import type ICharacter from '~/Core/Interfaces/ICharacter'
 import { TemplateCharacters } from '~/Core/Characters'
 
+definePageMeta({
+  layout: 'default',
+})
+
 const CharactersStore = useCharactersStore()
 
 const CharactersList = computed(() => {
@@ -31,13 +35,14 @@ function OnCharacterClicked(characterId: number) {
         Resonators
       </NuxtLink>
     </div>
-    <div class="mx-auto my-8 flex items-center justify-center gap-2 container">
+    <div class="mx-auto my-8 flex flex-wrap items-center justify-center gap-2 container">
       <CharacterIcon
         v-for="c in CharactersList"
         :key="c.Id"
         :name="c.Name"
         :rarity="c.Rarity"
         :icon="c.GetIcon()"
+        :type="c.GetTypeIcon()"
         :unlocked="c.Unlocked"
         @click.prevent="OnCharacterClicked(c.Id ?? -1)"
       />

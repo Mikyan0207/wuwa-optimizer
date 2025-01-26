@@ -15,6 +15,7 @@ export class Character {
   Name: string
   Icon: string
   SplashArt: string
+  Background?: string
   Rarity: Rarity
   Type: CharacterType
   WeaponType?: WeaponType | null | undefined
@@ -31,6 +32,7 @@ export class Character {
     this.Name = character.Name
     this.Icon = character.Icon
     this.SplashArt = character.SplashArt
+    this.Background = character.Background
     this.Rarity = character.Rarity
     this.Type = character.Type
     this.WeaponType = character.WeaponType
@@ -137,7 +139,8 @@ export class Character {
         return `${basePath}Havoc.webp`
       case CharacterType.FUSION:
         return `${basePath}Fusion.webp`
-
+      case CharacterType.AERO:
+        return `${basePath}Aero.webp`
       default:
         return 'None'
     }
@@ -145,6 +148,10 @@ export class Character {
 
   GetSplashArtPath() {
     return `/images/characters/${this.Id}/${this.SplashArt}`
+  }
+
+  GetBackground() {
+    return this.Background ? `/images/characters/${this.Id}/${this.Background}` : this.GetSplashArtPath()
   }
 
   GetEchoesWithPlaceHolders() {

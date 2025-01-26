@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { RatingSystem } from '~/Core/Systems/RatingSystem'
 
+definePageMeta({
+  layout: 'default',
+})
+
 const Route = useRoute()
 
 const CharactersStore = useCharactersStore()
@@ -29,10 +33,10 @@ const CharacterScore = computed(() => new RatingSystem().GetCharacterScore(Selec
         <div class="grid grid-cols-2 h-656px gap-2">
           <!-- Character Art -->
           <div>
-            <div class="relative h-full overflow-hidden border border-white/14 rounded-md bg-black/66">
+            <div class="relative h-full w-24em overflow-hidden border border-white/14 rounded-md bg-black/66">
               <NuxtImg
                 fit="cover"
-                :src="`${SelectedCharacter.GetSplashArtPath()}`"
+                :src="`${SelectedCharacter.GetBackground()}`"
                 class="absolute top--25% z-0 h-200% w-200% rotate-180 object-cover blur-lg"
               />
               <!-- Sequences -->
@@ -58,7 +62,7 @@ const CharacterScore = computed(() => new RatingSystem().GetCharacterScore(Selec
           </div>
           <div>
             <!-- Stats -->
-            <div class="w-18em">
+            <div class="w-24em">
               <Card class="flex flex-col">
                 <div class="flex items-center justify-between gap-4">
                   <NuxtImg :src="`${SelectedCharacter.GetTypeIcon()}`" class="h-3em w-3em object-contain" fit="contain" />

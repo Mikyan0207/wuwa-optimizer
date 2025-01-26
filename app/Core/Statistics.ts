@@ -1,0 +1,78 @@
+import type IStatistic from './Interfaces/IStatistic'
+import { StatType } from './Enums/StatType'
+
+export function MAKE_STAT(type: StatType, value: number): IStatistic {
+  return {
+    Type: type,
+    Value: value,
+  }
+}
+
+export const STAT_NAMES: Record<StatType, string> = {
+  [StatType.NONE]: '',
+  [StatType.HP]: 'HP',
+  [StatType.CRIT_DMG]: 'Crit. DMG',
+  [StatType.CRIT_RATE]: 'Crit. Rate',
+  [StatType.ATTACK]: 'ATK',
+  [StatType.ATTACK_PERCENTAGE]: 'ATK %',
+  [StatType.HP_PERCENTAGE]: 'HP %',
+  [StatType.HEALING_BONUS]: 'Healing Bonus',
+  [StatType.DEF]: 'DEF',
+  [StatType.DEF_PERCENTAGE]: 'DEF %',
+  [StatType.ENERGY_REGENERATION]: 'Energy Regen.',
+  [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 'Basic ATK DMG Bonus',
+  [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 'Heavy ATK DMG Bonus',
+  [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 'Res. Liberation DMG Bonus',
+  [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 'Res. Skill DMG Bonus',
+  [StatType.ELECTRO_DMG_BONUS]: 'Electro DMG Bonus',
+  [StatType.FUSION_DMG_BONUS]: 'Fusion DMG Bonus',
+  [StatType.GLACIO_DMG_BONUS]: 'Glacio DMG Bonus',
+  [StatType.HAVOC_DMG_BONUS]: 'Havoc DMG Bonus',
+  [StatType.SPECTRO_DMG_BONUS]: 'Spectro DMG Bonus',
+}
+
+export const SUB_STAT_VALUES: Record<StatType, number[]> = {
+  [StatType.NONE]: [],
+  [StatType.CRIT_RATE]: [6.3, 6.9, 7.5, 8.1, 8.7, 9.3, 9.9, 10.5],
+  [StatType.CRIT_DMG]: [12.6, 13.8, 15.0, 16.2, 17.4, 18.6, 19.8, 21.0],
+  [StatType.ATTACK]: [30, 40, 50, 60],
+  [StatType.ATTACK_PERCENTAGE]: [6.4, 7.1, 7.9, 8.6, 9.4, 10.1, 10.9, 11.6],
+  [StatType.HP]: [320, 360, 390, 430, 470, 510, 540, 580],
+  [StatType.HP_PERCENTAGE]: [],
+  [StatType.HEALING_BONUS]: [],
+  [StatType.DEF]: [],
+  [StatType.DEF_PERCENTAGE]: [],
+  [StatType.ENERGY_REGENERATION]: [6.8, 7.6, 8.4, 9.2, 10, 10.8, 11.6, 12.4],
+  [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: [],
+  [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: [],
+  [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: [],
+  [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: [6.4, 7.1, 7.9, 8.6, 9.4, 10.1, 10.9, 11.6],
+  [StatType.ELECTRO_DMG_BONUS]: [],
+  [StatType.FUSION_DMG_BONUS]: [],
+  [StatType.GLACIO_DMG_BONUS]: [],
+  [StatType.HAVOC_DMG_BONUS]: [],
+  [StatType.SPECTRO_DMG_BONUS]: [],
+}
+
+export const STAT_ICONS: Record<StatType, string> = {
+  [StatType.NONE]: '',
+  [StatType.HP]: 'Icon_Attribute_Health.webp',
+  [StatType.CRIT_DMG]: 'Icon_Attribute_Crit_DMG.webp',
+  [StatType.CRIT_RATE]: 'Icon_Attribute_Crit_Rate.webp',
+  [StatType.ATTACK]: 'Icon_Attribute_Attack.webp',
+  [StatType.ATTACK_PERCENTAGE]: 'Icon_Attribute_Attack.webp',
+  [StatType.HP_PERCENTAGE]: 'Icon_Attribute_Health.webp',
+  [StatType.HEALING_BONUS]: 'Icon_Attribute_Healing.webp',
+  [StatType.DEF]: 'Icon_Attribute_Defense.webp',
+  [StatType.DEF_PERCENTAGE]: 'Icon_Attribute_Defense.webp',
+  [StatType.ENERGY_REGENERATION]: 'Icon_Attribute_Energy_Regen.webp',
+  [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 'Icon_Basic_Attack_DMG_Amplification.webp',
+  [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 'Icon_Heavy_Attack_DMG_Amplification.webp',
+  [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 'Icon_Resonance_Liberation_DMG_Amplification.webp',
+  [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 'Icon_Resonance_Skill_DMG_Amplification.webp',
+  [StatType.ELECTRO_DMG_BONUS]: 'Icon_Electro_DMG_Bonus.webp',
+  [StatType.FUSION_DMG_BONUS]: 'Icon_Fusion_DMG_Bonus.webp',
+  [StatType.GLACIO_DMG_BONUS]: 'Icon_Glacio_DMG_Bonus.webp',
+  [StatType.HAVOC_DMG_BONUS]: 'Icon_Havoc_DMG_Bonus.webp',
+  [StatType.SPECTRO_DMG_BONUS]: 'Icon_Spectro_DMG_Bonus.webp',
+}

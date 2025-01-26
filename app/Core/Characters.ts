@@ -570,8 +570,8 @@ export const ShoreKeeper: ICharacter = {
   Id: 1505,
   Name: 'Shore Keeper',
   Rarity: Rarity.FIVE_STARS,
-  Icon: 'ShoreKeeper_Icon.webp',
-  SplashArt: 'ShoreKeeper_Splash_Art.webp',
+  Icon: 'Shorekeeper_Icon.webp',
+  SplashArt: 'Shorekeeper_Splash_Art.webp',
   Type: CharacterType.SPECTRO,
   Level: 90,
   Stats: [

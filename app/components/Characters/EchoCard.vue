@@ -348,7 +348,7 @@ function OnSubmit() {
           </div>
         </div>
         <div class="mt-6 flex items-center justify-end gap-2">
-          <UButton label="Cancel" color="gray" variant="outline" />
+          <UButton label="Cancel" color="gray" variant="outline" @click.prevent="ShowEditEchoModal = false" />
           <UButton label="Submit" color="primary" variant="solid" @click.prevent="OnSubmit" />
         </div>
       </div>

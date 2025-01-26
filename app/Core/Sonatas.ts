@@ -130,6 +130,16 @@ export const Tidebreaking_Courage: ISonata = {
   Effect2Active: false,
 }
 
+export const Eternal_Radiance: ISonata = {
+  Name: 'Eternal Radiance',
+  Icon: 'Icon_Eternal_Radiance.webp',
+  Effect1: 'Spectro DMG +10%.',
+  Effect2: 'Inflicting enemies with Spectro Frazzle increases Crit. Rate by 20% for 15s. Attacking enemies with 10 stacks of Spectro Frazzle grants 15% Spectro DMG Bonus for 15s.',
+  IsSelected: false,
+  Effect1Active: false,
+  Effect2Active: false,
+}
+
 export const Sonatas: ISonata[] = [
   Frosty_Resolve,
   Celestial_Light,
@@ -143,4 +153,5 @@ export const Sonatas: ISonata[] = [
   Empyrean_Anthem,
   Midnight_Veil,
   Tidebreaking_Courage,
+  Eternal_Radiance,
 ]

@@ -1,7 +1,7 @@
 import type IEcho from './Interfaces/IEcho'
 import { EchoCost } from './Enums/EchoCost'
 import { Rarity } from './Enums/Rarity'
-import { Celestial_Light, Empyrean_Anthem, Freezing_Frost, Frosty_Resolve, Lingering_Tunes, Midnight_Veil, Molten_Rift, Moonlit_Clouds, Rejuvenating_Glow, Sierra_Gale, SunSinking_Eclipse, Tidebreaking_Courage, Void_Thunder } from './Sonatas'
+import { Celestial_Light, Empyrean_Anthem, Eternal_Radiance, Freezing_Frost, Frosty_Resolve, Lingering_Tunes, Midnight_Veil, Molten_Rift, Moonlit_Clouds, Rejuvenating_Glow, Sierra_Gale, SunSinking_Eclipse, Tidebreaking_Courage, Void_Thunder } from './Sonatas'
 
 // #region === 4 COST ===
 export const Bell_Borne_Geochelone: IEcho = {
@@ -325,6 +325,271 @@ export const Spearback_Echo: IEcho = {
   ],
   Statistics: [],
 }
+
+export const Havoc_Dreadmane_Echo: IEcho = {
+  Id: 320000100,
+  Name: 'Havoc Dreadmane',
+  Icon: 'Havoc_Dreadmane_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    SunSinking_Eclipse,
+    Molten_Rift,
+  ],
+  Statistics: [],
+}
+
+export const Hoochief_Echo: IEcho = {
+  Id: 320000110,
+  Name: 'Hoochief',
+  Icon: 'Hoochief_Cyclone_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Sierra_Gale,
+    Rejuvenating_Glow,
+  ],
+  Statistics: [],
+}
+
+export const Glacio_Dreadmane_Echo: IEcho = {
+  Id: 320000190,
+  Name: 'Glacio Dreadmane',
+  Icon: 'Glacio_Dreadmane_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Freezing_Frost,
+    Moonlit_Clouds,
+  ],
+  Statistics: [],
+}
+
+export const Chop_Chop_Echo: IEcho = {
+  Id: 320000280,
+  Name: 'Chop Chop',
+  Icon: 'Chop_Chop_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Empyrean_Anthem,
+    Tidebreaking_Courage,
+  ],
+  Statistics: [],
+}
+
+export const Cuddle_Wuddle_Echo: IEcho = {
+  Id: 320000300,
+  Name: 'Cuddle Wuddle',
+  Icon: 'Cuddle_Wuddle_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Frosty_Resolve,
+    Midnight_Veil,
+  ],
+  Statistics: [],
+}
+
+export const Carapace_Echo: IEcho = {
+  Id: 320000130,
+  Name: 'Carapace',
+  Icon: 'Carapace_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Sierra_Gale,
+    Moonlit_Clouds,
+  ],
+  Statistics: [],
+}
+
+export const Roseshroom_Echo: IEcho = {
+  Id: 320000090,
+  Name: 'Roseshroom',
+  Icon: 'Roseshroom_Icon.webp',
+  Rarity: Rarity.TWO_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Freezing_Frost,
+    SunSinking_Eclipse,
+  ],
+  Statistics: [],
+}
+
+export const Stonewall_Bracer_Echo: IEcho = {
+  Id: 320000010,
+  Name: 'Stonewall Bracer',
+  Icon: 'Stonewall_Bracer_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Rejuvenating_Glow,
+    Moonlit_Clouds,
+  ],
+  Statistics: [],
+}
+
+export const Tambourinist_Echo: IEcho = {
+  Id: 320000050,
+  Name: 'Tambourinist',
+  Icon: 'Tambourinist_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Freezing_Frost,
+    SunSinking_Eclipse,
+  ],
+  Statistics: [],
+}
+
+export const Flautist_Echo: IEcho = {
+  Id: 320000040,
+  Name: 'Flautist',
+  Icon: 'Flautist_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Void_Thunder,
+    Lingering_Tunes,
+  ],
+  Statistics: [],
+}
+export const Chasm_Guardian_Echo: IEcho = {
+  Id: 320000070,
+  Name: 'Chasm Guardian',
+  Icon: 'Chasm_Guardian_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Rejuvenating_Glow,
+    Lingering_Tunes,
+  ],
+  Statistics: [],
+}
+
+export const Questless_Knight_Echo: IEcho = {
+  Id: 320000220,
+  Name: 'Questless Knight',
+  Icon: 'Questless_Knight_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Frosty_Resolve,
+    Midnight_Veil,
+  ],
+  Statistics: [],
+}
+
+export const Diurnus_Knight_Echo: IEcho = {
+  Id: 320000230,
+  Name: 'Diurnus Knight',
+  Icon: 'Diurnus_Knight_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Eternal_Radiance,
+    Tidebreaking_Courage,
+  ],
+  Statistics: [],
+}
+
+export const Nocturnus_Knight_Echo: IEcho = {
+  Id: 320000240,
+  Name: 'Nocturnus Knight',
+  Icon: 'Nocturnus_Knight_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Midnight_Veil,
+    Empyrean_Anthem,
+  ],
+  Statistics: [],
+}
+
+export const Abyssal_Patricius_Echo: IEcho = {
+  Id: 320000250,
+  Name: 'Abyssal Patricius',
+  Icon: 'Abyssal_Patricius_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Frosty_Resolve,
+    Empyrean_Anthem,
+  ],
+  Statistics: [],
+}
+
+export const Abyssal_Gladius_Echo: IEcho = {
+  Id: 320000260,
+  Name: 'Abyssal Gladius',
+  Icon: 'Abyssal_Gladius_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Midnight_Veil,
+    Tidebreaking_Courage,
+  ],
+  Statistics: [],
+}
+
+export const Abyssal_Mercator_Echo: IEcho = {
+  Id: 320000270,
+  Name: 'Abyssal Mercator',
+  Icon: 'Abyssal_Mercator_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Frosty_Resolve,
+    Eternal_Radiance,
+  ],
+  Statistics: [],
+}
+
+export const Vitreum_Dancer_Echo: IEcho = {
+  Id: 320000291,
+  Name: 'Vitreum Dancer',
+  Icon: 'Vitreum_Dancer_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Eternal_Radiance,
+    Empyrean_Anthem,
+  ],
+  Statistics: [],
+}
+
+export const Lumiscale_Construct_Echo: IEcho = {
+  Id: 320000200,
+  Name: 'Lumiscale Construct',
+  Icon: 'Lumiscale_Construct_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Void_Thunder,
+    Freezing_Frost,
+  ],
+  Statistics: [],
+}
 // #endregion
 
 // #region === 1 COST ===
@@ -486,6 +751,25 @@ export const Echoes: IEcho[] = [
   Violet_Feathered_Heron_Echo,
   Viridblaze_Saurian_Echo,
   Spearback_Echo,
+  Havoc_Dreadmane_Echo,
+  Hoochief_Echo,
+  Glacio_Dreadmane_Echo,
+  Chop_Chop_Echo,
+  Cuddle_Wuddle_Echo,
+  Carapace_Echo,
+  Roseshroom_Echo,
+  Stonewall_Bracer_Echo,
+  Tambourinist_Echo,
+  Flautist_Echo,
+  Chasm_Guardian_Echo,
+  Questless_Knight_Echo,
+  Diurnus_Knight_Echo,
+  Nocturnus_Knight_Echo,
+  Abyssal_Patricius_Echo,
+  Abyssal_Gladius_Echo,
+  Abyssal_Mercator_Echo,
+  Vitreum_Dancer_Echo,
+  Lumiscale_Construct_Echo,
 
   Clang_Bang_Echo,
   Cruisewing_Echo,

@@ -732,6 +732,7 @@ export const Carlotta: ICharacter = {
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Carlotta_Icon.webp',
   SplashArt: 'Carlotta_Splash_Art.webp',
+  SplashArtOffsetY: '-35',
   Type: CharacterType.GLACIO,
   WeaponType: WeaponType.PISTOLS,
   Level: 90,

@@ -44,6 +44,10 @@ export default defineConfig({
     'from-yellow-400',
     'via-pink-500',
     'to-purple-500',
+    ...Array.from({ length: 100 }, (_, i) => `top-${i + 1}%`),
+    ...Array.from({ length: 100 }, (_, i) => `top--${i + 1}%`),
+    ...Array.from({ length: 100 }, (_, i) => `right-${i + 1}%`),
+    ...Array.from({ length: 100 }, (_, i) => `right--${i + 1}%`),
   ],
   theme: {
     // colors: extendCatppuccin(),

@@ -15,6 +15,8 @@ export class Character {
   Name: string
   Icon: string
   SplashArt: string
+  SplashArtOffsetY?: string
+  SplashArtOffsetX?: string
   Background?: string
   Rarity: Rarity
   Type: CharacterType
@@ -32,6 +34,8 @@ export class Character {
     this.Name = character.Name
     this.Icon = character.Icon
     this.SplashArt = character.SplashArt
+    this.SplashArtOffsetY = character.SplashArtOffsetY
+    this.SplashArtOffsetX = character.SplashArtOffsetX
     this.Background = character.Background
     this.Rarity = character.Rarity
     this.Type = character.Type

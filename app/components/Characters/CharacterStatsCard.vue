@@ -35,12 +35,12 @@ CharacterStats.value = new CharacterStatsSystem()
         <span>·</span>
         <p>S{{ character.GetSequenceLevel() }}</p>
       </div>
-      <div class="mx-auto my-3 h-1px w-full rounded-full bg-gray-600" />
+      <div class="mx-auto my-3 h-1px w-full rounded-full bg-white/14" />
       <div class="flex flex-col">
         <div class="w-full flex flex-col items-start gap-1">
-          <StatLine v-for="st in CharacterStats" :key="st.Type" :stat="st" />
+          <StatLine v-for="st in CharacterStats" :key="st.Type" :stat="st" :show-line="true" />
         </div>
-        <div class="mx-auto my-3 h-1px w-full rounded-full bg-gray-600" />
+        <div class="mx-auto my-3 h-1px w-full rounded-full bg-white/14" />
         <div class="w-full flex items-center justify-evenly">
           <p>Character Score</p>
           <div>

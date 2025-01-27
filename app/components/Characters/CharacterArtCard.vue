@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import type { Character } from '~/Core/Models/Character'
 
-defineProps<{
+const props = defineProps<{
   character: Character
 }>()
+
+const GetSplashArtOffsets = computed(() => {
+  return `top-${props.character.SplashArtOffsetY || 0}% right-${props.character.SplashArtOffsetX || 0}%`
+})
 </script>
 
 <template>
@@ -33,6 +37,7 @@ defineProps<{
     <NuxtImg
       :src="`${character.GetSplashArtPath()}`"
       class="absolute z-10 h-200% w-auto object-cover"
+      :class="GetSplashArtOffsets"
       fit="cover"
     />
   </div>

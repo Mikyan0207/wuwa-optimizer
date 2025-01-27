@@ -15,11 +15,17 @@ const GetSplashArtOffsets = computed(() => {
   <div
     class="relative overflow-hidden border border-white/14 rounded-md bg-black/66"
   >
+    <div class="absolute inset-0 z-20 from-black/25 via-transparent to-transparent bg-gradient-to-bl" />
     <NuxtImg
       fit="cover"
       :src="`${character.GetBackground()}`"
       class="absolute top--25% z-0 h-200% w-200% rotate-180 object-cover blur-lg"
     />
+    <!-- Weapon Type & Character Type -->
+    <div class="absolute right-2 top-2 z-20 flex items-center gap-2">
+      <NuxtImg :src="`${character.GetTypeIcon()}`" class="h-8 w-8 object-cover" fit="cover" />
+      <NuxtImg :src="`${character.GetWeaponTypeIcon()}`" class="h-8 w-8 object-cover" fit="cover" />
+    </div>
     <!-- Sequences -->
     <div class="absolute left-2 top-2 z-20">
       <div class="flex flex-col gap-3">

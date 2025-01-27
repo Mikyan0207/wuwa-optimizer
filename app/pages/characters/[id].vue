@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ICharacterRatingResult } from '~/Core/Systems/RatingSystem'
+import * as htmlToImage from 'html-to-image'
 import { RatingSystem } from '~/Core/Systems/RatingSystem'
 
 definePageMeta({
@@ -7,6 +8,8 @@ definePageMeta({
 })
 
 const Route = useRoute()
+
+const CharacterInfoRef = ref<HTMLElement | null>(null)
 
 const CharactersStore = useCharactersStore()
 const SelectedCharacter = computed(() => CharactersStore.GetCharacter(Number.parseInt(Route.params.id)))
@@ -18,6 +21,36 @@ if (SelectedCharacter.value === undefined || SelectedCharacter.value === null) {
 
 CharacterScore.value = new RatingSystem()
   .GetCharacterScore(SelectedCharacter.value!)
+
+async function TakeScreenShotAsync() {
+  if (!CharacterInfoRef.value) {
+    return
+  }
+
+  const scale = 1.5
+  const w = 1280 * scale
+  const h = 904 * scale
+
+  htmlToImage.toBlob(CharacterInfoRef.value, {
+    pixelRatio: 1,
+    height: h,
+    canvasHeight: h,
+    width: w,
+    canvasWidth: w,
+    skipAutoScale: true,
+    backgroundColor: '#333333',
+    style: {
+      zoom: `${scale}`,
+    },
+  })
+    .then((blob) => {
+      if (blob === null) {
+        return
+      }
+      const fileURL = URL.createObjectURL(blob)
+      window.open(fileURL, '_blank')
+    })
+}
 </script>
 
 <template>
@@ -32,24 +65,22 @@ CharacterScore.value = new RatingSystem()
         <span v-if="SelectedCharacter !== undefined">{{ SelectedCharacter.Name }}</span>
       </div>
       <div class="flex items-center gap-2">
-        <UButton color="white" variant="solid" icon="i-carbon:distribute-horizontal-center" :trailing="false">
-          Scoring Algorithm
-        </UButton>
-        <UButton color="white" variant="solid" icon="i-carbon:camera" :trailing="false">
+        <WeightsCard v-if="SelectedCharacter !== undefined" :character="SelectedCharacter" />
+        <UButton color="white" variant="solid" icon="i-carbon:camera" :trailing="false" @click.prevent="TakeScreenShotAsync">
           Screenshot
         </UButton>
       </div>
     </div>
 
     <div v-if="SelectedCharacter !== undefined && CharacterScore">
-      <div class="mx-auto mt-8 max-w-7xl">
-        <div class="grid grid-cols-5 mx-auto w-full gap-2">
+      <div class="mx-auto my-8 max-w-7xl">
+        <div ref="CharacterInfoRef" class="grid grid-cols-5 mx-auto w-full gap-2">
           <!-- Character Info (Art, Stats, Weapon, Skills) -->
           <CharacterArtCard v-if="SelectedCharacter" :character="SelectedCharacter" class="col-span-2" />
           <div class="grid col-span-3 grid-cols-2 gap-2">
             <!-- Stats -->
             <CharacterStatsCard :character="SelectedCharacter" :score="CharacterScore" />
-            <!-- Weapon / Skills-->
+            <!-- Weapon / Skills -->
             <div class="grid grid-rows-4 gap-2">
               <!-- Weapon -->
               <WeaponCard :weapon="SelectedCharacter.Weapon" :character="SelectedCharacter" />

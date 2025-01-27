@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type IStatistic from '~/Core/Interfaces/IStatistic'
 import type { Character } from '~/Core/Models/Character'
+import { Rarity } from '~/Core/Enums/Rarity'
 import { CharacterStatsSystem } from '~/Core/Systems/CharacterStatsSystem'
 import { type ICharacterRatingResult, TOTAL_SCORE_GRADES } from '~/Core/Systems/RatingSystem'
 
@@ -17,25 +18,44 @@ const GetCharacterScoreNoteColor = computed(() => {
 
 CharacterStats.value = new CharacterStatsSystem()
   .CalculateTotalStats(props.character)
+
+const GetRarityAsNumber = computed(() => {
+  switch (props.character.Rarity) {
+    case Rarity.TWO_STARS:
+      return 2
+    case Rarity.THREE_STARS:
+      return 3
+    case Rarity.FOUR_STARS:
+      return 4
+    case Rarity.FIVE_STARS:
+      return 5
+  }
+
+  return 1
+})
 </script>
 
 <template>
   <div class="">
     <Card class="flex flex-col">
-      <div class="flex items-center justify-between gap-4">
-        <NuxtImg :src="`${character.GetTypeIcon()}`" class="h-3em w-3em object-contain" fit="contain" />
-        <NuxtImg :src="`${character.GetRarityIcon()}`" class="h-auto w-6em object-contain" fit="contain" />
-        <NuxtImg :src="`${character.GetWeaponTypeIcon()}`" class="h-3em w-3em object-contain" fit="contain" />
+      <div class="mx-auto flex items-center gap-1">
+        <NuxtImg v-for="idx in GetRarityAsNumber" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-6 w-6 object-cover" fit="cover" />
       </div>
-      <h1 class="my-2 w-full text-center text-2xl">
+      <h1 class="mt-2 w-full text-center text-2xl">
         {{ character.Name }}
       </h1>
-      <div class="mx-auto max-w-10em flex items-center justify-evenly gap-3">
+      <div class="mx-auto max-w-10em flex items-center justify-evenly gap-1 text-xs">
         <p>Lv. {{ character.Level }}</p>
         <span>·</span>
         <p>S{{ character.GetSequenceLevel() }}</p>
       </div>
-      <div class="mx-auto my-3 h-1px w-full rounded-full bg-white/14" />
+      <!-- <div class="mx-auto w-full flex items-center justify-between gap-2">
+        <NuxtImg :src="`${character.GetTypeIcon()}`" class="h-12 w-12 object-cover" fit="cover" />
+        <NuxtImg :src="`${character.GetRarityIcon()}`" class="h-auto w-24 object-cover" fit="cover" />
+        <NuxtImg :src="`${character.GetWeaponTypeIcon()}`" class="h-12 w-12 object-cover" fit="cover" />
+      </div> -->
+
+      <div class="mx-auto my-4 h-1px w-full rounded-full bg-white/14" />
       <div class="flex flex-col">
         <div class="w-full flex flex-col items-start gap-1">
           <StatLine v-for="st in CharacterStats" :key="st.Type" :stat="st" :show-line="true" />

@@ -29,13 +29,21 @@ const RarityOptions = [[{
           </p>
         </div>
       </div>
-      <div v-if="weapon" class="flex justify-between gap-4">
-        <div class="flex flex-col">
-          <NuxtImg :src="`${weapon.GetRarityIcon()}`" class="mb-3 h-auto w-4em object-contain" fit="contain" />
-          <p>{{ weapon.Name }}</p>
-          <p>Lv. {{ weapon.Level }} · R1</p>
+      <div class="flex justify-between gap-4">
+        <div class="flex flex-col space-y-2">
+          <NuxtImg v-if="weapon" :src="`${weapon.GetRarityIcon()}`" class="mb-3 h-auto w-4em object-contain" fit="contain" />
+          <USkeleton v-else class="h-4 w-20" :ui="{ base: '' }" />
+          <p v-if="weapon">
+            {{ weapon.Name }}
+          </p>
+          <USkeleton v-else class="h-2 w-32" :ui="{ base: '' }" />
+          <p v-if="weapon">
+            Lv. {{ weapon.Level }} · R1
+          </p>
+          <USkeleton v-else class="h-2 w-12" :ui="{ base: '' }" />
         </div>
-        <NuxtImg :src="`/images/weapons/${weapon.Icon}`" fit="cover" class="h-auto w-8em rounded-lg p-2" />
+        <NuxtImg v-if="weapon" :src="`/images/weapons/${weapon.Icon}`" fit="cover" class="h-auto w-8em rounded-lg p-2" />
+        <USkeleton v-else class="h-4em w-4em" :ui="{ base: '' }" />
       </div>
     </Card>
     <UModal v-model="ShowEditWeaponModal" :ui="{ container: 'flex min-h-full items-center justify-center text-center' }">

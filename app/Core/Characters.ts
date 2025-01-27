@@ -733,7 +733,7 @@ export const Carlotta: ICharacter = {
   Icon: 'Carlotta_Icon.webp',
   SplashArt: 'Carlotta_Splash_Art.webp',
   Type: CharacterType.GLACIO,
-  Weapon: TheLastDance,
+  WeaponType: WeaponType.PISTOLS,
   Level: 90,
   Stats: [
     {

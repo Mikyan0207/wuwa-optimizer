@@ -1,7 +1,7 @@
 import type IEcho from '../Interfaces/IEcho'
 import type IStatistic from '../Interfaces/IStatistic'
-import type { IStatWeight } from '../Interfaces/IStatWeight'
 import type { Character } from '../Models/Character'
+import { EchoCost } from '../Enums/EchoCost'
 import { Rarity } from '../Enums/Rarity'
 import { ScoreGrade } from '../Enums/ScoreGrade'
 import { StatType } from '../Enums/StatType'
@@ -23,78 +23,170 @@ export interface ICharacterRatingResult {
 export const ECHOES_SCORE_GRADES = [
   {
     Grade: ScoreGrade.PERFECT,
-    Score: 9.0,
+    Score: 8.5,
+    Color: 'text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500',
   },
   {
     Grade: ScoreGrade.SSS_PLUS,
-    Score: 8.5,
+    Score: 8.0,
+    Color: 'text-amber-4',
   },
   {
     Grade: ScoreGrade.SSS,
-    Score: 8.0,
+    Score: 7.75,
+    Color: 'text-amber-4',
   },
   {
     Grade: ScoreGrade.SS_PLUS,
     Score: 7.5,
+    Color: 'text-orange-4',
   },
   {
     Grade: ScoreGrade.SS,
     Score: 7.0,
+    Color: 'text-orange-4',
   },
   {
     Grade: ScoreGrade.S_PLUS,
     Score: 6.5,
+    Color: 'text-red-4',
   },
   {
     Grade: ScoreGrade.S,
     Score: 6.0,
+    Color: 'text-red-4',
   },
   {
     Grade: ScoreGrade.A_PLUS,
-    Score: 6.0,
+    Score: 5.75,
+    Color: 'text-purple-4',
   },
   {
     Grade: ScoreGrade.A,
     Score: 5,
+    Color: 'text-purple-4',
   },
   {
     Grade: ScoreGrade.B_PLUS,
     Score: 4.5,
+    Color: 'text-blue-4',
   },
   {
     Grade: ScoreGrade.B,
     Score: 4.0,
+    Color: 'text-blue-4',
   },
   {
     Grade: ScoreGrade.C_PLUS,
     Score: 3.5,
+    Color: 'text-green-4',
   },
   {
     Grade: ScoreGrade.C,
     Score: 3.0,
+    Color: 'text-green-4',
   },
   {
     Grade: ScoreGrade.D_PLUS,
     Score: 2.5,
+    Color: 'text-yellow-2',
   },
   {
     Grade: ScoreGrade.D,
     Score: 2.0,
+    Color: 'text-yellow-2',
   },
   {
     Grade: ScoreGrade.F,
     Score: 1.0,
+    Color: 'text-gray-4',
+  },
+]
+
+export const TOTAL_SCORE_GRADES = [
+  {
+    Grade: ScoreGrade.PERFECT,
+    Score: 400,
+    Color: 'text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500',
+  },
+  {
+    Grade: ScoreGrade.SSS_PLUS,
+    Score: 375,
+    Color: 'text-amber-4',
+  },
+  {
+    Grade: ScoreGrade.SSS,
+    Score: 350,
+    Color: 'text-amber-4',
+  },
+  {
+    Grade: ScoreGrade.SS_PLUS,
+    Score: 325,
+    Color: 'text-orange-4',
+  },
+  {
+    Grade: ScoreGrade.SS,
+    Score: 300,
+    Color: 'text-orange-4',
+  },
+  {
+    Grade: ScoreGrade.S_PLUS,
+    Score: 275,
+    Color: 'text-red-4',
+  },
+  {
+    Grade: ScoreGrade.S,
+    Score: 250,
+    Color: 'text-red-4',
+  },
+  {
+    Grade: ScoreGrade.A_PLUS,
+    Score: 225,
+    Color: 'text-purple-4',
+  },
+  {
+    Grade: ScoreGrade.A,
+    Score: 200,
+    Color: 'text-purple-4',
+  },
+  {
+    Grade: ScoreGrade.B_PLUS,
+    Score: 175,
+    Color: 'text-blue-4',
+  },
+  {
+    Grade: ScoreGrade.B,
+    Score: 150,
+    Color: 'text-blue-4',
+  },
+  {
+    Grade: ScoreGrade.C_PLUS,
+    Score: 125,
+    Color: 'text-green-4',
+  },
+  {
+    Grade: ScoreGrade.C,
+    Score: 100,
+    Color: 'text-green-4',
+  },
+  {
+    Grade: ScoreGrade.D_PLUS,
+    Score: 75,
+    Color: 'text-yellow-2',
+  },
+  {
+    Grade: ScoreGrade.D,
+    Score: 50,
+    Color: 'text-yellow-2',
+  },
+  {
+    Grade: ScoreGrade.F,
+    Score: 0,
+    Color: 'text-gray-4',
   },
 ]
 
 export class RatingSystem {
-  TOTAL_SCORE_GRADES = [
-    {
-      Grade: ScoreGrade.PERFECT,
-      Score: 9.0,
-    },
-  ]
-
   MAIN_STAT_MAX_VALUE: Record<string, number> = {
     [StatType.CRIT_DMG]: 44.0,
     [StatType.CRIT_RATE]: 22.0,
@@ -130,8 +222,10 @@ export class RatingSystem {
 
   GetCharacterScore(character: Character): ICharacterRatingResult {
     const echoesScores = this.CalculateEchoesScore(character.Echoes, character.StatsWeights!)
-    const totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0)
-    const note = this.TOTAL_SCORE_GRADES.find(g => totalScore >= g.Score)?.Grade || ScoreGrade.F
+    let totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0) * 100
+    totalScore += this.CalculateMainStatsScore(character.Echoes)
+
+    const note = TOTAL_SCORE_GRADES.find(g => totalScore >= g.Score)?.Grade || ScoreGrade.F
 
     return {
       Score: totalScore,
@@ -153,6 +247,12 @@ export class RatingSystem {
     })
   }
 
+  CalculateMainStatsScore(echoes: IEcho[]) {
+    return echoes.reduce((total, echo) => {
+      return total + (echo.MainStatistic?.Value || 0)
+    }, 0)
+  }
+
   GetPerfectEcho(echo: IEcho, weights: Record<StatType, number>): IEcho {
     const sortedStats = Object.entries(weights)
       .filter(([_, weight]) => weight > 0)
@@ -169,7 +269,8 @@ export class RatingSystem {
       Id: 0,
       Name: '',
       Icon: '',
-      Rarity: Rarity.FIVE_STAR,
+      Rarity: Rarity.FIVE_STARS,
+      Cost: EchoCost.FOUR_COST,
       Level: 0,
       Sonata: [],
     }
@@ -179,15 +280,15 @@ export class RatingSystem {
 
   CalculateEchoScore(echo: IEcho, weights: Record<StatType, number>): IEchoRatingResult {
     const isValidMainStat = echo.MainStatistic !== undefined && this.IsValidMainStat(echo.MainStatistic, weights)
-    const note = isValidMainStat ? this.GetEchoNote(echo, weights) : [0, ScoreGrade.F]
+    const note = isValidMainStat ? this.GetEchoNote(echo, weights) : { finalScore: 0, grade: ScoreGrade.F }
 
     const totalWeightedScore = echo.Statistics.reduce((acc, subStat) =>
       acc + this.CalculateSubStatScore(subStat.Type, subStat.Value, weights[subStat.Type]), 0)
 
     return {
       Score: totalWeightedScore,
-      Note: note[1] as ScoreGrade,
-      NoteScore: note[0] as number,
+      Note: note.grade as ScoreGrade,
+      NoteScore: note.finalScore as number,
       IsValidMainStat: isValidMainStat,
     }
   }
@@ -202,27 +303,46 @@ export class RatingSystem {
     return v !== undefined && v !== 0
   }
 
-  private GetSubStatTier(stat: IStatistic): number {
-    const values = this.SUB_STATS_VALUES[stat.Type] || []
-    const index = values.findIndex(s => s >= stat.Value)
-    return index !== -1 ? index + 1 : 0
-  }
-
   private CalculateTotalSubStatTierScore(echo: IEcho, weights: Record<StatType, number>): number {
-    return echo.Statistics.reduce((acc, subStat) =>
-      acc + this.GetSubStatTier(subStat) * (weights[subStat.Type] || 0), 0)
+    return echo.Statistics.reduce((totalScore, subStat) => {
+      const weight = weights[subStat.Type] || 0
+      const basePoints = weight >= 1.0 ? 9 : weight >= 0.75 ? 5 : weight >= 0.5 ? 3 : weight >= 0.25 ? 1 : 0
+      const progressBonus = this.CalculateSubStatRollValueBonus(subStat)
+      return totalScore + basePoints + progressBonus
+    }, 0)
   }
 
   private CalculateMaxPossibleTierScore(echo: IEcho, weights: Record<StatType, number>): number {
     return echo.Statistics.reduce((acc, stat) => {
-      const maxProcLevel = this.SUB_STATS_VALUES[stat.Type]?.length || 0
       const weight = weights[stat.Type] || 0
-      return acc + maxProcLevel * weight
+      const pts = weight >= 1.0 ? 9 : weight >= 0.75 ? 5 : weight >= 0.5 ? 3 : weight >= 0.25 ? 1 : 0
+      return acc + pts + 5 // 5 extra points for max roll value.
     }, 0)
   }
 
-  private GetEchoNote(echo: IEcho, weights: Record<StatType, number>): [number, ScoreGrade] {
-    const score = this.CalculateTotalSubStatTierScore(echo, weights) / this.CalculateMaxPossibleTierScore(echo, weights) * 10 || 0
-    return [score, ECHOES_SCORE_GRADES.find(g => score >= g.Score)?.Grade || ScoreGrade.F]
+  private CalculateSubStatRollValueBonus(stat: IStatistic): number {
+    const values = this.SUB_STATS_VALUES[stat.Type] || []
+    if (values.length === 0)
+      return 0
+
+    const sortedValues = values.slice().sort((a, b) => a - b)
+
+    const index = sortedValues.indexOf(stat.Value)
+    if (index === -1)
+      return 0
+
+    const progress = (index + 1) / sortedValues.length
+    return progress * 5
+  }
+
+  private GetEchoNote(echo: IEcho, weights: Record<StatType, number>) {
+    const score = this.CalculateTotalSubStatTierScore(echo, weights)
+    const maxScore = this.CalculateMaxPossibleTierScore(echo, weights)
+    const finalScore = maxScore > 0 ? (score / maxScore) ** 0.582 * 10 : 0
+
+    return {
+      finalScore,
+      grade: (ECHOES_SCORE_GRADES.find(g => finalScore >= g.Score)?.Grade || ScoreGrade.F),
+    }
   }
 }

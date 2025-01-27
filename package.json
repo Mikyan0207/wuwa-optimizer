@@ -41,6 +41,7 @@
     "vite": "^6.0.7"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.4.1",
     "pinia-plugin-persistedstate": "^4.2.0"
   }
 }

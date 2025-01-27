@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Analytics } from '@vercel/analytics/nuxt'
 import { AppName } from './Core'
 
 useHead({
@@ -8,6 +9,7 @@ useHead({
 
 <template>
   <VitePwaManifest />
+  <Analytics />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>

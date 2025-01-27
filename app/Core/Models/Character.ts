@@ -155,11 +155,7 @@ export class Character {
   }
 
   GetEchoesWithPlaceHolders() {
-    if (this.Echoes.length === 6) {
-      return this.Echoes
-    }
-
-    while (this.Echoes.length < 6) {
+    while (this.Echoes.length < 5) {
       this.Echoes.push(new Echo({
         Id: -1,
         Name: '',

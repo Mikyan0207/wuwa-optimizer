@@ -21,7 +21,7 @@ const IsPercentageStat = computed(() => {
   <div class="relative w-full flex items-start justify-between gap-12">
     <div class="w-full flex items-center gap-2 text-gray-300">
       <NuxtImg :src="`/images/icons/${STAT_ICONS[stat.Type]}`" class="h-6 w-6" />
-      <p class="text-nowrap text-xs">
+      <p class="text-truncate text-nowrap text-xs">
         {{ STAT_NAMES[stat.Type] }}
         <!-- <span v-if="showRollValue" class="min-h-4 min-w-4 rounded-full bg-white/14 text-xs">{{ GetSubStatRollScore(stat) }}</span> -->
       </p>

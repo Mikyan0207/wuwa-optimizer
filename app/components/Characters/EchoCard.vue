@@ -149,57 +149,55 @@ function OnSubmit() {
 </script>
 
 <template>
-  <div>
-    <div class="relative h-24em w-18em w-full p-4" @mouseenter="IsHovered = true" @mouseleave="IsHovered = false">
-      <div v-if="IsHovered" class="absolute right-2 top-2" @click="ShowEditEchoModal = true">
-        <div class="cursor-pointer border border-white/14 rounded-md bg-black/44 px-2 py-1 text-sm text-white">
-          <p>
-            Edit Echo
+  <div class="relative h-23em w-full p-4" @mouseenter="IsHovered = true" @mouseleave="IsHovered = false">
+    <div v-if="IsHovered" class="absolute right-1 top-1" @click="ShowEditEchoModal = true">
+      <div class="cursor-pointer border border-white/14 rounded-md bg-black/44 px-2 py-1 text-sm text-white">
+        <p>
+          Edit Echo
+        </p>
+      </div>
+    </div>
+    <!-- Echo Details -->
+    <div v-if="echo.Id !== -1" class="w-full flex flex-col items-start gap-2">
+      <div class="flex flex-row items-center gap-4">
+        <div class="flex flex-col items-center gap-2">
+          <NuxtImg :src="`/images/echoes/${echo.Icon}`" :class="`h-12 w-12 rounded-full ${GetEchoRarityBackgroundColor(echo.Rarity)}`" />
+        </div>
+        <div class="flex flex-col">
+          <p class="text-lg text-white">
+            {{ echo.Name }}
+          </p>
+          <p class="text-xs text-gray-300">
+            +<span>{{ echo.Level }}</span>
           </p>
         </div>
       </div>
-      <!-- Echo Details -->
-      <div v-if="echo.Id !== -1" class="w-full flex flex-col items-start gap-2">
-        <div class="flex flex-row items-center gap-4">
-          <div class="flex flex-col items-center gap-2">
-            <NuxtImg :src="`/images/echoes/${echo.Icon}`" :class="`h-12 w-12 rounded-full ${GetEchoRarityBackgroundColor(echo.Rarity)}`" />
+      <div class="mx-auto my-2 h-1px w-full rounded-full bg-white/14" />
+      <!-- Main Stat -->
+      <div class="w-full flex flex-row gap-4">
+        <div v-if="echo.MainStatistic" class="w-full flex items-start justify-between gap-12">
+          <StatLine :stat="echo.MainStatistic" />
+        </div>
+      </div>
+      <div class="mx-auto my-2 h-1px w-full rounded-full bg-white/14" />
+      <!-- Sub Stats -->
+      <div class="w-full flex flex-col gap-1">
+        <StatLine v-for="(stat, idx) in echo.Statistics" :key="`stat-${stat.Type}-${idx}`" :stat="stat" :show-roll-value="true" />
+      </div>
+      <div class="mx-auto my-2 h-1px w-full rounded-full bg-white/14" />
+      <!-- Echo Score -->
+      <div class="w-full flex flex-row items-end gap-4">
+        <div class="w-full flex items-start justify-between gap-12">
+          <div class="flex items-center gap-2">
+            <p>Score</p>
           </div>
-          <div class="flex flex-col">
-            <p class="text-lg text-white">
-              {{ echo.Name }}
+          <div class="w-full flex flex-row items-center justify-end gap-3">
+            <p v-if="score">
+              {{ (score.Score * 100).toFixed(1) }}
             </p>
-            <p class="text-xs text-gray-300">
-              +<span>{{ echo.Level }}</span>
+            <p v-if="score">
+              (<EchoNote :value="score.NoteScore" :text="score.Note" class="font-semibold" />)
             </p>
-          </div>
-        </div>
-        <div class="mx-auto my-2 h-1px w-full rounded-full bg-white/14" />
-        <!-- Main Stat -->
-        <div class="w-full flex flex-row gap-4">
-          <div v-if="echo.MainStatistic" class="w-full flex items-start justify-between gap-12">
-            <StatLine :stat="echo.MainStatistic" />
-          </div>
-        </div>
-        <div class="mx-auto my-2 h-1px w-full rounded-full bg-white/14" />
-        <!-- Sub Stats -->
-        <div class="w-full flex flex-col gap-1">
-          <StatLine v-for="(stat, idx) in echo.Statistics" :key="`stat-${stat.Type}-${idx}`" :stat="stat" :show-roll-value="true" />
-        </div>
-        <div class="mx-auto my-2 h-1px w-full rounded-full bg-white/14" />
-        <!-- Echo Score -->
-        <div class="w-full flex flex-row items-end gap-4">
-          <div class="w-full flex items-start justify-between gap-12">
-            <div class="flex items-center gap-2">
-              <p>Score</p>
-            </div>
-            <div class="w-full flex flex-row items-center justify-end gap-3">
-              <p v-if="score">
-                {{ (score.Score * 100).toFixed(1) }}
-              </p>
-              <p v-if="score">
-                (<EchoNote :value="score.NoteScore" :text="score.Note" class="font-semibold" />)
-              </p>
-            </div>
           </div>
         </div>
       </div>

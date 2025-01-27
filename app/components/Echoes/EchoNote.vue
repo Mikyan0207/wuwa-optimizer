@@ -1,21 +1,13 @@
 <script setup lang="ts">
+import { ECHOES_SCORE_GRADES } from '~/Core/Systems/RatingSystem'
+
 const props = defineProps<{
   value: number
   text: string
 }>()
 
 const TextColor = computed(() => {
-  if (props.value >= 9.0)
-    return 'text-red-4'
-  if (props.value >= 8.0)
-    return 'text-amber-4'
-  if (props.value >= 7.0)
-    return 'text-purple-4'
-  if (props.value >= 6.0)
-    return 'text-blue-4'
-  if (props.value >= 5.0)
-    return 'text-white'
-  return 'text-gray-400'
+  return ECHOES_SCORE_GRADES.find(x => x.Grade.toString() === props.text)?.Color
 })
 </script>
 

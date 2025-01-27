@@ -21,8 +21,8 @@ const RarityOptions = [[{
 
 <template>
   <div>
-    <Card class="relative mt-2 h-8em" @mouseenter="IsHovered = true" @mouseleave="IsHovered = false">
-      <div v-if="IsHovered" class="absolute right-2 top-2" @click.prevent="ShowEditWeaponModal = true">
+    <Card class="relative h-full" @mouseenter="IsHovered = true" @mouseleave="IsHovered = false">
+      <div v-if="IsHovered" class="absolute right-1 top-1" @click.prevent="ShowEditWeaponModal = true">
         <div class="cursor-pointer border border-white/14 rounded-md bg-black/44 px-2 py-1 text-sm text-white">
           <p>
             Edit Weapon

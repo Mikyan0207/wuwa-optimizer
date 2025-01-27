@@ -1,0 +1,39 @@
+<script setup lang="ts">
+import type { Character } from '~/Core/Models/Character'
+
+defineProps<{
+  character: Character
+}>()
+</script>
+
+<template>
+  <!-- Character Art -->
+  <div
+    class="relative overflow-hidden border border-white/14 rounded-md bg-black/66"
+  >
+    <NuxtImg
+      fit="cover"
+      :src="`${character.GetBackground()}`"
+      class="absolute top--25% z-0 h-200% w-200% rotate-180 object-cover blur-lg"
+    />
+    <!-- Sequences -->
+    <div class="absolute left-2 top-2 z-20">
+      <div class="flex flex-col gap-3">
+        <div
+          v-for="s in character.Sequences"
+          :key="s.Name"
+          class="relative h-12 w-12 border border-white rounded-full bg-gray-700 p-1"
+        >
+          <div class="absolute inset-0 rounded-full" />
+          <div v-if="s.Unlocked === false" class="absolute inset-0 rounded-full bg-black/50" />
+          <NuxtImg :src="`/images/characters/${character.Id}/${s.Icon}`" />
+        </div>
+      </div>
+    </div>
+    <NuxtImg
+      :src="`${character.GetSplashArtPath()}`"
+      class="absolute z-10 h-200% w-auto object-cover"
+      fit="cover"
+    />
+  </div>
+</template>

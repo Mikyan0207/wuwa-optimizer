@@ -36,6 +36,15 @@ export default defineConfig({
     'max-w-9xl': 'max-w-90rem',
     'max-w-10xl': 'max-w-95rem',
   },
+  safelist: [
+    'text-orange-4',
+    'bg-gradient-to-r',
+    'bg-clip-text',
+    'text-transparent',
+    'from-yellow-400',
+    'via-pink-500',
+    'to-purple-500',
+  ],
   theme: {
     // colors: extendCatppuccin(),
     breakpoints: {

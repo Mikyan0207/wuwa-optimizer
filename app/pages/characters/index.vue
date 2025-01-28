@@ -29,7 +29,7 @@ function OnCharacterClicked(characterId: number) {
 
 <template>
   <div>
-    <div class="w-full flex items-center gap-2 border-b border-white/14 bg-black/44 p-4 text-sm">
+    <div class="h-12 w-full flex items-center gap-2 border-b border-white/14 bg-black/44 p-3 text-sm">
       <div class="mx-4 h-6 w-1px bg-white/14" />
       <NuxtLink to="/characters">
         Resonators

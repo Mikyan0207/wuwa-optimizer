@@ -34,17 +34,18 @@ const GetSplashArtOffsets = computed(() => {
         <div
           v-for="s in character.Sequences"
           :key="s.Name"
-          class="relative h-12 w-12 border border-white rounded-full bg-gray-700 p-1"
+          class="relative h-12 w-12 border-2 border-white/14 rounded-full bg-neutral-700 p-1"
         >
-          <div class="absolute inset-0 rounded-full" />
-          <div v-if="s.Unlocked === false" class="absolute inset-0 rounded-full bg-black/50" />
+          <div v-if="s.Unlocked === false" class="absolute inset-0 rounded-full bg-black/75" />
+          <!-- Not sure about this strike-out... -->
+          <!-- <div v-if="s.Unlocked === false" class="absolute inset-0 left-0 top-50% h-2px bg-white/28 -right-1px -rotate-45" /> -->
           <NuxtImg :src="`/images/characters/${character.Id}/${s.Icon}`" />
         </div>
       </div>
     </div>
     <NuxtImg
       :src="`${character.GetSplashArtPath()}`"
-      class="absolute z-10 h-auto w-full object-cover"
+      class="absolute z-10 h-150% w-full object-cover"
       :class="GetSplashArtOffsets"
       fit="cover"
     />

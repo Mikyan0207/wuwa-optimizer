@@ -29,6 +29,7 @@ export const STAT_NAMES: Record<StatType, string> = {
   [StatType.GLACIO_DMG_BONUS]: 'Glacio DMG Bonus',
   [StatType.HAVOC_DMG_BONUS]: 'Havoc DMG Bonus',
   [StatType.SPECTRO_DMG_BONUS]: 'Spectro DMG Bonus',
+  [StatType.AERO_DMG_BONUS]: 'Aero DMG Bonus',
 }
 
 export const SUB_STAT_VALUES: Record<StatType, number[]> = {
@@ -52,6 +53,7 @@ export const SUB_STAT_VALUES: Record<StatType, number[]> = {
   [StatType.GLACIO_DMG_BONUS]: [],
   [StatType.HAVOC_DMG_BONUS]: [],
   [StatType.SPECTRO_DMG_BONUS]: [],
+  [StatType.AERO_DMG_BONUS]: [],
 }
 
 export const STAT_ICONS: Record<StatType, string> = {
@@ -75,4 +77,5 @@ export const STAT_ICONS: Record<StatType, string> = {
   [StatType.GLACIO_DMG_BONUS]: 'Icon_Glacio_DMG_Bonus.webp',
   [StatType.HAVOC_DMG_BONUS]: 'Icon_Havoc_DMG_Bonus.webp',
   [StatType.SPECTRO_DMG_BONUS]: 'Icon_Spectro_DMG_Bonus.webp',
+  [StatType.AERO_DMG_BONUS]: 'Icon_Aero_DMG_Bonus.webp',
 }

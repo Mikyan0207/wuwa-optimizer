@@ -48,7 +48,7 @@ const GetHighlightColor = computed(() => {
 
 <template>
   <div
-    class="group relative cursor-pointer border border-white/14 rounded-md bg-black/14"
+    class="group relative cursor-pointer border border-white/14 rounded-md bg-black/66"
   >
     <div class="relative min-h-26 w-26 flex items-center justify-center overflow-clip">
       <div class="absolute left-1 top-1 z-1 w-8 flex items-center justify-center border border-white/14 rounded bg-black px-1 text-10px">

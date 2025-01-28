@@ -21,8 +21,8 @@ export class Character {
   Background?: string
   Rarity: Rarity
   Type: CharacterType
-  WeaponType?: WeaponType | null | undefined
-  Weapon?: Weapon | null | undefined
+  WeaponType?: WeaponType
+  Weapon?: Weapon
   Level: number
   Stats: IStatistic[]
   Sequences: ICharacterSequence[]
@@ -42,7 +42,6 @@ export class Character {
     this.Rarity = character.Rarity
     this.Type = character.Type
     this.WeaponType = character.WeaponType
-    this.Weapon = null
     this.Level = character.Level
     this.Stats = character.Stats
     this.Sequences = character.Sequences

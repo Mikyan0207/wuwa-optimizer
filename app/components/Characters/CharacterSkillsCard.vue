@@ -78,7 +78,7 @@ const IntroStatBonus2 = computed<ISkill | undefined>(() =>
       <div class="w-full flex items-center">
         <USkeleton v-if="!BasicAttack" class="min-h-3em min-w-3em rotate-45" :ui="{ base: '' }" />
         <div v-else class="min-h-3em min-w-3em rotate-45 border-2 border-white/14 rounded-md bg-black/66">
-          <NuxtImg :src="`/images/characters/${character.Id}/${BasicAttack.Icon}`" class="p-1 -rotate-45" />
+          <NuxtImg :src="`/images/icons/${BasicAttack.Icon}`" class="p-1 -rotate-45" />
         </div>
         <div class="h-1px w-full bg-white/7" />
         <USkeleton v-if="!BasicStatBonus1" class="min-h-2em min-w-2em rounded-full" :ui="{ base: '' }" />

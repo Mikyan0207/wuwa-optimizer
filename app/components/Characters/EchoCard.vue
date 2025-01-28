@@ -231,8 +231,9 @@ function OnSubmit() {
         <div class="grid cols-3 w-full gap-8">
           <div class="col-span-2 flex flex-col gap-2">
             <!-- Echo Selection -->
-            <UFormGroup label="Echo">
-              <UInputMenu v-model="EditedEcho" placeholder="" :options="EchoesStore.GetTemplateEchoes()" option-attribute="Name">
+            <UFormGroup>
+              <UDivider label="Echo" class="my-3" />
+              <UInputMenu v-model="EditedEcho" placeholder="" :options="EchoesStore.GetDefaultEchoes()" option-attribute="Name">
                 <template #option="{ option: o }">
                   <div class="w-full flex items-center justify-between gap-1">
                     <div class="w-full flex flex-row items-center gap-2">
@@ -256,7 +257,8 @@ function OnSubmit() {
             </UFormGroup>
 
             <!-- Sonata Effect -->
-            <UFormGroup label="Sonata Effect">
+            <UFormGroup>
+              <UDivider label="Sonata Effect" class="my-3" />
               <div v-if="EditedEcho !== undefined" class="h-full flex items-center justify-start border border-white/14 rounded-lg">
                 <div
                   v-for="(sonata) in EditedEcho.Sonata"
@@ -303,7 +305,8 @@ function OnSubmit() {
             </UFormGroup>
 
             <!-- Level & Rarity -->
-            <UFormGroup label="Enhance / Rarity">
+            <UFormGroup>
+              <UDivider label="Enhance / Rarity" class="my-3" />
               <div class="w-full flex flex-row items-center justify-between gap-2">
                 <USelectMenu
                   v-model="SelectedLevel"
@@ -323,7 +326,8 @@ function OnSubmit() {
             </UFormGroup>
 
             <!-- Main Stat -->
-            <UFormGroup label="Main Stat.">
+            <UFormGroup>
+              <UDivider label="Main Stat" class="my-3" />
               <div class="flex items-center justify-between gap-2">
                 <UInputMenu
                   v-model="SelectedMainStat"
@@ -340,7 +344,8 @@ function OnSubmit() {
             </UFormGroup>
 
             <!-- Sub Stats -->
-            <UFormGroup label="Sub Stats.">
+            <UFormGroup>
+              <UDivider label="Sub Stats" class="my-3" />
               <div class="space-y-1">
                 <div v-for="(_, idx) in Array.from({ length: 5 })" :key="`echo-sub-stat-${idx}`" class="flex items-center justify-between gap-2">
                   <UInputMenu
@@ -357,14 +362,12 @@ function OnSubmit() {
               </div>
             </UFormGroup>
           </div>
-          <div class="space-y-4">
+          <!-- Equiped By -->
+          <div>
             <UFormGroup label="Equiped By">
               <div class="h-auto min-w-full w-full border border-white/14 rounded">
-                <NuxtImg :src="character.GetIcon()" />
+                <NuxtImg :src="character.GetIcon()" class="w-full rounded object-cover" />
               </div>
-            </UFormGroup>
-            <UFormGroup label="Recommended Sets">
-              <div class="h-26 w-full border border-white/14 rounded bg-black/44" />
             </UFormGroup>
           </div>
         </div>

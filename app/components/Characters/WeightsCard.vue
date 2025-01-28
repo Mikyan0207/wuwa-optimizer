@@ -23,6 +23,7 @@ const StatWeights = computed(() => {
       variant="solid"
       icon="i-carbon:distribute-horizontal-center"
       :trailing="false"
+      size="xs"
       @click.prevent="ShowWeightsModal = true"
     >
       Scoring Algorithm

@@ -10,7 +10,7 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     return Echoes.value.map(e => new Echo(e))
   }
 
-  function GetTemplateEchoes() {
+  function GetDefaultEchoes() {
     return TemplateEchoes
       .map(e => new Echo(e))
   }
@@ -25,7 +25,7 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
 
   return {
     Echoes,
-    GetTemplateEchoes,
+    GetDefaultEchoes,
     GetEchoes,
     AddEcho,
   }

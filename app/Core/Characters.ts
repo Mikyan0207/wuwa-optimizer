@@ -81,8 +81,416 @@ export const Yangyang: ICharacter = {
   Type: CharacterType.AERO,
   WeaponType: WeaponType.SWORD,
   Level: 90,
-  Stats: [],
-  Sequences: [],
+  Stats: [
+    {
+      Value: 10200,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1100,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 250,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.AERO_DMG_BONUS,
+    },
+  ],
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.25,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.25,
+    [StatType.AERO_DMG_BONUS]: 0.1,
+  },
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Yangyang_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Yangyang_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Yangyang_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Yangyang_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Yangyang_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Yangyang_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Name: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Sword.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Yangyang_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Yangyang_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Yangyang_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Yangyang_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Yangyang_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Intro Skill',
+      Level: 1,
+      Icon: 'Yangyang_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Outro Skill',
+      Level: 1,
+      Icon: 'Yangyang_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  Echoes: [],
+  Unlocked: false,
+}
+
+// 1403
+export const Aalto: ICharacter = {
+  Id: 1403,
+  Name: 'Aalto',
+  Icon: 'Aalto_Icon.webp',
+  SplashArt: 'Aalto_Full_Sprite.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: CharacterType.AERO,
+  WeaponType: WeaponType.PISTOLS,
+  Level: 90,
+  Stats: [
+    {
+      Value: 9850,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1076,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 263,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.AERO_DMG_BONUS,
+    },
+  ],
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.5,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+    [StatType.AERO_DMG_BONUS]: 0.1,
+  },
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Aalto_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Aalto_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Aalto_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Aalto_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Aalto_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Aalto_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Name: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Pistols.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Aalto_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Aalto_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Aalto_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Aalto_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Aalto_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Intro Skill',
+      Level: 1,
+      Icon: 'Aalto_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Outro Skill',
+      Level: 1,
+      Icon: 'Aalto_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
   Echoes: [],
   Unlocked: false,
 }
@@ -164,11 +572,7 @@ export const Danjin: ICharacter = {
     [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0.5,
     [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
     [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.5,
-    [StatType.ELECTRO_DMG_BONUS]: 0,
-    [StatType.FUSION_DMG_BONUS]: 0,
-    [StatType.GLACIO_DMG_BONUS]: 0,
     [StatType.HAVOC_DMG_BONUS]: 0.1,
-    [StatType.SPECTRO_DMG_BONUS]: 0,
   },
   Sequences: [
     {
@@ -206,7 +610,7 @@ export const Danjin: ICharacter = {
     {
       Name: 'Basic Attack',
       Level: 1,
-      Icon: 'Danjin_Basic_Attack.webp',
+      Icon: 'Skill_Sword.webp',
       Unlocked: true,
     },
     {
@@ -308,28 +712,27 @@ export const Danjin: ICharacter = {
 
 // #region 5 Stars
 
-// 1304
-export const Jinhsi: ICharacter = {
-  Id: 1304,
-  Name: 'Jinhsi',
+// 1105
+export const ZheZhi: ICharacter = {
+  Id: 1105,
+  Name: 'ZheZhi',
+  Icon: 'ZheZhi_Icon.webp',
+  SplashArt: 'ZheZhi_Splash_Art.webp',
   Rarity: Rarity.FIVE_STARS,
-  Icon: 'Jinhsi_Icon.webp',
-  SplashArt: 'Jinhsi_Splash_Art_Small.webp',
-  Background: 'Jinhsi_Splash_Art_Small.webp',
-  WeaponType: WeaponType.BROADBLADE,
-  Type: CharacterType.SPECTRO,
+  Type: CharacterType.GLACIO,
+  WeaponType: WeaponType.RECTIFIER,
   Level: 90,
   Stats: [
     {
-      Value: 10825,
+      Value: 12250,
       Type: StatType.HP,
     },
     {
-      Value: 1259,
+      Value: 1198,
       Type: StatType.DEF,
     },
     {
-      Value: 413,
+      Value: 375,
       Type: StatType.ATTACK,
     },
     {
@@ -366,38 +769,157 @@ export const Jinhsi: ICharacter = {
     },
     {
       Value: 0,
-      Type: StatType.SPECTRO_DMG_BONUS,
+      Type: StatType.FUSION_DMG_BONUS,
+    },
+  ],
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.25,
+    [StatType.ATTACK_PERCENTAGE]: 0.5,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.5,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0.75,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+    [StatType.ELECTRO_DMG_BONUS]: 0,
+    [StatType.FUSION_DMG_BONUS]: 0.1,
+    [StatType.GLACIO_DMG_BONUS]: 0,
+    [StatType.HAVOC_DMG_BONUS]: 0,
+    [StatType.SPECTRO_DMG_BONUS]: 0,
+  },
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'ZheZhi_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'ZheZhi_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'ZheZhi_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'ZheZhi_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'ZheZhi_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'ZheZhi_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Echoes: [],
+  Unlocked: false,
+}
+
+// 1107
+export const Carlotta: ICharacter = {
+  Id: 1107,
+  Name: 'Carlotta',
+  Rarity: Rarity.FIVE_STARS,
+  Icon: 'Carlotta_Icon.webp',
+  SplashArt: 'Carlotta_Splash_Art.webp',
+  SplashArtOffsetY: '-35',
+  Type: CharacterType.GLACIO,
+  WeaponType: WeaponType.PISTOLS,
+  Level: 90,
+  Stats: [
+    {
+      Value: 12450,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1198,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 463,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.GLACIO_DMG_BONUS,
     },
   ],
   Sequences: [
     {
       Name: '',
-      Icon: 'Jinhsi_Sequence_Node_01.webp',
+      Icon: 'Carlotta_Sequence_Node_01.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'Jinhsi_Sequence_Node_02.webp',
+      Icon: 'Carlotta_Sequence_Node_02.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'Jinhsi_Sequence_Node_03.webp',
+      Icon: 'Carlotta_Sequence_Node_03.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'Jinhsi_Sequence_Node_04.webp',
+      Icon: 'Carlotta_Sequence_Node_04.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'Jinhsi_Sequence_Node_05.webp',
+      Icon: 'Carlotta_Sequence_Node_05.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'Jinhsi_Sequence_Node_06.webp',
+      Icon: 'Carlotta_Sequence_Node_06.webp',
       Unlocked: false,
     },
   ],
@@ -416,14 +938,14 @@ export const Jinhsi: ICharacter = {
     [StatType.DEF_PERCENTAGE]: 0,
     [StatType.ENERGY_REGENERATION]: 0.5,
     [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0.25,
-    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0.25,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
     [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.5,
     [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.5,
     [StatType.ELECTRO_DMG_BONUS]: 0,
     [StatType.FUSION_DMG_BONUS]: 0,
-    [StatType.GLACIO_DMG_BONUS]: 0,
+    [StatType.GLACIO_DMG_BONUS]: 0.1,
     [StatType.HAVOC_DMG_BONUS]: 0,
-    [StatType.SPECTRO_DMG_BONUS]: 0.1,
+    [StatType.SPECTRO_DMG_BONUS]: 0,
   },
 }
 
@@ -545,27 +1067,28 @@ export const Changli: ICharacter = {
   Unlocked: false,
 }
 
-// 1105
-export const ZheZhi: ICharacter = {
-  Id: 1105,
-  Name: 'ZheZhi',
-  Icon: 'ZheZhi_Icon.webp',
-  SplashArt: 'ZheZhi_Splash_Art.webp',
+// 1304
+export const Jinhsi: ICharacter = {
+  Id: 1304,
+  Name: 'Jinhsi',
   Rarity: Rarity.FIVE_STARS,
-  Type: CharacterType.GLACIO,
-  WeaponType: WeaponType.RECTIFIER,
+  Icon: 'Jinhsi_Icon.webp',
+  SplashArt: 'Jinhsi_Splash_Art_Small.webp',
+  Background: 'Jinhsi_Splash_Art.webp',
+  WeaponType: WeaponType.BROADBLADE,
+  Type: CharacterType.SPECTRO,
   Level: 90,
   Stats: [
     {
-      Value: 12250,
+      Value: 10825,
       Type: StatType.HP,
     },
     {
-      Value: 1198,
+      Value: 1259,
       Type: StatType.DEF,
     },
     {
-      Value: 375,
+      Value: 413,
       Type: StatType.ATTACK,
     },
     {
@@ -602,65 +1125,163 @@ export const ZheZhi: ICharacter = {
     },
     {
       Value: 0,
-      Type: StatType.FUSION_DMG_BONUS,
+      Type: StatType.SPECTRO_DMG_BONUS,
     },
   ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Jinhsi_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Jinhsi_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Jinhsi_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Jinhsi_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Jinhsi_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Jinhsi_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Name: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Broadblade.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Jinhsi_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Jinhsi_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Jinhsi_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Jinhsi_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Jinhsi_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Intro Skill',
+      Level: 1,
+      Icon: 'Jinhsi_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+    },
+    {
+      Name: 'Outro Skill',
+      Level: 1,
+      Icon: 'Jinhsi_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  Echoes: [],
+  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
-    [StatType.ATTACK]: 0.25,
-    [StatType.ATTACK_PERCENTAGE]: 0.5,
+    [StatType.ATTACK]: 0,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
     [StatType.HP]: 0,
     [StatType.HP_PERCENTAGE]: 0,
     [StatType.HEALING_BONUS]: 0,
     [StatType.DEF]: 0,
     [StatType.DEF_PERCENTAGE]: 0,
     [StatType.ENERGY_REGENERATION]: 0.5,
-    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0.75,
-    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
-    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
-    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0.25,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0.25,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.5,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.5,
     [StatType.ELECTRO_DMG_BONUS]: 0,
-    [StatType.FUSION_DMG_BONUS]: 0.1,
+    [StatType.FUSION_DMG_BONUS]: 0,
     [StatType.GLACIO_DMG_BONUS]: 0,
     [StatType.HAVOC_DMG_BONUS]: 0,
-    [StatType.SPECTRO_DMG_BONUS]: 0,
+    [StatType.SPECTRO_DMG_BONUS]: 0.1,
   },
-  Sequences: [
-    {
-      Name: '',
-      Icon: 'ZheZhi_Sequence_Node_01.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'ZheZhi_Sequence_Node_02.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'ZheZhi_Sequence_Node_03.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'ZheZhi_Sequence_Node_04.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'ZheZhi_Sequence_Node_05.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'ZheZhi_Sequence_Node_06.webp',
-      Unlocked: false,
-    },
-  ],
-  Echoes: [],
-  Unlocked: false,
 }
 
 // 1505
@@ -823,130 +1444,12 @@ export const Camellya: ICharacter = {
   Unlocked: false,
 }
 
-// 1107
-export const Carlotta: ICharacter = {
-  Id: 1107,
-  Name: 'Carlotta',
-  Rarity: Rarity.FIVE_STARS,
-  Icon: 'Carlotta_Icon.webp',
-  SplashArt: 'Carlotta_Splash_Art.webp',
-  SplashArtOffsetY: '-35',
-  Type: CharacterType.GLACIO,
-  WeaponType: WeaponType.PISTOLS,
-  Level: 90,
-  Stats: [
-    {
-      Value: 12450,
-      Type: StatType.HP,
-    },
-    {
-      Value: 1198,
-      Type: StatType.DEF,
-    },
-    {
-      Value: 463,
-      Type: StatType.ATTACK,
-    },
-    {
-      Value: 5,
-      Type: StatType.CRIT_RATE,
-    },
-    {
-      Value: 150,
-      Type: StatType.CRIT_DMG,
-    },
-    {
-      Value: 100,
-      Type: StatType.ENERGY_REGENERATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.HEALING_BONUS,
-    },
-    {
-      Value: 0,
-      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.GLACIO_DMG_BONUS,
-    },
-  ],
-  Sequences: [
-    {
-      Name: '',
-      Icon: 'Carlotta_Sequence_Node_01.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Carlotta_Sequence_Node_02.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Carlotta_Sequence_Node_03.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Carlotta_Sequence_Node_04.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Carlotta_Sequence_Node_05.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Carlotta_Sequence_Node_06.webp',
-      Unlocked: false,
-    },
-  ],
-  Echoes: [],
-  Unlocked: false,
-  StatsWeights: {
-    [StatType.NONE]: 0,
-    [StatType.CRIT_DMG]: 1,
-    [StatType.CRIT_RATE]: 1,
-    [StatType.ATTACK]: 0,
-    [StatType.ATTACK_PERCENTAGE]: 0.75,
-    [StatType.HP]: 0,
-    [StatType.HP_PERCENTAGE]: 0,
-    [StatType.HEALING_BONUS]: 0,
-    [StatType.DEF]: 0,
-    [StatType.DEF_PERCENTAGE]: 0,
-    [StatType.ENERGY_REGENERATION]: 0.5,
-    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0.25,
-    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
-    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.5,
-    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.5,
-    [StatType.ELECTRO_DMG_BONUS]: 0,
-    [StatType.FUSION_DMG_BONUS]: 0,
-    [StatType.GLACIO_DMG_BONUS]: 0.1,
-    [StatType.HAVOC_DMG_BONUS]: 0,
-    [StatType.SPECTRO_DMG_BONUS]: 0,
-  },
-}
-
 // #endregion
 
 export const TemplateCharacters: ICharacter[] = [
   Sanhua,
   Yangyang,
+  Aalto,
   Danjin,
 
   Jinhsi,

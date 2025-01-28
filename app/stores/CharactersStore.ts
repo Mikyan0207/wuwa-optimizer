@@ -1,5 +1,6 @@
 import type ICharacter from '~/Core/Interfaces/ICharacter'
 import type { Echo } from '~/Core/Models/Echo'
+import type { Weapon } from '~/Core/Models/Weapon'
 import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { TemplateCharacters } from '~/Core/Characters'
@@ -92,6 +93,17 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     UpdateCharacter(c)
   }
 
+  function UpdateWeapon(characterId: number, weapon: Weapon) {
+    const c = Characters.value.find(x => x.Id === characterId)
+
+    if (c === undefined) {
+      return
+    }
+
+    c.Weapon = weapon
+    UpdateCharacter(c)
+  }
+
   return {
     Characters,
     IsCharacterListed,
@@ -103,5 +115,6 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     GetCharacters,
     GetCharacter,
     UpdateEcho,
+    UpdateWeapon,
   }
 })

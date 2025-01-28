@@ -2,42 +2,46 @@
 import type { Echo } from '~/Core/Models/Echo'
 import { Rarity } from '~/Core/Enums/Rarity'
 
-export interface CharacterIconProps {
+const props = defineProps<{
   echo: Echo
-}
-
-const Props = defineProps<CharacterIconProps>()
+}>()
 
 const GetBackgroundColor = computed(() => {
-  switch (Props.echo.Rarity) {
-    case Rarity.FIVE_STAR:
-      return 'bg-yellow-500'
-    case Rarity.FOUR_STAR:
-      return 'bg-purple-400'
+  switch (props.echo.Rarity) {
+    case Rarity.FIVE_STARS:
+      return 'bg-amber-4'
+    case Rarity.FOUR_STARS:
+      return 'bg-purple-4'
+    case Rarity.THREE_STARS:
+      return 'bg-blue-4'
     default:
-      return 'bg-blue-400'
+      return 'bg-gray-4'
   }
 })
 
 const GetSecondaryColor = computed(() => {
-  switch (Props.echo.Rarity) {
-    case Rarity.FIVE_STAR:
-      return 'bg-yellow-100'
-    case Rarity.FOUR_STAR:
-      return 'bg-purple-100'
+  switch (props.echo.Rarity) {
+    case Rarity.FIVE_STARS:
+      return 'bg-amber-1'
+    case Rarity.FOUR_STARS:
+      return 'bg-purple-1'
+    case Rarity.THREE_STARS:
+      return 'bg-blue-1'
     default:
-      return 'bg-blue-100'
+      return 'bg-gray-1'
   }
 })
 
 const GetHighlightColor = computed(() => {
-  switch (Props.echo.Rarity) {
-    case Rarity.FIVE_STAR:
+  switch (props.echo.Rarity) {
+    case Rarity.FIVE_STARS:
       return 'bg-amber-4'
-    case Rarity.FOUR_STAR:
+    case Rarity.FOUR_STARS:
       return 'bg-purple-4'
-    default:
+    case Rarity.THREE_STARS:
       return 'bg-blue-4'
+    default:
+      return 'bg-gray-4'
   }
 })
 </script>
@@ -47,10 +51,10 @@ const GetHighlightColor = computed(() => {
     class="group relative cursor-pointer border border-white/14 rounded-md bg-black/14"
   >
     <div class="relative min-h-26 w-26 flex items-center justify-center overflow-clip">
-      <div class="absolute right-1 top-1 z-1 w-8 flex items-center justify-center border border-white/14 rounded bg-black px-1 text-10px">
+      <div class="absolute left-1 top-1 z-1 w-8 flex items-center justify-center border border-white/14 rounded bg-black px-1 text-10px">
         +{{ echo.Level }}
       </div>
-      <div class="absolute bottom-2 right-2 flex items-center justify-center gap-1">
+      <div class="absolute right-1 top-1 z-10 flex items-center justify-center gap-1">
         <NuxtImg v-for="s in echo.Sonata" :key="s.Name" :src="s.GetIcon()" class="h-6 w-6 object-contain" />
       </div>
       <div class="absolute bottom-0">
@@ -59,6 +63,7 @@ const GetHighlightColor = computed(() => {
           height="160"
           :src="`${echo.GetIcon()}`"
           style="color: transparent;"
+          class="rounded-t"
         />
       </div>
       <div class="absolute bottom-0 w-full">

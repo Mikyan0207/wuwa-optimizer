@@ -20,7 +20,7 @@ export default defineConfig({
     presetTypography(),
     presetWebFonts({
       fonts: {
-        sans: 'Comfortaa',
+        sans: 'Nunito',
         serif: 'Lato',
         mono: 'DM Mono',
       },

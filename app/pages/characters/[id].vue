@@ -27,7 +27,7 @@ async function TakeScreenShotAsync() {
     return
   }
 
-  const scale = 1.5
+  const scale = 1
   const w = 1280 * scale
   const h = 904 * scale
 

@@ -3,7 +3,6 @@ import { CharacterType } from './Enums/CharacterType'
 import { Rarity } from './Enums/Rarity'
 import { StatType } from './Enums/StatType'
 import { WeaponType } from './Enums/WeaponType'
-import { TheLastDance } from './Weapons'
 
 // #region 4 Stars
 

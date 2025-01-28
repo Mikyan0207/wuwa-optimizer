@@ -22,10 +22,12 @@ body,
   height: 100vh;
   margin: 0;
   padding: 0;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
 }
 
 html.dark {
-  background: #222;
+  background: #080808;
   color: white;
 }
 </style>

@@ -26,6 +26,7 @@ const Links = [
     label: 'Import',
     icon: 'i-carbon:document-import',
     type: 'icon',
+    to: '/imports',
   }],
 ]
 </script>

@@ -27,7 +27,7 @@ const StatWeights = computed(() => {
     >
       Scoring Algorithm
     </UButton>
-    <UModal v-model="ShowWeightsModal" :ui="{ container: ' flex min-h-full items-center justify-center text-center', width: 'w-full sm:max-w-lg' }">
+    <UModal v-model="ShowWeightsModal" :ui="{ container: ' flex min-h-full items-center justify-center text-center', width: 'w-full sm:max-w-lg lg:max-w-xl' }">
       <Card>
         <div class="mb-4 w-full flex items-center justify-between gap-2">
           <div class="h-1px w-full bg-white/14" />

@@ -68,7 +68,7 @@ function OnSubmit() {
           </p>
           <USkeleton v-else class="h-2 w-12" :ui="{ base: '' }" />
         </div>
-        <NuxtImg v-if="character.Weapon" :src="`/images/weapons/${character.Weapon.IconFull}`" fit="cover" class="h-5em rounded-lg object-contain" />
+        <NuxtImg v-if="character.Weapon" :src="`/images/weapons/${character.Weapon.Icon}`" fit="cover" class="h-5em rounded-lg object-contain" />
         <USkeleton v-else class="h-4em w-4em" :ui="{ base: '' }" />
       </div>
     </Card>

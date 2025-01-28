@@ -7,7 +7,6 @@ export const TheLastDance: IWeapon = {
   Id: 21030016,
   Name: 'The Last Dance',
   Icon: 'Weapon_The_Last_Dance.webp',
-  IconFull: 'Weapon_The_Last_Dance_Full.webp',
   Level: 90,
   Rarity: Rarity.FIVE_STARS,
   Type: WeaponType.PISTOLS,
@@ -25,10 +24,26 @@ export const AgesOfHarvest: IWeapon = {
   Id: 21010026,
   Name: 'Ages Of Harvest',
   Icon: 'Weapon_Ages_Of_Harvest.webp',
-  IconFull: 'Weapon_Ages_Of_Harvest_Full.webp',
   Level: 90,
   Rarity: Rarity.FIVE_STARS,
   Type: WeaponType.BROADBLADE,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 587,
+  },
+  SecondaryStatistic: {
+    Type: StatType.CRIT_RATE,
+    Value: 24.3,
+  },
+}
+
+export const EmeraldOfGenesis: IWeapon = {
+  Id: 21020015,
+  Name: 'Emerald of Genesis',
+  Level: 90,
+  Icon: 'Weapon_Emerald_Of_Genesis.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Type: WeaponType.SWORD,
   MainStatistic: {
     Type: StatType.ATTACK,
     Value: 587,
@@ -44,7 +59,6 @@ export const BlazingBrilliance: IWeapon = {
   Name: 'Blazing Brilliance',
   Level: 90,
   Icon: 'Weapon_Blazing_Brilliance.webp',
-  IconFull: 'Weapon_Blazing_Brilliance_Full.webp',
   Rarity: Rarity.FIVE_STARS,
   Type: WeaponType.SWORD,
   MainStatistic: {
@@ -52,15 +66,88 @@ export const BlazingBrilliance: IWeapon = {
     Value: 587,
   },
   SecondaryStatistic: {
-    Type: StatType.NONE,
+    Type: StatType.CRIT_DMG,
     Value: 48.6,
+  },
+}
+
+export const RedSpring: IWeapon = {
+  Id: 21020026,
+  Name: 'Red Spring',
+  Level: 90,
+  Icon: 'Weapon_Red_Spring.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Type: WeaponType.SWORD,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 587,
+  },
+  SecondaryStatistic: {
+    Type: StatType.CRIT_RATE,
+    Value: 24.3,
+  },
+}
+
+export const AbyssSurge: IWeapon = {
+  Id: 21140015,
+  Name: 'Abyss Surge',
+  Level: 90,
+  Icon: 'Weapon_Abyss_Surge.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Type: WeaponType.GAUNTLETS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 587,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 36.4,
+  },
+}
+
+export const LustrousRazor: IWeapon = {
+  Id: 21010015,
+  Name: 'Lustrous Razor',
+  Level: 90,
+  Icon: 'Weapon_Lustrous_Razor.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Type: WeaponType.BROADBLADE,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 587,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 36.4,
+  },
+}
+
+export const CosmicRipples: IWeapon = {
+  Id: 21050015,
+  Name: 'Cosmic Ripples',
+  Level: 90,
+  Icon: 'Weapon_Cosmic_Ripples.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Type: WeaponType.RECTIFIER,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 587,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 36.4,
   },
 }
 
 export const Weapons: IWeapon[] = [
   TheLastDance,
   AgesOfHarvest,
+  EmeraldOfGenesis,
   BlazingBrilliance,
+  RedSpring,
+  AbyssSurge,
+  LustrousRazor,
+  CosmicRipples,
 ]
 
 export const TemplateWeapons = Weapons

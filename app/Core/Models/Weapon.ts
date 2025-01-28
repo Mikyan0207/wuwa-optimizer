@@ -8,7 +8,6 @@ export class Weapon {
   Name: string
   Level: number
   Icon: string
-  IconFull: string
   Rarity: Rarity
   Type: WeaponType
   MainStatistic: IStatistic
@@ -19,7 +18,6 @@ export class Weapon {
     this.Name = weapon.Name
     this.Level = weapon.Level
     this.Icon = weapon.Icon
-    this.IconFull = weapon.IconFull
     this.Rarity = weapon.Rarity
     this.Type = weapon.Type
     this.MainStatistic = weapon.MainStatistic

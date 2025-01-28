@@ -7,7 +7,6 @@ export default interface IWeapon {
   Name: string
   Level: number
   Icon: string
-  IconFull: string
   Rarity: Rarity
   Type: WeaponType
   MainStatistic: IStatistic

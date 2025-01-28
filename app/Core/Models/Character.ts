@@ -1,5 +1,6 @@
 import type ICharacter from '../Interfaces/ICharacter'
 import type ICharacterSequence from '../Interfaces/ISequence'
+import type { ISkill } from '../Interfaces/ISkill'
 import type IStatistic from '../Interfaces/IStatistic'
 import { CharacterType } from '../Enums/CharacterType'
 import { EchoCost } from '../Enums/EchoCost'
@@ -14,7 +15,7 @@ export class Character {
   Id: number
   Name: string
   Icon: string
-  SplashArt: string
+  SplashArt?: string
   SplashArtOffsetY?: string
   SplashArtOffsetX?: string
   Background?: string
@@ -25,6 +26,7 @@ export class Character {
   Level: number
   Stats: IStatistic[]
   Sequences: ICharacterSequence[]
+  Skills?: ISkill[]
   Echoes: Echo[]
   Unlocked: boolean
   StatsWeights?: Record<StatType, number>
@@ -44,6 +46,7 @@ export class Character {
     this.Level = character.Level
     this.Stats = character.Stats
     this.Sequences = character.Sequences
+    this.Skills = character.Skills
     this.Echoes = []
     this.Unlocked = character.Unlocked
     this.StatsWeights = character.StatsWeights

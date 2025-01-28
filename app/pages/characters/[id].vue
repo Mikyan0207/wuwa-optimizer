@@ -85,7 +85,7 @@ async function TakeScreenShotAsync() {
               <!-- Weapon -->
               <WeaponCard :weapon="SelectedCharacter.Weapon" :character="SelectedCharacter" />
               <!-- Skills -->
-              <CharacterSkillsCard class="row-span-3" />
+              <CharacterSkillsCard class="row-span-3" :character="SelectedCharacter" />
             </div>
           </div>
 

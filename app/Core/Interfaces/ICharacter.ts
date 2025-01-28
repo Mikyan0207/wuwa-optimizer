@@ -3,6 +3,7 @@ import type { Rarity } from '../Enums/Rarity'
 import type { WeaponType } from '../Enums/WeaponType'
 import type IEcho from './IEcho'
 import type ICharacterSequence from './ISequence'
+import type { ISkill } from './ISkill'
 import type IStatistic from './IStatistic'
 import type IWeapon from './IWeapon'
 
@@ -21,6 +22,7 @@ export default interface ICharacter {
   Level: number
   Stats: IStatistic[]
   Sequences: ICharacterSequence[]
+  Skills?: ISkill[]
   Echoes: IEcho[]
   Unlocked: boolean
   StatsWeights?: Record<string, number>

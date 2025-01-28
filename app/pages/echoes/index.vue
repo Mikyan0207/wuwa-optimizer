@@ -26,11 +26,6 @@ const CreateEchoModalIsVisible = ref(false)
         </div>
       </div>
     </div>
-    <div class="m-4 flex items-center gap-2 border border-white/14 rounded bg-black/44 p-4">
-      <button @click.prevent="CreateEchoModalIsVisible = true">
-        Add Echo
-      </button>
-    </div>
     <div class="mx-auto my-8 flex items-center justify-center gap-2 container">
       <EchoIcon
         v-for="e in EchoesStore.GetEchoes()"

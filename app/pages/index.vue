@@ -2,31 +2,17 @@
 definePageMeta({
   layout: 'default',
 })
-
-const online = useOnline()
 </script>
 
 <template>
   <div>
-    <Logos mb-6 />
-    <ClientOnly>
-      <Suspense>
-        <PageView v-if="online" />
-        <div v-else text-gray:80>
-          You're offline
-        </div>
-        <template #fallback>
-          <div italic op50>
-            <span animate-pulse>Loading...</span>
-          </div>
-        </template>
-      </Suspense>
-      <template #fallback>
-        <div op50>
-          <span animate-pulse>...</span>
-        </div>
-      </template>
-    </ClientOnly>
-    <InputEntry />
+    <section id="hero" class="mx-auto h-screen max-w-5xl flex flex-col items-center justify-center px-4 text-center text-white">
+      <h1 class="mb-4 text-4xl font-extrabold tracking-wide md:text-5xl">
+        Optimize your Resonators in <br><span class="text-yellow-400">Wuthering Waves</span>
+      </h1>
+      <p class="text-md mb-6 max-w-2xl text-gray-400">
+        Find the best builds for your resonators by evaluating and optimizing each Echo.
+      </p>
+    </section>
   </div>
 </template>

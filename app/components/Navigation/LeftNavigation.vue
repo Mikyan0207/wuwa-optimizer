@@ -24,7 +24,7 @@ const Links = [
   }],
   [{
     label: 'Import',
-    icon: 'i-carbon:document-import',
+    icon: 'i-carbon:upload',
     type: 'icon',
     to: '/imports',
   }],

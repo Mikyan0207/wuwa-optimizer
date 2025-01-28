@@ -41,7 +41,7 @@ definePageMeta({
           </div>
           <div class="mt-0.5">
             <p>Install and run the archiver.</p>
-            <div class="mt-2 h-46">
+            <div class="mt-2 h-22">
               <div class="flex items-center gap-2">
                 <div class="flex items-center gap-2">
                   <div class="flex cursor-pointer items-center text-blue-4">
@@ -67,7 +67,7 @@ definePageMeta({
           </div>
           <div class="mt-0.5">
             <p>Click somewhere to actually start the game.</p>
-            <div class="mt-2 h-46" />
+            <div class="mt-2 h-22" />
           </div>
         </div>
         <!-- Step 4 -->

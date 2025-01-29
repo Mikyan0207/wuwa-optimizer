@@ -45,30 +45,41 @@ function OnSubmit() {
 
 <template>
   <div>
-    <Card class="relative h-full" @mouseenter="IsHovered = true" @mouseleave="IsHovered = false">
-      <div v-if="IsHovered" class="absolute right-1 top-1" @click.prevent="ShowEditWeaponModal = true">
+    <Card class="relative h-full overflow-hidden" @mouseenter="IsHovered = true" @mouseleave="IsHovered = false">
+      <div v-if="IsHovered" class="absolute right-1 top-1 z-1" @click.prevent="ShowEditWeaponModal = true">
         <div class="cursor-pointer border border-white/14 rounded-md bg-black/44 px-2 py-1 text-sm text-white">
           <p>
             Edit Weapon
           </p>
         </div>
       </div>
-      <div class="flex justify-between gap-4">
-        <div class="flex flex-col space-y-1">
-          <div v-if="character.Weapon" class="flex items-center">
-            <NuxtImg v-for="idx in GetRarityAsNumber" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-3 w-3 object-cover" fit="cover" />
+      <div class="relative h-full flex justify-between gap-4">
+        <div class="flex flex-col gap-1">
+          <!-- Rarity / Level -->
+          <div v-if="character.Weapon" class="flex items-center gap-2">
+            <!-- Rarity -->
+            <div class="flex items-center">
+              <NuxtImg v-for="idx in GetRarityAsNumber" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-3 w-3 object-cover" fit="cover" />
+            </div>
+            <!-- Level -->
+            <p class="text-xs text-gray-300">
+              Lv. {{ character.Weapon.Level }} · R1
+            </p>
           </div>
-          <USkeleton v-else class="h-4 w-20" :ui="{ base: '' }" />
-          <p v-if="character.Weapon" class="text-sm">
+          <USkeleton v-else class="my-2 h-4 w-20" :ui="{ base: '' }" />
+          <!-- Name -->
+          <div v-if="character.Weapon" class="mb-3 text-sm">
             {{ character.Weapon.Name }}
-          </p>
+          </div>
           <USkeleton v-else class="h-2 w-32" :ui="{ base: '' }" />
-          <p v-if="character.Weapon" class="text-xs text-gray-300">
-            Lv. {{ character.Weapon.Level }} · R1
-          </p>
-          <USkeleton v-else class="h-2 w-12" :ui="{ base: '' }" />
+          <!-- Stats -->
+          <div v-if="character.Weapon && character.Weapon.MainStatistic && character.Weapon.SecondaryStatistic" class="z-2 h-min flex flex-col items-start text-gray-300">
+            <StatLine :stat="character.Weapon.MainStatistic" icon-size="xs" :show-line="true" />
+            <StatLine :stat="character.Weapon.SecondaryStatistic" icon-size="xs" :show-line="true" />
+          </div>
+          <USkeleton v-else class="h-3 w-24" :ui="{ base: '' }" />
         </div>
-        <NuxtImg v-if="character.Weapon" :src="`/images/weapons/${character.Weapon.Icon}`" fit="cover" class="h-5em rounded-lg object-contain" />
+        <NuxtImg v-if="character.Weapon" :src="`/images/weapons/${character.Weapon.Icon}`" fit="cover" class="absolute z-0 h-135% rounded-lg object-contain -right-4 -top-4" />
         <USkeleton v-else class="h-4em w-4em" :ui="{ base: '' }" />
       </div>
     </Card>

@@ -23,7 +23,7 @@ export const TheLastDance: IWeapon = {
 export const AgesOfHarvest: IWeapon = {
   Id: 21010026,
   Name: 'Ages Of Harvest',
-  Icon: 'Weapon_Ages_Of_Harvest.webp',
+  Icon: 'Weapon_Ages_of_Harvest.webp',
   Level: 90,
   Rarity: Rarity.FIVE_STARS,
   Type: WeaponType.BROADBLADE,
@@ -41,7 +41,7 @@ export const EmeraldOfGenesis: IWeapon = {
   Id: 21020015,
   Name: 'Emerald of Genesis',
   Level: 90,
-  Icon: 'Weapon_Emerald_Of_Genesis.webp',
+  Icon: 'Weapon_Emerald_of_Genesis.webp',
   Rarity: Rarity.FIVE_STARS,
   Type: WeaponType.SWORD,
   MainStatistic: {
@@ -88,11 +88,11 @@ export const RedSpring: IWeapon = {
   },
 }
 
-export const AbyssSurge: IWeapon = {
+export const AbyssSurges: IWeapon = {
   Id: 21140015,
-  Name: 'Abyss Surge',
+  Name: 'Abyss Surges',
   Level: 90,
-  Icon: 'Weapon_Abyss_Surge.webp',
+  Icon: 'Weapon_Abyss_Surges.webp',
   Rarity: Rarity.FIVE_STARS,
   Type: WeaponType.GAUNTLETS,
   MainStatistic: {
@@ -145,7 +145,7 @@ export const Weapons: IWeapon[] = [
   EmeraldOfGenesis,
   BlazingBrilliance,
   RedSpring,
-  AbyssSurge,
+  AbyssSurges,
   LustrousRazor,
   CosmicRipples,
 ]

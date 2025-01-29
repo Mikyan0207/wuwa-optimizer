@@ -8,7 +8,6 @@ definePageMeta({
 })
 
 const Route = useRoute()
-
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
 const CharactersStore = useCharactersStore()
@@ -29,7 +28,7 @@ async function TakeScreenShotAsync() {
 
   const scale = 1
   const w = 1280 * scale
-  const h = 904 * scale
+  const h = 900 * scale
 
   htmlToImage.toBlob(CharacterInfoRef.value, {
     pixelRatio: 1,
@@ -74,14 +73,14 @@ async function TakeScreenShotAsync() {
 
     <div v-if="SelectedCharacter !== undefined && CharacterScore">
       <div class="mx-auto my-8 max-w-7xl">
-        <div ref="CharacterInfoRef" class="grid grid-cols-5 mx-auto w-full gap-2">
+        <div ref="CharacterInfoRef" class="grid grid-cols-5 mx-auto w-full gap-1">
           <!-- Character Info (Art, Stats, Weapon, Skills) -->
           <CharacterArtCard v-if="SelectedCharacter" :character="SelectedCharacter" class="col-span-2" />
-          <div class="grid col-span-3 grid-cols-2 gap-2">
+          <div class="grid col-span-3 grid-cols-2 gap-1">
             <!-- Stats -->
             <CharacterStatsCard :character="SelectedCharacter" :score="CharacterScore" />
             <!-- Weapon / Skills -->
-            <div class="grid grid-rows-4 gap-2">
+            <div class="grid grid-rows-4 gap-1">
               <!-- Weapon -->
               <WeaponCard :character="SelectedCharacter" />
               <!-- Skills -->

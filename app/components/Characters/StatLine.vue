@@ -24,13 +24,21 @@ const GetIconSize = computed(() => {
 
   return 'h-4 w-4'
 })
+
+const GetMargin = computed(() => {
+  if (props.iconSize === undefined || props.iconSize === 'md') {
+    return 'mr6'
+  }
+
+  return 'mr-4'
+})
 </script>
 
 <template>
   <div class="relative w-full flex items-center justify-between gap-2">
     <div class="flex items-center gap-2 text-gray-300">
       <NuxtImg :src="`/images/icons/${STAT_ICONS[stat.Type]}`" :class="GetIconSize" />
-      <p class="mr-6 text-nowrap text-xs">
+      <p class="text-nowrap text-xs" :class="GetMargin">
         {{ STAT_NAMES[stat.Type] }}
         <!-- <span v-if="showRollValue" class="min-h-4 min-w-4 rounded-full bg-white/14 text-xs">{{ GetSubStatRollScore(stat) }}</span> -->
       </p>

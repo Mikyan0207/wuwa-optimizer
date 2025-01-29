@@ -62,9 +62,9 @@ function OnSubmit() {
               <NuxtImg v-for="idx in GetRarityAsNumber" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-3 w-3 object-cover" fit="cover" />
             </div>
             <!-- Level -->
-            <p class="text-xs text-gray-300">
+            <UBadge class="text-xs text-gray-300" size="xs" variant="soft" color="blue">
               Lv. {{ character.Weapon.Level }} · R1
-            </p>
+            </UBadge>
           </div>
           <USkeleton v-else class="my-2 h-4 w-20" :ui="{ base: '' }" />
           <!-- Name -->
@@ -84,33 +84,35 @@ function OnSubmit() {
       </div>
     </Card>
     <UModal v-model="ShowEditWeaponModal" :ui="{ container: 'flex min-h-full items-center justify-center text-center' }">
-      <div class="grid cols-3 w-full gap-8 p-4">
-        <div class="col-span-2 flex flex-col gap-2">
-          <UFormGroup label="Weapon">
-            <UInputMenu v-model="EditedWeapon" placeholder="" :options="WeaponsStore.GetWeapons()" option-attribute="Name">
-              <template #option="{ option: o }">
-                <div class="w-full flex items-center justify-between gap-1">
-                  <div class="w-full flex flex-row items-center gap-2">
-                    <NuxtImg :src="`/images/weapons/${(o as Weapon).Icon}`" class="h-12 w-12 object-cover" />
-                    <span :title="(o as Weapon).Name" class="w-30 text-truncate text-nowrap">{{ (o as Weapon).Name }}</span>
+      <div class="p-4">
+        <div class="grid cols-3 w-full gap-8">
+          <div class="col-span-2 flex flex-col gap-2">
+            <UFormGroup label="Weapon">
+              <UInputMenu v-model="EditedWeapon" placeholder="" :options="WeaponsStore.GetWeapons()" option-attribute="Name">
+                <template #option="{ option: o }">
+                  <div class="w-full flex items-center justify-between gap-1">
+                    <div class="w-full flex flex-row items-center gap-2">
+                      <NuxtImg :src="`/images/weapons/${(o as Weapon).Icon}`" class="h-12 w-12 object-cover" />
+                      <span :title="(o as Weapon).Name" class="w-30 text-truncate text-nowrap">{{ (o as Weapon).Name }}</span>
+                    </div>
                   </div>
-                </div>
-              </template>
-            </UInputMenu>
-          </UFormGroup>
+                </template>
+              </UInputMenu>
+            </UFormGroup>
+          </div>
+          <!-- Equiped By -->
+          <div>
+            <UFormGroup label="Equiped By">
+              <div class="h-auto min-w-full w-full border border-white/14 rounded">
+                <NuxtImg :src="character.GetIcon()" class="w-full rounded object-cover" />
+              </div>
+            </UFormGroup>
+          </div>
         </div>
-        <!-- Equiped By -->
-        <div>
-          <UFormGroup label="Equiped By">
-            <div class="h-auto min-w-full w-full border border-white/14 rounded">
-              <NuxtImg :src="character.GetIcon()" class="w-full rounded object-cover" />
-            </div>
-          </UFormGroup>
+        <div class="mt-6 flex items-center justify-end gap-2">
+          <UButton label="Cancel" color="gray" variant="outline" @click.prevent="ShowEditWeaponModal = false" />
+          <UButton label="Submit" color="primary" variant="solid" @click.prevent="OnSubmit" />
         </div>
-      </div>
-      <div class="mt-6 flex items-center justify-end gap-2">
-        <UButton label="Cancel" color="gray" variant="outline" @click.prevent="ShowEditWeaponModal = false" />
-        <UButton label="Submit" color="primary" variant="solid" @click.prevent="OnSubmit" />
       </div>
     </UModal>
   </div>

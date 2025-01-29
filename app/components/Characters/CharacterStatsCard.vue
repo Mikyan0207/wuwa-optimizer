@@ -10,14 +10,12 @@ const props = defineProps<{
   score: ICharacterRatingResult
 }>()
 
-const CharacterStats = ref<IStatistic[]>([])
+const StatsCalculator = new CharacterStatsSystem()
+const CharacterStats = computed<IStatistic[]>(() => StatsCalculator.CalculateTotalStats(props.character))
 
 const GetCharacterScoreNoteColor = computed(() => {
   return TOTAL_SCORE_GRADES.find(x => x.Grade === props.score.Note)?.Color
 })
-
-CharacterStats.value = new CharacterStatsSystem()
-  .CalculateTotalStats(props.character)
 
 const GetRarityAsNumber = computed(() => {
   switch (props.character.Rarity) {
@@ -58,7 +56,7 @@ const GetRarityAsNumber = computed(() => {
       <div class="mx-auto my-4 h-1px w-full rounded-full bg-white/14" />
       <div class="flex flex-col">
         <div class="w-full flex flex-col items-start gap-1">
-          <StatLine v-for="st in CharacterStats" :key="st.Type" :stat="st" :show-line="true" />
+          <StatLine v-for="st in CharacterStats" :key="`${st.Type}-${st.Value}`" :stat="st" :show-line="true" />
         </div>
         <div class="mx-auto my-3 h-1px w-full rounded-full bg-white/14" />
         <div class="w-full flex items-center justify-evenly">

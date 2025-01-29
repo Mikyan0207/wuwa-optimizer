@@ -1074,6 +1074,7 @@ export const Jinhsi: ICharacter = {
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Jinhsi_Icon.webp',
   SplashArt: 'Jinhsi_Splash_Art_Small.webp',
+  SplashArtOffsetY: '-1',
   Background: 'Jinhsi_Splash_Art.webp',
   WeaponType: WeaponType.BROADBLADE,
   Type: CharacterType.SPECTRO,

@@ -45,7 +45,7 @@ const GetSplashArtOffsets = computed(() => {
     </div>
     <NuxtImg
       :src="`${character.GetSplashArtPath()}`"
-      class="absolute z-10 h-150% w-full object-cover"
+      class="absolute z-10 h-110% w-full object-cover"
       :class="GetSplashArtOffsets"
       fit="cover"
     />

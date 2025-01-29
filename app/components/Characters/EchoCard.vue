@@ -6,7 +6,7 @@ import type { IEchoRatingResult } from '~/Core/Systems/RatingSystem'
 import { EchoCost } from '~/Core/Enums/EchoCost'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { StatType } from '~/Core/Enums/StatType'
-import { MAKE_STAT, STAT_NAMES } from '~/Core/Statistics'
+import { MAIN_STATS_VALUES, MAKE_STAT, STAT_NAMES, SUB_STAT_VALUES } from '~/Core/Statistics'
 
 export interface EchoCardProps {
   echo: Echo
@@ -123,6 +123,28 @@ function GetCostText(cost: EchoCost) {
     default:
       return 'Cost 4'
   }
+}
+
+function GetMainStatValue() {
+  if (SelectedMainStat.value.type === undefined || SelectedMainStat.value.type === StatType.NONE) {
+    return 0
+  }
+
+  SelectedMainStat.value.value = (MAIN_STATS_VALUES[SelectedMainStat.value.type as StatType] || 0).toString()
+}
+
+function IsDisabled(idx: number) {
+  return SelectedSubStats.value[idx]?.type === undefined || SelectedSubStats.value[idx]?.type === StatType.NONE
+}
+
+function GetSubStatsValues(idx: number) {
+  const t = SelectedSubStats.value[idx]
+
+  if (t === undefined) {
+    return []
+  }
+
+  return SUB_STAT_VALUES[t.type as StatType] || []
 }
 
 function OnSubmit() {
@@ -338,8 +360,10 @@ function OnSubmit() {
                   :options="StatisticsOptions"
                   class="w-full"
                   :search-attributes="['label']"
+                  @update:model-value="() => GetMainStatValue()"
                 />
-                <UInput v-model="SelectedMainStat.value" placeholder="100%" class="w-25%" />
+
+                <UInput v-model="SelectedMainStat.value" placeholder="" class="w-35%" />
               </div>
             </UFormGroup>
 
@@ -357,7 +381,8 @@ function OnSubmit() {
                     class="w-full"
                     :search-attributes="['label']"
                   />
-                  <UInput v-model="SelectedSubStatsValues[idx]" placeholder="100%" class="w-25%" />
+                  <USelect v-model="SelectedSubStatsValues[idx]" :options="GetSubStatsValues(idx)" class="w-35%" :disabled="IsDisabled(idx)" />
+                  <!-- <UInput v-model="SelectedSubStatsValues[idx]" placeholder="100%" class="w-25%" /> -->
                 </div>
               </div>
             </UFormGroup>

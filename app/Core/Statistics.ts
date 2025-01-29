@@ -32,6 +32,30 @@ export const STAT_NAMES: Record<StatType, string> = {
   [StatType.AERO_DMG_BONUS]: 'Aero DMG Bonus',
 }
 
+export const MAIN_STATS_VALUES: Record<StatType, number> = {
+  [StatType.NONE]: 0,
+  [StatType.CRIT_DMG]: 44,
+  [StatType.CRIT_RATE]: 22,
+  [StatType.ATTACK]: 0,
+  [StatType.ATTACK_PERCENTAGE]: 0,
+  [StatType.HP]: 0,
+  [StatType.HP_PERCENTAGE]: 0,
+  [StatType.HEALING_BONUS]: 0,
+  [StatType.DEF]: 0,
+  [StatType.DEF_PERCENTAGE]: 0,
+  [StatType.ENERGY_REGENERATION]: 0,
+  [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+  [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+  [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+  [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+  [StatType.AERO_DMG_BONUS]: 0,
+  [StatType.ELECTRO_DMG_BONUS]: 0,
+  [StatType.FUSION_DMG_BONUS]: 0,
+  [StatType.GLACIO_DMG_BONUS]: 0,
+  [StatType.HAVOC_DMG_BONUS]: 0,
+  [StatType.SPECTRO_DMG_BONUS]: 0,
+}
+
 export const SUB_STAT_VALUES: Record<StatType, number[]> = {
   [StatType.NONE]: [],
   [StatType.CRIT_RATE]: [6.3, 6.9, 7.5, 8.1, 8.7, 9.3, 9.9, 10.5],

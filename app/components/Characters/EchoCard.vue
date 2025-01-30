@@ -6,7 +6,7 @@ import type { IEchoRatingResult } from '~/Core/Systems/RatingSystem'
 import { EchoCost } from '~/Core/Enums/EchoCost'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { StatType } from '~/Core/Enums/StatType'
-import { MAIN_STATS_VALUES, MAKE_STAT, STAT_NAMES, SUB_STAT_VALUES } from '~/Core/Statistics'
+import { FOUR_COST_MAIN_STATS_VALUES, MAKE_STAT, ONE_COST_MAIN_STATS_VALUES, STAT_NAMES, SUB_STAT_VALUES, THREE_COST_MAIN_STATS_VALUES } from '~/Core/Statistics'
 
 export interface EchoCardProps {
   echo: Echo
@@ -27,8 +27,12 @@ function GetEchoRarityBackgroundColor(rarity: Rarity) {
   switch (rarity) {
     case Rarity.FIVE_STARS:
       return 'bg-amber-4'
+    case Rarity.FOUR_STARS:
+      return 'bg-purple-4'
+    case Rarity.THREE_STARS:
+      return 'bg-blue-4'
     default:
-      return 'bg-blue'
+      return 'bg-gray-4'
   }
 }
 
@@ -130,7 +134,16 @@ function GetMainStatValue() {
     return 0
   }
 
-  SelectedMainStat.value.value = (MAIN_STATS_VALUES[SelectedMainStat.value.type as StatType] || 0).toString()
+  switch (EditedEcho.value?.Cost) {
+    case EchoCost.FOUR_COST:
+      return SelectedMainStat.value.value = (FOUR_COST_MAIN_STATS_VALUES[SelectedMainStat.value.type as StatType] || 0).toString()
+    case EchoCost.THREE_COST:
+      return SelectedMainStat.value.value = (THREE_COST_MAIN_STATS_VALUES[SelectedMainStat.value.type as StatType] || 0).toString()
+    case EchoCost.ONE_COST:
+      return SelectedMainStat.value.value = (ONE_COST_MAIN_STATS_VALUES[SelectedMainStat.value.type as StatType] || 0).toString()
+    default:
+      return 0
+  }
 }
 
 function IsDisabled(idx: number) {
@@ -382,7 +395,6 @@ function OnSubmit() {
                     :search-attributes="['label']"
                   />
                   <USelect v-model="SelectedSubStatsValues[idx]" :options="GetSubStatsValues(idx)" class="w-35%" :disabled="IsDisabled(idx)" />
-                  <!-- <UInput v-model="SelectedSubStatsValues[idx]" placeholder="100%" class="w-25%" /> -->
                 </div>
               </div>
             </UFormGroup>

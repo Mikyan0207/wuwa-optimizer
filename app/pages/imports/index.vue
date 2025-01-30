@@ -27,7 +27,7 @@ definePageMeta({
           <div class="mt-0.5">
             <p>Launch the game and stay on the main menu screen.</p>
             <div class="mt-2">
-              <NuxtImg src="/images/imports-guide/WuWa_MainScreen.jpg" class="border border-white/14 rounded object-cover" />
+              <NuxtImg src="/images/imports-guide/WuWa_MainScreen.png" class="border border-white/14 rounded object-cover" />
             </div>
           </div>
         </div>
@@ -40,7 +40,7 @@ definePageMeta({
             <UDivider class="h-full" orientation="vertical" size="xs" />
           </div>
           <div class="mt-0.5">
-            <p>Install and run the archiver.</p>
+            <p>Download and run the archiver.</p>
             <div class="mt-2 h-22">
               <div class="flex items-center gap-2">
                 <div class="flex items-center gap-2">

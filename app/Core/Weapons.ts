@@ -407,7 +407,7 @@ export const Commando_of_Conviction: IWeapon = {
   },
   SecondaryStatistic: {
     Type: StatType.ATTACK_PERCENTAGE,
-    Value: 30.3,
+    Value: 18.2,
   },
 }
 

@@ -21,6 +21,7 @@ export default defineNuxtConfig({
     '~/components/Characters',
     '~/components/Echoes',
     '~/components/Interface',
+    '~/components/Forms',
     '~/components/Navigation',
   ],
 

@@ -89,7 +89,7 @@ async function TakeScreenShotAsync() {
           </div>
 
           <!-- Echoes -->
-          <EchoCard
+          <CharacterEchoCard
             v-for="(echo, idx) in SelectedCharacter.GetEchoesWithPlaceHolders()"
             :key="idx"
             :echo="echo"

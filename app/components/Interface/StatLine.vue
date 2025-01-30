@@ -40,7 +40,6 @@ const GetMargin = computed(() => {
       <NuxtImg :src="`/images/icons/${STAT_ICONS[stat.Type]}`" :class="GetIconSize" />
       <p class="text-nowrap text-xs" :class="GetMargin">
         {{ STAT_NAMES[stat.Type] }}
-        <!-- <span v-if="showRollValue" class="min-h-4 min-w-4 rounded-full bg-white/14 text-xs">{{ GetSubStatRollScore(stat) }}</span> -->
       </p>
     </div>
     <div v-if="showLine === true" class="my-auto h-1px w-full bg-white/14" />

@@ -407,7 +407,7 @@ export const Commando_of_Conviction: IWeapon = {
   },
   SecondaryStatistic: {
     Type: StatType.ATTACK_PERCENTAGE,
-    Value: 18.2,
+    Value: 30.3,
   },
 }
 
@@ -513,6 +513,159 @@ export const Gauntlets21D: IWeapon = {
   },
 }
 
+export const Helios_Cleaver: IWeapon = {
+  Id: 21010064,
+  Name: 'Helios Cleaver',
+  Level: 90,
+  Icon: 'Weapon_Helios_Cleaver.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.BROADBLADE,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 412,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 30.3,
+  },
+}
+
+export const Hollow_Mirage: IWeapon = {
+  Id: 21140064,
+  Name: 'Hollow Mirage',
+  Level: 90,
+  Icon: 'Weapon_Hollow_Mirage.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.GAUNTLETS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 412,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 30.3,
+  },
+}
+
+export const Jinzhou_Keeper: IWeapon = {
+  Id: 21050044,
+  Name: 'Jinzhou Keeper',
+  Level: 90,
+  Icon: 'Weapon_Jinzhou_Keeper.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.RECTIFIER,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 387,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 36.4,
+  },
+}
+
+export const Legend_of_Drunken_Hero: IWeapon = {
+  Id: 21040094,
+  Name: 'Legend of Drunken Hero',
+  Level: 90,
+  Icon: 'Weapon_Legend_of_Drunken_Hero.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.GAUNTLETS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 462,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 18.2,
+  },
+}
+
+export const Lumingloss: IWeapon = {
+  Id: 21020074,
+  Name: 'Lumingloss',
+  Level: 90,
+  Icon: 'Weapon_Lumingloss.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.SWORD,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 387,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 36.4,
+  },
+}
+
+export const Lunar_Cutter: IWeapon = {
+  Id: 21020064,
+  Name: 'Lunar Cutter',
+  Level: 90,
+  Icon: 'Weapon_Lunar_Cutter.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.SWORD,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 412,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 30.3,
+  },
+}
+
+export const Marcato: IWeapon = {
+  Id: 21140024,
+  Name: 'Marcato',
+  Level: 90,
+  Icon: 'Weapon_Marcato.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.GAUNTLETS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 337,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ENERGY_REGENERATION,
+    Value: 51.8,
+  },
+}
+
+export const Meditations_on_Mercy: IWeapon = {
+  Id: 21010094,
+  Name: 'Meditations on Mercy',
+  Level: 90,
+  Icon: 'Weapon_Meditations_on_Mercy.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.BROADBLADE,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 462,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 18.2,
+  },
+}
+
+export const Novaburst: IWeapon = {
+  Id: 21030064,
+  Name: 'Novaburst',
+  Level: 90,
+  Icon: 'Weapon_Novaburst.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.PISTOLS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 412,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 30.3,
+  },
+}
+
 export const Weapons: IWeapon[] = [
   TheLastDance,
   AgesOfHarvest,
@@ -543,6 +696,15 @@ export const Weapons: IWeapon[] = [
   Fables_of_Wisdom,
   Fusion_Accretion,
   Gauntlets21D,
+  Helios_Cleaver,
+  Hollow_Mirage,
+  Jinzhou_Keeper,
+  Legend_of_Drunken_Hero,
+  Lumingloss,
+  Lunar_Cutter,
+  Marcato,
+  Meditations_on_Mercy,
+  Novaburst,
 ]
 
 export const TemplateWeapons = Weapons

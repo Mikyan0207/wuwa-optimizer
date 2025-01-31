@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import type ICharacter from '~/Core/Interfaces/ICharacter'
-import { TemplateCharacters } from '~/Core/Characters'
-
 definePageMeta({
   layout: 'default',
 })
@@ -9,12 +6,6 @@ definePageMeta({
 const CharactersStore = useCharactersStore()
 
 const CharactersList = computed(() => {
-  for (const character of TemplateCharacters) {
-    if (!CharactersStore.IsCharacterListed(character.Id)) {
-      CharactersStore.AddCharacter(character as ICharacter)
-    }
-  }
-
   return CharactersStore
     .GetCharacters()
     .sort((a, b) => a.Name > b.Name ? 1 : -1)

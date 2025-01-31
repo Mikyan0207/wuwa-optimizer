@@ -6,8 +6,11 @@ import { defineStore } from 'pinia'
 import { TemplateCharacters } from '~/Core/Characters'
 import { Character } from '~/Core/Models/Character'
 
+export const CurrentCharactersVersion = '0.0.1'
+
 export const useCharactersStore = defineStore('CharactersStore', () => {
   const Characters = useLocalStorage<ICharacter[]>('Characters', [...TemplateCharacters as ICharacter[]])
+  const CharactersVersion = useLocalStorage<string | undefined>('CharactersVersion', undefined)
 
   function IsUnlocked(characterId: number) {
     return Characters.value.find(x => x.Id === characterId)?.Unlocked === true
@@ -104,8 +107,17 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     UpdateCharacter(c)
   }
 
+  function Update() {
+    TemplateCharacters.forEach((templateCharacter) => {
+      if (!IsCharacterListed(templateCharacter.Id)) {
+        AddCharacter(templateCharacter as ICharacter)
+      }
+    })
+  }
+
   return {
     Characters,
+    CharactersVersion,
     IsCharacterListed,
     IsUnlocked,
     HasCharacters,
@@ -116,5 +128,6 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     GetCharacter,
     UpdateEcho,
     UpdateWeapon,
+    Update,
   }
 })

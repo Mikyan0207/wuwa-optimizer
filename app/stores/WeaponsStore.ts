@@ -24,10 +24,19 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     Weapons.value.push(new Weapon(echo))
   }
 
+  function Update() {
+    TemplateWeapons.forEach((templateWeapon) => {
+      if (!IsWeaponListed(templateWeapon.Id)) {
+        AddWeapon(templateWeapon as IWeapon)
+      }
+    })
+  }
+
   return {
     Weapons,
     GetWeapons,
     IsWeaponListed,
     AddWeapon,
+    Update,
   }
 })

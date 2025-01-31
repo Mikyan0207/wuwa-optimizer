@@ -666,6 +666,584 @@ export const Novaburst: IWeapon = {
   },
 }
 
+export const Overture: IWeapon = {
+  Id: 21020024,
+  Name: 'Overture',
+  Level: 90,
+  Icon: 'Weapon_Overture.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.SWORD,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 337,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ENERGY_REGENERATION,
+    Value: 51.8,
+  },
+}
+
+export const Pistols26: IWeapon = {
+  Id: 21030034,
+  Name: 'Pistols #26',
+  Level: 90,
+  Icon: 'Weapon_Pistols26.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.PISTOLS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 387,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 36.4,
+  },
+}
+
+export const Rectifier25: IWeapon = {
+  Id: 21050034,
+  Name: 'Rectifier #25',
+  Level: 90,
+  Icon: 'Weapon_Rectifier25.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.RECTIFIER,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 337,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ENERGY_REGENERATION,
+    Value: 51.8,
+  },
+}
+
+export const Relativistic_Jet: IWeapon = {
+  Id: 21030084,
+  Name: 'Relativistic Jet',
+  Level: 90,
+  Icon: 'Weapon_Relativistic_Jet.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.PISTOLS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 462,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 18.2,
+  },
+}
+
+export const Romance_in_Farewell: IWeapon = {
+  Id: 21030094,
+  Name: 'Romance in Farewell',
+  Level: 90,
+  Icon: 'Weapon_Romance_in_Farewell.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.PISTOLS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 462,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 18.2,
+  },
+}
+
+export const Somnoire_Anchor: IWeapon = {
+  Id: 21020017,
+  Name: 'Somnoire Anchor',
+  Level: 90,
+  Icon: 'Weapon_Somnoire_Anchor.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.SWORD,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 462,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 18.2,
+  },
+}
+
+export const Stonard: IWeapon = {
+  Id: 21140074,
+  Name: 'Stonard',
+  Level: 90,
+  Icon: 'Weapon_Stonard.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.GAUNTLETS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 412,
+  },
+  SecondaryStatistic: {
+    Type: StatType.CRIT_RATE,
+    Value: 20.2,
+  },
+}
+
+export const Sword18: IWeapon = {
+  Id: 21020034,
+  Name: 'Sword #18',
+  Level: 90,
+  Icon: 'Weapon_Sword18.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.SWORD,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 387,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 36.4,
+  },
+}
+
+export const Thunderbolt: IWeapon = {
+  Id: 21030074,
+  Name: 'Thunderbolt',
+  Level: 90,
+  Icon: 'Weapon_Thunderbolt.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.PISTOLS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 387,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 36.4,
+  },
+}
+
+export const Undying_Flame: IWeapon = {
+  Id: 21030044,
+  Name: 'Undying Flame',
+  Level: 90,
+  Icon: 'Weapon_Undying_Flame.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.PISTOLS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 412,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 36.4,
+  },
+}
+
+export const Variation: IWeapon = {
+  Id: 21050024,
+  Name: 'Variation',
+  Level: 90,
+  Icon: 'Weapon_Variation.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.RECTIFIER,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 337,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ENERGY_REGENERATION,
+    Value: 51.8,
+  },
+}
+
+export const Waltz_in_Masquerade: IWeapon = {
+  Id: 21050094,
+  Name: 'Waltz in Masquerade',
+  Level: 90,
+  Icon: 'Weapon_Waltz_in_Masquerade.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.RECTIFIER,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 462,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 18.2,
+  },
+}
+
+export const Waning_Redshift: IWeapon = {
+  Id: 21010084,
+  Name: 'Waning Redshift',
+  Level: 90,
+  Icon: 'Weapon_Waning_Redshift.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: WeaponType.BROADBLADE,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 462,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 18.2,
+  },
+}
+
+export const Beguiling_Melody: IWeapon = {
+  Id: 21010063,
+  Name: 'Beguiling Melody',
+  Level: 90,
+  Icon: 'Weapon_Beguiling_Melody.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.BROADBLADE,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 300,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 30.3,
+  },
+}
+
+export const Broadblade_of_Night: IWeapon = {
+  Id: 21010013,
+  Name: 'Broadblade of Night',
+  Level: 90,
+  Icon: 'Weapon_Broadblade_of_Night.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.BROADBLADE,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 325,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 24.3,
+  },
+}
+
+export const Broadblade_of_Voyager: IWeapon = {
+  Id: 21010043,
+  Name: 'Broadblade of Voyager',
+  Level: 90,
+  Icon: 'Weapon_Broadblade_of_Voyager.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.BROADBLADE,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 300,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ENERGY_REGENERATION,
+    Value: 32.4,
+  },
+}
+
+export const Gauntlets_of_Night: IWeapon = {
+  Id: 21140013,
+  Name: 'Gauntlets of Night',
+  Level: 90,
+  Icon: 'Weapon_Gauntlets_of_Night.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.GAUNTLETS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 325,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 24.3,
+  },
+}
+
+export const Gauntlets_of_Voyager: IWeapon = {
+  Id: 21140043,
+  Name: 'Gauntlets of Voyager',
+  Level: 90,
+  Icon: 'Weapon_Gauntlets_of_Voyager.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.GAUNTLETS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 325,
+  },
+  SecondaryStatistic: {
+    Type: StatType.DEF_PERCENTAGE,
+    Value: 30.7,
+  },
+}
+
+export const Guardian_Broadblade: IWeapon = {
+  Id: 21010053,
+  Name: 'Guardian Broadblade',
+  Level: 90,
+  Icon: 'Weapon_Guardian_Broadblade.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.BROADBLADE,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 325,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 24.3,
+  },
+}
+
+export const Guardian_Gauntlets: IWeapon = {
+  Id: 21140053,
+  Name: 'Guardian Gauntlets',
+  Level: 90,
+  Icon: 'Weapon_Guardian_Gauntlets.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.GAUNTLETS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 300,
+  },
+  SecondaryStatistic: {
+    Type: StatType.DEF_PERCENTAGE,
+    Value: 38.4,
+  },
+}
+
+export const Guardian_Pistols: IWeapon = {
+  Id: 21030053,
+  Name: 'Guardian Pistols',
+  Level: 90,
+  Icon: 'Weapon_Guardian_Pistols.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.PISTOLS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 300,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 30.3,
+  },
+}
+
+export const Guardian_Rectifier: IWeapon = {
+  Id: 21050053,
+  Name: 'Guardian Rectifier',
+  Level: 90,
+  Icon: 'Weapon_Guardian_Rectifier.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.RECTIFIER,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 325,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 24.3,
+  },
+}
+
+export const Guardian_Sword: IWeapon = {
+  Id: 21020053,
+  Name: 'Guardian Sword',
+  Level: 90,
+  Icon: 'Weapon_Guardian_Sword.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.SWORD,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 300,
+  },
+  SecondaryStatistic: {
+    Type: StatType.HP_PERCENTAGE,
+    Value: 30.3,
+  },
+}
+
+export const Originite_Type_I: IWeapon = {
+  Id: 21010023,
+  Name: 'Originite: Type I',
+  Level: 90,
+  Icon: 'Weapon_Originite_Type_I.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.BROADBLADE,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 300,
+  },
+  SecondaryStatistic: {
+    Type: StatType.DEF_PERCENTAGE,
+    Value: 38.4,
+  },
+}
+
+export const Originite_Type_II: IWeapon = {
+  Id: 21020023,
+  Name: 'Originite: Type II',
+  Level: 90,
+  Icon: 'Weapon_Originite_Type_II.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.SWORD,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 325,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 24.3,
+  },
+}
+
+export const Originite_Type_III: IWeapon = {
+  Id: 21030023,
+  Name: 'Originite: Type III',
+  Level: 90,
+  Icon: 'Weapon_Originite_Type_III.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.PISTOLS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 325,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 24.3,
+  },
+}
+
+export const Originite_Type_IV: IWeapon = {
+  Id: 21140023,
+  Name: 'Originite: Type IV',
+  Level: 90,
+  Icon: 'Weapon_Originite_Type_IV.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.GAUNTLETS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 300,
+  },
+  SecondaryStatistic: {
+    Type: StatType.CRIT_DMG,
+    Value: 40.5,
+  },
+}
+
+export const Originite_Type_V: IWeapon = {
+  Id: 21050023,
+  Name: 'Originite: Type V',
+  Level: 90,
+  Icon: 'Weapon_Originite_Type_V.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.RECTIFIER,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 300,
+  },
+  SecondaryStatistic: {
+    Type: StatType.HP_PERCENTAGE,
+    Value: 30.3,
+  },
+}
+
+export const Pistols_of_Night: IWeapon = {
+  Id: 21030013,
+  Name: 'Pistols of Night',
+  Level: 90,
+  Icon: 'Weapon_Pistols_of_Night.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.PISTOLS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 325,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 24.3,
+  },
+}
+
+export const Pistols_of_Voyager: IWeapon = {
+  Id: 21030043,
+  Name: 'Pistols of Voyager',
+  Level: 90,
+  Icon: 'Weapon_Pistols_of_Voyager.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.PISTOLS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 300,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 30.3,
+  },
+}
+
+export const Rectifier_of_Night: IWeapon = {
+  Id: 21050013,
+  Name: 'Rectifier of Night',
+  Level: 90,
+  Icon: 'Weapon_Rectifier_of_Night.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.RECTIFIER,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 325,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 24.3,
+  },
+}
+
+export const Rectifier_of_Voyager: IWeapon = {
+  Id: 21050043,
+  Name: 'Rectifier of Voyager',
+  Level: 90,
+  Icon: 'Weapon_Rectifier_of_Voyager.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.RECTIFIER,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 300,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ENERGY_REGENERATION,
+    Value: 32.4,
+  },
+}
+
+export const Sword_of_Night: IWeapon = {
+  Id: 21020013,
+  Name: 'Sword of Night',
+  Level: 90,
+  Icon: 'Weapon_Sword_of_Night.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.SWORD,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 325,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ATTACK_PERCENTAGE,
+    Value: 24.3,
+  },
+}
+
+export const Sword_of_Voyager: IWeapon = {
+  Id: 21020043,
+  Name: 'Sword of Voyager',
+  Level: 90,
+  Icon: 'Weapon_Sword_of_Voyager.webp',
+  Rarity: Rarity.THREE_STARS,
+  Type: WeaponType.SWORD,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 300,
+  },
+  SecondaryStatistic: {
+    Type: StatType.ENERGY_REGENERATION,
+    Value: 32.4,
+  },
+}
+
 export const Weapons: IWeapon[] = [
   TheLastDance,
   AgesOfHarvest,
@@ -705,6 +1283,40 @@ export const Weapons: IWeapon[] = [
   Marcato,
   Meditations_on_Mercy,
   Novaburst,
+  Overture,
+  Pistols26,
+  Rectifier25,
+  Relativistic_Jet,
+  Romance_in_Farewell,
+  Somnoire_Anchor,
+  Stonard,
+  Sword18,
+  Thunderbolt,
+  Undying_Flame,
+  Variation,
+  Waltz_in_Masquerade,
+  Waning_Redshift,
+  Beguiling_Melody,
+  Broadblade_of_Night,
+  Broadblade_of_Voyager,
+  Gauntlets_of_Night,
+  Gauntlets_of_Voyager,
+  Guardian_Broadblade,
+  Guardian_Gauntlets,
+  Guardian_Pistols,
+  Guardian_Rectifier,
+  Guardian_Sword,
+  Originite_Type_I,
+  Originite_Type_II,
+  Originite_Type_III,
+  Originite_Type_IV,
+  Originite_Type_V,
+  Pistols_of_Night,
+  Pistols_of_Voyager,
+  Rectifier_of_Night,
+  Rectifier_of_Voyager,
+  Sword_of_Night,
+  Sword_of_Voyager,
 ]
 
 export const TemplateWeapons = Weapons

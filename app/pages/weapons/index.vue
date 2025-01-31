@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import type IWeapon from '~/Core/Interfaces/IWeapon'
 import WeaponIcon from '~/components/Weapons/WeaponIcon.vue'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { WeaponType } from '~/Core/Enums/WeaponType'
-import { TemplateWeapons } from '~/Core/Weapons'
 
 interface IWeaponTypeOptions {
   Type: WeaponType | string
@@ -72,12 +70,6 @@ watchArray([SelectedWeaponRarity, SelectedWeaponType, SelectedWeaponSort], () =>
 })
 
 function FilterWeapons() {
-  for (const weapon of TemplateWeapons) {
-    if (!WeaponsStore.IsWeaponListed(weapon.Id)) {
-      WeaponsStore.AddWeapon(weapon as IWeapon)
-    }
-  }
-
   return WeaponsStore
     .GetWeapons()
     .filter((weapon) => {

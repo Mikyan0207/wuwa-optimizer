@@ -2,16 +2,14 @@
 import type IStatistic from '~/Core/Interfaces/IStatistic'
 import type { Character } from '~/Core/Models/Character'
 import { Rarity } from '~/Core/Enums/Rarity'
-import { CharacterStatsSystem } from '~/Core/Systems/CharacterStatsSystem'
-import { type ICharacterRatingResult, TOTAL_SCORE_GRADES } from '~/Core/Systems/RatingSystem'
 
 const props = defineProps<{
   character: Character
   score: ICharacterRatingResult
 }>()
 
-const StatsCalculator = new CharacterStatsSystem()
-const CharacterStats = computed<IStatistic[]>(() => StatsCalculator.CalculateTotalStats(props.character))
+const StatsCalculator = useStatsCalculatorStore()
+const CharacterStats = computed<IStatistic[]>(() => StatsCalculator.CalculateTotalStats(props.character.Id, props.character.EquipedWeapon || -1, props.character.EquipedEchoes))
 
 const GetCharacterScoreNoteColor = computed(() => {
   return TOTAL_SCORE_GRADES.find(x => x.Grade === props.score.Note)?.Color

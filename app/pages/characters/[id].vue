@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { ICharacterRatingResult } from '~/Core/Systems/RatingSystem'
 import * as htmlToImage from 'html-to-image'
-import { RatingSystem } from '~/Core/Systems/RatingSystem'
+import { Empty_Echo } from '~/Core/Echoes'
+import { Echo } from '~/Core/Models/Echo'
 
 definePageMeta({
   layout: 'default',
@@ -11,15 +11,33 @@ const Route = useRoute()
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
 const CharactersStore = useCharactersStore()
+const EchoesStore = useEchoesStore()
+const ScoreCalculator = useScoreCalculatorStore()
+
 const SelectedCharacter = computed(() => CharactersStore.GetCharacter(Number.parseInt(Route.params.id)))
 const CharacterScore = ref<ICharacterRatingResult>()
 
 if (SelectedCharacter.value === undefined || SelectedCharacter.value === null) {
   await navigateTo('/characters')
 }
+else {
+  CharacterScore.value = ScoreCalculator.GetCharacterScore(SelectedCharacter.value, SelectedCharacter.value.EquipedEchoes || [])
+}
 
-CharacterScore.value = new RatingSystem()
-  .GetCharacterScore(SelectedCharacter.value!)
+function GetEchoes(): Echo[] {
+  if (SelectedCharacter.value === undefined || SelectedCharacter.value.EquipedEchoes.length === 0) {
+    return Array.from({ length: 5 }).fill(new Echo(Empty_Echo)) as Echo[]
+  }
+
+  const equippedEchoes = EchoesStore.GetEchoesByIds(SelectedCharacter.value.EquipedEchoes)
+  const echoes: Echo[] = Array.from({ length: 5 }).fill(new Echo(Empty_Echo)) as Echo[]
+
+  equippedEchoes.forEach((echo, index) => {
+    echoes[echo.EquipedSlot || index] = echo
+  })
+
+  return echoes
+}
 
 async function TakeScreenShotAsync() {
   if (!CharacterInfoRef.value) {
@@ -28,7 +46,7 @@ async function TakeScreenShotAsync() {
 
   const scale = 1
   const w = 1280 * scale
-  const h = 900 * scale
+  const h = 885 * scale
 
   htmlToImage.toBlob(CharacterInfoRef.value, {
     pixelRatio: 1,
@@ -37,7 +55,7 @@ async function TakeScreenShotAsync() {
     width: w,
     canvasWidth: w,
     skipAutoScale: true,
-    backgroundColor: '#333333',
+    backgroundColor: '#2f2f2f',
     style: {
       zoom: `${scale}`,
     },
@@ -82,19 +100,25 @@ async function TakeScreenShotAsync() {
             <!-- Weapon / Skills -->
             <div class="grid grid-rows-4 gap-1">
               <!-- Weapon -->
-              <WeaponCard :character="SelectedCharacter" />
+              <WeaponCard
+                :character-id="SelectedCharacter.Id"
+                :weapon-id="SelectedCharacter.EquipedWeapon"
+              />
               <!-- Skills -->
-              <CharacterSkillsCard class="row-span-3" :character="SelectedCharacter" />
+              <CharacterSkillsCard
+                class="row-span-3"
+                :character="SelectedCharacter"
+              />
             </div>
           </div>
 
           <!-- Echoes -->
           <CharacterEchoCard
-            v-for="(echo, idx) in SelectedCharacter.GetEchoesWithPlaceHolders()"
+            v-for="(echo, idx) in GetEchoes()"
             :key="idx"
             :echo="echo"
             :echo-slot="idx"
-            :score="CharacterScore.EchoesScores[idx]"
+            :score="CharacterScore.EchoesScores.find(x => x.EchoId === echo.Id)"
             :character="SelectedCharacter"
             class="relative border border-white/14 rounded-md bg-black/66"
           />

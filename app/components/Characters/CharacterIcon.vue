@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import { Rarity } from '~/Core/Enums/Rarity'
 
-export interface CharacterIconProps {
+const props = defineProps<{
   name: string
   rarity: Rarity
   icon: string
   type: string
   unlocked: boolean
-}
-
-const Props = defineProps<CharacterIconProps>()
+}>()
 
 const GetBackgroundColor = computed(() => {
-  switch (Props.rarity) {
+  switch (props.rarity) {
     case Rarity.FIVE_STARS:
       return 'bg-amber-4'
     case Rarity.FOUR_STARS:
@@ -25,7 +23,7 @@ const GetBackgroundColor = computed(() => {
 })
 
 const GetSecondaryColor = computed(() => {
-  switch (Props.rarity) {
+  switch (props.rarity) {
     case Rarity.FIVE_STARS:
       return 'bg-yellow-1'
     case Rarity.FOUR_STARS:
@@ -38,7 +36,7 @@ const GetSecondaryColor = computed(() => {
 })
 
 const GetHighlightColor = computed(() => {
-  switch (Props.rarity) {
+  switch (props.rarity) {
     case Rarity.FIVE_STARS:
       return 'bg-amber-4'
     case Rarity.FOUR_STARS:

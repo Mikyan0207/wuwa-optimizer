@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ECHOES_SCORE_GRADES } from '~/Core/Systems/RatingSystem'
-
 const props = defineProps<{
   value: number
   text: string

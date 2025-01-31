@@ -1,6 +1,4 @@
 import type ICharacter from '~/Core/Interfaces/ICharacter'
-import type { Echo } from '~/Core/Models/Echo'
-import type { Weapon } from '~/Core/Models/Weapon'
 import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { TemplateCharacters } from '~/Core/Characters'
@@ -14,10 +12,6 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
 
   function IsUnlocked(characterId: number) {
     return Characters.value.find(x => x.Id === characterId)?.Unlocked === true
-  }
-
-  function HasCharacters() {
-    return Characters.value.length !== 0
   }
 
   function IsCharacterListed(characterId: number) {
@@ -85,29 +79,41 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     return new Character(c)
   }
 
-  function UpdateEcho(characterId: number, echo: Echo, slot: number) {
+  function UpdateEcho(characterId: number, echoId: number, slot: number) {
     const c = Characters.value.find(x => x.Id === characterId)
 
     if (c === undefined) {
       return
     }
 
-    c.Echoes[slot] = echo
+    c.EquipedEchoes[slot] = echoId
     UpdateCharacter(c)
   }
 
-  function UpdateWeapon(characterId: number, weapon: Weapon) {
+  function UpdateWeapon(characterId: number, weaponId: number) {
     const c = Characters.value.find(x => x.Id === characterId)
 
     if (c === undefined) {
       return
     }
 
-    c.Weapon = weapon
+    c.EquipedWeapon = weaponId
     UpdateCharacter(c)
   }
 
   function Update() {
+    if (CharactersVersion.value !== CurrentCharactersVersion) {
+      // This mean we did an update to the ICharater/Character model
+      // and need to update the stored models to avoid errors.
+      Characters.value = Characters.value.map((character) => {
+        // Create a new character instance to ensure all fields are present
+        return new Character(character) as ICharacter
+      })
+
+      // Update the version to the current one
+      CharactersVersion.value = CurrentCharactersVersion
+    }
+
     TemplateCharacters.forEach((templateCharacter) => {
       if (!IsCharacterListed(templateCharacter.Id)) {
         AddCharacter(templateCharacter as ICharacter)
@@ -120,7 +126,6 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     CharactersVersion,
     IsCharacterListed,
     IsUnlocked,
-    HasCharacters,
     UnlockCharacter,
     AddCharacter,
     RemoveCharacter,

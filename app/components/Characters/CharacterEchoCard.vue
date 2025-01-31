@@ -1,17 +1,14 @@
 <script setup lang="ts">
 import type { Character } from '~/Core/Models/Character'
 import type { Echo } from '~/Core/Models/Echo'
-import type { IEchoRatingResult } from '~/Core/Systems/RatingSystem'
 import { Rarity } from '~/Core/Enums/Rarity'
 
-export interface EchoCardProps {
+const props = defineProps<{
   echo: Echo
   echoSlot: number
   score?: IEchoRatingResult
   character: Character
-}
-
-const props = defineProps<EchoCardProps>()
+}>()
 
 function GetEchoRarityBackgroundColor(rarity: Rarity) {
   switch (rarity) {
@@ -30,7 +27,7 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
 </script>
 
 <template>
-  <div class="group relative h-23em w-full p-4">
+  <div class="group relative h-22em w-full p-4">
     <EditEchoForm :echo="echo" :character="character" :echo-slot="echoSlot" />
     <!-- Echo Details -->
     <div class="w-full flex flex-col items-start gap-2">
@@ -67,7 +64,12 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
       <div class="mx-auto my-2 h-1px w-full rounded-full bg-white/14" />
       <!-- Sub Stats -->
       <div v-if="IsValidEcho" class="w-full flex flex-col gap-1">
-        <StatLine v-for="(stat, idx) in echo.Statistics" :key="`stat-${stat.Type}-${idx}`" :stat="stat" :show-roll-value="true" />
+        <StatLine
+          v-for="(stat, idx) in echo.Statistics"
+          :key="`stat-${stat.Type}-${idx}`"
+          :stat="stat"
+          :show-line="true"
+        />
       </div>
       <div v-else class="w-full flex flex-col gap-1">
         <div v-for="idx in 5" :key="idx" class="w-full flex items-center justify-between gap-12">
@@ -81,7 +83,7 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
       <div class="mx-auto my-2 h-1px w-full rounded-full bg-white/14" />
       <!-- Echo Score -->
       <div class="w-full flex flex-row items-end gap-4">
-        <div class="w-full flex items-start justify-between gap-12">
+        <div class="w-full flex items-start justify-between gap-12 text-xs">
           <div class="flex items-center gap-2">
             <p>Score</p>
           </div>

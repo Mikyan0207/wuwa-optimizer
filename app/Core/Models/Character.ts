@@ -1,15 +1,14 @@
+import type { StatType } from '../Enums/StatType'
 import type ICharacter from '../Interfaces/ICharacter'
 import type ICharacterSequence from '../Interfaces/ISequence'
 import type { ISkill } from '../Interfaces/ISkill'
 import type IStatistic from '../Interfaces/IStatistic'
 import { CharacterType } from '../Enums/CharacterType'
-import { EchoCost } from '../Enums/EchoCost'
 import { Rarity } from '../Enums/Rarity'
-import { StatType } from '../Enums/StatType'
 import { WeaponType } from '../Enums/WeaponType'
-import { MAKE_STAT } from '../Statistics'
-import { Echo } from './Echo'
-import { Weapon } from './Weapon'
+
+// TODO: Remove nested objects as much as possible to avoid data duplication and problems when updating weapons/echoes.
+// Replace Echoes with EquipedEchoes: number[] (EchoId[])
 
 export class Character {
   Id: number
@@ -22,12 +21,12 @@ export class Character {
   Rarity: Rarity
   Type: CharacterType
   WeaponType?: WeaponType
-  Weapon?: Weapon
+  EquipedWeapon?: number
   Level: number
   Stats: IStatistic[]
   Sequences: ICharacterSequence[]
   Skills?: ISkill[]
-  Echoes: Echo[]
+  EquipedEchoes: number[]
   Unlocked: boolean
   StatsWeights?: Record<StatType, number>
 
@@ -46,23 +45,14 @@ export class Character {
     this.Stats = character.Stats
     this.Sequences = character.Sequences
     this.Skills = character.Skills
-    this.Echoes = []
+    this.EquipedEchoes = character.EquipedEchoes
     this.Unlocked = character.Unlocked
     this.StatsWeights = character.StatsWeights
-
-    if (character.Weapon !== undefined && character.Weapon !== null) {
-      this.Weapon = new Weapon(character.Weapon)
-    }
-
-    if (character.Echoes) {
-      for (const e of character.Echoes) {
-        this.Echoes.push(new Echo(e))
-      }
-    }
+    this.EquipedWeapon = character.EquipedWeapon
   }
 
   HasWeapon() {
-    return this.Weapon !== null && this.Weapon !== undefined
+    return this.EquipedWeapon !== undefined
   }
 
   GetIcon() {
@@ -84,35 +74,7 @@ export class Character {
     }
   }
 
-  GetWeaponIcon() {
-    return `/images/weapons/${this.Weapon?.Icon}`
-  }
-
-  GetWeaponRarityIcon() {
-    return (this.Weapon as Weapon)?.GetRarityIcon()
-  }
-
-  GetWeapon() {
-    return this.Weapon as Weapon
-  }
-
-  GetWeaponName() {
-    return this.Weapon?.Name
-  }
-
-  GetWeaponLevel() {
-    return this.Weapon?.Level
-  }
-
-  GetWeaponType() {
-    return this.Weapon?.Type
-  }
-
   GetWeaponTypeIcon() {
-    if (this.HasWeapon()) {
-      return (this.Weapon as Weapon)?.GetTypeIcon()
-    }
-
     const basePath = '/images/icons/'
 
     switch (this.WeaponType) {
@@ -158,23 +120,5 @@ export class Character {
 
   GetBackground() {
     return this.Background ? `/images/characters/${this.Id}/${this.Background}` : this.GetSplashArtPath()
-  }
-
-  GetEchoesWithPlaceHolders() {
-    while (this.Echoes.length < 5) {
-      this.Echoes.push(new Echo({
-        Id: -1,
-        Name: '',
-        Icon: '',
-        Rarity: Rarity.THREE_STARS,
-        Cost: EchoCost.ONE_COST,
-        Level: 0,
-        Sonata: [],
-        MainStatistic: MAKE_STAT(StatType.NONE, -1),
-        Statistics: [],
-      }))
-    }
-
-    return this.Echoes
   }
 }

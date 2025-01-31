@@ -10,7 +10,8 @@ export default interface IEcho {
   Rarity: Rarity
   Cost: EchoCost
   Level: number
-  EquipedBy?: number | undefined
+  EquipedBy?: number
+  EquipedSlot?: number
   Sonata: ISonata[]
   MainStatistic?: IStatistic
   Statistics: IStatistic[]

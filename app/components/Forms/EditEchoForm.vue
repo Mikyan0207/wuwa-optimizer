@@ -154,13 +154,15 @@ function OnSubmit() {
   EditedEcho.value.MainStatistic = { Type: StatType[SelectedMainStat.value.type as keyof typeof StatType], Value: Number.parseFloat(SelectedMainStat.value.value ?? '0') }
   EditedEcho.value.Statistics = SelectedSubStats.value.map((s, idx) => MAKE_STAT(StatType[s.type as keyof typeof StatType], Number.parseFloat(SelectedSubStatsValues.value[idx] ?? '0')))
   EditedEcho.value.EquipedBy = props.character.Id
+  EditedEcho.value.EquipedSlot = props.echoSlot
 
   // Est-ce qu'on fait un nouvel echo qu'on équipe ou on edit l'echo actuel...
   // Pour l'instant un nouveau c'est très bien.
   EchoesStore.AddEcho(EditedEcho.value)
-  CharactersStore.UpdateEcho(props.character.Id, EditedEcho.value, props.echoSlot)
+  CharactersStore.UpdateEcho(props.character.Id, EditedEcho.value.Id, props.echoSlot)
 
   ShowEditEchoModal.value = false
+  EditedEcho.value = undefined
 }
 </script>
 

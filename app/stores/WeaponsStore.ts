@@ -12,6 +12,16 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     return Weapons.value.map(e => new Weapon(e))
   }
 
+  function GetWeapon(weaponId: number | undefined): Weapon | undefined {
+    if (weaponId === undefined) {
+      return undefined
+    }
+
+    const weapon = Weapons.value.find(x => x.Id === weaponId)
+
+    return weapon !== undefined ? new Weapon(weapon) : undefined
+  }
+
   function IsWeaponListed(weaponId: number) {
     return Weapons.value.findIndex(x => x.Id === weaponId) !== -1
   }
@@ -35,6 +45,7 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
   return {
     Weapons,
     GetWeapons,
+    GetWeapon,
     IsWeaponListed,
     AddWeapon,
     Update,

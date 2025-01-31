@@ -9,6 +9,11 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
   function GetEchoes() {
     return Echoes.value.map(e => new Echo(e))
   }
+  function GetEchoesByIds(echoesIds: number[]): Echo[] {
+    return Echoes.value
+      .filter(e => echoesIds.includes(e.Id))
+      .map(e => new Echo(e))
+  }
 
   function GetDefaultEchoes() {
     return TemplateEchoes
@@ -25,6 +30,7 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
 
   return {
     Echoes,
+    GetEchoesByIds,
     GetDefaultEchoes,
     GetEchoes,
     AddEcho,

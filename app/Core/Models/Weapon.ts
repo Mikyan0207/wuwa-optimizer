@@ -3,6 +3,10 @@ import type IWeapon from '../Interfaces/IWeapon'
 import { Rarity } from '../Enums/Rarity'
 import { WeaponType } from '../Enums/WeaponType'
 
+// TODO:
+// Add an EquipedBy: number field to know which character is currently using the weapon.
+// Could be useful to display additional information on the weapons page.
+
 export class Weapon {
   Id: number
   Name: string

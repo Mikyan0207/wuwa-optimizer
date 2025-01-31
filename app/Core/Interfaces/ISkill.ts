@@ -1,6 +1,7 @@
 export interface ISkill {
   Level: number
-  Name: string
+  Id: string
+  Name?: string
   Icon: string
   Unlocked: boolean
 }

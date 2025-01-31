@@ -11,7 +11,8 @@ export class Echo {
   Rarity: Rarity
   Cost: EchoCost
   Level: number
-  EquipedBy: number | undefined
+  EquipedBy?: number | undefined
+  EquipedSlot?: number
   Sonata: Sonata[]
   MainStatistic?: IStatistic
   Statistics: IStatistic[]
@@ -24,6 +25,7 @@ export class Echo {
     this.Cost = echo.Cost
     this.Level = echo.Level
     this.EquipedBy = echo.EquipedBy
+    this.EquipedSlot = echo.EquipedSlot
     this.Sonata = echo.Sonata?.map(s => new Sonata(s)) ?? []
     this.MainStatistic = echo.MainStatistic
     this.Statistics = echo.Statistics

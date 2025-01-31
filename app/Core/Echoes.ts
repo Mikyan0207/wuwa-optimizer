@@ -3,6 +3,17 @@ import { EchoCost } from './Enums/EchoCost'
 import { Rarity } from './Enums/Rarity'
 import { Celestial_Light, Empyrean_Anthem, Eternal_Radiance, Freezing_Frost, Frosty_Resolve, Lingering_Tunes, Midnight_Veil, Molten_Rift, Moonlit_Clouds, Rejuvenating_Glow, Sierra_Gale, SunSinking_Eclipse, Tidebreaking_Courage, Void_Thunder } from './Sonatas'
 
+export const Empty_Echo: IEcho = {
+  Id: -1,
+  Name: '',
+  Icon: '',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.FOUR_COST,
+  Level: 0,
+  Sonata: [],
+  Statistics: [],
+}
+
 // #region === 4 COST ===
 export const Bell_Borne_Geochelone: IEcho = {
   Id: 340000020,

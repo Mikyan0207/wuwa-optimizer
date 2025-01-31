@@ -3,15 +3,13 @@ import type IStatistic from '~/Core/Interfaces/IStatistic'
 import { StatType } from '~/Core/Enums/StatType'
 import { STAT_ICONS, STAT_NAMES } from '~/Core/Statistics'
 
-export interface StatLineProps {
+const props = defineProps<{
   stat: IStatistic
   wanted?: boolean
   iconSize?: 'xs' | 'md'
   showLine?: boolean
   showRollValue?: boolean
-}
-
-const props = defineProps<StatLineProps>()
+}>()
 
 const IsPercentageStat = computed(() => {
   return !(props.stat.Type === StatType.ATTACK || props.stat.Type === StatType.HP || props.stat.Type === StatType.DEF)
@@ -38,7 +36,7 @@ const GetMargin = computed(() => {
   <div class="relative w-full flex items-center justify-between gap-2">
     <div class="flex items-center gap-2 text-gray-300">
       <NuxtImg :src="`/images/icons/${STAT_ICONS[stat.Type]}`" :class="GetIconSize" />
-      <p class="text-nowrap text-xs" :class="GetMargin">
+      <p class="text-ellipsis text-nowrap text-xs" :class="GetMargin">
         {{ STAT_NAMES[stat.Type] }}
       </p>
     </div>

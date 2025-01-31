@@ -1,14 +1,15 @@
-import type IEcho from '../Interfaces/IEcho'
-import type IStatistic from '../Interfaces/IStatistic'
-import type { Character } from '../Models/Character'
-import { EchoCost } from '../Enums/EchoCost'
-import { Rarity } from '../Enums/Rarity'
-import { ScoreGrade } from '../Enums/ScoreGrade'
-import { StatType } from '../Enums/StatType'
-import { SUB_STAT_VALUES } from '../Statistics'
+import type IEcho from '~/Core/Interfaces/IEcho'
+import type IStatistic from '~/Core/Interfaces/IStatistic'
+import type { Character } from '~/Core/Models/Character'
+import { EchoCost } from '~/Core/Enums/EchoCost'
+import { Rarity } from '~/Core/Enums/Rarity'
+import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
+import { StatType } from '~/Core/Enums/StatType'
+import { FOUR_COST_MAIN_STATS_VALUES, ONE_COST_MAIN_STATS_VALUES, SUB_STAT_VALUES, THREE_COST_MAIN_STATS_VALUES } from '~/Core/Statistics'
 
 export interface IEchoRatingResult {
   Score: number
+  EchoId: number
   Note: ScoreGrade
   NoteScore: number
   IsValidMainStat: boolean
@@ -186,44 +187,14 @@ export const TOTAL_SCORE_GRADES = [
   },
 ]
 
-export class RatingSystem {
-  MAIN_STAT_MAX_VALUE: Record<string, number> = {
-    [StatType.CRIT_DMG]: 44.0,
-    [StatType.CRIT_RATE]: 22.0,
-    [StatType.ATTACK_PERCENTAGE]: 33.0,
-    [StatType.ENERGY_REGENERATION]: 32.0,
-    [StatType.ATTACK]: 150,
-    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 30.0,
-    [StatType.NONE]: 0,
-  }
+export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () => {
+  const EchoesStore = useEchoesStore()
 
-  SUB_STATS_VALUES: Record<StatType, number[]> = {
-    [StatType.NONE]: [],
-    [StatType.CRIT_RATE]: [6.3, 6.9, 7.5, 8.1, 8.7, 9.3, 9.9, 10.5],
-    [StatType.CRIT_DMG]: [12.6, 13.8, 15.0, 16.2, 17.4, 18.6, 19.8, 21.0],
-    [StatType.ATTACK]: [30, 40, 50, 60],
-    [StatType.ATTACK_PERCENTAGE]: [6.4, 7.1, 7.9, 8.6, 9.4, 10.1, 10.9, 11.6],
-    [StatType.HP]: [320, 360, 390, 430, 470, 510, 540, 580],
-    [StatType.HP_PERCENTAGE]: [],
-    [StatType.HEALING_BONUS]: [],
-    [StatType.DEF]: [],
-    [StatType.DEF_PERCENTAGE]: [],
-    [StatType.ENERGY_REGENERATION]: [6.8, 7.6, 8.4, 9.2, 10, 10.8, 11.6, 12.4],
-    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: [],
-    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: [],
-    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: [],
-    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: [6.4, 7.1, 7.9, 8.6, 9.4, 10.1, 10.9, 11.6],
-    [StatType.ELECTRO_DMG_BONUS]: [],
-    [StatType.FUSION_DMG_BONUS]: [],
-    [StatType.GLACIO_DMG_BONUS]: [],
-    [StatType.HAVOC_DMG_BONUS]: [],
-    [StatType.SPECTRO_DMG_BONUS]: [],
-  }
-
-  GetCharacterScore(character: Character): ICharacterRatingResult {
-    const echoesScores = this.CalculateEchoesScore(character.Echoes, character.StatsWeights!)
+  function GetCharacterScore(character: Character, echoesIds: number[]): ICharacterRatingResult {
+    const echoes = EchoesStore.GetEchoesByIds(echoesIds)
+    const echoesScores = CalculateEchoesScore(echoes, character.StatsWeights!)
     let totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0) * 100
-    totalScore += this.CalculateMainStatsScore(character.Echoes)
+    totalScore += CalculateMainStatsScore(echoes)
 
     const note = TOTAL_SCORE_GRADES.find(g => totalScore >= g.Score)?.Grade || ScoreGrade.F
 
@@ -234,11 +205,11 @@ export class RatingSystem {
     }
   }
 
-  CalculateEchoesScore(echoes: IEcho[], weights: Record<StatType, number>): IEchoRatingResult[] {
+  function CalculateEchoesScore(echoes: IEcho[], weights: Record<StatType, number>): IEchoRatingResult[] {
     return echoes.map((echo) => {
-      const perfectEcho = this.GetPerfectEcho(echo, weights)
-      const echoScore = this.CalculateEchoScore(echo, weights)
-      const perfectEchoScore = this.CalculateEchoScore(perfectEcho, weights)
+      const perfectEcho = GetPerfectEcho(echo, weights)
+      const echoScore = CalculateEchoScore(echo, weights)
+      const perfectEchoScore = CalculateEchoScore(perfectEcho, weights)
 
       return {
         ...echoScore,
@@ -247,13 +218,13 @@ export class RatingSystem {
     })
   }
 
-  CalculateMainStatsScore(echoes: IEcho[]) {
+  function CalculateMainStatsScore(echoes: IEcho[]) {
     return echoes.reduce((total, echo) => {
       return total + (echo.MainStatistic?.Value || 0)
     }, 0)
   }
 
-  GetPerfectEcho(echo: IEcho, weights: Record<StatType, number>): IEcho {
+  function GetPerfectEcho(echo: IEcho, weights: Record<StatType, number>): IEcho {
     const sortedStats = Object.entries(weights)
       .filter(([_, weight]) => weight > 0)
       .sort(([, weightA], [, weightB]) => weightB - weightA)
@@ -278,41 +249,51 @@ export class RatingSystem {
     return perfectEcho
   }
 
-  CalculateEchoScore(echo: IEcho, weights: Record<StatType, number>): IEchoRatingResult {
-    const isValidMainStat = echo.MainStatistic !== undefined && this.IsValidMainStat(echo.MainStatistic, weights)
-    const note = isValidMainStat ? this.GetEchoNote(echo, weights) : { finalScore: 0, grade: ScoreGrade.F }
+  function CalculateEchoScore(echo: IEcho, weights: Record<StatType, number>): IEchoRatingResult {
+    const isValidMainStat = echo.MainStatistic !== undefined && IsValidMainStat(echo.MainStatistic, weights)
+    const note = isValidMainStat ? GetEchoNote(echo, weights) : { finalScore: 0, grade: ScoreGrade.F }
 
     const totalWeightedScore = echo.Statistics.reduce((acc, subStat) =>
-      acc + this.CalculateSubStatScore(subStat.Type, subStat.Value, weights[subStat.Type]), 0)
+      acc + CalculateSubStatScore(subStat.Type, subStat.Value, echo.Cost, weights[subStat.Type]), 0)
 
     return {
       Score: totalWeightedScore,
+      EchoId: echo.Id,
       Note: note.grade as ScoreGrade,
       NoteScore: note.finalScore as number,
       IsValidMainStat: isValidMainStat,
     }
   }
 
-  private CalculateSubStatScore(stat: StatType, value: number, weight: number) {
-    return weight * ((this.MAIN_STAT_MAX_VALUE[StatType.CRIT_DMG]) || 1 / (this.MAIN_STAT_MAX_VALUE[stat] || 1)) * value
+  function CalculateSubStatScore(stat: StatType, value: number, echoCost: EchoCost, weight: number) {
+    switch (echoCost) {
+      case EchoCost.FOUR_COST:
+        return weight * ((FOUR_COST_MAIN_STATS_VALUES[StatType.CRIT_DMG]) || 1 / (FOUR_COST_MAIN_STATS_VALUES[stat] || 1)) * value
+      case EchoCost.THREE_COST:
+        return weight * ((THREE_COST_MAIN_STATS_VALUES[StatType.CRIT_DMG]) || 1 / (THREE_COST_MAIN_STATS_VALUES[stat] || 1)) * value
+      case EchoCost.ONE_COST:
+        return weight * ((ONE_COST_MAIN_STATS_VALUES[StatType.CRIT_DMG]) || 1 / (ONE_COST_MAIN_STATS_VALUES[stat] || 1)) * value
+      default:
+        return 0
+    }
   }
 
-  private IsValidMainStat(stat: IStatistic, weights: Record<StatType, number>): boolean {
+  function IsValidMainStat(stat: IStatistic, weights: Record<StatType, number>): boolean {
     const v = weights[stat.Type]
 
     return v !== undefined && v !== 0
   }
 
-  private CalculateTotalSubStatTierScore(echo: IEcho, weights: Record<StatType, number>): number {
+  function CalculateTotalSubStatTierScore(echo: IEcho, weights: Record<StatType, number>): number {
     return echo.Statistics.reduce((totalScore, subStat) => {
       const weight = weights[subStat.Type] || 0
       const basePoints = weight >= 1.0 ? 9 : weight >= 0.75 ? 5 : weight >= 0.5 ? 3 : weight >= 0.25 ? 1 : 0
-      const progressBonus = this.CalculateSubStatRollValueBonus(subStat)
+      const progressBonus = CalculateSubStatRollValueBonus(subStat)
       return totalScore + basePoints + progressBonus
     }, 0)
   }
 
-  private CalculateMaxPossibleTierScore(echo: IEcho, weights: Record<StatType, number>): number {
+  function CalculateMaxPossibleTierScore(echo: IEcho, weights: Record<StatType, number>): number {
     return echo.Statistics.reduce((acc, stat) => {
       const weight = weights[stat.Type] || 0
       const pts = weight >= 1.0 ? 9 : weight >= 0.75 ? 5 : weight >= 0.5 ? 3 : weight >= 0.25 ? 1 : 0
@@ -320,8 +301,8 @@ export class RatingSystem {
     }, 0)
   }
 
-  private CalculateSubStatRollValueBonus(stat: IStatistic): number {
-    const values = this.SUB_STATS_VALUES[stat.Type] || []
+  function CalculateSubStatRollValueBonus(stat: IStatistic): number {
+    const values = SUB_STAT_VALUES[stat.Type] || []
     if (values.length === 0)
       return 0
 
@@ -335,9 +316,9 @@ export class RatingSystem {
     return progress * 5
   }
 
-  private GetEchoNote(echo: IEcho, weights: Record<StatType, number>) {
-    const score = this.CalculateTotalSubStatTierScore(echo, weights)
-    const maxScore = this.CalculateMaxPossibleTierScore(echo, weights)
+  function GetEchoNote(echo: IEcho, weights: Record<StatType, number>) {
+    const score = CalculateTotalSubStatTierScore(echo, weights)
+    const maxScore = CalculateMaxPossibleTierScore(echo, weights)
     const finalScore = maxScore > 0 ? (score / maxScore) ** 0.582 * 10 : 0
 
     return {
@@ -345,4 +326,8 @@ export class RatingSystem {
       grade: (ECHOES_SCORE_GRADES.find(g => finalScore >= g.Score)?.Grade || ScoreGrade.F),
     }
   }
-}
+
+  return {
+    GetCharacterScore,
+  }
+})

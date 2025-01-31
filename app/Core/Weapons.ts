@@ -247,7 +247,7 @@ export const Veritys_Handle: IWeapon = {
   Level: 90,
   Icon: 'Weapon_Veritys_Handle.webp',
   Rarity: Rarity.FIVE_STARS,
-  Type: WeaponType.BROADBLADE,
+  Type: WeaponType.GAUNTLETS,
   MainStatistic: {
     Type: StatType.ATTACK,
     Value: 587,

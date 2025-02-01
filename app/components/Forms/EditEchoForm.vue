@@ -176,7 +176,10 @@ function OnSubmit() {
       </div>
     </div>
     <!-- Edit Echo Modal -->
-    <UModal v-model="ShowEditEchoModal" :ui="{ container: ' flex min-h-full items-center justify-center text-center', width: 'w-full sm:max-w-lg' }">
+    <UModal
+      v-model="ShowEditEchoModal"
+      :ui="{ container: 'flex min-h-full items-center justify-center text-center', background: 'bg-black/66! backdrop-blur-4!', ring: 'border-2! border-white/14!', width: 'w-full sm:max-w-lg' }"
+    >
       <div class="p-4">
         <div class="grid cols-3 w-full gap-8">
           <div class="col-span-2 flex flex-col gap-2">

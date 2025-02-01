@@ -87,7 +87,10 @@ function OnSubmit() {
         <USkeleton v-else class="h-4em w-4em" :ui="{ base: '' }" />
       </div>
     </Card>
-    <UModal v-model="ShowEditWeaponModal" :ui="{ container: 'flex min-h-full items-center justify-center text-center' }">
+    <UModal
+      v-model="ShowEditWeaponModal"
+      :ui="{ container: 'flex min-h-full items-center justify-center text-center', background: 'bg-black/66! backdrop-blur-4!', ring: 'border-2! border-white/14!' }"
+    >
       <div class="p-4">
         <div class="grid cols-1 w-full gap-8">
           <div class="col-span-2 flex flex-col gap-2">

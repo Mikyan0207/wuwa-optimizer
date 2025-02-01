@@ -72,7 +72,7 @@ async function TakeScreenShotAsync() {
 
 <template>
   <div>
-    <div class="h-12 w-full flex items-center justify-between gap-2 border-b border-white/14 bg-black/44 p-3 text-sm">
+    <div class="h-12 w-full flex items-center justify-between gap-2 border-b border-white/14 bg-black/44 p-3 text-sm backdrop-blur-6">
       <div class="flex items-center gap-2">
         <div class="mx-4 h-6 w-1px bg-white/14" />
         <NuxtLink to="/characters">
@@ -106,7 +106,7 @@ async function TakeScreenShotAsync() {
               />
               <!-- Skills -->
               <CharacterSkillsCard
-                class="row-span-3"
+                class="z-1 row-span-3"
                 :character="SelectedCharacter"
               />
             </div>

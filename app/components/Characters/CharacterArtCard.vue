@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import type { Character } from '~/Core/Models/Character'
 
-const props = defineProps<{
+defineProps<{
   character: Character
 }>()
-
-const GetSplashArtOffsets = computed(() => {
-  return `top-${props.character.SplashArtOffsetY || 0}% right-${props.character.SplashArtOffsetX || 0}%`
-})
 </script>
 
 <template>
@@ -15,6 +11,7 @@ const GetSplashArtOffsets = computed(() => {
   <div
     class="relative overflow-hidden border border-white/14 rounded-md bg-black/66"
   >
+    <!-- Top Right Icons background -->
     <div class="absolute inset-0 z-20 from-black/25 via-transparent to-transparent bg-gradient-to-bl" />
     <NuxtImg
       v-if="character.Background"
@@ -45,9 +42,9 @@ const GetSplashArtOffsets = computed(() => {
     </div>
     <NuxtImg
       :src="`${character.GetSplashArtPath()}`"
-      class="absolute z-10 h-110% w-full object-cover"
-      :class="GetSplashArtOffsets"
+      class="absolute inset-0 z-10 h-full w-full object-cover"
       fit="cover"
+      quality="90"
     />
   </div>
 </template>

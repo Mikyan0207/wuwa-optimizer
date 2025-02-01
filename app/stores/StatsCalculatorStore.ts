@@ -1,4 +1,5 @@
 import type IEcho from '~/Core/Interfaces/IEcho'
+import type { ISkill } from '~/Core/Interfaces/ISkill'
 import type IStatistic from '~/Core/Interfaces/IStatistic'
 import { StatType } from '~/Core/Enums/StatType'
 
@@ -17,6 +18,7 @@ export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () =>
     }
 
     // Do we really need to do that...?
+    const skillsStats = CalculateSkillsStats(JSON.parse(JSON.stringify(character.Skills)) || [])
     const totalStats: IStatistic[] = JSON.parse(JSON.stringify(character.Stats))
 
     const addToTotalStats = (stat: IStatistic) => {
@@ -47,10 +49,29 @@ export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () =>
       }
     }
 
+    skillsStats.forEach(addToTotalStats)
     weaponStats.forEach(addToTotalStats)
     echoesStats.forEach(addToTotalStats)
 
     return totalStats
+  }
+
+  function CalculateSkillsStats(skills: ISkill[]) {
+    const stats: IStatistic[] = []
+
+    skills.forEach((skill: ISkill) => {
+      if (skill.Unlocked && skill.Stat) {
+        const existingStat = stats.find(s => s.Type === skill.Stat!.Type)
+        if (existingStat) {
+          existingStat.Value += skill.Stat.Value
+        }
+        else {
+          stats.push(skill.Stat)
+        }
+      }
+    })
+
+    return stats
   }
 
   function CalculateEchoesStats(echoesIds: number[]): IStatistic[] {
@@ -59,9 +80,23 @@ export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () =>
 
     echoes.forEach((echo: IEcho) => {
       if (echo.MainStatistic) {
-        stats.push(echo.MainStatistic)
+        const existingStat = stats.find(s => s.Type === echo.MainStatistic!.Type)
+        if (existingStat) {
+          existingStat.Value += echo.MainStatistic.Value
+        }
+        else {
+          stats.push(echo.MainStatistic)
+        }
       }
-      echo.Statistics.forEach(stat => stats.push(stat))
+      echo.Statistics.forEach((stat) => {
+        const existingStat = stats.find(s => s.Type === stat.Type)
+        if (existingStat) {
+          existingStat.Value += stat.Value
+        }
+        else {
+          stats.push(stat)
+        }
+      })
     })
 
     return stats

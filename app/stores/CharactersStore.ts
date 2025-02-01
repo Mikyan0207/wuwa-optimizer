@@ -107,7 +107,16 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
       // and need to update the stored models to avoid errors.
       Characters.value = Characters.value.map((character) => {
         // Create a new character instance to ensure all fields are present
-        return new Character(character) as ICharacter
+        const c = new Character(character) as ICharacter
+        const templateCharacter = TemplateCharacters.find(x => x.Id === c.Id)
+
+        if (templateCharacter === undefined) {
+          return c
+        }
+
+        c.SplashArt = templateCharacter.SplashArt
+
+        return c
       })
 
       // Update the version to the current one

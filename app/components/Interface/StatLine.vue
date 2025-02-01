@@ -25,7 +25,7 @@ const GetIconSize = computed(() => {
 
 const GetMargin = computed(() => {
   if (props.iconSize === undefined || props.iconSize === 'md') {
-    return 'mr6'
+    return 'mr-6'
   }
 
   return 'mr-4'
@@ -42,8 +42,7 @@ const GetMargin = computed(() => {
     </div>
     <div v-if="showLine === true" class="my-auto h-1px w-full bg-white/14" />
     <p class="h-full flex items-center justify-center text-nowrap text-xs" :class="{ 'text-amber': wanted === true, 'text-white': !wanted }">
-      <span v-if="IsPercentageStat">{{ stat.Value.toFixed(1) }}</span>
-      <span v-else>{{ stat.Value }}</span>
+      <span>{{ stat.Value.toFixed(1) }}</span>
       <span v-if="IsPercentageStat">%</span>
     </p>
   </div>

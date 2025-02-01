@@ -45,11 +45,6 @@ const GetRarityAsNumber = computed(() => {
         <span>·</span>
         <p>S{{ character.GetSequenceLevel() }}</p>
       </div>
-      <!-- <div class="mx-auto w-full flex items-center justify-between gap-2">
-        <NuxtImg :src="`${character.GetTypeIcon()}`" class="h-12 w-12 object-cover" fit="cover" />
-        <NuxtImg :src="`${character.GetRarityIcon()}`" class="h-auto w-24 object-cover" fit="cover" />
-        <NuxtImg :src="`${character.GetWeaponTypeIcon()}`" class="h-12 w-12 object-cover" fit="cover" />
-      </div> -->
 
       <div class="mx-auto my-4 h-1px w-full rounded-full bg-white/14" />
       <div class="flex flex-col">

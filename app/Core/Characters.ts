@@ -1419,11 +1419,13 @@ export const Jinhsi: ICharacter = {
 // 1505
 export const ShoreKeeper: ICharacter = {
   Id: 1505,
-  Name: 'Shore Keeper',
+  Name: 'The Shorekeeper',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Shorekeeper_Icon.webp',
-  SplashArt: 'Shorekeeper_Splash_Art.webp',
+  SplashArt: 'Shorekeeper_Portrait.webp',
+  Background: 'Shorekeeper_Splash_Art.webp',
   Type: CharacterType.SPECTRO,
+  WeaponType: WeaponType.RECTIFIER,
   Level: 90,
   Stats: [
     {
@@ -1475,9 +1477,192 @@ export const ShoreKeeper: ICharacter = {
       Type: StatType.SPECTRO_DMG_BONUS,
     },
   ],
-  Sequences: [],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Shorekeeper_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Shorekeeper_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Shorekeeper_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Shorekeeper_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Shorekeeper_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Shorekeeper_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Rectifier.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Health.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HP_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Health.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HP_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Shorekeeper_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Healing.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HEALING_BONUS,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Healing.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HEALING_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Shorekeeper_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Shorekeeper_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Shorekeeper_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Shorekeeper_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Healing.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HEALING_BONUS,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Healing.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HEALING_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Shorekeeper_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Health.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HP_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Health.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HP_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Shorekeeper_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
   EquipedEchoes: [],
   Unlocked: false,
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 0,
+    [StatType.CRIT_RATE]: 0,
+    [StatType.ATTACK]: 0,
+    [StatType.ATTACK_PERCENTAGE]: 0,
+    [StatType.HP]: 0.75,
+    [StatType.HP_PERCENTAGE]: 1,
+    [StatType.HEALING_BONUS]: 1,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.75,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+    [StatType.ELECTRO_DMG_BONUS]: 0,
+    [StatType.FUSION_DMG_BONUS]: 0,
+    [StatType.GLACIO_DMG_BONUS]: 0,
+    [StatType.HAVOC_DMG_BONUS]: 0,
+    [StatType.SPECTRO_DMG_BONUS]: 0.1,
+  },
 }
 
 // 1603

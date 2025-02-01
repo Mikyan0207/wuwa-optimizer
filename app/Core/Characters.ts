@@ -4,15 +4,13 @@ import { Rarity } from './Enums/Rarity'
 import { StatType } from './Enums/StatType'
 import { WeaponType } from './Enums/WeaponType'
 
-// #region 4 Stars
-
 // 1102
 export const Sanhua: ICharacter = {
   Id: 1102,
   Name: 'Sanhua',
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Sanhua_Icon.webp',
-  SplashArt: 'Sanhua_Full_Sprite.webp',
+  SplashArt: 'Sanhua_Portrait.webp',
   Type: CharacterType.GLACIO,
   WeaponType: WeaponType.SWORD,
   Level: 90,
@@ -66,118 +64,35 @@ export const Sanhua: ICharacter = {
       Type: StatType.GLACIO_DMG_BONUS,
     },
   ],
-  Sequences: [],
-  EquipedEchoes: [],
-  Unlocked: false,
-}
-
-// 1402
-export const Yangyang: ICharacter = {
-  Id: 1402,
-  Name: 'Yangyang',
-  Icon: 'Yangyang_Icon.webp',
-  SplashArt: 'Yangyang_Full_Sprite.webp',
-  Rarity: Rarity.FOUR_STARS,
-  Type: CharacterType.AERO,
-  WeaponType: WeaponType.SWORD,
-  Level: 90,
-  Stats: [
-    {
-      Value: 10200,
-      Type: StatType.HP,
-    },
-    {
-      Value: 1100,
-      Type: StatType.DEF,
-    },
-    {
-      Value: 250,
-      Type: StatType.ATTACK,
-    },
-    {
-      Value: 5,
-      Type: StatType.CRIT_RATE,
-    },
-    {
-      Value: 150,
-      Type: StatType.CRIT_DMG,
-    },
-    {
-      Value: 100,
-      Type: StatType.ENERGY_REGENERATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.HEALING_BONUS,
-    },
-    {
-      Value: 0,
-      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.AERO_DMG_BONUS,
-    },
-  ],
-  StatsWeights: {
-    [StatType.NONE]: 0,
-    [StatType.CRIT_DMG]: 1,
-    [StatType.CRIT_RATE]: 1,
-    [StatType.ATTACK]: 0.5,
-    [StatType.ATTACK_PERCENTAGE]: 0.75,
-    [StatType.HP]: 0,
-    [StatType.HP_PERCENTAGE]: 0,
-    [StatType.HEALING_BONUS]: 0,
-    [StatType.DEF]: 0,
-    [StatType.DEF_PERCENTAGE]: 0,
-    [StatType.ENERGY_REGENERATION]: 0,
-    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
-    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
-    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.25,
-    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.25,
-    [StatType.AERO_DMG_BONUS]: 0.1,
-  },
   Sequences: [
     {
       Name: '',
-      Icon: 'Yangyang_Sequence_Node_01.webp',
+      Icon: 'Sanhua_Sequence_Node_01.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'Yangyang_Sequence_Node_02.webp',
+      Icon: 'Sanhua_Sequence_Node_02.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'Yangyang_Sequence_Node_03.webp',
+      Icon: 'Sanhua_Sequence_Node_03.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'Yangyang_Sequence_Node_04.webp',
+      Icon: 'Sanhua_Sequence_Node_04.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'Yangyang_Sequence_Node_05.webp',
+      Icon: 'Sanhua_Sequence_Node_05.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'Yangyang_Sequence_Node_06.webp',
+      Icon: 'Sanhua_Sequence_Node_06.webp',
       Unlocked: false,
     },
   ],
@@ -191,19 +106,27 @@ export const Yangyang: ICharacter = {
     {
       Id: 'Basic_Stat_Bonus_1',
       Level: 1,
-      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Icon: 'Icon_Glacio_DMG_Bonus.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.GLACIO_DMG_BONUS,
+        Value: 1.80,
+      },
     },
     {
       Id: 'Basic_Stat_Bonus_2',
       Level: 1,
-      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Icon: 'Icon_Glacio_DMG_Bonus.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.GLACIO_DMG_BONUS,
+        Value: 4.20,
+      },
     },
     {
       Id: 'Resonance Skill',
       Level: 1,
-      Icon: 'Yangyang_Resonance_Skill.webp',
+      Icon: 'Sanhua_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
@@ -211,35 +134,43 @@ export const Yangyang: ICharacter = {
       Level: 1,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
     },
     {
       Id: 'Skill_Stat_Bonus_2',
       Level: 1,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
     },
     {
       Id: 'Forte Circuit',
       Level: 1,
-      Icon: 'Yangyang_Forte_Circuit.webp',
+      Icon: 'Sanhua_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_1',
       Level: 1,
-      Icon: 'Yangyang_Inherent_Skill_01.webp',
+      Icon: 'Sanhua_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_2',
       Level: 1,
-      Icon: 'Yangyang_Inherent_Skill_02.webp',
+      Icon: 'Sanhua_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance Liberation',
       Level: 1,
-      Icon: 'Yangyang_Resonance_Liberation.webp',
+      Icon: 'Sanhua_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
@@ -247,17 +178,25 @@ export const Yangyang: ICharacter = {
       Level: 1,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
     },
     {
       Id: 'Liberation_Stat_Bonus_2',
       Level: 1,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
     },
     {
       Id: 'Intro Skill',
       Level: 1,
-      Icon: 'Yangyang_Intro_Skill.webp',
+      Icon: 'Sanhua_Intro_Skill.webp',
       Unlocked: true,
     },
     {
@@ -265,17 +204,25 @@ export const Yangyang: ICharacter = {
       Level: 1,
       Icon: 'Icon_Aero_DMG_Bonus.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.GLACIO_DMG_BONUS,
+        Value: 1.80,
+      },
     },
     {
       Id: 'Intro_Stat_Bonus_2',
       Level: 1,
       Icon: 'Icon_Aero_DMG_Bonus.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.GLACIO_DMG_BONUS,
+        Value: 4.20,
+      },
     },
     {
       Id: 'Outro Skill',
       Level: 1,
-      Icon: 'Yangyang_Outro_Skill.webp',
+      Icon: 'Sanhua_Outro_Skill.webp',
       Unlocked: true,
     },
   ],
@@ -283,27 +230,27 @@ export const Yangyang: ICharacter = {
   Unlocked: false,
 }
 
-// 1403
-export const Aalto: ICharacter = {
-  Id: 1403,
-  Name: 'Aalto',
-  Icon: 'Aalto_Icon.webp',
-  SplashArt: 'Aalto_Full_Sprite.webp',
+// 1103
+export const Baizhi: ICharacter = {
+  Id: 1103,
+  Name: 'Baizhi',
   Rarity: Rarity.FOUR_STARS,
-  Type: CharacterType.AERO,
-  WeaponType: WeaponType.PISTOLS,
+  Icon: 'Baizhi_Icon.webp',
+  SplashArt: 'Baizhi_Portrait.webp',
+  Type: CharacterType.GLACIO,
+  WeaponType: WeaponType.RECTIFIER,
   Level: 90,
   Stats: [
     {
-      Value: 9850,
+      Value: 12813,
       Type: StatType.HP,
     },
     {
-      Value: 1076,
+      Value: 1002,
       Type: StatType.DEF,
     },
     {
-      Value: 263,
+      Value: 213,
       Type: StatType.ATTACK,
     },
     {
@@ -340,17 +287,181 @@ export const Aalto: ICharacter = {
     },
     {
       Value: 0,
-      Type: StatType.AERO_DMG_BONUS,
+      Type: StatType.GLACIO_DMG_BONUS,
     },
   ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Baizhi_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Baizhi_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Baizhi_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Baizhi_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Baizhi_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Baizhi_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Rectifier.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Healing.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HEALING_BONUS,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Healing.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HEALING_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Baizhi_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Health.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HP_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Health.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HP_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Baizhi_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Baizhi_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Baizhi_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Baizhi_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Health.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HP_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Health.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HP_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Baizhi_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Healing.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HEALING_BONUS,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Healing.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HEALING_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Baizhi_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  EquipedEchoes: [],
+  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
-    [StatType.CRIT_DMG]: 1,
-    [StatType.CRIT_RATE]: 1,
-    [StatType.ATTACK]: 0.5,
-    [StatType.ATTACK_PERCENTAGE]: 0.75,
-    [StatType.HP]: 0,
-    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.CRIT_DMG]: 0,
+    [StatType.CRIT_RATE]: 0,
+    [StatType.ATTACK]: 0,
+    [StatType.ATTACK_PERCENTAGE]: 0,
+    [StatType.HP]: 0.75,
+    [StatType.HP_PERCENTAGE]: 1,
     [StatType.HEALING_BONUS]: 0,
     [StatType.DEF]: 0,
     [StatType.DEF_PERCENTAGE]: 0,
@@ -359,357 +470,9 @@ export const Aalto: ICharacter = {
     [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
     [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
     [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
-    [StatType.AERO_DMG_BONUS]: 0.1,
+    [StatType.GLACIO_DMG_BONUS]: 0.1,
   },
-  Sequences: [
-    {
-      Name: '',
-      Icon: 'Aalto_Sequence_Node_01.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Aalto_Sequence_Node_02.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Aalto_Sequence_Node_03.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Aalto_Sequence_Node_04.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Aalto_Sequence_Node_05.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Aalto_Sequence_Node_06.webp',
-      Unlocked: false,
-    },
-  ],
-  Skills: [
-    {
-      Id: 'Basic Attack',
-      Level: 1,
-      Icon: 'Skill_Pistols.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Basic_Stat_Bonus_1',
-      Level: 1,
-      Icon: 'Icon_Aero_DMG_Bonus.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Basic_Stat_Bonus_2',
-      Level: 1,
-      Icon: 'Icon_Aero_DMG_Bonus.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Resonance Skill',
-      Level: 1,
-      Icon: 'Aalto_Resonance_Skill.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Skill_Stat_Bonus_1',
-      Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Skill_Stat_Bonus_2',
-      Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Forte Circuit',
-      Level: 1,
-      Icon: 'Aalto_Forte_Circuit.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Inherent_Skill_1',
-      Level: 1,
-      Icon: 'Aalto_Inherent_Skill_01.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Inherent_Skill_2',
-      Level: 1,
-      Icon: 'Aalto_Inherent_Skill_02.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Resonance Liberation',
-      Level: 1,
-      Icon: 'Aalto_Resonance_Liberation.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Liberation_Stat_Bonus_1',
-      Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Liberation_Stat_Bonus_2',
-      Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Intro Skill',
-      Level: 1,
-      Icon: 'Aalto_Intro_Skill.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Intro_Stat_Bonus_1',
-      Level: 1,
-      Icon: 'Icon_Aero_DMG_Bonus.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Intro_Stat_Bonus_2',
-      Level: 1,
-      Icon: 'Icon_Aero_DMG_Bonus.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Outro Skill',
-      Level: 1,
-      Icon: 'Aalto_Outro_Skill.webp',
-      Unlocked: true,
-    },
-  ],
-  EquipedEchoes: [],
-  Unlocked: false,
 }
-
-// 1602
-export const Danjin: ICharacter = {
-  Id: 1602,
-  Name: 'Danjin',
-  Icon: 'Danjin_Icon.webp',
-  SplashArt: 'Danjin_Portrait.webp',
-  Rarity: Rarity.FOUR_STARS,
-  Type: CharacterType.HAVOC,
-  WeaponType: WeaponType.SWORD,
-  Level: 90,
-  Stats: [
-    {
-      Value: 9438,
-      Type: StatType.HP,
-    },
-    {
-      Value: 1149,
-      Type: StatType.DEF,
-    },
-    {
-      Value: 263,
-      Type: StatType.ATTACK,
-    },
-    {
-      Value: 5,
-      Type: StatType.CRIT_RATE,
-    },
-    {
-      Value: 150,
-      Type: StatType.CRIT_DMG,
-    },
-    {
-      Value: 100,
-      Type: StatType.ENERGY_REGENERATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.HEALING_BONUS,
-    },
-    {
-      Value: 0,
-      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
-    },
-    {
-      Value: 0,
-      Type: StatType.HAVOC_DMG_BONUS,
-    },
-  ],
-  StatsWeights: {
-    [StatType.NONE]: 0,
-    [StatType.CRIT_DMG]: 1,
-    [StatType.CRIT_RATE]: 1,
-    [StatType.ATTACK]: 0.70,
-    [StatType.ATTACK_PERCENTAGE]: 0.75,
-    [StatType.HP]: 0,
-    [StatType.HP_PERCENTAGE]: 0,
-    [StatType.HEALING_BONUS]: 0,
-    [StatType.DEF]: 0,
-    [StatType.DEF_PERCENTAGE]: 0,
-    [StatType.ENERGY_REGENERATION]: 0.5,
-    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
-    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0.5,
-    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
-    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.5,
-    [StatType.HAVOC_DMG_BONUS]: 0.1,
-  },
-  Sequences: [
-    {
-      Name: '',
-      Icon: 'Danjin_Sequence_Node_01.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Danjin_Sequence_Node_02.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Danjin_Sequence_Node_03.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Danjin_Sequence_Node_04.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Danjin_Sequence_Node_05.webp',
-      Unlocked: false,
-    },
-    {
-      Name: '',
-      Icon: 'Danjin_Sequence_Node_06.webp',
-      Unlocked: false,
-    },
-  ],
-  Skills: [
-    {
-      Id: 'Basic Attack',
-      Level: 1,
-      Icon: 'Skill_Sword.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Basic_Stat_Bonus_1',
-      Level: 1,
-      Icon: 'Icon_Havoc_DMG_Bonus.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Basic_Stat_Bonus_2',
-      Level: 1,
-      Icon: 'Icon_Havoc_DMG_Bonus.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Resonance Skill',
-      Level: 1,
-      Icon: 'Danjin_Resonance_Skill.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Skill_Stat_Bonus_1',
-      Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Skill_Stat_Bonus_2',
-      Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Forte Circuit',
-      Level: 1,
-      Icon: 'Danjin_Forte_Circuit.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Inherent_Skill_1',
-      Level: 1,
-      Icon: 'Danjin_Inherent_Skill_01.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Inherent_Skill_2',
-      Level: 1,
-      Icon: 'Danjin_Inherent_Skill_02.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Resonance Liberation',
-      Level: 1,
-      Icon: 'Danjin_Resonance_Liberation.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Liberation_Stat_Bonus_1',
-      Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Liberation_Stat_Bonus_2',
-      Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Intro Skill',
-      Level: 1,
-      Icon: 'Danjin_Intro_Skill.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Intro_Stat_Bonus_1',
-      Level: 1,
-      Icon: 'Icon_Havoc_DMG_Bonus.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Intro_Stat_Bonus_2',
-      Level: 1,
-      Icon: 'Icon_Havoc_DMG_Bonus.webp',
-      Unlocked: true,
-    },
-    {
-      Id: 'Outro Skill',
-      Level: 1,
-      Icon: 'Danjin_Outro_Skill.webp',
-      Unlocked: true,
-    },
-  ],
-  EquipedEchoes: [],
-  Unlocked: false,
-}
-
-// #endregion
-
-// #region 5 Stars
 
 // 1105
 export const Zhezhi: ICharacter = {
@@ -771,28 +534,6 @@ export const Zhezhi: ICharacter = {
       Type: StatType.GLACIO_DMG_BONUS,
     },
   ],
-  StatsWeights: {
-    [StatType.NONE]: 0,
-    [StatType.CRIT_DMG]: 1,
-    [StatType.CRIT_RATE]: 1,
-    [StatType.ATTACK]: 0.5,
-    [StatType.ATTACK_PERCENTAGE]: 0.75,
-    [StatType.HP]: 0,
-    [StatType.HP_PERCENTAGE]: 0,
-    [StatType.HEALING_BONUS]: 0,
-    [StatType.DEF]: 0,
-    [StatType.DEF_PERCENTAGE]: 0,
-    [StatType.ENERGY_REGENERATION]: 0.75,
-    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0.25,
-    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
-    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
-    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
-    [StatType.ELECTRO_DMG_BONUS]: 0,
-    [StatType.FUSION_DMG_BONUS]: 0,
-    [StatType.GLACIO_DMG_BONUS]: 0.1,
-    [StatType.HAVOC_DMG_BONUS]: 0,
-    [StatType.SPECTRO_DMG_BONUS]: 0,
-  },
   Sequences: [
     {
       Name: '',
@@ -957,6 +698,268 @@ export const Zhezhi: ICharacter = {
   ],
   EquipedEchoes: [],
   Unlocked: false,
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.75,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0.25,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+    [StatType.GLACIO_DMG_BONUS]: 0.1,
+  },
+}
+
+// 1106
+export const Youhu: ICharacter = {
+  Id: 1106,
+  Name: 'Youhu',
+  Rarity: Rarity.FOUR_STARS,
+  Icon: 'Youhu_Icon.webp',
+  SplashArt: 'Youhu_Portrait.webp',
+  Type: CharacterType.GLACIO,
+  WeaponType: WeaponType.RECTIFIER,
+  Level: 90,
+  Stats: [
+    {
+      Value: 9975,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1051,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 263,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.GLACIO_DMG_BONUS,
+    },
+  ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Youhu_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Youhu_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Youhu_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Youhu_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Youhu_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Youhu_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Rectifier.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 1.20,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 2.80,
+      },
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Youhu_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Youhu_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Youhu_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Youhu_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Youhu_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Youhu_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 1.20,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 2.80,
+      },
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Youhu_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  EquipedEchoes: [],
+  Unlocked: false,
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 0,
+    [StatType.CRIT_RATE]: 0,
+    [StatType.ATTACK]: 0.75,
+    [StatType.ATTACK_PERCENTAGE]: 1,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 1,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+    [StatType.GLACIO_DMG_BONUS]: 0.1,
+  },
 }
 
 // 1107
@@ -1071,11 +1074,251 @@ export const Carlotta: ICharacter = {
     [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
     [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.5,
     [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.5,
-    [StatType.ELECTRO_DMG_BONUS]: 0,
-    [StatType.FUSION_DMG_BONUS]: 0,
     [StatType.GLACIO_DMG_BONUS]: 0.1,
-    [StatType.HAVOC_DMG_BONUS]: 0,
-    [StatType.SPECTRO_DMG_BONUS]: 0,
+  },
+}
+
+// 1202
+export const Chixia: ICharacter = {
+  Id: 1202,
+  Name: 'Chixia',
+  Icon: 'Chixia_Icon.webp',
+  SplashArt: 'Chixia_Portrait.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: CharacterType.FUSION,
+  WeaponType: WeaponType.PISTOLS,
+  Level: 90,
+  Stats: [
+    {
+      Value: 9088,
+      Type: StatType.HP,
+    },
+    {
+      Value: 953,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 300,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.FUSION_DMG_BONUS,
+    },
+  ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Chixia_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Chixia_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Chixia_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Chixia_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Chixia_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Chixia_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Pistols.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Fusion_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.FUSION_DMG_BONUS,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Fusion_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.FUSION_DMG_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Chixia_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Chixia_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Chixia_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Chixia_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Chixia_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Chixia_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Fusion_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.FUSION_DMG_BONUS,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Fusion_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.FUSION_DMG_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Chixia_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  EquipedEchoes: [],
+  Unlocked: false,
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.5,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0.25,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.25,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+    [StatType.FUSION_DMG_BONUS]: 0.1,
   },
 }
 
@@ -1141,29 +1384,6 @@ export const Changli: ICharacter = {
       Type: StatType.FUSION_DMG_BONUS,
     },
   ],
-  StatsWeights: {
-    [StatType.NONE]: 0,
-    [StatType.CRIT_DMG]: 1,
-    [StatType.CRIT_RATE]: 1,
-    [StatType.ATTACK]: 0.5,
-    [StatType.ATTACK_PERCENTAGE]: 0.75,
-    [StatType.HP]: 0,
-    [StatType.HP_PERCENTAGE]: 0,
-    [StatType.HEALING_BONUS]: 0,
-    [StatType.DEF]: 0,
-    [StatType.DEF_PERCENTAGE]: 0,
-    [StatType.ENERGY_REGENERATION]: 0.5,
-    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
-    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
-    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
-    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.5,
-    [StatType.ELECTRO_DMG_BONUS]: 0,
-    [StatType.FUSION_DMG_BONUS]: 0.1,
-    [StatType.GLACIO_DMG_BONUS]: 0,
-    [StatType.HAVOC_DMG_BONUS]: 0,
-    [StatType.SPECTRO_DMG_BONUS]: 0,
-    [StatType.AERO_DMG_BONUS]: 0,
-  },
   Sequences: [
     {
       Name: '',
@@ -1328,6 +1548,24 @@ export const Changli: ICharacter = {
   ],
   EquipedEchoes: [],
   Unlocked: false,
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.5,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.5,
+    [StatType.FUSION_DMG_BONUS]: 0.1,
+  },
 }
 
 // 1304
@@ -1539,11 +1777,495 @@ export const Jinhsi: ICharacter = {
     [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0.25,
     [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.5,
     [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.5,
-    [StatType.ELECTRO_DMG_BONUS]: 0,
-    [StatType.FUSION_DMG_BONUS]: 0,
-    [StatType.GLACIO_DMG_BONUS]: 0,
-    [StatType.HAVOC_DMG_BONUS]: 0,
     [StatType.SPECTRO_DMG_BONUS]: 0.1,
+  },
+}
+
+// 1402
+export const Yangyang: ICharacter = {
+  Id: 1402,
+  Name: 'Yangyang',
+  Icon: 'Yangyang_Icon.webp',
+  SplashArt: 'Yangyang_Portrait.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: CharacterType.AERO,
+  WeaponType: WeaponType.SWORD,
+  Level: 90,
+  Stats: [
+    {
+      Value: 10200,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1100,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 250,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.AERO_DMG_BONUS,
+    },
+  ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Yangyang_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Yangyang_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Yangyang_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Yangyang_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Yangyang_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Yangyang_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Sword.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.AERO_DMG_BONUS,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.AERO_DMG_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Yangyang_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Yangyang_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Yangyang_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Yangyang_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Yangyang_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Yangyang_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.AERO_DMG_BONUS,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.AERO_DMG_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Yangyang_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  EquipedEchoes: [],
+  Unlocked: false,
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.25,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.25,
+    [StatType.AERO_DMG_BONUS]: 0.1,
+  },
+}
+
+// 1403
+export const Aalto: ICharacter = {
+  Id: 1403,
+  Name: 'Aalto',
+  Icon: 'Aalto_Icon.webp',
+  SplashArt: 'Aalto_Portrait.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: CharacterType.AERO,
+  WeaponType: WeaponType.PISTOLS,
+  Level: 90,
+  Stats: [
+    {
+      Value: 9850,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1076,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 263,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.AERO_DMG_BONUS,
+    },
+  ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Aalto_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Aalto_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Aalto_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Aalto_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Aalto_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Aalto_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Sword.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.AERO_DMG_BONUS,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.AERO_DMG_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Aalto_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Aalto_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Aalto_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Aalto_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Aalto_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Aalto_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.AERO_DMG_BONUS,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Aero_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.AERO_DMG_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Aalto_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  EquipedEchoes: [],
+  Unlocked: false,
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.5,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+    [StatType.AERO_DMG_BONUS]: 0.1,
   },
 }
 
@@ -1790,11 +2512,6 @@ export const Jiyan: ICharacter = {
     [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0.75,
     [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
     [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
-    [StatType.ELECTRO_DMG_BONUS]: 0,
-    [StatType.FUSION_DMG_BONUS]: 0,
-    [StatType.GLACIO_DMG_BONUS]: 0,
-    [StatType.HAVOC_DMG_BONUS]: 0,
-    [StatType.SPECTRO_DMG_BONUS]: 0,
     [StatType.AERO_DMG_BONUS]: 0.1,
   },
 }
@@ -2040,15 +2757,11 @@ export const ShoreKeeper: ICharacter = {
     [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
     [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
     [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
-    [StatType.ELECTRO_DMG_BONUS]: 0,
-    [StatType.FUSION_DMG_BONUS]: 0,
-    [StatType.GLACIO_DMG_BONUS]: 0,
-    [StatType.HAVOC_DMG_BONUS]: 0,
     [StatType.SPECTRO_DMG_BONUS]: 0.1,
   },
 }
 
-// 1505
+// 1506
 export const Phoebe: ICharacter = {
   Id: 1506,
   Name: 'Phoebe',
@@ -2289,11 +3002,219 @@ export const Phoebe: ICharacter = {
     [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
     [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
     [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
-    [StatType.ELECTRO_DMG_BONUS]: 0,
-    [StatType.FUSION_DMG_BONUS]: 0,
-    [StatType.GLACIO_DMG_BONUS]: 0,
-    [StatType.HAVOC_DMG_BONUS]: 0,
     [StatType.SPECTRO_DMG_BONUS]: 0.1,
+  },
+}
+
+// 1602
+export const Danjin: ICharacter = {
+  Id: 1602,
+  Name: 'Danjin',
+  Icon: 'Danjin_Icon.webp',
+  SplashArt: 'Danjin_Portrait.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: CharacterType.HAVOC,
+  WeaponType: WeaponType.SWORD,
+  Level: 90,
+  Stats: [
+    {
+      Value: 9438,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1149,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 263,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HAVOC_DMG_BONUS,
+    },
+  ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Danjin_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Danjin_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Danjin_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Danjin_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Danjin_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Danjin_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Sword.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Havoc_DMG_Bonus.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Havoc_DMG_Bonus.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Danjin_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Danjin_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Danjin_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Danjin_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Danjin_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Danjin_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Havoc_DMG_Bonus.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Havoc_DMG_Bonus.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Danjin_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  EquipedEchoes: [],
+  Unlocked: false,
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.70,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.5,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0.5,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.5,
+    [StatType.HAVOC_DMG_BONUS]: 0.1,
   },
 }
 
@@ -2357,28 +3278,6 @@ export const Camellya: ICharacter = {
       Type: StatType.HAVOC_DMG_BONUS,
     },
   ],
-  StatsWeights: {
-    [StatType.NONE]: 0,
-    [StatType.CRIT_DMG]: 1,
-    [StatType.CRIT_RATE]: 1,
-    [StatType.ATTACK]: 0.5,
-    [StatType.ATTACK_PERCENTAGE]: 0.75,
-    [StatType.HP]: 0,
-    [StatType.HP_PERCENTAGE]: 0,
-    [StatType.HEALING_BONUS]: 0,
-    [StatType.DEF]: 0,
-    [StatType.DEF_PERCENTAGE]: 0,
-    [StatType.ENERGY_REGENERATION]: 0.5,
-    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0.75,
-    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
-    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.5,
-    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.5,
-    [StatType.ELECTRO_DMG_BONUS]: 0,
-    [StatType.FUSION_DMG_BONUS]: 0,
-    [StatType.GLACIO_DMG_BONUS]: 0,
-    [StatType.HAVOC_DMG_BONUS]: 0.1,
-    [StatType.SPECTRO_DMG_BONUS]: 0,
-  },
   Sequences: [
     {
       Name: '',
@@ -2415,7 +3314,7 @@ export const Camellya: ICharacter = {
     {
       Id: 'Basic Attack',
       Level: 1,
-      Icon: 'Skill_Rectifier.webp',
+      Icon: 'Skill_Sword.webp',
       Unlocked: true,
     },
     {
@@ -2543,22 +3442,285 @@ export const Camellya: ICharacter = {
   ],
   EquipedEchoes: [],
   Unlocked: false,
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.5,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0.75,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.5,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.5,
+    [StatType.HAVOC_DMG_BONUS]: 0.1,
+  },
 }
 
-// #endregion
+// 1606
+export const Roccia: ICharacter = {
+  Id: 1606,
+  Name: 'Roccia',
+  Rarity: Rarity.FIVE_STARS,
+  Icon: 'Roccia_Icon.webp',
+  SplashArt: 'Roccia_Portrait.webp',
+  Type: CharacterType.HAVOC,
+  WeaponType: WeaponType.GAUNTLETS,
+  Level: 90,
+  Stats: [
+    {
+      Value: 12250,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1198,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 375,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HAVOC_DMG_BONUS,
+    },
+  ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Roccia_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Roccia_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Roccia_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Roccia_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Roccia_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Roccia_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Gauntlets.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 2.40,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 5.60,
+      },
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Roccia_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Roccia_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Roccia_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Roccia_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Roccia_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Roccia_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 2.40,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 5.60,
+      },
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Roccia_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  EquipedEchoes: [],
+  Unlocked: false,
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.5,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0.75,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.5,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.5,
+    [StatType.HAVOC_DMG_BONUS]: 0.1,
+  },
+}
 
 export const TemplateCharacters: ICharacter[] = [
   Sanhua,
+  Baizhi,
+  Zhezhi,
+  Youhu,
+  Carlotta,
+  Chixia,
+  Changli,
+  Jinhsi,
   Yangyang,
   Aalto,
-  Danjin,
-
-  Jinhsi,
-  Changli,
-  Zhezhi,
-  ShoreKeeper,
-  Camellya,
-  Carlotta,
   Jiyan,
+  ShoreKeeper,
   Phoebe,
+  Danjin,
+  Camellya,
+  Roccia,
 ]

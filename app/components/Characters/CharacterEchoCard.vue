@@ -95,7 +95,7 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
               (<EchoScore :value="score.NoteScore" :text="score.Note" class="font-semibold" />)
             </p>
           </div>
-          <div v-else class="mt-2 w-full flex flex-row items-center justify-end">
+          <div v-else class="mt-1 w-full flex flex-row items-center justify-end">
             <USkeleton class="h-2 w-8" :ui="{ base: '' }" />
           </div>
         </div>

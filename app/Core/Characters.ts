@@ -712,11 +712,11 @@ export const Danjin: ICharacter = {
 // #region 5 Stars
 
 // 1105
-export const ZheZhi: ICharacter = {
+export const Zhezhi: ICharacter = {
   Id: 1105,
-  Name: 'ZheZhi',
-  Icon: 'ZheZhi_Icon.webp',
-  SplashArt: 'ZheZhi_Splash_Art.webp',
+  Name: 'Zhezhi',
+  Icon: 'Zhezhi_Icon.webp',
+  SplashArt: 'Zhezhi_Portrait.webp',
   Rarity: Rarity.FIVE_STARS,
   Type: CharacterType.GLACIO,
   WeaponType: WeaponType.RECTIFIER,
@@ -768,61 +768,191 @@ export const ZheZhi: ICharacter = {
     },
     {
       Value: 0,
-      Type: StatType.FUSION_DMG_BONUS,
+      Type: StatType.GLACIO_DMG_BONUS,
     },
   ],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
-    [StatType.ATTACK]: 0.25,
-    [StatType.ATTACK_PERCENTAGE]: 0.5,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
     [StatType.HP]: 0,
     [StatType.HP_PERCENTAGE]: 0,
     [StatType.HEALING_BONUS]: 0,
     [StatType.DEF]: 0,
     [StatType.DEF_PERCENTAGE]: 0,
-    [StatType.ENERGY_REGENERATION]: 0.5,
-    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0.75,
+    [StatType.ENERGY_REGENERATION]: 0.75,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0.25,
     [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
     [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
     [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
     [StatType.ELECTRO_DMG_BONUS]: 0,
-    [StatType.FUSION_DMG_BONUS]: 0.1,
-    [StatType.GLACIO_DMG_BONUS]: 0,
+    [StatType.FUSION_DMG_BONUS]: 0,
+    [StatType.GLACIO_DMG_BONUS]: 0.1,
     [StatType.HAVOC_DMG_BONUS]: 0,
     [StatType.SPECTRO_DMG_BONUS]: 0,
   },
   Sequences: [
     {
       Name: '',
-      Icon: 'ZheZhi_Sequence_Node_01.webp',
+      Icon: 'Zhezhi_Sequence_Node_01.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'ZheZhi_Sequence_Node_02.webp',
+      Icon: 'Zhezhi_Sequence_Node_02.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'ZheZhi_Sequence_Node_03.webp',
+      Icon: 'Zhezhi_Sequence_Node_03.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'ZheZhi_Sequence_Node_04.webp',
+      Icon: 'Zhezhi_Sequence_Node_04.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'ZheZhi_Sequence_Node_05.webp',
+      Icon: 'Zhezhi_Sequence_Node_05.webp',
       Unlocked: false,
     },
     {
       Name: '',
-      Icon: 'ZheZhi_Sequence_Node_06.webp',
+      Icon: 'Zhezhi_Sequence_Node_06.webp',
       Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Rectifier.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 1.20,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 2.80,
+      },
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Zhezhi_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Zhezhi_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Zhezhi_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Zhezhi_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Zhezhi_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Zhezhi_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 1.20,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 2.80,
+      },
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Zhezhi_Outro_Skill.webp',
+      Unlocked: true,
     },
   ],
   EquipedEchoes: [],
@@ -1032,6 +1162,7 @@ export const Changli: ICharacter = {
     [StatType.GLACIO_DMG_BONUS]: 0,
     [StatType.HAVOC_DMG_BONUS]: 0,
     [StatType.SPECTRO_DMG_BONUS]: 0,
+    [StatType.AERO_DMG_BONUS]: 0,
   },
   Sequences: [
     {
@@ -1416,6 +1547,258 @@ export const Jinhsi: ICharacter = {
   },
 }
 
+// 1404
+export const Jiyan: ICharacter = {
+  Id: 1404,
+  Name: 'Jiyan',
+  Rarity: Rarity.FIVE_STARS,
+  Icon: 'Jiyan_Icon.webp',
+  SplashArt: 'Jiyan_Portrait.webp',
+  Background: 'Jiyan_Splash_Art.webp',
+  WeaponType: WeaponType.BROADBLADE,
+  Type: CharacterType.AERO,
+  Level: 90,
+  Stats: [
+    {
+      Value: 10488,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1186,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 438,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.AERO_DMG_BONUS,
+    },
+  ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Jiyan_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Jiyan_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Jiyan_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Jiyan_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Jiyan_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Jiyan_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Broadblade.webp',
+      Unlocked: true,
+
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 1.20,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 2.80,
+      },
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Jiyan_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Jiyan_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Jiyan_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Jiyan_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Jiyan_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Jiyan_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 1.20,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 2.80,
+      },
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Jiyan_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  EquipedEchoes: [],
+  Unlocked: false,
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.5,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0.75,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+    [StatType.ELECTRO_DMG_BONUS]: 0,
+    [StatType.FUSION_DMG_BONUS]: 0,
+    [StatType.GLACIO_DMG_BONUS]: 0,
+    [StatType.HAVOC_DMG_BONUS]: 0,
+    [StatType.SPECTRO_DMG_BONUS]: 0,
+    [StatType.AERO_DMG_BONUS]: 0.1,
+  },
+}
+
 // 1505
 export const ShoreKeeper: ICharacter = {
   Id: 1505,
@@ -1665,13 +2048,262 @@ export const ShoreKeeper: ICharacter = {
   },
 }
 
+// 1505
+export const Phoebe: ICharacter = {
+  Id: 1506,
+  Name: 'Phoebe',
+  Rarity: Rarity.FIVE_STARS,
+  Icon: 'Phoebe_Icon.webp',
+  SplashArt: 'Phoebe_Full_Sprite.webp',
+  // Background: 'Phoebe_Splash_Art.webp',
+  Type: CharacterType.SPECTRO,
+  WeaponType: WeaponType.RECTIFIER,
+  Level: 90,
+  Stats: [
+    {
+      Value: 10825,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1259,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 413,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.SPECTRO_DMG_BONUS,
+    },
+  ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Phoebe_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Phoebe_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Phoebe_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Phoebe_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Phoebe_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Phoebe_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Rectifier.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 2.40,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 5.60,
+      },
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Phoebe_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Phoebe_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Phoebe_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Phoebe_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Phoebe_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Phoebe_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 2.40,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 5.60,
+      },
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Phoebe_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  EquipedEchoes: [],
+  Unlocked: false,
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0.75,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.75,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+    [StatType.ELECTRO_DMG_BONUS]: 0,
+    [StatType.FUSION_DMG_BONUS]: 0,
+    [StatType.GLACIO_DMG_BONUS]: 0,
+    [StatType.HAVOC_DMG_BONUS]: 0,
+    [StatType.SPECTRO_DMG_BONUS]: 0.1,
+  },
+}
+
 // 1603
 export const Camellya: ICharacter = {
   Id: 1603,
   Name: 'Camellya',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Camellya_Icon.webp',
-  SplashArt: 'Camellya_Splash_Art.webp',
+  SplashArt: 'Camellya_Portrait.webp',
   Type: CharacterType.HAVOC,
   WeaponType: WeaponType.SWORD,
   Level: 90,
@@ -1725,6 +2357,28 @@ export const Camellya: ICharacter = {
       Type: StatType.HAVOC_DMG_BONUS,
     },
   ],
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.5,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0.75,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.5,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.5,
+    [StatType.ELECTRO_DMG_BONUS]: 0,
+    [StatType.FUSION_DMG_BONUS]: 0,
+    [StatType.GLACIO_DMG_BONUS]: 0,
+    [StatType.HAVOC_DMG_BONUS]: 0.1,
+    [StatType.SPECTRO_DMG_BONUS]: 0,
+  },
   Sequences: [
     {
       Name: '',
@@ -1757,6 +2411,136 @@ export const Camellya: ICharacter = {
       Unlocked: false,
     },
   ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Rectifier.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 2.40,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 5.60,
+      },
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Camellya_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Camellya_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Camellya_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Camellya_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Camellya_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Camellya_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 2.40,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 5.60,
+      },
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Camellya_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
   EquipedEchoes: [],
   Unlocked: false,
 }
@@ -1771,8 +2555,10 @@ export const TemplateCharacters: ICharacter[] = [
 
   Jinhsi,
   Changli,
-  ZheZhi,
+  Zhezhi,
   ShoreKeeper,
   Camellya,
   Carlotta,
+  Jiyan,
+  Phoebe,
 ]

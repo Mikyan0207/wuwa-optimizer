@@ -258,6 +258,23 @@ export const Veritys_Handle: IWeapon = {
   },
 }
 
+export const Luminous_Hymn: IWeapon = {
+  Id: 21050046,
+  Name: 'Luminous Hymn',
+  Level: 90,
+  Icon: 'Weapon_Luminous_Hymn.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Type: WeaponType.RECTIFIER,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 500,
+  },
+  SecondaryStatistic: {
+    Type: StatType.CRIT_RATE,
+    Value: 36.0,
+  },
+}
+
 export const Amity_Accord: IWeapon = {
   Id: 21140044,
   Name: 'Amity Accord',
@@ -1260,6 +1277,8 @@ export const Weapons: IWeapon[] = [
   Tragicomedy,
   Verdant_Summit,
   Veritys_Handle,
+  Luminous_Hymn,
+
   Amity_Accord,
   Augment,
   Autumntrace,

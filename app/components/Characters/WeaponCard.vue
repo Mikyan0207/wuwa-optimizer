@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import type { WeaponType } from '~/Core/Enums/WeaponType'
 import type { Weapon } from '~/Core/Models/Weapon'
 import { Rarity } from '~/Core/Enums/Rarity'
 
 const props = defineProps<{
   characterId: number
+  characterWeaponType?: WeaponType
   weaponId?: number
 }>()
 
@@ -95,7 +97,7 @@ function OnSubmit() {
         <div class="grid cols-1 w-full gap-8">
           <div class="col-span-2 flex flex-col gap-2">
             <UFormGroup label="Weapon">
-              <UInputMenu v-model="EditedWeapon" placeholder="" :options="WeaponsStore.GetWeapons()" option-attribute="Name">
+              <UInputMenu v-model="EditedWeapon" placeholder="" :options="WeaponsStore.GetWeapons().filter(weapon => weapon.Type === characterWeaponType)" option-attribute="Name">
                 <template #option="{ option: o }">
                   <div class="w-full flex items-center justify-between gap-1">
                     <div class="w-full flex flex-row items-center gap-2">

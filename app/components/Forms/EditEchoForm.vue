@@ -116,11 +116,17 @@ function GetMainStatValue() {
 
   switch (EditedEcho.value?.Cost) {
     case EchoCost.FOUR_COST:
-      return SelectedMainStat.value.value = (FOUR_COST_MAIN_STATS_VALUES[SelectedMainStat.value.type as StatType] || 0).toString()
+      return SelectedMainStat.value.value = (FOUR_COST_MAIN_STATS_VALUES[SelectedMainStat.value.type as StatType] || 0)
+        .toFixed(1)
+        .toString()
     case EchoCost.THREE_COST:
-      return SelectedMainStat.value.value = (THREE_COST_MAIN_STATS_VALUES[SelectedMainStat.value.type as StatType] || 0).toString()
+      return SelectedMainStat.value.value = (THREE_COST_MAIN_STATS_VALUES[SelectedMainStat.value.type as StatType] || 0)
+        .toFixed(1)
+        .toString()
     case EchoCost.ONE_COST:
-      return SelectedMainStat.value.value = (ONE_COST_MAIN_STATS_VALUES[SelectedMainStat.value.type as StatType] || 0).toString()
+      return SelectedMainStat.value.value = (ONE_COST_MAIN_STATS_VALUES[SelectedMainStat.value.type as StatType] || 0)
+        .toFixed(1)
+        .toString()
     default:
       return 0
   }

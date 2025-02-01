@@ -8,10 +8,12 @@
       <LeftNavigation />
     </div>
     <div class="absolute inset-0 h-full w-full -z-1">
-      <div class="absolute h-full w-full bg-[url(/images/main-bg-light.png)] bg-contain bg-center bg-no-repeat blur-4 -left-50% -top-50%" />
+      <div
+        class="absolute h-full w-full bg-[url(/images/main-bg-light.png)] bg-contain bg-center bg-no-repeat blur-4 -left-50% -top-50%"
+      />
       <div class="absolute h-full w-full -left-50% -top-50%">
         <video
-          key="video" playsinline autoplay loop muted
+          key="particles-video-default" playsinline autoplay loop muted
           class="pointer-events-none h-full w-full object-cover mix-blend-screen"
         >
           <source src="/images/particles.mp4">

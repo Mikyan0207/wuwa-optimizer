@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div class="border border-white/14 rounded bg-black/66 p-4 backdrop-blur-6">
+  <div class="border-2 border-white/18 rounded bg-black/66 p-4 backdrop-blur-6">
     <slot />
   </div>
 </template>

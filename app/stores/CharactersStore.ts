@@ -10,6 +10,8 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
   const Characters = useLocalStorage<ICharacter[]>('Characters', [...TemplateCharacters as ICharacter[]])
   const CharactersVersion = useLocalStorage<string | undefined>('CharactersVersion', undefined)
 
+  const CharactersEventBus = useEventBus('CharactersEvents')
+
   function IsUnlocked(characterId: number) {
     return Characters.value.find(x => x.Id === characterId)?.Unlocked === true
   }
@@ -49,6 +51,7 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     }
 
     Characters.value[idx] = character as ICharacter
+    CharactersEventBus.emit()
   }
 
   function RemoveCharacter(id: number) {

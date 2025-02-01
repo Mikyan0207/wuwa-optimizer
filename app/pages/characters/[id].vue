@@ -13,9 +13,11 @@ const CharacterInfoRef = ref<HTMLElement | null>(null)
 const CharactersStore = useCharactersStore()
 const EchoesStore = useEchoesStore()
 const ScoreCalculator = useScoreCalculatorStore()
+const CharactersEventBus = useEventBus('CharactersEvents')
 
 const SelectedCharacter = computed(() => CharactersStore.GetCharacter(Number.parseInt(Route.params.id)))
 const CharacterScore = ref<ICharacterRatingResult>()
+const ShowScreenShotBackground = ref<boolean>(false)
 
 if (SelectedCharacter.value === undefined || SelectedCharacter.value === null) {
   await navigateTo('/characters')
@@ -23,6 +25,14 @@ if (SelectedCharacter.value === undefined || SelectedCharacter.value === null) {
 else {
   CharacterScore.value = ScoreCalculator.GetCharacterScore(SelectedCharacter.value, SelectedCharacter.value.EquipedEchoes || [])
 }
+
+CharactersEventBus.on(() => {
+  if (SelectedCharacter.value === undefined) {
+    return
+  }
+
+  CharacterScore.value = ScoreCalculator.GetCharacterScore(SelectedCharacter.value, SelectedCharacter.value.EquipedEchoes || [])
+})
 
 function GetEchoes(): Echo[] {
   if (SelectedCharacter.value === undefined || SelectedCharacter.value.EquipedEchoes.length === 0) {
@@ -33,7 +43,7 @@ function GetEchoes(): Echo[] {
   const echoes: Echo[] = Array.from({ length: 5 }).fill(new Echo(Empty_Echo)) as Echo[]
 
   equippedEchoes.forEach((echo, index) => {
-    echoes[echo.EquipedSlot || index] = echo
+    echoes[index] = echo
   })
 
   return echoes
@@ -44,9 +54,11 @@ async function TakeScreenShotAsync() {
     return
   }
 
+  ShowScreenShotBackground.value = true
+
   const scale = 1
   const w = 1280 * scale
-  const h = 885 * scale
+  const h = 886 * scale
 
   htmlToImage.toBlob(CharacterInfoRef.value, {
     pixelRatio: 1,
@@ -55,7 +67,6 @@ async function TakeScreenShotAsync() {
     width: w,
     canvasWidth: w,
     skipAutoScale: true,
-    backgroundColor: '#2f2f2f',
     style: {
       zoom: `${scale}`,
     },
@@ -66,13 +77,15 @@ async function TakeScreenShotAsync() {
       }
       const fileURL = URL.createObjectURL(blob)
       window.open(fileURL, '_blank')
+
+      ShowScreenShotBackground.value = false
     })
 }
 </script>
 
 <template>
   <div>
-    <div class="h-12 w-full flex items-center justify-between gap-2 border-b border-white/14 bg-black/44 p-3 text-sm backdrop-blur-6">
+    <div class="sticky top-0 z-30 h-12 w-full flex items-center justify-between gap-2 border-b border-white/14 bg-black/44 p-3 text-sm backdrop-blur-6">
       <div class="flex items-center gap-2">
         <div class="mx-4 h-6 w-1px bg-white/14" />
         <NuxtLink to="/characters">
@@ -90,8 +103,11 @@ async function TakeScreenShotAsync() {
     </div>
 
     <div v-if="SelectedCharacter !== undefined && CharacterScore">
-      <div class="mx-auto my-8 max-w-7xl">
-        <div ref="CharacterInfoRef" class="grid grid-cols-5 mx-auto w-full gap-1">
+      <div class="mx-auto my-2 max-w-7xl">
+        <div ref="CharacterInfoRef" class="relative grid grid-cols-5 mx-auto w-full gap-1">
+          <div v-if="ShowScreenShotBackground" class="absolute inset-0">
+            <LayeredBackground :hide-video="true" />
+          </div>
           <!-- Character Info (Art, Stats, Weapon, Skills) -->
           <CharacterArtCard v-if="SelectedCharacter" :character="SelectedCharacter" class="col-span-2" />
           <div class="grid col-span-3 grid-cols-2 gap-1">
@@ -120,7 +136,7 @@ async function TakeScreenShotAsync() {
             :echo-slot="idx"
             :score="CharacterScore.EchoesScores.find(x => x.EchoId === echo.Id)"
             :character="SelectedCharacter"
-            class="relative border border-white/14 rounded-md bg-black/66"
+            class="relative border-2 border-white/18 rounded bg-black/66 backdrop-blur-6"
           />
         </div>
       </div>

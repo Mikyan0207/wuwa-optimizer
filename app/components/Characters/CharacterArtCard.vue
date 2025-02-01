@@ -9,7 +9,7 @@ defineProps<{
 <template>
   <!-- Character Art -->
   <div
-    class="relative overflow-hidden border border-white/14 rounded-md bg-black/66"
+    class="relative overflow-hidden border-2 border-white/18 rounded bg-black/66 backdrop-blur-6"
   >
     <!-- Top Right Icons background -->
     <div class="absolute inset-0 z-20 from-black/25 via-transparent to-transparent bg-gradient-to-bl" />

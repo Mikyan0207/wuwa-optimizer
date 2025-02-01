@@ -69,6 +69,8 @@ const IntroStatBonus1 = computed<ISkill | undefined>(() =>
 const IntroStatBonus2 = computed<ISkill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Intro_Stat_Bonus_2'),
 )
+
+// TODO: Simplify skill update with a single global method that is called on skill click.
 </script>
 
 <template>

@@ -75,7 +75,8 @@ export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () =>
   }
 
   function CalculateEchoesStats(echoesIds: number[]): IStatistic[] {
-    const echoes = EchoesStore.GetEchoesByIds(echoesIds)
+    // Do we really need to do that...?
+    const echoes = JSON.parse(JSON.stringify(EchoesStore.GetEchoesByIds(echoesIds)))
     const stats: IStatistic[] = []
 
     echoes.forEach((echo: IEcho) => {

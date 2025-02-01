@@ -191,9 +191,10 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
   const EchoesStore = useEchoesStore()
 
   function GetCharacterScore(character: Character, echoesIds: number[]): ICharacterRatingResult {
-    const echoes = EchoesStore.GetEchoesByIds(echoesIds)
+    const echoes = JSON.parse(JSON.stringify(EchoesStore.GetEchoesByIds(echoesIds)))
     const echoesScores = CalculateEchoesScore(echoes, character.StatsWeights!)
     let totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0) * 100
+
     totalScore += CalculateMainStatsScore(echoes)
 
     const note = TOTAL_SCORE_GRADES.find(g => totalScore >= g.Score)?.Grade || ScoreGrade.F

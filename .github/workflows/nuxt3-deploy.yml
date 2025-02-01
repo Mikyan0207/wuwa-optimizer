@@ -43,8 +43,9 @@ jobs:
             echo "command=ci" >> $GITHUB_OUTPUT
             exit 0
           else
-            echo "Unable to determine package manager"
-            exit 1
+            echo "manager=pnpm" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            exit 0
           fi
       - name: Setup Node
         uses: actions/setup-node@v4

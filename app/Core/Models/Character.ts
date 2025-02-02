@@ -109,6 +109,8 @@ export class Character {
         return `${basePath}Fusion.webp`
       case CharacterType.AERO:
         return `${basePath}Aero.webp`
+      case CharacterType.ELECTRO:
+        return `${basePath}Electro.webp`
       default:
         return 'None'
     }

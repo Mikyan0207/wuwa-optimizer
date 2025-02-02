@@ -232,11 +232,7 @@ function OnCharacterClicked(characterId: number) {
       <CharacterIcon
         v-for="c in CharactersList"
         :key="c.Id"
-        :name="c.Name"
-        :rarity="c.Rarity"
-        :icon="c.GetIcon()"
-        :type="c.GetTypeIcon()"
-        :unlocked="c.Unlocked"
+        :character="c"
         @click.prevent="OnCharacterClicked(c.Id ?? -1)"
       />
     </div>

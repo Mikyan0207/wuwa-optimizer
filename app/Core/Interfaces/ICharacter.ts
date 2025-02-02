@@ -1,3 +1,4 @@
+import type { CharacterReleaseState } from '../Enums/CharacterReleaseState'
 import type { CharacterType } from '../Enums/CharacterType'
 import type { Rarity } from '../Enums/Rarity'
 import type { WeaponType } from '../Enums/WeaponType'
@@ -7,6 +8,7 @@ import type IStatistic from './IStatistic'
 
 export default interface ICharacter {
   Id: number
+  ReleaseState?: CharacterReleaseState
   Name: string
   Icon: string
   SplashArt: string

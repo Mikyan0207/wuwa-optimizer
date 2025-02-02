@@ -1,16 +1,14 @@
 <script setup lang="ts">
+import type { Character } from '~/Core/Models/Character'
+import { CharacterReleaseState } from '~/Core/Enums/CharacterReleaseState'
 import { Rarity } from '~/Core/Enums/Rarity'
 
 const props = defineProps<{
-  name: string
-  rarity: Rarity
-  icon: string
-  type: string
-  unlocked: boolean
+  character: Character
 }>()
 
 const GetBackgroundColor = computed(() => {
-  switch (props.rarity) {
+  switch (props.character.Rarity) {
     case Rarity.FIVE_STARS:
       return 'bg-amber-4'
     case Rarity.FOUR_STARS:
@@ -23,7 +21,7 @@ const GetBackgroundColor = computed(() => {
 })
 
 const GetSecondaryColor = computed(() => {
-  switch (props.rarity) {
+  switch (props.character.Rarity) {
     case Rarity.FIVE_STARS:
       return 'bg-yellow-1'
     case Rarity.FOUR_STARS:
@@ -36,7 +34,7 @@ const GetSecondaryColor = computed(() => {
 })
 
 const GetHighlightColor = computed(() => {
-  switch (props.rarity) {
+  switch (props.character.Rarity) {
     case Rarity.FIVE_STARS:
       return 'bg-amber-4'
     case Rarity.FOUR_STARS:
@@ -54,14 +52,24 @@ const GetHighlightColor = computed(() => {
     class="group relative cursor-pointer border-2 border-white/18 rounded bg-black/66 backdrop-blur-4 transition-duration-100"
   >
     <div class="relative min-h-32 w-32 flex items-center justify-center overflow-clip">
+      <div v-if="character.ReleaseState === CharacterReleaseState.NEW" class="absolute left-1 top-0 z-2">
+        <UBadge :ui="{ rounded: 'rounded-sm', variant: { solid: 'bg-red-600! text-white!' } }" variant="solid" size="xs">
+          NEW
+        </UBadge>
+      </div>
+      <div v-if="character.ReleaseState === CharacterReleaseState.UPCOMING" class="absolute left-1 top-0 z-2">
+        <UBadge :ui="{ rounded: 'rounded-sm', variant: { solid: 'bg-purple-500! text-white!' } }" variant="solid" size="xs">
+          2.1
+        </UBadge>
+      </div>
       <div class="absolute right-0 top-0 z-2">
-        <NuxtImg width="32" height="32" :src="type" style="color: transparent;" />
+        <NuxtImg width="32" height="32" :src="character.GetTypeIcon()" style="color: transparent;" />
       </div>
       <div class="absolute bottom-0">
         <NuxtImg
           width="160"
           height="160"
-          :src="`${icon}`"
+          :src="`${character.GetIcon()}`"
           style="color: transparent;"
         />
       </div>
@@ -82,7 +90,7 @@ const GetHighlightColor = computed(() => {
       </div>
     </div>
     <div class="py-1 text-center text-xs">
-      {{ name }}
+      {{ character.Name }}
     </div>
   </div>
 </template>

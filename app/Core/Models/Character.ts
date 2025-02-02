@@ -1,3 +1,4 @@
+import type { CharacterReleaseState } from '../Enums/CharacterReleaseState'
 import type { StatType } from '../Enums/StatType'
 import type ICharacter from '../Interfaces/ICharacter'
 import type ICharacterSequence from '../Interfaces/ISequence'
@@ -12,6 +13,7 @@ import { WeaponType } from '../Enums/WeaponType'
 
 export class Character {
   Id: number
+  ReleaseState?: CharacterReleaseState
   Name: string
   Icon: string
   SplashArt?: string
@@ -32,6 +34,7 @@ export class Character {
 
   constructor(character: ICharacter) {
     this.Id = character.Id
+    this.ReleaseState = character.ReleaseState
     this.Name = character.Name
     this.Icon = character.Icon
     this.SplashArt = character.SplashArt

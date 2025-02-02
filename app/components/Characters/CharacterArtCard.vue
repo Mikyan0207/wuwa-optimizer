@@ -15,7 +15,7 @@ defineProps<{
     <div class="absolute inset-0 z-20 from-black/25 via-transparent to-transparent bg-gradient-to-bl" />
     <NuxtImg
       fit="cover"
-      :src="`${character.Background ? character.GetBackground() : '/images/character-bg-placeholder.webp'}`"
+      src="/images/character-bg-placeholder.webp"
       class="absolute top--25% z-0 h-200% w-200% rotate-180 object-cover blur-lg"
     />
     <!-- Weapon Type & Character Type -->

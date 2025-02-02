@@ -3,7 +3,7 @@
 
 <!-- -->
 <template>
-  <div class="[background-size:16px_16px] relative h-100vh flex flex-row overflow-hidden bg-[radial-gradient(#ffffff12_1px,transparent_1px)]">
+  <div class="[background-size:16px_16px] relative h-100vh min-w-[1480px] flex flex-row overflow-hidden bg-[radial-gradient(#ffffff12_1px,transparent_1px)]">
     <div class="z-1 w-12em border-r border-white/14 bg-black/66 px-2 py-4 backdrop-blur-6">
       <LeftNavigation />
     </div>

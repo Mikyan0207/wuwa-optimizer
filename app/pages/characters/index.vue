@@ -155,8 +155,6 @@ function GetRarityAsNumber(rarity: Rarity) {
 }
 
 function OnCharacterClicked(characterId: number) {
-  CharactersStore.UnlockCharacter(characterId)
-
   navigateTo(`/characters/${characterId}`)
 }
 </script>
@@ -174,7 +172,7 @@ function OnCharacterClicked(characterId: number) {
         <div class="flex items-center justify-end gap-4">
           <!-- Character Type -->
           <div class="flex items-center justify-end gap-1">
-            <div class="flex border border-white/14 rounded bg-black/66">
+            <div class="flex border border-white/14 rounded bg-black/66 backdrop-blur-4">
               <div
                 v-for="(ch, idx) in CharacterTypesOptions" :key="ch.Type"
                 class="flex flex-row cursor-pointer items-center gap-2 px-4 py-1" :class="{
@@ -192,7 +190,7 @@ function OnCharacterClicked(characterId: number) {
           </div>
           <!-- Weapon Type -->
           <div class="flex items-center justify-end gap-1">
-            <div class="flex border border-white/14 rounded bg-black/66">
+            <div class="flex border border-white/14 rounded bg-black/66 backdrop-blur-4">
               <div
                 v-for="(weapon, idx) in WeaponTypesOptions" :key="weapon.Type"
                 class="flex flex-row cursor-pointer items-center gap-2 px-4 py-1" :class="{
@@ -210,7 +208,7 @@ function OnCharacterClicked(characterId: number) {
           </div>
           <!-- Weapon Rarity -->
           <div class="flex items-center gap-1">
-            <div class="flex border border-white/14 rounded bg-black/66">
+            <div class="flex border border-white/14 rounded bg-black/66 backdrop-blur-4">
               <div
                 v-for="(rarity, idx) in CharacterRarityOptions" :key="`weapon-rarity-${idx}`"
                 class="flex flex-row cursor-pointer items-center gap-2 px-4 py-1" :class="{

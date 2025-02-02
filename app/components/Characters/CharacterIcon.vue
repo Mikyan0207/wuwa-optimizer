@@ -51,11 +51,10 @@ const GetHighlightColor = computed(() => {
 
 <template>
   <div
-    class="group relative cursor-pointer border-2 border-white/18 rounded bg-black/66 backdrop-blur-4 transition-duration-100 hover:filter-grayscale-0"
-    :class="{ 'filter-grayscale-100': !unlocked }"
+    class="group relative cursor-pointer border-2 border-white/18 rounded bg-black/66 backdrop-blur-4 transition-duration-100"
   >
     <div class="relative min-h-32 w-32 flex items-center justify-center overflow-clip">
-      <div class="absolute right-0 top-0 z-2 grayscale-0!">
+      <div class="absolute right-0 top-0 z-2">
         <NuxtImg width="32" height="32" :src="type" style="color: transparent;" />
       </div>
       <div class="absolute bottom-0">

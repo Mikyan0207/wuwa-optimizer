@@ -474,6 +474,250 @@ export const Baizhi: ICharacter = {
   },
 }
 
+// 1104
+export const Lingyang: ICharacter = {
+  Id: 1104,
+  Name: 'Lingyang',
+  Rarity: Rarity.FIVE_STARS,
+  Icon: 'Lingyang_Icon.webp',
+  SplashArt: 'Lingyang_Portrait.webp',
+  Type: CharacterType.GLACIO,
+  WeaponType: WeaponType.GAUNTLETS,
+  Level: 90,
+  Stats: [
+    {
+      Value: 10388,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1210,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 438,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.GLACIO_DMG_BONUS,
+    },
+  ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Lingyang_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Lingyang_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Lingyang_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Lingyang_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Lingyang_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Lingyang_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Gauntlets.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Glacio_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.GLACIO_DMG_BONUS,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Glacio_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.GLACIO_DMG_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Lingyang_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Lingyang_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Lingyang_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Lingyang_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Lingyang_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Lingyang_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Glacio_DMG_BOnus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.GLACIO_DMG_BONUS,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Glacio_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.GLACIO_DMG_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Lingyang_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  EquipedEchoes: [],
+  Unlocked: false,
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.5,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0.25,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+    [StatType.GLACIO_DMG_BONUS]: 0.1,
+  },
+}
+
 // 1105
 export const Zhezhi: ICharacter = {
   Id: 1105,
@@ -726,7 +970,7 @@ export const Youhu: ICharacter = {
   Icon: 'Youhu_Icon.webp',
   SplashArt: 'Youhu_Portrait.webp',
   Type: CharacterType.GLACIO,
-  WeaponType: WeaponType.RECTIFIER,
+  WeaponType: WeaponType.GAUNTLETS,
   Level: 90,
   Stats: [
     {
@@ -814,7 +1058,7 @@ export const Youhu: ICharacter = {
     {
       Id: 'Basic Attack',
       Level: 1,
-      Icon: 'Skill_Rectifier.webp',
+      Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
     },
     {
@@ -969,8 +1213,6 @@ export const Carlotta: ICharacter = {
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Carlotta_Icon.webp',
   SplashArt: 'Carlotta_Portrait.webp',
-  // We don't need a background for Carlotta. We already have one with the portrait.
-  // Background:
   Type: CharacterType.GLACIO,
   WeaponType: WeaponType.PISTOLS,
   Level: 90,
@@ -1054,6 +1296,136 @@ export const Carlotta: ICharacter = {
       Name: '',
       Icon: 'Carlotta_Sequence_Node_06.webp',
       Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Pistols.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 1.20,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 2.80,
+      },
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Carlotta_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Carlotta_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Carlotta_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Carlotta_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Carlotta_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Carlotta_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 1.20,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 2.80,
+      },
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Carlotta_Outro_Skill.webp',
+      Unlocked: true,
     },
   ],
   EquipedEchoes: [],
@@ -1820,7 +2192,7 @@ export const Yuanwu: ICharacter = {
   SplashArt: 'Yuanwu_Portrait.webp',
   Rarity: Rarity.FOUR_STARS,
   Type: CharacterType.ELECTRO,
-  WeaponType: WeaponType.PISTOLS,
+  WeaponType: WeaponType.GAUNTLETS,
   Level: 90,
   Stats: [
     {
@@ -1908,7 +2280,7 @@ export const Yuanwu: ICharacter = {
     {
       Id: 'Basic Attack',
       Level: 1,
-      Icon: 'Skill_Pistols.webp',
+      Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
     },
     {
@@ -4717,6 +5089,7 @@ export const Roccia: ICharacter = {
 export const TemplateCharacters: ICharacter[] = [
   Sanhua,
   Baizhi,
+  Lingyang,
   Zhezhi,
   Youhu,
   Carlotta,

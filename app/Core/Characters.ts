@@ -3738,6 +3738,250 @@ export const Phoebe: ICharacter = {
   },
 }
 
+// 1601
+export const Taoqi: ICharacter = {
+  Id: 1601,
+  Name: 'Taoqi',
+  Icon: 'Taoqi_Icon.webp',
+  SplashArt: 'Taoqi_Portrait.webp',
+  Rarity: Rarity.FOUR_STARS,
+  Type: CharacterType.HAVOC,
+  WeaponType: WeaponType.BROADBLADE,
+  Level: 90,
+  Stats: [
+    {
+      Value: 8950,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1564,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 225,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HAVOC_DMG_BONUS,
+    },
+  ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Taoqi_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Taoqi_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Taoqi_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Taoqi_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Taoqi_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Taoqi_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic Attack',
+      Level: 1,
+      Icon: 'Skill_Broadblade.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Havoc_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HAVOC_DMG_BONUS,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Havoc_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HAVOC_DMG_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Resonance Skill',
+      Level: 1,
+      Icon: 'Taoqi_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Defense.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.DEF_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Defense.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HAVOC_DMG_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte Circuit',
+      Level: 1,
+      Icon: 'Taoqi_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Taoqi_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Taoqi_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance Liberation',
+      Level: 1,
+      Icon: 'Taoqi_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Defense.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.DEF_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Defense.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.DEF_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro Skill',
+      Level: 1,
+      Icon: 'Taoqi_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Havoc_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HAVOC_DMG_BONUS,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Havoc_DMG_Bonus.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.HAVOC_DMG_BONUS,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Outro Skill',
+      Level: 1,
+      Icon: 'Taoqi_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  EquipedEchoes: [],
+  Unlocked: false,
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 0,
+    [StatType.CRIT_RATE]: 0,
+    [StatType.ATTACK]: 0,
+    [StatType.ATTACK_PERCENTAGE]: 0,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 1,
+    [StatType.DEF_PERCENTAGE]: 1,
+    [StatType.ENERGY_REGENERATION]: 0.75,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+    [StatType.HAVOC_DMG_BONUS]: 0.1,
+  },
+}
+
 // 1602
 export const Danjin: ICharacter = {
   Id: 1602,
@@ -3842,12 +4086,20 @@ export const Danjin: ICharacter = {
       Level: 1,
       Icon: 'Icon_Havoc_DMG_Bonus.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.HAVOC_DMG_BONUS,
+        Value: 1.80,
+      },
     },
     {
       Id: 'Basic_Stat_Bonus_2',
       Level: 1,
       Icon: 'Icon_Havoc_DMG_Bonus.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.HAVOC_DMG_BONUS,
+        Value: 4.20,
+      },
     },
     {
       Id: 'Resonance Skill',
@@ -3860,12 +4112,20 @@ export const Danjin: ICharacter = {
       Level: 1,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
     },
     {
       Id: 'Skill_Stat_Bonus_2',
       Level: 1,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
     },
     {
       Id: 'Forte Circuit',
@@ -3896,12 +4156,20 @@ export const Danjin: ICharacter = {
       Level: 1,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
     },
     {
       Id: 'Liberation_Stat_Bonus_2',
       Level: 1,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
     },
     {
       Id: 'Intro Skill',
@@ -3914,12 +4182,20 @@ export const Danjin: ICharacter = {
       Level: 1,
       Icon: 'Icon_Havoc_DMG_Bonus.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.HAVOC_DMG_BONUS,
+        Value: 1.80,
+      },
     },
     {
       Id: 'Intro_Stat_Bonus_2',
       Level: 1,
       Icon: 'Icon_Havoc_DMG_Bonus.webp',
       Unlocked: true,
+      Stat: {
+        Type: StatType.HAVOC_DMG_BONUS,
+        Value: 4.20,
+      },
     },
     {
       Id: 'Outro Skill',
@@ -4455,6 +4731,7 @@ export const TemplateCharacters: ICharacter[] = [
   Lumi,
   ShoreKeeper,
   Phoebe,
+  Taoqi,
   Danjin,
   Camellya,
   Roccia,

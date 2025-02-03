@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/image',
     '@nuxt/ui',
-    'pinia-plugin-persistedstate/nuxt',
+    '@vee-validate/nuxt',
   ],
 
   ssr: false,
@@ -90,4 +90,16 @@ export default defineNuxtConfig({
   },
 
   pwa,
+
+  veeValidate: {
+    // disable or enable auto imports
+    autoImports: true,
+    // Use different names for components
+    componentNames: {
+      Form: 'VeeForm',
+      Field: 'VeeField',
+      FieldArray: 'VeeFieldArray',
+      ErrorMessage: 'VeeErrorMessage',
+    },
+  },
 })

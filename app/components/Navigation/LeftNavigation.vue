@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const MenuEventBus = useEventBus('MenuEvents')
+
 const Links = [
   [{
     label: 'Home',
@@ -29,10 +31,25 @@ const Links = [
     to: '/imports',
   }],
 ]
+
+const CollapseMenu = ref<boolean>(false)
+
+MenuEventBus.on(() => {
+  CollapseMenu.value = !CollapseMenu.value
+})
+
+const LabelClasses = computed(() =>
+  CollapseMenu.value ? 'hidden' : 'hidden 2xl:block',
+)
 </script>
 
 <template>
-  <UVerticalNavigation :links="Links">
+  <UVerticalNavigation
+    :links="Links"
+    :ui="{
+      label: LabelClasses,
+    }"
+  >
     <template #icon="{ link }">
       <NuxtImg v-if="link.type === 'image'" :src="link.icon" class="h-8 w-8 object-contain grayscale" />
       <UIcon v-else :name="link.icon" class="my-1 w-8 text-xl" />

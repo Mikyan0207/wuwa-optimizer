@@ -6,4 +6,5 @@ export interface ISonata {
   IsSelected: boolean
   Effect1Active: boolean
   Effect2Active: boolean
+  Selected: boolean
 }

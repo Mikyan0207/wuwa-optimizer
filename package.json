@@ -13,6 +13,14 @@
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit"
   },
+  "dependencies": {
+    "@vee-validate/nuxt": "^4.15.0",
+    "@vee-validate/zod": "^4.15.0",
+    "@vercel/analytics": "^1.4.1",
+    "@vercel/speed-insights": "^1.1.0",
+    "html-to-image": "^1.11.11",
+    "zod": "^3.24.1"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^3.14.0",
     "@iconify-json/carbon": "^1.2.5",
@@ -39,11 +47,5 @@
     "@nuxt/devtools": "2.0.0-beta.2",
     "unplugin": "^2.1.2",
     "vite": "^6.0.7"
-  },
-  "dependencies": {
-    "@vercel/analytics": "^1.4.1",
-    "@vercel/speed-insights": "^1.1.0",
-    "html-to-image": "^1.11.11",
-    "pinia-plugin-persistedstate": "^4.2.0"
   }
 }

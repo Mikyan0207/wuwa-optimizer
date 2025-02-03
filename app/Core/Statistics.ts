@@ -1,4 +1,5 @@
 import type IStatistic from './Interfaces/IStatistic'
+import { EchoCost } from './Enums/EchoCost'
 import { StatType } from './Enums/StatType'
 
 export function MAKE_STAT(type: StatType, value: number): IStatistic {
@@ -120,12 +121,12 @@ export const SUB_STAT_VALUES: Record<StatType, number[]> = {
   [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: [],
   [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: [],
   [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: [6.4, 7.1, 7.9, 8.6, 9.4, 10.1, 10.9, 11.6],
-  [StatType.ELECTRO_DMG_BONUS]: [],
   [StatType.FUSION_DMG_BONUS]: [],
   [StatType.GLACIO_DMG_BONUS]: [],
   [StatType.HAVOC_DMG_BONUS]: [],
   [StatType.SPECTRO_DMG_BONUS]: [],
   [StatType.AERO_DMG_BONUS]: [],
+  [StatType.ELECTRO_DMG_BONUS]: [],
 }
 
 export const STAT_ICONS: Record<StatType, string> = {
@@ -150,4 +151,21 @@ export const STAT_ICONS: Record<StatType, string> = {
   [StatType.HAVOC_DMG_BONUS]: 'Icon_Havoc_DMG_Bonus.webp',
   [StatType.SPECTRO_DMG_BONUS]: 'Icon_Spectro_DMG_Bonus.webp',
   [StatType.AERO_DMG_BONUS]: 'Icon_Aero_DMG_Bonus.webp',
+}
+
+export function IsMainStatType(type: StatType, echoCost: EchoCost): boolean {
+  switch (echoCost) {
+    case EchoCost.FOUR_COST:
+      return FOUR_COST_MAIN_STATS_VALUES[type] !== 0
+    case EchoCost.THREE_COST:
+      return THREE_COST_MAIN_STATS_VALUES[type] !== 0
+    case EchoCost.ONE_COST:
+      return ONE_COST_MAIN_STATS_VALUES[type] !== 0
+    default:
+      return false
+  }
+}
+
+export function IsSubStatType(type: StatType) {
+  return SUB_STAT_VALUES[type]?.length !== 0 || false
 }

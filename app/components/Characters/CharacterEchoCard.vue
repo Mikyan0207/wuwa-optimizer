@@ -31,13 +31,13 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
     <EditEchoForm :echo="echo" :character="character" :echo-slot="echoSlot" />
     <!-- Echo Details -->
     <div class="w-full flex flex-col items-start gap-2">
-      <div class="flex flex-row items-center gap-4">
+      <div class="flex flex-row items-center gap-2">
         <div class="flex flex-col items-center gap-2">
           <NuxtImg v-if="IsValidEcho" :src="`/images/echoes/${echo.Icon}`" :class="`h-12 w-12 rounded-full ${GetEchoRarityBackgroundColor(echo.Rarity)}`" />
           <USkeleton v-else class="h-12 w-12 rounded-full" :ui="{ base: '' }" />
         </div>
         <div class="flex flex-col">
-          <p v-if="IsValidEcho" class="text-lg text-white">
+          <p v-if="IsValidEcho" class="text-truncate text-nowrap text-white">
             {{ echo.Name }}
           </p>
           <USkeleton v-else class="h-3 w-22" :ui="{ base: '' }" />

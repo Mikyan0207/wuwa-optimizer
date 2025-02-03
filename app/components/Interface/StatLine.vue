@@ -36,7 +36,7 @@ const GetMargin = computed(() => {
   <div class="relative w-full flex items-center justify-between gap-2">
     <div class="flex items-center gap-2 text-gray-300">
       <NuxtImg :src="`/images/icons/${STAT_ICONS[stat.Type]}`" :class="GetIconSize" />
-      <p class="text-ellipsis text-nowrap text-xs" :class="GetMargin">
+      <p class="text-nowrap text-xs" :class="GetMargin">
         {{ STAT_NAMES[stat.Type] }}
       </p>
     </div>

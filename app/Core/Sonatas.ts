@@ -1,4 +1,5 @@
 import type { ISonata } from './Interfaces/ISonata'
+import { StatType } from './Enums/StatType'
 
 export const Frosty_Resolve: ISonata = {
   Name: 'Frosty Resolve',
@@ -8,6 +9,13 @@ export const Frosty_Resolve: ISonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
+  Selected: false,
+  ExtraStats: [
+    {
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+      Value: 12.0,
+    },
+  ],
 }
 
 export const Celestial_Light: ISonata = {
@@ -18,6 +26,13 @@ export const Celestial_Light: ISonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
+  Selected: false,
+  ExtraStats: [
+    {
+      Type: StatType.SPECTRO_DMG_BONUS,
+      Value: 10.0,
+    },
+  ],
 }
 
 export const Freezing_Frost: ISonata = {
@@ -28,6 +43,13 @@ export const Freezing_Frost: ISonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
+  Selected: false,
+  ExtraStats: [
+    {
+      Type: StatType.GLACIO_DMG_BONUS,
+      Value: 10.0,
+    },
+  ],
 }
 
 export const Moonlit_Clouds: ISonata = {
@@ -38,6 +60,13 @@ export const Moonlit_Clouds: ISonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
+  Selected: false,
+  ExtraStats: [
+    {
+      Type: StatType.ENERGY_REGENERATION,
+      Value: 10.0,
+    },
+  ],
 }
 
 export const Rejuvenating_Glow: ISonata = {
@@ -48,6 +77,13 @@ export const Rejuvenating_Glow: ISonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
+  Selected: false,
+  ExtraStats: [
+    {
+      Type: StatType.HEALING_BONUS,
+      Value: 10.0,
+    },
+  ],
 }
 
 export const Void_Thunder: ISonata = {
@@ -58,6 +94,13 @@ export const Void_Thunder: ISonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
+  Selected: false,
+  ExtraStats: [
+    {
+      Type: StatType.ELECTRO_DMG_BONUS,
+      Value: 10.0,
+    },
+  ],
 }
 
 export const SunSinking_Eclipse: ISonata = {
@@ -68,6 +111,13 @@ export const SunSinking_Eclipse: ISonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
+  Selected: false,
+  ExtraStats: [
+    {
+      Type: StatType.HAVOC_DMG_BONUS,
+      Value: 10.0,
+    },
+  ],
 }
 
 export const Molten_Rift: ISonata = {
@@ -78,6 +128,13 @@ export const Molten_Rift: ISonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
+  Selected: false,
+  ExtraStats: [
+    {
+      Type: StatType.FUSION_DMG_BONUS,
+      Value: 10.0,
+    },
+  ],
 }
 
 export const Lingering_Tunes: ISonata = {
@@ -88,6 +145,13 @@ export const Lingering_Tunes: ISonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
+  Selected: false,
+  ExtraStats: [
+    {
+      Type: StatType.ATTACK_PERCENTAGE,
+      Value: 10.0,
+    },
+  ],
 }
 
 export const Sierra_Gale: ISonata = {
@@ -98,6 +162,13 @@ export const Sierra_Gale: ISonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
+  Selected: false,
+  ExtraStats: [
+    {
+      Type: StatType.AERO_DMG_BONUS,
+      Value: 10.0,
+    },
+  ],
 }
 
 export const Empyrean_Anthem: ISonata = {
@@ -108,6 +179,13 @@ export const Empyrean_Anthem: ISonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
+  Selected: false,
+  ExtraStats: [
+    {
+      Type: StatType.ENERGY_REGENERATION,
+      Value: 10.0,
+    },
+  ],
 }
 
 export const Midnight_Veil: ISonata = {
@@ -118,6 +196,13 @@ export const Midnight_Veil: ISonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
+  Selected: false,
+  ExtraStats: [
+    {
+      Type: StatType.HAVOC_DMG_BONUS,
+      Value: 10.0,
+    },
+  ],
 }
 
 export const Tidebreaking_Courage: ISonata = {
@@ -128,6 +213,19 @@ export const Tidebreaking_Courage: ISonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
+  Selected: false,
+  ExtraStats: [
+    {
+      Type: StatType.ENERGY_REGENERATION,
+      Value: 10.0,
+    },
+    {
+      Type: StatType.ATTACK_PERCENTAGE,
+      Value: 15.0,
+    },
+
+    // TODO: Add Attribute DMG bonus when we can handle conditions on sonata buffs...
+  ],
 }
 
 export const Eternal_Radiance: ISonata = {
@@ -138,6 +236,13 @@ export const Eternal_Radiance: ISonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
+  Selected: false,
+  ExtraStats: [
+    {
+      Type: StatType.SPECTRO_DMG_BONUS,
+      Value: 10.0,
+    },
+  ],
 }
 
 export const Sonatas: ISonata[] = [

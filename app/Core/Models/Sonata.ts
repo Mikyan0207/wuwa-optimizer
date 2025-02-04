@@ -1,4 +1,5 @@
 import type { ISonata } from '../Interfaces/ISonata'
+import type IStatistic from '../Interfaces/IStatistic'
 
 export class Sonata {
   Name: string
@@ -8,6 +9,7 @@ export class Sonata {
   IsSelected: boolean
   Effect1Active: boolean
   Effect2Active: boolean
+  ExtraStats?: IStatistic[]
 
   constructor(sonata: ISonata) {
     this.Name = sonata.Name
@@ -17,6 +19,7 @@ export class Sonata {
     this.IsSelected = sonata.IsSelected
     this.Effect1Active = sonata.Effect1Active
     this.Effect2Active = sonata.Effect2Active
+    this.ExtraStats = sonata.ExtraStats
   }
 
   GetIcon() {

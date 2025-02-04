@@ -735,6 +735,21 @@ export const ZigZag_Echo: IEcho = {
   Statistics: [],
 }
 
+export const Whiff_Whaff_Echo: IEcho = {
+  Id: 390070068,
+  Name: 'Whiff Whaff',
+  Icon: 'Whiff_Whaff_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Rejuvenating_Glow,
+    Moonlit_Clouds,
+    Sierra_Gale,
+  ],
+  Statistics: [],
+}
+
 // #endregion
 
 export const Echoes: IEcho[] = [
@@ -792,6 +807,7 @@ export const Echoes: IEcho[] = [
   Hoartoise_Echo,
   Spectro_Prism_Echo,
   ZigZag_Echo,
+  Whiff_Whaff_Echo,
 ]
 
 export const TemplateEchoes: IEcho[] = Echoes

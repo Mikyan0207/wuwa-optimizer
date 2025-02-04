@@ -138,6 +138,12 @@ async function TakeScreenShotAsync() {
             :character="SelectedCharacter"
             class="relative border-2 border-white/18 rounded bg-black/66 backdrop-blur-6"
           />
+          <div class="grid col-span-3 grid-cols-2">
+            <Card class="h-36">
+              Active Sonata
+            </Card>
+            <div class="w-full" />
+          </div>
         </div>
       </div>
     </div>

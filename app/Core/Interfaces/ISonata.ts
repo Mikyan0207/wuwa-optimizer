@@ -1,3 +1,5 @@
+import type IStatistic from './IStatistic'
+
 export interface ISonata {
   Name: string
   Icon: string
@@ -7,4 +9,5 @@ export interface ISonata {
   Effect1Active: boolean
   Effect2Active: boolean
   Selected: boolean
+  ExtraStats?: IStatistic[]
 }

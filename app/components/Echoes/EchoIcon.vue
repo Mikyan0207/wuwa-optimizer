@@ -49,7 +49,7 @@ const GetHighlightColor = computed(() => {
 <template>
   <UTooltip
     :popper="{ arrow: true, strategy: 'absolute' }"
-    :ui="{ container: 'z-50! group', base: 'h-auto! p-2 text-xs font-normal' }"
+    :ui="{ container: 'z-50! group', base: 'h-auto! p-2 w-64 text-xs font-normal' }"
   >
     <template #text>
       <div class="w-full flex flex-row gap-4">

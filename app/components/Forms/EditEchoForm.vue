@@ -69,9 +69,44 @@ const [Sonata, SonataAttrs] = defineField('Sonata', NuxtUiConfig)
 const [Level, LevelAttrs] = defineField('Level', NuxtUiConfig)
 const [_Rarity, RarityAttrs] = defineField('Rarity', NuxtUiConfig)
 const [Cost, _] = defineField('Cost', NuxtUiConfig)
-const [SubStats, SubStatsAttrs] = defineField('SubStats', NuxtUiConfig)
+const [SubStats0, SubStatsAttrs0] = defineField('SubStats.0', NuxtUiConfig)
+const [SubStats1, SubStatsAttrs1] = defineField('SubStats.1', NuxtUiConfig)
+const [SubStats2, SubStatsAttrs2] = defineField('SubStats.2', NuxtUiConfig)
+const [SubStats3, SubStatsAttrs3] = defineField('SubStats.3', NuxtUiConfig)
+const [SubStats4, SubStatsAttrs4] = defineField('SubStats.4', NuxtUiConfig)
 
 const ShowEditEchoModal = ref<boolean>(false)
+const IsEchoSelected = computed(() => !(EchoId.value !== -1 && EchoId.value !== undefined))
+
+onMounted(() => {
+  if (props.echo.Id === -1) {
+    return
+  }
+
+  EchoId.value = props.echo.Id
+  MainStat.value!.Type = props.echo.MainStatistic!.Type
+  MainStat.value!.Value! = props.echo.MainStatistic!.Value.toString()
+  Sonata.value!.Name = props.echo.Sonata.find(x => x.IsSelected)?.Name || undefined
+  Sonata.value!.SonataId = props.echo.Sonata.find(x => x.IsSelected)?.Name.toUpperCase().replace(' ', '_') || undefined
+  Level.value = props.echo.Level
+  _Rarity.value = props.echo.Rarity
+  Cost.value = props.echo.Cost
+
+  SubStats0.value!.Type = props.echo.Statistics[0]?.Type || StatType.NONE
+  SubStats0.value!.Value = props.echo.Statistics[0]?.Value.toString() || '0'
+
+  SubStats1.value!.Type = props.echo.Statistics[1]?.Type || StatType.NONE
+  SubStats1.value!.Value = props.echo.Statistics[1]?.Value.toString() || '0'
+
+  SubStats2.value!.Type = props.echo.Statistics[2]?.Type || StatType.NONE
+  SubStats2.value!.Value = props.echo.Statistics[2]?.Value.toString() || '0'
+
+  SubStats3.value!.Type = props.echo.Statistics[3]?.Type || StatType.NONE
+  SubStats3.value!.Value = props.echo.Statistics[3]?.Value.toString() || '0'
+
+  SubStats4.value!.Type = props.echo.Statistics[4]?.Type || StatType.NONE
+  SubStats4.value!.Value = props.echo.Statistics[4]?.Value.toString() || '0'
+})
 
 const OnSubmit = handleSubmit((values) => {
   const e = EchoesStore.GetEchoById(values.EchoId)
@@ -184,8 +219,6 @@ function GetMainStatValue() {
       break
   }
 }
-
-const IsEchoSelected = computed(() => !(EchoId.value !== -1 && EchoId.value !== undefined))
 
 function IsDisabled(type: string) {
   return type === undefined || type === StatType.NONE || type === ''
@@ -359,11 +392,12 @@ function GetSubStatsValues(type: string) {
           <UFormGroup name="SubStats">
             <UDivider label="Sub Stats" class="my-3" />
             <div class="space-y-1">
-              <div v-for="(v, idx) in SubStats" :key="`echo-substat-${idx}-${v}`" class="flex items-start justify-between gap-2">
-                <UFormGroup class="w-full" v-bind="SubStatsAttrs" :eager-validation="true">
+              <!-- Sub Stats 0 -->
+              <div class="flex items-start justify-between gap-2">
+                <UFormGroup class="w-full" v-bind="SubStatsAttrs0" :eager-validation="true">
                   <template #default>
                     <UInputMenu
-                      v-model="v.Type"
+                      v-model="SubStats0.Type"
                       option-attribute="Label"
                       value-attribute="Type"
                       :options="StatisticsOptions"
@@ -376,14 +410,122 @@ function GetSubStatsValues(type: string) {
                     <span />
                   </template>
                 </UFormGroup>
-                <UFormGroup class="w-32%" v-bind="SubStatsAttrs" :eager-validation="true">
+                <UFormGroup class="w-32%" v-bind="SubStatsAttrs0" :eager-validation="true">
                   <template #default>
                     <USelect
-                      v-model="v.Value"
-                      :options="GetSubStatsValues(v.Type)"
+                      v-model="SubStats0.Value"
+                      :options="GetSubStatsValues(SubStats0.Type)"
                       class="w-full"
-                      :disabled="IsDisabled(v.Type)"
-                      :trailing-icon="errors[`SubStats.${idx}`] ? 'i-heroicons-exclamation-triangle-20-solid' : undefined"
+                      :disabled="IsDisabled(SubStats0.Type)"
+                      :trailing-icon="errors[`SubStats.0`] ? 'i-heroicons-exclamation-triangle-20-solid' : undefined"
+                    />
+                  </template>
+                  <template #error>
+                    <span />
+                  </template>
+                </UFormGroup>
+              </div>
+
+              <!-- Sub Stats 1 -->
+              <div class="flex items-start justify-between gap-2">
+                <UFormGroup class="w-full" v-bind="SubStatsAttrs1" :eager-validation="true">
+                  <template #default>
+                    <UInputMenu
+                      v-model="SubStats1.Type" option-attribute="Label" value-attribute="Type" :options="StatisticsOptions"
+                      class="w-full" :search-attributes="['Label']" :disabled="IsEchoSelected"
+                    />
+                  </template>
+                  <template #error>
+                    <span />
+                  </template>
+                </UFormGroup>
+                <UFormGroup class="w-32%" v-bind="SubStatsAttrs1" :eager-validation="true">
+                  <template #default>
+                    <USelect
+                      v-model="SubStats1.Value" :options="GetSubStatsValues(SubStats1.Type)" class="w-full"
+                      :disabled="IsDisabled(SubStats1.Type)"
+                      :trailing-icon="errors[`SubStats.1`] ? 'i-heroicons-exclamation-triangle-20-solid' : undefined"
+                    />
+                  </template>
+                  <template #error>
+                    <span />
+                  </template>
+                </UFormGroup>
+              </div>
+
+              <!-- Sub Stats 2 -->
+              <div class="flex items-start justify-between gap-2">
+                <UFormGroup class="w-full" v-bind="SubStatsAttrs2" :eager-validation="true">
+                  <template #default>
+                    <UInputMenu
+                      v-model="SubStats2.Type" option-attribute="Label" value-attribute="Type" :options="StatisticsOptions"
+                      class="w-full" :search-attributes="['Label']" :disabled="IsEchoSelected"
+                    />
+                  </template>
+                  <template #error>
+                    <span />
+                  </template>
+                </UFormGroup>
+                <UFormGroup class="w-32%" v-bind="SubStatsAttrs2" :eager-validation="true">
+                  <template #default>
+                    <USelect
+                      v-model="SubStats2.Value" :options="GetSubStatsValues(SubStats2.Type)" class="w-full"
+                      :disabled="IsDisabled(SubStats2.Type)"
+                      :trailing-icon="errors[`SubStats.2`] ? 'i-heroicons-exclamation-triangle-20-solid' : undefined"
+                    />
+                  </template>
+                  <template #error>
+                    <span />
+                  </template>
+                </UFormGroup>
+              </div>
+
+              <!-- Sub Stats 3 -->
+              <div class="flex items-start justify-between gap-2">
+                <UFormGroup class="w-full" v-bind="SubStatsAttrs3" :eager-validation="true">
+                  <template #default>
+                    <UInputMenu
+                      v-model="SubStats3.Type" option-attribute="Label" value-attribute="Type" :options="StatisticsOptions"
+                      class="w-full" :search-attributes="['Label']" :disabled="IsEchoSelected"
+                    />
+                  </template>
+                  <template #error>
+                    <span />
+                  </template>
+                </UFormGroup>
+                <UFormGroup class="w-32%" v-bind="SubStatsAttrs3" :eager-validation="true">
+                  <template #default>
+                    <USelect
+                      v-model="SubStats3.Value" :options="GetSubStatsValues(SubStats3.Type)" class="w-full"
+                      :disabled="IsDisabled(SubStats3.Type)"
+                      :trailing-icon="errors[`SubStats.3`] ? 'i-heroicons-exclamation-triangle-20-solid' : undefined"
+                    />
+                  </template>
+                  <template #error>
+                    <span />
+                  </template>
+                </UFormGroup>
+              </div>
+
+              <!-- Sub Stats 4 -->
+              <div class="flex items-start justify-between gap-2">
+                <UFormGroup class="w-full" v-bind="SubStatsAttrs4" :eager-validation="true">
+                  <template #default>
+                    <UInputMenu
+                      v-model="SubStats4.Type" option-attribute="Label" value-attribute="Type" :options="StatisticsOptions"
+                      class="w-full" :search-attributes="['Label']" :disabled="IsEchoSelected"
+                    />
+                  </template>
+                  <template #error>
+                    <span />
+                  </template>
+                </UFormGroup>
+                <UFormGroup class="w-32%" v-bind="SubStatsAttrs4" :eager-validation="true">
+                  <template #default>
+                    <USelect
+                      v-model="SubStats4.Value" :options="GetSubStatsValues(SubStats4.Type)" class="w-full"
+                      :disabled="IsDisabled(SubStats4.Type)"
+                      :trailing-icon="errors[`SubStats.4`] ? 'i-heroicons-exclamation-triangle-20-solid' : undefined"
                     />
                   </template>
                   <template #error>

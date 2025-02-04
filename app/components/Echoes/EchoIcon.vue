@@ -51,7 +51,7 @@ const GetHighlightColor = computed(() => {
     class="group relative cursor-pointer border border-white/14 rounded-md bg-black/66"
   >
     <div class="relative min-h-26 w-26 flex items-center justify-center overflow-clip">
-      <div class="absolute left-1 top-1 z-1 w-8 flex items-center justify-center border border-white/14 rounded bg-black px-1 text-10px">
+      <div class="absolute bottom-1.5 left-0.5 z-1 w-8 flex items-center justify-center border border-white/14 rounded bg-black px-1 text-10px">
         +{{ echo.Level }}
       </div>
       <div class="absolute right-1 top-1 z-10 flex items-center justify-center gap-1">
@@ -82,7 +82,7 @@ const GetHighlightColor = computed(() => {
         <div class="h-[3px]" :class="GetHighlightColor" />
       </div>
     </div>
-    <div class="text-truncate border-b border-l border-r border-white/14 rounded-b bg-black/44 px-2 py-0.75 text-center text-xs">
+    <div :title="echo.Name" class="w-26 text-truncate border-b border-l border-r border-white/14 rounded-b bg-black/44 px-2 py-0.75 text-center text-xs">
       {{ echo.Name }}
     </div>
   </div>

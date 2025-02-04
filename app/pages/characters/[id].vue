@@ -14,7 +14,6 @@ const CharactersStore = useCharactersStore()
 const EchoesStore = useEchoesStore()
 const ScoreCalculator = useScoreCalculatorStore()
 const CharactersEventBus = useEventBus('CharactersEvents')
-const MenuEventBus = useEventBus('MenuEvents')
 
 const SelectedCharacter = computed(() => CharactersStore.GetCharacter(Number.parseInt(Route.params.id)))
 const CharacterScore = ref<ICharacterRatingResult>()
@@ -88,8 +87,6 @@ async function TakeScreenShotAsync() {
   <div class="min-w-[1480px]">
     <div class="sticky top-0 z-30 h-12 w-full flex items-center justify-between gap-2 border-b border-white/14 bg-black/44 p-3 text-sm backdrop-blur-6">
       <div class="flex items-center gap-2">
-        <UButton color="white" variant="ghost" icon="heroicons:bars-3-solid" @click.prevent="MenuEventBus.emit()" />
-        <div class="mr-2 h-6 w-1px bg-white/14" />
         <NuxtLink to="/characters">
           Resonators
         </NuxtLink>

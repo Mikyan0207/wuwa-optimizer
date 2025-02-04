@@ -1,21 +1,9 @@
 <script setup lang="ts">
-const MenuEventBus = useEventBus('MenuEvents')
-
-const CollapseMenu = ref<boolean>(false)
-
-MenuEventBus.on(() => {
-  CollapseMenu.value = !CollapseMenu.value
-})
-
-const NavigationClasses = computed(() =>
-  CollapseMenu.value ? 'w-4em' : 'w-4em 2xl:w-12em',
-)
 </script>
 
-<!-- -->
 <template>
   <div class="[background-size:16px_16px] relative h-100vh flex flex-row overflow-hidden bg-[radial-gradient(#ffffff12_1px,transparent_1px)]">
-    <div class="z-1 border-r border-white/14 bg-black/66 px-2 py-4 backdrop-blur-6 transition-all duration-150" :class="NavigationClasses">
+    <div class="z-1 border-r border-white/14 bg-black/66 px-2 py-4 backdrop-blur-6 transition-all duration-150">
       <LeftNavigation />
     </div>
     <div class="absolute inset-0 h-full w-full -z-1">

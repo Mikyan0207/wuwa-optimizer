@@ -20,7 +20,6 @@ interface ICharacterTypeOptions {
 }
 
 const CharactersStore = useCharactersStore()
-const MenuEventBus = useEventBus('MenuEvents')
 
 const WeaponTypesOptions: IWeaponTypeOptions[] = [
   {
@@ -163,8 +162,6 @@ function OnCharacterClicked(characterId: number) {
 <template>
   <div>
     <div class="h-12 w-full flex items-center gap-2 border-b border-white/14 bg-black/44 p-3 text-sm backdrop-blur-6">
-      <UButton color="white" variant="ghost" icon="heroicons:bars-3-solid" @click.prevent="MenuEventBus.emit()" />
-      <div class="mr-2 h-6 w-1px bg-white/14" />
       <NuxtLink to="/characters">
         Resonators
       </NuxtLink>

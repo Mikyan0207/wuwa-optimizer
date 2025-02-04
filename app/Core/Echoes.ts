@@ -30,7 +30,7 @@ export const Bell_Borne_Geochelone: IEcho = {
 }
 
 export const Mourning_Aix_Echo: IEcho = {
-  Id: 330000060,
+  Id: 6000045,
   Name: 'Mourning Aix',
   Icon: 'Mourning_Aix_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -56,7 +56,7 @@ export const Dreamless_Echo: IEcho = {
 }
 
 export const Jue_Echo: IEcho = {
-  Id: 340000090,
+  Id: 6000059,
   Name: 'Jué',
   Icon: 'Jue_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -241,7 +241,7 @@ export const Feilian_Beringal_Echo: IEcho = {
 
 // #region === 3 COST ===
 export const Autopuppet_Scout_Echo: IEcho = {
-  Id: 320000180,
+  Id: 6000049,
   Name: 'Autopuppet Scout',
   Icon: 'Autopuppet_Scout_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -269,7 +269,7 @@ export const Cyan_Feathered_Heron_Echo: IEcho = {
 }
 
 export const Rocksteady_Guardian_Echo: IEcho = {
-  Id: 320000060,
+  Id: 390077024,
   Name: 'Rocksteady Guardian',
   Icon: 'Rocksteady_Guardian_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -283,7 +283,7 @@ export const Rocksteady_Guardian_Echo: IEcho = {
 }
 
 export const Lightcrusher_Echo: IEcho = {
-  Id: 320000210,
+  Id: 6000058,
   Name: 'Lightcrusher',
   Icon: 'Lightcrusher_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -605,7 +605,7 @@ export const Lumiscale_Construct_Echo: IEcho = {
 
 // #region === 1 COST ===
 export const Clang_Bang_Echo: IEcho = {
-  Id: 310000340,
+  Id: 6000051,
   Name: 'Clang Bang',
   Icon: 'Clang_Bang_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -619,7 +619,7 @@ export const Clang_Bang_Echo: IEcho = {
 }
 
 export const Cruisewing_Echo: IEcho = {
-  Id: 310000180,
+  Id: 390070074,
   Name: 'Cruisewing',
   Icon: 'Cruisewing_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -634,7 +634,7 @@ export const Cruisewing_Echo: IEcho = {
 }
 
 export const Glacio_Predator_Echo: IEcho = {
-  Id: 310000040,
+  Id: 390070070,
   Name: 'Glacio Predator',
   Icon: 'Glacio_Predator_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -648,7 +648,7 @@ export const Glacio_Predator_Echo: IEcho = {
 }
 
 export const Gulpuff_Echo: IEcho = {
-  Id: 310000120,
+  Id: 390070076,
   Name: 'Gulpuff',
   Icon: 'Gulpuff_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -662,7 +662,7 @@ export const Gulpuff_Echo: IEcho = {
 }
 
 export const Havoc_Prism_Echo: IEcho = {
-  Id: 310000170,
+  Id: 390077017,
   Name: 'Havoc Prism',
   Icon: 'Havoc_Prism_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -677,7 +677,7 @@ export const Havoc_Prism_Echo: IEcho = {
 }
 
 export const Havoc_Warrior_Echo: IEcho = {
-  Id: 310000070,
+  Id: 390070065,
   Name: 'Havoc Warrior',
   Icon: 'Havoc_Warrior_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -691,7 +691,7 @@ export const Havoc_Warrior_Echo: IEcho = {
 }
 
 export const Hoartoise_Echo: IEcho = {
-  Id: 310000270,
+  Id: 390070105,
   Name: 'Hoartoise',
   Icon: 'Hoartoise_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -705,7 +705,7 @@ export const Hoartoise_Echo: IEcho = {
 }
 
 export const Spectro_Prism_Echo: IEcho = {
-  Id: 310000160,
+  Id: 390077016,
   Name: 'Spectro Prism',
   Icon: 'Spectro_Prism_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -720,7 +720,7 @@ export const Spectro_Prism_Echo: IEcho = {
 }
 
 export const ZigZag_Echo: IEcho = {
-  Id: 310000090,
+  Id: 390070067,
   Name: 'Zig Zag',
   Icon: 'Zig_Zag_Icon.webp',
   Rarity: Rarity.FIVE_STARS,

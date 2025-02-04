@@ -117,7 +117,7 @@ function GetRarityAsNumber(rarity: Rarity) {
         Weapons
       </NuxtLink>
     </div>
-    <div class="mx-auto mt-8 px-8 xl:container">
+    <div class="mx-auto mt-8 xl:max-w-8xl px-8">
       <div class="w-full flex items-center justify-between gap-2">
         <UInput v-model="SearchValue" placeholder="Search weapon..." />
         <div class="flex items-center gap-4">

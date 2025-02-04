@@ -169,7 +169,7 @@ function OnCharacterClicked(characterId: number) {
         Resonators
       </NuxtLink>
     </div>
-    <div class="mx-auto mt-8 px-8 xl:container">
+    <div class="mx-auto mt-8 xl:max-w-8xl px-8">
       <div class="w-full flex items-center justify-end gap-2">
         <div class="flex flex-wrap items-center justify-end gap-4">
           <!-- Character Type -->
@@ -230,7 +230,7 @@ function OnCharacterClicked(characterId: number) {
         </div>
       </div>
     </div>
-    <div class="mx-auto my-8 flex flex-wrap items-center justify-center gap-1 px-8 container">
+    <div class="mx-auto my-8 xl:max-w-8xl flex flex-wrap items-center justify-center gap-1 px-8">
       <CharacterIcon
         v-for="c in CharactersList"
         :key="c.Id"

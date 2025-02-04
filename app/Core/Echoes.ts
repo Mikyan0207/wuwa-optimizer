@@ -16,7 +16,7 @@ export const Empty_Echo: IEcho = {
 
 // #region === 4 COST ===
 export const Bell_Borne_Geochelone: IEcho = {
-  Id: 340000020,
+  Id: 390080005,
   Name: 'Bell-Borne Geochelone',
   Icon: 'Bell_Borne_Geochelone_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -43,7 +43,7 @@ export const Mourning_Aix_Echo: IEcho = {
 }
 
 export const Dreamless_Echo: IEcho = {
-  Id: 340000070,
+  Id: 6000053,
   Name: 'Dreamless',
   Icon: 'Dreamless_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -69,7 +69,7 @@ export const Jue_Echo: IEcho = {
 }
 
 export const Hecate_Echo: IEcho = {
-  Id: 340000100,
+  Id: 6000085,
   Name: 'Hecate',
   Icon: 'Hecate_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -82,7 +82,7 @@ export const Hecate_Echo: IEcho = {
 }
 
 export const Fallacy_of_No_Return_Echo: IEcho = {
-  Id: 330000070,
+  Id: 6000060,
   Name: 'Fallacy of No Return',
   Icon: 'Fallacy_of_No_Return_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -95,7 +95,7 @@ export const Fallacy_of_No_Return_Echo: IEcho = {
 }
 
 export const Sentry_Construct_Echo: IEcho = {
-  Id: 330000120,
+  Id: 6000083,
   Name: 'Sentry Construct',
   Icon: 'Sentry_Construct_Icon.webp',
   Level: 0,
@@ -108,7 +108,7 @@ export const Sentry_Construct_Echo: IEcho = {
 }
 
 export const Lorelei_Echo: IEcho = {
-  Id: 330000110,
+  Id: 6000082,
   Name: 'Lorelei',
   Icon: 'Lorelei_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -121,7 +121,7 @@ export const Lorelei_Echo: IEcho = {
 }
 
 export const Inferno_Rider_Echo: IEcho = {
-  Id: 330000020,
+  Id: 390080007,
   Name: 'Inferno Rider',
   Icon: 'Inferno_Rider_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -134,7 +134,7 @@ export const Inferno_Rider_Echo: IEcho = {
 }
 
 export const Thundering_Mephis_Echo: IEcho = {
-  Id: 340000080,
+  Id: 390080003,
   Name: 'Thundering Mephis',
   Icon: 'Thundering_Mephis_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -147,7 +147,7 @@ export const Thundering_Mephis_Echo: IEcho = {
 }
 
 export const Tempest_Mephis_Echo: IEcho = {
-  Id: 330000010,
+  Id: 6000039,
   Name: 'Tempest Mephis',
   Icon: 'Tempest_Mephis_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -160,7 +160,7 @@ export const Tempest_Mephis_Echo: IEcho = {
 }
 
 export const Mech_Abomination_Echo: IEcho = {
-  Id: 340000060,
+  Id: 6000048,
   Name: 'Mech Abomination',
   Icon: 'Mech_Abomination_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -173,7 +173,7 @@ export const Mech_Abomination_Echo: IEcho = {
 }
 
 export const Lampylumen_Myriad_Echo: IEcho = {
-  Id: 0,
+  Id: 6000044,
   Name: 'Lampylumen Myriad',
   Icon: 'Lampylumen_Myriad_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -186,7 +186,7 @@ export const Lampylumen_Myriad_Echo: IEcho = {
 }
 
 export const Dragon_of_Dirge_Echo: IEcho = {
-  Id: 330000130,
+  Id: 6000084,
   Name: 'Dragon of Dirge',
   Icon: 'Dragon_of_Dirge_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -199,7 +199,7 @@ export const Dragon_of_Dirge_Echo: IEcho = {
 }
 
 export const Crownless_Echo: IEcho = {
-  Id: 340000010,
+  Id: 6000042,
   Name: 'Crownless',
   Icon: 'Crownless_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -212,7 +212,7 @@ export const Crownless_Echo: IEcho = {
 }
 
 export const Impermanence_Heron_Echo: IEcho = {
-  Id: 330000030,
+  Id: 6000052,
   Name: 'Impermanence Heron',
   Icon: 'Impermanence_Heron_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -226,7 +226,7 @@ export const Impermanence_Heron_Echo: IEcho = {
 }
 
 export const Feilian_Beringal_Echo: IEcho = {
-  Id: 330000050,
+  Id: 6000043,
   Name: 'Feilian Beringal',
   Icon: 'Feilian_Beringal_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -255,7 +255,7 @@ export const Autopuppet_Scout_Echo: IEcho = {
 }
 
 export const Cyan_Feathered_Heron_Echo: IEcho = {
-  Id: 320000030,
+  Id: 390077005,
   Name: 'Cyan-Feathered Heron',
   Icon: 'Cyan_Feathered_Heron_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -296,7 +296,7 @@ export const Lightcrusher_Echo: IEcho = {
 }
 
 export const Violet_Feathered_Heron_Echo: IEcho = {
-  Id: 320000020,
+  Id: 390077004,
   Name: 'Violet-Feathered Heron',
   Icon: 'Violet_Feathered_Heron_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -310,7 +310,7 @@ export const Violet_Feathered_Heron_Echo: IEcho = {
 }
 
 export const Viridblaze_Saurian_Echo: IEcho = {
-  Id: 320000080,
+  Id: 390077028,
   Name: 'Viridblaze Saurian',
   Icon: 'Viridblaze_Saurian_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -324,7 +324,7 @@ export const Viridblaze_Saurian_Echo: IEcho = {
 }
 
 export const Spearback_Echo: IEcho = {
-  Id: 320000120,
+  Id: 390077038,
   Name: 'Spearback',
   Icon: 'Spearback_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -338,7 +338,7 @@ export const Spearback_Echo: IEcho = {
 }
 
 export const Havoc_Dreadmane_Echo: IEcho = {
-  Id: 320000100,
+  Id: 390077033,
   Name: 'Havoc Dreadmane',
   Icon: 'Havoc_Dreadmane_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -352,7 +352,7 @@ export const Havoc_Dreadmane_Echo: IEcho = {
 }
 
 export const Hoochief_Echo: IEcho = {
-  Id: 320000110,
+  Id: 6000040,
   Name: 'Hoochief',
   Icon: 'Hoochief_Cyclone_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -366,7 +366,7 @@ export const Hoochief_Echo: IEcho = {
 }
 
 export const Glacio_Dreadmane_Echo: IEcho = {
-  Id: 320000190,
+  Id: 6000056,
   Name: 'Glacio Dreadmane',
   Icon: 'Glacio_Dreadmane_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -380,7 +380,7 @@ export const Glacio_Dreadmane_Echo: IEcho = {
 }
 
 export const Chop_Chop_Echo: IEcho = {
-  Id: 320000280,
+  Id: 6000079,
   Name: 'Chop Chop',
   Icon: 'Chop_Chop_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -394,7 +394,7 @@ export const Chop_Chop_Echo: IEcho = {
 }
 
 export const Cuddle_Wuddle_Echo: IEcho = {
-  Id: 320000300,
+  Id: 6000081,
   Name: 'Cuddle Wuddle',
   Icon: 'Cuddle_Wuddle_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -408,7 +408,7 @@ export const Cuddle_Wuddle_Echo: IEcho = {
 }
 
 export const Carapace_Echo: IEcho = {
-  Id: 320000130,
+  Id: 6000046,
   Name: 'Carapace',
   Icon: 'Carapace_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -422,7 +422,7 @@ export const Carapace_Echo: IEcho = {
 }
 
 export const Roseshroom_Echo: IEcho = {
-  Id: 320000090,
+  Id: 390077029,
   Name: 'Roseshroom',
   Icon: 'Roseshroom_Icon.webp',
   Rarity: Rarity.TWO_STARS,
@@ -436,7 +436,7 @@ export const Roseshroom_Echo: IEcho = {
 }
 
 export const Stonewall_Bracer_Echo: IEcho = {
-  Id: 320000010,
+  Id: 390077021,
   Name: 'Stonewall Bracer',
   Icon: 'Stonewall_Bracer_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -450,7 +450,7 @@ export const Stonewall_Bracer_Echo: IEcho = {
 }
 
 export const Tambourinist_Echo: IEcho = {
-  Id: 320000050,
+  Id: 390077023,
   Name: 'Tambourinist',
   Icon: 'Tambourinist_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -464,7 +464,7 @@ export const Tambourinist_Echo: IEcho = {
 }
 
 export const Flautist_Echo: IEcho = {
-  Id: 320000040,
+  Id: 390077022,
   Name: 'Flautist',
   Icon: 'Flautist_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -476,8 +476,9 @@ export const Flautist_Echo: IEcho = {
   ],
   Statistics: [],
 }
+
 export const Chasm_Guardian_Echo: IEcho = {
-  Id: 320000070,
+  Id: 390077025,
   Name: 'Chasm Guardian',
   Icon: 'Chasm_Guardian_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -491,7 +492,7 @@ export const Chasm_Guardian_Echo: IEcho = {
 }
 
 export const Questless_Knight_Echo: IEcho = {
-  Id: 320000220,
+  Id: 6000073,
   Name: 'Questless Knight',
   Icon: 'Questless_Knight_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -505,7 +506,7 @@ export const Questless_Knight_Echo: IEcho = {
 }
 
 export const Diurnus_Knight_Echo: IEcho = {
-  Id: 320000230,
+  Id: 6000074,
   Name: 'Diurnus Knight',
   Icon: 'Diurnus_Knight_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -519,7 +520,7 @@ export const Diurnus_Knight_Echo: IEcho = {
 }
 
 export const Nocturnus_Knight_Echo: IEcho = {
-  Id: 320000240,
+  Id: 6000075,
   Name: 'Nocturnus Knight',
   Icon: 'Nocturnus_Knight_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -533,7 +534,7 @@ export const Nocturnus_Knight_Echo: IEcho = {
 }
 
 export const Abyssal_Patricius_Echo: IEcho = {
-  Id: 320000250,
+  Id: 6000076,
   Name: 'Abyssal Patricius',
   Icon: 'Abyssal_Patricius_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -547,7 +548,7 @@ export const Abyssal_Patricius_Echo: IEcho = {
 }
 
 export const Abyssal_Gladius_Echo: IEcho = {
-  Id: 320000260,
+  Id: 6000077,
   Name: 'Abyssal Gladius',
   Icon: 'Abyssal_Gladius_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -561,7 +562,7 @@ export const Abyssal_Gladius_Echo: IEcho = {
 }
 
 export const Abyssal_Mercator_Echo: IEcho = {
-  Id: 320000270,
+  Id: 6000078,
   Name: 'Abyssal Mercator',
   Icon: 'Abyssal_Mercator_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -575,7 +576,7 @@ export const Abyssal_Mercator_Echo: IEcho = {
 }
 
 export const Vitreum_Dancer_Echo: IEcho = {
-  Id: 320000291,
+  Id: 6000080,
   Name: 'Vitreum Dancer',
   Icon: 'Vitreum_Dancer_Icon.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -589,7 +590,7 @@ export const Vitreum_Dancer_Echo: IEcho = {
 }
 
 export const Lumiscale_Construct_Echo: IEcho = {
-  Id: 320000200,
+  Id: 6000057,
   Name: 'Lumiscale Construct',
   Icon: 'Lumiscale_Construct_Icon.webp',
   Rarity: Rarity.FIVE_STARS,

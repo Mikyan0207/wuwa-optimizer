@@ -22,9 +22,6 @@ dependencies:
   '@vercel/speed-insights':
     specifier: ^1.1.0
     version: 1.1.0
-  file-saver:
-    specifier: ^2.0.5
-    version: 2.0.5
   modern-screenshot:
     specifier: ^4.5.5
     version: 4.5.5
@@ -57,15 +54,9 @@ devDependencies:
   '@nuxtjs/color-mode':
     specifier: ^3.5.2
     version: 3.5.2
-  '@nuxtjs/device':
-    specifier: 3.2.4
-    version: 3.2.4
   '@pinia/nuxt':
     specifier: ^0.9.0
     version: 0.9.0(pinia@2.3.1)
-  '@types/file-saver':
-    specifier: ^2.0.7
-    version: 2.0.7
   '@unocss/eslint-config':
     specifier: ^65.4.2
     version: 65.4.3(eslint@9.19.0)(typescript@5.7.3)
@@ -2722,12 +2713,6 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxtjs/device@3.2.4:
-    resolution: {integrity: sha512-jIvN6QeodBNrUrL/1FCHk4bebsiLsGHlJd8c/m2ksLrGY4IZ0npA8IYhDTdYV92epGxoe8+3iZOzCjav+6TshQ==}
-    dependencies:
-      defu: 6.1.4
-    dev: true
-
   /@nuxtjs/tailwindcss@6.13.1:
     resolution: {integrity: sha512-atL2SaPsxLfMTlXUQvr1UpDYdz6ocNOhH35H+t7M++g4r79QiQScJ7XuyyMR9AyBN19lkPA3nw7NXxazXmYxlA==}
     dependencies:
@@ -3432,10 +3417,6 @@ packages:
 
   /@types/estree@1.0.6:
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
-
-  /@types/file-saver@2.0.7:
-    resolution: {integrity: sha512-dNKVfHd/jk0SkR/exKGj2ggkB45MAkzvWCaqLUUgkyjITkGNzH8H+yUwr+BLJUBjZOe9w8X3wgmXhZDRg1ED6A==}
-    dev: true
 
   /@types/http-proxy@1.17.15:
     resolution: {integrity: sha512-25g5atgiVNTIv0LBDTg1H74Hvayx0ajtJPLLcYE3whFv75J0pWNtOBzaXJQgDTmrX1bx5U9YC2w/n65BN1HwRQ==}
@@ -6505,10 +6486,6 @@ packages:
     dependencies:
       flat-cache: 4.0.1
     dev: true
-
-  /file-saver@2.0.5:
-    resolution: {integrity: sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==}
-    dev: false
 
   /file-uri-to-path@1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}

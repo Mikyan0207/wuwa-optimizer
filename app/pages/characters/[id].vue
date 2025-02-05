@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import FileSaver from 'file-saver'
 import { domToBlob } from 'modern-screenshot'
 import { Empty_Echo } from '~/Core/Echoes'
 import { Echo } from '~/Core/Models/Echo'
@@ -9,8 +8,6 @@ definePageMeta({
 })
 
 const Route = useRoute()
-const { isDesktop, isIos, isMacOS } = useDevice()
-const Toast = useToast()
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
 const CharactersStore = useCharactersStore()
@@ -60,14 +57,8 @@ async function TakeScreenShotAsync() {
   ShowScreenShotBackground.value = true
 
   const scale = 1
-  let w = 1280 * scale
-  let h = 886 * scale
-
-  // What do we do for desktop...
-  if (isMacOS) {
-    w = 1069 * scale
-    h = 1770 * scale
-  }
+  const w = 1280 * scale
+  const h = 886 * scale
 
   domToBlob(CharacterInfoRef.value, {
     height: h,
@@ -81,23 +72,8 @@ async function TakeScreenShotAsync() {
       return
     }
 
-    Toast.add({
-      title: `${isDesktop} / ${isIos}`,
-      timeout: 3000,
-    })
+    window.open(URL.createObjectURL(blob), '_blank')
 
-    const fileURL = URL.createObjectURL(blob)
-    // iPad Air/Pro wants to be a PC, fuck that shit
-    if (isDesktop && !isIos && !isMacOS) {
-      window.open(fileURL, '_blank')
-    }
-    else {
-      Toast.add({
-        title: 'Triggering mobile/tablet download.',
-        timeout: 3000,
-      })
-      FileSaver.saveAs(fileURL, `${SelectedCharacter.value!.Name}_${+new Date()}.png`)
-    }
     ShowScreenShotBackground.value = false
   })
 }

@@ -4,7 +4,7 @@ const EchoesStore = useEchoesStore()
 
 <template>
   <div>
-    <div class="mx-auto my-8 flex items-center justify-center gap-2 container">
+    <div class="mx-auto my-8 xl:max-w-8xl flex items-center justify-center gap-2 px-8">
       <EchoIcon
         v-for="e in EchoesStore.GetEchoes()"
         :key="e.Id"

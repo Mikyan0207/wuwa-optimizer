@@ -80,6 +80,11 @@ async function TakeScreenShotAsync() {
       return
     }
 
+    Toast.add({
+      title: `${isDesktop} / ${isIos}`,
+      timeout: 3000,
+    })
+
     const fileURL = URL.createObjectURL(blob)
     if (isDesktop && !isIos) {
       window.open(fileURL, '_blank')

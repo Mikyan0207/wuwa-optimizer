@@ -104,7 +104,7 @@ async function TakeScreenShotAsync() {
       <div class="mx-auto my-2 w-7xl">
         <div ref="CharacterInfoRef" class="relative grid grid-cols-5 mx-auto w-full gap-1">
           <div v-if="ShowScreenShotBackground" class="absolute inset-0">
-            <LayeredBackground :hide-video="true" />
+            <LayeredBackground />
           </div>
           <!-- Character Info (Art, Stats, Weapon, Skills) -->
           <CharacterArtCard v-if="SelectedCharacter" :character="SelectedCharacter" class="col-span-2" />

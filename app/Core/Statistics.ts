@@ -23,7 +23,7 @@ export const STAT_NAMES: Record<StatType, string> = {
   [StatType.ENERGY_REGENERATION]: 'Energy Regen.',
   [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 'Basic ATK DMG Bonus',
   [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 'Heavy ATK DMG Bonus',
-  [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 'Res. Liberation DMG Bonus',
+  [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 'Res. Lib. DMG Bonus',
   [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 'Res. Skill DMG Bonus',
   [StatType.ELECTRO_DMG_BONUS]: 'Electro DMG Bonus',
   [StatType.FUSION_DMG_BONUS]: 'Fusion DMG Bonus',

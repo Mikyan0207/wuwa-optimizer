@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import * as htmlToImage from 'html-to-image'
+import { domToBlob } from 'modern-screenshot'
 import { Empty_Echo } from '~/Core/Echoes'
 import { Echo } from '~/Core/Models/Echo'
 
@@ -60,26 +60,23 @@ async function TakeScreenShotAsync() {
   const w = 1280 * scale
   const h = 886 * scale
 
-  htmlToImage.toBlob(CharacterInfoRef.value, {
-    pixelRatio: 1,
+  const blob = await domToBlob(CharacterInfoRef.value, {
     height: h,
-    canvasHeight: h,
     width: w,
-    canvasWidth: w,
-    skipAutoScale: true,
     style: {
       zoom: `${scale}`,
     },
   })
-    .then((blob) => {
-      if (blob === null) {
-        return
-      }
-      const fileURL = URL.createObjectURL(blob)
-      window.open(fileURL, '_blank')
 
-      ShowScreenShotBackground.value = false
-    })
+  if (blob === null) {
+    ShowScreenShotBackground.value = false
+    return
+  }
+
+  const fileURL = URL.createObjectURL(blob)
+  window.open(fileURL, '_blank')
+
+  ShowScreenShotBackground.value = false
 }
 </script>
 
@@ -97,7 +94,7 @@ async function TakeScreenShotAsync() {
       </div>
       <div class="flex items-center gap-2">
         <WeightsCard v-if="SelectedCharacter !== undefined" :character="SelectedCharacter" />
-        <UButton color="white" size="xs" variant="solid" icon="i-carbon:camera" :trailing="false" @click.prevent="TakeScreenShotAsync">
+        <UButton color="white" size="xs" variant="solid" icon="i-carbon:camera" :trailing="false" :loading="ShowScreenShotBackground" @click.prevent="TakeScreenShotAsync">
           Screenshot
         </UButton>
       </div>

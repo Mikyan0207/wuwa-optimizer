@@ -18,7 +18,7 @@
     "@vee-validate/zod": "^4.15.0",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
-    "html-to-image": "^1.11.11",
+    "modern-screenshot": "^4.5.5",
     "zod": "^3.24.1"
   },
   "devDependencies": {

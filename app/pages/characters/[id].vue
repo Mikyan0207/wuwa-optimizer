@@ -67,36 +67,27 @@ async function TakeScreenShotAsync() {
     h = 1770 * scale
   }
 
-  if (isDesktop) {
-    const blob = await domToBlob(CharacterInfoRef.value, {
-      height: h,
-      width: w,
-      style: {
-        zoom: `${scale}`,
-      },
-    })
-
+  domToBlob(CharacterInfoRef.value, {
+    height: h,
+    width: w,
+    style: {
+      zoom: `${scale}`,
+    },
+  }).then((blob) => {
     if (blob === null) {
       ShowScreenShotBackground.value = false
       return
     }
 
     const fileURL = URL.createObjectURL(blob)
-    window.open(fileURL, '_blank')
-  }
-  else if (isTablet && isIos) {
-    const url = await domToPng(CharacterInfoRef.value, {
-      height: h,
-      width: w,
-      style: {
-        zoom: `${scale}`,
-      },
-    })
-
-    FileSaver.saveAs(url, `${SelectedCharacter.value!.Name}_${+new Date()}.png`)
-  }
-
-  ShowScreenShotBackground.value = false
+    if (isDesktop) {
+      window.open(fileURL, '_blank')
+    }
+    else {
+      FileSaver.saveAs(fileURL, `${SelectedCharacter.value!.Name}_${+new Date()}.png`)
+    }
+    ShowScreenShotBackground.value = false
+  })
 }
 </script>
 

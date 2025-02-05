@@ -9,7 +9,7 @@ definePageMeta({
 })
 
 const Route = useRoute()
-const { isTablet, isDesktop, isIos } = useDevice()
+const { isTablet, isDesktop, isIos, isMacOS } = useDevice()
 const Toast = useToast()
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
@@ -86,7 +86,8 @@ async function TakeScreenShotAsync() {
     })
 
     const fileURL = URL.createObjectURL(blob)
-    if (isDesktop && !isIos) {
+    // iPad Air/Pro wants to be a PC, fuck that shit
+    if (isDesktop && !isIos && !isMacOS) {
       window.open(fileURL, '_blank')
     }
     else {

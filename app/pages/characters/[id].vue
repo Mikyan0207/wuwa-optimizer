@@ -9,7 +9,7 @@ definePageMeta({
 })
 
 const Route = useRoute()
-const { isTablet, isDesktop, isIos, isMacOS } = useDevice()
+const { isDesktop, isIos, isMacOS } = useDevice()
 const Toast = useToast()
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
@@ -63,7 +63,8 @@ async function TakeScreenShotAsync() {
   let w = 1280 * scale
   let h = 886 * scale
 
-  if (isTablet) {
+  // What do we do for desktop...
+  if (isMacOS) {
     w = 1069 * scale
     h = 1770 * scale
   }

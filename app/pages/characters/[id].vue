@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import FileSaver from 'file-saver'
-import { domToBlob, domToJpeg, domToPng } from 'modern-screenshot'
+import { domToBlob } from 'modern-screenshot'
 import { Empty_Echo } from '~/Core/Echoes'
 import { Echo } from '~/Core/Models/Echo'
 
@@ -9,7 +9,8 @@ definePageMeta({
 })
 
 const Route = useRoute()
-const { isTablet, isDesktop, isIos } = useDevice()
+const { isTablet, isDesktop } = useDevice()
+const Toast = useToast()
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
 const CharactersStore = useCharactersStore()
@@ -79,11 +80,20 @@ async function TakeScreenShotAsync() {
       return
     }
 
+    Toast.add({
+      title: 'Blob generated',
+      timeout: 3000,
+    })
+
     const fileURL = URL.createObjectURL(blob)
     if (isDesktop) {
       window.open(fileURL, '_blank')
     }
     else {
+      Toast.add({
+        title: 'Triggering mobile/tablet download.',
+        timeout: 3000,
+      })
       FileSaver.saveAs(fileURL, `${SelectedCharacter.value!.Name}_${+new Date()}.png`)
     }
     ShowScreenShotBackground.value = false

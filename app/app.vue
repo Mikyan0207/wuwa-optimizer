@@ -18,6 +18,7 @@ WeaponsStore.Update()
   <VitePwaManifest />
   <Analytics />
   <SpeedInsights />
+  <UNotifications />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>

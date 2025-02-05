@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { domToBlob } from 'modern-screenshot'
+import { domToBlob, domToJpeg } from 'modern-screenshot'
 import { Empty_Echo } from '~/Core/Echoes'
 import { Echo } from '~/Core/Models/Echo'
 
@@ -8,6 +8,7 @@ definePageMeta({
 })
 
 const Route = useRoute()
+const { isTablet, isDesktop, isIos } = useDevice()
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
 const CharactersStore = useCharactersStore()
@@ -57,24 +58,47 @@ async function TakeScreenShotAsync() {
   ShowScreenShotBackground.value = true
 
   const scale = 1
-  const w = 1280 * scale
-  const h = 886 * scale
+  let w = 1280 * scale
+  let h = 886 * scale
 
-  const blob = await domToBlob(CharacterInfoRef.value, {
-    height: h,
-    width: w,
-    style: {
-      zoom: `${scale}`,
-    },
-  })
-
-  if (blob === null) {
-    ShowScreenShotBackground.value = false
-    return
+  if (isTablet) {
+    w = 1069 * scale
+    h = 1770 * scale
   }
 
-  const fileURL = URL.createObjectURL(blob)
-  window.open(fileURL, '_blank')
+  if (isDesktop) {
+    const blob = await domToBlob(CharacterInfoRef.value, {
+      height: h,
+      width: w,
+      style: {
+        zoom: `${scale}`,
+      },
+    })
+
+    if (blob === null) {
+      ShowScreenShotBackground.value = false
+      return
+    }
+
+    const fileURL = URL.createObjectURL(blob)
+    window.open(fileURL, '_blank')
+  }
+  else if (isTablet && isIos) {
+    const url = await domToJpeg(CharacterInfoRef.value, {
+      height: h,
+      width: w,
+      style: {
+        zoom: `${scale}`,
+      },
+    })
+
+    const link = document.createElement('a')
+    link.download = `${SelectedCharacter.value!.Name}.jpeg`
+    link.href = url
+    link.target = '_blank'
+    link.click()
+    document.removeChild(link)
+  }
 
   ShowScreenShotBackground.value = false
 }
@@ -100,49 +124,53 @@ async function TakeScreenShotAsync() {
       </div>
     </div>
 
-    <div v-if="SelectedCharacter !== undefined && CharacterScore" class="mb-14 mt-4 xl:mb-0">
-      <div class="mx-auto my-2 w-7xl">
-        <div ref="CharacterInfoRef" class="relative grid grid-cols-5 mx-auto w-full gap-1">
+    <div v-if="SelectedCharacter !== undefined && CharacterScore" class="mb-14 mt-4 px-4 xl:mb-0 xl:px-0">
+      <div class="mx-auto my-2 xl:w-7xl">
+        <div ref="CharacterInfoRef" class="relative">
           <div v-if="ShowScreenShotBackground" class="absolute inset-0">
             <LayeredBackground />
           </div>
-          <!-- Character Info (Art, Stats, Weapon, Skills) -->
-          <CharacterArtCard v-if="SelectedCharacter" :character="SelectedCharacter" class="col-span-2" />
-          <div class="grid col-span-3 grid-cols-2 gap-1">
-            <!-- Stats -->
-            <CharacterStatsCard :character="SelectedCharacter" :score="CharacterScore" />
-            <!-- Weapon / Skills -->
-            <div class="grid grid-rows-4 gap-1">
-              <!-- Weapon -->
-              <WeaponCard
-                :character-id="SelectedCharacter.Id"
-                :character-weapon-type="SelectedCharacter.WeaponType"
-                :weapon-id="SelectedCharacter.EquipedWeapon"
-              />
-              <!-- Skills -->
-              <CharacterSkillsCard
-                class="z-1 row-span-3"
-                :character="SelectedCharacter"
-              />
+          <div class="grid grid-cols-2 mx-auto w-full gap-1 xl:grid-cols-5">
+            <!-- Character Info (Art, Stats, Weapon, Skills) -->
+            <CharacterArtCard v-if="SelectedCharacter" :character="SelectedCharacter" class="col-span-1 xl:col-span-2" />
+            <div class="grid col-span-1 grid-cols-1 gap-1 xl:col-span-3 xl:grid-cols-2">
+              <!-- Stats -->
+              <CharacterStatsCard :character="SelectedCharacter" :score="CharacterScore" />
+              <!-- Weapon / Skills -->
+              <div class="grid grid-rows-4 gap-1">
+                <!-- Weapon -->
+                <WeaponCard
+                  :character-id="SelectedCharacter.Id"
+                  :character-weapon-type="SelectedCharacter.WeaponType"
+                  :weapon-id="SelectedCharacter.EquipedWeapon"
+                />
+                <!-- Skills -->
+                <CharacterSkillsCard
+                  class="z-1 row-span-3"
+                  :character="SelectedCharacter"
+                />
+              </div>
             </div>
           </div>
 
-          <!-- Echoes -->
-          <CharacterEchoCard
-            v-for="(echo, idx) in GetEchoes()"
-            :key="idx"
-            :echo="echo"
-            :echo-slot="idx"
-            :score="CharacterScore.EchoesScores.find(x => x.EchoId === echo.Id)"
-            :character="SelectedCharacter"
-            class="relative border-2 border-white/18 rounded bg-black/66 backdrop-blur-6"
-          />
-          <div class="grid col-span-3 grid-cols-2">
+          <div class="grid grid-cols-4 mt-1 gap-1 xl:grid-cols-5">
+            <!-- Echoes -->
+            <CharacterEchoCard
+              v-for="(echo, idx) in GetEchoes()"
+              :key="idx"
+              :echo="echo"
+              :echo-slot="idx"
+              :score="CharacterScore.EchoesScores.find(x => x.EchoId === echo.Id)"
+              :character="SelectedCharacter"
+              class="relative border-2 border-white/18 rounded bg-black/66 backdrop-blur-6"
+            />
+          </div>
+          <!-- <div class="grid col-span-3 grid-cols-2">
             <Card class="h-36">
               Active Sonata
             </Card>
             <div class="w-full" />
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

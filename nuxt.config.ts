@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     '@vee-validate/nuxt',
+    '@nuxtjs/device',
   ],
 
   ssr: false,

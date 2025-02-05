@@ -9,7 +9,7 @@ definePageMeta({
 })
 
 const Route = useRoute()
-const { isTablet, isDesktop } = useDevice()
+const { isTablet, isDesktop, isIos } = useDevice()
 const Toast = useToast()
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
@@ -80,13 +80,8 @@ async function TakeScreenShotAsync() {
       return
     }
 
-    Toast.add({
-      title: 'Blob generated',
-      timeout: 3000,
-    })
-
     const fileURL = URL.createObjectURL(blob)
-    if (isDesktop) {
+    if (isDesktop && !isIos) {
       window.open(fileURL, '_blank')
     }
     else {

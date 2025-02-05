@@ -103,7 +103,7 @@ async function TakeScreenShotAsync() {
       </div>
     </div>
 
-    <div v-if="SelectedCharacter !== undefined && CharacterScore" class="mb-14 mt-14 xl:mb-0">
+    <div v-if="SelectedCharacter !== undefined && CharacterScore" class="mb-14 mt-4 xl:mb-0">
       <div class="mx-auto my-2 w-7xl">
         <div ref="CharacterInfoRef" class="relative grid grid-cols-5 mx-auto w-full gap-1">
           <div v-if="ShowScreenShotBackground" class="absolute inset-0">

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { domToBlob, domToJpeg } from 'modern-screenshot'
+import FileSaver from 'file-saver'
+import { domToBlob, domToJpeg, domToPng } from 'modern-screenshot'
 import { Empty_Echo } from '~/Core/Echoes'
 import { Echo } from '~/Core/Models/Echo'
 
@@ -84,7 +85,7 @@ async function TakeScreenShotAsync() {
     window.open(fileURL, '_blank')
   }
   else if (isTablet && isIos) {
-    const url = await domToJpeg(CharacterInfoRef.value, {
+    const url = await domToPng(CharacterInfoRef.value, {
       height: h,
       width: w,
       style: {
@@ -92,12 +93,7 @@ async function TakeScreenShotAsync() {
       },
     })
 
-    const link = document.createElement('a')
-    link.download = `${SelectedCharacter.value!.Name}.jpeg`
-    link.href = url
-    link.target = '_blank'
-    link.click()
-    document.removeChild(link)
+    FileSaver.saveAs(url, `${SelectedCharacter.value!.Name}_${+new Date()}.png`)
   }
 
   ShowScreenShotBackground.value = false

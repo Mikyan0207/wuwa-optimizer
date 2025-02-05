@@ -1,18 +1,40 @@
 <script setup lang="ts">
+import { TemplateCharacters } from '~/Core/Characters'
+import { CharacterReleaseState } from '~/Core/Enums/CharacterReleaseState'
+import { Character } from '~/Core/Models/Character'
+
 definePageMeta({
   layout: 'default',
 })
+
+const NewCharacters = computed(() => TemplateCharacters
+  .filter(x => x.ReleaseState === CharacterReleaseState.NEW || x.ReleaseState === CharacterReleaseState.UPCOMING)
+  .map(c => new Character(c))
+  .reverse())
+
+function OnCharacterClicked(characterId: number) {
+  navigateTo(`/characters/${characterId}`)
+}
 </script>
 
 <template>
-  <div>
-    <section id="hero" class="mx-auto h-screen max-w-5xl flex flex-col items-center justify-center px-4 text-center text-white">
-      <h1 class="mb-4 text-4xl font-extrabold tracking-wide md:text-5xl">
-        Optimize your Resonators in <br><span class="text-yellow-400">Wuthering Waves</span>
-      </h1>
-      <p class="text-md mb-6 max-w-2xl text-gray-400">
-        Find the best builds for your resonators by evaluating and optimizing each Echo.
+  <div class="grid grid-cols-5 mx-auto my-8 w-7xl gap-1">
+    <Card class="col-span-5 h-46" />
+    <Card class="col-span-3">
+      <h2 class="text-lg">
+        <span class="text-yellow-400 font-extrabold tracking-wide">Characters</span>
+      </h2>
+      <p class="mb-4 text-sm text-gray-400">
+        New and upcoming characters
       </p>
-    </section>
+      <div class="w-full flex flex-wrap items-center gap-1">
+        <CharacterIcon
+          v-for="c in NewCharacters"
+          :key="c.Id"
+          :character="c"
+          @click.prevent="OnCharacterClicked(c.Id ?? -1)"
+        />
+      </div>
+    </Card>
   </div>
 </template>

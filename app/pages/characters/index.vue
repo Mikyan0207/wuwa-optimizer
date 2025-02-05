@@ -161,67 +161,60 @@ function OnCharacterClicked(characterId: number) {
 
 <template>
   <div>
-    <div class="h-12 w-full flex items-center gap-2 border-b border-white/14 bg-black/44 p-3 text-sm backdrop-blur-6">
-      <NuxtLink to="/characters">
-        Resonators
-      </NuxtLink>
-    </div>
-    <div class="mx-auto mt-8 xl:max-w-8xl px-8">
-      <div class="w-full flex items-center justify-end gap-2">
-        <div class="flex flex-wrap items-center justify-end gap-4">
-          <!-- Character Type -->
-          <div class="flex items-center justify-end gap-1">
-            <div class="flex border border-white/14 rounded bg-black/66 backdrop-blur-4">
-              <div
-                v-for="(ch, idx) in CharacterTypesOptions" :key="ch.Type"
-                class="flex flex-row cursor-pointer items-center gap-2 px-4 py-1" :class="{
-                  'rounded-l-sm': idx === 0,
-                  'rounded-r-sm': idx === CharacterTypesOptions.length - 1,
-                  'border-r border-white/14': idx !== CharacterTypesOptions.length - 1,
-                  'bg-white/14 border-r-0': ch.Type === SelectedCharacterType.Type,
-                  'hover:bg-white/7': ch.Type !== SelectedCharacterType.Type,
-                }" @click.prevent="SelectedCharacterType = ch"
-              >
-                <NuxtImg v-if="ch.Name !== 'All'" :src="ch.Icon" class="h-6 w-6 object-cover" />
-                <span v-else :title="ch.Name" class="text-truncate text-nowrap">{{ ch.Name }}</span>
-              </div>
+    <div class="mx-auto xl:max-w-8xl px-8">
+      <div class="w-full flex flex-wrap items-center justify-end gap-4">
+        <!-- Character Type -->
+        <div class="flex items-center justify-end gap-1">
+          <div class="flex border border-white/14 rounded bg-black/66 backdrop-blur-4">
+            <div
+              v-for="(ch, idx) in CharacterTypesOptions" :key="ch.Type"
+              class="flex flex-row cursor-pointer items-center gap-2 px-4 py-1" :class="{
+                'rounded-l-sm': idx === 0,
+                'rounded-r-sm': idx === CharacterTypesOptions.length - 1,
+                'border-r border-white/14': idx !== CharacterTypesOptions.length - 1,
+                'bg-white/14 border-r-0': ch.Type === SelectedCharacterType.Type,
+                'hover:bg-white/7': ch.Type !== SelectedCharacterType.Type,
+              }" @click.prevent="SelectedCharacterType = ch"
+            >
+              <NuxtImg v-if="ch.Name !== 'All'" :src="ch.Icon" class="h-6 w-6 object-cover" />
+              <span v-else :title="ch.Name" class="text-truncate text-nowrap">{{ ch.Name }}</span>
             </div>
           </div>
-          <!-- Weapon Type -->
-          <div class="flex items-center justify-end gap-1">
-            <div class="flex border border-white/14 rounded bg-black/66 backdrop-blur-4">
-              <div
-                v-for="(weapon, idx) in WeaponTypesOptions" :key="weapon.Type"
-                class="flex flex-row cursor-pointer items-center gap-2 px-4 py-1" :class="{
-                  'rounded-l-sm': idx === 0,
-                  'rounded-r-sm': idx === WeaponTypesOptions.length - 1,
-                  'border-r border-white/14': idx !== WeaponTypesOptions.length - 1,
-                  'bg-white/14 border-r-0': weapon.Type === SelectedWeaponType.Type,
-                  'hover:bg-white/7': weapon.Type !== SelectedWeaponType.Type,
-                }" @click.prevent="SelectedWeaponType = weapon"
-              >
-                <NuxtImg v-if="weapon.Name !== 'All'" :src="weapon.Icon" class="h-6 w-6 object-cover" />
-                <span v-else :title="weapon.Name" class="text-truncate text-nowrap">{{ weapon.Name }}</span>
-              </div>
+        </div>
+        <!-- Weapon Type -->
+        <div class="flex items-center justify-end gap-1">
+          <div class="flex border border-white/14 rounded bg-black/66 backdrop-blur-4">
+            <div
+              v-for="(weapon, idx) in WeaponTypesOptions" :key="weapon.Type"
+              class="flex flex-row cursor-pointer items-center gap-2 px-4 py-1" :class="{
+                'rounded-l-sm': idx === 0,
+                'rounded-r-sm': idx === WeaponTypesOptions.length - 1,
+                'border-r border-white/14': idx !== WeaponTypesOptions.length - 1,
+                'bg-white/14 border-r-0': weapon.Type === SelectedWeaponType.Type,
+                'hover:bg-white/7': weapon.Type !== SelectedWeaponType.Type,
+              }" @click.prevent="SelectedWeaponType = weapon"
+            >
+              <NuxtImg v-if="weapon.Name !== 'All'" :src="weapon.Icon" class="h-6 w-6 object-cover" />
+              <span v-else :title="weapon.Name" class="text-truncate text-nowrap">{{ weapon.Name }}</span>
             </div>
           </div>
-          <!-- Weapon Rarity -->
-          <div class="flex items-center gap-1">
-            <div class="flex border border-white/14 rounded bg-black/66 backdrop-blur-4">
-              <div
-                v-for="(rarity, idx) in CharacterRarityOptions" :key="`weapon-rarity-${idx}`"
-                class="flex flex-row cursor-pointer items-center gap-2 px-4 py-1" :class="{
-                  'rounded-l-sm': idx === 0,
-                  'rounded-r-sm': idx === CharacterRarityOptions.length - 1,
-                  'border-r border-white/14': idx !== CharacterRarityOptions.length - 1,
-                  'bg-white/14 border-r-0': rarity === SelectedCharacterRarity,
-                  'hover:bg-white/7': rarity !== SelectedCharacterRarity,
-                }" @click.prevent="SelectedCharacterRarity = rarity"
-              >
-                <span v-if="rarity !== 'All'" class="text-truncate text-nowrap">{{ GetRarityAsNumber(rarity as Rarity)
-                }}✧</span>
-                <span v-else class="text-truncate text-nowrap">{{ rarity }}</span>
-              </div>
+        </div>
+        <!-- Weapon Rarity -->
+        <div class="flex items-center gap-1">
+          <div class="flex border border-white/14 rounded bg-black/66 backdrop-blur-4">
+            <div
+              v-for="(rarity, idx) in CharacterRarityOptions" :key="`weapon-rarity-${idx}`"
+              class="flex flex-row cursor-pointer items-center gap-2 px-4 py-1" :class="{
+                'rounded-l-sm': idx === 0,
+                'rounded-r-sm': idx === CharacterRarityOptions.length - 1,
+                'border-r border-white/14': idx !== CharacterRarityOptions.length - 1,
+                'bg-white/14 border-r-0': rarity === SelectedCharacterRarity,
+                'hover:bg-white/7': rarity !== SelectedCharacterRarity,
+              }" @click.prevent="SelectedCharacterRarity = rarity"
+            >
+              <span v-if="rarity !== 'All'" class="text-truncate text-nowrap">{{ GetRarityAsNumber(rarity as Rarity)
+              }}✧</span>
+              <span v-else class="text-truncate text-nowrap">{{ rarity }}</span>
             </div>
           </div>
         </div>

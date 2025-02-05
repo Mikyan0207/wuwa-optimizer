@@ -20,12 +20,7 @@ const TabItems = [{
 
 <template>
   <div>
-    <div class="w-full flex items-center gap-2 border-b border-white/14 bg-black/44 p-3 text-sm backdrop-blur-4">
-      <NuxtLink to="/imports">
-        Importer
-      </NuxtLink>
-    </div>
-    <div class="mx-auto my-8 max-w-2xl text-sm text-gray-300">
+    <div class="mx-auto mb-8 max-w-2xl text-sm text-gray-300">
       <UTabs
         v-model="SelectedTab"
         :items="TabItems"

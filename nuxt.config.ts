@@ -44,6 +44,10 @@ export default defineNuxtConfig({
         { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#222222' },
       ],
     },
+    pageTransition: {
+      name: 'bounce',
+      mode: 'out-in', // default
+    },
   },
 
   css: [

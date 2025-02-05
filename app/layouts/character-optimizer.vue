@@ -29,9 +29,7 @@
       <LeftNavigation />
     </div>
 
-    <DynamicHeader />
-
-    <main class="ml-16 mt-14 w-full">
+    <main class="ml-16 w-full">
       <slot />
     </main>
   </div>

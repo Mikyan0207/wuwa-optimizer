@@ -4,7 +4,7 @@ import { Empty_Echo } from '~/Core/Echoes'
 import { Echo } from '~/Core/Models/Echo'
 
 definePageMeta({
-  layout: 'default',
+  layout: 'character-optimizer',
 })
 
 const Route = useRoute()
@@ -84,14 +84,16 @@ async function TakeScreenShotAsync() {
 </script>
 
 <template>
-  <div class="min-w-[1480px]">
-    <div class="sticky top-0 z-30 h-12 w-full flex items-center justify-between gap-2 border-b border-white/14 bg-black/44 p-3 text-sm backdrop-blur-6">
+  <div>
+    <div class="sticky left-16 top-0 h-12 w-full flex items-center justify-between gap-2 border-b border-white/14 bg-black/44 p-3 text-sm backdrop-blur-6">
       <div class="flex items-center gap-2">
-        <NuxtLink to="/characters">
-          Resonators
-        </NuxtLink>
-        <span> / </span>
-        <span v-if="SelectedCharacter !== undefined">{{ SelectedCharacter.Name }}</span>
+        <UBreadcrumb
+          v-if="SelectedCharacter !== undefined"
+          :links="[
+            { label: 'Characters', to: '/characters' },
+            { label: SelectedCharacter.Name },
+          ]"
+        />
       </div>
       <div class="flex items-center gap-2">
         <WeightsCard v-if="SelectedCharacter !== undefined" :character="SelectedCharacter" />
@@ -101,8 +103,8 @@ async function TakeScreenShotAsync() {
       </div>
     </div>
 
-    <div v-if="SelectedCharacter !== undefined && CharacterScore">
-      <div class="mx-auto my-2 max-w-7xl">
+    <div v-if="SelectedCharacter !== undefined && CharacterScore" class="mb-14 mt-14 xl:mb-0">
+      <div class="mx-auto my-2 w-7xl">
         <div ref="CharacterInfoRef" class="relative grid grid-cols-5 mx-auto w-full gap-1">
           <div v-if="ShowScreenShotBackground" class="absolute inset-0">
             <LayeredBackground :hide-video="true" />

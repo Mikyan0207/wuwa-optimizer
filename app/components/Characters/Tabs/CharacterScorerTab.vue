@@ -7,10 +7,6 @@ const props = defineProps<{
   characterId: number
 }>()
 
-definePageMeta({
-  layout: 'character-optimizer',
-})
-
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
 const CharactersStore = useCharactersStore()

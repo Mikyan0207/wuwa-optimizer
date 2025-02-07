@@ -45,6 +45,16 @@ export default defineConfig({
     'via-pink-500',
     'to-purple-500',
   ],
+  rules: [
+    [/^scrollbar-hide$/, ([_]) => {
+      return `.scrollbar-hide{scrollbar-width:none}
+.scrollbar-hide::-webkit-scrollbar{display:none}`
+    }],
+    [/^scrollbar-default$/, ([_]) => {
+      return `.scrollbar-default{scrollbar-width:auto}
+.scrollbar-default::-webkit-scrollbar{display:block}`
+    }],
+  ],
   theme: {
     // colors: extendCatppuccin(),
     breakpoints: {

@@ -36,6 +36,9 @@ devDependencies:
   '@iconify-json/carbon':
     specifier: ^1.2.5
     version: 1.2.6
+  '@iconify-json/mdi':
+    specifier: ^1.2.3
+    version: 1.2.3
   '@iconify-json/twemoji':
     specifier: ^1.2.2
     version: 1.2.2
@@ -2040,6 +2043,12 @@ packages:
 
   /@iconify-json/heroicons@1.2.2:
     resolution: {integrity: sha512-qoW4pXr5kTTL6juEjgTs83OJIwpePu7q1tdtKVEdj+i0zyyVHgg/dd9grsXJQnpTpBt6/VwNjrXBvFjRsKPENg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/mdi@1.2.3:
+    resolution: {integrity: sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true

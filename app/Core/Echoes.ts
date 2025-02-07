@@ -750,6 +750,278 @@ export const Whiff_Whaff_Echo: IEcho = {
   Statistics: [],
 }
 
+export const Aero_Predator_Echo: IEcho = {
+  Id: 390070071,
+  Name: 'Aero Predator',
+  Icon: 'Aero_Predator_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Void_Thunder,
+    Sierra_Gale,
+  ],
+  Statistics: [],
+}
+
+export const Baby_Viridblaze_Saurian_Echo: IEcho = {
+  Id: 390070078,
+  Name: 'Baby Viridblaze Saurian',
+  Icon: 'Baby_Viridblaze_Saurian_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Molten_Rift,
+    Void_Thunder,
+    Lingering_Tunes,
+  ],
+  Statistics: [],
+}
+
+export const Chest_Mimic_Echo: IEcho = {
+  Id: 6000072,
+  Name: 'Chest Mimic',
+  Icon: 'Chest_Mimic_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Frosty_Resolve,
+    Midnight_Veil,
+    Empyrean_Anthem,
+  ],
+  Statistics: [],
+}
+
+export const Chop_Chop_Headless_Echo: IEcho = {
+  Id: 6000064,
+  Name: 'Chop Chop Headless',
+  Icon: 'Chop_Chop_Headless_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Eternal_Radiance,
+    Tidebreaking_Courage,
+  ],
+  Statistics: [],
+}
+
+export const Chop_Chop_Leftless_Echo: IEcho = {
+  Id: 6000065,
+  Name: 'Chop Chop Leftless',
+  Icon: 'Chop_Chop_Leftless_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Frosty_Resolve,
+    Tidebreaking_Courage,
+  ],
+  Statistics: [],
+}
+
+export const Chop_Chop_Rightless_Echo: IEcho = {
+  Id: 6000066,
+  Name: 'Chop Chop Rightless',
+  Icon: 'Chop_Chop_Rightless_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Frosty_Resolve,
+    Tidebreaking_Courage,
+  ],
+  Statistics: [],
+}
+
+export const Diamond_Claw_Echo: IEcho = {
+  Id: 6000041,
+  Name: 'Diamondclaw',
+  Icon: 'Diamondclaw_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Moonlit_Clouds,
+    Lingering_Tunes,
+  ],
+  Statistics: [],
+}
+
+export const Diggy_Duggy_Echo: IEcho = {
+  Id: 6000071,
+  Name: 'Diggy Duggy',
+  Icon: 'Diggy_Duggy_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Eternal_Radiance,
+    Tidebreaking_Courage,
+  ],
+  Statistics: [],
+}
+
+export const Dwarf_Cassowary_Echo: IEcho = {
+  Id: 6000055,
+  Name: 'Dwarf Cassowary',
+  Icon: 'Dwarf_Cassowary_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Sierra_Gale,
+    Rejuvenating_Glow,
+  ],
+  Statistics: [],
+}
+
+export const Electro_Predator_Echo: IEcho = {
+  Id: 390070053,
+  Name: 'Electro Predator',
+  Icon: 'Electro_Predator_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Molten_Rift,
+    Void_Thunder,
+  ],
+  Statistics: [],
+}
+
+export const Excarat_Echo: IEcho = {
+  Id: 390070077,
+  Name: 'Excarat',
+  Icon: 'Excarat_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Freezing_Frost,
+    SunSinking_Eclipse,
+  ],
+  Statistics: [],
+}
+
+export const Fae_Ignis_Echo: IEcho = {
+  Id: 6000067,
+  Name: 'Fae Ignis',
+  Icon: 'Fae_Ignis_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Eternal_Radiance,
+    Midnight_Veil,
+  ],
+  Statistics: [],
+}
+
+export const Fission_Junrock_Echo: IEcho = {
+  Id: 390070052,
+  Name: 'Fission Junrock',
+  Icon: 'Fission_Junrock_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Void_Thunder,
+    Rejuvenating_Glow,
+    Moonlit_Clouds,
+  ],
+  Statistics: [],
+}
+
+export const Frostscourge_Stalker_Echo: IEcho = {
+  Id: 6000063,
+  Name: 'Frostscourge Stalker',
+  Icon: 'Frostscourge_Stalker_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Eternal_Radiance,
+    Midnight_Veil,
+  ],
+  Statistics: [],
+}
+
+export const Fusion_Dreadmane_Echo: IEcho = {
+  Id: 390070100,
+  Name: 'Fusion Dreadmane',
+  Icon: 'Fusion_Dreadmane_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Molten_Rift,
+    Rejuvenating_Glow,
+  ],
+  Statistics: [],
+}
+
+export const Fusion_Prism_Echo: IEcho = {
+  Id: 390077012,
+  Name: 'Fusion Prism',
+  Icon: 'Fusion_Prism_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Molten_Rift,
+    Lingering_Tunes,
+    Freezing_Frost,
+  ],
+  Statistics: [],
+}
+
+export const Fusion_Warrior_Echo: IEcho = {
+  Id: 390070064,
+  Name: 'Fusion Warrior',
+  Icon: 'Fusion_Warrior_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Molten_Rift,
+    Void_Thunder,
+    Sierra_Gale,
+  ],
+  Statistics: [],
+}
+
+export const Galescourge_Stalker_Echo: IEcho = {
+  Id: 6000061,
+  Name: 'Galescourge Stalker',
+  Icon: 'Galescourge_Stalker_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Frosty_Resolve,
+    Empyrean_Anthem,
+  ],
+  Statistics: [],
+}
+
+export const Glacio_Prism_Echo: IEcho = {
+  Id: 390077013,
+  Name: 'Glacio Prism',
+  Icon: 'Glacio_Prism_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [
+    Freezing_Frost,
+    SunSinking_Eclipse,
+    Moonlit_Clouds,
+  ],
+  Statistics: [],
+}
+
 // #endregion
 
 export const Echoes: IEcho[] = [
@@ -808,6 +1080,25 @@ export const Echoes: IEcho[] = [
   Spectro_Prism_Echo,
   ZigZag_Echo,
   Whiff_Whaff_Echo,
+  Aero_Predator_Echo,
+  Baby_Viridblaze_Saurian_Echo,
+  Chest_Mimic_Echo,
+  Chop_Chop_Headless_Echo,
+  Chop_Chop_Leftless_Echo,
+  Chop_Chop_Rightless_Echo,
+  Diamond_Claw_Echo,
+  Diggy_Duggy_Echo,
+  Dwarf_Cassowary_Echo,
+  Electro_Predator_Echo,
+  Excarat_Echo,
+  Fae_Ignis_Echo,
+  Fission_Junrock_Echo,
+  Frostscourge_Stalker_Echo,
+  Fusion_Dreadmane_Echo,
+  Fusion_Prism_Echo,
+  Fusion_Warrior_Echo,
+  Galescourge_Stalker_Echo,
+  Glacio_Prism_Echo,
 ]
 
 export const TemplateEchoes: IEcho[] = Echoes

@@ -19,6 +19,7 @@ export default defineNuxtConfig({
   components: [
     '~/components',
     '~/components/Characters',
+    '~/components/Characters/Tabs',
     '~/components/Echoes',
     '~/components/Interface',
     '~/components/Forms',

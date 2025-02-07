@@ -18,16 +18,16 @@ function OnCharacterClicked(characterId: number) {
 </script>
 
 <template>
-  <div class="grid grid-cols-5 mx-auto my-8 w-7xl gap-1">
-    <Card class="col-span-5 h-46" />
-    <Card class="col-span-3">
+  <div class="grid grid-cols-6 mx-auto my-8 gap-1 px-8 xl:w-7xl">
+    <Card class="col-span-6 h-46" />
+    <Card class="col-span-1">
       <h2 class="text-lg">
         <span class="text-yellow-400 font-extrabold tracking-wide">Characters</span>
       </h2>
       <p class="mb-4 text-sm text-gray-400">
-        New and upcoming characters
+        New・Upcoming
       </p>
-      <div class="w-full flex flex-wrap items-center gap-1">
+      <div class="flex flex-col items-center gap-1">
         <CharacterIcon
           v-for="c in NewCharacters"
           :key="c.Id"

@@ -260,3 +260,22 @@ export const Sonatas: ISonata[] = [
   Tidebreaking_Courage,
   Eternal_Radiance,
 ]
+
+export const Sonatas_1_0: ISonata[] = [
+  Celestial_Light,
+  Freezing_Frost,
+  Moonlit_Clouds,
+  Rejuvenating_Glow,
+  SunSinking_Eclipse,
+  Molten_Rift,
+  Lingering_Tunes,
+  Sierra_Gale,
+]
+
+export const Sonatas_2_0: ISonata[] = [
+  Frosty_Resolve,
+  Empyrean_Anthem,
+  Midnight_Veil,
+  Tidebreaking_Courage,
+  Eternal_Radiance,
+]

@@ -232,12 +232,9 @@ function GetSubStatsValues(type: string) {
 <template>
   <div>
     <div class="absolute right-1 top-1 hidden transition-all duration-75 group-hover:inline" @click="ShowEditEchoModal = true">
-      <div class="cursor-pointer border border-white/14 rounded-md bg-black/44 px-2 py-1 text-sm text-white">
-        <p>
-          Edit Echo
-        </p>
-      </div>
+      <UButton color="white" variant="ghost" icon="mdi:pencil-outline" />
     </div>
+    <EchoCreationPanel :echo="echo" :character="character" :echo-slot="echoSlot" />
     <!-- Edit Echo Modal -->
     <UModal
       v-model="ShowEditEchoModal"

@@ -28,7 +28,8 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
 
 <template>
   <div class="group relative h-22em w-full p-4">
-    <EditEchoForm :echo="echo" :character="character" :echo-slot="echoSlot" />
+    <EchoCreationPanel :echo="echo" :character="character" :echo-slot="echoSlot" />
+    <!-- <EditEchoForm :echo="echo" :character="character" :echo-slot="echoSlot" /> -->
     <!-- Echo Details -->
     <div class="w-full flex flex-col items-start gap-2">
       <div class="flex flex-row items-center gap-2">

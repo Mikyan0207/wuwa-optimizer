@@ -5,7 +5,6 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     '@pinia/nuxt',
-    '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
     '@nuxt/image',
@@ -40,8 +39,6 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: AppDescription },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
-        { name: 'theme-color', media: '(prefers-color-scheme: light)', content: 'white' },
-        { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#222222' },
       ],
     },
     pageTransition: {
@@ -50,12 +47,12 @@ export default defineNuxtConfig({
   },
 
   css: [
-    '../public/assets/css/main.css',
+    '~/assets/css/main.css',
   ],
   colorMode: {
     preference: 'dark',
     fallback: 'dark',
-    classSuffix: '',
+    classPrefix: '',
   },
 
   future: {
@@ -70,7 +67,7 @@ export default defineNuxtConfig({
     typedPages: true,
   },
 
-  compatibilityDate: '2024-08-14',
+  compatibilityDate: '2025-01-15',
 
   nitro: {
     esbuild: {
@@ -97,17 +94,6 @@ export default defineNuxtConfig({
     defaults: {
       weights: [400],
       styles: ['normal', 'italic'],
-      subsets: [
-        'cyrillic-ext',
-        'cyrillic',
-        'greek-ext',
-        'greek',
-        'vietnamese',
-        'latin-ext',
-        'latin',
-      ],
     },
   },
-
-  pwa,
 })

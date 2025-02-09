@@ -4,7 +4,7 @@
 
 <template>
   <div
-    class="[background-size:16px_16px] relative min-h-100vh w-full flex flex-row overflow-hidden overflow-y-auto bg-[radial-gradient(#ffffff12_1px,transparent_1px)]"
+    class="[background-size:16px_16px] relative min-h-100vh w-full flex flex-row overflow-hidden bg-[radial-gradient(#ffffff12_1px,transparent_1px)]"
   >
     <!-- Background -->
     <div class="absolute inset-0 h-full w-full -z-1">

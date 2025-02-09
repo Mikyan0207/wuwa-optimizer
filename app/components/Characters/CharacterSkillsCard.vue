@@ -76,7 +76,7 @@ const IntroStatBonus2 = computed<ISkill | undefined>(() =>
 <template>
   <UCard class="h-full w-full" :ui="{ body: 'h-full' }">
     <template #default>
-      <div class="h-full w-full flex flex-col items-center justify-center gap-6">
+      <div class="h-full w-full px-2 flex flex-col items-center justify-center gap-6">
         <!-- Normal Attack -->
         <div class="w-full flex items-center">
           <SkillIcon :skill="BasicAttack" />

@@ -57,7 +57,7 @@ async function TakeScreenShotAsync() {
 
   const scale = 1
   const w = 1280 * scale
-  const h = 884 * scale
+  const h = 860 * scale
 
   domToBlob(CharacterInfoRef.value, {
     height: h,
@@ -81,7 +81,7 @@ async function TakeScreenShotAsync() {
 <template>
   <div>
     <UCard
-      class="mx-auto w-full border text-sm backdrop-blur-6 xl:max-w-7xl"
+      class="mx-auto w-full text-sm xl:max-w-7xl"
     >
       <template #default>
         <div class="flex items-center justify-between">
@@ -104,7 +104,7 @@ async function TakeScreenShotAsync() {
 
     <div v-if="SelectedCharacter !== undefined && CharacterScore" class="mb-14 mt-2 px-4 xl:mb-0 xl:px-0">
       <div class="mx-auto my-2 xl:w-7xl">
-        <div ref="CharacterInfoRef" class="relative">
+        <div ref="CharacterInfoRef" class="relative p-0.25">
           <div v-if="ShowScreenShotBackground" class="absolute inset-0">
             <LayeredBackground />
           </div>

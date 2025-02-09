@@ -7,11 +7,6 @@ useHead({
   title: AppName,
 })
 
-const ColorMode = useColorMode()
-
-ColorMode.forced = true
-ColorMode.value = 'dark'
-
 const CharactersStore = useCharactersStore()
 const WeaponsStore = useWeaponsStore()
 
@@ -39,5 +34,6 @@ body,
   padding: 0;
   font-family: 'Quicksand';
   color: white;
+  background-color: black;
 }
 </style>

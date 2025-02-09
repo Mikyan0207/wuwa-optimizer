@@ -288,8 +288,9 @@ const StepperItems = [
     <UModal
       v-model:open="IsOpen"
       title="Edit Echo"
+      :overlay="true"
       :ui="{
-        content: 'xl:min-w-4xl w-4xl min-h-8/10! h-8/10! overflow-hidden',
+        content: 'xl:min-w-4xl w-5xl min-w-5xl xl:w-4xl min-h-8/10! h-8/10! overflow-hidden',
         body: '',
       }"
     >
@@ -299,7 +300,7 @@ const StepperItems = [
           :schema="EditEchoSchema"
           :state="State"
         >
-          <UStepper ref="echo-creation-stepper" v-model="CurrentStep" :items="StepperItems" color="neutral" size="sm">
+          <UStepper ref="echo-creation-stepper" v-model="CurrentStep" :items="StepperItems" color="primary" size="xs">
             <template #echo-selection>
               <div class="mt-8 flex flex-col gap-1">
                 <!-- 1.x sonata -->
@@ -473,15 +474,19 @@ const StepperItems = [
                   </div>
                 </div>
               </div>
-              <div class="mt-6 flex justify-end">
-                <UButtonGroup size="md">
-                  <UButton color="neutral" variant="outline" label="Previous" @click.prevent="Stepper?.prev()" />
-                  <UButton color="primary" variant="subtle" label="Submit" @click.prevent="OnSubmit" />
-                </UButtonGroup>
-              </div>
+              
             </template>
           </UStepper>
         </UForm>
+      </template>
+      <template #footer>
+        <div class="w-full flex justify-end">
+          <UButtonGroup size="md">
+            <UButton color="neutral" variant="outline" label="Previous" @click.prevent="Stepper?.prev()" :disabled="!Stepper?.hasPrev" />
+            <UButton v-if="!Stepper?.hasNext" color="primary" variant="subtle" label="Submit" @click.prevent="OnSubmit" />
+            <UButton v-else color="neutral" variant="subtle" label="Next" @click.prevent="Stepper?.next()" />
+          </UButtonGroup>
+        </div>
       </template>
     </UModal>
   </div>

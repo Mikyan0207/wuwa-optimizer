@@ -4,14 +4,13 @@ import { AppDescription } from './app/Core'
 export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
-    '@unocss/nuxt',
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
     '@nuxt/image',
     '@nuxt/ui',
-    '@vee-validate/nuxt',
+    '@nuxt/fonts',
   ],
 
   ssr: false,
@@ -47,12 +46,11 @@ export default defineNuxtConfig({
     },
     pageTransition: {
       name: 'bounce',
-      mode: 'out-in', // default
     },
   },
 
   css: [
-    '@unocss/reset/tailwind.css',
+    '../public/assets/css/main.css',
   ],
   colorMode: {
     preference: 'dark',
@@ -95,17 +93,21 @@ export default defineNuxtConfig({
     },
   },
 
-  pwa,
-
-  veeValidate: {
-    // disable or enable auto imports
-    autoImports: true,
-    // Use different names for components
-    componentNames: {
-      Form: 'VeeForm',
-      Field: 'VeeField',
-      FieldArray: 'VeeFieldArray',
-      ErrorMessage: 'VeeErrorMessage',
+  fonts: {
+    defaults: {
+      weights: [400],
+      styles: ['normal', 'italic'],
+      subsets: [
+        'cyrillic-ext',
+        'cyrillic',
+        'greek-ext',
+        'greek',
+        'vietnamese',
+        'latin-ext',
+        'latin',
+      ],
     },
   },
+
+  pwa,
 })

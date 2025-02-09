@@ -20,8 +20,8 @@ const Routes = computed(() => Route.path.split('/').filter(p => p !== undefined 
 <template>
   <!-- Header -->
   <div
-    class="fixed left-16 top-0 z-30 h-12 w-full flex items-center gap-2 border-b border-white/14 bg-black/44 p-3 text-sm backdrop-blur-4"
+    class="fixed left-16 top-0 z-30 h-12 w-full flex items-center gap-2 border-b border-white/14 bg-black/44 p-3 text-sm backdrop-blur-md"
   >
-    <UBreadcrumb :links="Routes" />
+    <UBreadcrumb :items="Routes" />
   </div>
 </template>

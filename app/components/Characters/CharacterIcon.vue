@@ -10,39 +10,39 @@ const props = defineProps<{
 const GetBackgroundColor = computed(() => {
   switch (props.character.Rarity) {
     case Rarity.FIVE_STARS:
-      return 'bg-amber-4'
+      return 'bg-amber-400'
     case Rarity.FOUR_STARS:
-      return 'bg-purple-4'
+      return 'bg-purple-400'
     case Rarity.THREE_STARS:
-      return 'bg-blue-4'
+      return 'bg-blue-400'
     default:
-      return 'bg-gray-4'
+      return 'bg-gray-400'
   }
 })
 
 const GetSecondaryColor = computed(() => {
   switch (props.character.Rarity) {
     case Rarity.FIVE_STARS:
-      return 'bg-yellow-1'
+      return 'bg-yellow-100'
     case Rarity.FOUR_STARS:
-      return 'bg-purple-1'
+      return 'bg-purple-100'
     case Rarity.THREE_STARS:
-      return 'bg-blue-1'
+      return 'bg-blue-100'
     default:
-      return 'bg-gray-1'
+      return 'bg-gray-100'
   }
 })
 
 const GetHighlightColor = computed(() => {
   switch (props.character.Rarity) {
     case Rarity.FIVE_STARS:
-      return 'bg-amber-4'
+      return 'bg-amber-400'
     case Rarity.FOUR_STARS:
-      return 'bg-purple-4'
+      return 'bg-purple-400'
     case Rarity.THREE_STARS:
-      return 'bg-blue-4'
+      return 'bg-blue-400'
     default:
-      return 'bg-gray-4'
+      return 'bg-gray-400'
   }
 })
 </script>
@@ -53,12 +53,12 @@ const GetHighlightColor = computed(() => {
   >
     <div class="relative min-h-32 w-32 flex items-center justify-center overflow-clip">
       <div v-if="character.ReleaseState === CharacterReleaseState.NEW" class="absolute left-1 top-0 z-2">
-        <UBadge :ui="{ rounded: 'rounded-sm', variant: { solid: 'bg-red-600! text-white!' } }" variant="solid" size="xs">
+        <UBadge color="error" variant="solid" size="sm" class="text-white">
           NEW
         </UBadge>
       </div>
       <div v-if="character.ReleaseState === CharacterReleaseState.UPCOMING" class="absolute left-1 top-0 z-2">
-        <UBadge :ui="{ rounded: 'rounded-sm', variant: { solid: 'bg-purple-500! text-white!' } }" variant="solid" size="xs">
+        <UBadge color="info" variant="solid" size="sm" class="px-2 text-white">
           2.1
         </UBadge>
       </div>

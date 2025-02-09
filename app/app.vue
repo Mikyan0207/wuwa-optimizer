@@ -7,6 +7,11 @@ useHead({
   title: AppName,
 })
 
+const ColorMode = useColorMode()
+
+ColorMode.forced = true
+ColorMode.value = 'dark'
+
 const CharactersStore = useCharactersStore()
 const WeaponsStore = useWeaponsStore()
 
@@ -18,9 +23,11 @@ WeaponsStore.Update()
   <VitePwaManifest />
   <Analytics />
   <SpeedInsights />
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <UApp>
+    <NuxtLayout class="min-h-screen">
+      <NuxtPage />
+    </NuxtLayout>
+  </UApp>
 </template>
 
 <style>
@@ -30,12 +37,7 @@ body,
   height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 300;
-}
-
-html.dark {
-  background: #080808;
+  font-family: 'Quicksand';
   color: white;
 }
 </style>

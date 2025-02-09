@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { WeaponType } from '~/Core/Enums/WeaponType'
 import type { Weapon } from '~/Core/Models/Weapon'
+import { UFormField } from '#components'
 import { Rarity } from '~/Core/Enums/Rarity'
 
 const props = defineProps<{
@@ -51,13 +52,9 @@ function OnSubmit() {
 
 <template>
   <div>
-    <Card class="relative h-full overflow-hidden" @mouseenter="IsHovered = true" @mouseleave="IsHovered = false">
-      <div v-if="IsHovered" class="absolute right-1 top-1 z-1" @click.prevent="ShowEditWeaponModal = true">
-        <div class="cursor-pointer border border-white/14 rounded-md bg-black/44 px-2 py-1 text-sm text-white">
-          <p>
-            Edit Weapon
-          </p>
-        </div>
+    <UCard class="relative h-full overflow-hidden" @mouseenter="IsHovered = true" @mouseleave="IsHovered = false">
+      <div v-if="IsHovered" class="absolute right-1 top-1 z-1">
+        <UButton color="neutral" variant="outline" label="Edit Weapon" icon="mdi:pencil-outline" @click.prevent="ShowEditWeaponModal = true" />
       </div>
       <div class="relative h-full flex justify-between gap-4">
         <div class="flex flex-col gap-1">
@@ -68,7 +65,7 @@ function OnSubmit() {
               <NuxtImg v-for="idx in GetRarityAsNumber" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-3 w-3 object-cover" fit="cover" />
             </div>
             <!-- Level -->
-            <UBadge class="text-xs text-gray-300" size="xs" variant="soft" color="blue">
+            <UBadge class="text-xs text-gray-300" size="xs" variant="soft" color="info">
               Lv. {{ CurrentWeapon.Level }} · R1
             </UBadge>
           </div>
@@ -85,36 +82,50 @@ function OnSubmit() {
           </div>
           <USkeleton v-else class="h-3 w-24" :ui="{ base: '' }" />
         </div>
-        <NuxtImg v-if="CurrentWeapon" :src="`/images/weapons/${CurrentWeapon.Icon}`" fit="cover" class="absolute z-0 h-135% rounded-lg object-contain -right-4 -top-4" />
+        <NuxtImg
+          v-if="CurrentWeapon"
+          :src="`/images/weapons/${CurrentWeapon.Icon}`"
+          fit="cover"
+          width="160"
+          height="160"
+          class="absolute z-0 rounded-lg object-contain -right-4 -top-4"
+        />
         <USkeleton v-else class="h-4em w-4em" :ui="{ base: '' }" />
       </div>
-    </Card>
+    </UCard>
     <UModal
-      v-model="ShowEditWeaponModal"
-      :ui="{ container: 'flex min-h-full items-center justify-center text-center', background: 'bg-black/66! backdrop-blur-4!', ring: 'border-2! border-white/14!' }"
+      v-model:open="ShowEditWeaponModal"
+      title="Edit Weapon"
     >
-      <div class="p-4">
+      <template #body>
         <div class="grid cols-1 w-full gap-8">
           <div class="col-span-2 flex flex-col gap-2">
-            <UFormGroup label="Weapon">
-              <UInputMenu v-model="EditedWeapon" placeholder="" :options="WeaponsStore.GetWeapons().filter(weapon => weapon.Type === characterWeaponType)" option-attribute="Name">
-                <template #option="{ option: o }">
+            <UFormField label="Weapon">
+              <UInputMenu
+                v-model="EditedWeapon"
+                class="w-full"
+                :items="WeaponsStore.GetWeapons().filter(weapon => weapon.Type === characterWeaponType)"
+                option-attribute="Name"
+              >
+                <template #item="{ item }">
                   <div class="w-full flex items-center justify-between gap-1">
                     <div class="w-full flex flex-row items-center gap-2">
-                      <NuxtImg :src="`/images/weapons/${(o as Weapon).Icon}`" class="h-12 w-12 object-cover" />
-                      <span :title="(o as Weapon).Name" class="w-30 text-truncate text-nowrap">{{ (o as Weapon).Name }}</span>
+                      <NuxtImg :src="`/images/weapons/${item.Icon}`" class="h-12 w-12 object-cover" />
+                      <span :title="item.Name" class="w-30 text-truncate text-nowrap">{{ item.Name }}</span>
                     </div>
                   </div>
                 </template>
               </UInputMenu>
-            </UFormGroup>
+            </UFormField>
           </div>
         </div>
-        <div class="mt-6 flex items-center justify-end gap-2">
-          <UButton label="Cancel" color="gray" variant="outline" @click.prevent="ShowEditWeaponModal = false" />
-          <UButton label="Submit" color="primary" variant="solid" @click.prevent="OnSubmit" />
+      </template>
+      <template #footer>
+        <div class="mt-6 w-full flex items-center justify-end gap-2">
+          <UButton label="Cancel" color="neutral" variant="outline" size="sm" @click.prevent="ShowEditWeaponModal = false" />
+          <UButton label="Submit" color="primary" variant="solid" size="sm" @click.prevent="OnSubmit" />
         </div>
-      </div>
+      </template>
     </UModal>
   </div>
 </template>

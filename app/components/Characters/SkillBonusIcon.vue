@@ -37,8 +37,8 @@ function ToggleSkill() {
   <USkeleton
     v-if="!CurrentSkill" class="min-h-2em min-w-2em rounded-full bg-white/7" :ui="{ base: '' }"
   />
-  <UTooltip v-else :popper="{ arrow: true, strategy: 'absolute' }" :ui="{ container: 'z-50! group', base: 'h-auto! p-2 text-xs font-normal' }">
-    <template #text>
+  <UTooltip v-else arrow :delay-duration="0">
+    <template #content>
       <div v-if="CurrentSkill.Stat">
         <div class="flex items-center gap-2">
           <div class="text-xs">
@@ -49,12 +49,12 @@ function ToggleSkill() {
           </div>
         </div>
         <p class="mt-4 text-xs text-gray-300">
-          {{ STAT_NAMES[CurrentSkill.Stat.Type].replace(' %', '') }} increased by <span class="text-amber-4">{{ CurrentSkill.Stat.Value.toFixed(2) }}%</span>
+          {{ STAT_NAMES[CurrentSkill.Stat.Type].replace(' %', '') }} increased by <span class="text-amber-400">{{ CurrentSkill.Stat.Value.toFixed(2) }}%</span>
         </p>
       </div>
     </template>
     <div
-      class="min-h-2em min-w-2em cursor-pointer border-2 rounded-full bg-black/66 transition-all duration-150"
+      class="min-h-[2em] min-w-[2em] cursor-pointer border-2 rounded-full bg-black/66 transition-all duration-150"
       :class="{ 'border-white/75': CurrentSkill.Unlocked, 'border-white/14 hover:border-white/74': !CurrentSkill.Unlocked }"
       @click.prevent="ToggleSkill()"
     >

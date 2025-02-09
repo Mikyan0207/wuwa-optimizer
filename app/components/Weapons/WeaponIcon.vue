@@ -9,39 +9,39 @@ const props = defineProps<{
 const GetBackgroundColor = computed(() => {
   switch (props.weapon.Rarity) {
     case Rarity.FIVE_STARS:
-      return 'bg-amber-4'
+      return 'bg-amber-400'
     case Rarity.FOUR_STARS:
-      return 'bg-purple-4'
+      return 'bg-purple-400'
     case Rarity.THREE_STARS:
-      return 'bg-blue-4'
+      return 'bg-blue-400'
     default:
-      return 'bg-gray-4'
+      return 'bg-gray-400'
   }
 })
 
 const GetSecondaryColor = computed(() => {
   switch (props.weapon.Rarity) {
     case Rarity.FIVE_STARS:
-      return 'bg-amber-1'
+      return 'bg-amber-100'
     case Rarity.FOUR_STARS:
-      return 'bg-purple-1'
+      return 'bg-purple-100'
     case Rarity.THREE_STARS:
-      return 'bg-blue-1'
+      return 'bg-blue-100'
     default:
-      return 'bg-gray-1'
+      return 'bg-gray-100'
   }
 })
 
 const GetHighlightColor = computed(() => {
   switch (props.weapon.Rarity) {
     case Rarity.FIVE_STARS:
-      return 'bg-amber-4'
+      return 'bg-amber-400'
     case Rarity.FOUR_STARS:
-      return 'bg-purple-4'
+      return 'bg-purple-400'
     case Rarity.THREE_STARS:
-      return 'bg-blue-4'
+      return 'bg-blue-400'
     default:
-      return 'bg-gray-4'
+      return 'bg-gray-400'
   }
 })
 </script>
@@ -79,7 +79,7 @@ const GetHighlightColor = computed(() => {
         <div class="h-[3px] rounded-bl" :class="GetHighlightColor" />
       </div>
     </div>
-    <div class="w-46 border-b border-l border-r border-white/14 rounded-b bg-black/44 p-2 text-xs">
+    <div class="w-46 border-b border-l border-r border-white/14 rounded-br rounded-tr bg-black/44 p-2 text-xs">
       <!-- Name -->
       <div class="w-full flex items-center justify-between">
         <div :title="weapon.Name" class="text-truncate">

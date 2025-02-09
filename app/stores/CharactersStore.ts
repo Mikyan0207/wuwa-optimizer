@@ -1,3 +1,4 @@
+import type { StatType } from '~/Core/Enums/StatType'
 import type ICharacter from '~/Core/Interfaces/ICharacter'
 import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
@@ -104,6 +105,20 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     UpdateCharacter(c)
   }
 
+  function UpdateStatsWeights(characterId: number, weights: { Type: StatType, Value: number }[]) {
+    const c = Characters.value.find(x => x.Id === characterId)
+
+    if (c === undefined || c.StatsWeights === undefined) {
+      return
+    }
+
+    weights.forEach((w) => {
+      c.StatsWeights![w.Type] = w.Value
+    })
+
+    UpdateCharacter(c)
+  }
+
   function Update() {
     if (CharactersVersion.value !== CurrentCharactersVersion) {
       // This mean we did an update to the ICharater/Character model
@@ -145,6 +160,7 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     GetCharacter,
     UpdateEcho,
     UpdateWeapon,
+    UpdateStatsWeights,
     Update,
   }
 })

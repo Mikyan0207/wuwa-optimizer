@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import type { FormSubmitEvent } from '@nuxt/ui'
 import type { Character } from '~/Core/Models/Character'
+import * as z from 'zod'
 import { StatType } from '~/Core/Enums/StatType'
 import { STAT_NAMES } from '~/Core/Statistics'
 
@@ -7,51 +9,79 @@ const props = defineProps<{
   character: Character
 }>()
 
+const CharactersStore = useCharactersStore()
 const ShowWeightsModal = ref<boolean>(false)
 
-const StatWeights = computed(() => {
-  return Object.fromEntries(
-    Object.entries(props.character.StatsWeights!).filter(([key]) => key !== StatType.NONE),
-  ) as Record<StatType, number>
+const EditWeightsSchema = z.object({
+  Weights: z.array(z.object({
+    Type: z.nativeEnum(StatType),
+    Value: z.number().nonnegative(),
+  })),
 })
+
+type FormSchema = z.output<typeof EditWeightsSchema>
+
+const State = reactive<Partial<FormSchema>>({
+  Weights: Object.entries(props.character.StatsWeights!)
+    .filter(([key]) => key !== StatType.NONE)
+    .map(([key, value]) => {
+      return {
+        Type: key as StatType,
+        Value: value,
+      }
+    }),
+})
+
+function OnSubmit(_: FormSubmitEvent<FormSchema>) {
+  if (State.Weights !== undefined) {
+    CharactersStore.UpdateStatsWeights(props.character.Id, State.Weights)
+  }
+  ShowWeightsModal.value = false
+}
+
+function OnClose() {
+  ShowWeightsModal.value = false
+}
 </script>
 
 <template>
-  <div>
+  <UModal
+    v-model:open="ShowWeightsModal"
+    title="Stats Weights"
+    @close.prevent="OnClose"
+  >
     <UButton
-      color="white"
-      variant="solid"
+      color="neutral"
+      variant="subtle"
       icon="i-carbon:distribute-horizontal-center"
-      :trailing="false"
-      size="xs"
+      :trailing="false" size="xs"
       @click.prevent="ShowWeightsModal = true"
     >
       Scoring Algorithm
     </UButton>
-    <UModal v-model="ShowWeightsModal" :ui="{ container: ' flex min-h-full items-center justify-center text-center', width: 'w-full sm:max-w-lg lg:max-w-xl' }">
-      <Card>
-        <div class="mb-4 w-full flex items-center justify-between gap-2">
-          <div class="h-1px w-full bg-white/14" />
-          <p class="text-nowrap">
-            Stats Weights
-          </p>
-          <div class="h-1px w-full bg-white/14" />
-        </div>
-        <div v-if="character.StatsWeights" class="grid grid-cols-2 gap-2">
-          <div v-for="(_, type) in StatWeights" :key="type" class="">
-            <div class="flex items-center gap-2">
-              <UInput v-model="character.StatsWeights![type]" placeholder="0" size="xs" class="w-12" />
-              <p class="text-nowrap text-xs">
-                {{ STAT_NAMES[type] }}
-              </p>
-            </div>
+    <template #body>
+      <UForm :schema="EditWeightsSchema" :state="State" @submit="OnSubmit">
+        <div v-if="State.Weights" class="grid grid-cols-2 gap-2">
+          <div v-for="(v, idx) in State.Weights" :key="idx">
+            <UFormField :label="STAT_NAMES[v.Type]">
+              <UInputNumber
+                v-model="v.Value"
+                :min="0"
+                :max="1"
+                :step="0.25"
+                orientation="vertical"
+                color="neutral"
+                variant="subtle"
+                :highlight="true"
+              />
+            </UFormField>
           </div>
         </div>
-        <div class="mt-6 flex items-center justify-end gap-2">
-          <UButton label="Cancel" color="gray" variant="outline" @click.prevent="ShowWeightsModal = false" />
-          <UButton label="Submit" color="primary" variant="solid" @click.prevent="ShowWeightsModal = false" />
+        <div class="w-full flex items-center justify-end gap-2">
+          <UButton label="Cancel" color="neutral" variant="soft" size="xs" @click.prevent="OnClose()" />
+          <UButton type="submit" label="Submit" color="primary" variant="solid" size="xs" />
         </div>
-      </Card>
-    </UModal>
-  </div>
+      </UForm>
+    </template>
+  </UModal>
 </template>

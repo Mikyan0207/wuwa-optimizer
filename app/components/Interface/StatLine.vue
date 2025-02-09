@@ -40,7 +40,7 @@ const GetMargin = computed(() => {
         {{ STAT_NAMES[stat.Type] }}
       </p>
     </div>
-    <div v-if="showLine === true" class="my-auto h-1px w-full bg-white/14" />
+    <div v-if="showLine === true" class="my-auto h-[1px] w-full bg-white/14" />
     <p class="h-full flex items-center justify-center text-nowrap text-xs" :class="{ 'text-amber': wanted === true, 'text-white': !wanted }">
       <span>{{ stat.Value.toFixed(1) }}</span>
       <span v-if="IsPercentageStat">%</span>

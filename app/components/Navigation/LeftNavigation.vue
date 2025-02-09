@@ -1,46 +1,79 @@
 <script setup lang="ts">
-const Links = [
-  [{
-    label: 'Home',
-    icon: 'i-heroicons-home',
+import type { NavigationMenuItem } from '@nuxt/ui'
+
+const Route = useRoute()
+
+const Items = ref([
+  {
+    label: 'home',
+    icon: 'i-carbon:home',
     type: 'icon',
     to: '/',
-  }],
-  [{
-    label: 'Resonators',
+  },
+  {
+    label: 'characters',
     icon: '/images/icons/Icon_Resonators.png',
-    type: 'image',
+    type: 'link',
     to: '/characters',
-  }, {
-    label: 'Weapons',
+  },
+  {
+    label: 'weapons',
     icon: '/images/icons/Icon_Weapons.png',
-    type: 'image',
+    type: 'link',
     to: '/weapons',
-  }, {
-    label: 'Echoes',
+  },
+  {
+    label: 'echoes',
     icon: '/images/icons/Icon_Echoes.png',
-    type: 'image',
+    type: 'link',
     to: '/echoes',
-  }],
-  [{
-    label: 'Import',
+  },
+  {
+    label: 'imports',
     icon: 'i-carbon:upload',
     type: 'icon',
     to: '/imports',
-  }],
-]
+  },
+] as NavigationMenuItem[])
+
+watch(Route, () => {
+  const i = Items.value.find((x) => {
+    if (x.label === undefined || x.label === '') {
+      return false
+    }
+
+    // Beautiful code.
+    if (x.label === 'home' && Route.path === '/') {
+      return true
+    }
+
+    return Route.path.includes(x.label)
+  })
+
+  if (i !== undefined) {
+    Items.value.forEach(x => x.active = false)
+    i.active = true
+  }
+}, {
+  immediate: true,
+})
 </script>
 
 <template>
-  <UVerticalNavigation
-    :links="Links"
-    :ui="{
-      label: 'hidden',
-    }"
+  <UNavigationMenu
+    :items="Items"
+    orientation="vertical"
+    :highlight="true"
+    highlight-color="primary"
+    :collapsed="true"
   >
-    <template #icon="{ link }">
-      <NuxtImg v-if="link.type === 'image'" :src="link.icon" class="h-8 w-8 object-contain grayscale" />
-      <UIcon v-else :name="link.icon" class="my-1 w-8 text-xl" />
+    <template #item-leading="{ item }">
+      <NuxtImg
+        v-if="item.type === 'link'"
+        :src="item.icon"
+        class="relative h-8 w-8 object-contain grayscale"
+      />
+      <UIcon v-else :name="item.icon!" class="my-1 w-8 text-xl" />
     </template>
-  </UVerticalNavigation>
+  </UNavigationMenu>
 </template>

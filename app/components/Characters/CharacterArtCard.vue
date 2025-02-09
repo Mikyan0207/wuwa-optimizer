@@ -8,8 +8,9 @@ defineProps<{
 
 <template>
   <!-- Character Art -->
-  <div
-    class="relative overflow-hidden border-2 border-white/18 rounded bg-black/66 backdrop-blur-6"
+  <UCard
+    class="relative overflow-hidden"
+    :ui="{ root: 'p-0 sm:p-0' }"
   >
     <!-- Top Right Icons background -->
     <div class="absolute inset-0 z-20 from-black/25 via-transparent to-transparent bg-gradient-to-bl" />
@@ -44,5 +45,5 @@ defineProps<{
       fit="cover"
       quality="90"
     />
-  </div>
+  </UCard>
 </template>

@@ -9,7 +9,7 @@ const props = defineProps<{
   iconSize?: 'xs' | 'md'
   showLine?: boolean
   showRollValue?: boolean
-  isWanted?: boolean
+  isWantedColor?: string
 }>()
 
 const IsPercentageStat = computed(() => {
@@ -77,8 +77,8 @@ const GetStatColorByRollValue = computed(() => {
     </div>
     <div v-if="showLine === true" class="my-auto h-[1px] w-full bg-white/14" />
     <p class="h-full flex items-center justify-center text-nowrap font-semibold text-xs">
-      <span :class="[GetStatColorByRollValue, isWanted === true ? 'text-amber-400' : '']">{{ stat.Value.toFixed(1) }}</span>
-      <span v-if="IsPercentageStat" :class="[GetStatColorByRollValue, isWanted === true ? 'text-amber-400' : '']">%</span>
+      <span :class="[GetStatColorByRollValue, isWantedColor]">{{ stat.Value.toFixed(1) }}</span>
+      <span v-if="IsPercentageStat" :class="[GetStatColorByRollValue, isWantedColor]">%</span>
     </p>
   </div>
 </template>

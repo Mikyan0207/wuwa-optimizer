@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { FormSubmitEvent } from '@nuxt/ui'
 import type { Character } from '~/Core/Models/Character'
 import * as z from 'zod'
 import { StatType } from '~/Core/Enums/StatType'
@@ -32,7 +31,7 @@ const State = reactive<Partial<FormSchema>>({
     }),
 })
 
-function OnSubmit(_: FormSubmitEvent<FormSchema>) {
+function OnSubmit() {
   if (State.Weights !== undefined) {
     CharactersStore.UpdateStatsWeights(props.character.Id, State.Weights)
   }
@@ -48,6 +47,10 @@ function OnClose() {
   <UModal
     v-model:open="ShowWeightsModal"
     title="Stats Weights"
+    :ui="{
+      content: 'xl:min-w-4xl w-5xl min-w-5xl xl:w-4xl',
+      body: '',
+    }"
     @close.prevent="OnClose"
   >
     <UButton
@@ -60,28 +63,41 @@ function OnClose() {
       Scoring Algorithm
     </UButton>
     <template #body>
-      <UForm :schema="EditWeightsSchema" :state="State" @submit="OnSubmit">
-        <div v-if="State.Weights" class="grid grid-cols-2 gap-2">
-          <div v-for="(v, idx) in State.Weights" :key="idx">
-            <UFormField :label="STAT_NAMES[v.Type]">
-              <UInputNumber
-                v-model="v.Value"
-                :min="0"
-                :max="1"
-                :step="0.25"
-                orientation="vertical"
-                color="neutral"
-                variant="subtle"
-                :highlight="true"
-              />
-            </UFormField>
-          </div>
-        </div>
-        <div class="w-full flex items-center justify-end gap-2">
-          <UButton label="Cancel" color="neutral" variant="soft" size="xs" @click.prevent="OnClose()" />
-          <UButton type="submit" label="Submit" color="primary" variant="solid" size="xs" />
-        </div>
-      </UForm>
+      <div class="grid grid-cols-2 gap-2">
+        <UCard>
+          <USeparator label="Weights" class="mb-3" />
+          <UForm :schema="EditWeightsSchema" :state="State" @submit="OnSubmit">
+            <div v-if="State.Weights" class="grid grid-cols-2 gap-4">
+              <div v-for="(v, idx) in State.Weights" :key="idx">
+                <UFormField :label="STAT_NAMES[v.Type]">
+                  <UInputNumber
+                    v-model="v.Value"
+                    :min="0"
+                    :max="1"
+                    :step="0.05"
+                    orientation="vertical"
+                    color="neutral"
+                    variant="subtle"
+                    size="xs"
+                    :highlight="true"
+                  />
+                </UFormField>
+              </div>
+            </div>
+          </UForm>
+        </UCard>
+      </div>
+    </template>
+    <template #footer>
+      <div class="w-full flex justify-end">
+        <UButtonGroup size="md">
+          <UButton
+            color="neutral" variant="outline" label="Close"
+            @click.prevent="OnClose()"
+          />
+          <UButton color="primary" variant="subtle" label="Submit" @click.prevent="OnSubmit()" />
+        </UButtonGroup>
+      </div>
     </template>
   </UModal>
 </template>

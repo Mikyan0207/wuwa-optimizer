@@ -16,7 +16,7 @@ const GetSkillName = computed(() => {
     return 'N/A'
   }
 
-  const v = `${props.character.Name.toLowerCase()}_${props.skill.Id.toLowerCase().replace(' ', '_')}`
+  const v = `${props.character.Id}_${props.skill.Id.toLowerCase().replace(' ', '_')}`
   return t(v)
 })
 
@@ -42,7 +42,7 @@ const GetSkillType = computed(() => {
         <div class="flex flex-col items-start gap-1 w-full">
           <span class="text-sm">{{ GetSkillName }}</span>
           <div class="flex items-center gap-1">
-            <UBadge color="primary" variant="soft" size="sm" :label="`${t('level_label')} ${skill.Level}`" />
+            <UBadge color="primary" variant="soft" size="sm" :label="`${t('label_level')} ${skill.Level}`" />
             <UBadge color="secondary" variant="soft" size="sm" :label="`${GetSkillType}`" />
           </div>
         </div>

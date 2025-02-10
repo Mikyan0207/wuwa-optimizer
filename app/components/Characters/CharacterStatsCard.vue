@@ -8,6 +8,8 @@ const props = defineProps<{
   score: ICharacterRatingResult
 }>()
 
+const { t } = useI18n()
+
 const StatsCalculator = useStatsCalculatorStore()
 const CharacterStats = computed<IStatistic[]>(() => StatsCalculator.CalculateTotalStats(props.character.Id, props.character.EquipedWeapon || -1, props.character.EquipedEchoes))
 
@@ -32,10 +34,28 @@ const GetRarityAsNumber = computed(() => {
 
 function IsStatWanted(stat: IStatistic) {
   if (!props.character.StatsWeights) {
-    return false
+    return ''
   }
 
-  return props.character.StatsWeights[stat.Type] !== 0.0
+  const w = props.character.StatsWeights[stat.Type]
+
+  if (w === 0.1) {
+    // This is a special case for ELEMENT DMG BONUS
+    return 'text-amber-400'
+  }
+
+  switch (true) {
+    case (w > 0 && w <= 0.25):
+      return 'text-green-400'
+    case (w > 0.25 && w <= 0.5):
+      return 'text-blue-400'
+    case (w > 0.5 && w <= 0.75):
+      return 'text-purple-400'
+    case (w > 0.75 && w <= 1.0):
+      return 'text-amber-400'
+    default:
+      return ''
+  }
 }
 </script>
 
@@ -45,10 +65,10 @@ function IsStatWanted(stat: IStatistic) {
       <NuxtImg v-for="idx in GetRarityAsNumber" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-6 w-6 object-cover" fit="cover" />
     </div>
     <h1 class="mt-2 w-full text-center text-2xl">
-      {{ character.Name }}
+      {{ t(`${character.Id}_name`) }}
     </h1>
     <div class="mx-auto w-min flex items-center justify-evenly gap-1 text-nowrap text-xs">
-      <p>Lv. {{ character.Level }}</p>
+      <p>{{ `${t('label_level')} ${character.Level}` }}</p>
       <span>·</span>
       <p>S{{ character.GetSequenceLevel() }}</p>
     </div>
@@ -61,12 +81,12 @@ function IsStatWanted(stat: IStatistic) {
           :key="`${st.Type}-${st.Value}`"
           :stat="st"
           :show-line="true"
-          :is-wanted="IsStatWanted(st)"
+          :is-wanted-color="IsStatWanted(st)"
         />
       </div>
       <div class="mx-auto my-3 h-[1px] w-full rounded-full bg-white/14" />
       <div class="w-full flex items-center justify-evenly">
-        <p>Character Score</p>
+        <p>{{ t('label_character_score') }}</p>
         <div>
           {{ score.Score.toFixed(1) }} (<div :class="GetCharacterScoreNoteColor" class="inline-block font-semibold">
             {{ score.Note }}

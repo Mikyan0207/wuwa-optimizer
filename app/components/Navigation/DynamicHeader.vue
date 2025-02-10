@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { TemplateCharacters } from '~/Core/Characters'
-
 const Route = useRoute()
 const { t, setLocale, locale } = useI18n()
 
@@ -8,7 +6,7 @@ const Routes = computed(() => Route.path.split('/').filter(p => p !== undefined 
   if (Number.isInteger(+p)) {
     // Means this is a character Id...?
     return {
-      label: TemplateCharacters.find(x => x.Id === Number.parseInt(p))?.Name || '',
+      label: t(`${p}_name`),
     }
   }
 

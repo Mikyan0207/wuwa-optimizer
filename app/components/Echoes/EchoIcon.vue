@@ -100,7 +100,7 @@ const GetHighlightColor = computed(() => {
           <div class="h-[3px]" :class="GetHighlightColor" />
         </div>
       </div>
-      <div :title="echo.Name" class="w-26 text-truncate border-b border-l border-r border-white/14 rounded-b bg-black/44 px-2 py-0.75 text-center text-xs">
+      <div :title="echo.Name" class="w-26 truncate text-nowrap border-b border-l border-r border-white/14 rounded-b bg-black/44 px-2 py-0.75 text-center text-xs">
         {{ echo.Name }}
       </div>
     </div>

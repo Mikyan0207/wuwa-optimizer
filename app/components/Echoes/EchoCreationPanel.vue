@@ -18,6 +18,7 @@ const props = defineProps<{
 }>()
 
 const IsOpen = ref<boolean>(false)
+const IsDropdownOpen = ref<boolean>(false)
 const EchoesStore = useEchoesStore()
 const CharactersStore = useCharactersStore()
 
@@ -185,6 +186,16 @@ function OnSubmit() {
   return OnClose()
 }
 
+function OnRemoveEcho() {
+  const e = EchoesStore.GetEchoById(props.echo.Id)
+
+  if (!e) {
+    return
+  }
+
+  CharactersStore.RemoveEcho(props.character.Id, e.Id)
+}
+
 function OnClose() {
   IsOpen.value = false
 }
@@ -275,31 +286,49 @@ const StepperItems = [
     slot: 'stats-selection',
   },
 ]
+
+const MenuItems = [
+  {
+    label: 'Edit',
+    icon: 'mdi:pencil-outline',
+    onSelect() { IsOpen.value = true },
+  },
+  {
+    label: 'Remove',
+    icon: 'lucide:x',
+    color: 'error' as const,
+    onSelect() { OnRemoveEcho() },
+  },
+]
 </script>
 
 <template>
-  <div>
-    <div
-      class="absolute right-1 top-1 z-10 hidden transition-all duration-75 group-hover:inline"
-      @click="IsOpen = true"
+  <div
+    class="absolute right-1 top-1 z-10 transition-all duration-75" :class="{
+      'hidden group-hover:inline': !IsDropdownOpen,
+    }"
+  >
+    <UDropdownMenu
+      :items="MenuItems"
+      arrow
+      :modal="false"
+      :content="{
+        align: 'end',
+        side: 'bottom',
+        sideOffset: 8,
+      }"
+      @update:open="(v: boolean) => IsDropdownOpen = v"
     >
-      <UButton color="neutral" variant="ghost" icon="mdi:pencil-outline" />
-    </div>
+      <UButton icon="i-lucide-menu" color="neutral" variant="ghost" size="sm" />
+    </UDropdownMenu>
     <UModal
-      v-model:open="IsOpen"
-      title="Edit Echo"
-      :overlay="true"
-      :ui="{
+      v-model:open="IsOpen" title="Edit Echo" :overlay="true" :ui="{
         content: 'xl:min-w-4xl w-5xl min-w-5xl xl:w-4xl min-h-8/10! h-8/10! overflow-hidden',
         body: '',
       }"
     >
-      <template #header />
       <template #body>
-        <UForm
-          :schema="EditEchoSchema"
-          :state="State"
-        >
+        <UForm :schema="EditEchoSchema" :state="State">
           <UStepper ref="echo-creation-stepper" v-model="CurrentStep" :items="StepperItems" color="primary" size="xs">
             <template #echo-selection>
               <div class="mt-8 flex flex-col gap-1">
@@ -310,7 +339,8 @@ const StepperItems = [
                   </div>
                   <div class="flex items-center border border-white/14 rounded bg-black/66 backdrop-blur-4">
                     <div
-                      v-for="(sonata, idx) in Sonatas_1_0" :key="sonata.Name" class="cursor-pointer select-none px-4 py-1" :class="{
+                      v-for="(sonata, idx) in Sonatas_1_0" :key="sonata.Name"
+                      class="cursor-pointer select-none px-4 py-1" :class="{
                         'rounded-l-sm': idx === 0,
                         'rounded-r-sm': idx === Sonatas_1_0.length - 1,
                         'border-r border-white/14': idx !== Sonatas_1_0.length - 1,
@@ -326,7 +356,8 @@ const StepperItems = [
                 <div class="mb-3 w-full flex items-center justify-end px-4">
                   <div class="flex border border-white/14 rounded bg-black/66 backdrop-blur-4">
                     <div
-                      v-for="(sonata, idx) in Sonatas_2_0" :key="sonata.Name" class="cursor-pointer select-none px-4 py-1" :class="{
+                      v-for="(sonata, idx) in Sonatas_2_0" :key="sonata.Name"
+                      class="cursor-pointer select-none px-4 py-1" :class="{
                         'rounded-l-sm': idx === 0,
                         'rounded-r-sm': idx === Sonatas_2_0.length - 1,
                         'border-r border-white/14': idx !== Sonatas_2_0.length - 1,
@@ -340,8 +371,8 @@ const StepperItems = [
                 </div>
                 <div class="h-9/10 w-full flex flex-wrap items-start justify-center gap-1 overflow-y-auto p-4">
                   <div
-                    v-for="ec in FilteredEchoes" :key="ec.Id" class="group relative h-48 w-46 border rounded-md bg-black/66 p-2"
-                    :class="{
+                    v-for="ec in FilteredEchoes" :key="ec.Id"
+                    class="group relative h-48 w-46 border rounded-md bg-black/66 p-2" :class="{
                       'border-white/75': ec.Id === State.EchoId,
                       'border-white/14': ec.Id !== State.EchoId,
                     }"
@@ -350,7 +381,9 @@ const StepperItems = [
                       <div class="overflow-clip border-3 rounded-full" :class="GetBorderColor(ec)">
                         <NuxtImg width="160" height="160" :src="`${ec.GetIcon()}`" style="color: transparent;" />
                       </div>
-                      <div class="absolute bottom-1 right-1 z-1 border-2 border-amber rounded-full bg-black px-1.5 py-0.5 text-xs">
+                      <div
+                        class="absolute bottom-1 right-1 z-1 border-2 border-amber rounded-full bg-black px-1.5 py-0.5 text-xs"
+                      >
                         {{ GetCostText(ec.Cost) }}
                       </div>
                     </div>
@@ -379,9 +412,15 @@ const StepperItems = [
                   <UCard v-if="TmpEditedEcho" class="h-min">
                     <div class="relative mx-auto min-h-24 w-24 flex items-center justify-center rounded-full">
                       <div class="overflow-clip border-3 rounded-full" :class="GetBorderColor(TmpEditedEcho)">
-                        <NuxtImg width="160" height="160" :src="`/images/echoes/${TmpEditedEcho.Icon}`" style="color: transparent;" />
+                        <NuxtImg
+                          width="160" height="160" :src="`/images/echoes/${TmpEditedEcho.Icon}`"
+                          style="color: transparent;"
+                        />
                       </div>
-                      <div class="absolute bottom-0.75 right-0.75 z-1 border-2 rounded-full bg-black px-2 py-0.5 text-xs" :class="GetBorderColor(TmpEditedEcho)">
+                      <div
+                        class="absolute bottom-0.75 right-0.75 z-1 border-2 rounded-full bg-black px-2 py-0.5 text-xs"
+                        :class="GetBorderColor(TmpEditedEcho)"
+                      >
                         {{ GetCostText(TmpEditedEcho.Cost) }}
                       </div>
                     </div>
@@ -405,27 +444,15 @@ const StepperItems = [
                         <UFormField name="Level" class="w-full">
                           <USeparator label="Enhance" />
                           <USelectMenu
-                            v-model="State.Level"
-                            :items="LevelOptions"
-                            arrow
-                            :search-input="false"
-                            value-key="Value"
-                            label-key="Label"
-                            class="my-2 w-full"
-                            :disabled="IsEchoSelected"
+                            v-model="State.Level" :items="LevelOptions" arrow :search-input="false"
+                            value-key="Value" label-key="Label" class="my-2 w-full" :disabled="IsEchoSelected"
                           />
                         </UFormField>
                         <UFormField name="Rarity" class="w-full">
                           <USeparator label="Rarity" />
                           <USelectMenu
-                            v-model="State.Rarity"
-                            :items="RarityOptions"
-                            arrow
-                            :search-input="false"
-                            value-key="type"
-                            label-key="label"
-                            class="my-2 w-full"
-                            :disabled="IsEchoSelected"
+                            v-model="State.Rarity" :items="RarityOptions" arrow :search-input="false"
+                            value-key="type" label-key="label" class="my-2 w-full" :disabled="IsEchoSelected"
                           />
                         </UFormField>
                       </div>
@@ -438,7 +465,8 @@ const StepperItems = [
                         <div class="my-2 flex items-start justify-between gap-2">
                           <UFormField name="MainStat.Type" class="w-full" :eager-validation="true">
                             <USelectMenu
-                              v-model="State.MainStat!.Type" value-key="Type" label-key="Label" arrow :search-input="{
+                              v-model="State.MainStat!.Type" value-key="Type" label-key="Label" arrow
+                              :search-input="{
                                 icon: 'i-lucide-search',
                               }" :items="MainStatisticsOptions" class="w-full" :disabled="IsEchoSelected"
                               @update:model-value="GetMainStatValue()"
@@ -455,26 +483,26 @@ const StepperItems = [
                     <UCard>
                       <USeparator label="Sub Stats" />
                       <div class="my-2">
-                        <div v-for="(st, idx) in State.SubStats" :key="idx" class="w-full flex items-center gap-2 space-y-2">
+                        <div
+                          v-for="(st, idx) in State.SubStats" :key="idx"
+                          class="w-full flex items-center gap-2 space-y-2"
+                        >
                           <UFormField class="w-full" :name="`SubStats.${idx}`">
                             <USelectMenu
-                              v-model="st.Type"
-                              label-key="Label"
-                              value-key="Type"
-                              arrow
-                              :items="StatisticsOptions"
-                              class="w-full"
-                              :disabled="IsEchoSelected"
+                              v-model="st.Type" label-key="Label" value-key="Type" arrow
+                              :items="StatisticsOptions" class="w-full" :disabled="IsEchoSelected"
                             />
                           </UFormField>
-                          <USelect v-model="st.Value" :items="GetSubStatsValues(st.Type)" class="w-[32%]" :disabled="IsDisabled(st.Type)" />
+                          <USelect
+                            v-model="st.Value" :items="GetSubStatsValues(st.Type)" class="w-[32%]"
+                            :disabled="IsDisabled(st.Type)"
+                          />
                         </div>
                       </div>
                     </UCard>
                   </div>
                 </div>
               </div>
-              
             </template>
           </UStepper>
         </UForm>
@@ -482,7 +510,10 @@ const StepperItems = [
       <template #footer>
         <div class="w-full flex justify-end">
           <UButtonGroup size="md">
-            <UButton color="neutral" variant="outline" label="Previous" @click.prevent="Stepper?.prev()" :disabled="!Stepper?.hasPrev" />
+            <UButton
+              color="neutral" variant="outline" label="Previous" :disabled="!Stepper?.hasPrev"
+              @click.prevent="Stepper?.prev()"
+            />
             <UButton v-if="!Stepper?.hasNext" color="primary" variant="subtle" label="Submit" @click.prevent="OnSubmit" />
             <UButton v-else color="neutral" variant="subtle" label="Next" @click.prevent="Stepper?.next()" />
           </UButtonGroup>

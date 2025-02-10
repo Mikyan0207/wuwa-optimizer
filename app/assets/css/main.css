@@ -1,8 +1,8 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-/* TODO: Awful workaround until nuxt/ui stops using useHead for injecting colors because this doesn't work with SSR disabled... */
 :root {
+  /* TODO: Awful workaround until nuxt/ui stops using useHead for injecting colors because this doesn't work with SSR disabled... */
   --ui-color-primary-50: var(--color-amber-50);
   --ui-color-primary-100: var(--color-amber-100);
   --ui-color-primary-200: var(--color-amber-200);

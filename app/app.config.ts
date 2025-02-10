@@ -6,7 +6,13 @@ export default defineAppConfig({
     },
     card: {
       slots: {
-        body: 'p-4 sm:p-2',
+        root: 'bg-neutral-900/70 backdrop-blur-sm ring ring-white/10',
+        body: 'p-2 sm:p-4',
+      },
+    },
+    modal: {
+      slots: {
+        content: 'bg-neutral-900/70 backdrop-blur-sm ring ring-white/10',
       },
     },
     skeleton: {
@@ -14,7 +20,8 @@ export default defineAppConfig({
     },
     tooltip: {
       slots: {
-        content: 'h-auto! p-2 text-xs font-normal',
+        content: 'h-auto! p-2 text-xs font-normal bg-neutral-900/70 backdrop-blur-sm ring ring-white/10',
+        arrow: 'fill-white/15 backdrop-blur-sm',
       },
     },
   },

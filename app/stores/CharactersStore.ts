@@ -69,6 +69,21 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     Characters.value.splice(idx, 1)
   }
 
+  function RemoveEcho(characterId: number, echoId: number) {
+    const c = Characters.value.find(x => x.Id === characterId)
+
+    if (c === undefined) {
+      return
+    }
+
+    const echoIndex = c.EquipedEchoes.findIndex(x => x === echoId)
+    if (echoIndex !== -1) {
+      c.EquipedEchoes.splice(echoIndex, 1)
+    }
+
+    UpdateCharacter(c)
+  }
+
   function GetCharacters() {
     return Characters.value.map(c => new Character(c))
   }
@@ -156,6 +171,7 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     UnlockCharacter,
     AddCharacter,
     RemoveCharacter,
+    RemoveEcho,
     GetCharacters,
     GetCharacter,
     UpdateEcho,

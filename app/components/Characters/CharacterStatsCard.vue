@@ -29,6 +29,14 @@ const GetRarityAsNumber = computed(() => {
 
   return 1
 })
+
+function IsStatWanted(stat: IStatistic) {
+  if (!props.character.StatsWeights) {
+    return false
+  }
+
+  return props.character.StatsWeights[stat.Type] !== 0.0
+}
 </script>
 
 <template>
@@ -48,7 +56,13 @@ const GetRarityAsNumber = computed(() => {
     <div class="mx-auto my-4 h-[1px] w-full rounded-full bg-white/14" />
     <div class="flex flex-col">
       <div class="w-full flex flex-col items-start gap-1">
-        <StatLine v-for="st in CharacterStats" :key="`${st.Type}-${st.Value}`" :stat="st" :show-line="true" />
+        <StatLine
+          v-for="st in CharacterStats"
+          :key="`${st.Type}-${st.Value}`"
+          :stat="st"
+          :show-line="true"
+          :is-wanted="IsStatWanted(st)"
+        />
       </div>
       <div class="mx-auto my-3 h-[1px] w-full rounded-full bg-white/14" />
       <div class="w-full flex items-center justify-evenly">

@@ -39,7 +39,13 @@ function GetEchoes(): Echo[] {
   }
 
   const equippedEchoes = EchoesStore.GetEchoesByIds(SelectedCharacter.value.EquipedEchoes)
-  const echoes: Echo[] = Array.from({ length: 5 }).fill(new Echo(Empty_Echo)) as Echo[]
+  const echoes: Echo[] = [
+    new Echo(Empty_Echo),
+    new Echo(Empty_Echo),
+    new Echo(Empty_Echo),
+    new Echo(Empty_Echo),
+    new Echo(Empty_Echo),
+  ]
 
   equippedEchoes.forEach((echo, index) => {
     echoes[echo.EquipedSlot || index] = echo
@@ -57,7 +63,7 @@ async function TakeScreenShotAsync() {
 
   const scale = 1
   const w = 1280 * scale
-  const h = 860 * scale
+  const h = 884 * scale
 
   domToBlob(CharacterInfoRef.value, {
     height: h,

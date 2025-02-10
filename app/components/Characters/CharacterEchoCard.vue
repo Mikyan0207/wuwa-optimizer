@@ -29,7 +29,7 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
 <template>
   <div class="group relative">
     <EchoCreationPanel :echo="echo" :character="character" :echo-slot="echoSlot" />
-    <UCard class="h-[21.5em] w-full">
+    <UCard class="h-[22em] w-full">
       <!-- Echo Details -->
       <template #default>
         <div class="w-full flex flex-col items-start gap-2">
@@ -53,7 +53,7 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
           <!-- Main Stat -->
           <div class="w-full flex flex-row gap-4">
             <div v-if="echo.MainStatistic && IsValidEcho" class="w-full flex items-start justify-between gap-12">
-              <StatLine :stat="echo.MainStatistic" />
+              <StatLine :stat="echo.MainStatistic" :is-main-stat="true" />
             </div>
             <div v-else class="w-full flex items-center justify-between gap-12">
               <div class="flex items-center gap-2">
@@ -71,6 +71,7 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
               :key="`stat-${stat.Type}-${idx}`"
               :stat="stat"
               :show-line="true"
+              :show-roll-value="true"
             />
           </div>
           <div v-else class="w-full flex flex-col gap-1">

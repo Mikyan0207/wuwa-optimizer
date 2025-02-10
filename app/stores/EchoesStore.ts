@@ -58,6 +58,16 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     Echoes.value.push(echo)
   }
 
+  function RemoveCharacter(echoId: number) {
+    const e = GetEchoById(echoId)
+
+    if (e === undefined) {
+      return
+    }
+
+    e.EquipedBy = undefined
+  }
+
   return {
     Echoes,
     GetEchoesByIds,
@@ -67,5 +77,6 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     GetSonataById,
     GetCostById,
     AddEcho,
+    RemoveCharacter,
   }
 })

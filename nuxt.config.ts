@@ -1,4 +1,3 @@
-import { pwa } from './app/config/pwa'
 import { AppDescription } from './app/Core'
 
 export default defineNuxtConfig({
@@ -10,6 +9,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     '@nuxt/fonts',
+    '@nuxtjs/i18n',
   ],
 
   ssr: false,
@@ -95,5 +95,21 @@ export default defineNuxtConfig({
       weights: [400],
       styles: ['normal', 'italic'],
     },
+  },
+
+  i18n: {
+    strategy: 'no_prefix',
+    locales: [
+      { code: 'en', language: 'en-US', file: 'en-US.ts' },
+      { code: 'fr', language: 'fr-FR', file: 'fr-FR.ts' },
+      { code: 'jp', language: 'ja-JP', file: 'ja-JP.ts' },
+    ],
+    lazy: false,
+    detectBrowserLanguage: {
+      useCookie: true,
+      fallbackLocale: 'en',
+      cookieKey: 'wuwa-optimizer-locale',
+    },
+    defaultLocale: 'en',
   },
 })

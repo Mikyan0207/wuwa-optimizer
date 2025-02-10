@@ -99,7 +99,7 @@ export const Sanhua: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
@@ -125,7 +125,7 @@ export const Sanhua: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Sanhua_Resonance_Skill.webp',
       Unlocked: true,
@@ -151,7 +151,7 @@ export const Sanhua: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Sanhua_Forte_Circuit.webp',
       Unlocked: true,
@@ -169,7 +169,7 @@ export const Sanhua: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Sanhua_Resonance_Liberation.webp',
       Unlocked: true,
@@ -195,7 +195,7 @@ export const Sanhua: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Sanhua_Intro_Skill.webp',
       Unlocked: true,
@@ -221,7 +221,7 @@ export const Sanhua: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Sanhua_Outro_Skill.webp',
       Unlocked: true,
@@ -325,7 +325,7 @@ export const Baizhi: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
@@ -351,7 +351,7 @@ export const Baizhi: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Baizhi_Resonance_Skill.webp',
       Unlocked: true,
@@ -377,7 +377,7 @@ export const Baizhi: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Baizhi_Forte_Circuit.webp',
       Unlocked: true,
@@ -395,7 +395,7 @@ export const Baizhi: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Baizhi_Resonance_Liberation.webp',
       Unlocked: true,
@@ -421,7 +421,7 @@ export const Baizhi: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Baizhi_Intro_Skill.webp',
       Unlocked: true,
@@ -447,7 +447,7 @@ export const Baizhi: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Baizhi_Outro_Skill.webp',
       Unlocked: true,
@@ -569,7 +569,7 @@ export const Lingyang: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
@@ -595,7 +595,7 @@ export const Lingyang: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Lingyang_Resonance_Skill.webp',
       Unlocked: true,
@@ -621,7 +621,7 @@ export const Lingyang: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Lingyang_Forte_Circuit.webp',
       Unlocked: true,
@@ -639,7 +639,7 @@ export const Lingyang: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Lingyang_Resonance_Liberation.webp',
       Unlocked: true,
@@ -665,7 +665,7 @@ export const Lingyang: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Lingyang_Intro_Skill.webp',
       Unlocked: true,
@@ -691,7 +691,7 @@ export const Lingyang: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Lingyang_Outro_Skill.webp',
       Unlocked: true,
@@ -813,7 +813,7 @@ export const Zhezhi: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
@@ -839,7 +839,7 @@ export const Zhezhi: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Zhezhi_Resonance_Skill.webp',
       Unlocked: true,
@@ -865,7 +865,7 @@ export const Zhezhi: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Zhezhi_Forte_Circuit.webp',
       Unlocked: true,
@@ -883,7 +883,7 @@ export const Zhezhi: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Zhezhi_Resonance_Liberation.webp',
       Unlocked: true,
@@ -909,7 +909,7 @@ export const Zhezhi: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Zhezhi_Intro_Skill.webp',
       Unlocked: true,
@@ -935,7 +935,7 @@ export const Zhezhi: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Zhezhi_Outro_Skill.webp',
       Unlocked: true,
@@ -1057,7 +1057,7 @@ export const Youhu: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
@@ -1083,7 +1083,7 @@ export const Youhu: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Youhu_Resonance_Skill.webp',
       Unlocked: true,
@@ -1109,7 +1109,7 @@ export const Youhu: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Youhu_Forte_Circuit.webp',
       Unlocked: true,
@@ -1127,7 +1127,7 @@ export const Youhu: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Youhu_Resonance_Liberation.webp',
       Unlocked: true,
@@ -1153,7 +1153,7 @@ export const Youhu: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Youhu_Intro_Skill.webp',
       Unlocked: true,
@@ -1179,7 +1179,7 @@ export const Youhu: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Youhu_Outro_Skill.webp',
       Unlocked: true,
@@ -1301,7 +1301,7 @@ export const Carlotta: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Pistols.webp',
       Unlocked: true,
@@ -1327,7 +1327,7 @@ export const Carlotta: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Carlotta_Resonance_Skill.webp',
       Unlocked: true,
@@ -1353,7 +1353,7 @@ export const Carlotta: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Carlotta_Forte_Circuit.webp',
       Unlocked: true,
@@ -1371,7 +1371,7 @@ export const Carlotta: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Carlotta_Resonance_Liberation.webp',
       Unlocked: true,
@@ -1397,7 +1397,7 @@ export const Carlotta: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Carlotta_Intro_Skill.webp',
       Unlocked: true,
@@ -1423,7 +1423,7 @@ export const Carlotta: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Carlotta_Outro_Skill.webp',
       Unlocked: true,
@@ -1545,7 +1545,7 @@ export const Chixia: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Pistols.webp',
       Unlocked: true,
@@ -1571,7 +1571,7 @@ export const Chixia: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Chixia_Resonance_Skill.webp',
       Unlocked: true,
@@ -1597,7 +1597,7 @@ export const Chixia: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Chixia_Forte_Circuit.webp',
       Unlocked: true,
@@ -1615,7 +1615,7 @@ export const Chixia: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Chixia_Resonance_Liberation.webp',
       Unlocked: true,
@@ -1641,7 +1641,7 @@ export const Chixia: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Chixia_Intro_Skill.webp',
       Unlocked: true,
@@ -1667,7 +1667,7 @@ export const Chixia: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Chixia_Outro_Skill.webp',
       Unlocked: true,
@@ -1789,7 +1789,7 @@ export const Encore: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Pistols.webp',
       Unlocked: true,
@@ -1815,7 +1815,7 @@ export const Encore: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Encore_Resonance_Skill.webp',
       Unlocked: true,
@@ -1841,7 +1841,7 @@ export const Encore: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Encore_Forte_Circuit.webp',
       Unlocked: true,
@@ -1859,7 +1859,7 @@ export const Encore: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Encore_Resonance_Liberation.webp',
       Unlocked: true,
@@ -1885,7 +1885,7 @@ export const Encore: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Encore_Intro_Skill.webp',
       Unlocked: true,
@@ -1911,7 +1911,7 @@ export const Encore: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Encore_Outro_Skill.webp',
       Unlocked: true,
@@ -2033,7 +2033,7 @@ export const Mortefi: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Pistols.webp',
       Unlocked: true,
@@ -2059,7 +2059,7 @@ export const Mortefi: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Mortefi_Resonance_Skill.webp',
       Unlocked: true,
@@ -2085,7 +2085,7 @@ export const Mortefi: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Mortefi_Forte_Circuit.webp',
       Unlocked: true,
@@ -2103,7 +2103,7 @@ export const Mortefi: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Mortefi_Resonance_Liberation.webp',
       Unlocked: true,
@@ -2129,7 +2129,7 @@ export const Mortefi: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Mortefi_Intro_Skill.webp',
       Unlocked: true,
@@ -2155,7 +2155,7 @@ export const Mortefi: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Mortefi_Outro_Skill.webp',
       Unlocked: true,
@@ -2279,7 +2279,7 @@ export const Changli: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
@@ -2305,7 +2305,7 @@ export const Changli: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Changli_Resonance_Skill.webp',
       Unlocked: true,
@@ -2331,7 +2331,7 @@ export const Changli: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Changli_Forte_Circuit.webp',
       Unlocked: true,
@@ -2349,7 +2349,7 @@ export const Changli: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Changli_Resonance_Liberation.webp',
       Unlocked: true,
@@ -2375,7 +2375,7 @@ export const Changli: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Changli_Intro_Skill.webp',
       Unlocked: true,
@@ -2401,7 +2401,7 @@ export const Changli: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Changli_Outro_Skill.webp',
       Unlocked: true,
@@ -2524,7 +2524,7 @@ export const Brant: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
@@ -2550,7 +2550,7 @@ export const Brant: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Brant_Resonance_Skill.webp',
       Unlocked: true,
@@ -2576,7 +2576,7 @@ export const Brant: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Brant_Forte_Circuit.webp',
       Unlocked: true,
@@ -2594,7 +2594,7 @@ export const Brant: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Brant_Resonance_Liberation.webp',
       Unlocked: true,
@@ -2620,7 +2620,7 @@ export const Brant: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Brant_Intro_Skill.webp',
       Unlocked: true,
@@ -2646,7 +2646,7 @@ export const Brant: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Brant_Outro_Skill.webp',
       Unlocked: true,
@@ -2768,7 +2768,7 @@ export const Calcharo: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Broadblade.webp',
       Unlocked: true,
@@ -2794,7 +2794,7 @@ export const Calcharo: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Calcharo_Resonance_Skill.webp',
       Unlocked: true,
@@ -2820,7 +2820,7 @@ export const Calcharo: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Calcharo_Forte_Circuit.webp',
       Unlocked: true,
@@ -2838,7 +2838,7 @@ export const Calcharo: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Calcharo_Resonance_Liberation.webp',
       Unlocked: true,
@@ -2864,7 +2864,7 @@ export const Calcharo: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Calcharo_Intro_Skill.webp',
       Unlocked: true,
@@ -2890,7 +2890,7 @@ export const Calcharo: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Calcharo_Outro_Skill.webp',
       Unlocked: true,
@@ -3012,7 +3012,7 @@ export const Yinlin: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
@@ -3038,7 +3038,7 @@ export const Yinlin: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Yinlin_Resonance_Skill.webp',
       Unlocked: true,
@@ -3064,7 +3064,7 @@ export const Yinlin: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Yinlin_Forte_Circuit.webp',
       Unlocked: true,
@@ -3082,7 +3082,7 @@ export const Yinlin: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Yinlin_Resonance_Liberation.webp',
       Unlocked: true,
@@ -3108,7 +3108,7 @@ export const Yinlin: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Yinlin_Intro_Skill.webp',
       Unlocked: true,
@@ -3134,7 +3134,7 @@ export const Yinlin: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Yinlin_Outro_Skill.webp',
       Unlocked: true,
@@ -3256,7 +3256,7 @@ export const Yuanwu: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
@@ -3282,7 +3282,7 @@ export const Yuanwu: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Yuanwu_Resonance_Skill.webp',
       Unlocked: true,
@@ -3308,7 +3308,7 @@ export const Yuanwu: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Yuanwu_Forte_Circuit.webp',
       Unlocked: true,
@@ -3326,7 +3326,7 @@ export const Yuanwu: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Yuanwu_Resonance_Liberation.webp',
       Unlocked: true,
@@ -3352,7 +3352,7 @@ export const Yuanwu: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Yuanwu_Intro_Skill.webp',
       Unlocked: true,
@@ -3378,7 +3378,7 @@ export const Yuanwu: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Yuanwu_Outro_Skill.webp',
       Unlocked: true,
@@ -3500,7 +3500,8 @@ export const Jinhsi: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
+      Name: 'Jinhsi_Basic_Attack',
       Level: 1,
       Icon: 'Skill_Broadblade.webp',
       Unlocked: true,
@@ -3526,7 +3527,8 @@ export const Jinhsi: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
+      Name: 'Jinhsi_Resonance_Skill',
       Level: 1,
       Icon: 'Jinhsi_Resonance_Skill.webp',
       Unlocked: true,
@@ -3552,7 +3554,8 @@ export const Jinhsi: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
+      Name: 'Jinhsi_Forte_Circuit',
       Level: 1,
       Icon: 'Jinhsi_Forte_Circuit.webp',
       Unlocked: true,
@@ -3570,7 +3573,7 @@ export const Jinhsi: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Jinhsi_Resonance_Liberation.webp',
       Unlocked: true,
@@ -3596,7 +3599,7 @@ export const Jinhsi: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Jinhsi_Intro_Skill.webp',
       Unlocked: true,
@@ -3622,7 +3625,7 @@ export const Jinhsi: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Jinhsi_Outro_Skill.webp',
       Unlocked: true,
@@ -3744,7 +3747,7 @@ export const Xiangli_Yao: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
@@ -3770,7 +3773,7 @@ export const Xiangli_Yao: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Xiangli_Yao_Resonance_Skill.webp',
       Unlocked: true,
@@ -3796,7 +3799,7 @@ export const Xiangli_Yao: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Xiangli_Yao_Forte_Circuit.webp',
       Unlocked: true,
@@ -3814,7 +3817,7 @@ export const Xiangli_Yao: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Xiangli_Yao_Resonance_Liberation.webp',
       Unlocked: true,
@@ -3840,7 +3843,7 @@ export const Xiangli_Yao: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Xiangli_Yao_Intro_Skill.webp',
       Unlocked: true,
@@ -3866,7 +3869,7 @@ export const Xiangli_Yao: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Xiangli_Yao_Outro_Skill.webp',
       Unlocked: true,
@@ -3988,7 +3991,7 @@ export const Yangyang: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
@@ -4014,7 +4017,7 @@ export const Yangyang: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Yangyang_Resonance_Skill.webp',
       Unlocked: true,
@@ -4040,7 +4043,7 @@ export const Yangyang: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Yangyang_Forte_Circuit.webp',
       Unlocked: true,
@@ -4058,7 +4061,7 @@ export const Yangyang: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Yangyang_Resonance_Liberation.webp',
       Unlocked: true,
@@ -4084,7 +4087,7 @@ export const Yangyang: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Yangyang_Intro_Skill.webp',
       Unlocked: true,
@@ -4110,7 +4113,7 @@ export const Yangyang: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Yangyang_Outro_Skill.webp',
       Unlocked: true,
@@ -4232,7 +4235,7 @@ export const Aalto: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
@@ -4258,7 +4261,7 @@ export const Aalto: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Aalto_Resonance_Skill.webp',
       Unlocked: true,
@@ -4284,7 +4287,7 @@ export const Aalto: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Aalto_Forte_Circuit.webp',
       Unlocked: true,
@@ -4302,7 +4305,7 @@ export const Aalto: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Aalto_Resonance_Liberation.webp',
       Unlocked: true,
@@ -4328,7 +4331,7 @@ export const Aalto: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Aalto_Intro_Skill.webp',
       Unlocked: true,
@@ -4354,7 +4357,7 @@ export const Aalto: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Aalto_Outro_Skill.webp',
       Unlocked: true,
@@ -4477,7 +4480,7 @@ export const Jiyan: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Broadblade.webp',
       Unlocked: true,
@@ -4504,7 +4507,7 @@ export const Jiyan: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Jiyan_Resonance_Skill.webp',
       Unlocked: true,
@@ -4530,7 +4533,7 @@ export const Jiyan: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Jiyan_Forte_Circuit.webp',
       Unlocked: true,
@@ -4548,7 +4551,7 @@ export const Jiyan: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Jiyan_Resonance_Liberation.webp',
       Unlocked: true,
@@ -4575,7 +4578,7 @@ export const Jiyan: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Jiyan_Intro_Skill.webp',
       Unlocked: true,
@@ -4601,7 +4604,7 @@ export const Jiyan: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Jiyan_Outro_Skill.webp',
       Unlocked: true,
@@ -4724,7 +4727,7 @@ export const Jianxin: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
@@ -4751,7 +4754,7 @@ export const Jianxin: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Jianxin_Resonance_Skill.webp',
       Unlocked: true,
@@ -4777,7 +4780,7 @@ export const Jianxin: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Jianxin_Forte_Circuit.webp',
       Unlocked: true,
@@ -4795,7 +4798,7 @@ export const Jianxin: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Jianxin_Resonance_Liberation.webp',
       Unlocked: true,
@@ -4822,7 +4825,7 @@ export const Jianxin: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Jianxin_Intro_Skill.webp',
       Unlocked: true,
@@ -4848,7 +4851,7 @@ export const Jianxin: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Jianxin_Outro_Skill.webp',
       Unlocked: true,
@@ -4970,7 +4973,7 @@ export const Rover_Spectro: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
@@ -4996,7 +4999,7 @@ export const Rover_Spectro: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Rover_Resonance_Skill.webp',
       Unlocked: true,
@@ -5022,7 +5025,7 @@ export const Rover_Spectro: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Rover_Forte_Circuit.webp',
       Unlocked: true,
@@ -5040,7 +5043,7 @@ export const Rover_Spectro: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Rover_Resonance_Liberation.webp',
       Unlocked: true,
@@ -5066,7 +5069,7 @@ export const Rover_Spectro: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Rover_Intro_Skill.webp',
       Unlocked: true,
@@ -5092,7 +5095,7 @@ export const Rover_Spectro: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Rover_Outro_Skill.webp',
       Unlocked: true,
@@ -5214,7 +5217,7 @@ export const Verina: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
@@ -5240,7 +5243,7 @@ export const Verina: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Verina_Resonance_Skill.webp',
       Unlocked: true,
@@ -5266,7 +5269,7 @@ export const Verina: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Verina_Forte_Circuit.webp',
       Unlocked: true,
@@ -5284,7 +5287,7 @@ export const Verina: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Verina_Resonance_Liberation.webp',
       Unlocked: true,
@@ -5310,7 +5313,7 @@ export const Verina: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Verina_Intro_Skill.webp',
       Unlocked: true,
@@ -5336,7 +5339,7 @@ export const Verina: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Verina_Outro_Skill.webp',
       Unlocked: true,
@@ -5458,7 +5461,7 @@ export const Lumi: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Broadblade.webp',
       Unlocked: true,
@@ -5484,7 +5487,7 @@ export const Lumi: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Lumi_Resonance_Skill.webp',
       Unlocked: true,
@@ -5510,7 +5513,7 @@ export const Lumi: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Lumi_Forte_Circuit.webp',
       Unlocked: true,
@@ -5528,7 +5531,7 @@ export const Lumi: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Lumi_Resonance_Liberation.webp',
       Unlocked: true,
@@ -5554,7 +5557,7 @@ export const Lumi: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Lumi_Intro_Skill.webp',
       Unlocked: true,
@@ -5580,7 +5583,7 @@ export const Lumi: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Lumi_Outro_Skill.webp',
       Unlocked: true,
@@ -5703,7 +5706,7 @@ export const ShoreKeeper: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
@@ -5729,7 +5732,7 @@ export const ShoreKeeper: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Shorekeeper_Resonance_Skill.webp',
       Unlocked: true,
@@ -5755,7 +5758,7 @@ export const ShoreKeeper: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Shorekeeper_Forte_Circuit.webp',
       Unlocked: true,
@@ -5773,7 +5776,7 @@ export const ShoreKeeper: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Shorekeeper_Resonance_Liberation.webp',
       Unlocked: true,
@@ -5799,7 +5802,7 @@ export const ShoreKeeper: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Shorekeeper_Intro_Skill.webp',
       Unlocked: true,
@@ -5825,7 +5828,7 @@ export const ShoreKeeper: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Shorekeeper_Outro_Skill.webp',
       Unlocked: true,
@@ -5948,7 +5951,7 @@ export const Phoebe: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
@@ -5974,7 +5977,7 @@ export const Phoebe: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Phoebe_Resonance_Skill.webp',
       Unlocked: true,
@@ -6000,7 +6003,7 @@ export const Phoebe: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Phoebe_Forte_Circuit.webp',
       Unlocked: true,
@@ -6018,7 +6021,7 @@ export const Phoebe: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Phoebe_Resonance_Liberation.webp',
       Unlocked: true,
@@ -6044,7 +6047,7 @@ export const Phoebe: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Phoebe_Intro_Skill.webp',
       Unlocked: true,
@@ -6070,7 +6073,7 @@ export const Phoebe: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Phoebe_Outro_Skill.webp',
       Unlocked: true,
@@ -6192,7 +6195,7 @@ export const Taoqi: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Broadblade.webp',
       Unlocked: true,
@@ -6218,7 +6221,7 @@ export const Taoqi: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Taoqi_Resonance_Skill.webp',
       Unlocked: true,
@@ -6244,7 +6247,7 @@ export const Taoqi: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Taoqi_Forte_Circuit.webp',
       Unlocked: true,
@@ -6262,7 +6265,7 @@ export const Taoqi: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Taoqi_Resonance_Liberation.webp',
       Unlocked: true,
@@ -6288,7 +6291,7 @@ export const Taoqi: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Taoqi_Intro_Skill.webp',
       Unlocked: true,
@@ -6314,7 +6317,7 @@ export const Taoqi: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Taoqi_Outro_Skill.webp',
       Unlocked: true,
@@ -6436,7 +6439,7 @@ export const Danjin: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
@@ -6462,7 +6465,7 @@ export const Danjin: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Danjin_Resonance_Skill.webp',
       Unlocked: true,
@@ -6488,7 +6491,7 @@ export const Danjin: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Danjin_Forte_Circuit.webp',
       Unlocked: true,
@@ -6506,7 +6509,7 @@ export const Danjin: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Danjin_Resonance_Liberation.webp',
       Unlocked: true,
@@ -6532,7 +6535,7 @@ export const Danjin: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Danjin_Intro_Skill.webp',
       Unlocked: true,
@@ -6558,7 +6561,7 @@ export const Danjin: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Danjin_Outro_Skill.webp',
       Unlocked: true,
@@ -6680,7 +6683,7 @@ export const Camellya: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
@@ -6706,7 +6709,7 @@ export const Camellya: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Camellya_Resonance_Skill.webp',
       Unlocked: true,
@@ -6732,7 +6735,7 @@ export const Camellya: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Camellya_Forte_Circuit.webp',
       Unlocked: true,
@@ -6750,7 +6753,7 @@ export const Camellya: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Camellya_Resonance_Liberation.webp',
       Unlocked: true,
@@ -6776,7 +6779,7 @@ export const Camellya: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Camellya_Intro_Skill.webp',
       Unlocked: true,
@@ -6802,7 +6805,7 @@ export const Camellya: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Camellya_Outro_Skill.webp',
       Unlocked: true,
@@ -6924,7 +6927,7 @@ export const Rover_Havoc: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
@@ -6950,7 +6953,7 @@ export const Rover_Havoc: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Rover_Resonance_Skill.webp',
       Unlocked: true,
@@ -6976,7 +6979,7 @@ export const Rover_Havoc: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Rover_Forte_Circuit.webp',
       Unlocked: true,
@@ -6994,7 +6997,7 @@ export const Rover_Havoc: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Rover_Resonance_Liberation.webp',
       Unlocked: true,
@@ -7020,7 +7023,7 @@ export const Rover_Havoc: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Rover_Intro_Skill.webp',
       Unlocked: true,
@@ -7046,7 +7049,7 @@ export const Rover_Havoc: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Rover_Outro_Skill.webp',
       Unlocked: true,
@@ -7169,7 +7172,7 @@ export const Roccia: ICharacter = {
   ],
   Skills: [
     {
-      Id: 'Basic Attack',
+      Id: 'Basic_Attack',
       Level: 1,
       Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
@@ -7195,7 +7198,7 @@ export const Roccia: ICharacter = {
       },
     },
     {
-      Id: 'Resonance Skill',
+      Id: 'Resonance_Skill',
       Level: 1,
       Icon: 'Roccia_Resonance_Skill.webp',
       Unlocked: true,
@@ -7221,7 +7224,7 @@ export const Roccia: ICharacter = {
       },
     },
     {
-      Id: 'Forte Circuit',
+      Id: 'Forte_Circuit',
       Level: 1,
       Icon: 'Roccia_Forte_Circuit.webp',
       Unlocked: true,
@@ -7239,7 +7242,7 @@ export const Roccia: ICharacter = {
       Unlocked: true,
     },
     {
-      Id: 'Resonance Liberation',
+      Id: 'Resonance_Liberation',
       Level: 1,
       Icon: 'Roccia_Resonance_Liberation.webp',
       Unlocked: true,
@@ -7265,7 +7268,7 @@ export const Roccia: ICharacter = {
       },
     },
     {
-      Id: 'Intro Skill',
+      Id: 'Intro_Skill',
       Level: 1,
       Icon: 'Roccia_Intro_Skill.webp',
       Unlocked: true,
@@ -7291,7 +7294,7 @@ export const Roccia: ICharacter = {
       },
     },
     {
-      Id: 'Outro Skill',
+      Id: 'Outro_Skill',
       Level: 1,
       Icon: 'Roccia_Outro_Skill.webp',
       Unlocked: true,

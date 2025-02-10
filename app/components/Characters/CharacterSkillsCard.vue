@@ -7,7 +7,7 @@ const props = defineProps<{
 }>()
 
 const BasicAttack = computed<ISkill | undefined>(() =>
-  props.character.Skills?.find(skill => skill.Id === 'Basic Attack'),
+  props.character.Skills?.find(skill => skill.Id === 'Basic_Attack' || skill.Id === 'Basic Attack'),
 )
 
 const BasicStatBonus1 = computed<ISkill | undefined>(() =>
@@ -19,7 +19,7 @@ const BasicStatBonus2 = computed<ISkill | undefined>(() =>
 )
 
 const ResonanceSkill = computed<ISkill | undefined>(() =>
-  props.character.Skills?.find(skill => skill.Id === 'Resonance Skill'),
+  props.character.Skills?.find(skill => skill.Id === 'Resonance_Skill' || skill.Id === 'Resonance Skill'),
 )
 
 const SkillStatBonus1 = computed<ISkill | undefined>(() =>
@@ -31,7 +31,7 @@ const SkillStatBonus2 = computed<ISkill | undefined>(() =>
 )
 
 const ResonanceLiberation = computed<ISkill | undefined>(() =>
-  props.character.Skills?.find(skill => skill.Id === 'Resonance Liberation'),
+  props.character.Skills?.find(skill => skill.Id === 'Resonance_Liberation' || skill.Id === 'Resonance Liberation'),
 )
 
 const LiberationStatBonus1 = computed<ISkill | undefined>(() =>
@@ -43,11 +43,11 @@ const LiberationStatBonus2 = computed<ISkill | undefined>(() =>
 )
 
 const OutroSkill = computed<ISkill | undefined>(() =>
-  props.character.Skills?.find(skill => skill.Id === 'Outro Skill'),
+  props.character.Skills?.find(skill => skill.Id === 'Outro_Skill' || skill.Id === 'Outro Skill'),
 )
 
 const ForteCircuit = computed<ISkill | undefined>(() =>
-  props.character.Skills?.find(skill => skill.Id === 'Forte Circuit'),
+  props.character.Skills?.find(skill => skill.Id === 'Forte_Circuit' || skill.Id === 'Forte Circuit'),
 )
 
 const InherentSkill1 = computed<ISkill | undefined>(() =>
@@ -59,7 +59,7 @@ const InherentSkill2 = computed<ISkill | undefined>(() =>
 )
 
 const IntroSkill = computed<ISkill | undefined>(() =>
-  props.character.Skills?.find(skill => skill.Id === 'Intro Skill'),
+  props.character.Skills?.find(skill => skill.Id === 'Intro_Skill' || skill.Id === 'Intro Skill'),
 )
 
 const IntroStatBonus1 = computed<ISkill | undefined>(() =>
@@ -79,7 +79,7 @@ const IntroStatBonus2 = computed<ISkill | undefined>(() =>
       <div class="h-full w-full px-2 flex flex-col items-center justify-center gap-6">
         <!-- Normal Attack -->
         <div class="w-full flex items-center">
-          <SkillIcon :skill="BasicAttack" />
+          <SkillIcon :skill="BasicAttack" :character="character" />
           <SkillIconSeparator :skill="BasicStatBonus1" />
           <SkillBonusIcon :skill="BasicStatBonus1" :next-skill="BasicStatBonus2" />
           <SkillIconSeparator :skill="BasicStatBonus2" />
@@ -87,7 +87,7 @@ const IntroStatBonus2 = computed<ISkill | undefined>(() =>
         </div>
         <!-- Resonance Skill -->
         <div class="w-full flex items-center">
-          <SkillIcon :skill="ResonanceSkill" :character-id="character.Id" class="ml-[3em]" />
+          <SkillIcon :skill="ResonanceSkill" :character="character" class="ml-[3em]" />
           <SkillIconSeparator :skill="SkillStatBonus1" />
           <SkillBonusIcon :skill="SkillStatBonus1" :next-skill="SkillStatBonus2" />
           <SkillIconSeparator :skill="SkillStatBonus2" />
@@ -95,16 +95,16 @@ const IntroStatBonus2 = computed<ISkill | undefined>(() =>
         </div>
         <!-- Forte Circuit / Inherent Skills / Outro Skill -->
         <div class="w-full flex items-center">
-          <SkillIcon :skill="OutroSkill" :character-id="character.Id" size="xs" />
-          <SkillIcon :skill="ForteCircuit" :character-id="character.Id" class="ml-[3em]" />
+          <SkillIcon :skill="OutroSkill" :character="character" size="xs" :has-no-level="true" />
+          <SkillIcon :skill="ForteCircuit" :character="character" class="ml-[3em]" />
           <SkillIconSeparator :skill="InherentSkill1" />
-          <SkillIcon :skill="InherentSkill1" :character-id="character.Id" size="xs" />
+          <SkillIcon :skill="InherentSkill1" :character="character" size="xs" :has-no-level="true" />
           <SkillIconSeparator :skill="InherentSkill2" />
-          <SkillIcon :skill="InherentSkill2" :character-id="character.Id" size="xs" />
+          <SkillIcon :skill="InherentSkill2" :character="character" size="xs" :has-no-level="true" />
         </div>
         <!-- Resonance Liberation -->
         <div class="w-full flex items-center">
-          <SkillIcon :skill="ResonanceLiberation" :character-id="character.Id" class="ml-[3em]" />
+          <SkillIcon :skill="ResonanceLiberation" :character="character" class="ml-[3em]" />
           <SkillIconSeparator :skill="LiberationStatBonus1" />
           <SkillBonusIcon :skill="LiberationStatBonus1" :next-skill="LiberationStatBonus2" />
           <SkillIconSeparator :skill="LiberationStatBonus2" />
@@ -112,7 +112,7 @@ const IntroStatBonus2 = computed<ISkill | undefined>(() =>
         </div>
         <!-- Intro Skill -->
         <div class="w-full flex items-center">
-          <SkillIcon :skill="IntroSkill" :character-id="character.Id" />
+          <SkillIcon :skill="IntroSkill" :character="character" />
           <SkillIconSeparator :skill="IntroStatBonus1" />
           <SkillBonusIcon :skill="IntroStatBonus1" :next-skill="IntroStatBonus2" />
           <SkillIconSeparator :skill="IntroStatBonus2" />

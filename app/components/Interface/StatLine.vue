@@ -49,17 +49,20 @@ const GetStatColorByRollValue = computed(() => {
   const numRanges = 3
   const rangeSize = (values[values.length - 1]! - values[0]!) / numRanges
 
-  if (v <= values[0]! + rangeSize) {
-    return 'text-blue-500'
+  if (v === values[values.length - 1]) {
+    return 'text-red-500 underline underline-offset-2'
+  }
+  else if (v <= values[0]! + rangeSize) {
+    return 'text-blue-400'
   }
   else if (v <= values[0]! + rangeSize * 2) {
-    return 'text-green-500'
+    return 'text-purple-400'
   }
   else if (v <= values[0]! + rangeSize * 3) {
-    return 'text-amber-500'
+    return 'text-amber-400'
   }
   else {
-    return 'text-blue-500'
+    return 'text-gray-300'
   }
 })
 </script>

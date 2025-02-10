@@ -194,6 +194,7 @@ function OnRemoveEcho() {
   }
 
   CharactersStore.RemoveEcho(props.character.Id, e.Id)
+  EchoesStore.RemoveCharacter(e.Id)
 }
 
 function OnClose() {

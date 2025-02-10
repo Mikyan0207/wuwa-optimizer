@@ -1,11 +1,34 @@
 <script setup lang="ts">
 import type { ISkill } from '~/Core/Interfaces/ISkill'
+import type { Character } from '~/Core/Models/Character'
 
-defineProps<{
+const props = defineProps<{
   skill?: ISkill
   size?: 'xs'
-  characterId?: number
+  hasNoLevel?: boolean
+  character: Character
 }>()
+
+const { t } = useI18n()
+
+const GetSkillName = computed(() => {
+  if (!props.skill) {
+    return 'N/A'
+  }
+
+  const v = `${props.character.Name.toLowerCase()}_${props.skill.Id.toLowerCase().replace(' ', '_')}`
+  return t(v)
+})
+
+const GetSkillType = computed(() => {
+  if (!props.skill) {
+    return 'N/A'
+  }
+
+  const skillId = props.skill.Id.toLowerCase().replace(' ', '_')
+
+  return t(`skill_${skillId}`)
+})
 </script>
 
 <template>
@@ -15,15 +38,19 @@ defineProps<{
     :delay-duration="0"
   >
     <template #content>
-      <div class="flex w-full flex-col gap-2">
-        <div class="flex items-center justify-between gap-2 w-full">
-          <span>{{ skill.Name || 'N/A' }}</span>
-          <UBadge color="primary" variant="soft" size="xs" :label="`Lv. ${skill.Level}`" />
+      <div class="flex w-46 flex-col" :class="[hasNoLevel !== true ? 'gap-2' : '']">
+        <div class="flex flex-col items-start gap-1 w-full">
+          <span class="text-sm">{{ GetSkillName }}</span>
+          <div class="flex items-center gap-1">
+            <UBadge color="primary" variant="soft" size="sm" :label="`${t('level_label')} ${skill.Level}`" />
+            <UBadge color="secondary" variant="soft" size="sm" :label="`${GetSkillType}`" />
+          </div>
         </div>
         <p>{{ skill.Description }}</p>
         <USlider
+          v-if="hasNoLevel !== true"
           v-model="skill!.Level"
-          class="w-32 mb-1"
+          class="w-full mb-1"
           color="neutral"
           size="xs"
           :step="1"
@@ -34,7 +61,7 @@ defineProps<{
       </div>
     </template>
     <div
-      class="rotate-45 cursor-pointer border-2 rounded-md bg-black/88 backdrop-blur-4 transition-all duration-150"
+      class="rotate-45 cursor-pointer border-2 rounded-sm bg-black/88 backdrop-blur-4 transition-all duration-150"
       :class="{
         'border-white/75': skill.Unlocked,
         'border-white/14 hover:border-white/74': !skill.Unlocked,
@@ -42,7 +69,7 @@ defineProps<{
         'min-h-[2em] min-w-[2em]': size === 'xs',
       }"
     >
-      <NuxtImg v-if="characterId" :src="`/images/characters/${characterId}/${skill.Icon}`" class="p-1 -rotate-45" />
+      <NuxtImg v-if="character && !skill.Id.startsWith('Basic')" :src="`/images/characters/${character.Id}/${skill.Icon}`" class="p-1 -rotate-45" />
       <NuxtImg v-else :src="`/images/icons/${skill.Icon}`" class="p-1 -rotate-45" />
     </div>
   </UTooltip>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import EchoCreationPanel from '~/components/Echoes/EchoCreationPanel.vue'
-
 definePageMeta({
   layout: 'default',
 })

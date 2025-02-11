@@ -10,7 +10,7 @@ export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () =>
 
   function CalculateTotalStats(characterId: number, weaponId: number, echoesIds: number[]): IStatistic[] {
     const character = CharactersStore.GetCharacter(characterId)
-    const echoesStats = CalculateEchoesStats(echoesIds)
+    const echoesStats = CalculateEchoesStats(echoesIds, characterId)
     const weaponStats = CalculateWeaponStats(weaponId)
 
     if (character === undefined) {
@@ -74,9 +74,9 @@ export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () =>
     return stats
   }
 
-  function CalculateEchoesStats(echoesIds: number[]): IStatistic[] {
+  function CalculateEchoesStats(echoesIds: number[], characterId: number): IStatistic[] {
     // Do we really need to do that...?
-    const echoes = JSON.parse(JSON.stringify(EchoesStore.GetEchoesByIds(echoesIds)))
+    const echoes = JSON.parse(JSON.stringify(EchoesStore.GetEchoesByIds(echoesIds, characterId)))
     const stats: IStatistic[] = []
 
     echoes.forEach((echo: IEcho) => {

@@ -237,6 +237,19 @@ export const Feilian_Beringal_Echo: IEcho = {
   ],
   Statistics: [],
 }
+
+export const Nightmare_Mourning_Aix_Echo: IEcho = {
+  Id: 6000092,
+  Name: 'Nightmare: Mourning Aix',
+  Icon: 'Nightmare_Mourning_Aix_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.FOUR_COST,
+  Level: 0,
+  Sonata: [
+    Eternal_Radiance,
+  ],
+  Statistics: [],
+}
 // #endregion
 
 // #region === 3 COST ===
@@ -1042,6 +1055,7 @@ export const Echoes: IEcho[] = [
   Crownless_Echo,
   Impermanence_Heron_Echo,
   Feilian_Beringal_Echo,
+  Nightmare_Mourning_Aix_Echo,
 
   Autopuppet_Scout_Echo,
   Lightcrusher_Echo,

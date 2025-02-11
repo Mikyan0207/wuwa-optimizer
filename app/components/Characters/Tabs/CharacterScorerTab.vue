@@ -38,7 +38,7 @@ function GetEchoes(): Echo[] {
     return Array.from({ length: 5 }).fill(new Echo(Empty_Echo)) as Echo[]
   }
 
-  const equippedEchoes = EchoesStore.GetEchoesByIds(SelectedCharacter.value.EquipedEchoes)
+  const equippedEchoes = EchoesStore.GetEchoesByIds(SelectedCharacter.value.EquipedEchoes, SelectedCharacter.value.Id)
   const echoes: Echo[] = [
     new Echo(Empty_Echo),
     new Echo(Empty_Echo),
@@ -143,7 +143,10 @@ async function TakeScreenShotAsync() {
           <div class="grid grid-cols-4 mt-2 gap-2 xl:grid-cols-5">
             <!-- Echoes -->
             <CharacterEchoCard
-              v-for="(echo, idx) in GetEchoes()" :key="idx" :echo="echo" :echo-slot="idx"
+              v-for="(echo, idx) in GetEchoes()"
+              :key="idx"
+              :echo="echo"
+              :echo-slot="idx"
               :score="CharacterScore.EchoesScores.find(x => x.EchoId === echo.Id)"
               :character="SelectedCharacter"
             />

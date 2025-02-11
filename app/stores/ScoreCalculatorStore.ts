@@ -107,37 +107,37 @@ export const ECHOES_SCORE_GRADES = [
 export const TOTAL_SCORE_GRADES = [
   {
     Grade: ScoreGrade.PERFECT,
-    Score: 400,
+    Score: 450,
     Color: 'text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500',
   },
   {
     Grade: ScoreGrade.SSS_PLUS,
-    Score: 375,
+    Score: 425,
     Color: 'text-amber-400',
   },
   {
     Grade: ScoreGrade.SSS,
-    Score: 350,
+    Score: 400,
     Color: 'text-amber-400',
   },
   {
     Grade: ScoreGrade.SS_PLUS,
-    Score: 325,
+    Score: 375,
     Color: 'text-orange-400',
   },
   {
     Grade: ScoreGrade.SS,
-    Score: 300,
+    Score: 350,
     Color: 'text-orange-400',
   },
   {
     Grade: ScoreGrade.S_PLUS,
-    Score: 275,
+    Score: 325,
     Color: 'text-red-400',
   },
   {
     Grade: ScoreGrade.S,
-    Score: 250,
+    Score: 275,
     Color: 'text-red-400',
   },
   {
@@ -191,7 +191,7 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
   const EchoesStore = useEchoesStore()
 
   function GetCharacterScore(character: Character, echoesIds: number[]): ICharacterRatingResult {
-    const echoes = JSON.parse(JSON.stringify(EchoesStore.GetEchoesByIds(echoesIds)))
+    const echoes = JSON.parse(JSON.stringify(EchoesStore.GetEchoesByIds(echoesIds, character.Id)))
     const echoesScores = CalculateEchoesScore(echoes, character.StatsWeights!)
     let totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0) * 100
 
@@ -214,7 +214,7 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
 
       return {
         ...echoScore,
-        Score: echoScore.Score / perfectEchoScore.Score * 0.582,
+        Score: (echoScore.Score / perfectEchoScore.Score),
       }
     })
   }
@@ -269,11 +269,11 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
   function CalculateSubStatScore(stat: StatType, value: number, echoCost: EchoCost, weight: number) {
     switch (echoCost) {
       case EchoCost.FOUR_COST:
-        return weight * ((FOUR_COST_MAIN_STATS_VALUES[StatType.CRIT_DMG]) || 1 / (FOUR_COST_MAIN_STATS_VALUES[stat] || 1)) * value
+        return (weight) * ((FOUR_COST_MAIN_STATS_VALUES[StatType.CRIT_DMG]) || 1 / (FOUR_COST_MAIN_STATS_VALUES[stat] || 1)) * value
       case EchoCost.THREE_COST:
-        return weight * ((FOUR_COST_MAIN_STATS_VALUES[StatType.CRIT_DMG]) || 1 / (THREE_COST_MAIN_STATS_VALUES[stat] || 1)) * value
+        return (weight) * ((FOUR_COST_MAIN_STATS_VALUES[StatType.CRIT_DMG]) || 1 / (THREE_COST_MAIN_STATS_VALUES[stat] || 1)) * value
       case EchoCost.ONE_COST:
-        return weight * ((FOUR_COST_MAIN_STATS_VALUES[StatType.CRIT_DMG]) || 1 / (ONE_COST_MAIN_STATS_VALUES[stat] || 1)) * value
+        return (weight) * ((FOUR_COST_MAIN_STATS_VALUES[StatType.CRIT_DMG]) || 1 / (ONE_COST_MAIN_STATS_VALUES[stat] || 1)) * value
       default:
         return 0
     }
@@ -288,7 +288,7 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
   function CalculateTotalSubStatTierScore(echo: IEcho, weights: Record<StatType, number>): number {
     return echo.Statistics.reduce((totalScore, subStat) => {
       const weight = weights[subStat.Type] || 0
-      const basePoints = weight >= 1.0 ? 5 : weight >= 0.75 ? 4 : weight >= 0.5 ? 3 : weight >= 0.25 ? 1 : 0
+      const basePoints = weight >= 1.0 ? 5 : weight >= 0.75 ? 4 : weight >= 0.5 ? 3 : weight >= 0.25 ? 2 : 0
       const progressBonus = CalculateSubStatRollValueBonus(subStat)
       return totalScore + basePoints + progressBonus
     }, 0)
@@ -297,8 +297,8 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
   function CalculateMaxPossibleTierScore(echo: IEcho, weights: Record<StatType, number>): number {
     return echo.Statistics.reduce((acc, stat) => {
       const weight = weights[stat.Type] || 0
-      const pts = weight >= 1.0 ? 5 : weight >= 0.75 ? 4 : weight >= 0.5 ? 3 : weight >= 0.25 ? 1 : 0
-      return acc + pts + 5 // 5 extra points for max roll value.
+      const pts = weight >= 1.0 ? 5 : weight >= 0.75 ? 4 : weight >= 0.5 ? 3 : weight >= 0.25 ? 2 : 0
+      return acc + pts + 3 // 5 extra points for max roll value.
     }, 0)
   }
 
@@ -320,7 +320,7 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
   function GetEchoNote(echo: IEcho, weights: Record<StatType, number>) {
     const score = CalculateTotalSubStatTierScore(echo, weights)
     const maxScore = CalculateMaxPossibleTierScore(echo, weights)
-    const finalScore = maxScore > 0 ? (score / maxScore) ** 0.582 * 10 : 0 // c cassé...
+    const finalScore = maxScore > 0 ? (score / maxScore) * 10 : 0 // c cassé...
 
     return {
       finalScore,

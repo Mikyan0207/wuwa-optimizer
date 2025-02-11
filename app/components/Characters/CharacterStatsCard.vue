@@ -52,7 +52,7 @@ function IsStatWanted(stat: IStatistic) {
     case (w > 0.5 && w <= 0.75):
       return 'text-purple-400'
     case (w > 0.75 && w <= 1.0):
-      return 'text-gold-400'
+      return 'text-amber-400'
     default:
       return ''
   }

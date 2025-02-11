@@ -12,9 +12,9 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     return Echoes.value.map(e => new Echo(e))
   }
 
-  function GetEchoesByIds(echoesIds: number[]): Echo[] {
+  function GetEchoesByIds(echoesIds: number[], characterId: number): Echo[] {
     return Echoes.value
-      .filter(e => echoesIds.includes(e.Id))
+      .filter(e => echoesIds.includes(e.Id) && e.EquipedBy === characterId)
       .map(e => new Echo(e))
   }
 
@@ -50,6 +50,16 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
       ?.Cost ?? EchoCost.FOUR_COST
   }
 
+  function UpdateEcho(echo: IEcho) {
+    const idx = Echoes.value.findIndex(x => x.Id === echo.Id)
+
+    if (idx === -1) {
+      return
+    }
+
+    Echoes.value[idx] = echo as IEcho
+  }
+
   function AddEcho(echo: IEcho) {
     if (Echoes.value === undefined) {
       return
@@ -66,6 +76,7 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     }
 
     e.EquipedBy = undefined
+    UpdateEcho(e)
   }
 
   return {

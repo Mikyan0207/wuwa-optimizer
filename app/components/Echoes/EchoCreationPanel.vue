@@ -155,7 +155,7 @@ watch(IsOpen, () => {
 })
 
 function OnSubmit() {
-  const e = EchoesStore.GetEchoById(State.EchoId!)
+  const e = unref(EchoesStore.GetEchoById(State.EchoId!))
 
   if (!e) {
     return OnClose()
@@ -428,7 +428,7 @@ const MenuItems = [
                     <div class="flex items-center justify-between w-full gap-2 px-4">
                       <div>
                         <span class="mr-2 text-xs">Equiped Slot</span>
-                        <UBadge color="neutral" variant="subtle" :label="`${echoSlot + 1}`" size="sm" />
+                        <UBadge color="neutral" variant="subtle" :label="`${unref(echoSlot) + 1}`" size="sm" />
                       </div>
                       <div>
                         <span class="mr-2 text-xs">Cost</span>

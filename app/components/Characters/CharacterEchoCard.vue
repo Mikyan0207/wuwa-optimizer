@@ -54,14 +54,14 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
       <!-- Echo Details -->
       <template #default>
         <BorderLines />
-        <div class="w-full flex flex-col items-start gap-2">
+        <div class="w-full flex flex-col items-start gap-2 truncate">
           <div class="flex flex-row items-center gap-2">
             <div class="flex flex-col items-center gap-2 rounded-full border-2 h-12 w-12 border-gold-200/45 overflow-clip">
-              <NuxtImg v-if="IsValidEcho" :src="`/images/echoes/${echo.Icon}`" />
+              <NuxtImg v-if="IsValidEcho" :src="`/images/echoes/${echo.Icon}`" class="h-12 w-12" />
               <USkeleton v-else class="h-12 w-12 rounded-full" />
             </div>
             <div class="flex flex-col">
-              <p v-if="IsValidEcho" class="text-truncate text-nowrap text-white">
+              <p v-if="IsValidEcho" class=" text-white" :title="echo.Name">
                 {{ echo.Name }}
               </p>
               <USkeleton v-else class="h-3 w-22" />

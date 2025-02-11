@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type IStatistic from '~/Core/Interfaces/IStatistic'
 import { StatType } from '~/Core/Enums/StatType'
-import { STAT_ICONS, STAT_NAMES, SUB_STAT_VALUES } from '~/Core/Statistics'
+import { STAT_ICONS, SUB_STAT_VALUES } from '~/Core/Statistics'
 
 const props = defineProps<{
   stat: IStatistic
@@ -11,6 +11,8 @@ const props = defineProps<{
   showRollValue?: boolean
   isWantedColor?: string
 }>()
+
+const { t } = useI18n()
 
 const IsPercentageStat = computed(() => {
   return !(props.stat.Type === StatType.ATTACK || props.stat.Type === StatType.HP || props.stat.Type === StatType.DEF)
@@ -30,6 +32,10 @@ const GetMargin = computed(() => {
   }
 
   return 'mr-4'
+})
+
+const GetStatName = computed(() => {
+  return t(`label_stat_${props.stat.Type.toLowerCase()}`)
 })
 
 const GetStatColorByRollValue = computed(() => {
@@ -59,7 +65,7 @@ const GetStatColorByRollValue = computed(() => {
     return 'text-purple-400'
   }
   else if (v <= values[0]! + rangeSize * 3) {
-    return 'text-amber-400'
+    return 'text-gold-400'
   }
   else {
     return 'text-gray-300'
@@ -72,7 +78,7 @@ const GetStatColorByRollValue = computed(() => {
     <div class="flex items-center gap-2 text-gray-300">
       <NuxtImg :src="`/images/icons/${STAT_ICONS[stat.Type]}`" :class="GetIconSize" />
       <p class="text-nowrap text-xs" :class="GetMargin">
-        {{ STAT_NAMES[stat.Type] }}
+        {{ GetStatName }}
       </p>
     </div>
     <div v-if="showLine === true" class="my-auto h-[1px] w-full bg-white/14" />

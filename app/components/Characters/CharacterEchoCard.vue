@@ -13,7 +13,7 @@ const props = defineProps<{
 function GetEchoRarityBackgroundColor(rarity: Rarity) {
   switch (rarity) {
     case Rarity.FIVE_STARS:
-      return 'bg-amber-400'
+      return 'bg-gold-400'
     case Rarity.FOUR_STARS:
       return 'bg-purple-400'
     case Rarity.THREE_STARS:
@@ -29,9 +29,15 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
 <template>
   <div class="group relative">
     <EchoCreationPanel :echo="echo" :character="character" :echo-slot="echoSlot" />
-    <UCard class="h-[22em] w-full">
+    <UCard
+      class="h-[22em] w-full"
+      :ui="{
+        root: 'rounded-none rounded-br-xl border-0',
+      }"
+    >
       <!-- Echo Details -->
       <template #default>
+        <BorderLines />
         <div class="w-full flex flex-col items-start gap-2">
           <div class="flex flex-row items-center gap-2">
             <div class="flex flex-col items-center gap-2">

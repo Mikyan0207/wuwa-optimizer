@@ -63,7 +63,7 @@ async function TakeScreenShotAsync() {
 
   const scale = 1
   const w = 1280 * scale
-  const h = 884 * scale
+  const h = 888 * scale
 
   domToBlob(CharacterInfoRef.value, {
     height: h,
@@ -88,15 +88,19 @@ async function TakeScreenShotAsync() {
   <div>
     <UCard
       class="mx-auto w-full text-sm xl:max-w-7xl"
+      :ui="{
+        root: 'rounded-none rounded-br-xl border-0',
+      }"
     >
       <template #default>
+        <BorderLines :count="1" />
         <div class="flex items-center justify-between">
           <!-- TODO: Detect if there is something to save, etc.. -->
           <!-- <UButton color="white" size="xs" variant="solid" icon="i-mdi-content-save-plus-outline" :trailing="false">
                       Save Build
                     </UButton> -->
           <div class="w-full flex justify-end gap-1">
-            <WeightsCard v-if="SelectedCharacter !== undefined" :character="SelectedCharacter" />
+            <ScoringAlgorithmCard v-if="SelectedCharacter !== undefined" :character="SelectedCharacter" />
             <UButton
               color="neutral" size="xs" variant="subtle" icon="i-carbon:camera" :trailing="false"
               :loading="ShowScreenShotBackground" @click.prevent="TakeScreenShotAsync"
@@ -114,17 +118,17 @@ async function TakeScreenShotAsync() {
           <div v-if="ShowScreenShotBackground" class="absolute inset-0">
             <LayeredBackground />
           </div>
-          <div class="grid grid-cols-2 mx-auto w-full gap-1 xl:grid-cols-5">
+          <div class="grid grid-cols-2 mx-auto w-full gap-2 xl:grid-cols-5">
             <!-- Character Info (Art, Stats, Weapon, Skills) -->
             <CharacterArtCard
               v-if="SelectedCharacter" :character="SelectedCharacter"
               class="col-span-1 row-span-1 xl:col-span-2"
             />
-            <div class="grid col-span-1 grid-cols-1 gap-1 xl:col-span-3 xl:grid-cols-2">
+            <div class="grid col-span-1 grid-cols-1 gap-2 xl:col-span-3 xl:grid-cols-2">
               <!-- Stats -->
               <CharacterStatsCard :character="SelectedCharacter" :score="CharacterScore" />
               <!-- Weapon / Skills -->
-              <div class="grid grid-rows-4 gap-1">
+              <div class="grid grid-rows-4 gap-2">
                 <!-- Weapon -->
                 <CharacterWeaponCard
                   :character-id="SelectedCharacter.Id"
@@ -137,7 +141,7 @@ async function TakeScreenShotAsync() {
             </div>
           </div>
 
-          <div class="grid grid-cols-4 mt-1 gap-1 xl:grid-cols-5">
+          <div class="grid grid-cols-4 mt-2 gap-2 xl:grid-cols-5">
             <!-- Echoes -->
             <CharacterEchoCard
               v-for="(echo, idx) in GetEchoes()" :key="idx" :echo="echo" :echo-slot="idx"

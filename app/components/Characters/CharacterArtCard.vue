@@ -10,8 +10,9 @@ defineProps<{
   <!-- Character Art -->
   <UCard
     class="relative overflow-hidden"
-    :ui="{ root: 'p-0 sm:p-0' }"
+    :ui="{ root: 'p-0 sm:p-0 rounded-none rounded-br-xl border-0' }"
   >
+    <BorderLines />
     <!-- Top Right Icons background -->
     <div class="absolute inset-0 z-20 from-black/25 via-transparent to-transparent bg-gradient-to-bl" />
     <NuxtImg

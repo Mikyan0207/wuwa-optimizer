@@ -24,7 +24,7 @@
 
     <!-- Navigation -->
     <div
-      class="fixed z-1 h-screen w-16 border-r border-white/14 bg-black/66 px-2 py-4 backdrop-blur-sm transition-all duration-150"
+      class="fixed z-1 h-screen w-16 border-r border-gold-200/30 bg-black/66 px-2 py-4 backdrop-blur-sm transition-all duration-150"
     >
       <LeftNavigation />
     </div>

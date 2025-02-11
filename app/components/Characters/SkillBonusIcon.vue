@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import type { ISkill } from '~/Core/Interfaces/ISkill'
-import { STAT_ICONS, STAT_NAMES } from '~/Core/Statistics'
+import { STAT_ICONS } from '~/Core/Statistics'
 
 const props = defineProps<{
   skill?: ISkill
   previousSkill?: ISkill
   nextSkill?: ISkill
 }>()
+
+const { t } = useI18n()
 
 const CurrentSkill = ref<ISkill | undefined>(props.skill)
 const PreviousSkill = ref<ISkill | undefined>(props.previousSkill)
@@ -37,19 +39,26 @@ function ToggleSkill() {
   <USkeleton
     v-if="!CurrentSkill" class="min-h-2em min-w-2em rounded-full bg-white/7" :ui="{ base: '' }"
   />
-  <UTooltip v-else arrow :delay-duration="0">
+  <UTooltip v-else :delay-duration="0">
     <template #content>
       <div v-if="CurrentSkill.Stat">
         <div class="flex items-center gap-2">
           <div class="text-xs">
             <div class="flex items-center gap-1">
               <NuxtImg class="h-4 w-4" :src="`/images/icons/${STAT_ICONS[CurrentSkill.Stat.Type]}`" />
-              <span>{{ STAT_NAMES[CurrentSkill.Stat.Type] }}</span>
+              <span>{{ t(`label_stat_${CurrentSkill.Stat.Type.toLowerCase()}`) }}</span>
             </div>
           </div>
         </div>
         <p class="mt-4 text-xs text-gray-300">
-          {{ STAT_NAMES[CurrentSkill.Stat.Type].replace(' %', '') }} increased by <span class="text-amber-400">{{ CurrentSkill.Stat.Value.toFixed(2) }}%</span>
+          <i18n-t keypath="skill_description_template">
+            <template #type>
+              <span>{{ t(`label_stat_${CurrentSkill.Stat.Type.toLowerCase()}`) }}</span>
+            </template>
+            <template #value>
+              <span class="text-gold-400">{{ CurrentSkill.Stat.Value.toFixed(2) }}%</span>
+            </template>
+          </i18n-t>
         </p>
       </div>
     </template>

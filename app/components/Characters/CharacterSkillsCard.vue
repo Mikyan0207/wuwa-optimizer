@@ -74,8 +74,15 @@ const IntroStatBonus2 = computed<ISkill | undefined>(() =>
 </script>
 
 <template>
-  <UCard class="h-full w-full" :ui="{ body: 'h-full' }">
+  <UCard
+    class="h-full w-full"
+    :ui="{
+      body: 'h-full',
+      root: 'rounded-none rounded-br-xl border-0',
+    }"
+  >
     <template #default>
+      <BorderLines />
       <div class="h-full w-full px-2 flex flex-col items-center justify-center gap-6">
         <!-- Normal Attack -->
         <div class="w-full flex items-center">

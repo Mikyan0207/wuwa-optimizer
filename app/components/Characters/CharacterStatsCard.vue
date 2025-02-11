@@ -52,7 +52,7 @@ function IsStatWanted(stat: IStatistic) {
     case (w > 0.5 && w <= 0.75):
       return 'text-purple-400'
     case (w > 0.75 && w <= 1.0):
-      return 'text-amber-400'
+      return 'text-gold-400'
     default:
       return ''
   }
@@ -60,7 +60,13 @@ function IsStatWanted(stat: IStatistic) {
 </script>
 
 <template>
-  <UCard class="flex flex-col">
+  <UCard
+    class="flex flex-col"
+    :ui="{
+      root: 'rounded-none rounded-br-xl border-0',
+    }"
+  >
+    <BorderLines />
     <div class="mx-auto w-full flex items-center justify-center gap-1">
       <NuxtImg v-for="idx in GetRarityAsNumber" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-6 w-6 object-cover" fit="cover" />
     </div>

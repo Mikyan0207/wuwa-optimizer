@@ -1,19 +1,33 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+@theme {
+  --color-gold-50: #fcf9ea;
+  --color-gold-100: #f8f2c9;
+  --color-gold-200: #f2e396;
+  --color-gold-300: #eacd5a;
+  --color-gold-400: #e3b62c;
+  --color-gold-500: #daa520;
+  --color-gold-600: #b67c18;
+  --color-gold-700: #915a17;
+  --color-gold-800: #79481a;
+  --color-gold-900: #673d1c;
+  --color-gold-950: #3c1f0c;
+}
+
 :root {
   /* TODO: Awful workaround until nuxt/ui stops using useHead for injecting colors because this doesn't work with SSR disabled... */
-  --ui-color-primary-50: var(--color-amber-50);
-  --ui-color-primary-100: var(--color-amber-100);
-  --ui-color-primary-200: var(--color-amber-200);
-  --ui-color-primary-300: var(--color-amber-300);
-  --ui-color-primary-400: var(--color-amber-400);
-  --ui-color-primary-500: var(--color-amber-500);
-  --ui-color-primary-600: var(--color-amber-600);
-  --ui-color-primary-700: var(--color-amber-700);
-  --ui-color-primary-800: var(--color-amber-800);
-  --ui-color-primary-900: var(--color-amber-900);
-  --ui-color-primary-950: var(--color-amber-950);
+  --ui-color-primary-50: var(--color-gold-50);
+  --ui-color-primary-100: var(--color-gold-100);
+  --ui-color-primary-200: var(--color-gold-200);
+  --ui-color-primary-300: var(--color-gold-300);
+  --ui-color-primary-400: var(--color-gold-400);
+  --ui-color-primary-500: var(--color-gold-500);
+  --ui-color-primary-600: var(--color-gold-600);
+  --ui-color-primary-700: var(--color-gold-700);
+  --ui-color-primary-800: var(--color-gold-800);
+  --ui-color-primary-900: var(--color-gold-900);
+  --ui-color-primary-950: var(--color-gold-950);
   --ui-color-secondary-50: var(--color-blue-50);
   --ui-color-secondary-100: var(--color-blue-100);
   --ui-color-secondary-200: var(--color-blue-200);

@@ -10,6 +10,7 @@ const props = defineProps<{
   weaponId?: number
 }>()
 
+const { t } = useI18n()
 const CharactersStore = useCharactersStore()
 const WeaponsStore = useWeaponsStore()
 const CurrentWeapon = ref<Weapon | undefined>(WeaponsStore.GetWeapon(props.weaponId))
@@ -52,7 +53,15 @@ function OnSubmit() {
 
 <template>
   <div>
-    <UCard class="relative h-full overflow-hidden" @mouseenter="IsHovered = true" @mouseleave="IsHovered = false">
+    <UCard
+      class="relative h-full overflow-hidden"
+      :ui="{
+        root: 'rounded-none rounded-br-xl border-0',
+      }"
+      @mouseenter="IsHovered = true"
+      @mouseleave="IsHovered = false"
+    >
+      <BorderLines />
       <div v-if="IsHovered" class="absolute right-1 top-1 z-1">
         <UButton color="neutral" variant="outline" label="Edit Weapon" icon="mdi:pencil-outline" @click.prevent="ShowEditWeaponModal = true" />
       </div>
@@ -72,7 +81,7 @@ function OnSubmit() {
           <USkeleton v-else class="my-2 h-4 w-20" :ui="{ base: '' }" />
           <!-- Name -->
           <div v-if="CurrentWeapon" class="mb-3 text-sm">
-            {{ CurrentWeapon.Name }}
+            {{ t(`${CurrentWeapon.Id}_name`) }}
           </div>
           <USkeleton v-else class="h-2 w-32" :ui="{ base: '' }" />
           <!-- Stats -->

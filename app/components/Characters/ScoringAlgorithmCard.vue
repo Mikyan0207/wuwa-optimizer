@@ -2,11 +2,12 @@
 import type { Character } from '~/Core/Models/Character'
 import * as z from 'zod'
 import { StatType } from '~/Core/Enums/StatType'
-import { STAT_NAMES } from '~/Core/Statistics'
 
 const props = defineProps<{
   character: Character
 }>()
+
+const { t } = useI18n()
 
 const CharactersStore = useCharactersStore()
 const ShowWeightsModal = ref<boolean>(false)
@@ -46,7 +47,7 @@ function OnClose() {
 <template>
   <UModal
     v-model:open="ShowWeightsModal"
-    title="Stats Weights"
+    :title="t('title_scoring_modal')"
     :ui="{
       content: 'xl:min-w-4xl w-5xl min-w-5xl xl:w-4xl',
       body: '',
@@ -60,7 +61,7 @@ function OnClose() {
       :trailing="false" size="xs"
       @click.prevent="ShowWeightsModal = true"
     >
-      Scoring Algorithm
+      {{ t('label_scoring_algorithm') }}
     </UButton>
     <template #body>
       <div class="grid grid-cols-2 gap-2">
@@ -69,7 +70,7 @@ function OnClose() {
           <UForm :schema="EditWeightsSchema" :state="State" @submit="OnSubmit">
             <div v-if="State.Weights" class="grid grid-cols-2 gap-4">
               <div v-for="(v, idx) in State.Weights" :key="idx">
-                <UFormField :label="STAT_NAMES[v.Type]">
+                <UFormField :label="t(`label_stat_${v.Type.toLowerCase()}`)">
                   <UInputNumber
                     v-model="v.Value"
                     :min="0"
@@ -79,13 +80,20 @@ function OnClose() {
                     color="neutral"
                     variant="subtle"
                     size="xs"
-                    :highlight="true"
                   />
                 </UFormField>
               </div>
             </div>
           </UForm>
         </UCard>
+        <div class="space-y-2">
+          <UCard>
+            <USeparator label="Character Scoring" class="mb-3" />
+          </UCard>
+          <UCard>
+            <USeparator label="Echoes Scoring" class="mb-3" />
+          </UCard>
+        </div>
       </div>
     </template>
     <template #footer>

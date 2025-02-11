@@ -87,7 +87,7 @@ const IsEchoSelected = computed(() => !(State.EchoId !== -1 && State.EchoId !== 
 function GetBorderColor(echo: Echo | IEcho) {
   switch (echo.Rarity) {
     case Rarity.FIVE_STARS:
-      return 'border-amber-400'
+      return 'border-gold-500'
     case Rarity.FOUR_STARS:
       return 'border-purple-400'
     case Rarity.THREE_STARS:
@@ -418,12 +418,6 @@ const MenuItems = [
                           style="color: transparent;"
                         />
                       </div>
-                      <div
-                        class="absolute bottom-0.75 right-0.75 z-1 border-2 rounded-full bg-black px-2 py-0.5 text-xs"
-                        :class="GetBorderColor(TmpEditedEcho)"
-                      >
-                        {{ GetCostText(TmpEditedEcho.Cost) }}
-                      </div>
                     </div>
                     <div class="py-0.75 text-xs">
                       <div class="flex flex-col gap-4 text-center">
@@ -431,10 +425,14 @@ const MenuItems = [
                       </div>
                     </div>
                     <USeparator class="my-3" />
-                    <div class="grid grid-cols-2 w-full gap-2 px-4">
+                    <div class="flex items-center justify-between w-full gap-2 px-4">
                       <div>
                         <span class="mr-2 text-xs">Equiped Slot</span>
-                        <UBadge color="primary" variant="subtle" :label="`${echoSlot + 1}`" size="sm" />
+                        <UBadge color="neutral" variant="subtle" :label="`${echoSlot + 1}`" size="sm" />
+                      </div>
+                      <div>
+                        <span class="mr-2 text-xs">Cost</span>
+                        <UBadge color="primary" variant="subtle" :label="`${GetCostText(TmpEditedEcho.Cost)}`" size="sm" />
                       </div>
                     </div>
                   </UCard>

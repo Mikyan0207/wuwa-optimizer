@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/fonts',
     '@nuxtjs/i18n',
+    '@nuxthub/core',
   ],
 
   ssr: false,

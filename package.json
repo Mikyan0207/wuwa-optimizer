@@ -31,6 +31,7 @@
     "@nuxt/devtools": "2.0.0-beta.2",
     "@nuxt/eslint": "^0.7.6",
     "@nuxt/image": "1.9.0",
+    "@nuxthub/core": "0.8.17",
     "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/i18n": "9.2.0",
     "@pinia/nuxt": "^0.9.0",
@@ -44,7 +45,8 @@
     "pinia": "^2.3.1",
     "typescript": "^5.7.3",
     "unocss": "^65.4.3",
-    "vue-tsc": "^2.2.0"
+    "vue-tsc": "^2.2.0",
+    "wrangler": "^3.107.3"
   },
   "resolutions": {
     "@nuxt/devtools": "2.0.0-beta.2",

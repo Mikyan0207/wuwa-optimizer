@@ -11,7 +11,9 @@ export class Weapon {
   Id: number
   Name: string
   Level: number
+  Rank: number
   Icon: string
+  EquipedBy?: number
   Rarity: Rarity
   Type: WeaponType
   MainStatistic: IStatistic
@@ -21,6 +23,8 @@ export class Weapon {
     this.Id = weapon.Id
     this.Name = weapon.Name
     this.Level = weapon.Level
+    this.Rank = weapon.Rank
+    this.EquipedBy = weapon.EquipedBy
     this.Icon = weapon.Icon
     this.Rarity = weapon.Rarity
     this.Type = weapon.Type

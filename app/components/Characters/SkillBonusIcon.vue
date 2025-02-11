@@ -63,8 +63,8 @@ function ToggleSkill() {
       </div>
     </template>
     <div
-      class="min-h-[2em] min-w-[2em] cursor-pointer border-2 rounded-full bg-black/66 transition-all duration-150"
-      :class="{ 'border-white/75': CurrentSkill.Unlocked, 'border-white/14 hover:border-white/74': !CurrentSkill.Unlocked }"
+      class="min-h-[2em] min-w-[2em] cursor-pointer border-[1.5px] rounded-full bg-black/66 transition-all duration-150"
+      :class="{ 'border-gold-200/45': CurrentSkill.Unlocked, 'border-white/14 hover:border-white/75': !CurrentSkill.Unlocked }"
       @click.prevent="ToggleSkill()"
     >
       <NuxtImg :src="`/images/icons/${CurrentSkill.Icon}`" class="p-1" />

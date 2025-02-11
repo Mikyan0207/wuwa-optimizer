@@ -61,10 +61,10 @@ const GetSkillType = computed(() => {
       </div>
     </template>
     <div
-      class="rotate-45 cursor-pointer border-2 rounded-sm bg-black/88 backdrop-blur-4 transition-all duration-150"
+      class="rotate-45 cursor-pointer border-1 rounded-xs bg-black/88 backdrop-blur-4 transition-all duration-150"
       :class="{
-        'border-white/75': skill.Unlocked,
-        'border-white/14 hover:border-white/74': !skill.Unlocked,
+        'border-gold-200/45': skill.Unlocked,
+        'border-white/14 hover:border-white/75': !skill.Unlocked,
         'min-h-[3em] min-w-[3em]': !size,
         'min-h-[2em] min-w-[2em]': size === 'xs',
       }"

@@ -9,6 +9,6 @@ defineProps<{
 <template>
   <div
     class="h-[1px] w-full"
-    :class="{ 'bg-white/75': skill?.Unlocked, 'bg-white/7': !skill?.Unlocked }"
+    :class="{ 'bg-gold-200/45': skill?.Unlocked, 'bg-white/7': !skill?.Unlocked }"
   />
 </template>

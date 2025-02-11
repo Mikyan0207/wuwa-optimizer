@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Character } from '~/Core/Models/Character'
 import type { Echo } from '~/Core/Models/Echo'
+import { EchoCost } from '~/Core/Enums/EchoCost'
 import { Rarity } from '~/Core/Enums/Rarity'
 
 const props = defineProps<{
@@ -10,16 +11,31 @@ const props = defineProps<{
   character: Character
 }>()
 
-function GetEchoRarityBackgroundColor(rarity: Rarity) {
+const { t } = useI18n()
+
+function GetCostText(cost: EchoCost) {
+  switch (cost) {
+    case EchoCost.ONE_COST:
+      return '1'
+    case EchoCost.THREE_COST:
+      return '3'
+    default:
+      return '4'
+  }
+}
+
+function GetRarityText(rarity: Rarity) {
   switch (rarity) {
     case Rarity.FIVE_STARS:
-      return 'bg-gold-400'
+      return '5'
     case Rarity.FOUR_STARS:
-      return 'bg-purple-400'
+      return '4'
     case Rarity.THREE_STARS:
-      return 'bg-blue-400'
-    default:
-      return 'bg-gray-400'
+      return '3'
+    case Rarity.TWO_STARS:
+      return '2'
+    case Rarity.ONE_STAR:
+      return '1'
   }
 }
 
@@ -40,8 +56,8 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
         <BorderLines />
         <div class="w-full flex flex-col items-start gap-2">
           <div class="flex flex-row items-center gap-2">
-            <div class="flex flex-col items-center gap-2">
-              <NuxtImg v-if="IsValidEcho" :src="`/images/echoes/${echo.Icon}`" :class="`h-12 w-12 rounded-full ${GetEchoRarityBackgroundColor(echo.Rarity)}`" />
+            <div class="flex flex-col items-center gap-2 rounded-full border-2 h-12 w-12 border-gold-200/45 overflow-clip">
+              <NuxtImg v-if="IsValidEcho" :src="`/images/echoes/${echo.Icon}`" />
               <USkeleton v-else class="h-12 w-12 rounded-full" />
             </div>
             <div class="flex flex-col">
@@ -49,10 +65,18 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
                 {{ echo.Name }}
               </p>
               <USkeleton v-else class="h-3 w-22" />
-              <p v-if="IsValidEcho" class="text-xs text-gray-300">
-                +<span>{{ echo.Level }}</span>
-              </p>
-              <USkeleton v-else class="mt-1 h-2 w-8" />
+              <div class="flex items-center gap-1 mt-1">
+                <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="error">
+                  {{ `${t('label_level')} ${echo.Level}` }}
+                </UBadge>
+                <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="primary">
+                  {{ `${GetRarityText(echo.Rarity)}✦` }}
+                </UBadge>
+                <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="info">
+                  {{ `Cost ${GetCostText(echo.Cost)}` }}
+                </UBadge>
+                <USkeleton v-else class="mt-1 h-2 w-8" />
+              </div>
             </div>
           </div>
           <div class="mx-auto my-2 h-[1px] w-full rounded-full bg-white/14" />

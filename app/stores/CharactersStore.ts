@@ -11,11 +11,9 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
   const Characters = useLocalStorage<ICharacter[]>('Characters', [...TemplateCharacters as ICharacter[]])
   const CharactersVersion = useLocalStorage<string | undefined>('CharactersVersion', undefined)
 
-  const CharactersEventBus = useEventBus('CharactersEvents')
+  const WeaponsStore = useWeaponsStore()
 
-  function IsUnlocked(characterId: number) {
-    return Characters.value.find(x => x.Id === characterId)?.Unlocked === true
-  }
+  const CharactersEventBus = useEventBus('CharactersEvents')
 
   function IsCharacterListed(characterId: number) {
     return Characters.value.findIndex(x => x.Id === characterId) !== -1
@@ -27,21 +25,6 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     if (idx === -1) {
       Characters.value.push(character)
     }
-  }
-
-  function UnlockCharacter(characterId: number) {
-    if (IsUnlocked(characterId)) {
-      return
-    }
-
-    const character = GetCharacter(characterId)
-
-    if (character === undefined) {
-      return
-    }
-
-    character.Unlocked = true
-    UpdateCharacter(character as ICharacter)
   }
 
   function UpdateCharacter(character: ICharacter) {
@@ -56,10 +39,6 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
   }
 
   function RemoveCharacter(id: number) {
-    if (!IsUnlocked(id)) {
-      return
-    }
-
     const idx = Characters.value.findIndex(x => x.Id === id)
 
     if (idx === -1) {
@@ -96,6 +75,14 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     }
 
     return new Character(c)
+  }
+
+  function GetWeapon(characterId: number | undefined) {
+    if (characterId === undefined) {
+      return undefined
+    }
+
+    return WeaponsStore.GetWeaponByEquipedId(characterId)
   }
 
   function UpdateEcho(characterId: number, echoId: number, slot: number) {
@@ -167,13 +154,12 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     Characters,
     CharactersVersion,
     IsCharacterListed,
-    IsUnlocked,
-    UnlockCharacter,
     AddCharacter,
     RemoveCharacter,
     RemoveEcho,
     GetCharacters,
     GetCharacter,
+    GetWeapon,
     UpdateEcho,
     UpdateWeapon,
     UpdateStatsWeights,

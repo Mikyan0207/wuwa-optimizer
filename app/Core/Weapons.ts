@@ -18,6 +18,7 @@ export const TheLastDance: IWeapon = {
     Type: StatType.CRIT_DMG,
     Value: 72,
   },
+  Rank: 1,
 }
 
 export const AgesOfHarvest: IWeapon = {
@@ -35,6 +36,7 @@ export const AgesOfHarvest: IWeapon = {
     Type: StatType.CRIT_RATE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const EmeraldOfGenesis: IWeapon = {
@@ -52,6 +54,7 @@ export const EmeraldOfGenesis: IWeapon = {
     Type: StatType.CRIT_RATE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const BlazingBrilliance: IWeapon = {
@@ -69,6 +72,7 @@ export const BlazingBrilliance: IWeapon = {
     Type: StatType.CRIT_DMG,
     Value: 48.6,
   },
+  Rank: 1,
 }
 
 export const RedSpring: IWeapon = {
@@ -86,6 +90,7 @@ export const RedSpring: IWeapon = {
     Type: StatType.CRIT_RATE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const AbyssSurges: IWeapon = {
@@ -103,6 +108,7 @@ export const AbyssSurges: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 36.4,
   },
+  Rank: 1,
 }
 
 export const LustrousRazor: IWeapon = {
@@ -120,6 +126,7 @@ export const LustrousRazor: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 36.4,
   },
+  Rank: 1,
 }
 
 export const CosmicRipples: IWeapon = {
@@ -137,6 +144,7 @@ export const CosmicRipples: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 36.4,
   },
+  Rank: 1,
 }
 
 export const Rime_Draped_Sprouts: IWeapon = {
@@ -154,6 +162,7 @@ export const Rime_Draped_Sprouts: IWeapon = {
     Type: StatType.CRIT_DMG,
     Value: 72.0,
   },
+  Rank: 1,
 }
 
 export const Static_Mist: IWeapon = {
@@ -171,6 +180,7 @@ export const Static_Mist: IWeapon = {
     Type: StatType.CRIT_RATE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const Stellar_Symphony: IWeapon = {
@@ -188,6 +198,7 @@ export const Stellar_Symphony: IWeapon = {
     Type: StatType.ENERGY_REGENERATION,
     Value: 77.0,
   },
+  Rank: 1,
 }
 
 export const Stringmaster: IWeapon = {
@@ -205,6 +216,7 @@ export const Stringmaster: IWeapon = {
     Type: StatType.CRIT_RATE,
     Value: 36.0,
   },
+  Rank: 1,
 }
 
 export const Tragicomedy: IWeapon = {
@@ -222,6 +234,7 @@ export const Tragicomedy: IWeapon = {
     Type: StatType.CRIT_RATE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const Verdant_Summit: IWeapon = {
@@ -239,6 +252,7 @@ export const Verdant_Summit: IWeapon = {
     Type: StatType.CRIT_DMG,
     Value: 48.6,
   },
+  Rank: 1,
 }
 
 export const Veritys_Handle: IWeapon = {
@@ -256,6 +270,7 @@ export const Veritys_Handle: IWeapon = {
     Type: StatType.CRIT_RATE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const Luminous_Hymn: IWeapon = {
@@ -273,6 +288,7 @@ export const Luminous_Hymn: IWeapon = {
     Type: StatType.CRIT_RATE,
     Value: 36.0,
   },
+  Rank: 1,
 }
 
 export const Amity_Accord: IWeapon = {
@@ -290,6 +306,7 @@ export const Amity_Accord: IWeapon = {
     Type: StatType.DEF_PERCENTAGE,
     Value: 61.5,
   },
+  Rank: 1,
 }
 
 export const Augment: IWeapon = {
@@ -307,6 +324,7 @@ export const Augment: IWeapon = {
     Type: StatType.CRIT_RATE,
     Value: 20.2,
   },
+  Rank: 1,
 }
 
 export const Autumntrace: IWeapon = {
@@ -324,6 +342,7 @@ export const Autumntrace: IWeapon = {
     Type: StatType.CRIT_RATE,
     Value: 20.2,
   },
+  Rank: 1,
 }
 
 export const Broadblade41: IWeapon = {
@@ -341,6 +360,7 @@ export const Broadblade41: IWeapon = {
     Type: StatType.ENERGY_REGENERATION,
     Value: 32.4,
   },
+  Rank: 1,
 }
 
 export const Cadenza: IWeapon = {
@@ -358,6 +378,7 @@ export const Cadenza: IWeapon = {
     Type: StatType.ENERGY_REGENERATION,
     Value: 51.8,
   },
+  Rank: 1,
 }
 
 export const Call_of_the_Abyss: IWeapon = {
@@ -375,6 +396,7 @@ export const Call_of_the_Abyss: IWeapon = {
     Type: StatType.ENERGY_REGENERATION,
     Value: 51.8,
   },
+  Rank: 1,
 }
 
 export const Celestial_Spiral: IWeapon = {
@@ -392,6 +414,7 @@ export const Celestial_Spiral: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 18.2,
   },
+  Rank: 1,
 }
 
 export const Comet_Flare: IWeapon = {
@@ -409,6 +432,7 @@ export const Comet_Flare: IWeapon = {
     Type: StatType.HP_PERCENTAGE,
     Value: 30.3,
   },
+  Rank: 1,
 }
 
 export const Commando_of_Conviction: IWeapon = {
@@ -426,6 +450,7 @@ export const Commando_of_Conviction: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 30.3,
   },
+  Rank: 1,
 }
 
 export const Dauntless_Evernight: IWeapon = {
@@ -443,6 +468,7 @@ export const Dauntless_Evernight: IWeapon = {
     Type: StatType.DEF_PERCENTAGE,
     Value: 61.5,
   },
+  Rank: 1,
 }
 
 export const Discord: IWeapon = {
@@ -460,6 +486,7 @@ export const Discord: IWeapon = {
     Type: StatType.ENERGY_REGENERATION,
     Value: 51.8,
   },
+  Rank: 1,
 }
 
 export const Endless_Collapse: IWeapon = {
@@ -477,6 +504,7 @@ export const Endless_Collapse: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 18.2,
   },
+  Rank: 1,
 }
 
 export const Fables_of_Wisdom: IWeapon = {
@@ -494,6 +522,7 @@ export const Fables_of_Wisdom: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 18.2,
   },
+  Rank: 1,
 }
 
 export const Fusion_Accretion: IWeapon = {
@@ -511,6 +540,7 @@ export const Fusion_Accretion: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 18.2,
   },
+  Rank: 1,
 }
 
 export const Gauntlets21D: IWeapon = {
@@ -528,6 +558,7 @@ export const Gauntlets21D: IWeapon = {
     Type: StatType.ENERGY_REGENERATION,
     Value: 38.8,
   },
+  Rank: 1,
 }
 
 export const Helios_Cleaver: IWeapon = {
@@ -545,6 +576,7 @@ export const Helios_Cleaver: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 30.3,
   },
+  Rank: 1,
 }
 
 export const Hollow_Mirage: IWeapon = {
@@ -562,6 +594,7 @@ export const Hollow_Mirage: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 30.3,
   },
+  Rank: 1,
 }
 
 export const Jinzhou_Keeper: IWeapon = {
@@ -579,6 +612,7 @@ export const Jinzhou_Keeper: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 36.4,
   },
+  Rank: 1,
 }
 
 export const Legend_of_Drunken_Hero: IWeapon = {
@@ -596,6 +630,7 @@ export const Legend_of_Drunken_Hero: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 18.2,
   },
+  Rank: 1,
 }
 
 export const Lumingloss: IWeapon = {
@@ -613,6 +648,7 @@ export const Lumingloss: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 36.4,
   },
+  Rank: 1,
 }
 
 export const Lunar_Cutter: IWeapon = {
@@ -630,6 +666,7 @@ export const Lunar_Cutter: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 30.3,
   },
+  Rank: 1,
 }
 
 export const Marcato: IWeapon = {
@@ -647,6 +684,7 @@ export const Marcato: IWeapon = {
     Type: StatType.ENERGY_REGENERATION,
     Value: 51.8,
   },
+  Rank: 1,
 }
 
 export const Meditations_on_Mercy: IWeapon = {
@@ -664,6 +702,7 @@ export const Meditations_on_Mercy: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 18.2,
   },
+  Rank: 1,
 }
 
 export const Novaburst: IWeapon = {
@@ -681,6 +720,7 @@ export const Novaburst: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 30.3,
   },
+  Rank: 1,
 }
 
 export const Overture: IWeapon = {
@@ -698,6 +738,7 @@ export const Overture: IWeapon = {
     Type: StatType.ENERGY_REGENERATION,
     Value: 51.8,
   },
+  Rank: 1,
 }
 
 export const Pistols26: IWeapon = {
@@ -715,6 +756,7 @@ export const Pistols26: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 36.4,
   },
+  Rank: 1,
 }
 
 export const Rectifier25: IWeapon = {
@@ -732,6 +774,7 @@ export const Rectifier25: IWeapon = {
     Type: StatType.ENERGY_REGENERATION,
     Value: 51.8,
   },
+  Rank: 1,
 }
 
 export const Relativistic_Jet: IWeapon = {
@@ -749,6 +792,7 @@ export const Relativistic_Jet: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 18.2,
   },
+  Rank: 1,
 }
 
 export const Romance_in_Farewell: IWeapon = {
@@ -766,6 +810,7 @@ export const Romance_in_Farewell: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 18.2,
   },
+  Rank: 1,
 }
 
 export const Somnoire_Anchor: IWeapon = {
@@ -783,6 +828,7 @@ export const Somnoire_Anchor: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 18.2,
   },
+  Rank: 1,
 }
 
 export const Stonard: IWeapon = {
@@ -800,6 +846,7 @@ export const Stonard: IWeapon = {
     Type: StatType.CRIT_RATE,
     Value: 20.2,
   },
+  Rank: 1,
 }
 
 export const Sword18: IWeapon = {
@@ -817,6 +864,7 @@ export const Sword18: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 36.4,
   },
+  Rank: 1,
 }
 
 export const Thunderbolt: IWeapon = {
@@ -834,6 +882,7 @@ export const Thunderbolt: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 36.4,
   },
+  Rank: 1,
 }
 
 export const Undying_Flame: IWeapon = {
@@ -851,6 +900,7 @@ export const Undying_Flame: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 36.4,
   },
+  Rank: 1,
 }
 
 export const Variation: IWeapon = {
@@ -868,6 +918,7 @@ export const Variation: IWeapon = {
     Type: StatType.ENERGY_REGENERATION,
     Value: 51.8,
   },
+  Rank: 1,
 }
 
 export const Waltz_in_Masquerade: IWeapon = {
@@ -885,6 +936,7 @@ export const Waltz_in_Masquerade: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 18.2,
   },
+  Rank: 1,
 }
 
 export const Waning_Redshift: IWeapon = {
@@ -902,6 +954,7 @@ export const Waning_Redshift: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 18.2,
   },
+  Rank: 1,
 }
 
 export const Beguiling_Melody: IWeapon = {
@@ -919,6 +972,7 @@ export const Beguiling_Melody: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 30.3,
   },
+  Rank: 1,
 }
 
 export const Broadblade_of_Night: IWeapon = {
@@ -936,6 +990,7 @@ export const Broadblade_of_Night: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const Broadblade_of_Voyager: IWeapon = {
@@ -953,6 +1008,7 @@ export const Broadblade_of_Voyager: IWeapon = {
     Type: StatType.ENERGY_REGENERATION,
     Value: 32.4,
   },
+  Rank: 1,
 }
 
 export const Gauntlets_of_Night: IWeapon = {
@@ -970,6 +1026,7 @@ export const Gauntlets_of_Night: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const Gauntlets_of_Voyager: IWeapon = {
@@ -987,6 +1044,7 @@ export const Gauntlets_of_Voyager: IWeapon = {
     Type: StatType.DEF_PERCENTAGE,
     Value: 30.7,
   },
+  Rank: 1,
 }
 
 export const Guardian_Broadblade: IWeapon = {
@@ -1004,6 +1062,7 @@ export const Guardian_Broadblade: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const Guardian_Gauntlets: IWeapon = {
@@ -1021,6 +1080,7 @@ export const Guardian_Gauntlets: IWeapon = {
     Type: StatType.DEF_PERCENTAGE,
     Value: 38.4,
   },
+  Rank: 1,
 }
 
 export const Guardian_Pistols: IWeapon = {
@@ -1038,6 +1098,7 @@ export const Guardian_Pistols: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 30.3,
   },
+  Rank: 1,
 }
 
 export const Guardian_Rectifier: IWeapon = {
@@ -1055,6 +1116,7 @@ export const Guardian_Rectifier: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const Guardian_Sword: IWeapon = {
@@ -1072,6 +1134,7 @@ export const Guardian_Sword: IWeapon = {
     Type: StatType.HP_PERCENTAGE,
     Value: 30.3,
   },
+  Rank: 1,
 }
 
 export const Originite_Type_I: IWeapon = {
@@ -1089,6 +1152,7 @@ export const Originite_Type_I: IWeapon = {
     Type: StatType.DEF_PERCENTAGE,
     Value: 38.4,
   },
+  Rank: 1,
 }
 
 export const Originite_Type_II: IWeapon = {
@@ -1106,6 +1170,7 @@ export const Originite_Type_II: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const Originite_Type_III: IWeapon = {
@@ -1123,6 +1188,7 @@ export const Originite_Type_III: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const Originite_Type_IV: IWeapon = {
@@ -1140,6 +1206,7 @@ export const Originite_Type_IV: IWeapon = {
     Type: StatType.CRIT_DMG,
     Value: 40.5,
   },
+  Rank: 1,
 }
 
 export const Originite_Type_V: IWeapon = {
@@ -1157,6 +1224,7 @@ export const Originite_Type_V: IWeapon = {
     Type: StatType.HP_PERCENTAGE,
     Value: 30.3,
   },
+  Rank: 1,
 }
 
 export const Pistols_of_Night: IWeapon = {
@@ -1174,6 +1242,7 @@ export const Pistols_of_Night: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const Pistols_of_Voyager: IWeapon = {
@@ -1191,6 +1260,7 @@ export const Pistols_of_Voyager: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 30.3,
   },
+  Rank: 1,
 }
 
 export const Rectifier_of_Night: IWeapon = {
@@ -1208,6 +1278,7 @@ export const Rectifier_of_Night: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const Rectifier_of_Voyager: IWeapon = {
@@ -1225,6 +1296,7 @@ export const Rectifier_of_Voyager: IWeapon = {
     Type: StatType.ENERGY_REGENERATION,
     Value: 32.4,
   },
+  Rank: 1,
 }
 
 export const Sword_of_Night: IWeapon = {
@@ -1242,6 +1314,7 @@ export const Sword_of_Night: IWeapon = {
     Type: StatType.ATTACK_PERCENTAGE,
     Value: 24.3,
   },
+  Rank: 1,
 }
 
 export const Sword_of_Voyager: IWeapon = {
@@ -1259,6 +1332,7 @@ export const Sword_of_Voyager: IWeapon = {
     Type: StatType.ENERGY_REGENERATION,
     Value: 32.4,
   },
+  Rank: 1,
 }
 
 export const Weapons: IWeapon[] = [

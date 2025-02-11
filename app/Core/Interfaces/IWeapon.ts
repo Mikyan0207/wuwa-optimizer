@@ -6,7 +6,9 @@ export default interface IWeapon {
   Id: number
   Name: string
   Level: number
+  Rank: number
   Icon: string
+  EquipedBy?: number
   Rarity: Rarity
   Type: WeaponType
   MainStatistic: IStatistic

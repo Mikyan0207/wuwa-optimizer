@@ -10,7 +10,9 @@ defineProps<{
   <!-- Character Art -->
   <UCard
     class="relative overflow-hidden"
-    :ui="{ root: 'p-0 sm:p-0 rounded-none rounded-br-xl border-0' }"
+    :ui="{
+      root: 'rounded-none rounded-br-xl border-0',
+    }"
   >
     <BorderLines />
     <!-- Top Right Icons background -->

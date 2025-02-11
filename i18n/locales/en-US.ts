@@ -7,6 +7,9 @@ export default {
   'imports_navigation_title': 'Importer',
 
   'label_level': 'Lv.',
+  'label_level_full': 'Level',
+  'label_rank': 'R',
+  'label_rank_full': 'Rank',
   'label_scoring_algorithm': 'Scoring',
   'label_character_score': 'Character Score',
 
@@ -29,6 +32,7 @@ export default {
   'label_stat_resonance_liberation_dmg_amplification': 'Res. Lib. DMG Bonus',
   'label_stat_spectro_dmg_bonus': 'Spectro DMG Bonus',
   'label_stat_havoc_dmg_bonus': 'Havoc DMG Bonus',
+  'label_stat_glacio_dmg_bonus': 'Glacio DMG Bonus',
 
   // === Weapons ===
   '21010026_name': 'Ages of Harvest',
@@ -49,6 +53,9 @@ export default {
   'skill_intro_skill': 'Intro Skill',
 
   'skill_description_template': '{type} increased by {value}',
+
+  // Carlotta
+  '1107_name': 'Carlotta',
 
   // Jinhsi
   '1304_name': 'Jinhsi',

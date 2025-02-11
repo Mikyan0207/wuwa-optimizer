@@ -48,7 +48,7 @@ const SelectedMenuItem = computed(() => MenuItems.value.find(x => x.id === local
 <template>
   <!-- Header -->
   <div
-    class="fixed left-16 top-0 z-30 h-12 w-full flex items-center justify-between gap-2 border-b border-gold-200/30 bg-black/44 p-3 pr-20 text-sm backdrop-blur-md"
+    class="fixed left-16 top-0 z-30 h-12 w-full flex items-center justify-between gap-2 border-b border-gold-200/30 bg-neutral-900/40 p-3 pr-20 text-sm backdrop-blur-md"
   >
     <UBreadcrumb :items="Routes" />
     <UDropdownMenu

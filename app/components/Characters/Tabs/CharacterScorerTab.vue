@@ -62,8 +62,8 @@ async function TakeScreenShotAsync() {
   ShowScreenShotBackground.value = true
 
   const scale = 1
-  const w = 1280 * scale
-  const h = 888 * scale
+  const w = CharacterInfoRef.value.clientWidth * scale
+  const h = CharacterInfoRef.value.clientHeight * scale
 
   domToBlob(CharacterInfoRef.value, {
     height: h,
@@ -133,7 +133,6 @@ async function TakeScreenShotAsync() {
                 <CharacterWeaponCard
                   :character-id="SelectedCharacter.Id"
                   :character-weapon-type="SelectedCharacter.WeaponType"
-                  :weapon-id="SelectedCharacter.EquipedWeapon"
                 />
                 <!-- Skills -->
                 <CharacterSkillsCard class="z-1 row-span-3" :character="SelectedCharacter" />

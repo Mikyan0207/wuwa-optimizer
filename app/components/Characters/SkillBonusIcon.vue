@@ -39,7 +39,7 @@ function ToggleSkill() {
   <USkeleton
     v-if="!CurrentSkill" class="min-h-2em min-w-2em rounded-full bg-white/7" :ui="{ base: '' }"
   />
-  <UTooltip v-else :delay-duration="0">
+  <UTooltip v-else arrow :delay-duration="0">
     <template #content>
       <div v-if="CurrentSkill.Stat">
         <div class="flex items-center gap-2">
@@ -56,7 +56,7 @@ function ToggleSkill() {
               <span>{{ t(`label_stat_${CurrentSkill.Stat.Type.toLowerCase()}`) }}</span>
             </template>
             <template #value>
-              <span class="text-gold-400">{{ CurrentSkill.Stat.Value.toFixed(2) }}%</span>
+              <span class="text-amber-500">{{ CurrentSkill.Stat.Value.toFixed(2) }}%</span>
             </template>
           </i18n-t>
         </p>
@@ -64,7 +64,7 @@ function ToggleSkill() {
     </template>
     <div
       class="min-h-[2em] min-w-[2em] cursor-pointer border-[1.5px] rounded-full bg-black/66 transition-all duration-150"
-      :class="{ 'border-gold-200/45': CurrentSkill.Unlocked, 'border-white/14 hover:border-white/75': !CurrentSkill.Unlocked }"
+      :class="{ 'border-gold-500': CurrentSkill.Unlocked, 'border-white/14 hover:border-white/75': !CurrentSkill.Unlocked }"
       @click.prevent="ToggleSkill()"
     >
       <NuxtImg :src="`/images/icons/${CurrentSkill.Icon}`" class="p-1" />

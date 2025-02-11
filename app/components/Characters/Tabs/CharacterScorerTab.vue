@@ -85,7 +85,7 @@ async function TakeScreenShotAsync() {
 </script>
 
 <template>
-  <div>
+  <div class="mb-14 xl:mb-4 px-4 xl:px-0">
     <UCard
       class="mx-auto w-full text-sm xl:max-w-7xl"
       :ui="{
@@ -112,7 +112,7 @@ async function TakeScreenShotAsync() {
       </template>
     </UCard>
 
-    <div v-if="SelectedCharacter !== undefined && CharacterScore" class="mb-14 mt-2 px-4 xl:mb-0 xl:px-0">
+    <div v-if="SelectedCharacter !== undefined && CharacterScore" class="mt-2">
       <div class="mx-auto my-2 xl:w-7xl">
         <div ref="CharacterInfoRef" class="relative p-0.25">
           <div v-if="ShowScreenShotBackground" class="absolute inset-0">

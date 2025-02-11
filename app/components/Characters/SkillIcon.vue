@@ -35,6 +35,7 @@ const GetSkillType = computed(() => {
   <USkeleton v-if="!skill" class="min-h-[3em] min-w-[3em] rotate-45" />
   <UTooltip
     v-else
+    arrow
     :delay-duration="0"
   >
     <template #content>
@@ -63,7 +64,7 @@ const GetSkillType = computed(() => {
     <div
       class="rotate-45 cursor-pointer border-1 rounded-xs bg-black/88 backdrop-blur-4 transition-all duration-150"
       :class="{
-        'border-gold-200/45': skill.Unlocked,
+        'border-gold-500': skill.Unlocked,
         'border-white/14 hover:border-white/75': !skill.Unlocked,
         'min-h-[3em] min-w-[3em]': !size,
         'min-h-[2em] min-w-[2em]': size === 'xs',

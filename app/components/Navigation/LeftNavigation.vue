@@ -7,31 +7,32 @@ const Items = ref([
   {
     label: 'home',
     icon: 'i-carbon:home',
-    type: 'icon',
+    type: 'link',
     to: '/',
+    disabled: true,
   },
   {
     label: 'characters',
-    icon: '/images/icons/Icon_Resonators.png',
+    icon: 'solar:soundwave-bold-duotone',
     type: 'link',
     to: '/characters',
   },
   {
     label: 'weapons',
-    icon: '/images/icons/Icon_Weapons.png',
+    icon: 'material-symbols:swords-outline-rounded',
     type: 'link',
     to: '/weapons',
   },
   {
     label: 'echoes',
-    icon: '/images/icons/Icon_Echoes.png',
+    icon: 'game-icons:squid-head',
     type: 'link',
     to: '/echoes',
   },
   {
     label: 'imports',
     icon: 'i-carbon:upload',
-    type: 'icon',
+    type: 'link',
     to: '/imports',
   },
 ] as NavigationMenuItem[])
@@ -65,15 +66,9 @@ watch(Route, () => {
     orientation="vertical"
     :highlight="true"
     highlight-color="primary"
-    :collapsed="true"
-  >
-    <template #item-leading="{ item }">
-      <NuxtImg
-        v-if="item.type === 'link'"
-        :src="item.icon"
-        class="relative h-8 w-8 object-contain grayscale"
-      />
-      <UIcon v-else :name="item.icon!" class="my-1 w-8 text-xl" />
-    </template>
-  </UNavigationMenu>
+    :ui="{
+      link: 'inline-block mx-auto w-full inset-x-2 w-min',
+      linkLabel: 'hidden w-0',
+    }"
+  />
 </template>

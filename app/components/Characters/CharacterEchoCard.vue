@@ -46,7 +46,7 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
   <div class="group relative">
     <EchoCreationPanel :echo="echo" :character="character" :echo-slot="echoSlot" />
     <UCard
-      class="h-[22em] w-full"
+      class="min-h-[22em] h-full w-full"
       :ui="{
         root: 'rounded-none rounded-br-xl border-0',
       }"

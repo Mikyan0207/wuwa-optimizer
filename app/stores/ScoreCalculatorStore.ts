@@ -239,7 +239,6 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
         Value: SUB_STAT_VALUES[statType].at(-1) || 0,
       })),
       Id: 0,
-      Name: '',
       Icon: '',
       Rarity: Rarity.FIVE_STARS,
       Cost: EchoCost.FOUR_COST,

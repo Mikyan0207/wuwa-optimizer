@@ -62,7 +62,7 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
             </div>
             <div class="flex flex-col">
               <p v-if="IsValidEcho" class=" text-white" :title="echo.Name">
-                {{ echo.Name }}
+                {{ t(`${echo.Id}_name`) }}
               </p>
               <USkeleton v-else class="h-3 w-22" />
               <div class="flex items-center gap-1 mt-1">

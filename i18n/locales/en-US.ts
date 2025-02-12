@@ -39,10 +39,7 @@ export default {
 
   '21050046_name': 'Luminous Hymn',
 
-  // === Characters ===
-  // Note(@Mikyan): Maybe this is not a good idea, but for now it seems fine.
-  // This way we don't need to refresh the localStorage on each update and
-  // we reduce the data we need to store inside it.
+  // === Skills ===
   'skill_basic_attack': 'Normal Attack',
   'skill_resonance_skill': 'Resonance Skill',
   'skill_resonance_liberation': 'Resonance Liberation',
@@ -54,10 +51,27 @@ export default {
 
   'skill_description_template': '{type} increased by {value}',
 
-  // Carlotta
-  '1107_name': 'Carlotta',
+  // === Characters ===
+  // Note(@Mikyan): Maybe this is not a good idea, but for now it seems fine.
+  // This way we don't need to refresh the localStorage on each update and
+  // we reduce the data we need to store inside it.
 
-  // Jinhsi
+  '1102_name': 'Sanhua',
+  '1103_name': 'Baizhi',
+  '1104_name': 'Lingyang',
+  '1105_name': 'Zhezhi',
+  '1106_name': 'Youhu',
+  '1107_name': 'Carlotta',
+  '1202_name': 'Chixia',
+  '1203_name': 'Encore',
+  '1204_name': 'Mortefi',
+  '1205_name': 'Changli',
+  '1206_name': 'Brant',
+  '1301_name': 'Calcharo',
+  '1302_name': 'Yinlin',
+  '1303_name': 'Yuanwu',
+
+  // 1304 - Jinhsi
   '1304_name': 'Jinhsi',
   '1304_basic_attack': 'Slash of Breaking Dawn',
   '1304_resonance_skill': 'Trailing Lights of Eons',
@@ -68,7 +82,17 @@ export default {
   '1304_outro_skill': 'Temporal Bender',
   '1304_intro_skill': 'Loong\'s Halo',
 
-  // Phoebe
+  '1305_name': 'Xiangli Yao',
+  '1402_name': 'Yangyang',
+  '1403_name': 'Aalto',
+  '1404_name': 'Jiyan',
+  '1405_name': 'Jianxin',
+  '1502_name': 'Rover (Spectro)',
+  '1503_name': 'Verina',
+  '1504_name': 'Lumi',
+  '1505_name': 'The Shorekeeper',
+
+  // 1506 - Phoebe
   '1506_name': 'Phoebe',
   '1506_basic_attack': 'O Come Divine Light',
   '1506_resonance_skill': 'To Where Light Shines',
@@ -79,7 +103,12 @@ export default {
   '1506_outro_skill': 'Attentive Heart',
   '1506_intro_skill': 'Golden Grace',
 
-  // Rokoko
+  '1601_name': 'Taoqi',
+  '1602_name': 'Danjin',
+  '1603_name': 'Camellya',
+  '1604_name': 'Rover (Havoc)',
+
+  // 1606 - Rokoko
   '1606_name': 'Roccia',
   '1606_basic_attack': 'Pero, Easy',
   '1606_resonance_skill': 'Acrobatic Trick',
@@ -89,4 +118,79 @@ export default {
   '1606_inherent_skill_2': 'Super Attractive Magic Box',
   '1606_outro_skill': 'Applause, Please!',
   '1606_intro_skill': 'Pero, Help',
+
+  // === Echoes ===
+  '390080005_name': 'Bell-Borne Geochelone',
+  '6000045_name': 'Mourning Aix',
+  '6000053_name': 'Dreamless',
+  '6000059_name': 'Jué',
+  '6000085_name': 'Hecate',
+  '6000060_name': 'Fallacy of No Return',
+  '6000083_name': 'Sentry Construct',
+  '6000082_name': 'Lorelei',
+  '390080007_name': 'Inferno Rider',
+  '390080003_name': 'Thundering Mephis',
+  '6000039_name': 'Tempest Mephis',
+  '6000048_name': 'Mech Abomination',
+  '6000044_name': 'Lampylumen Myriad',
+  '6000084_name': 'Dragon of Dirge',
+  '6000042_name': 'Crownless',
+  '6000052_name': 'Impermanence Heron',
+  '6000043_name': 'Feilian Beringal',
+  '6000092_name': 'Mourning Aix (Nightmare)',
+  '6000049_name': 'Autopuppet Scout',
+  '390077005_name': 'Cyan-Feathered Heron',
+  '390077024_name': 'Rocksteady Guardian',
+  '6000058_name': 'Lightcrusher',
+  '390077004_name': 'Violet-Feathered Heron',
+  '390077028_name': 'Viridblaze Saurian',
+  '390077038_name': 'Spearback',
+  '390077033_name': 'Havoc Dreadmane',
+  '6000040_name': 'Hoochief',
+  '6000056_name': 'Glacio Dreadmane',
+  '6000079_name': 'Chop Chop',
+  '6000081_name': 'Cuddle Wuddle',
+  '6000046_name': 'Carapace',
+  '390077029_name': 'Roseshroom',
+  '390077021_name': 'Stonewall Bracer',
+  '390077023_name': 'Tambourinist',
+  '390077022_name': 'Flautist',
+  '390077025_name': 'Chasm Guardian',
+  '6000073_name': 'Questless Knight',
+  '6000074_name': 'Diurnus Knight',
+  '6000075_name': 'Nocturnus Knight',
+  '6000076_name': 'Abyssal Patricius',
+  '6000077_name': 'Abyssal Gladius',
+  '6000078_name': 'Abyssal Mercator',
+  '6000080_name': 'Vitreum Dancer',
+  '6000057_name': 'Lumiscale Construct',
+  '6000051_name': 'Clang Bang',
+  '390070074_name': 'Cruisewing',
+  '390070070_name': 'Glacio Predator',
+  '390070076_name': 'Gulpuff',
+  '390077017_name': 'Havoc Prism',
+  '390070065_name': 'Havoc Warrior',
+  '390070105_name': 'Hoartoise',
+  '390077016_name': 'Spectro Prism',
+  '390070067_name': 'Zig Zag',
+  '390070068_name': 'Whiff Whaff',
+  '390070071_name': 'Aero Predator',
+  '390070078_name': 'Baby Viridblaze Saurian',
+  '6000072_name': 'Chest Mimic',
+  '6000064_name': 'Chop Chop Headless',
+  '6000065_name': 'Chop Chop Leftless',
+  '6000066_name': 'Chop Chop Rightless',
+  '6000041_name': 'Diamondclaw',
+  '6000071_name': 'Diggy Duggy',
+  '6000055_name': 'Dwarf Cassowary',
+  '390070053_name': 'Electro Predator',
+  '390070077_name': 'Excarat',
+  '6000067_name': 'Fae Ignis',
+  '390070052_name': 'Fission Junrock',
+  '6000063_name': 'Frostscourge Stalker',
+  '390070100_name': 'Fusion Dreadmane',
+  '390077012_name': 'Fusion Prism',
+  '390070064_name': 'Fusion Warrior',
+  '6000061_name': 'Galescourge Stalker',
+  '390077013_name': 'Glacio Prism',
 }

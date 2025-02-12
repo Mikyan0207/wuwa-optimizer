@@ -6,7 +6,6 @@ import { Sonata } from './Sonata'
 
 export class Echo {
   Id: number
-  Name: string
   Icon: string
   Rarity: Rarity
   Cost: EchoCost
@@ -19,7 +18,6 @@ export class Echo {
 
   constructor(echo: IEcho) {
     this.Id = echo.Id
-    this.Name = echo.Name
     this.Icon = echo.Icon
     this.Rarity = echo.Rarity
     this.Cost = echo.Cost

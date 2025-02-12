@@ -32,6 +32,10 @@ const MenuItems = [
     label: 'Remove',
     icon: 'lucide:x',
     color: 'error' as const,
+    onSelect() {
+      CharactersStore.RemoveWeapon(props.characterId, SelectedWeaponId.value)
+      WeaponsStore.RemoveWeaponByCharacterId(SelectedWeaponId.value, props.characterId)
+    },
   },
 ]
 

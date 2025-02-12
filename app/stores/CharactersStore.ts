@@ -63,6 +63,17 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     UpdateCharacter(c)
   }
 
+  function RemoveWeapon(characterId: number, weaponId: number | undefined) {
+    const c = Characters.value.find(x => x.Id === characterId && x.EquipedWeapon === weaponId)
+
+    if (c === undefined) {
+      return
+    }
+
+    c.EquipedWeapon = undefined
+    UpdateCharacter(c)
+  }
+
   function GetCharacters() {
     return Characters.value.map(c => new Character(c))
   }
@@ -157,6 +168,7 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     AddCharacter,
     RemoveCharacter,
     RemoveEcho,
+    RemoveWeapon,
     GetCharacters,
     GetCharacter,
     GetWeapon,

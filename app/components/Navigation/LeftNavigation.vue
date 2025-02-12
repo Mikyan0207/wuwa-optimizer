@@ -13,7 +13,7 @@ const Items = ref([
   },
   {
     label: 'characters',
-    icon: 'solar:soundwave-bold-duotone',
+    icon: 'solar:soundwave-circle-broken',
     type: 'link',
     to: '/characters',
   },
@@ -34,6 +34,7 @@ const Items = ref([
     icon: 'i-carbon:upload',
     type: 'link',
     to: '/imports',
+    disabled: true,
   },
 ] as NavigationMenuItem[])
 

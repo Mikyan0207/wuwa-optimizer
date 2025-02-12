@@ -17,6 +17,7 @@ const props = defineProps<{
   echoSlot: number
 }>()
 
+const { t } = useI18n()
 const IsOpen = ref<boolean>(false)
 const IsDropdownOpen = ref<boolean>(false)
 const EchoesStore = useEchoesStore()
@@ -29,7 +30,7 @@ const FilteredEchoes = computed(() => {
   return TemplateEchoes
     .filter((echo: IEcho) => {
       const matchesSonata = SelectedSonataEffect.value ? echo.Sonata.some(sonata => sonata.Name === SelectedSonataEffect.value?.Name) : true
-      const matchesSearch = echo.Name.toLowerCase().includes(SearchValue.value.toLowerCase())
+      const matchesSearch = t(`${echo.Id}_name`).toLowerCase().includes(SearchValue.value.toLowerCase())
       return matchesSonata && matchesSearch
     })
     .map(echo => new Echo(echo))
@@ -390,7 +391,7 @@ const MenuItems = [
                     </div>
                     <div class="py-0.75 text-xs">
                       <div class="flex flex-col gap-4 text-center">
-                        <span>{{ ec.Name }}</span>
+                        <span>{{ t(`${ec.Id}_name`) }}</span>
                         <div class="flex items-center justify-center gap-1">
                           <div
                             v-for="sonata in ec.Sonata" :key="`${ec.Id}-${sonata.Name}`"
@@ -421,7 +422,7 @@ const MenuItems = [
                     </div>
                     <div class="py-0.75 text-xs">
                       <div class="flex flex-col gap-4 text-center">
-                        <span>{{ TmpEditedEcho.Name }}</span>
+                        <span>{{ t(`${TmpEditedEcho.Id}_name`) }}</span>
                       </div>
                     </div>
                     <USeparator class="my-3" />

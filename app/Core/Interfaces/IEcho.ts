@@ -5,7 +5,6 @@ import type IStatistic from './IStatistic'
 
 export default interface IEcho {
   Id: number
-  Name: string
   Icon: string
   Rarity: Rarity
   Cost: EchoCost

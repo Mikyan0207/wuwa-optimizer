@@ -44,6 +44,16 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     Weapons.value.push(new Weapon(weapon))
   }
 
+  function RemoveWeaponByCharacterId(weaponId: number | undefined, characterId: number) {
+    const idx = Weapons.value.findIndex(x => x.Id === weaponId && x.EquipedBy === characterId)
+
+    if (idx === -1) {
+      return
+    }
+
+    Weapons.value.splice(idx, 1)
+  }
+
   function Update() {
     TemplateWeapons.forEach((templateWeapon) => {
       if (!IsWeaponListed(templateWeapon.Id)) {
@@ -59,6 +69,7 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     GetWeaponByEquipedId,
     IsWeaponListed,
     AddWeapon,
+    RemoveWeaponByCharacterId,
     Update,
   }
 })

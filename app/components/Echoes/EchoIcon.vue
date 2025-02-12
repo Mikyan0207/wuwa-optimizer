@@ -6,6 +6,8 @@ const props = defineProps<{
   echo: Echo
 }>()
 
+const { t } = useI18n()
+
 const GetBackgroundColor = computed(() => {
   switch (props.echo.Rarity) {
     case Rarity.FIVE_STARS:
@@ -100,8 +102,8 @@ const GetHighlightColor = computed(() => {
           <div class="h-[3px]" :class="GetHighlightColor" />
         </div>
       </div>
-      <div :title="echo.Name" class="w-26 truncate text-nowrap border-b border-l border-r border-white/14 rounded-b bg-black/44 px-2 py-0.75 text-center text-xs">
-        {{ echo.Name }}
+      <div :title="t(`${echo.Id}_name`)" class="w-26 truncate text-nowrap border-b border-l border-r border-white/14 rounded-b bg-black/44 px-2 py-0.75 text-center text-xs">
+        {{ t(`${echo.Id}_name`) }}
       </div>
     </div>
   </UTooltip>

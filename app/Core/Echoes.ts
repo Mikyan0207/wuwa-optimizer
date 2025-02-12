@@ -230,6 +230,7 @@ export const Nightmare_Mourning_Aix_Echo: IEcho = {
     Eternal_Radiance,
   ],
   Statistics: [],
+  IsNightmare: true,
 }
 // #endregion
 

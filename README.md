@@ -1,8 +1,17 @@
 # wuwa-optimizer
 
-A Wuthering Waves optimizer and scorer for building characters.
-
+<div id="top"></div>
+<div align="center">
+ <h1>WuWa Optimizer</h1>
+  <p align="center">
+  <h4>A Wuthering Waves scorer for building characters.</h4>
+ </p>
+  <p align="center">
+ </p>
+</div>
 <br>
+
+![wuwa_optimizer_showcase_01](/.github/images/wuwa-optimizer-showcase-01.png)
 
 ## Credits
 

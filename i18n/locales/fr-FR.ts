@@ -118,7 +118,7 @@ export default {
   '6000042_name': 'Crownless',
   '6000052_name': 'Impermanence Heron',
   '6000043_name': 'Feilian Beringal',
-  '6000092_name': 'Mourning Aix (Nightmare)',
+  '6000092_name': 'Mourning Aix',
   '6000049_name': 'Autopuppet Scout',
   '390077005_name': 'Cyan-Feathered Heron',
   '390077024_name': 'Rocksteady Guardian',

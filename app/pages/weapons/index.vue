@@ -110,8 +110,8 @@ function GetRarityAsNumber(rarity: Rarity) {
 </script>
 
 <template>
-  <div>
-    <div class="mx-auto xl:max-w-8xl px-8">
+  <div class="mx-auto xl:max-w-6xl px-8 xl:px-0 space-y-8">
+    <div>
       <div class="w-full flex flex-wrap items-center justify-between gap-2">
         <UInput v-model="SearchValue" placeholder="Search weapon..." />
         <div class="flex flex-wrap items-center gap-4">
@@ -158,7 +158,7 @@ function GetRarityAsNumber(rarity: Rarity) {
         </div>
       </div>
     </div>
-    <div class="mx-auto my-8 max-w-6xl flex flex-wrap items-start justify-center gap-1 xl:max-w-7xl">
+    <div class="mx-auto w-full flex flex-wrap items-start justify-center gap-2 mb-8">
       <WeaponIcon
         v-for="w in WeaponsList"
         :key="w.Id"

@@ -56,30 +56,35 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
         <BorderLines />
         <div class="w-full flex flex-col items-start gap-2 truncate">
           <div class="flex flex-row items-center gap-2">
-            <div class="flex flex-col items-center gap-2 rounded-full border-2 h-12 w-12 border-gold-200/45 overflow-clip">
+            <div class="flex flex-col items-center gap-2 rounded-full border-2 h-12 w-12 border-gold-400/60 overflow-clip">
               <NuxtImg v-if="IsValidEcho" :src="`/images/echoes/${echo.Icon}`" class="h-12 w-12" />
               <USkeleton v-else class="h-12 w-12 rounded-full" />
             </div>
             <div class="flex flex-col">
-              <p v-if="IsValidEcho" class=" text-white" :title="echo.Name">
+              <p v-if="IsValidEcho" class=" text-white" :title="t(`${echo.Id}_name`)">
                 {{ t(`${echo.Id}_name`) }}
               </p>
               <USkeleton v-else class="h-3 w-22" />
-              <div class="flex items-center gap-1 mt-1">
-                <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="error">
-                  {{ `${t('label_level')} ${echo.Level}` }}
-                </UBadge>
-                <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="primary">
-                  {{ `${GetRarityText(echo.Rarity)}✦` }}
-                </UBadge>
-                <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="info">
-                  {{ `Cost ${GetCostText(echo.Cost)}` }}
-                </UBadge>
-                <USkeleton v-else class="mt-1 h-2 w-8" />
-              </div>
             </div>
           </div>
-          <div class="mx-auto my-2 h-[1px] w-full rounded-full bg-white/14" />
+          <div class="flex items-center justify-start w-full gap-1">
+            <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="error">
+              {{ `${t('label_level')} ${echo.Level}` }}
+            </UBadge>
+            <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="primary">
+              {{ `${GetRarityText(echo.Rarity)}✦` }}
+            </UBadge>
+            <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="info">
+              {{ `Cost ${GetCostText(echo.Cost)}` }}
+            </UBadge>
+            <UBadge
+              v-if="IsValidEcho && echo.IsNightmare === true" class="text-xs ml-auto text-gray-300" size="xs" variant="soft"
+              color="warning"
+            >
+              Nightmare
+            </UBadge>
+          </div>
+          <div class="mx-auto my-1 h-[1px] w-full rounded-full bg-white/14" />
           <!-- Main Stat -->
           <div class="w-full flex flex-row gap-4">
             <div v-if="echo.MainStatistic && IsValidEcho" class="w-full flex items-start justify-between gap-12">
@@ -93,7 +98,7 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
               <USkeleton class="mt-0.5 h-2 w-8" />
             </div>
           </div>
-          <div class="mx-auto my-2 h-[1px] w-full rounded-full bg-white/14" />
+          <div class="mx-auto my-1 h-[1px] w-full rounded-full bg-white/14" />
           <!-- Sub Stats -->
           <div v-if="IsValidEcho" class="w-full flex flex-col gap-1">
             <StatLine

@@ -160,8 +160,8 @@ function OnCharacterClicked(characterId: number) {
 </script>
 
 <template>
-  <div>
-    <div class="mx-auto xl:max-w-8xl px-8">
+  <div class="mx-auto xl:max-w-6xl space-y-8 px-8 xl:px-0">
+    <div>
       <div class="w-full flex flex-wrap items-center justify-end gap-4">
         <!-- Character Type -->
         <div class="flex items-center justify-end gap-1">
@@ -220,7 +220,7 @@ function OnCharacterClicked(characterId: number) {
         </div>
       </div>
     </div>
-    <div class="mx-auto my-8 xl:max-w-8xl flex flex-wrap items-center justify-center gap-1 px-8">
+    <div class="flex flex-wrap w-full items-center justify-center gap-1">
       <CharacterIcon
         v-for="c in CharactersList"
         :key="c.Id"

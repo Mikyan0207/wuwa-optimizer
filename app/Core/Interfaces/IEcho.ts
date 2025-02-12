@@ -14,4 +14,5 @@ export default interface IEcho {
   Sonata: ISonata[]
   MainStatistic?: IStatistic
   Statistics: IStatistic[]
+  IsNightmare?: boolean
 }

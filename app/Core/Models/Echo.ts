@@ -15,6 +15,7 @@ export class Echo {
   Sonata: Sonata[]
   MainStatistic?: IStatistic
   Statistics: IStatistic[]
+  IsNightmare?: boolean
 
   constructor(echo: IEcho) {
     this.Id = echo.Id
@@ -27,6 +28,7 @@ export class Echo {
     this.Sonata = echo.Sonata?.map(s => new Sonata(s)) ?? []
     this.MainStatistic = echo.MainStatistic
     this.Statistics = echo.Statistics
+    this.IsNightmare = echo.IsNightmare
   }
 
   GetIcon() {

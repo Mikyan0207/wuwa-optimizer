@@ -6,12 +6,6 @@ import { AppName } from './Core'
 useHead({
   title: AppName,
 })
-
-const CharactersStore = useCharactersStore()
-const WeaponsStore = useWeaponsStore()
-
-CharactersStore.Update()
-WeaponsStore.Update()
 </script>
 
 <template>

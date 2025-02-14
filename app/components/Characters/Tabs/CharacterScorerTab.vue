@@ -3,42 +3,37 @@ import { domToBlob } from 'modern-screenshot'
 import { Empty_Echo } from '~/Core/Echoes'
 import { Echo } from '~/Core/Models/Echo'
 
-const props = defineProps<{
-  characterId: number
-}>()
-
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
-const CharactersStore = useCharactersStore()
 const EchoesStore = useEchoesStore()
 const ScoreCalculator = useScoreCalculatorStore()
 const CharactersEventBus = useEventBus('CharactersEvents')
 
-const SelectedCharacter = computed(() => CharactersStore.GetCharacter(props.characterId))
+const { ActiveCharacter } = useActiveCharacterStore()
 const CharacterScore = ref<ICharacterRatingResult>()
 const ShowScreenShotBackground = ref<boolean>(false)
 
-if (SelectedCharacter.value === undefined || SelectedCharacter.value === null) {
+if (ActiveCharacter === undefined || ActiveCharacter === null) {
   await navigateTo('/characters')
 }
 else {
-  CharacterScore.value = ScoreCalculator.GetCharacterScore(SelectedCharacter.value, SelectedCharacter.value.EquipedEchoes || [])
+  CharacterScore.value = ScoreCalculator.GetCharacterScore(ActiveCharacter, ActiveCharacter.EquipedEchoes || [])
 }
 
 CharactersEventBus.on(() => {
-  if (SelectedCharacter.value === undefined) {
+  if (ActiveCharacter === undefined) {
     return
   }
 
-  CharacterScore.value = ScoreCalculator.GetCharacterScore(SelectedCharacter.value, SelectedCharacter.value.EquipedEchoes || [])
+  CharacterScore.value = ScoreCalculator.GetCharacterScore(ActiveCharacter, ActiveCharacter.EquipedEchoes || [])
 })
 
 function GetEchoes(): Echo[] {
-  if (SelectedCharacter.value === undefined || SelectedCharacter.value.EquipedEchoes.length === 0) {
+  if (ActiveCharacter === undefined || ActiveCharacter.EquipedEchoes.length === 0) {
     return Array.from({ length: 5 }).fill(new Echo(Empty_Echo)) as Echo[]
   }
 
-  const equippedEchoes = EchoesStore.GetEchoesByIds(SelectedCharacter.value.EquipedEchoes, SelectedCharacter.value.Id)
+  const equippedEchoes = EchoesStore.GetEchoesByIds(ActiveCharacter.EquipedEchoes, ActiveCharacter.Id)
   const echoes: Echo[] = [
     new Echo(Empty_Echo),
     new Echo(Empty_Echo),
@@ -100,7 +95,7 @@ async function TakeScreenShotAsync() {
                       Save Build
                     </UButton> -->
           <div class="w-full flex justify-end gap-1">
-            <ScoringAlgorithmCard v-if="SelectedCharacter !== undefined" :character="SelectedCharacter" />
+            <ScoringAlgorithmCard v-if="ActiveCharacter !== undefined" :character="ActiveCharacter" />
             <UButton
               color="neutral" size="xs" variant="subtle" icon="i-carbon:camera" :trailing="false"
               :loading="ShowScreenShotBackground" @click.prevent="TakeScreenShotAsync"
@@ -112,30 +107,30 @@ async function TakeScreenShotAsync() {
       </template>
     </UCard>
 
-    <div v-if="SelectedCharacter !== undefined && CharacterScore" class="mt-2">
+    <div v-if="ActiveCharacter !== undefined && CharacterScore" class="mt-2">
       <div class="mx-auto my-2 xl:w-7xl">
         <div ref="CharacterInfoRef" class="relative p-0.25">
           <div v-if="ShowScreenShotBackground" class="absolute inset-0">
-            <LayeredBackground />
+            <NuxtImg src="/images/main-bg.webp" class="h-full w-full object-cover" />
           </div>
           <div class="grid grid-cols-2 mx-auto w-full gap-2 xl:grid-cols-5">
             <!-- Character Info (Art, Stats, Weapon, Skills) -->
             <CharacterArtCard
-              v-if="SelectedCharacter" :character="SelectedCharacter"
+              v-if="ActiveCharacter" :character="ActiveCharacter"
               class="col-span-1 row-span-1 xl:col-span-2"
             />
             <div class="grid col-span-1 grid-cols-1 gap-2 xl:col-span-3 xl:grid-cols-2">
               <!-- Stats -->
-              <CharacterStatsCard :character="SelectedCharacter" :score="CharacterScore" />
+              <CharacterStatsCard :character="ActiveCharacter" :score="CharacterScore" />
               <!-- Weapon / Skills -->
               <div class="grid grid-rows-4 gap-2">
                 <!-- Weapon -->
                 <CharacterWeaponCard
-                  :character-id="SelectedCharacter.Id"
-                  :character-weapon-type="SelectedCharacter.WeaponType"
+                  :character-id="ActiveCharacter.Id"
+                  :character-weapon-type="ActiveCharacter.WeaponType"
                 />
                 <!-- Skills -->
-                <CharacterSkillsCard class="z-1 row-span-3" :character="SelectedCharacter" />
+                <CharacterSkillsCard class="row-span-3" :character="ActiveCharacter" />
               </div>
             </div>
           </div>
@@ -148,7 +143,6 @@ async function TakeScreenShotAsync() {
               :echo="echo"
               :echo-slot="idx"
               :score="CharacterScore.EchoesScores.find(x => x.EchoId === echo.Id)"
-              :character="SelectedCharacter"
             />
           </div>
           <!-- <div class="grid col-span-3 grid-cols-2">

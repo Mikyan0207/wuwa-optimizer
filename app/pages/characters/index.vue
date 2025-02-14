@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { TemplateCharacters } from '~/Core/Characters'
 import { CharacterType } from '~/Core/Enums/CharacterType'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { WeaponType } from '~/Core/Enums/WeaponType'
+import { Character } from '~/Core/Models/Character'
 
 definePageMeta({
   layout: 'default',
@@ -20,6 +22,7 @@ interface ICharacterTypeOptions {
 }
 
 const CharactersStore = useCharactersStore()
+const ActiveCharacterStore = useActiveCharacterStore()
 
 const WeaponTypesOptions: IWeaponTypeOptions[] = [
   {
@@ -116,8 +119,7 @@ watchArray([SelectedCharacterRarity, SelectedCharacterType, SelectedWeaponType, 
 const CharactersList = computed(() => FilterCharacters())
 
 function FilterCharacters() {
-  return CharactersStore
-    .GetCharacters()
+  return TemplateCharacters
     .filter((character) => {
       const matchesType = SelectedWeaponType.value.Name === 'All' || character.WeaponType === SelectedWeaponType.value.Type
       const matchesRarity = SelectedCharacterRarity.value === 'All' || character.Rarity === SelectedCharacterRarity.value
@@ -137,6 +139,7 @@ function FilterCharacters() {
       }
       return 0
     })
+    .map(c => new Character(c))
 }
 
 function GetRarityAsNumber(rarity: Rarity) {
@@ -154,7 +157,8 @@ function GetRarityAsNumber(rarity: Rarity) {
   }
 }
 
-function OnCharacterClicked(characterId: number) {
+function OnCharacterClicked(characterId: number | undefined) {
+  ActiveCharacterStore.Set(characterId)
   navigateTo(`/characters/${characterId}`)
 }
 </script>
@@ -225,7 +229,7 @@ function OnCharacterClicked(characterId: number) {
         v-for="c in CharactersList"
         :key="c.Id"
         :character="c"
-        @click.prevent="OnCharacterClicked(c.Id ?? -1)"
+        @click.prevent="OnCharacterClicked(c.Id)"
       />
     </div>
   </div>

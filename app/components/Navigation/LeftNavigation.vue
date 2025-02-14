@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 
-const Route = useRoute()
-
-const Items = ref([
+const Section_01_Items = ref([
   {
     label: 'home',
     icon: 'i-carbon:home',
     type: 'link',
     to: '/',
-    disabled: true,
   },
+] as NavigationMenuItem[])
+
+const Section_02_Items = ref([
   {
     label: 'characters',
     icon: 'solar:soundwave-circle-broken',
@@ -29,6 +29,9 @@ const Items = ref([
     type: 'link',
     to: '/echoes',
   },
+] as NavigationMenuItem[])
+
+const Section_03_Items = ref([
   {
     label: 'imports',
     icon: 'i-carbon:upload',
@@ -37,39 +40,37 @@ const Items = ref([
     disabled: true,
   },
 ] as NavigationMenuItem[])
-
-watch(Route, () => {
-  const i = Items.value.find((x) => {
-    if (x.label === undefined || x.label === '') {
-      return false
-    }
-
-    // Beautiful code.
-    if (x.label === 'home' && Route.path === '/') {
-      return true
-    }
-
-    return Route.path.includes(x.label)
-  })
-
-  if (i !== undefined) {
-    Items.value.forEach(x => x.active = false)
-    i.active = true
-  }
-}, {
-  immediate: true,
-})
 </script>
 
 <template>
-  <UNavigationMenu
-    :items="Items"
-    orientation="vertical"
-    :highlight="true"
-    highlight-color="primary"
-    :ui="{
-      link: 'inline-block mx-auto w-full inset-x-2 w-min',
-      linkLabel: 'hidden w-0',
-    }"
-  />
+  <div class="space-y-4">
+    <UNavigationMenu
+      :items="Section_01_Items"
+      orientation="vertical"
+      :highlight="true"
+      highlight-color="primary"
+      :ui="{
+        link: 'inline-block mx-auto w-full inset-x-2 w-min',
+        linkLabel: 'hidden w-0',
+      }"
+    />
+    <UNavigationMenu
+      :items="Section_02_Items"
+      orientation="vertical"
+      :highlight="true"
+      highlight-color="primary" :ui="{
+        link: 'inline-block mx-auto w-full inset-x-2 w-min',
+        linkLabel: 'hidden w-0',
+      }"
+    />
+    <UNavigationMenu
+      :items="Section_03_Items"
+      orientation="vertical"
+      :highlight="true"
+      highlight-color="primary" :ui="{
+        link: 'inline-block mx-auto w-full inset-x-2 w-min',
+        linkLabel: 'hidden w-0',
+      }"
+    />
+  </div>
 </template>

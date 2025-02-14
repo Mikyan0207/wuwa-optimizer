@@ -5859,7 +5859,7 @@ export const ShoreKeeper: ICharacter = {
 // 1506
 export const Phoebe: ICharacter = {
   Id: 1506,
-  ReleaseState: CharacterReleaseState.UPCOMING,
+  ReleaseState: CharacterReleaseState.NEW,
   Name: 'Phoebe',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Phoebe_Icon.webp',
@@ -7080,7 +7080,6 @@ export const Rover_Havoc: ICharacter = {
 // 1606
 export const Roccia: ICharacter = {
   Id: 1606,
-  ReleaseState: CharacterReleaseState.NEW,
   Name: 'Roccia',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Roccia_Icon.webp',

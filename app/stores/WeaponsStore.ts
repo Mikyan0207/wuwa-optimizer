@@ -54,14 +54,6 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     Weapons.value.splice(idx, 1)
   }
 
-  function Update() {
-    TemplateWeapons.forEach((templateWeapon) => {
-      if (!IsWeaponListed(templateWeapon.Id)) {
-        AddWeapon(templateWeapon as IWeapon)
-      }
-    })
-  }
-
   return {
     Weapons,
     GetWeapons,
@@ -70,6 +62,5 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     IsWeaponListed,
     AddWeapon,
     RemoveWeaponByCharacterId,
-    Update,
   }
 })

@@ -78,7 +78,7 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     return Characters.value.map(c => new Character(c))
   }
 
-  function GetCharacter(characterId: number): Character | undefined {
+  function GetCharacter(characterId: number | undefined): Character | undefined {
     const c = Characters.value.find(x => x.Id === characterId)
 
     if (c === undefined) {
@@ -132,35 +132,6 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     UpdateCharacter(c)
   }
 
-  function Update() {
-    if (CharactersVersion.value !== CurrentCharactersVersion) {
-      // This mean we did an update to the ICharater/Character model
-      // and need to update the stored models to avoid errors.
-      Characters.value = Characters.value.map((character) => {
-        // Create a new character instance to ensure all fields are present
-        const c = new Character(character) as ICharacter
-        const templateCharacter = TemplateCharacters.find(x => x.Id === c.Id)
-
-        if (templateCharacter === undefined) {
-          return c
-        }
-
-        c.SplashArt = templateCharacter.SplashArt
-
-        return c
-      })
-
-      // Update the version to the current one
-      CharactersVersion.value = CurrentCharactersVersion
-    }
-
-    TemplateCharacters.forEach((templateCharacter) => {
-      if (!IsCharacterListed(templateCharacter.Id)) {
-        AddCharacter(templateCharacter as ICharacter)
-      }
-    })
-  }
-
   return {
     Characters,
     CharactersVersion,
@@ -175,6 +146,5 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     UpdateEcho,
     UpdateWeapon,
     UpdateStatsWeights,
-    Update,
   }
 })

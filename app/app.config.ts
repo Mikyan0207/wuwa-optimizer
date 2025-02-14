@@ -7,17 +7,22 @@ export default defineAppConfig({
     },
     card: {
       slots: {
-        root: 'bg-neutral-900/70 backdrop-blur-sm border border-gold-600 ring-0',
+        root: 'bg-neutral-900/70 backdrop-blur-sm rounded-xs border border-neutral-700 ring-0',
         body: 'p-2 sm:p-4',
       },
     },
     modal: {
       slots: {
-        content: 'bg-neutral-900/70 backdrop-blur-sm ring-0 border border-gold-600',
+        content: 'bg-neutral-900/70 backdrop-blur-sm rounded-xs',
       },
     },
     skeleton: {
       base: 'animate-none',
+    },
+    tabs: {
+      slots: {
+        list: 'bg-neutral-900/70 backdrop-blur-sm ring-0 border border-gold-600',
+      },
     },
     tooltip: {
       slots: {

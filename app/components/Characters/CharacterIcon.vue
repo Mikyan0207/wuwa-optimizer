@@ -1,50 +1,15 @@
 <script setup lang="ts">
 import type { Character } from '~/Core/Models/Character'
 import { CharacterReleaseState } from '~/Core/Enums/CharacterReleaseState'
-import { Rarity } from '~/Core/Enums/Rarity'
+import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
 
 const props = defineProps<{
   character: Character
 }>()
 
-const GetBackgroundColor = computed(() => {
-  switch (props.character.Rarity) {
-    case Rarity.FIVE_STARS:
-      return 'bg-amber-400'
-    case Rarity.FOUR_STARS:
-      return 'bg-purple-400'
-    case Rarity.THREE_STARS:
-      return 'bg-blue-400'
-    default:
-      return 'bg-gray-400'
-  }
-})
-
-const GetSecondaryColor = computed(() => {
-  switch (props.character.Rarity) {
-    case Rarity.FIVE_STARS:
-      return 'bg-yellow-100'
-    case Rarity.FOUR_STARS:
-      return 'bg-purple-100'
-    case Rarity.THREE_STARS:
-      return 'bg-blue-100'
-    default:
-      return 'bg-gray-100'
-  }
-})
-
-const GetHighlightColor = computed(() => {
-  switch (props.character.Rarity) {
-    case Rarity.FIVE_STARS:
-      return 'bg-amber-400'
-    case Rarity.FOUR_STARS:
-      return 'bg-purple-400'
-    case Rarity.THREE_STARS:
-      return 'bg-blue-400'
-    default:
-      return 'bg-gray-400'
-  }
-})
+const BackgroundColor = computed(() => GetBackgroundColor(props.character.Rarity))
+const SecondaryColor = computed(() => GetSecondaryColor(props.character.Rarity))
+const HighlightColor = computed(() => GetHighlightColor(props.character.Rarity))
 </script>
 
 <template>
@@ -78,15 +43,15 @@ const GetHighlightColor = computed(() => {
           <div class="absolute mt-auto h-4 w-full -bottom-2">
             <div
               class="absolute bottom-0 h-3 w-full blur-lg transition-all duration-200 group-hover:h-4 group-hover:blur"
-              :class="GetBackgroundColor"
+              :class="BackgroundColor"
             />
             <div
               class="absolute bottom-0 h-2 w-full blur duration-200 group-hover:h-2 group-hover:blur-sm"
-              :class="GetSecondaryColor"
+              :class="SecondaryColor"
             />
           </div>
         </div>
-        <div class="h-[3px]" :class="GetHighlightColor" />
+        <div class="h-[3px]" :class="HighlightColor" />
       </div>
     </div>
     <div class="py-1 text-center text-xs">

@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import EquipedWeaponIcon from '~/components/Weapons/EquipedWeaponIcon.vue'
 import WeaponIcon from '~/components/Weapons/WeaponIcon.vue'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { WeaponType } from '~/Core/Enums/WeaponType'
+import { Weapon } from '~/Core/Models/Weapon'
+import { TemplateWeapons } from '~/Core/Weapons'
 
 interface IWeaponTypeOptions {
   Type: WeaponType | string
@@ -64,14 +67,14 @@ const SearchValue = ref<string>('')
 const SelectedWeaponType = ref<IWeaponTypeOptions>(WeaponTypesOptions[0]!)
 const SelectedWeaponRarity = ref<string>(WeaponRarityOptions[0]!)
 const SelectedWeaponSort = ref<string>(WeaponSortOptions[0]!)
+const SelectedTab = ref<string>('0')
 
-watchArray([SelectedWeaponRarity, SelectedWeaponType, SelectedWeaponSort], () => {
+watchArray([SelectedWeaponRarity, SelectedWeaponType, SelectedWeaponSort, SelectedTab], () => {
   FilterWeapons()
 })
 
 function FilterWeapons() {
-  return WeaponsStore
-    .GetWeapons()
+  return (SelectedTab.value === '0' ? WeaponsStore.GetWeapons().filter(x => x.EquipedBy !== undefined) : TemplateWeapons.map(w => new Weapon(w)))
     .filter((weapon) => {
       const matchesType = SelectedWeaponType.value.Name === 'All' || weapon.Type === SelectedWeaponType.value.Type
       const matchesRarity = SelectedWeaponRarity.value === 'All' || weapon.Rarity === SelectedWeaponRarity.value
@@ -107,63 +110,83 @@ function GetRarityAsNumber(rarity: Rarity) {
       return 5
   }
 }
+
+const TabItems = [
+  {
+    label: 'Unlocked Weapons',
+    disabled: false,
+  },
+  {
+    label: 'Weapons',
+    disabled: false,
+  },
+]
 </script>
 
+<!-- Wait... We should actually display owned weapons with equiped by info...(?) -->
 <template>
   <div class="mx-auto xl:max-w-6xl px-8 xl:px-0 space-y-8">
-    <div>
-      <div class="w-full flex flex-wrap items-center justify-between gap-2">
-        <UInput v-model="SearchValue" placeholder="Search weapon..." />
-        <div class="flex flex-wrap items-center gap-4">
-          <!-- Weapon Type -->
-          <div class="flex items-center gap-1">
-            <div class="flex border border-white/14 rounded bg-black/66">
-              <div
-                v-for="(weapon, idx) in WeaponTypesOptions"
-                :key="weapon.Type"
-                class="flex flex-row cursor-pointer items-center gap-2 px-4 py-1"
-                :class="{ 'rounded-l-sm': idx === 0,
-                          'rounded-r-sm': idx === WeaponTypesOptions.length - 1,
-                          'border-r border-white/14': idx !== WeaponTypesOptions.length - 1,
-                          'bg-white/14 border-r-0': weapon.Type === SelectedWeaponType.Type,
-                          'hover:bg-white/7': weapon.Type !== SelectedWeaponType.Type,
-                }"
-                @click.prevent="SelectedWeaponType = weapon"
-              >
-                <NuxtImg v-if="weapon.Name !== 'All'" :src="weapon.Icon" class="h-6 w-6 object-cover" />
-                <span v-else :title="weapon.Name" class="text-truncate text-nowrap">{{ weapon.Name }}</span>
+    <UTabs
+      v-model="SelectedTab"
+      :default-value="0"
+      color="neutral"
+      :items="TabItems" :ui="{
+        list: 'rounded-none',
+        indicator: 'rounded-none',
+      }"
+    >
+      <template #content>
+        <div>
+          <div class="w-full flex flex-wrap items-center justify-between gap-2 mb-8 mt-4">
+            <UInput v-model="SearchValue" placeholder="Search weapon..." />
+            <div class="flex flex-wrap items-center gap-4">
+              <!-- Weapon Type -->
+              <div class="flex items-center gap-1">
+                <div class="flex border border-white/14 rounded bg-black/66">
+                  <div
+                    v-for="(weapon, idx) in WeaponTypesOptions" :key="weapon.Type"
+                    class="flex flex-row cursor-pointer items-center gap-2 px-4 py-1" :class="{
+                      'rounded-l-sm': idx === 0,
+                      'rounded-r-sm': idx === WeaponTypesOptions.length - 1,
+                      'border-r border-white/14': idx !== WeaponTypesOptions.length - 1,
+                      'bg-white/14 border-r-0': weapon.Type === SelectedWeaponType.Type,
+                      'hover:bg-white/7': weapon.Type !== SelectedWeaponType.Type,
+                    }" @click.prevent="SelectedWeaponType = weapon"
+                  >
+                    <NuxtImg v-if="weapon.Name !== 'All'" :src="weapon.Icon" class="h-6 w-6 object-cover" />
+                    <span v-else :title="weapon.Name" class="text-truncate text-nowrap">{{ weapon.Name }}</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Weapon Rarity -->
+              <div class="flex items-center gap-1">
+                <div class="flex border border-white/14 rounded bg-black/66">
+                  <div
+                    v-for="(rarity, idx) in WeaponRarityOptions" :key="`weapon-rarity-${idx}`"
+                    class="flex flex-row cursor-pointer items-center gap-2 px-4 py-1" :class="{
+                      'rounded-l-sm': idx === 0,
+                      'rounded-r-sm': idx === WeaponRarityOptions.length - 1,
+                      'border-r border-white/14': idx !== WeaponRarityOptions.length - 1,
+                      'bg-white/14 border-r-0': rarity === SelectedWeaponRarity,
+                      'hover:bg-white/7': rarity !== SelectedWeaponRarity,
+                    }" @click.prevent="SelectedWeaponRarity = rarity"
+                  >
+                    <span v-if="rarity !== 'All'" class="text-truncate text-nowrap">{{ GetRarityAsNumber(rarity as Rarity)
+                    }}✧</span>
+                    <span v-else class="text-truncate text-nowrap">{{ rarity }}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <!-- Weapon Rarity -->
-          <div class="flex items-center gap-1">
-            <div class="flex border border-white/14 rounded bg-black/66">
-              <div
-                v-for="(rarity, idx) in WeaponRarityOptions"
-                :key="`weapon-rarity-${idx}`"
-                class="flex flex-row cursor-pointer items-center gap-2 px-4 py-1"
-                :class="{ 'rounded-l-sm': idx === 0,
-                          'rounded-r-sm': idx === WeaponRarityOptions.length - 1,
-                          'border-r border-white/14': idx !== WeaponRarityOptions.length - 1,
-                          'bg-white/14 border-r-0': rarity === SelectedWeaponRarity,
-                          'hover:bg-white/7': rarity !== SelectedWeaponRarity,
-                }"
-                @click.prevent="SelectedWeaponRarity = rarity"
-              >
-                <span v-if="rarity !== 'All'" class="text-truncate text-nowrap">{{ GetRarityAsNumber(rarity as Rarity) }}✧</span>
-                <span v-else class="text-truncate text-nowrap">{{ rarity }}</span>
-              </div>
-            </div>
+          <div v-if="SelectedTab === '0'" class="mx-auto w-full flex flex-wrap items-start justify-center gap-2 mb-8">
+            <EquipedWeaponIcon v-for="w in WeaponsList" :key="w.Id" :weapon="w" :character-id="w.EquipedBy" />
+          </div>
+          <div v-if="SelectedTab === '1'" class="mx-auto w-full flex flex-wrap items-start justify-center gap-2 mb-8">
+            <WeaponIcon v-for="w in WeaponsList" :key="w.Id" :weapon="w" />
           </div>
         </div>
-      </div>
-    </div>
-    <div class="mx-auto w-full flex flex-wrap items-start justify-center gap-2 mb-8">
-      <WeaponIcon
-        v-for="w in WeaponsList"
-        :key="w.Id"
-        :weapon="w"
-      />
-    </div>
+      </template>
+    </UTabs>
   </div>
 </template>

@@ -5,9 +5,16 @@ definePageMeta({
 
 const Route = useRoute()
 const SelectedTab = ref<number>(0)
-const CharacterId = ref<number>(-1)
 
-CharacterId.value = Number.parseInt(Route.params.id)
+const ActiveCharacterStore = useActiveCharacterStore()
+
+if (ActiveCharacterStore.ActiveCharacter === undefined && Route.params.id !== undefined) {
+  ActiveCharacterStore.Set(Number.parseInt(Route.params.id))
+
+  if (ActiveCharacterStore.ActiveCharacter === undefined) {
+    navigateTo('/characters')
+  }
+}
 
 const TabItems = [{
   label: 'Scorer',
@@ -32,6 +39,6 @@ const TabItems = [{
         :items="TabItems"
       /> -->
     </div>
-    <CharacterScorerTab :character-id="CharacterId" />
+    <CharacterScorerTab />
   </div>
 </template>

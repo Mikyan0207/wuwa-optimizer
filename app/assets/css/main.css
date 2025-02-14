@@ -15,6 +15,17 @@
   --color-gold-950: #2c251c;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hidden {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 :root {
   /* TODO: Awful workaround until nuxt/ui stops using useHead for injecting colors because this doesn't work with SSR disabled... */
   --ui-color-primary-50: var(--color-gold-50);

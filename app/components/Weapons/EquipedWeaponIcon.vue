@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import type { Weapon } from '~/Core/Models/Weapon'
-import { UCard } from '#components'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
+import { useCharactersStore } from '../../stores/CharactersStore'
 
 const props = defineProps<{
   weapon: Weapon
+  characterId?: number
 }>()
 
+const { t } = useI18n()
+const CharactersStore = useCharactersStore()
+
+const EquipedBy = ref(CharactersStore.GetCharacter(props.characterId))
 const BackgroundColor = computed(() => GetBackgroundColor(props.weapon.Rarity))
 const SecondaryColor = computed(() => GetSecondaryColor(props.weapon.Rarity))
 const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
@@ -51,7 +56,7 @@ const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
           <div class="h-[3px] rounded-bl" :class="HighlightColor" />
         </div>
       </div>
-      <div class="w-46 border-l border-white/14 p-2 text-xs">
+      <div class="w-46 border-l border-white/14 p-2 text-sm">
         <!-- Name -->
         <div class="w-full flex items-center justify-between">
           <div :title="weapon.Name" class="text-truncate">
@@ -59,8 +64,25 @@ const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
           </div>
         </div>
 
+        <!-- Equiped By -->
+        <div class="absolute top-1 right-1">
+          <NuxtImg v-if="EquipedBy" :src="EquipedBy.GetIcon()" class="w-10 h-10 rounded-full border-2 border-gold-500 overflow-clip" />
+        </div>
+
+        <!-- Weapon Level/Rank -->
+        <div>
+          <div class="flex items-center gap-1 mt-1 mb-3">
+            <UBadge color="error" variant="soft" size="sm" class="text-nowrap">
+              {{ `${t(`label_level`)} ${weapon.Level}` }}
+            </UBadge>
+            <UBadge color="info" variant="soft" size="sm" class="text-nowrap">
+              {{ `${t(`label_rank_full`)} ${weapon.Rank || 0}` }}
+            </UBadge>
+          </div>
+        </div>
+
         <!-- Stats -->
-        <div v-if="weapon.MainStatistic && weapon.SecondaryStatistic" class="mt-4 h-min flex flex-col items-start text-gray-300">
+        <div v-if="weapon.MainStatistic && weapon.SecondaryStatistic" class="h-min flex w-36 flex-col items-start text-gray-300">
           <StatLine :stat="weapon.MainStatistic" icon-size="xs" :show-line="true" />
           <StatLine :stat="weapon.SecondaryStatistic" icon-size="xs" :show-line="true" />
         </div>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type Echo from '~/Core/Interfaces/Echo'
 import type Sonata from '~/Core/Interfaces/Sonata'
-import { UBadge } from '#components'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
 import { GetEchoCostText, GetEchoIcon, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 

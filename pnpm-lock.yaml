@@ -81,6 +81,9 @@ devDependencies:
   pinia:
     specifier: ^2.3.1
     version: 2.3.1(typescript@5.7.3)
+  tailwindcss:
+    specifier: ^4.0.6
+    version: 4.0.6
   typescript:
     specifier: ^5.7.3
     version: 5.7.3
@@ -11400,7 +11403,6 @@ packages:
 
   /tailwindcss@4.0.6:
     resolution: {integrity: sha512-mysewHYJKaXgNOW6pp5xon/emCsfAMnO8WMaGKZZ35fomnR/T5gYnRg2/yRTTrtXiEl1tiVkeRt0eMO6HxEZqw==}
-    dev: false
 
   /tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}

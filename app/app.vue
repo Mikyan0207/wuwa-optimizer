@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Analytics } from '@vercel/analytics/nuxt'
-import { SpeedInsights } from '@vercel/speed-insights/nuxt'
 import { AppName } from './Core'
 
 useHead({
@@ -9,9 +7,6 @@ useHead({
 </script>
 
 <template>
-  <VitePwaManifest />
-  <Analytics />
-  <SpeedInsights />
   <UApp>
     <NuxtLayout class="min-h-screen">
       <NuxtPage />

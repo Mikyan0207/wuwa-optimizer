@@ -2,6 +2,7 @@ import type { StatType } from '~/Core/Enums/StatType'
 import type Character from '~/Core/Interfaces/Character'
 import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
+import { TemplateCharacters } from '~/Core/Characters'
 
 export const useCharactersStore = defineStore('CharactersStore', () => {
   const Characters = useLocalStorage<Character[]>('Characters', [])
@@ -68,6 +69,16 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
   }
 
   function GetCharacter(characterId: number | undefined): Character | undefined {
+    const c = Characters.value.find(x => x.Id === characterId)
+    if (c !== undefined) {
+      return c
+    }
+
+    const ct = TemplateCharacters.find(x => x.Id === characterId)
+    if (ct !== undefined) {
+      Characters.value.push(ct)
+    }
+
     return Characters.value.find(x => x.Id === characterId)
   }
 

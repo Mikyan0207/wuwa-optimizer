@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { WeaponType } from '~/Core/Enums/WeaponType'
-import type { Weapon } from '~/Core/Models/Weapon'
+import type Weapon from '~/Core/Interfaces/Weapon'
 import { Rarity } from '~/Core/Enums/Rarity'
 
 const props = defineProps<{

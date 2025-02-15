@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type IStatistic from '~/Core/Interfaces/IStatistic'
-import type { Character } from '~/Core/Models/Character'
-import { Rarity } from '~/Core/Enums/Rarity'
+import type Character from '~/Core/Interfaces/Character'
+import type IStatistic from '~/Core/Interfaces/Statistic'
+import { GetSequenceLevel } from '~/Core/Utils/CharacterUtils'
+import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
 const props = defineProps<{
   character: Character
@@ -17,27 +18,16 @@ const GetCharacterScoreNoteColor = computed(() => {
   return TOTAL_SCORE_GRADES.find(x => x.Grade === props.score.Note)?.Color
 })
 
-const GetRarityAsNumber = computed(() => {
-  switch (props.character.Rarity) {
-    case Rarity.TWO_STARS:
-      return 2
-    case Rarity.THREE_STARS:
-      return 3
-    case Rarity.FOUR_STARS:
-      return 4
-    case Rarity.FIVE_STARS:
-      return 5
-  }
-
-  return 1
-})
-
 function IsStatWanted(stat: IStatistic) {
-  if (!props.character.StatsWeights) {
+  if (props.character.StatsWeights === undefined) {
     return ''
   }
 
   const w = props.character.StatsWeights[stat.Type]
+
+  if (w === undefined) {
+    return ''
+  }
 
   if (w === 0.1) {
     // This is a special case for ELEMENT DMG BONUS
@@ -68,7 +58,7 @@ function IsStatWanted(stat: IStatistic) {
   >
     <BorderLines />
     <div class="mx-auto w-full flex items-center justify-center gap-1">
-      <NuxtImg v-for="idx in GetRarityAsNumber" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-6 w-6 object-cover" fit="cover" />
+      <NuxtImg v-for="idx in GetRarityAsNumber(character.Rarity)" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-6 w-6 object-cover" fit="cover" />
     </div>
     <h1 class="mt-2 w-full text-center text-2xl">
       {{ t(`${character.Id}_name`) }}
@@ -76,7 +66,7 @@ function IsStatWanted(stat: IStatistic) {
     <div class="mx-auto w-min flex items-center justify-evenly gap-1 text-nowrap text-xs">
       <p>{{ `${t('label_level')} ${character.Level}` }}</p>
       <span>·</span>
-      <p>S{{ character.GetSequenceLevel() }}</p>
+      <p>S{{ GetSequenceLevel(character) }}</p>
     </div>
 
     <div class="mx-auto my-4 h-[1px] w-full rounded-full bg-white/14" />

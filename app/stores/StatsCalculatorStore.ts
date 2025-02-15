@@ -1,6 +1,6 @@
-import type IEcho from '~/Core/Interfaces/IEcho'
-import type { ISkill } from '~/Core/Interfaces/ISkill'
-import type IStatistic from '~/Core/Interfaces/IStatistic'
+import type Echo from '~/Core/Interfaces/Echo'
+import type { ISkill } from '~/Core/Interfaces/Skill'
+import type IStatistic from '~/Core/Interfaces/Statistic'
 import { StatType } from '~/Core/Enums/StatType'
 
 export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () => {
@@ -79,7 +79,7 @@ export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () =>
     const echoes = JSON.parse(JSON.stringify(EchoesStore.GetEchoesByIds(echoesIds, characterId)))
     const stats: IStatistic[] = []
 
-    echoes.forEach((echo: IEcho) => {
+    echoes.forEach((echo: Echo) => {
       if (echo.MainStatistic) {
         const existingStat = stats.find(s => s.Type === echo.MainStatistic!.Type)
         if (existingStat) {

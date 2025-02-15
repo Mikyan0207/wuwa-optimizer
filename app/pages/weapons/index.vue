@@ -4,7 +4,6 @@ import EquipedWeaponIcon from '~/components/Weapons/EquipedWeaponIcon.vue'
 import WeaponIcon from '~/components/Weapons/WeaponIcon.vue'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { WeaponType } from '~/Core/Enums/WeaponType'
-import { Weapon } from '~/Core/Models/Weapon'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 import { TemplateWeapons } from '~/Core/Weapons'
 
@@ -23,7 +22,7 @@ const SelectedWeaponRarity = ref<Rarity>(Rarity.ALL)
 const SelectedWeaponSort = ref<string>(WeaponSortOptions[0]!)
 
 const WeaponsList = computed(() => {
-  return (SelectedTab.value === '0' ? WeaponsStore.GetWeapons().filter(x => x.EquipedBy !== undefined) : TemplateWeapons.map(w => new Weapon(w)))
+  return (SelectedTab.value === '0' ? WeaponsStore.GetWeapons().filter(x => x.EquipedBy !== undefined) : TemplateWeapons)
     .filter((weapon) => {
       const matchesType = SelectedWeaponType.value === WeaponType.ALL || weapon.Type === SelectedWeaponType.value
       const matchesRarity = SelectedWeaponRarity.value === Rarity.ALL || weapon.Rarity === SelectedWeaponRarity.value

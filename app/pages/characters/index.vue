@@ -3,7 +3,6 @@ import { TemplateCharacters } from '~/Core/Characters'
 import { CharacterType } from '~/Core/Enums/CharacterType'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { WeaponType } from '~/Core/Enums/WeaponType'
-import { Character } from '~/Core/Models/Character'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
 definePageMeta({
@@ -47,7 +46,6 @@ function FilterCharacters() {
       }
       return 0
     })
-    .map(c => new Character(c))
 }
 
 function OnCharacterClicked(characterId: number | undefined) {

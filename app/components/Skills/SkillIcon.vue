@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { ISkill } from '~/Core/Interfaces/ISkill'
-import type { Character } from '~/Core/Models/Character'
+import type Character from '~/Core/Interfaces/Character'
+import type Skill from '~/Core/Interfaces/Skill'
 
 const props = defineProps<{
-  skill?: ISkill
+  skill?: Skill
   size?: 'xs'
   hasNoLevel?: boolean
   character: Character

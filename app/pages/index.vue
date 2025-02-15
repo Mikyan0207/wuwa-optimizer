@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { TemplateCharacters } from '~/Core/Characters'
 import { CharacterReleaseState } from '~/Core/Enums/CharacterReleaseState'
-import { Character } from '~/Core/Models/Character'
 
 definePageMeta({
   layout: 'default',
@@ -9,7 +8,6 @@ definePageMeta({
 
 const NewCharacters = computed(() => TemplateCharacters
   .filter(x => x.ReleaseState === CharacterReleaseState.NEW || x.ReleaseState === CharacterReleaseState.UPCOMING)
-  .map(c => new Character(c))
   .reverse())
 
 function OnCharacterClicked(characterId: number) {

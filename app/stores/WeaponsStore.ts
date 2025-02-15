@@ -1,54 +1,29 @@
-import type IWeapon from '~/Core/Interfaces/IWeapon'
-import { Weapon } from '~/Core/Models/Weapon'
-import { TemplateWeapons } from '~/Core/Weapons'
+import type Weapon from '~/Core/Interfaces/Weapon'
 
 export const useWeaponsStore = defineStore('WeaponsStore', () => {
-  const Weapons = useLocalStorage<IWeapon[]>('Weapons', [])
+  const Weapons = useLocalStorage<Weapon[]>('Weapons', [])
 
   function GetWeapons() {
-    if (Weapons.value.length === 0) {
-      Weapons.value = [...TemplateWeapons]
-    }
-    return Weapons.value.map(e => new Weapon(e))
+    return Weapons.value
   }
 
   function GetWeapon(weaponId: number | undefined): Weapon | undefined {
-    if (weaponId === undefined) {
-      return undefined
-    }
-
-    const weapon = Weapons.value.find(x => x.Id === weaponId)
-
-    return weapon !== undefined ? new Weapon(weapon) : undefined
+    return Weapons.value.find(x => x.Id === weaponId)
   }
 
   function GetWeaponByEquipedId(equipedId: number | undefined): Weapon | undefined {
-    if (equipedId === undefined) {
-      return undefined
-    }
-
-    const weapon = Weapons.value.find(x => x.EquipedBy === equipedId)
-
-    return weapon !== undefined ? new Weapon(weapon) : undefined
+    return Weapons.value.find(x => x.EquipedBy === equipedId)
   }
 
   function IsWeaponListed(weaponId: number) {
     return Weapons.value.findIndex(x => x.Id === weaponId) !== -1
   }
 
-  function AddWeapon(weapon: IWeapon) {
-    if (Weapons.value === undefined) {
-      return
-    }
-
-    Weapons.value.push(new Weapon(weapon))
+  function AddWeapon(weapon: Weapon) {
+    Weapons.value.push(weapon)
   }
 
-  function UpdateWeapon(weapon: IWeapon, equipedById: number) {
-    if (Weapons.value === undefined) {
-      return
-    }
-
+  function UpdateWeapon(weapon: Weapon, equipedById: number) {
     const idx = Weapons.value.findIndex(x => x.Id === weapon.Id && x.EquipedBy === equipedById)
 
     if (idx === -1) {

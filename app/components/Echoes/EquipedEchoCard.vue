@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { Echo } from '~/Core/Models/Echo'
-import { UBadge } from '#components'
+import type Echo from '~/Core/Interfaces/Echo'
 import { StatType } from '~/Core/Enums/StatType'
 import { STAT_ICONS } from '~/Core/Statistics'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
-import { GetEchoCostText } from '~/Core/Utils/EchoUtils'
+import { GetEchoCostText, GetEchoIcon } from '~/Core/Utils/EchoUtils'
 
 const props = defineProps<{
   echo: Echo
@@ -37,7 +36,7 @@ function IsPercentageStat(statType: StatType) {
         <!-- Icon -->
         <div class="absolute w-full h-full  bottom-0">
           <NuxtImg
-            width="160" height="160" :src="`${echo.GetIcon()}`" style="color: transparent;"
+            width="160" height="160" :src="GetEchoIcon(echo)" style="color: transparent;"
             class="w-full h-full object-cover"
           />
         </div>

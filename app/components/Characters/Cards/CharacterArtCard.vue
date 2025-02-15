@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { Character } from '~/Core/Models/Character'
+import type Character from '~/Core/Interfaces/Character'
+import { GetCharacterTypeIcon, GetCharacterWeaponTypeIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
 
 defineProps<{
   character: Character
@@ -15,7 +16,6 @@ defineProps<{
     }"
   >
     <BorderLines />
-    <!-- Top Right Icons background -->
     <div class="absolute inset-0 z-20 from-black/25 via-transparent to-transparent bg-gradient-to-bl" />
     <NuxtImg
       fit="cover"
@@ -24,8 +24,8 @@ defineProps<{
     />
     <!-- Weapon Type & Character Type -->
     <div class="absolute right-2 top-2 z-20 flex items-center gap-2">
-      <NuxtImg :src="`${character.GetTypeIcon()}`" class="h-8 w-8 object-cover" fit="cover" />
-      <NuxtImg :src="`${character.GetWeaponTypeIcon()}`" class="h-8 w-8 object-cover" fit="cover" />
+      <NuxtImg :src="`${GetCharacterTypeIcon(character)}`" class="h-8 w-8 object-cover" fit="cover" />
+      <NuxtImg :src="`${GetCharacterWeaponTypeIcon(character)}`" class="h-8 w-8 object-cover" fit="cover" />
     </div>
     <!-- Sequences -->
     <div class="absolute left-2 top-2 z-20">
@@ -43,7 +43,7 @@ defineProps<{
       </div>
     </div>
     <NuxtImg
-      :src="`${character.GetSplashArtPath()}`"
+      :src="`${GetSplashArt(character)}`"
       class="absolute inset-0 z-10 h-full w-full object-cover"
       fit="cover"
       quality="90"

@@ -1,7 +1,7 @@
-import type { ISonata } from './Interfaces/ISonata'
+import type Sonata from './Interfaces/Sonata'
 import { StatType } from './Enums/StatType'
 
-export const Frosty_Resolve: ISonata = {
+export const Frosty_Resolve: Sonata = {
   Name: 'Frosty Resolve',
   Icon: 'Icon_Frosty_Resolve.webp',
   Effect1: 'Resonance Skill DMG +12%.',
@@ -18,7 +18,7 @@ export const Frosty_Resolve: ISonata = {
   ],
 }
 
-export const Celestial_Light: ISonata = {
+export const Celestial_Light: Sonata = {
   Name: 'Celestial Light',
   Icon: 'Icon_Celestial_Light.webp',
   Effect1: 'Spectro DMG +10%.',
@@ -35,7 +35,7 @@ export const Celestial_Light: ISonata = {
   ],
 }
 
-export const Freezing_Frost: ISonata = {
+export const Freezing_Frost: Sonata = {
   Name: 'Freezing Frost',
   Icon: 'Icon_Freezing_Frost.webp',
   Effect1: 'Glacio DMG +10%.',
@@ -52,7 +52,7 @@ export const Freezing_Frost: ISonata = {
   ],
 }
 
-export const Moonlit_Clouds: ISonata = {
+export const Moonlit_Clouds: Sonata = {
   Name: 'Moonlit Clouds',
   Icon: 'Icon_Moonlit_Clouds.webp',
   Effect1: 'Energy Regen +10%.',
@@ -69,7 +69,7 @@ export const Moonlit_Clouds: ISonata = {
   ],
 }
 
-export const Rejuvenating_Glow: ISonata = {
+export const Rejuvenating_Glow: Sonata = {
   Name: 'Rejuvenating Glow',
   Icon: 'Icon_Rejuvenating_Glow.webp',
   Effect1: 'Healing Bonus +10%.',
@@ -86,7 +86,7 @@ export const Rejuvenating_Glow: ISonata = {
   ],
 }
 
-export const Void_Thunder: ISonata = {
+export const Void_Thunder: Sonata = {
   Name: 'Void Thunder',
   Icon: 'Icon_Void_Thunder.webp',
   Effect1: 'Electro DMG +10%.',
@@ -103,7 +103,7 @@ export const Void_Thunder: ISonata = {
   ],
 }
 
-export const SunSinking_Eclipse: ISonata = {
+export const SunSinking_Eclipse: Sonata = {
   Name: 'Sun-Sinking Eclipse',
   Icon: 'Icon_SunSinking_Eclipse.webp',
   Effect1: 'Havoc DMG +10%.',
@@ -120,7 +120,7 @@ export const SunSinking_Eclipse: ISonata = {
   ],
 }
 
-export const Molten_Rift: ISonata = {
+export const Molten_Rift: Sonata = {
   Name: 'Molten Rift',
   Icon: 'Icon_Molten_Rift.webp',
   Effect1: 'Fusion DMG +10%.',
@@ -137,7 +137,7 @@ export const Molten_Rift: ISonata = {
   ],
 }
 
-export const Lingering_Tunes: ISonata = {
+export const Lingering_Tunes: Sonata = {
   Name: 'Lingering Tunes',
   Icon: 'Icon_Lingering_Tunes.webp',
   Effect1: 'ATK +10%.',
@@ -154,7 +154,7 @@ export const Lingering_Tunes: ISonata = {
   ],
 }
 
-export const Sierra_Gale: ISonata = {
+export const Sierra_Gale: Sonata = {
   Name: 'Sierra Gale',
   Icon: 'Icon_Sierra_Gale.webp',
   Effect1: 'Aero DMG +10%.',
@@ -171,7 +171,7 @@ export const Sierra_Gale: ISonata = {
   ],
 }
 
-export const Empyrean_Anthem: ISonata = {
+export const Empyrean_Anthem: Sonata = {
   Name: 'Empyrean Anthem',
   Icon: 'Icon_Empyrean_Anthem.webp',
   Effect1: 'Energy Regen +10%.',
@@ -188,7 +188,7 @@ export const Empyrean_Anthem: ISonata = {
   ],
 }
 
-export const Midnight_Veil: ISonata = {
+export const Midnight_Veil: Sonata = {
   Name: 'Midnight Veil',
   Icon: 'Icon_Midnight_Veil.webp',
   Effect1: 'Havoc DMG +10%.',
@@ -205,7 +205,7 @@ export const Midnight_Veil: ISonata = {
   ],
 }
 
-export const Tidebreaking_Courage: ISonata = {
+export const Tidebreaking_Courage: Sonata = {
   Name: 'Tidebreaking Courage',
   Icon: 'Icon_Tidebreaking_Courage.webp',
   Effect1: 'Energy Regen +10%.',
@@ -228,7 +228,7 @@ export const Tidebreaking_Courage: ISonata = {
   ],
 }
 
-export const Eternal_Radiance: ISonata = {
+export const Eternal_Radiance: Sonata = {
   Name: 'Eternal Radiance',
   Icon: 'Icon_Eternal_Radiance.webp',
   Effect1: 'Spectro DMG +10%.',
@@ -245,7 +245,7 @@ export const Eternal_Radiance: ISonata = {
   ],
 }
 
-export const Sonatas: ISonata[] = [
+export const Sonatas: Sonata[] = [
   Frosty_Resolve,
   Celestial_Light,
   Freezing_Frost,
@@ -261,7 +261,7 @@ export const Sonatas: ISonata[] = [
   Eternal_Radiance,
 ]
 
-export const Sonatas_1_0: ISonata[] = [
+export const Sonatas_1_0: Sonata[] = [
   Celestial_Light,
   Freezing_Frost,
   Moonlit_Clouds,
@@ -272,7 +272,7 @@ export const Sonatas_1_0: ISonata[] = [
   Sierra_Gale,
 ]
 
-export const Sonatas_2_0: ISonata[] = [
+export const Sonatas_2_0: Sonata[] = [
   Frosty_Resolve,
   Empyrean_Anthem,
   Midnight_Veil,

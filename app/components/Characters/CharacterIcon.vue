@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import type { Character } from '~/Core/Models/Character'
+import type Character from '~/Core/Interfaces/Character'
 import { CharacterReleaseState } from '~/Core/Enums/CharacterReleaseState'
+import { GetCharacterIcon, GetCharacterTypeIcon } from '~/Core/Utils/CharacterUtils'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
 
 const props = defineProps<{
@@ -35,13 +36,13 @@ const HighlightColor = computed(() => GetHighlightColor(props.character.Rarity))
         </UBadge>
       </div>
       <div class="absolute right-0 top-0 z-2">
-        <NuxtImg width="32" height="32" :src="character.GetTypeIcon()" style="color: transparent;" />
+        <NuxtImg width="32" height="32" :src="GetCharacterTypeIcon(character)" style="color: transparent;" />
       </div>
       <div class="absolute bottom-0">
         <NuxtImg
           width="160"
           height="160"
-          :src="`${character.GetIcon()}`"
+          :src="`${GetCharacterIcon(character)}`"
           style="color: transparent;"
         />
       </div>

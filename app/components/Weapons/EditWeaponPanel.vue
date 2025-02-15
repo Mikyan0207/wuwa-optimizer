@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { WeaponType } from '~/Core/Enums/WeaponType'
-import type IWeapon from '~/Core/Interfaces/IWeapon'
-import type { Weapon } from '~/Core/Models/Weapon'
+import type Weapon from '~/Core/Interfaces/Weapon'
 
 const props = defineProps<{
   characterId: number
@@ -50,7 +49,7 @@ function OnSubmit() {
   SelectedWeapon.value.EquipedBy = props.characterId
 
   CharactersStore.UpdateWeapon(props.characterId, SelectedWeaponId.value)
-  WeaponsStore.UpdateWeapon(unref(SelectedWeapon.value) as IWeapon, props.characterId)
+  WeaponsStore.UpdateWeapon(unref(SelectedWeapon.value), props.characterId)
 
   IsOpen.value = false
   SelectedWeaponId.value = undefined

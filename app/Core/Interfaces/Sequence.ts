@@ -1,4 +1,4 @@
-export default interface ISequence {
+export default interface Sequence {
   Name: string
   Icon: string
   Unlocked: boolean

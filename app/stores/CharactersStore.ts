@@ -1,25 +1,14 @@
 import type { StatType } from '~/Core/Enums/StatType'
-import type ICharacter from '~/Core/Interfaces/ICharacter'
+import type Character from '~/Core/Interfaces/Character'
 import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
-import { TemplateCharacters } from '~/Core/Characters'
-import { Character } from '~/Core/Models/Character'
-
-export const CurrentCharactersVersion = '0.0.1'
 
 export const useCharactersStore = defineStore('CharactersStore', () => {
-  const Characters = useLocalStorage<ICharacter[]>('Characters', [...TemplateCharacters as ICharacter[]])
-  const CharactersVersion = useLocalStorage<string | undefined>('CharactersVersion', undefined)
-
+  const Characters = useLocalStorage<Character[]>('Characters', [])
   const WeaponsStore = useWeaponsStore()
-
   const CharactersEventBus = useEventBus('CharactersEvents')
 
-  function IsCharacterListed(characterId: number) {
-    return Characters.value.findIndex(x => x.Id === characterId) !== -1
-  }
-
-  function AddCharacter(character: ICharacter) {
+  function AddCharacter(character: Character) {
     const idx = Characters.value.findIndex(x => x.Id === character.Id)
 
     if (idx === -1) {
@@ -27,14 +16,14 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     }
   }
 
-  function UpdateCharacter(character: ICharacter) {
+  function UpdateCharacter(character: Character) {
     const idx = Characters.value.findIndex(x => x.Id === character.Id)
 
     if (idx === -1) {
       return
     }
 
-    Characters.value[idx] = character as ICharacter
+    Characters.value[idx] = character
     CharactersEventBus.emit()
   }
 
@@ -75,17 +64,11 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
   }
 
   function GetCharacters() {
-    return Characters.value.map(c => new Character(c))
+    return Characters.value
   }
 
   function GetCharacter(characterId: number | undefined): Character | undefined {
-    const c = Characters.value.find(x => x.Id === characterId)
-
-    if (c === undefined) {
-      return undefined
-    }
-
-    return new Character(c)
+    return Characters.value.find(x => x.Id === characterId)
   }
 
   function GetWeapon(characterId: number | undefined) {
@@ -134,8 +117,6 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
 
   return {
     Characters,
-    CharactersVersion,
-    IsCharacterListed,
     AddCharacter,
     RemoveCharacter,
     RemoveEcho,

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type IStatistic from '~/Core/Interfaces/IStatistic'
+import type Statistic from '~/Core/Interfaces/Statistic'
 import { StatType } from '~/Core/Enums/StatType'
 import { STAT_ICONS, SUB_STAT_VALUES } from '~/Core/Statistics'
 
 const props = defineProps<{
-  stat: IStatistic
+  stat: Statistic
   isMainStat?: boolean
   iconSize?: 'xs' | 'md'
   showLine?: boolean

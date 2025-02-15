@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Weapon } from '~/Core/Models/Weapon'
-import { UCard } from '#components'
+import type Weapon from '~/Core/Interfaces/Weapon'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
+import { GetWeaponIcon } from '~/Core/Utils/WeaponUtils'
 
 const props = defineProps<{
   weapon: Weapon
@@ -29,7 +29,7 @@ const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
           <NuxtImg
             width="160"
             height="160"
-            :src="`/images/weapons/${weapon.Icon}`"
+            :src="GetWeaponIcon(weapon)"
             style="color: transparent;"
             class="rounded-t object-cover"
           />

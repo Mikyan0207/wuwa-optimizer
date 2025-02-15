@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Character } from '~/Core/Models/Character'
+import type Character from '~/Core/Interfaces/Character'
 import * as z from 'zod'
 import { StatType } from '~/Core/Enums/StatType'
 

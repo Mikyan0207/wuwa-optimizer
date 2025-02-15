@@ -1,6 +1,6 @@
-import type { Character } from '~/Core/Models/Character'
-import type { Echo } from '~/Core/Models/Echo'
-import type { Weapon } from '~/Core/Models/Weapon'
+import type Character from '~/Core/Interfaces/Character'
+import type Echo from '~/Core/Interfaces/Echo'
+import type Weapon from '~/Core/Interfaces/Weapon'
 
 export const useActiveCharacterStore = defineStore('ActiveCharacterStore', () => {
   const ActiveCharacter = ref<Character | undefined>(undefined)

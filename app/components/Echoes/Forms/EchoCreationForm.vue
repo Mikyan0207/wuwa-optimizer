@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import type IEcho from '~/Core/Interfaces/IEcho'
-import type { ISonata } from '~/Core/Interfaces/ISonata'
-import type { Sonata } from '~/Core/Models/Sonata'
+import type Echo from '~/Core/Interfaces/Echo'
+import type Sonata from '~/Core/Interfaces/Sonata'
 import { z } from 'zod'
 import { TemplateEchoes } from '~/Core/Echoes'
 import { EchoCost } from '~/Core/Enums/EchoCost'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { StatType } from '~/Core/Enums/StatType'
-import { Echo } from '~/Core/Models/Echo'
 import { Sonatas_1_0, Sonatas_2_0 } from '~/Core/Sonatas'
 import { FOUR_COST_MAIN_STATS_VALUES, IsMainStatType, IsSubStatType, ONE_COST_MAIN_STATS_VALUES, STAT_NAMES, SUB_STAT_VALUES, THREE_COST_MAIN_STATS_VALUES } from '~/Core/Statistics'
 import { GetEchoBorderColor, GetEchoCostText } from '~/Core/Utils/EchoUtils'
@@ -27,17 +25,16 @@ const EchoesStore = useEchoesStore()
 const CharactersStore = useCharactersStore()
 const { ActiveCharacter } = useActiveCharacterStore()
 
-const SelectedSonataEffect = ref<ISonata | undefined>(undefined)
+const SelectedSonataEffect = ref<Sonata | undefined>(undefined)
 const SearchValue = ref<string>('')
 
 const FilteredEchoes = computed(() => {
   return TemplateEchoes
-    .filter((echo: IEcho) => {
+    .filter((echo: Echo) => {
       const matchesSonata = SelectedSonataEffect.value ? echo.Sonata.some(sonata => sonata.Name === SelectedSonataEffect.value?.Name) : true
       const matchesSearch = t(`${echo.Id}_name`).toLowerCase().includes(SearchValue.value.toLowerCase())
       return matchesSonata && matchesSearch
     })
-    .map(echo => new Echo(echo))
 })
 
 const EditEchoSchema = z.object({
@@ -82,14 +79,14 @@ const State = reactive<Partial<FormSchema>>({
   ],
 })
 
-const DisplayedEcho = ref<IEcho | undefined>(undefined)
+const DisplayedEcho = ref<Echo | undefined>(undefined)
 
 const Stepper = useTemplateRef('echo-creation-stepper')
 const CurrentStep = ref<number>(0)
 
 const IsEchoSelected = computed(() => !(State.EchoId !== -1 && State.EchoId !== undefined))
 
-function SelectSonataFilter(sonata: ISonata) {
+function SelectSonataFilter(sonata: Sonata) {
   if (sonata.Name === SelectedSonataEffect.value?.Name) {
     SelectedSonataEffect.value = undefined
   }

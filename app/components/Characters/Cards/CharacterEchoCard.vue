@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Echo } from '~/Core/Models/Echo'
+import type Echo from '~/Core/Interfaces/Echo'
 
 defineProps<{
   echo: Echo

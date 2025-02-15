@@ -1,4 +1,4 @@
-import type ICharacter from './Interfaces/ICharacter'
+import type Character from './Interfaces/Character'
 import { CharacterReleaseState } from './Enums/CharacterReleaseState'
 import { CharacterType } from './Enums/CharacterType'
 import { Rarity } from './Enums/Rarity'
@@ -6,7 +6,7 @@ import { StatType } from './Enums/StatType'
 import { WeaponType } from './Enums/WeaponType'
 
 // 1102
-export const Sanhua: ICharacter = {
+export const Sanhua: Character = {
   Id: 1102,
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Sanhua_Icon.webp',
@@ -230,7 +230,7 @@ export const Sanhua: ICharacter = {
 }
 
 // 1103
-export const Baizhi: ICharacter = {
+export const Baizhi: Character = {
   Id: 1103,
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Baizhi_Icon.webp',
@@ -472,7 +472,7 @@ export const Baizhi: ICharacter = {
 }
 
 // 1104
-export const Lingyang: ICharacter = {
+export const Lingyang: Character = {
   Id: 1104,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Lingyang_Icon.webp',
@@ -714,7 +714,7 @@ export const Lingyang: ICharacter = {
 }
 
 // 1105
-export const Zhezhi: ICharacter = {
+export const Zhezhi: Character = {
   Id: 1105,
   Icon: 'Zhezhi_Icon.webp',
   SplashArt: 'Zhezhi_Portrait.webp',
@@ -956,7 +956,7 @@ export const Zhezhi: ICharacter = {
 }
 
 // 1106
-export const Youhu: ICharacter = {
+export const Youhu: Character = {
   Id: 1106,
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Youhu_Icon.webp',
@@ -1198,7 +1198,7 @@ export const Youhu: ICharacter = {
 }
 
 // 1107
-export const Carlotta: ICharacter = {
+export const Carlotta: Character = {
   Id: 1107,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Carlotta_Icon.webp',
@@ -1440,7 +1440,7 @@ export const Carlotta: ICharacter = {
 }
 
 // 1202
-export const Chixia: ICharacter = {
+export const Chixia: Character = {
   Id: 1202,
   Icon: 'Chixia_Icon.webp',
   SplashArt: 'Chixia_Portrait.webp',
@@ -1682,7 +1682,7 @@ export const Chixia: ICharacter = {
 }
 
 // 1203
-export const Encore: ICharacter = {
+export const Encore: Character = {
   Id: 1203,
   Icon: 'Encore_Icon.webp',
   SplashArt: 'Encore_Portrait.webp',
@@ -1924,7 +1924,7 @@ export const Encore: ICharacter = {
 }
 
 // 1204
-export const Mortefi: ICharacter = {
+export const Mortefi: Character = {
   Id: 1204,
   Icon: 'Mortefi_Icon.webp',
   SplashArt: 'Mortefi_Portrait.webp',
@@ -2166,7 +2166,7 @@ export const Mortefi: ICharacter = {
 }
 
 // 1205
-export const Changli: ICharacter = {
+export const Changli: Character = {
   Id: 1205,
   Icon: 'Changli_Icon.webp',
   SplashArt: 'Changli_Portrait.webp',
@@ -2410,7 +2410,7 @@ export const Changli: ICharacter = {
 }
 
 // 1206
-export const Brant: ICharacter = {
+export const Brant: Character = {
   Id: 1206,
   ReleaseState: CharacterReleaseState.UPCOMING,
   Icon: 'Brant_Icon.webp',
@@ -2653,7 +2653,7 @@ export const Brant: ICharacter = {
 }
 
 // 1301
-export const Calcharo: ICharacter = {
+export const Calcharo: Character = {
   Id: 1301,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Calcharo_Icon.webp',
@@ -2895,7 +2895,7 @@ export const Calcharo: ICharacter = {
 }
 
 // 1302
-export const Yinlin: ICharacter = {
+export const Yinlin: Character = {
   Id: 1302,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Yinlin_Icon.webp',
@@ -3137,7 +3137,7 @@ export const Yinlin: ICharacter = {
 }
 
 // 1303
-export const Yuanwu: ICharacter = {
+export const Yuanwu: Character = {
   Id: 1303,
   Icon: 'Yuanwu_Icon.webp',
   SplashArt: 'Yuanwu_Portrait.webp',
@@ -3379,7 +3379,7 @@ export const Yuanwu: ICharacter = {
 }
 
 // 1304
-export const Jinhsi: ICharacter = {
+export const Jinhsi: Character = {
   Id: 1304,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Jinhsi_Icon.webp',
@@ -3624,7 +3624,7 @@ export const Jinhsi: ICharacter = {
 }
 
 // 1305
-export const Xiangli_Yao: ICharacter = {
+export const Xiangli_Yao: Character = {
   Id: 1305,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Xiangli_Yao_Icon.webp',
@@ -3866,7 +3866,7 @@ export const Xiangli_Yao: ICharacter = {
 }
 
 // 1402
-export const Yangyang: ICharacter = {
+export const Yangyang: Character = {
   Id: 1402,
   Icon: 'Yangyang_Icon.webp',
   SplashArt: 'Yangyang_Portrait.webp',
@@ -4108,7 +4108,7 @@ export const Yangyang: ICharacter = {
 }
 
 // 1403
-export const Aalto: ICharacter = {
+export const Aalto: Character = {
   Id: 1403,
   Icon: 'Aalto_Icon.webp',
   SplashArt: 'Aalto_Portrait.webp',
@@ -4350,12 +4350,11 @@ export const Aalto: ICharacter = {
 }
 
 // 1404
-export const Jiyan: ICharacter = {
+export const Jiyan: Character = {
   Id: 1404,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Jiyan_Icon.webp',
   SplashArt: 'Jiyan_Portrait.webp',
-  Background: 'Jiyan_Splash_Art.webp',
   WeaponType: WeaponType.BROADBLADE,
   Type: CharacterType.AERO,
   Level: 90,
@@ -4595,12 +4594,11 @@ export const Jiyan: ICharacter = {
 }
 
 // 1405
-export const Jianxin: ICharacter = {
+export const Jianxin: Character = {
   Id: 1405,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Jianxin_Icon.webp',
   SplashArt: 'Jianxin_Portrait.webp',
-  Background: 'Jianxin_Splash_Art.webp',
   WeaponType: WeaponType.GAUNTLETS,
   Type: CharacterType.AERO,
   Level: 90,
@@ -4840,7 +4838,7 @@ export const Jianxin: ICharacter = {
 }
 
 // 1502
-export const Rover_Spectro: ICharacter = {
+export const Rover_Spectro: Character = {
   Id: 1502,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Rover_Icon.webp',
@@ -5082,7 +5080,7 @@ export const Rover_Spectro: ICharacter = {
 }
 
 // 1503
-export const Verina: ICharacter = {
+export const Verina: Character = {
   Id: 1503,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Verina_Icon.webp',
@@ -5324,7 +5322,7 @@ export const Verina: ICharacter = {
 }
 
 // 1504
-export const Lumi: ICharacter = {
+export const Lumi: Character = {
   Id: 1504,
   Icon: 'Lumi_Icon.webp',
   SplashArt: 'Lumi_Portrait.webp',
@@ -5566,12 +5564,11 @@ export const Lumi: ICharacter = {
 }
 
 // 1505
-export const ShoreKeeper: ICharacter = {
+export const ShoreKeeper: Character = {
   Id: 1505,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Shorekeeper_Icon.webp',
   SplashArt: 'Shorekeeper_Portrait.webp',
-  Background: 'Shorekeeper_Splash_Art.webp',
   Type: CharacterType.SPECTRO,
   WeaponType: WeaponType.RECTIFIER,
   Level: 90,
@@ -5809,7 +5806,7 @@ export const ShoreKeeper: ICharacter = {
 }
 
 // 1506
-export const Phoebe: ICharacter = {
+export const Phoebe: Character = {
   Id: 1506,
   ReleaseState: CharacterReleaseState.NEW,
   Rarity: Rarity.FIVE_STARS,
@@ -6052,7 +6049,7 @@ export const Phoebe: ICharacter = {
 }
 
 // 1601
-export const Taoqi: ICharacter = {
+export const Taoqi: Character = {
   Id: 1601,
   Icon: 'Taoqi_Icon.webp',
   SplashArt: 'Taoqi_Portrait.webp',
@@ -6294,7 +6291,7 @@ export const Taoqi: ICharacter = {
 }
 
 // 1602
-export const Danjin: ICharacter = {
+export const Danjin: Character = {
   Id: 1602,
   Icon: 'Danjin_Icon.webp',
   SplashArt: 'Danjin_Portrait.webp',
@@ -6536,7 +6533,7 @@ export const Danjin: ICharacter = {
 }
 
 // 1603
-export const Camellya: ICharacter = {
+export const Camellya: Character = {
   Id: 1603,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Camellya_Icon.webp',
@@ -6778,7 +6775,7 @@ export const Camellya: ICharacter = {
 }
 
 // 1604
-export const Rover_Havoc: ICharacter = {
+export const Rover_Havoc: Character = {
   Id: 1604,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Rover_Icon.webp',
@@ -7020,7 +7017,7 @@ export const Rover_Havoc: ICharacter = {
 }
 
 // 1606
-export const Roccia: ICharacter = {
+export const Roccia: Character = {
   Id: 1606,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Roccia_Icon.webp',
@@ -7261,7 +7258,7 @@ export const Roccia: ICharacter = {
   },
 }
 
-export const TemplateCharacters: ICharacter[] = [
+export const TemplateCharacters: Character[] = [
   Sanhua,
   Baizhi,
   Lingyang,

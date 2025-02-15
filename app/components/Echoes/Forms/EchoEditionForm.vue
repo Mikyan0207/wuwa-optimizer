@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { Echo } from '~/Core/Models/Echo'
-import type { Sonata } from '~/Core/Models/Sonata'
+import type Echo from '~/Core/Interfaces/Echo'
+import type Sonata from '~/Core/Interfaces/Sonata'
 import { z } from 'zod'
 import { EchoCost } from '~/Core/Enums/EchoCost'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { StatType } from '~/Core/Enums/StatType'
 import { FOUR_COST_MAIN_STATS_VALUES, IsMainStatType, IsSubStatType, ONE_COST_MAIN_STATS_VALUES, STAT_NAMES, SUB_STAT_VALUES, THREE_COST_MAIN_STATS_VALUES } from '~/Core/Statistics'
-import { GetEchoBorderColor, GetEchoCostText } from '~/Core/Utils/EchoUtils'
+import { GetEchoBorderColor, GetEchoCostText, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
 const props = defineProps<{
   echoSlot: number
@@ -193,7 +193,7 @@ if (DisplayedEcho.value !== undefined && DisplayedEcho.value.Id !== -1) {
             <USeparator class="my-3" />
             <div class="flex items-center justify-between w-full px-2">
               <div v-if="DisplayedSelectedSonata" class="flex items-center gap-1">
-                <NuxtImg :src="DisplayedSelectedSonata.GetIcon()" class="h-6 min-h-6 min-w-6 w-6 ml-auto object-contain" />
+                <NuxtImg :src="GetSonataIcon(DisplayedSelectedSonata)" class="h-6 min-h-6 min-w-6 w-6 ml-auto object-contain" />
                 <span class="text-xs">{{ DisplayedSelectedSonata.Name }}</span>
               </div>
               <div class="flex items-center gap-1">

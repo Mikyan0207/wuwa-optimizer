@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type Echo from '~/Core/Interfaces/Echo'
 import { domToBlob } from 'modern-screenshot'
 import { Empty_Echo } from '~/Core/Echoes'
-import { Echo } from '~/Core/Models/Echo'
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
@@ -29,22 +29,23 @@ CharactersEventBus.on(() => {
 })
 
 function GetEchoes(): Echo[] {
-  if (ActiveCharacter === undefined || ActiveCharacter.EquipedEchoes.length === 0) {
-    return Array.from({ length: 5 }).fill(new Echo(Empty_Echo)) as Echo[]
-  }
-
-  const equippedEchoes = EchoesStore.GetEchoesByIds(ActiveCharacter.EquipedEchoes, ActiveCharacter.Id)
   const echoes: Echo[] = [
-    new Echo(Empty_Echo),
-    new Echo(Empty_Echo),
-    new Echo(Empty_Echo),
-    new Echo(Empty_Echo),
-    new Echo(Empty_Echo),
+    Empty_Echo,
+    Empty_Echo,
+    Empty_Echo,
+    Empty_Echo,
+    Empty_Echo,
   ]
 
-  equippedEchoes.forEach((echo, index) => {
-    echoes[echo.EquipedSlot || index] = echo
-  })
+  if (ActiveCharacter === undefined || ActiveCharacter.EquipedEchoes.length === 0) {
+    return echoes
+  }
+
+  EchoesStore
+    .GetEchoesByIds(ActiveCharacter.EquipedEchoes, ActiveCharacter.Id)
+    .forEach((echo, index) => {
+      echoes[echo.EquipedSlot || index] = echo
+    })
 
   return echoes
 }

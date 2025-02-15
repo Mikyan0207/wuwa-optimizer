@@ -1,6 +1,6 @@
-import type IEcho from '~/Core/Interfaces/IEcho'
-import type IStatistic from '~/Core/Interfaces/IStatistic'
-import type { Character } from '~/Core/Models/Character'
+import type Character from '~/Core/Interfaces/Character'
+import type Echo from '~/Core/Interfaces/Echo'
+import type IStatistic from '~/Core/Interfaces/Statistic'
 import { EchoCost } from '~/Core/Enums/EchoCost'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
@@ -206,7 +206,7 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
     }
   }
 
-  function CalculateEchoesScore(echoes: IEcho[], weights: Record<StatType, number>): IEchoRatingResult[] {
+  function CalculateEchoesScore(echoes: Echo[], weights: Record<StatType, number>): IEchoRatingResult[] {
     return echoes.map((echo) => {
       const perfectEcho = GetPerfectEcho(echo, weights)
       const echoScore = CalculateEchoScore(echo, weights)
@@ -219,20 +219,20 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
     })
   }
 
-  function CalculateMainStatsScore(echoes: IEcho[]) {
+  function CalculateMainStatsScore(echoes: Echo[]) {
     return echoes.reduce((total, echo) => {
       return total + (echo.MainStatistic?.Value || 0)
     }, 0)
   }
 
-  function GetPerfectEcho(echo: IEcho, weights: Record<StatType, number>): IEcho {
+  function GetPerfectEcho(echo: Echo, weights: Record<StatType, number>): Echo {
     const sortedStats = Object.entries(weights)
       .filter(([_, weight]) => weight > 0)
       .sort(([, weightA], [, weightB]) => weightB - weightA)
       .slice(0, 5)
       .map(([statType]) => statType as StatType)
 
-    const perfectEcho: IEcho = {
+    const perfectEcho: Echo = {
       MainStatistic: echo.MainStatistic,
       Statistics: sortedStats.map(statType => ({
         Type: statType,
@@ -249,7 +249,7 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
     return perfectEcho
   }
 
-  function CalculateEchoScore(echo: IEcho, weights: Record<StatType, number>): IEchoRatingResult {
+  function CalculateEchoScore(echo: Echo, weights: Record<StatType, number>): IEchoRatingResult {
     const isValidMainStat = echo.MainStatistic !== undefined && IsValidMainStat(echo.MainStatistic, weights)
     const note = isValidMainStat ? GetEchoNote(echo, weights) : { finalScore: 0, grade: ScoreGrade.F }
 
@@ -284,7 +284,7 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
     return v !== undefined && v !== 0
   }
 
-  function CalculateTotalSubStatTierScore(echo: IEcho, weights: Record<StatType, number>): number {
+  function CalculateTotalSubStatTierScore(echo: Echo, weights: Record<StatType, number>): number {
     return echo.Statistics.reduce((totalScore, subStat) => {
       const weight = weights[subStat.Type] || 0
       const basePoints = weight >= 1.0 ? 5 : weight >= 0.75 ? 4 : weight >= 0.5 ? 3 : weight >= 0.25 ? 2 : 0
@@ -293,7 +293,7 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
     }, 0)
   }
 
-  function CalculateMaxPossibleTierScore(echo: IEcho, weights: Record<StatType, number>): number {
+  function CalculateMaxPossibleTierScore(echo: Echo, weights: Record<StatType, number>): number {
     return echo.Statistics.reduce((acc, stat) => {
       const weight = weights[stat.Type] || 0
       const pts = weight >= 1.0 ? 5 : weight >= 0.75 ? 4 : weight >= 0.5 ? 3 : weight >= 0.25 ? 2 : 0
@@ -316,7 +316,7 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
     return progress * 3
   }
 
-  function GetEchoNote(echo: IEcho, weights: Record<StatType, number>) {
+  function GetEchoNote(echo: Echo, weights: Record<StatType, number>) {
     const score = CalculateTotalSubStatTierScore(echo, weights)
     const maxScore = CalculateMaxPossibleTierScore(echo, weights)
     const finalScore = maxScore > 0 ? (score / maxScore) * 10 : 0 // c cassé...

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Echo } from '~/Core/Models/Echo'
-import type { Sonata } from '~/Core/Models/Sonata'
+import type Echo from '~/Core/Interfaces/Echo'
+import type Sonata from '~/Core/Interfaces/Sonata'
 import { UBadge } from '#components'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
-import { GetEchoCostText } from '~/Core/Utils/EchoUtils'
+import { GetEchoCostText, GetEchoIcon, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
 const props = defineProps<{
   echo: Echo
@@ -37,7 +37,7 @@ function OnSelectSonata(sonata: Sonata) {
         <!-- Icon -->
         <div class="absolute w-full h-full  bottom-0">
           <NuxtImg
-            width="160" height="160" :src="`${echo.GetIcon()}`" style="color: transparent;"
+            width="160" height="160" :src="GetEchoIcon(echo)" style="color: transparent;"
             class="w-full h-full object-cover"
           />
         </div>
@@ -80,7 +80,7 @@ function OnSelectSonata(sonata: Sonata) {
             class="cursor-pointer rounded-md p-1 transition-all duration-150 hover:bg-neutral-800"
             @click.prevent="OnSelectSonata(sonata)"
           >
-            <NuxtImg :src="sonata.GetIcon()" class="h-6 min-h-6 min-w-6 w-6 object-contain" />
+            <NuxtImg :src="GetSonataIcon(sonata)" class="h-6 min-h-6 min-w-6 w-6 object-contain" />
           </div>
         </div>
       </div>

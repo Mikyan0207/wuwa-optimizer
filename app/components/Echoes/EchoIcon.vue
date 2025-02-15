@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import type { Echo } from '~/Core/Models/Echo'
+import type Echo from '~/Core/Interfaces/Echo'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
+import { GetEchoIcon, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
 const props = defineProps<{
   echo: Echo
@@ -40,13 +41,13 @@ const HighlightColor = computed(() => GetHighlightColor(props.echo.Rarity))
           +{{ echo.Level }}
         </div>
         <div class="absolute right-1 top-1 z-10 flex items-center justify-center gap-1">
-          <NuxtImg :src="echo.Sonata.find(x => x.IsSelected)!.GetIcon()" class="h-6 w-6 object-contain" />
+          <NuxtImg :src="GetSonataIcon(echo.Sonata.find(x => x.IsSelected)!)" class="h-6 w-6 object-contain" />
         </div>
         <div class="absolute bottom-0">
           <NuxtImg
             width="160"
             height="160"
-            :src="`${echo.GetIcon()}`"
+            :src="`${GetEchoIcon(echo)}`"
             style="color: transparent;"
             class="rounded-t"
           />

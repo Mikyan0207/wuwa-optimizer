@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import EchoEditionForm from './Forms/EchoEditionForm.vue'
-
 defineProps<{
   echoSlot: number
 }>()

@@ -1,6 +1,6 @@
-import type IStatistic from './IStatistic'
+import type IStatistic from './Statistic'
 
-export interface ISonata {
+export default interface Sonata {
   Name: string
   Icon: string
   Effect1: string

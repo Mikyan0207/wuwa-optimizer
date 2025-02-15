@@ -1,26 +1,22 @@
-import type IEcho from '~/Core/Interfaces/IEcho'
+import type Echo from '~/Core/Interfaces/Echo'
 import { defineStore } from 'pinia'
 import { TemplateEchoes } from '~/Core/Echoes'
 import { EchoCost } from '~/Core/Enums/EchoCost'
-import { Echo } from '~/Core/Models/Echo'
-import { Sonata } from '~/Core/Models/Sonata'
 
 export const useEchoesStore = defineStore('EchoesStore', () => {
-  const Echoes = useLocalStorage<IEcho[]>('Echoes', [])
+  const Echoes = useLocalStorage<Echo[]>('Echoes', [])
 
   function GetEchoes() {
-    return Echoes.value.map(e => new Echo(e))
+    return Echoes.value
   }
 
   function GetEchoesByIds(echoesIds: number[], characterId: number): Echo[] {
     return Echoes.value
       .filter(e => echoesIds.includes(e.Id) && e.EquipedBy === characterId)
-      .map(e => new Echo(e))
   }
 
   function GetDefaultEchoes() {
     return TemplateEchoes
-      .map(e => new Echo(e))
   }
 
   function GetEchoById(echoId: number) {
@@ -36,8 +32,7 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
   function GetSonataById(echoId: number) {
     return TemplateEchoes
       .find(x => x.Id === echoId)
-      ?.Sonata
-      .map(s => new Sonata(s)) || []
+      ?.Sonata || []
   }
 
   function GetCostById(echoId: number) {
@@ -50,17 +45,17 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
       ?.Cost ?? EchoCost.FOUR_COST
   }
 
-  function UpdateEcho(echo: IEcho) {
+  function UpdateEcho(echo: Echo) {
     const idx = Echoes.value.findIndex(x => x.Id === echo.Id)
 
     if (idx === -1) {
       return
     }
 
-    Echoes.value[idx] = echo as IEcho
+    Echoes.value[idx] = echo as Echo
   }
 
-  function AddEcho(echo: IEcho) {
+  function AddEcho(echo: Echo) {
     if (Echoes.value === undefined) {
       return
     }

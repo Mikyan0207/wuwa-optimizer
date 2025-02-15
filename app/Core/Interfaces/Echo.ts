@@ -1,9 +1,9 @@
 import type { EchoCost } from '../Enums/EchoCost'
 import type { Rarity } from '../Enums/Rarity'
-import type { ISonata } from './ISonata'
-import type IStatistic from './IStatistic'
+import type Sonata from './Sonata'
+import type IStatistic from './Statistic'
 
-export default interface IEcho {
+export default interface Echo {
   Id: number
   Icon: string
   Rarity: Rarity
@@ -11,7 +11,7 @@ export default interface IEcho {
   Level: number
   EquipedBy?: number
   EquipedSlot?: number
-  Sonata: ISonata[]
+  Sonata: Sonata[]
   MainStatistic?: IStatistic
   Statistics: IStatistic[]
   IsNightmare?: boolean

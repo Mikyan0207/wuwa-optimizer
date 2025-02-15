@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { ISkill } from '~/Core/Interfaces/ISkill'
+import type Skill from '~/Core/Interfaces/Skill'
 
 defineProps<{
-  skill?: ISkill
+  skill?: Skill
 }>()
 </script>
 

@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import type { ISkill } from '~/Core/Interfaces/ISkill'
+import type Skill from '~/Core/Interfaces/Skill'
 import { STAT_ICONS } from '~/Core/Statistics'
 
 const props = defineProps<{
-  skill?: ISkill
-  previousSkill?: ISkill
-  nextSkill?: ISkill
+  skill?: Skill
+  previousSkill?: Skill
+  nextSkill?: Skill
 }>()
 
 const { t } = useI18n()
 
-const CurrentSkill = ref<ISkill | undefined>(props.skill)
-const PreviousSkill = ref<ISkill | undefined>(props.previousSkill)
-const NextSkill = ref<ISkill | undefined>(props.nextSkill)
+const CurrentSkill = ref<Skill | undefined>(props.skill)
+const PreviousSkill = ref<Skill | undefined>(props.previousSkill)
+const NextSkill = ref<Skill | undefined>(props.nextSkill)
 
 function ToggleSkill() {
   if (!CurrentSkill.value) {

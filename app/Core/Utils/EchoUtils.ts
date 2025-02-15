@@ -1,9 +1,17 @@
-import type IEcho from '../Interfaces/IEcho'
-import type { Echo } from '../Models/Echo'
+import type Echo from '../Interfaces/Echo'
+import type Sonata from '../Interfaces/Sonata'
 import { EchoCost } from '../Enums/EchoCost'
 import { Rarity } from '../Enums/Rarity'
 
-export function GetEchoBorderColor(echo: Echo | IEcho) {
+export function GetEchoIcon(echo: Echo) {
+  return `/images/echoes/${echo.Icon}`
+}
+
+export function GetSonataIcon(sonata: Sonata) {
+  return `/images/icons/${sonata.Icon}`
+}
+
+export function GetEchoBorderColor(echo: Echo | Echo) {
   switch (echo.Rarity) {
     case Rarity.FIVE_STARS:
       return 'border-gold-500'

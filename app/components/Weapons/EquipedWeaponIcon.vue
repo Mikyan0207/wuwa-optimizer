@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Weapon } from '~/Core/Models/Weapon'
+import type Weapon from '~/Core/Interfaces/Weapon'
+import { GetCharacterIcon } from '~/Core/Utils/CharacterUtils'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
-import { useCharactersStore } from '../../stores/CharactersStore'
 
 const props = defineProps<{
   weapon: Weapon
@@ -66,7 +66,7 @@ const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
 
         <!-- Equiped By -->
         <div class="absolute top-1 right-1">
-          <NuxtImg v-if="EquipedBy" :src="EquipedBy.GetIcon()" class="w-10 h-10 rounded-full border-2 border-gold-500 overflow-clip" />
+          <NuxtImg v-if="EquipedBy" :src="GetCharacterIcon(EquipedBy)" class="w-10 h-10 rounded-full border-2 border-gold-500 overflow-clip" />
         </div>
 
         <!-- Weapon Level/Rank -->

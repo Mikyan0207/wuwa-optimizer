@@ -1,13 +1,5 @@
-import type IStatistic from './Interfaces/IStatistic'
 import { EchoCost } from './Enums/EchoCost'
 import { StatType } from './Enums/StatType'
-
-export function MAKE_STAT(type: StatType, value: number): IStatistic {
-  return {
-    Type: type,
-    Value: value,
-  }
-}
 
 export const STAT_NAMES: Record<StatType, string> = {
   [StatType.NONE]: '',

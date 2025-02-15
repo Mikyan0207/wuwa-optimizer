@@ -1,9 +1,9 @@
-import type IWeapon from './Interfaces/IWeapon'
+import type Weapon from './Interfaces/Weapon'
 import { Rarity } from './Enums/Rarity'
 import { StatType } from './Enums/StatType'
 import { WeaponType } from './Enums/WeaponType'
 
-export const TheLastDance: IWeapon = {
+export const TheLastDance: Weapon = {
   Id: 21030016,
   Name: 'The Last Dance',
   Icon: 'Weapon_The_Last_Dance.webp',
@@ -21,7 +21,7 @@ export const TheLastDance: IWeapon = {
   Rank: 1,
 }
 
-export const AgesOfHarvest: IWeapon = {
+export const AgesOfHarvest: Weapon = {
   Id: 21010026,
   Name: 'Ages Of Harvest',
   Icon: 'Weapon_Ages_of_Harvest.webp',
@@ -39,7 +39,7 @@ export const AgesOfHarvest: IWeapon = {
   Rank: 1,
 }
 
-export const EmeraldOfGenesis: IWeapon = {
+export const EmeraldOfGenesis: Weapon = {
   Id: 21020015,
   Name: 'Emerald of Genesis',
   Level: 90,
@@ -57,7 +57,7 @@ export const EmeraldOfGenesis: IWeapon = {
   Rank: 1,
 }
 
-export const BlazingBrilliance: IWeapon = {
+export const BlazingBrilliance: Weapon = {
   Id: 21020016,
   Name: 'Blazing Brilliance',
   Level: 90,
@@ -75,7 +75,7 @@ export const BlazingBrilliance: IWeapon = {
   Rank: 1,
 }
 
-export const RedSpring: IWeapon = {
+export const RedSpring: Weapon = {
   Id: 21020026,
   Name: 'Red Spring',
   Level: 90,
@@ -93,7 +93,7 @@ export const RedSpring: IWeapon = {
   Rank: 1,
 }
 
-export const AbyssSurges: IWeapon = {
+export const AbyssSurges: Weapon = {
   Id: 21140015,
   Name: 'Abyss Surges',
   Level: 90,
@@ -111,7 +111,7 @@ export const AbyssSurges: IWeapon = {
   Rank: 1,
 }
 
-export const LustrousRazor: IWeapon = {
+export const LustrousRazor: Weapon = {
   Id: 21010015,
   Name: 'Lustrous Razor',
   Level: 90,
@@ -129,7 +129,7 @@ export const LustrousRazor: IWeapon = {
   Rank: 1,
 }
 
-export const CosmicRipples: IWeapon = {
+export const CosmicRipples: Weapon = {
   Id: 21050015,
   Name: 'Cosmic Ripples',
   Level: 90,
@@ -147,7 +147,7 @@ export const CosmicRipples: IWeapon = {
   Rank: 1,
 }
 
-export const Rime_Draped_Sprouts: IWeapon = {
+export const Rime_Draped_Sprouts: Weapon = {
   Id: 21050026,
   Name: 'Rime-Draped Sprouts',
   Level: 90,
@@ -165,7 +165,7 @@ export const Rime_Draped_Sprouts: IWeapon = {
   Rank: 1,
 }
 
-export const Static_Mist: IWeapon = {
+export const Static_Mist: Weapon = {
   Id: 21030015,
   Name: 'Static Mist',
   Level: 90,
@@ -183,7 +183,7 @@ export const Static_Mist: IWeapon = {
   Rank: 1,
 }
 
-export const Stellar_Symphony: IWeapon = {
+export const Stellar_Symphony: Weapon = {
   Id: 21050036,
   Name: 'Stellar Symphony',
   Level: 90,
@@ -201,7 +201,7 @@ export const Stellar_Symphony: IWeapon = {
   Rank: 1,
 }
 
-export const Stringmaster: IWeapon = {
+export const Stringmaster: Weapon = {
   Id: 21050016,
   Name: 'Stringmaster',
   Level: 90,
@@ -219,7 +219,7 @@ export const Stringmaster: IWeapon = {
   Rank: 1,
 }
 
-export const Tragicomedy: IWeapon = {
+export const Tragicomedy: Weapon = {
   Id: 21040026,
   Name: 'Tragicomedy',
   Level: 90,
@@ -237,7 +237,7 @@ export const Tragicomedy: IWeapon = {
   Rank: 1,
 }
 
-export const Verdant_Summit: IWeapon = {
+export const Verdant_Summit: Weapon = {
   Id: 21010016,
   Name: 'Verdant Summit',
   Level: 90,
@@ -255,7 +255,7 @@ export const Verdant_Summit: IWeapon = {
   Rank: 1,
 }
 
-export const Veritys_Handle: IWeapon = {
+export const Veritys_Handle: Weapon = {
   Id: 21040016,
   Name: 'Verity\'s Handle',
   Level: 90,
@@ -273,7 +273,7 @@ export const Veritys_Handle: IWeapon = {
   Rank: 1,
 }
 
-export const Luminous_Hymn: IWeapon = {
+export const Luminous_Hymn: Weapon = {
   Id: 21050046,
   Name: 'Luminous Hymn',
   Level: 90,
@@ -291,7 +291,7 @@ export const Luminous_Hymn: IWeapon = {
   Rank: 1,
 }
 
-export const Amity_Accord: IWeapon = {
+export const Amity_Accord: Weapon = {
   Id: 21140044,
   Name: 'Amity Accord',
   Level: 90,
@@ -309,7 +309,7 @@ export const Amity_Accord: IWeapon = {
   Rank: 1,
 }
 
-export const Augment: IWeapon = {
+export const Augment: Weapon = {
   Id: 21050074,
   Name: 'Augment',
   Level: 90,
@@ -327,7 +327,7 @@ export const Augment: IWeapon = {
   Rank: 1,
 }
 
-export const Autumntrace: IWeapon = {
+export const Autumntrace: Weapon = {
   Id: 21010074,
   Name: 'Autumntrace',
   Level: 90,
@@ -345,7 +345,7 @@ export const Autumntrace: IWeapon = {
   Rank: 1,
 }
 
-export const Broadblade41: IWeapon = {
+export const Broadblade41: Weapon = {
   Id: 21010034,
   Name: 'Broadblade #41',
   Level: 90,
@@ -363,7 +363,7 @@ export const Broadblade41: IWeapon = {
   Rank: 1,
 }
 
-export const Cadenza: IWeapon = {
+export const Cadenza: Weapon = {
   Id: 21030024,
   Name: 'Cadenza',
   Level: 90,
@@ -381,7 +381,7 @@ export const Cadenza: IWeapon = {
   Rank: 1,
 }
 
-export const Call_of_the_Abyss: IWeapon = {
+export const Call_of_the_Abyss: Weapon = {
   Id: 21030024,
   Name: 'Call of the Abyss',
   Level: 90,
@@ -399,7 +399,7 @@ export const Call_of_the_Abyss: IWeapon = {
   Rank: 1,
 }
 
-export const Celestial_Spiral: IWeapon = {
+export const Celestial_Spiral: Weapon = {
   Id: 21140084,
   Name: 'Celestial Spiral',
   Level: 90,
@@ -417,7 +417,7 @@ export const Celestial_Spiral: IWeapon = {
   Rank: 1,
 }
 
-export const Comet_Flare: IWeapon = {
+export const Comet_Flare: Weapon = {
   Id: 21050064,
   Name: 'Comet Flare',
   Level: 90,
@@ -435,7 +435,7 @@ export const Comet_Flare: IWeapon = {
   Rank: 1,
 }
 
-export const Commando_of_Conviction: IWeapon = {
+export const Commando_of_Conviction: Weapon = {
   Id: 21020044,
   Name: 'Commando of Conviction',
   Level: 90,
@@ -453,7 +453,7 @@ export const Commando_of_Conviction: IWeapon = {
   Rank: 1,
 }
 
-export const Dauntless_Evernight: IWeapon = {
+export const Dauntless_Evernight: Weapon = {
   Id: 21010044,
   Name: 'Dauntless Evernight',
   Level: 90,
@@ -471,7 +471,7 @@ export const Dauntless_Evernight: IWeapon = {
   Rank: 1,
 }
 
-export const Discord: IWeapon = {
+export const Discord: Weapon = {
   Id: 21010024,
   Name: 'Discord',
   Level: 90,
@@ -489,7 +489,7 @@ export const Discord: IWeapon = {
   Rank: 1,
 }
 
-export const Endless_Collapse: IWeapon = {
+export const Endless_Collapse: Weapon = {
   Id: 21020084,
   Name: 'Endless Collapse',
   Level: 90,
@@ -507,7 +507,7 @@ export const Endless_Collapse: IWeapon = {
   Rank: 1,
 }
 
-export const Fables_of_Wisdom: IWeapon = {
+export const Fables_of_Wisdom: Weapon = {
   Id: 21020094,
   Name: 'Fables of Wisdom',
   Level: 90,
@@ -525,7 +525,7 @@ export const Fables_of_Wisdom: IWeapon = {
   Rank: 1,
 }
 
-export const Fusion_Accretion: IWeapon = {
+export const Fusion_Accretion: Weapon = {
   Id: 21050084,
   Name: 'Fusion Accretion',
   Level: 90,
@@ -543,7 +543,7 @@ export const Fusion_Accretion: IWeapon = {
   Rank: 1,
 }
 
-export const Gauntlets21D: IWeapon = {
+export const Gauntlets21D: Weapon = {
   Id: 21140034,
   Name: 'Gauntlets #21D',
   Level: 90,
@@ -561,7 +561,7 @@ export const Gauntlets21D: IWeapon = {
   Rank: 1,
 }
 
-export const Helios_Cleaver: IWeapon = {
+export const Helios_Cleaver: Weapon = {
   Id: 21010064,
   Name: 'Helios Cleaver',
   Level: 90,
@@ -579,7 +579,7 @@ export const Helios_Cleaver: IWeapon = {
   Rank: 1,
 }
 
-export const Hollow_Mirage: IWeapon = {
+export const Hollow_Mirage: Weapon = {
   Id: 21140064,
   Name: 'Hollow Mirage',
   Level: 90,
@@ -597,7 +597,7 @@ export const Hollow_Mirage: IWeapon = {
   Rank: 1,
 }
 
-export const Jinzhou_Keeper: IWeapon = {
+export const Jinzhou_Keeper: Weapon = {
   Id: 21050044,
   Name: 'Jinzhou Keeper',
   Level: 90,
@@ -615,7 +615,7 @@ export const Jinzhou_Keeper: IWeapon = {
   Rank: 1,
 }
 
-export const Legend_of_Drunken_Hero: IWeapon = {
+export const Legend_of_Drunken_Hero: Weapon = {
   Id: 21040094,
   Name: 'Legend of Drunken Hero',
   Level: 90,
@@ -633,7 +633,7 @@ export const Legend_of_Drunken_Hero: IWeapon = {
   Rank: 1,
 }
 
-export const Lumingloss: IWeapon = {
+export const Lumingloss: Weapon = {
   Id: 21020074,
   Name: 'Lumingloss',
   Level: 90,
@@ -651,7 +651,7 @@ export const Lumingloss: IWeapon = {
   Rank: 1,
 }
 
-export const Lunar_Cutter: IWeapon = {
+export const Lunar_Cutter: Weapon = {
   Id: 21020064,
   Name: 'Lunar Cutter',
   Level: 90,
@@ -669,7 +669,7 @@ export const Lunar_Cutter: IWeapon = {
   Rank: 1,
 }
 
-export const Marcato: IWeapon = {
+export const Marcato: Weapon = {
   Id: 21140024,
   Name: 'Marcato',
   Level: 90,
@@ -687,7 +687,7 @@ export const Marcato: IWeapon = {
   Rank: 1,
 }
 
-export const Meditations_on_Mercy: IWeapon = {
+export const Meditations_on_Mercy: Weapon = {
   Id: 21010094,
   Name: 'Meditations on Mercy',
   Level: 90,
@@ -705,7 +705,7 @@ export const Meditations_on_Mercy: IWeapon = {
   Rank: 1,
 }
 
-export const Novaburst: IWeapon = {
+export const Novaburst: Weapon = {
   Id: 21030064,
   Name: 'Novaburst',
   Level: 90,
@@ -723,7 +723,7 @@ export const Novaburst: IWeapon = {
   Rank: 1,
 }
 
-export const Overture: IWeapon = {
+export const Overture: Weapon = {
   Id: 21020024,
   Name: 'Overture',
   Level: 90,
@@ -741,7 +741,7 @@ export const Overture: IWeapon = {
   Rank: 1,
 }
 
-export const Pistols26: IWeapon = {
+export const Pistols26: Weapon = {
   Id: 21030034,
   Name: 'Pistols #26',
   Level: 90,
@@ -759,7 +759,7 @@ export const Pistols26: IWeapon = {
   Rank: 1,
 }
 
-export const Rectifier25: IWeapon = {
+export const Rectifier25: Weapon = {
   Id: 21050034,
   Name: 'Rectifier #25',
   Level: 90,
@@ -777,7 +777,7 @@ export const Rectifier25: IWeapon = {
   Rank: 1,
 }
 
-export const Relativistic_Jet: IWeapon = {
+export const Relativistic_Jet: Weapon = {
   Id: 21030084,
   Name: 'Relativistic Jet',
   Level: 90,
@@ -795,7 +795,7 @@ export const Relativistic_Jet: IWeapon = {
   Rank: 1,
 }
 
-export const Romance_in_Farewell: IWeapon = {
+export const Romance_in_Farewell: Weapon = {
   Id: 21030094,
   Name: 'Romance in Farewell',
   Level: 90,
@@ -813,7 +813,7 @@ export const Romance_in_Farewell: IWeapon = {
   Rank: 1,
 }
 
-export const Somnoire_Anchor: IWeapon = {
+export const Somnoire_Anchor: Weapon = {
   Id: 21020017,
   Name: 'Somnoire Anchor',
   Level: 90,
@@ -831,7 +831,7 @@ export const Somnoire_Anchor: IWeapon = {
   Rank: 1,
 }
 
-export const Stonard: IWeapon = {
+export const Stonard: Weapon = {
   Id: 21140074,
   Name: 'Stonard',
   Level: 90,
@@ -849,7 +849,7 @@ export const Stonard: IWeapon = {
   Rank: 1,
 }
 
-export const Sword18: IWeapon = {
+export const Sword18: Weapon = {
   Id: 21020034,
   Name: 'Sword #18',
   Level: 90,
@@ -867,7 +867,7 @@ export const Sword18: IWeapon = {
   Rank: 1,
 }
 
-export const Thunderbolt: IWeapon = {
+export const Thunderbolt: Weapon = {
   Id: 21030074,
   Name: 'Thunderbolt',
   Level: 90,
@@ -885,7 +885,7 @@ export const Thunderbolt: IWeapon = {
   Rank: 1,
 }
 
-export const Undying_Flame: IWeapon = {
+export const Undying_Flame: Weapon = {
   Id: 21030044,
   Name: 'Undying Flame',
   Level: 90,
@@ -903,7 +903,7 @@ export const Undying_Flame: IWeapon = {
   Rank: 1,
 }
 
-export const Variation: IWeapon = {
+export const Variation: Weapon = {
   Id: 21050024,
   Name: 'Variation',
   Level: 90,
@@ -921,7 +921,7 @@ export const Variation: IWeapon = {
   Rank: 1,
 }
 
-export const Waltz_in_Masquerade: IWeapon = {
+export const Waltz_in_Masquerade: Weapon = {
   Id: 21050094,
   Name: 'Waltz in Masquerade',
   Level: 90,
@@ -939,7 +939,7 @@ export const Waltz_in_Masquerade: IWeapon = {
   Rank: 1,
 }
 
-export const Waning_Redshift: IWeapon = {
+export const Waning_Redshift: Weapon = {
   Id: 21010084,
   Name: 'Waning Redshift',
   Level: 90,
@@ -957,7 +957,7 @@ export const Waning_Redshift: IWeapon = {
   Rank: 1,
 }
 
-export const Beguiling_Melody: IWeapon = {
+export const Beguiling_Melody: Weapon = {
   Id: 21010063,
   Name: 'Beguiling Melody',
   Level: 90,
@@ -975,7 +975,7 @@ export const Beguiling_Melody: IWeapon = {
   Rank: 1,
 }
 
-export const Broadblade_of_Night: IWeapon = {
+export const Broadblade_of_Night: Weapon = {
   Id: 21010013,
   Name: 'Broadblade of Night',
   Level: 90,
@@ -993,7 +993,7 @@ export const Broadblade_of_Night: IWeapon = {
   Rank: 1,
 }
 
-export const Broadblade_of_Voyager: IWeapon = {
+export const Broadblade_of_Voyager: Weapon = {
   Id: 21010043,
   Name: 'Broadblade of Voyager',
   Level: 90,
@@ -1011,7 +1011,7 @@ export const Broadblade_of_Voyager: IWeapon = {
   Rank: 1,
 }
 
-export const Gauntlets_of_Night: IWeapon = {
+export const Gauntlets_of_Night: Weapon = {
   Id: 21140013,
   Name: 'Gauntlets of Night',
   Level: 90,
@@ -1029,7 +1029,7 @@ export const Gauntlets_of_Night: IWeapon = {
   Rank: 1,
 }
 
-export const Gauntlets_of_Voyager: IWeapon = {
+export const Gauntlets_of_Voyager: Weapon = {
   Id: 21140043,
   Name: 'Gauntlets of Voyager',
   Level: 90,
@@ -1047,7 +1047,7 @@ export const Gauntlets_of_Voyager: IWeapon = {
   Rank: 1,
 }
 
-export const Guardian_Broadblade: IWeapon = {
+export const Guardian_Broadblade: Weapon = {
   Id: 21010053,
   Name: 'Guardian Broadblade',
   Level: 90,
@@ -1065,7 +1065,7 @@ export const Guardian_Broadblade: IWeapon = {
   Rank: 1,
 }
 
-export const Guardian_Gauntlets: IWeapon = {
+export const Guardian_Gauntlets: Weapon = {
   Id: 21140053,
   Name: 'Guardian Gauntlets',
   Level: 90,
@@ -1083,7 +1083,7 @@ export const Guardian_Gauntlets: IWeapon = {
   Rank: 1,
 }
 
-export const Guardian_Pistols: IWeapon = {
+export const Guardian_Pistols: Weapon = {
   Id: 21030053,
   Name: 'Guardian Pistols',
   Level: 90,
@@ -1101,7 +1101,7 @@ export const Guardian_Pistols: IWeapon = {
   Rank: 1,
 }
 
-export const Guardian_Rectifier: IWeapon = {
+export const Guardian_Rectifier: Weapon = {
   Id: 21050053,
   Name: 'Guardian Rectifier',
   Level: 90,
@@ -1119,7 +1119,7 @@ export const Guardian_Rectifier: IWeapon = {
   Rank: 1,
 }
 
-export const Guardian_Sword: IWeapon = {
+export const Guardian_Sword: Weapon = {
   Id: 21020053,
   Name: 'Guardian Sword',
   Level: 90,
@@ -1137,7 +1137,7 @@ export const Guardian_Sword: IWeapon = {
   Rank: 1,
 }
 
-export const Originite_Type_I: IWeapon = {
+export const Originite_Type_I: Weapon = {
   Id: 21010023,
   Name: 'Originite: Type I',
   Level: 90,
@@ -1155,7 +1155,7 @@ export const Originite_Type_I: IWeapon = {
   Rank: 1,
 }
 
-export const Originite_Type_II: IWeapon = {
+export const Originite_Type_II: Weapon = {
   Id: 21020023,
   Name: 'Originite: Type II',
   Level: 90,
@@ -1173,7 +1173,7 @@ export const Originite_Type_II: IWeapon = {
   Rank: 1,
 }
 
-export const Originite_Type_III: IWeapon = {
+export const Originite_Type_III: Weapon = {
   Id: 21030023,
   Name: 'Originite: Type III',
   Level: 90,
@@ -1191,7 +1191,7 @@ export const Originite_Type_III: IWeapon = {
   Rank: 1,
 }
 
-export const Originite_Type_IV: IWeapon = {
+export const Originite_Type_IV: Weapon = {
   Id: 21140023,
   Name: 'Originite: Type IV',
   Level: 90,
@@ -1209,7 +1209,7 @@ export const Originite_Type_IV: IWeapon = {
   Rank: 1,
 }
 
-export const Originite_Type_V: IWeapon = {
+export const Originite_Type_V: Weapon = {
   Id: 21050023,
   Name: 'Originite: Type V',
   Level: 90,
@@ -1227,7 +1227,7 @@ export const Originite_Type_V: IWeapon = {
   Rank: 1,
 }
 
-export const Pistols_of_Night: IWeapon = {
+export const Pistols_of_Night: Weapon = {
   Id: 21030013,
   Name: 'Pistols of Night',
   Level: 90,
@@ -1245,7 +1245,7 @@ export const Pistols_of_Night: IWeapon = {
   Rank: 1,
 }
 
-export const Pistols_of_Voyager: IWeapon = {
+export const Pistols_of_Voyager: Weapon = {
   Id: 21030043,
   Name: 'Pistols of Voyager',
   Level: 90,
@@ -1263,7 +1263,7 @@ export const Pistols_of_Voyager: IWeapon = {
   Rank: 1,
 }
 
-export const Rectifier_of_Night: IWeapon = {
+export const Rectifier_of_Night: Weapon = {
   Id: 21050013,
   Name: 'Rectifier of Night',
   Level: 90,
@@ -1281,7 +1281,7 @@ export const Rectifier_of_Night: IWeapon = {
   Rank: 1,
 }
 
-export const Rectifier_of_Voyager: IWeapon = {
+export const Rectifier_of_Voyager: Weapon = {
   Id: 21050043,
   Name: 'Rectifier of Voyager',
   Level: 90,
@@ -1299,7 +1299,7 @@ export const Rectifier_of_Voyager: IWeapon = {
   Rank: 1,
 }
 
-export const Sword_of_Night: IWeapon = {
+export const Sword_of_Night: Weapon = {
   Id: 21020013,
   Name: 'Sword of Night',
   Level: 90,
@@ -1317,7 +1317,7 @@ export const Sword_of_Night: IWeapon = {
   Rank: 1,
 }
 
-export const Sword_of_Voyager: IWeapon = {
+export const Sword_of_Voyager: Weapon = {
   Id: 21020043,
   Name: 'Sword of Voyager',
   Level: 90,
@@ -1335,7 +1335,7 @@ export const Sword_of_Voyager: IWeapon = {
   Rank: 1,
 }
 
-export const Weapons: IWeapon[] = [
+export const Weapons: Weapon[] = [
   TheLastDance,
   AgesOfHarvest,
   EmeraldOfGenesis,

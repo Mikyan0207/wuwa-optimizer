@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Echo } from '~/Core/Models/Echo'
-import { GetEchoCostText, GetEchoRarityText } from '~/Core/Utils/EchoUtils'
+import type Echo from '~/Core/Interfaces/Echo'
+import { GetEchoCostText, GetEchoIcon, GetEchoRarityText } from '~/Core/Utils/EchoUtils'
 
 const props = defineProps<{
   echo: Echo
@@ -17,7 +17,7 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
   <div class="w-full flex flex-col items-start gap-2 truncate">
     <div class="flex flex-row items-center gap-2">
       <div class="flex flex-col items-center gap-2 rounded-full border-2 h-12 w-12 border-gold-400/60 overflow-clip">
-        <NuxtImg v-if="IsValidEcho" :src="`/images/echoes/${echo.Icon}`" class="h-12 w-12" />
+        <NuxtImg v-if="IsValidEcho" :src="GetEchoIcon(echo)" class="h-12 w-12" />
         <USkeleton v-else class="h-12 w-12 rounded-full" />
       </div>
       <div class="flex flex-col">

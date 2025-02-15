@@ -1,72 +1,72 @@
 <script setup lang="ts">
-import type { ISkill } from '~/Core/Interfaces/ISkill'
-import type { Character } from '~/Core/Models/Character'
+import type Character from '~/Core/Interfaces/Character'
+import type Skill from '~/Core/Interfaces/Skill'
 
 const props = defineProps<{
   character: Character
 }>()
 
-const BasicAttack = computed<ISkill | undefined>(() =>
+const BasicAttack = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Basic_Attack' || skill.Id === 'Basic Attack'),
 )
 
-const BasicStatBonus1 = computed<ISkill | undefined>(() =>
+const BasicStatBonus1 = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Basic_Stat_Bonus_1'),
 )
 
-const BasicStatBonus2 = computed<ISkill | undefined>(() =>
+const BasicStatBonus2 = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Basic_Stat_Bonus_2'),
 )
 
-const ResonanceSkill = computed<ISkill | undefined>(() =>
+const ResonanceSkill = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Resonance_Skill' || skill.Id === 'Resonance Skill'),
 )
 
-const SkillStatBonus1 = computed<ISkill | undefined>(() =>
+const SkillStatBonus1 = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Skill_Stat_Bonus_1'),
 )
 
-const SkillStatBonus2 = computed<ISkill | undefined>(() =>
+const SkillStatBonus2 = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Skill_Stat_Bonus_2'),
 )
 
-const ResonanceLiberation = computed<ISkill | undefined>(() =>
+const ResonanceLiberation = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Resonance_Liberation' || skill.Id === 'Resonance Liberation'),
 )
 
-const LiberationStatBonus1 = computed<ISkill | undefined>(() =>
+const LiberationStatBonus1 = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Liberation_Stat_Bonus_1'),
 )
 
-const LiberationStatBonus2 = computed<ISkill | undefined>(() =>
+const LiberationStatBonus2 = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Liberation_Stat_Bonus_2'),
 )
 
-const OutroSkill = computed<ISkill | undefined>(() =>
+const OutroSkill = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Outro_Skill' || skill.Id === 'Outro Skill'),
 )
 
-const ForteCircuit = computed<ISkill | undefined>(() =>
+const ForteCircuit = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Forte_Circuit' || skill.Id === 'Forte Circuit'),
 )
 
-const InherentSkill1 = computed<ISkill | undefined>(() =>
+const InherentSkill1 = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Inherent_Skill_1'),
 )
 
-const InherentSkill2 = computed<ISkill | undefined>(() =>
+const InherentSkill2 = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Inherent_Skill_2'),
 )
 
-const IntroSkill = computed<ISkill | undefined>(() =>
+const IntroSkill = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Intro_Skill' || skill.Id === 'Intro Skill'),
 )
 
-const IntroStatBonus1 = computed<ISkill | undefined>(() =>
+const IntroStatBonus1 = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Intro_Stat_Bonus_1'),
 )
 
-const IntroStatBonus2 = computed<ISkill | undefined>(() =>
+const IntroStatBonus2 = computed<Skill | undefined>(() =>
   props.character.Skills?.find(skill => skill.Id === 'Intro_Stat_Bonus_2'),
 )
 

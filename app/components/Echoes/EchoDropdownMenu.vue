@@ -1,11 +1,15 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   echoSlot: number
 }>()
 
 const IsDropdownOpen = ref<boolean>(false)
 const SelectedIndex = ref<number | undefined>(undefined)
 const IsOpen = ref<boolean>(false)
+
+const EchoesStore = useEchoesStore()
+const ActiveStore = useActiveCharacterStore()
+const CurrentEcho = computed(() => ActiveStore.GetEchoBySlot(props.echoSlot))
 
 const MenuItems = [
   {
@@ -15,6 +19,7 @@ const MenuItems = [
       SelectedIndex.value = 0
       IsOpen.value = true
     },
+    disabled: CurrentEcho.value === undefined,
   },
   {
     label: 'Change',
@@ -23,6 +28,7 @@ const MenuItems = [
       SelectedIndex.value = 1
       IsOpen.value = true
     },
+    disabled: EchoesStore.Echoes.length === 0,
   },
   {
     label: 'New',
@@ -40,6 +46,7 @@ const MenuItems = [
       SelectedIndex.value = 2
       IsOpen.value = true
     },
+    disabled: CurrentEcho.value === undefined,
   },
 ]
 

@@ -14,7 +14,6 @@ import { WeaponType } from '../Enums/WeaponType'
 export class Character {
   Id: number
   ReleaseState?: CharacterReleaseState
-  Name: string
   Icon: string
   SplashArt?: string
   Rarity: Rarity
@@ -26,13 +25,11 @@ export class Character {
   Sequences: ICharacterSequence[]
   Skills?: ISkill[]
   EquipedEchoes: number[]
-  Unlocked: boolean
   StatsWeights?: Record<StatType, number>
 
   constructor(character: ICharacter) {
     this.Id = character.Id
     this.ReleaseState = character.ReleaseState
-    this.Name = character.Name
     this.Icon = character.Icon
     this.SplashArt = character.SplashArt
     this.Rarity = character.Rarity
@@ -43,7 +40,6 @@ export class Character {
     this.Sequences = character.Sequences
     this.Skills = character.Skills
     this.EquipedEchoes = character.EquipedEchoes
-    this.Unlocked = character.Unlocked
     this.StatsWeights = character.StatsWeights
     this.EquipedWeapon = character.EquipedWeapon
   }

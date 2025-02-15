@@ -10,6 +10,7 @@ definePageMeta({
   layout: 'default',
 })
 
+const { t } = useI18n()
 const ActiveCharacterStore = useActiveCharacterStore()
 
 const CharacterSortOptions: string[] = [
@@ -35,14 +36,14 @@ function FilterCharacters() {
     })
     .sort((a, b) => {
       if (SelectedCharacterSort.value === 'Name') {
-        return a.Name > b.Name ? 1 : -1
+        return t(`${a.Id}_name`) > t(`${b.Id}_name`) ? 1 : -1
       }
       else if (SelectedCharacterSort.value === 'Rarity' || SelectedCharacterSort.value === 'Default') {
         const rarityComparison = GetRarityAsNumber(b.Rarity) - GetRarityAsNumber(a.Rarity)
         if (rarityComparison !== 0) {
           return rarityComparison
         }
-        return a.Name > b.Name ? 1 : -1
+        return t(`${a.Id}_name`) > t(`${b.Id}_name`) ? 1 : -1
       }
       return 0
     })
@@ -62,7 +63,7 @@ function OnCharacterClicked(characterId: number | undefined) {
       <WeaponTypeFilter @selected="(wt: WeaponType) => SelectedWeaponType = wt" />
       <RarityFilter @selected="(r: Rarity) => SelectedCharacterRarity = r" />
     </div>
-    <div class="flex flex-wrap w-full items-center justify-center gap-1">
+    <div class="flex flex-wrap w-full items-center justify-center gap-2">
       <CharacterIcon
         v-for="c in CharactersList"
         :key="c.Id"

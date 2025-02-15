@@ -9,7 +9,6 @@ import type IStatistic from './IStatistic'
 export default interface ICharacter {
   Id: number
   ReleaseState?: CharacterReleaseState
-  Name: string
   Icon: string
   SplashArt: string
   Background?: string
@@ -22,6 +21,5 @@ export default interface ICharacter {
   Sequences: ICharacterSequence[]
   Skills?: ISkill[]
   EquipedEchoes: number[]
-  Unlocked: boolean
   StatsWeights?: Record<string, number>
 }

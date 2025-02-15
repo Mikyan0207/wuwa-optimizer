@@ -87,8 +87,7 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
             {{ (score.Score * 100).toFixed(1) }}
           </p>
           <p v-if="score">
-            (
-            <EchoScore :value="score.NoteScore" :text="score.Note" class="font-semibold" />)
+            (<EchoScore :value="score.NoteScore" :text="score.Note" class="font-semibold" />)
           </p>
         </div>
         <div v-else class="mt-1 w-full flex flex-row items-center justify-end">

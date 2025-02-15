@@ -50,7 +50,7 @@ function OnSubmit() {
   SelectedWeapon.value.EquipedBy = props.characterId
 
   CharactersStore.UpdateWeapon(props.characterId, SelectedWeaponId.value)
-  WeaponsStore.AddWeapon(SelectedWeapon.value as IWeapon)
+  WeaponsStore.UpdateWeapon(unref(SelectedWeapon.value) as IWeapon, props.characterId)
 
   IsOpen.value = false
   SelectedWeaponId.value = undefined

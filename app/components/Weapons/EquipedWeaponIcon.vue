@@ -25,7 +25,7 @@ const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
       body: 'p-0 sm:p-0',
     }"
   >
-    <BorderLines />
+    <BorderLines :count="1" />
     <div class="flex">
       <!-- Icon / Rarity -->
       <div class="relative h-26 min-h-26 w-26 flex items-center justify-center overflow-clip">
@@ -53,7 +53,7 @@ const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
               />
             </div>
           </div>
-          <div class="h-[3px] rounded-bl" :class="HighlightColor" />
+          <div class="h-[4px] rounded-bl" :class="HighlightColor" />
         </div>
       </div>
       <div class="w-46 border-l border-white/14 p-2 text-sm">

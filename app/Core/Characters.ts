@@ -8,7 +8,6 @@ import { WeaponType } from './Enums/WeaponType'
 // 1102
 export const Sanhua: ICharacter = {
   Id: 1102,
-  Name: 'Sanhua',
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Sanhua_Icon.webp',
   SplashArt: 'Sanhua_Portrait.webp',
@@ -228,13 +227,11 @@ export const Sanhua: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
 }
 
 // 1103
 export const Baizhi: ICharacter = {
   Id: 1103,
-  Name: 'Baizhi',
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Baizhi_Icon.webp',
   SplashArt: 'Baizhi_Portrait.webp',
@@ -454,7 +451,6 @@ export const Baizhi: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0,
@@ -478,7 +474,6 @@ export const Baizhi: ICharacter = {
 // 1104
 export const Lingyang: ICharacter = {
   Id: 1104,
-  Name: 'Lingyang',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Lingyang_Icon.webp',
   SplashArt: 'Lingyang_Portrait.webp',
@@ -698,7 +693,6 @@ export const Lingyang: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -722,7 +716,6 @@ export const Lingyang: ICharacter = {
 // 1105
 export const Zhezhi: ICharacter = {
   Id: 1105,
-  Name: 'Zhezhi',
   Icon: 'Zhezhi_Icon.webp',
   SplashArt: 'Zhezhi_Portrait.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -942,7 +935,6 @@ export const Zhezhi: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -966,7 +958,6 @@ export const Zhezhi: ICharacter = {
 // 1106
 export const Youhu: ICharacter = {
   Id: 1106,
-  Name: 'Youhu',
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Youhu_Icon.webp',
   SplashArt: 'Youhu_Portrait.webp',
@@ -1186,7 +1177,6 @@ export const Youhu: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0,
@@ -1210,7 +1200,6 @@ export const Youhu: ICharacter = {
 // 1107
 export const Carlotta: ICharacter = {
   Id: 1107,
-  Name: 'Carlotta',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Carlotta_Icon.webp',
   SplashArt: 'Carlotta_Portrait.webp',
@@ -1430,7 +1419,6 @@ export const Carlotta: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -1454,7 +1442,6 @@ export const Carlotta: ICharacter = {
 // 1202
 export const Chixia: ICharacter = {
   Id: 1202,
-  Name: 'Chixia',
   Icon: 'Chixia_Icon.webp',
   SplashArt: 'Chixia_Portrait.webp',
   Rarity: Rarity.FOUR_STARS,
@@ -1674,7 +1661,6 @@ export const Chixia: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -1698,7 +1684,6 @@ export const Chixia: ICharacter = {
 // 1203
 export const Encore: ICharacter = {
   Id: 1203,
-  Name: 'Encore',
   Icon: 'Encore_Icon.webp',
   SplashArt: 'Encore_Portrait.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -1918,7 +1903,6 @@ export const Encore: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -1942,7 +1926,6 @@ export const Encore: ICharacter = {
 // 1204
 export const Mortefi: ICharacter = {
   Id: 1204,
-  Name: 'Mortefi',
   Icon: 'Mortefi_Icon.webp',
   SplashArt: 'Mortefi_Portrait.webp',
   Rarity: Rarity.FOUR_STARS,
@@ -2162,7 +2145,6 @@ export const Mortefi: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -2186,7 +2168,6 @@ export const Mortefi: ICharacter = {
 // 1205
 export const Changli: ICharacter = {
   Id: 1205,
-  Name: 'Changli',
   Icon: 'Changli_Icon.webp',
   SplashArt: 'Changli_Portrait.webp',
   // We don't need a background for Changli. We already have one with the portrait.
@@ -2408,7 +2389,6 @@ export const Changli: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -2433,7 +2413,6 @@ export const Changli: ICharacter = {
 export const Brant: ICharacter = {
   Id: 1206,
   ReleaseState: CharacterReleaseState.UPCOMING,
-  Name: 'Brant',
   Icon: 'Brant_Icon.webp',
   SplashArt: 'Brant_Portrait.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -2653,7 +2632,6 @@ export const Brant: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -2677,7 +2655,6 @@ export const Brant: ICharacter = {
 // 1301
 export const Calcharo: ICharacter = {
   Id: 1301,
-  Name: 'Calcharo',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Calcharo_Icon.webp',
   SplashArt: 'Calcharo_Portrait.webp',
@@ -2897,7 +2874,6 @@ export const Calcharo: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -2921,7 +2897,6 @@ export const Calcharo: ICharacter = {
 // 1302
 export const Yinlin: ICharacter = {
   Id: 1302,
-  Name: 'Yinlin',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Yinlin_Icon.webp',
   SplashArt: 'Yinlin_Portrait.webp',
@@ -3141,7 +3116,6 @@ export const Yinlin: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -3165,7 +3139,6 @@ export const Yinlin: ICharacter = {
 // 1303
 export const Yuanwu: ICharacter = {
   Id: 1303,
-  Name: 'Yuanwu',
   Icon: 'Yuanwu_Icon.webp',
   SplashArt: 'Yuanwu_Portrait.webp',
   Rarity: Rarity.FOUR_STARS,
@@ -3385,7 +3358,6 @@ export const Yuanwu: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -3409,7 +3381,6 @@ export const Yuanwu: ICharacter = {
 // 1304
 export const Jinhsi: ICharacter = {
   Id: 1304,
-  Name: 'Jinhsi',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Jinhsi_Icon.webp',
   SplashArt: 'Jinhsi_Portrait.webp',
@@ -3501,7 +3472,7 @@ export const Jinhsi: ICharacter = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Name: 'Jinhsi_Basic_Attack',
+
       Level: 1,
       Icon: 'Skill_Broadblade.webp',
       Unlocked: true,
@@ -3528,7 +3499,7 @@ export const Jinhsi: ICharacter = {
     },
     {
       Id: 'Resonance_Skill',
-      Name: 'Jinhsi_Resonance_Skill',
+
       Level: 1,
       Icon: 'Jinhsi_Resonance_Skill.webp',
       Unlocked: true,
@@ -3555,7 +3526,7 @@ export const Jinhsi: ICharacter = {
     },
     {
       Id: 'Forte_Circuit',
-      Name: 'Jinhsi_Forte_Circuit',
+
       Level: 1,
       Icon: 'Jinhsi_Forte_Circuit.webp',
       Unlocked: true,
@@ -3632,7 +3603,6 @@ export const Jinhsi: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -3656,7 +3626,6 @@ export const Jinhsi: ICharacter = {
 // 1305
 export const Xiangli_Yao: ICharacter = {
   Id: 1305,
-  Name: 'Xiangli Yao',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Xiangli_Yao_Icon.webp',
   SplashArt: 'Xiangli_Yao_Portrait.webp',
@@ -3876,7 +3845,6 @@ export const Xiangli_Yao: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -3900,7 +3868,6 @@ export const Xiangli_Yao: ICharacter = {
 // 1402
 export const Yangyang: ICharacter = {
   Id: 1402,
-  Name: 'Yangyang',
   Icon: 'Yangyang_Icon.webp',
   SplashArt: 'Yangyang_Portrait.webp',
   Rarity: Rarity.FOUR_STARS,
@@ -4120,7 +4087,6 @@ export const Yangyang: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -4144,7 +4110,6 @@ export const Yangyang: ICharacter = {
 // 1403
 export const Aalto: ICharacter = {
   Id: 1403,
-  Name: 'Aalto',
   Icon: 'Aalto_Icon.webp',
   SplashArt: 'Aalto_Portrait.webp',
   Rarity: Rarity.FOUR_STARS,
@@ -4364,7 +4329,6 @@ export const Aalto: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -4388,7 +4352,6 @@ export const Aalto: ICharacter = {
 // 1404
 export const Jiyan: ICharacter = {
   Id: 1404,
-  Name: 'Jiyan',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Jiyan_Icon.webp',
   SplashArt: 'Jiyan_Portrait.webp',
@@ -4611,7 +4574,6 @@ export const Jiyan: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -4635,7 +4597,6 @@ export const Jiyan: ICharacter = {
 // 1405
 export const Jianxin: ICharacter = {
   Id: 1405,
-  Name: 'Jianxin',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Jianxin_Icon.webp',
   SplashArt: 'Jianxin_Portrait.webp',
@@ -4858,7 +4819,6 @@ export const Jianxin: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -4882,7 +4842,6 @@ export const Jianxin: ICharacter = {
 // 1502
 export const Rover_Spectro: ICharacter = {
   Id: 1502,
-  Name: 'Rover (Spectro)',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Rover_Icon.webp',
   SplashArt: 'Rover_Portrait.webp',
@@ -5102,7 +5061,6 @@ export const Rover_Spectro: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -5126,7 +5084,6 @@ export const Rover_Spectro: ICharacter = {
 // 1503
 export const Verina: ICharacter = {
   Id: 1503,
-  Name: 'Verina',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Verina_Icon.webp',
   SplashArt: 'Verina_Portrait.webp',
@@ -5346,7 +5303,6 @@ export const Verina: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0,
@@ -5370,7 +5326,6 @@ export const Verina: ICharacter = {
 // 1504
 export const Lumi: ICharacter = {
   Id: 1504,
-  Name: 'Lumi',
   Icon: 'Lumi_Icon.webp',
   SplashArt: 'Lumi_Portrait.webp',
   Rarity: Rarity.FOUR_STARS,
@@ -5590,7 +5545,6 @@ export const Lumi: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -5614,7 +5568,6 @@ export const Lumi: ICharacter = {
 // 1505
 export const ShoreKeeper: ICharacter = {
   Id: 1505,
-  Name: 'The Shorekeeper',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Shorekeeper_Icon.webp',
   SplashArt: 'Shorekeeper_Portrait.webp',
@@ -5835,7 +5788,6 @@ export const ShoreKeeper: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0,
@@ -5860,7 +5812,6 @@ export const ShoreKeeper: ICharacter = {
 export const Phoebe: ICharacter = {
   Id: 1506,
   ReleaseState: CharacterReleaseState.NEW,
-  Name: 'Phoebe',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Phoebe_Icon.webp',
   SplashArt: 'Phoebe_Full_Sprite.webp',
@@ -6080,7 +6031,6 @@ export const Phoebe: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -6104,7 +6054,6 @@ export const Phoebe: ICharacter = {
 // 1601
 export const Taoqi: ICharacter = {
   Id: 1601,
-  Name: 'Taoqi',
   Icon: 'Taoqi_Icon.webp',
   SplashArt: 'Taoqi_Portrait.webp',
   Rarity: Rarity.FOUR_STARS,
@@ -6324,7 +6273,6 @@ export const Taoqi: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0,
@@ -6348,7 +6296,6 @@ export const Taoqi: ICharacter = {
 // 1602
 export const Danjin: ICharacter = {
   Id: 1602,
-  Name: 'Danjin',
   Icon: 'Danjin_Icon.webp',
   SplashArt: 'Danjin_Portrait.webp',
   Rarity: Rarity.FOUR_STARS,
@@ -6568,7 +6515,6 @@ export const Danjin: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -6592,7 +6538,6 @@ export const Danjin: ICharacter = {
 // 1603
 export const Camellya: ICharacter = {
   Id: 1603,
-  Name: 'Camellya',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Camellya_Icon.webp',
   SplashArt: 'Camellya_Portrait.webp',
@@ -6812,7 +6757,6 @@ export const Camellya: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -6836,7 +6780,6 @@ export const Camellya: ICharacter = {
 // 1604
 export const Rover_Havoc: ICharacter = {
   Id: 1604,
-  Name: 'Rover (Havoc)',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Rover_Icon.webp',
   SplashArt: 'Rover_Portrait.webp',
@@ -7056,7 +6999,6 @@ export const Rover_Havoc: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -7080,7 +7022,6 @@ export const Rover_Havoc: ICharacter = {
 // 1606
 export const Roccia: ICharacter = {
   Id: 1606,
-  Name: 'Roccia',
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Roccia_Icon.webp',
   SplashArt: 'Roccia_Portrait.webp',
@@ -7300,7 +7241,6 @@ export const Roccia: ICharacter = {
     },
   ],
   EquipedEchoes: [],
-  Unlocked: false,
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,

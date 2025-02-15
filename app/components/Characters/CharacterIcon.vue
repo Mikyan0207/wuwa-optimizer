@@ -7,23 +7,30 @@ const props = defineProps<{
   character: Character
 }>()
 
+const { t } = useI18n()
+
 const BackgroundColor = computed(() => GetBackgroundColor(props.character.Rarity))
 const SecondaryColor = computed(() => GetSecondaryColor(props.character.Rarity))
 const HighlightColor = computed(() => GetHighlightColor(props.character.Rarity))
 </script>
 
 <template>
-  <div
-    class="group relative cursor-pointer border-2 border-white/18 rounded bg-black/66 backdrop-blur-4 transition-duration-100"
+  <UCard
+    class="group relative cursor-pointer transition-all duration-100"
+    :ui="{
+      root: 'rounded-none rounded-br-xl border-0',
+      body: 'p-0 sm:p-0',
+    }"
   >
+    <BorderLines :count="1" />
     <div class="relative min-h-32 w-32 flex items-center justify-center overflow-clip">
-      <div v-if="character.ReleaseState === CharacterReleaseState.NEW" class="absolute left-1 top-0 z-2">
-        <UBadge color="error" variant="solid" size="sm" class="text-white">
+      <div v-if="character.ReleaseState === CharacterReleaseState.NEW" class="absolute left-1  top-0 z-2">
+        <UBadge color="error" variant="solid" size="sm" class="text-neutral-200">
           NEW
         </UBadge>
       </div>
       <div v-if="character.ReleaseState === CharacterReleaseState.UPCOMING" class="absolute left-1 top-0 z-2">
-        <UBadge color="info" variant="solid" size="sm" class="px-2 text-white">
+        <UBadge color="info" variant="solid" size="sm" class="px-2.5 text-neutral-200">
           2.1
         </UBadge>
       </div>
@@ -55,7 +62,7 @@ const HighlightColor = computed(() => GetHighlightColor(props.character.Rarity))
       </div>
     </div>
     <div class="py-1 text-center text-xs">
-      {{ character.Name }}
+      {{ t(`${character.Id}_name`) }}
     </div>
-  </div>
+  </UCard>
 </template>

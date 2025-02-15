@@ -25,17 +25,17 @@ export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () =>
       switch (stat.Type) {
         case StatType.ATTACK_PERCENTAGE: {
           const atkStat = totalStats.find(x => x.Type === StatType.ATTACK)!
-          atkStat.Value += atkStat.Value * (stat.Value / 100)
+          atkStat.Value += Math.round(atkStat.Value * (stat.Value / 100))
           break
         }
         case StatType.HP_PERCENTAGE: {
           const hpStat = totalStats.find(x => x.Type === StatType.HP)!
-          hpStat.Value += hpStat.Value * (stat.Value / 100)
+          hpStat.Value += Math.round(hpStat.Value * (stat.Value / 100))
           break
         }
         case StatType.DEF_PERCENTAGE: {
           const defStat = totalStats.find(x => x.Type === StatType.DEF)!
-          defStat.Value += defStat.Value * (stat.Value / 100)
+          defStat.Value += Math.round(defStat.Value * (stat.Value / 100))
           break
         }
         default: {
@@ -49,8 +49,8 @@ export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () =>
       }
     }
 
-    skillsStats.forEach(addToTotalStats)
     weaponStats.forEach(addToTotalStats)
+    skillsStats.forEach(addToTotalStats)
     echoesStats.forEach(addToTotalStats)
 
     return totalStats

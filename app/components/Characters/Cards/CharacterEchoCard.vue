@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { Echo } from '~/Core/Models/Echo'
 
-// We could Remove everything except echoSlot...
 defineProps<{
   echo: Echo
   echoSlot: number

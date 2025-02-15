@@ -2,7 +2,6 @@
 import type { WeaponType } from '~/Core/Enums/WeaponType'
 import type { Weapon } from '~/Core/Models/Weapon'
 import { Rarity } from '~/Core/Enums/Rarity'
-import EditWeaponPanel from '../Weapons/EditWeaponPanel.vue'
 
 const props = defineProps<{
   characterId: number

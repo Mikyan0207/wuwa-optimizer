@@ -1,4 +1,5 @@
 export enum Rarity {
+  ALL = 'ALL',
   ONE_STAR = 'ONE_STAR',
   TWO_STARS = 'TWO_STARS',
   THREE_STARS = 'THREE_STARS',

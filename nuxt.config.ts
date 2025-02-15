@@ -19,10 +19,15 @@ export default defineNuxtConfig({
     '~/components',
     '~/components/Characters',
     '~/components/Characters/Tabs',
+    '~/components/Characters/Cards',
     '~/components/Echoes',
+    '~/components/Echoes/Forms',
+    '~/components/Forms',
+    '~/components/Filters',
     '~/components/Interface',
     '~/components/Forms',
     '~/components/Navigation',
+    '~/components/Skills',
   ],
 
   devtools: {

@@ -1,4 +1,5 @@
 export enum WeaponType {
+  ALL = 'ALL',
   PISTOLS = 'PISTOLS',
   BROADBLADE = 'BROADBLADE',
   SWORD = 'SWORD',

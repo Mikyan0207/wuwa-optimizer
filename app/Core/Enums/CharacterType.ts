@@ -1,9 +1,10 @@
 export enum CharacterType {
-  GLACIO,
-  SPECTRO,
-  HAVOC,
-  FUSION,
-  AERO,
-  ELECTRO,
-  
+  ALL = 'ALL',
+  GLACIO = 'GLACIO',
+  SPECTRO = 'SPECTRO',
+  HAVOC = 'HAVOC',
+  FUSION = 'FUSION',
+  AERO = 'AERO',
+  ELECTRO = 'ELECTRO',
+
 }

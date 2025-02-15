@@ -6,15 +6,11 @@ const props = defineProps<{
   echo: Echo
   echoSlot: number
   score?: IEchoRatingResult
-  showEquipedBy?: boolean
 }>()
 
 const { t } = useI18n()
 
-const CharactersStore = useCharactersStore()
-const EquipedBy = computed(() => CharactersStore.GetCharacter(props.echo.EquipedBy))
-
-const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !== -1)
+const IsValidEcho = computed(() => props.echo.Id !== -1)
 </script>
 
 <template>
@@ -98,18 +94,6 @@ const IsValidEcho = computed(() => props.echo !== undefined && props.echo.Id !==
         <div v-else class="mt-1 w-full flex flex-row items-center justify-end">
           <USkeleton class="h-2 w-8" />
         </div>
-      </div>
-    </div>
-    <div v-else-if="showEquipedBy && EquipedBy" class="w-full flex items-center justify-between bg-neutral-800 px-2 py-1 mt-1 rounded-sm gap-2">
-      <UBadge size="md" variant="soft" color="info">
-        Equiped by
-      </UBadge>
-      <div class="flex items-center gap-1">
-        <NuxtImg
-          :src="`/images/characters/${EquipedBy.Id}/${EquipedBy.Icon}`"
-          class="w-8 h-8 rounded-full border-2 border-gold-500 overflow-clip"
-        />
-        <span class="text-sm text-gray-300">{{ t(`${EquipedBy.Id}_name`) }}</span>
       </div>
     </div>
   </div>

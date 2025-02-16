@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { WeaponType } from '~/Core/Enums/WeaponType'
 import type Weapon from '~/Core/Interfaces/Weapon'
-import { Rarity } from '~/Core/Enums/Rarity'
+import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
 const props = defineProps<{
   characterId: number
@@ -13,25 +13,6 @@ const CharactersStore = useCharactersStore()
 const IsHovered = ref<boolean>(false)
 
 const SelectedWeapon = computed<Weapon | undefined>(() => CharactersStore.GetWeapon(props.characterId))
-
-const GetRarityAsNumber = computed(() => {
-  if (!SelectedWeapon.value) {
-    return 0
-  }
-
-  switch (SelectedWeapon.value.Rarity) {
-    case Rarity.TWO_STARS:
-      return 2
-    case Rarity.THREE_STARS:
-      return 3
-    case Rarity.FOUR_STARS:
-      return 4
-    case Rarity.FIVE_STARS:
-      return 5
-  }
-
-  return 1
-})
 </script>
 
 <template>
@@ -52,25 +33,37 @@ const GetRarityAsNumber = computed(() => {
           <div v-if="SelectedWeapon" class="text-md">
             {{ t(`${SelectedWeapon.Id}_name`) }}
           </div>
-          <USkeleton v-else class="h-2 w-32" />
+          <USkeleton v-else class="h-4 w-26" />
           <!-- Rarity / Level -->
-          <div v-if="SelectedWeapon" class="flex items-center gap-2 mb-3">
+          <div class="flex items-center gap-1 mb-3">
             <!-- Rarity -->
-            <div class="flex items-center">
-              <NuxtImg v-for="idx in GetRarityAsNumber" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-3 w-3 object-cover" fit="cover" />
+            <div v-if="SelectedWeapon" class="flex items-center">
+              <NuxtImg v-for="idx in GetRarityAsNumber(SelectedWeapon.Rarity)" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-3 w-3 object-cover" fit="cover" />
             </div>
+            <USkeleton v-else class="h-3 w-20" />
             <!-- Level -->
-            <UBadge class="text-xs text-gray-300" size="xs" variant="soft" color="primary">
+            <UBadge v-if="SelectedWeapon" class="text-xs text-gray-300" size="xs" variant="soft" color="primary">
               {{ `${t('label_level')} ${SelectedWeapon.Level} · R${SelectedWeapon.Rank || 0}` }}
             </UBadge>
+            <USkeleton v-else class="h-3 w-10" />
           </div>
-          <USkeleton v-else class="my-2 h-4 w-20" />
           <!-- Stats -->
-          <div v-if="SelectedWeapon && SelectedWeapon.MainStatistic && SelectedWeapon.SecondaryStatistic" class="z-2 h-min flex flex-col items-start text-gray-300">
-            <StatLine :stat="SelectedWeapon.MainStatistic" icon-size="xs" :show-line="true" />
-            <StatLine :stat="SelectedWeapon.SecondaryStatistic" icon-size="xs" :show-line="true" />
+          <div class="gap-1 flex flex-col items-start text-gray-300">
+            <StatLine
+              v-if="SelectedWeapon && SelectedWeapon.MainStatistic"
+              :stat="SelectedWeapon.MainStatistic"
+              icon-size="xs"
+              :show-line="true"
+            />
+            <USkeleton v-else class="mt-4 h-3 w-24" />
+            <StatLine
+              v-if="SelectedWeapon && SelectedWeapon.SecondaryStatistic"
+              :stat="SelectedWeapon.SecondaryStatistic"
+              icon-size="xs"
+              :show-line="true"
+            />
+            <USkeleton v-else class="h-3 w-24" />
           </div>
-          <USkeleton v-else class="h-3 w-24" />
         </div>
         <NuxtImg
           v-if="SelectedWeapon"
@@ -80,7 +73,7 @@ const GetRarityAsNumber = computed(() => {
           height="160"
           class="absolute z-0 rounded-lg object-contain -right-4 -top-4"
         />
-        <USkeleton v-else class="h-4em w-4em" />
+        <USkeleton v-else class="absolute right-1 top-1 h-[4em] w-[4em]" />
       </div>
     </UCard>
   </div>

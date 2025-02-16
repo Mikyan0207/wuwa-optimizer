@@ -129,6 +129,7 @@ async function TakeScreenShotAsync() {
                 <CharacterWeaponCard
                   :character-id="ActiveCharacter.Id"
                   :character-weapon-type="ActiveCharacter.WeaponType"
+                  class="row-span-1"
                 />
                 <!-- Skills -->
                 <CharacterSkillsCard class="row-span-3" :character="ActiveCharacter" />

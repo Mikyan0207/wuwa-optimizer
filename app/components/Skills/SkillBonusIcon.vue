@@ -53,7 +53,7 @@ function ToggleSkill() {
         <p class="mt-4 text-xs text-gray-300">
           <i18n-t keypath="skill_description_template">
             <template #type>
-              <span>{{ t(`label_stat_${CurrentSkill.Stat.Type.toLowerCase()}`) }}</span>
+              <span class="text-amber-500">{{ t(`label_stat_${CurrentSkill.Stat.Type.toLowerCase()}`) }}</span>
             </template>
             <template #value>
               <span class="text-amber-500">{{ CurrentSkill.Stat.Value.toFixed(2) }}%</span>

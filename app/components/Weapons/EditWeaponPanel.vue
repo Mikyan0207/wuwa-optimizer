@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { WeaponType } from '~/Core/Enums/WeaponType'
 import type Weapon from '~/Core/Interfaces/Weapon'
+import { GetWeaponIcon } from '~/Core/Utils/WeaponUtils'
 
 const props = defineProps<{
   characterId: number
@@ -16,7 +17,7 @@ const IsDropdownOpen = ref<boolean>(false)
 
 const SelectedWeaponId = ref<number | undefined>(WeaponsStore.GetWeaponByEquipedId(props.characterId)?.Id || undefined)
 const SelectedWeapon = computed<Weapon | undefined>(() => SelectedWeaponId.value
-  ? unref(WeaponsStore.GetWeapon(SelectedWeaponId.value))
+  ? unref(WeaponsStore.GetDefaultWeapon(SelectedWeaponId.value))
   : unref(WeaponsStore.GetWeaponByEquipedId(props.characterId)))
 const SelectedWeaponLevel = ref(SelectedWeapon.value?.Level || 1)
 const SelectedWeaponRank = ref(SelectedWeapon.value?.Rank || 0)
@@ -79,7 +80,7 @@ function OnSubmit() {
               <UInputMenu
                 v-model="SelectedWeaponId"
                 class="w-full"
-                :items="WeaponsStore.GetWeapons().filter(weapon => weapon.Type === characterWeaponType)"
+                :items="WeaponsStore.GetDefaultWeapons().filter(weapon => weapon.Type === characterWeaponType)"
                 option-key="Id"
                 value-key="Id"
                 size="lg"
@@ -91,24 +92,24 @@ function OnSubmit() {
                         :src="`/images/weapons/${SelectedWeapon.Icon}`"
                         class="h-6 w-6 object-cover"
                       />
-                      <span :title="SelectedWeapon.Name" class="w-30 text-truncate text-nowrap">{{
-                        SelectedWeapon.Name }}</span>
+                      <span :title="SelectedWeapon.Name" class="w-30 text-truncate text-nowrap">
+                        {{ SelectedWeapon.Name }}
+                      </span>
                     </div>
                   </div>
                 </template>
                 <template #item="{ item }">
                   <div class="w-full flex items-center justify-between gap-1">
                     <div class="w-full flex flex-row items-center gap-2">
-                      <NuxtImg :src="`/images/weapons/${item.Icon}`" class="h-12 w-12 object-cover" />
-                      <span :title="item.Name" class="w-30 text-truncate text-nowrap">{{ item.Name
-                      }}</span>
+                      <NuxtImg :src="GetWeaponIcon(item)" class="h-12 w-12 object-cover" />
+                      <span :title="item.Name" class="w-30 text-truncate text-nowrap">{{ item.Name }}</span>
                     </div>
                   </div>
                 </template>
               </UInputMenu>
             </UFormField>
           </div>
-          <UCard class="w-full">
+          <UCard class="w-full h-20">
             <div class="flex items-center gap-10 justify-between w-full">
               <UFormField class="w-full">
                 <template #label>

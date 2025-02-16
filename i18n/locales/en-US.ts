@@ -33,6 +33,8 @@ export default {
   'label_stat_spectro_dmg_bonus': 'Spectro DMG Bonus',
   'label_stat_havoc_dmg_bonus': 'Havoc DMG Bonus',
   'label_stat_glacio_dmg_bonus': 'Glacio DMG Bonus',
+  'label_stat_fusion_dmg_bonus': 'Fusion DMG Bonus',
+  'label_stat_electro_dmg_bonus': 'Electro DMG Bonus',
 
   // === Weapons ===
   '21010026_name': 'Ages of Harvest',

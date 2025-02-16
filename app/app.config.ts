@@ -1,6 +1,11 @@
 export default defineAppConfig({
   // 8a7a52
   ui: {
+    badge: {
+      slots: {
+        base: 'rounded-xs',
+      },
+    },
     colors: {
       primary: 'gold',
       neutral: 'neutral',
@@ -17,7 +22,7 @@ export default defineAppConfig({
       },
     },
     skeleton: {
-      base: 'animate-none',
+      base: 'animate-none rounded-xs',
     },
     tabs: {
       slots: {

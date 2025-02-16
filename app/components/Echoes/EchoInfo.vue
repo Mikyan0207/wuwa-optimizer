@@ -31,12 +31,15 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
       <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="error">
         {{ `${t('label_level')} ${echo.Level}` }}
       </UBadge>
+      <USkeleton v-else class="h-3 w-10" />
       <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="primary">
         {{ `${GetEchoRarityText(echo.Rarity)}✦` }}
       </UBadge>
+      <USkeleton v-else class="h-3 w-10" />
       <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="info">
         {{ `Cost ${GetEchoCostText(echo.Cost)}` }}
       </UBadge>
+      <USkeleton v-else class="h-3 w-10" />
       <UBadge
         v-if="IsValidEcho && echo.IsNightmare === true" class="text-xs ml-auto text-gray-300" size="xs"
         variant="soft" color="warning"
@@ -75,7 +78,7 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
         <USkeleton class="mt-0.5 h-2 w-8" />
       </div>
     </div>
-    <div v-if="score" class="mx-auto my-2 h-[1px] w-full rounded-full bg-white/14" />
+    <div class="mx-auto my-2 h-[1px] w-full rounded-full bg-white/14" />
     <!-- Echo Score -->
     <div v-if="score" class="w-full flex flex-row items-end gap-4">
       <div class="w-full flex items-start justify-between gap-12 text-xs">
@@ -95,5 +98,6 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
         </div>
       </div>
     </div>
+    <USkeleton v-else class="w-full h-3" />
   </div>
 </template>

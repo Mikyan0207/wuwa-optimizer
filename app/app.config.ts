@@ -3,7 +3,7 @@ export default defineAppConfig({
   ui: {
     badge: {
       slots: {
-        base: 'rounded-xs',
+        base: 'rounded-xs!',
       },
     },
     colors: {

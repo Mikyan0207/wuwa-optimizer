@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type Character from '~/Core/Interfaces/Character'
 import type IStatistic from '~/Core/Interfaces/Statistic'
+import { UBadge } from '#components'
 import { GetSequenceLevel } from '~/Core/Utils/CharacterUtils'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
@@ -63,11 +64,11 @@ function IsStatWanted(stat: IStatistic) {
     <h1 class="mt-2 w-full text-center text-2xl">
       {{ t(`${character.Id}_name`) }}
     </h1>
-    <div class="mx-auto w-min flex items-center justify-evenly gap-1 text-nowrap text-xs">
+    <UBadge color="primary" variant="soft" class="mx-auto w-min flex items-center gap-1 text-nowrap text-xs">
       <p>{{ `${t('label_level')} ${character.Level}` }}</p>
       <span>·</span>
       <p>S{{ GetSequenceLevel(character) }}</p>
-    </div>
+    </UBadge>
 
     <div class="mx-auto my-4 h-[1px] w-full rounded-full bg-white/14" />
     <div class="flex flex-col">

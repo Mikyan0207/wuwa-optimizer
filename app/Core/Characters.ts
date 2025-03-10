@@ -2412,7 +2412,7 @@ export const Changli: Character = {
 // 1206
 export const Brant: Character = {
   Id: 1206,
-  ReleaseState: CharacterReleaseState.UPCOMING,
+  ReleaseState: CharacterReleaseState.NEW,
   Icon: 'Brant_Icon.webp',
   SplashArt: 'Brant_Portrait.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -5808,10 +5808,9 @@ export const ShoreKeeper: Character = {
 // 1506
 export const Phoebe: Character = {
   Id: 1506,
-  ReleaseState: CharacterReleaseState.NEW,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Phoebe_Icon.webp',
-  SplashArt: 'Phoebe_Full_Sprite.webp',
+  SplashArt: 'Phoebe_Portrait.webp',
   Type: CharacterType.SPECTRO,
   WeaponType: WeaponType.RECTIFIER,
   Level: 90,

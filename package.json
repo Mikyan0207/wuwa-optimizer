@@ -17,6 +17,7 @@
   "dependencies": {
     "@nuxt/ui": "3.0.0-alpha.12",
     "modern-screenshot": "^4.5.5",
+    "tailwindcss": "4.0.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
@@ -40,7 +41,6 @@
     "eslint-plugin-format": "^1.0.1",
     "nuxt": "^3.15.4",
     "pinia": "^2.3.1",
-    "tailwindcss": "^4.0.6",
     "typescript": "^5.7.3",
     "unocss": "^65.4.3",
     "vue-tsc": "^2.2.0",

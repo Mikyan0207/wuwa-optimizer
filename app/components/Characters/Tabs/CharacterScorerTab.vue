@@ -127,8 +127,6 @@ async function TakeScreenShotAsync() {
               <div class="grid grid-rows-4 gap-2">
                 <!-- Weapon -->
                 <CharacterWeaponCard
-                  :character-id="ActiveCharacter.Id"
-                  :character-weapon-type="ActiveCharacter.WeaponType"
                   class="row-span-1"
                 />
                 <!-- Skills -->
@@ -139,20 +137,15 @@ async function TakeScreenShotAsync() {
 
           <div class="grid grid-cols-4 mt-2 gap-2 xl:grid-cols-5">
             <!-- Echoes -->
+            <!-- We can simplify this for sure... -->
             <CharacterEchoCard
               v-for="(echo, idx) in GetEchoes()"
               :key="idx"
               :echo="echo"
-              :echo-slot="idx"
+              :echo-slot="echo.EquipedSlot || idx"
               :score="CharacterScore.EchoesScores.find(x => x.EchoId === echo.Id)"
             />
           </div>
-          <!-- <div class="grid col-span-3 grid-cols-2">
-            <Card class="h-36">
-              Active Sonata
-            </Card>
-            <div class="w-full" />
-          </div> -->
         </div>
       </div>
     </div>

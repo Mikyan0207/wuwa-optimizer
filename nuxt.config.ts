@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     '~/components/Navigation',
     '~/components/Skills',
     '~/components/Weapons',
+    '~/components/Weapons/Forms',
   ],
 
   devtools: {

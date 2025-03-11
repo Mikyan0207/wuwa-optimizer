@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const WeaponsStore = useWeaponsStore()
 const ActiveStore = useActiveCharacterStore()
 
 const IsDropdownOpen = ref<boolean>(false)
@@ -15,23 +14,6 @@ const MenuItems = [
       IsOpen.value = true
     },
     disabled: ActiveStore.ActiveWeapon === undefined,
-  },
-  {
-    label: 'Change',
-    icon: 'lucide-lab:coins-exchange',
-    onSelect() {
-      SelectedIndex.value = 1
-      IsOpen.value = true
-    },
-    disabled: WeaponsStore.Weapons.length === 0,
-  },
-  {
-    label: 'New',
-    icon: 'material-symbols:add-diamond-outline',
-    onSelect() {
-      SelectedIndex.value = 2
-      IsOpen.value = true
-    },
   },
   {
     label: 'Remove',

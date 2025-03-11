@@ -1,18 +1,9 @@
 <script setup lang="ts">
-import { TemplateCharacters } from '~/Core/Characters'
-import { CharacterReleaseState } from '~/Core/Enums/CharacterReleaseState'
-
 definePageMeta({
   layout: 'default',
 })
 
-const NewCharacters = computed(() => TemplateCharacters
-  .filter(x => x.ReleaseState === CharacterReleaseState.NEW || x.ReleaseState === CharacterReleaseState.UPCOMING)
-  .reverse())
-
-function OnCharacterClicked(characterId: number) {
-  navigateTo(`/characters/${characterId}`)
-}
+// navigateTo('/characters')
 </script>
 
 <template>
@@ -30,16 +21,9 @@ function OnCharacterClicked(characterId: number) {
     >
       <BorderLines :count="1" />
       <h2 class="text-lg mb-2">
-        <span class="text-gray-200 font-semibold tracking-wide">Characters</span>
+        <span class="text-gray-200 font-semibold tracking-wide">Popular Builds</span>
       </h2>
-      <div class="flex flex-row items-center gap-1">
-        <CharacterIcon
-          v-for="c in NewCharacters"
-          :key="c.Id"
-          :character="c"
-          @click.prevent="OnCharacterClicked(c.Id ?? -1)"
-        />
-      </div>
+      <div class="flex flex-row items-center gap-1" />
     </UCard>
     <UCard
       class="col-span-3" :ui="{
@@ -48,7 +32,7 @@ function OnCharacterClicked(characterId: number) {
     >
       <BorderLines :count="1" />
       <h2 class="text-lg">
-        <span class="text-gray-200 font-semibold tracking-wide">Builds</span>
+        <span class="text-gray-200 font-semibold tracking-wide">New Builds</span>
       </h2>
     </UCard>
   </div>

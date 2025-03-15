@@ -5,6 +5,7 @@ import { STAT_ICONS, SUB_STAT_VALUES } from '~/Core/Statistics'
 
 const props = defineProps<{
   stat: Statistic
+  weight?: number
   isMainStat?: boolean
   iconSize?: 'xs' | 'md'
   showLine?: boolean
@@ -43,32 +44,27 @@ const GetStatColorByRollValue = computed(() => {
     return ''
   }
 
-  const t = props.stat.Type
-  const v = props.stat.Value
-
-  const values = SUB_STAT_VALUES[t]
-
-  if (!values) {
-    return ''
+  if (props.weight === undefined) {
+    return 'text-gray-400'
   }
 
-  const numRanges = 3
-  const rangeSize = (values[values.length - 1]! - values[0]!) / numRanges
-
-  if (v === values[values.length - 1]) {
-    return 'text-red-500 underline underline-offset-2'
+  if (props.weight >= 1.0) {
+    return 'text-amber-500'
   }
-  else if (v <= values[0]! + rangeSize) {
-    return 'text-blue-400'
+  else if (props.weight >= 0.75) {
+    return 'text-purple-500'
   }
-  else if (v <= values[0]! + rangeSize * 2) {
-    return 'text-purple-400'
+  else if (props.weight >= 0.5) {
+    return 'text-blue-500'
   }
-  else if (v <= values[0]! + rangeSize * 3) {
-    return 'text-gold-400'
+  else if (props.weight >= 0.25) {
+    return 'text-green-500'
+  }
+  else if (props.weight === 0.1) {
+    return 'text-gold-500'
   }
   else {
-    return 'text-gray-300'
+    return 'text-gray-400'
   }
 })
 </script>
@@ -77,12 +73,12 @@ const GetStatColorByRollValue = computed(() => {
   <div class="relative w-full flex items-center justify-between gap-2">
     <div class="flex items-center gap-2 text-gray-300">
       <NuxtImg :src="`/images/icons/${STAT_ICONS[stat.Type]}`" :class="GetIconSize" />
-      <p class="text-nowrap text-xs" :class="GetMargin">
+      <p class="text-nowrap" :class="GetMargin">
         {{ GetStatName }}
       </p>
     </div>
     <div v-if="showLine === true" class="my-auto h-[1px] w-full bg-white/14" />
-    <p class="h-full flex items-center justify-center text-nowrap font-semibold text-xs">
+    <p class="h-full flex items-center justify-center text-nowrap font-semibold">
       <span :class="[GetStatColorByRollValue, isWantedColor]">{{ stat.Value.toFixed(1) }}</span>
       <span v-if="IsPercentageStat" :class="[GetStatColorByRollValue, isWantedColor]">%</span>
     </p>

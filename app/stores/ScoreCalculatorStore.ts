@@ -24,82 +24,82 @@ export interface ICharacterRatingResult {
 export const ECHOES_SCORE_GRADES = [
   {
     Grade: ScoreGrade.PERFECT,
-    Score: 8.5,
+    Score: 80,
     Color: 'text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500',
   },
   {
     Grade: ScoreGrade.SSS_PLUS,
-    Score: 8.0,
+    Score: 77.5,
     Color: 'text-amber-400',
   },
   {
     Grade: ScoreGrade.SSS,
-    Score: 7.75,
+    Score: 75,
     Color: 'text-amber-400',
   },
   {
     Grade: ScoreGrade.SS_PLUS,
-    Score: 7.5,
+    Score: 70,
     Color: 'text-orange-400',
   },
   {
     Grade: ScoreGrade.SS,
-    Score: 7.0,
+    Score: 65,
     Color: 'text-orange-400',
   },
   {
     Grade: ScoreGrade.S_PLUS,
-    Score: 6.5,
+    Score: 60,
     Color: 'text-red-400',
   },
   {
     Grade: ScoreGrade.S,
-    Score: 6.0,
+    Score: 55,
     Color: 'text-red-400',
   },
   {
     Grade: ScoreGrade.A_PLUS,
-    Score: 5.75,
+    Score: 45,
     Color: 'text-purple-400',
   },
   {
     Grade: ScoreGrade.A,
-    Score: 5,
+    Score: 35,
     Color: 'text-purple-400',
   },
   {
     Grade: ScoreGrade.B_PLUS,
-    Score: 4.5,
+    Score: 30,
     Color: 'text-blue-400',
   },
   {
     Grade: ScoreGrade.B,
-    Score: 4.0,
+    Score: 20,
     Color: 'text-blue-400',
   },
   {
     Grade: ScoreGrade.C_PLUS,
-    Score: 3.5,
+    Score: 15,
     Color: 'text-green-400',
   },
   {
     Grade: ScoreGrade.C,
-    Score: 3.0,
+    Score: 12.5,
     Color: 'text-green-400',
   },
   {
     Grade: ScoreGrade.D_PLUS,
-    Score: 2.5,
+    Score: 10,
     Color: 'text-yellow-200',
   },
   {
     Grade: ScoreGrade.D,
-    Score: 2.0,
+    Score: 7.5,
     Color: 'text-yellow-200',
   },
   {
     Grade: ScoreGrade.F,
-    Score: 1.0,
+    Score: 5.0,
     Color: 'text-gray-400',
   },
 ]
@@ -107,82 +107,82 @@ export const ECHOES_SCORE_GRADES = [
 export const TOTAL_SCORE_GRADES = [
   {
     Grade: ScoreGrade.PERFECT,
-    Score: 450,
+    Score: 575,
     Color: 'text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500',
   },
   {
     Grade: ScoreGrade.SSS_PLUS,
-    Score: 425,
+    Score: 550,
     Color: 'text-amber-400',
   },
   {
     Grade: ScoreGrade.SSS,
-    Score: 400,
+    Score: 500,
     Color: 'text-amber-400',
   },
   {
     Grade: ScoreGrade.SS_PLUS,
-    Score: 375,
+    Score: 475,
     Color: 'text-orange-400',
   },
   {
     Grade: ScoreGrade.SS,
-    Score: 350,
+    Score: 450,
     Color: 'text-orange-400',
   },
   {
     Grade: ScoreGrade.S_PLUS,
-    Score: 325,
+    Score: 425,
     Color: 'text-red-400',
   },
   {
     Grade: ScoreGrade.S,
-    Score: 275,
+    Score: 400,
     Color: 'text-red-400',
   },
   {
     Grade: ScoreGrade.A_PLUS,
-    Score: 225,
+    Score: 375,
     Color: 'text-purple-400',
   },
   {
     Grade: ScoreGrade.A,
-    Score: 200,
+    Score: 350,
     Color: 'text-purple-400',
   },
   {
     Grade: ScoreGrade.B_PLUS,
-    Score: 175,
+    Score: 325,
     Color: 'text-blue-400',
   },
   {
     Grade: ScoreGrade.B,
-    Score: 150,
+    Score: 300,
     Color: 'text-blue-400',
   },
   {
     Grade: ScoreGrade.C_PLUS,
-    Score: 125,
+    Score: 250,
     Color: 'text-green-400',
   },
   {
     Grade: ScoreGrade.C,
-    Score: 100,
+    Score: 200,
     Color: 'text-green-400',
   },
   {
     Grade: ScoreGrade.D_PLUS,
-    Score: 75,
+    Score: 150,
     Color: 'text-yellow-200',
   },
   {
     Grade: ScoreGrade.D,
-    Score: 50,
+    Score: 100,
     Color: 'text-yellow-200',
   },
   {
     Grade: ScoreGrade.F,
-    Score: 0,
+    Score: 50,
     Color: 'text-gray-400',
   },
 ]
@@ -209,12 +209,14 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
   function CalculateEchoesScore(echoes: Echo[], weights: Record<StatType, number>): IEchoRatingResult[] {
     return echoes.map((echo) => {
       const perfectEcho = GetPerfectEcho(echo, weights)
-      const echoScore = CalculateEchoScore(echo, weights)
       const perfectEchoScore = CalculateEchoScore(perfectEcho, weights)
+      const echoScore = CalculateEchoScore(echo, weights)
+      const note = echoScore.IsValidMainStat ? ECHOES_SCORE_GRADES.find(g => (echoScore.Score / perfectEchoScore.Score * 100) >= g.Score)?.Grade || ScoreGrade.F : ScoreGrade.F
 
       return {
         ...echoScore,
-        Score: (echoScore.Score / perfectEchoScore.Score),
+        Score: echoScore.Score / perfectEchoScore.Score,
+        Note: note,
       }
     })
   }
@@ -251,18 +253,35 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
 
   function CalculateEchoScore(echo: Echo, weights: Record<StatType, number>): IEchoRatingResult {
     const isValidMainStat = echo.MainStatistic !== undefined && IsValidMainStat(echo.MainStatistic, weights)
-    const note = isValidMainStat ? GetEchoNote(echo, weights) : { finalScore: 0, grade: ScoreGrade.F }
-
     const totalWeightedScore = echo.Statistics.reduce((acc, subStat) =>
       acc + CalculateSubStatScore(subStat.Type, subStat.Value, echo.Cost, weights[subStat.Type]), 0)
 
+    // Transformation exponentielle modérée pour augmenter la disparité
+    const adjustedScore = totalWeightedScore ** 0.8
+
+    // Normalisation par le score maximum possible
+    const maxPossibleScore = GetMaxPossibleScore(echo.Cost, weights) ** 0.8
+    const normalizedScore = (adjustedScore / maxPossibleScore) * 100 // Échelle de 0 à 100
+
     return {
-      Score: totalWeightedScore,
+      Score: normalizedScore,
       EchoId: echo.Id,
-      Note: note.grade as ScoreGrade,
-      NoteScore: note.finalScore as number,
+      Note: ScoreGrade.F,
+      NoteScore: 0,
       IsValidMainStat: isValidMainStat,
     }
+  }
+
+  function GetMaxPossibleScore(echoCost: EchoCost, weights: Record<StatType, number>): number {
+    const maxStats = Object.keys(weights).map((statType) => {
+      return {
+        Type: statType as StatType,
+        Value: SUB_STAT_VALUES[statType as StatType].at(-1) || 0,
+      }
+    })
+
+    return maxStats.reduce((acc, stat) =>
+      acc + CalculateSubStatScore(stat.Type, stat.Value, echoCost, weights[stat.Type]), 0)
   }
 
   function CalculateSubStatScore(stat: StatType, value: number, echoCost: EchoCost, weight: number) {
@@ -270,9 +289,9 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
       case EchoCost.FOUR_COST:
         return (weight) * ((FOUR_COST_MAIN_STATS_VALUES[StatType.CRIT_DMG]) || 1 / (FOUR_COST_MAIN_STATS_VALUES[stat] || 1)) * value
       case EchoCost.THREE_COST:
-        return (weight) * ((FOUR_COST_MAIN_STATS_VALUES[StatType.CRIT_DMG]) || 1 / (THREE_COST_MAIN_STATS_VALUES[stat] || 1)) * value
+        return (weight) * ((THREE_COST_MAIN_STATS_VALUES[StatType.ATTACK_PERCENTAGE]) || 1 / (THREE_COST_MAIN_STATS_VALUES[stat] || 1)) * value
       case EchoCost.ONE_COST:
-        return (weight) * ((FOUR_COST_MAIN_STATS_VALUES[StatType.CRIT_DMG]) || 1 / (ONE_COST_MAIN_STATS_VALUES[stat] || 1)) * value
+        return (weight) * ((ONE_COST_MAIN_STATS_VALUES[StatType.ATTACK_PERCENTAGE]) || 1 / (ONE_COST_MAIN_STATS_VALUES[stat] || 1)) * value
       default:
         return 0
     }
@@ -282,49 +301,6 @@ export const useScoreCalculatorStore = defineStore('ScoreCalculatorStore', () =>
     const v = weights[stat.Type]
 
     return v !== undefined && v !== 0
-  }
-
-  function CalculateTotalSubStatTierScore(echo: Echo, weights: Record<StatType, number>): number {
-    return echo.Statistics.reduce((totalScore, subStat) => {
-      const weight = weights[subStat.Type] || 0
-      const basePoints = weight >= 1.0 ? 5 : weight >= 0.75 ? 4 : weight >= 0.5 ? 3 : weight >= 0.25 ? 2 : 0
-      const progressBonus = CalculateSubStatRollValueBonus(subStat)
-      return totalScore + basePoints + progressBonus
-    }, 0)
-  }
-
-  function CalculateMaxPossibleTierScore(echo: Echo, weights: Record<StatType, number>): number {
-    return echo.Statistics.reduce((acc, stat) => {
-      const weight = weights[stat.Type] || 0
-      const pts = weight >= 1.0 ? 5 : weight >= 0.75 ? 4 : weight >= 0.5 ? 3 : weight >= 0.25 ? 2 : 0
-      return acc + pts + 3 // 5 extra points for max roll value.
-    }, 0)
-  }
-
-  function CalculateSubStatRollValueBonus(stat: IStatistic): number {
-    const values = SUB_STAT_VALUES[stat.Type] || []
-    if (values.length === 0)
-      return 0
-
-    const sortedValues = values.slice().sort((a, b) => a - b)
-
-    const index = sortedValues.indexOf(stat.Value)
-    if (index === -1)
-      return 0
-
-    const progress = (index + 1) / sortedValues.length
-    return progress * 3
-  }
-
-  function GetEchoNote(echo: Echo, weights: Record<StatType, number>) {
-    const score = CalculateTotalSubStatTierScore(echo, weights)
-    const maxScore = CalculateMaxPossibleTierScore(echo, weights)
-    const finalScore = maxScore > 0 ? (score / maxScore) * 10 : 0 // c cassé...
-
-    return {
-      finalScore,
-      grade: (ECHOES_SCORE_GRADES.find(g => finalScore >= g.Score)?.Grade || ScoreGrade.F),
-    }
   }
 
   return {

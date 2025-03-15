@@ -32,18 +32,18 @@ function IsStatWanted(stat: IStatistic) {
 
   if (w === 0.1) {
     // This is a special case for ELEMENT DMG BONUS
-    return 'text-amber-400'
+    return 'text-amber-500'
   }
 
   switch (true) {
     case (w > 0 && w <= 0.25):
-      return 'text-green-400'
+      return 'text-green-500'
     case (w > 0.25 && w <= 0.5):
-      return 'text-blue-400'
+      return 'text-blue-500'
     case (w > 0.5 && w <= 0.75):
-      return 'text-purple-400'
+      return 'text-purple-500'
     case (w > 0.75 && w <= 1.0):
-      return 'text-amber-400'
+      return 'text-amber-500'
     default:
       return ''
   }
@@ -64,7 +64,7 @@ function IsStatWanted(stat: IStatistic) {
     <h1 class="mt-2 w-full text-center text-2xl">
       {{ t(`${character.Id}_name`) }}
     </h1>
-    <UBadge color="primary" variant="soft" class="mx-auto w-min flex items-center gap-1 text-nowrap text-xs">
+    <UBadge color="primary" variant="soft" class="mx-auto w-min flex items-center gap-1 text-nowrap">
       <p>{{ `${t('label_level')} ${character.Level}` }}</p>
       <span>·</span>
       <p>S{{ GetSequenceLevel(character) }}</p>
@@ -72,13 +72,15 @@ function IsStatWanted(stat: IStatistic) {
 
     <div class="mx-auto my-4 h-[1px] w-full rounded-full bg-white/14" />
     <div class="flex flex-col">
-      <div class="w-full flex flex-col items-start gap-1">
+      <div class="w-full flex flex-col items-start gap-1 ">
         <StatLine
           v-for="st in CharacterStats"
           :key="`${st.Type}-${st.Value}`"
           :stat="st"
           :show-line="true"
           :is-wanted-color="IsStatWanted(st)"
+          class="px-2 py-1"
+          :class="{ 'bg-neutral-800/75 rounded': character.StatsWeights![st.Type] !== undefined && character.StatsWeights![st.Type] || 0 > 0 }"
         />
       </div>
       <div class="mx-auto my-3 h-[1px] w-full rounded-full bg-white/14" />

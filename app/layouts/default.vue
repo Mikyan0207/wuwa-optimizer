@@ -26,9 +26,12 @@
       <div
         class="w-full h-full z-22 fixed inset-0 pointer-events-none bg-neutral-900 backdrop-blur-md [mask-image:url('/images/main-menu-mask.png')]  [mask-repeat:no-repeat]"
       />
+      <div class="h-full bg-neutral-900 z-22 top-10 fixed inset-0 w-[3.65em]" />
       <div
-        class="w-full h-full z-21 fixed inset-0 pointer-events-none bg-gold-200/30 backdrop-blur-md [mask-image:url('/images/main-menu-mask.png')] [mask-position:0.05rem_0.05rem] [mask-repeat:no-repeat]"
+        class="w-full h-full z-21 fixed inset-0 pointer-events-none bg-gold-700 backdrop-blur-md [mask-image:url('/images/main-menu-mask.png')] [mask-position:0.05rem_0.05rem] [mask-repeat:no-repeat]"
       />
+      <div class="h-full bg-gold-700 z-21 top-10 fixed inset-0 left-[3.65em] w-[0.04em]" />
+      <div class="w-full bg-gold-700 z-21 fixed inset-0 left-[10em] top-[3em] h-[0.04em]" />
       <!-- Logo -->
       <div class="col-span-2 z-23 row-span-2 col-start-1 row-star-1 ml-2.5 text-gold-500 hover:text-gray-300 cursor-pointer pointer-events-auto duration-125 transition-all hover:scale-105 mt-2.5 flex w-full h-full">
         <div class="border rounded-full border-gold-500/75 w-12 h-12 justify-center items-center flex">

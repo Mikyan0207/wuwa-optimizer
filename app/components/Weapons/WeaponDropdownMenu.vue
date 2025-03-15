@@ -13,7 +13,6 @@ const MenuItems = [
       SelectedIndex.value = 0
       IsOpen.value = true
     },
-    disabled: ActiveStore.ActiveWeapon === undefined,
   },
   {
     label: 'Remove',

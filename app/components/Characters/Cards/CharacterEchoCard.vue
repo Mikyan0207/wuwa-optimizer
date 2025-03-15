@@ -12,7 +12,7 @@ defineProps<{
   <div class="group relative">
     <EchoDropdownMenu :echo-slot="echoSlot" />
     <UCard
-      class="min-h-[22em] h-full w-full"
+      class="min-h-[26em] h-full w-full"
       :ui="{
         root: 'rounded-none rounded-br-xl border-0',
       }"

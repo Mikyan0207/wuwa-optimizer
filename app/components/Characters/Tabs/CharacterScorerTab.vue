@@ -83,7 +83,7 @@ async function TakeScreenShotAsync() {
 <template>
   <div class="mb-14 xl:mb-4 px-4 xl:px-0">
     <UCard
-      class="mx-auto w-full text-sm xl:max-w-7xl"
+      class="mx-auto w-full text-sm"
       :ui="{
         root: 'rounded-none rounded-br-xl border-0',
       }"
@@ -109,7 +109,7 @@ async function TakeScreenShotAsync() {
     </UCard>
 
     <div v-if="ActiveCharacter !== undefined && CharacterScore" class="mt-2">
-      <div class="mx-auto my-2 xl:w-7xl">
+      <div class="mx-auto my-2">
         <div ref="CharacterInfoRef" class="relative p-0.25">
           <div v-if="ShowScreenShotBackground" class="absolute inset-0">
             <NuxtImg src="/images/main-bg.webp" class="h-full w-full object-cover" />

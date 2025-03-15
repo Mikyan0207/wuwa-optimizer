@@ -9,6 +9,7 @@ const props = defineProps<{
 }>()
 
 const { t } = useI18n()
+const { ActiveCharacter } = useActiveCharacterStore()
 
 const IsValidEcho = computed(() => props.echo.Id !== -1)
 </script>
@@ -21,27 +22,27 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
         <USkeleton v-else class="h-12 w-12 rounded-full" />
       </div>
       <div class="flex flex-col">
-        <p v-if="IsValidEcho" class=" text-white" :title="t(`${echo.Id}_name`)">
+        <p v-if="IsValidEcho" class="text-lg text-white" :title="t(`${echo.Id}_name`)">
           {{ t(`${echo.Id}_name`) }}
         </p>
         <USkeleton v-else class="h-3 w-22" />
       </div>
     </div>
     <div class="flex items-center justify-start w-full gap-1">
-      <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="error">
+      <UBadge v-if="IsValidEcho" class="text-sm text-gray-300" size="xs" variant="soft" color="error">
         {{ `${t('label_level')} ${echo.Level}` }}
       </UBadge>
       <USkeleton v-else class="h-3 w-10" />
-      <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="primary">
+      <UBadge v-if="IsValidEcho" class="text-sm text-gray-300" size="xs" variant="soft" color="primary">
         {{ `${GetEchoRarityText(echo.Rarity)}✦` }}
       </UBadge>
       <USkeleton v-else class="h-3 w-10" />
-      <UBadge v-if="IsValidEcho" class="text-xs text-gray-300" size="xs" variant="soft" color="info">
+      <UBadge v-if="IsValidEcho" class="text-sm text-gray-300" size="xs" variant="soft" color="info">
         {{ `Cost ${GetEchoCostText(echo.Cost)}` }}
       </UBadge>
       <USkeleton v-else class="h-3 w-10" />
       <UBadge
-        v-if="IsValidEcho && echo.IsNightmare === true" class="text-xs ml-auto text-gray-300" size="xs"
+        v-if="IsValidEcho && echo.IsNightmare === true" class="text-sm ml-auto text-gray-300" size="xs"
         variant="soft" color="warning"
       >
         Nightmare
@@ -51,7 +52,10 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
     <!-- Main Stat -->
     <div class="w-full flex flex-row gap-4">
       <div v-if="echo.MainStatistic && IsValidEcho" class="w-full flex items-start justify-between gap-12">
-        <StatLine :stat="echo.MainStatistic" :is-main-stat="true" />
+        <StatLine
+          :stat="echo.MainStatistic"
+          :is-main-stat="true"
+        />
       </div>
       <div v-else class="w-full flex items-center justify-between gap-12">
         <div class="flex items-center gap-2">
@@ -65,8 +69,14 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
     <!-- Sub Stats -->
     <div v-if="IsValidEcho" class="w-full flex flex-col gap-1">
       <StatLine
-        v-for="(stat, idx) in echo.Statistics" :key="`stat-${stat.Type}-${idx}`" :stat="stat"
-        :show-line="true" :show-roll-value="true"
+        v-for="(stat, idx) in echo.Statistics"
+        :key="`stat-${stat.Type}-${idx}`"
+        :stat="stat"
+        :weight="ActiveCharacter?.StatsWeights![stat.Type] || undefined"
+        :show-line="true"
+        :show-roll-value="true"
+        class="px-2 py-1"
+        :class="{ 'bg-neutral-800/75 rounded': ActiveCharacter?.StatsWeights![stat.Type] !== undefined && ActiveCharacter?.StatsWeights![stat.Type] || 0 > 0 }"
       />
     </div>
     <div v-else class="w-full flex flex-col gap-1">
@@ -80,8 +90,8 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
     </div>
     <div class="mx-auto my-2 h-[1px] w-full rounded-full bg-white/14" />
     <!-- Echo Score -->
-    <div v-if="score" class="w-full flex flex-row items-end gap-4">
-      <div class="w-full flex items-start justify-between gap-12 text-xs">
+    <div v-if="score" class="w-full flex flex-row items-end gap-4 font-semibold">
+      <div class="w-full flex items-start justify-between gap-12">
         <div class="flex items-center gap-2">
           <p>Score</p>
         </div>
@@ -90,7 +100,7 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
             {{ (score.Score * 100).toFixed(1) }}
           </p>
           <p v-if="score">
-            (<EchoScore :value="score.NoteScore" :text="score.Note" class="font-semibold" />)
+            (<EchoScore :value="score.NoteScore" :text="score.Note" />)
           </p>
         </div>
         <div v-else class="mt-1 w-full flex flex-row items-center justify-end">

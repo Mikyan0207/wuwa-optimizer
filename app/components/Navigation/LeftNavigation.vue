@@ -37,7 +37,12 @@ const Section_03_Items = ref([
     icon: 'i-carbon:upload',
     type: 'link',
     to: '/imports',
-    disabled: true,
+  },
+  {
+    label: 'exports',
+    icon: 'i-carbon:download',
+    type: 'link',
+    to: '/exports',
   },
 ] as NavigationMenuItem[])
 </script>

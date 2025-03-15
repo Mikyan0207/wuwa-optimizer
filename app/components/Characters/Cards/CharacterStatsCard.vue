@@ -52,19 +52,19 @@ function IsStatWanted(stat: IStatistic) {
 
 <template>
   <UCard
-    class="flex flex-col"
+    class="flex flex-col overflow-clip"
     :ui="{
       root: 'rounded-none rounded-br-xl border-0',
     }"
   >
     <BorderLines />
-    <div class="mx-auto w-full flex items-center justify-center gap-1">
+    <div v-motion-pop :delay="500" class="mx-auto w-full flex items-center justify-center gap-1">
       <NuxtImg v-for="idx in GetRarityAsNumber(character.Rarity)" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-6 w-6 object-cover" fit="cover" />
     </div>
-    <h1 class="mt-2 w-full text-center text-2xl">
+    <h1 v-motion-pop :delay="500" class="mt-2 w-full text-center text-2xl">
       {{ t(`${character.Id}_name`) }}
     </h1>
-    <UBadge color="primary" variant="soft" class="mx-auto w-min flex items-center gap-1 text-nowrap">
+    <UBadge v-motion-pop :delay="500" color="primary" variant="soft" class="mx-auto w-min flex items-center gap-1 text-nowrap">
       <p>{{ `${t('label_level')} ${character.Level}` }}</p>
       <span>·</span>
       <p>S{{ GetSequenceLevel(character) }}</p>
@@ -72,10 +72,12 @@ function IsStatWanted(stat: IStatistic) {
 
     <div class="mx-auto my-4 h-[1px] w-full rounded-full bg-white/14" />
     <div class="flex flex-col">
-      <div class="w-full flex flex-col items-start gap-1 ">
+      <div class="w-full flex flex-col items-start gap-1 relative">
         <StatLine
-          v-for="st in CharacterStats"
+          v-for="(st, idx) in CharacterStats"
           :key="`${st.Type}-${st.Value}`"
+          v-motion-slide-left
+          :delay="500 + (idx * 50)"
           :stat="st"
           :show-line="true"
           :is-wanted-color="IsStatWanted(st)"
@@ -84,7 +86,7 @@ function IsStatWanted(stat: IStatistic) {
         />
       </div>
       <div class="mx-auto my-3 h-[1px] w-full rounded-full bg-white/14" />
-      <div class="w-full flex items-center justify-evenly">
+      <div v-motion-slide-bottom :delay="500" class="w-full flex items-center justify-evenly">
         <p>{{ t('label_character_score') }}</p>
         <div>
           {{ score.Score.toFixed(1) }} (<div :class="GetCharacterScoreNoteColor" class="inline-block font-semibold">

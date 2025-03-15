@@ -3,6 +3,7 @@ import { AppDescription } from './app/Core'
 export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
+    '@vueuse/motion/nuxt',
     '@pinia/nuxt',
     '@nuxt/eslint',
     '@nuxt/image',
@@ -22,6 +23,7 @@ export default defineNuxtConfig({
     '~/components/Echoes',
     '~/components/Echoes/Forms',
     '~/components/Filters',
+    '~/components/Importer',
     '~/components/Interface',
     '~/components/Navigation',
     '~/components/Skills',

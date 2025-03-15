@@ -83,6 +83,8 @@ async function TakeScreenShotAsync() {
 <template>
   <div class="mb-14 xl:mb-4 px-4 xl:px-0">
     <UCard
+      v-motion-pop
+      :delay="50"
       class="mx-auto w-full text-sm"
       :ui="{
         root: 'rounded-none rounded-br-xl border-0',
@@ -117,20 +119,31 @@ async function TakeScreenShotAsync() {
           <div class="grid grid-cols-2 mx-auto w-full gap-2 xl:grid-cols-5">
             <!-- Character Info (Art, Stats, Weapon, Skills) -->
             <CharacterArtCard
-              v-if="ActiveCharacter" :character="ActiveCharacter"
+              v-if="ActiveCharacter"
+              v-motion-slide-left :delay="50"
+              :character="ActiveCharacter"
               class="col-span-1 row-span-1 xl:col-span-2"
             />
             <div class="grid col-span-1 grid-cols-1 gap-2 xl:col-span-3 xl:grid-cols-2">
               <!-- Stats -->
-              <CharacterStatsCard :character="ActiveCharacter" :score="CharacterScore" />
+              <CharacterStatsCard
+                v-motion-pop :delay="100"
+                :character="ActiveCharacter"
+                :score="CharacterScore"
+              />
               <!-- Weapon / Skills -->
               <div class="grid grid-rows-4 gap-2">
                 <!-- Weapon -->
                 <CharacterWeaponCard
+                  v-motion-slide-right :delay="150"
                   class="row-span-1"
                 />
                 <!-- Skills -->
-                <CharacterSkillsCard class="row-span-3" :character="ActiveCharacter" />
+                <CharacterSkillsCard
+                  v-motion-slide-right
+                  class="row-span-3" :delay="200"
+                  :character="ActiveCharacter"
+                />
               </div>
             </div>
           </div>
@@ -140,7 +153,8 @@ async function TakeScreenShotAsync() {
             <!-- We can simplify this for sure... -->
             <CharacterEchoCard
               v-for="(echo, idx) in GetEchoes()"
-              :key="idx"
+              :key="idx" v-motion-slide-bottom
+              :delay="200 + (idx * 25)"
               :echo="echo"
               :echo-slot="echo.EquipedSlot || idx"
               :score="CharacterScore.EchoesScores.find(x => x.EchoId === echo.Id)"

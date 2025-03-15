@@ -9,7 +9,9 @@ defineProps<{
 </script>
 
 <template>
-  <div class="group relative">
+  <div
+    class="group relative"
+  >
     <EchoDropdownMenu :echo-slot="echoSlot" />
     <UCard
       class="min-h-[26em] h-full w-full"

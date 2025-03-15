@@ -5,6 +5,7 @@ export default {
   'weapons_navigation_title': 'Weapons',
   'echoes_navigation_title': 'Echoes',
   'imports_navigation_title': 'Importer',
+  'exports_navigation_title': 'Export',
 
   'label_level': 'Lv.',
   'label_level_full': 'Level',

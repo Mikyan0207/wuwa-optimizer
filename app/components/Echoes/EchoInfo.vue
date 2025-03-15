@@ -17,18 +17,18 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
 <template>
   <div class="w-full flex flex-col items-start gap-2 truncate">
     <div class="flex flex-row items-center gap-2">
-      <div class="flex flex-col items-center gap-2 rounded-full border-2 h-12 w-12 border-gold-400/60 overflow-clip">
+      <div v-motion-pop :delay="400" class="flex flex-col items-center gap-2 rounded-full border-2 h-12 w-12 border-gold-400/60 overflow-clip">
         <NuxtImg v-if="IsValidEcho" :src="GetEchoIcon(echo)" class="h-12 w-12" />
         <USkeleton v-else class="h-12 w-12 rounded-full" />
       </div>
-      <div class="flex flex-col">
+      <div v-motion-pop :delay="400" class="flex flex-col">
         <p v-if="IsValidEcho" class="text-lg text-white" :title="t(`${echo.Id}_name`)">
           {{ t(`${echo.Id}_name`) }}
         </p>
         <USkeleton v-else class="h-3 w-22" />
       </div>
     </div>
-    <div class="flex items-center justify-start w-full gap-1">
+    <div v-motion-pop :delay="400" class="flex items-center justify-start w-full gap-1">
       <UBadge v-if="IsValidEcho" class="text-sm text-gray-300" size="xs" variant="soft" color="error">
         {{ `${t('label_level')} ${echo.Level}` }}
       </UBadge>
@@ -53,6 +53,8 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
     <div class="w-full flex flex-row gap-4">
       <div v-if="echo.MainStatistic && IsValidEcho" class="w-full flex items-start justify-between gap-12">
         <StatLine
+          v-motion-slide-left
+          :delay="450"
           :stat="echo.MainStatistic"
           :is-main-stat="true"
         />
@@ -71,6 +73,8 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
       <StatLine
         v-for="(stat, idx) in echo.Statistics"
         :key="`stat-${stat.Type}-${idx}`"
+        v-motion-slide-left
+        :delay="500 + (idx * 100)"
         :stat="stat"
         :weight="ActiveCharacter?.StatsWeights![stat.Type] || undefined"
         :show-line="true"

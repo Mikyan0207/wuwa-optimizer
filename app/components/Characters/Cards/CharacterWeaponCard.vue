@@ -6,7 +6,9 @@ const { ActiveWeapon } = useActiveCharacterStore()
 </script>
 
 <template>
-  <div class="group relative">
+  <div
+    class="group relative"
+  >
     <WeaponDropdownMenu />
     <UCard
       class="w-full h-full overflow-clip"

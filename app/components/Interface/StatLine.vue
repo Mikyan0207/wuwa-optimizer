@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type Statistic from '~/Core/Interfaces/Statistic'
 import { StatType } from '~/Core/Enums/StatType'
-import { STAT_ICONS, SUB_STAT_VALUES } from '~/Core/Statistics'
+import { STAT_ICONS } from '~/Core/Statistics'
 
 const props = defineProps<{
   stat: Statistic

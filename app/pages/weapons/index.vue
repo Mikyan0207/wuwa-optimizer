@@ -58,18 +58,19 @@ const TabItems = [
 
 <!-- Wait... We should actually display owned weapons with equiped by info...(?) -->
 <template>
-  <div class="mx-auto xl:max-w-6xl px-8 xl:px-0 space-y-8">
+  <div class="mx-auto xl:max-w-7xl px-8 xl:px-0 space-y-8">
     <UTabs
       v-model="SelectedTab"
       :default-value="0"
       color="neutral"
-      :items="TabItems" :ui="{
+      :items="TabItems"
+      :ui="{
         list: 'rounded-none border-neutral-600',
         indicator: 'rounded-none bg-neutral-300',
       }"
     >
       <template #content>
-        <div>
+        <div class="w-full">
           <div class="w-full flex flex-wrap items-center justify-between gap-2 mb-8 mt-4">
             <UInput v-model="SearchValue" placeholder="Search weapon..." />
             <div class="flex flex-wrap items-center gap-4">
@@ -79,7 +80,7 @@ const TabItems = [
               <RarityFilter @selected="(r: Rarity) => SelectedWeaponRarity = r" />
             </div>
           </div>
-          <div v-if="SelectedTab === '0'" class="mx-auto w-full flex flex-wrap items-start justify-center gap-2 mb-8">
+          <div v-if="SelectedTab === '0'" class="mx-auto w-full grid grid-cols-3 justify-center gap-2 mb-8">
             <EquipedWeaponIcon v-for="w in WeaponsList" :key="w.Id" :weapon="w" :character-id="w.EquipedBy" />
           </div>
           <div v-if="SelectedTab === '1'" class="mx-auto w-full flex flex-wrap items-start justify-center gap-2 mb-8">

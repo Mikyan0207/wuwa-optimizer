@@ -63,8 +63,9 @@ function OnCharacterClicked(characterId: number | undefined) {
     </div>
     <div class="flex flex-wrap w-full items-center justify-center gap-2">
       <CharacterIcon
-        v-for="c in CharactersList"
-        :key="c.Id"
+        v-for="(c, idx) in CharactersList"
+        :key="c.Id" v-motion-pop
+        :delay="100 + (idx * 20)"
         :character="c"
         @click.prevent="OnCharacterClicked(c.Id)"
       />

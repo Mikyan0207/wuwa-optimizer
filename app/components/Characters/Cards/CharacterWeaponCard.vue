@@ -18,9 +18,9 @@ const { ActiveWeapon } = useActiveCharacterStore()
     >
       <BorderLines />
       <div class="relative h-full flex justify-between gap-4">
-        <div class="flex flex-col gap-1">
+        <div class="flex w-[50%] flex-col gap-1">
           <!-- Name -->
-          <div v-if="ActiveWeapon" class="text-md">
+          <div v-if="ActiveWeapon" class="text-lg">
             {{ t(`${ActiveWeapon.Id}_name`) }}
           </div>
           <USkeleton v-else class="h-4 w-26" />
@@ -31,12 +31,12 @@ const { ActiveWeapon } = useActiveCharacterStore()
               <NuxtImg
                 v-for="idx in GetRarityAsNumber(ActiveWeapon.Rarity)"
                 :key="idx" src="/images/icons/Icon_StarBig.webp"
-                class="h-3 w-3 object-cover" fit="cover"
+                class="h-4 w-4 object-cover" fit="cover"
               />
             </div>
             <USkeleton v-else class="h-3 w-20" />
             <!-- Level -->
-            <UBadge v-if="ActiveWeapon" class="text-xs text-gray-300" size="xs" variant="soft" color="primary">
+            <UBadge v-if="ActiveWeapon" class="text-gray-300" variant="soft" color="primary">
               {{ `${t('label_level')} ${ActiveWeapon.Level} · R${ActiveWeapon.Rank || 0}` }}
             </UBadge>
             <USkeleton v-else class="h-3 w-10" />
@@ -46,14 +46,12 @@ const { ActiveWeapon } = useActiveCharacterStore()
             <StatLine
               v-if="ActiveWeapon && ActiveWeapon.MainStatistic"
               :stat="ActiveWeapon.MainStatistic"
-              icon-size="xs"
               :show-line="true"
             />
             <USkeleton v-else class="mt-4 h-3 w-24" />
             <StatLine
               v-if="ActiveWeapon && ActiveWeapon.SecondaryStatistic"
               :stat="ActiveWeapon.SecondaryStatistic"
-              icon-size="xs"
               :show-line="true"
             />
             <USkeleton v-else class="h-3 w-24" />

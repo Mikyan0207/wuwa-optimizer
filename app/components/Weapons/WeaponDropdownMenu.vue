@@ -34,9 +34,6 @@ function OnClose() {
 <template>
   <div
     class="absolute right-1 top-1 z-10 transition-all duration-75"
-    :class="{
-      'hidden group-hover:inline': !IsDropdownOpen,
-    }"
   >
     <UDropdownMenu
       :items="MenuItems"

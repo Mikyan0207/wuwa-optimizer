@@ -2,6 +2,7 @@
 import type Weapon from '~/Core/Interfaces/Weapon'
 import { GetCharacterIcon } from '~/Core/Utils/CharacterUtils'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
+import { GetTypeIcon } from '~/Core/Utils/WeaponUtils'
 
 const props = defineProps<{
   weapon: Weapon
@@ -21,14 +22,14 @@ const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
   <UCard
     class="group relative cursor-pointer"
     :ui="{
-      root: 'rounded-none rounded-br-xl border-0',
+      root: 'rounded-none rounded-br-xl border-0 w-full',
       body: 'p-0 sm:p-0',
     }"
   >
     <BorderLines :count="1" />
-    <div class="flex">
+    <div class="flex w-full">
       <!-- Icon / Rarity -->
-      <div class="relative h-26 min-h-26 w-26 flex items-center justify-center overflow-clip">
+      <div class="relative h-32 min-h-32 min-w-32 w-32 flex items-center justify-center overflow-clip">
         <!-- Icon -->
         <div class="absolute bottom-0">
           <NuxtImg
@@ -56,7 +57,7 @@ const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
           <div class="h-[4px] rounded-bl" :class="HighlightColor" />
         </div>
       </div>
-      <div class="w-46 border-l border-white/14 p-2 text-sm">
+      <div class="w-full border-l border-white/14 px-4 py-2">
         <!-- Name -->
         <div class="w-full flex items-center justify-between">
           <div :title="weapon.Name" class="text-truncate">
@@ -65,8 +66,8 @@ const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
         </div>
 
         <!-- Equiped By -->
-        <div class="absolute top-1 right-1">
-          <NuxtImg v-if="EquipedBy" :src="GetCharacterIcon(EquipedBy)" class="w-10 h-10 rounded-full border-2 border-gold-500 overflow-clip" />
+        <div class="absolute top-2 right-2">
+          <NuxtImg v-if="EquipedBy" :src="GetCharacterIcon(EquipedBy)" class="w-10 h-10 rounded-full overflow-clip" />
         </div>
 
         <!-- Weapon Level/Rank -->
@@ -78,11 +79,14 @@ const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
             <UBadge color="info" variant="soft" size="sm" class="text-nowrap">
               {{ `${t(`label_rank_full`)} ${weapon.Rank || 0}` }}
             </UBadge>
+            <UBadge color="neutral" variant="soft" size="sm" class="text-nowrap">
+              <NuxtImg :src="`${GetTypeIcon(weapon)}`" width="15" height="12" /> {{ weapon.Type }}
+            </UBadge>
           </div>
         </div>
 
         <!-- Stats -->
-        <div v-if="weapon.MainStatistic && weapon.SecondaryStatistic" class="h-min flex w-36 flex-col items-start text-gray-300">
+        <div v-if="weapon.MainStatistic && weapon.SecondaryStatistic" class="h-min flex flex-col items-start text-gray-300">
           <StatLine :stat="weapon.MainStatistic" icon-size="xs" :show-line="true" />
           <StatLine :stat="weapon.SecondaryStatistic" icon-size="xs" :show-line="true" />
         </div>

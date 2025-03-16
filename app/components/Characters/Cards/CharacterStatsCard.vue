@@ -85,9 +85,11 @@ function IsStatWanted(stat: IStatistic) {
           :class="{ 'bg-neutral-800/75 rounded': character.StatsWeights![st.Type] !== undefined && character.StatsWeights![st.Type] || 0 > 0 }"
         />
       </div>
-      <div class="mx-auto my-3 h-[1px] w-full rounded-full bg-white/14" />
-      <div v-motion-slide-bottom :delay="500" class="w-full flex items-center justify-evenly">
-        <p>{{ t('label_character_score') }}</p>
+      <div class="mx-auto my-4 h-[1px] w-full rounded-full bg-white/14" />
+      <div v-motion-slide-bottom :delay="500" class="w-full flex text-lg items-center justify-evenly">
+        <p>
+          {{ t('label_character_score') }}
+        </p>
         <div>
           {{ score.Score.toFixed(1) }} (<div :class="GetCharacterScoreNoteColor" class="inline-block font-semibold">
             {{ score.Note }}

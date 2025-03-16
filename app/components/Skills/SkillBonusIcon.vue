@@ -37,7 +37,7 @@ function ToggleSkill() {
 
 <template>
   <USkeleton
-    v-if="!CurrentSkill" class="min-h-2em min-w-2em rounded-full bg-white/7" :ui="{ base: '' }"
+    v-if="!CurrentSkill" class="min-h-[2em] min-w-[2em] rounded-full bg-white/7" :ui="{ base: '' }"
   />
   <UTooltip v-else arrow :delay-duration="0">
     <template #content>
@@ -63,7 +63,7 @@ function ToggleSkill() {
       </div>
     </template>
     <div
-      class="min-h-[2em] min-w-[2em] cursor-pointer border-[1.5px] rounded-full bg-black/66 transition-all duration-150"
+      class="min-h-[3em] min-w-[3em] h-[3em] w-[3em] cursor-pointer border-[1.5px] rounded-full bg-black/66 transition-all duration-150"
       :class="{ 'border-gold-500': CurrentSkill.Unlocked, 'border-white/14 hover:border-white/75': !CurrentSkill.Unlocked }"
       @click.prevent="ToggleSkill()"
     >

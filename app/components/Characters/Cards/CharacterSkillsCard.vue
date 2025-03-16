@@ -83,47 +83,47 @@ const IntroStatBonus2 = computed<Skill | undefined>(() =>
   >
     <template #default>
       <BorderLines />
-      <div class="h-full w-full px-2 flex flex-col items-center justify-center gap-6">
+      <div class="h-full w-full p-4 flex items-center justify-evenly gap-6">
         <!-- Normal Attack -->
-        <div class="w-full flex items-center">
+        <div class="h-full flex flex-col-reverse items-center">
           <SkillIcon :skill="BasicAttack" :character="character" />
           <SkillIconSeparator :skill="BasicStatBonus1" />
           <SkillBonusIcon :skill="BasicStatBonus1" :next-skill="BasicStatBonus2" />
           <SkillIconSeparator :skill="BasicStatBonus2" />
-          <SkillBonusIcon :skill="BasicStatBonus2" :previous-skill="BasicStatBonus1" class="mr-[4em]" />
+          <SkillBonusIcon :skill="BasicStatBonus2" :previous-skill="BasicStatBonus1" class="mt-[6em]" />
         </div>
         <!-- Resonance Skill -->
-        <div class="w-full flex items-center">
-          <SkillIcon :skill="ResonanceSkill" :character="character" class="ml-[3em]" />
+        <div class="h-full flex flex-col-reverse items-center">
+          <SkillIcon :skill="ResonanceSkill" :character="character" class="mb-[2em]" />
           <SkillIconSeparator :skill="SkillStatBonus1" />
           <SkillBonusIcon :skill="SkillStatBonus1" :next-skill="SkillStatBonus2" />
           <SkillIconSeparator :skill="SkillStatBonus2" />
-          <SkillBonusIcon :skill="SkillStatBonus2" :previous-skill="SkillStatBonus1" class="mr-[2em]" />
+          <SkillBonusIcon :skill="SkillStatBonus2" :previous-skill="SkillStatBonus1" class="mt-[4em]" />
         </div>
         <!-- Forte Circuit / Inherent Skills / Outro Skill -->
-        <div class="w-full flex items-center">
-          <SkillIcon :skill="OutroSkill" :character="character" size="xs" :has-no-level="true" />
-          <SkillIcon :skill="ForteCircuit" :character="character" class="ml-[3em]" />
+        <div class="h-full flex flex-col-reverse items-center">
+          <SkillIcon :skill="OutroSkill" :character="character" size="xs" :has-no-level="true" class="mt-[3em]" />
+          <SkillIcon :skill="ForteCircuit" :character="character" />
           <SkillIconSeparator :skill="InherentSkill1" />
           <SkillIcon :skill="InherentSkill1" :character="character" size="xs" :has-no-level="true" />
           <SkillIconSeparator :skill="InherentSkill2" />
           <SkillIcon :skill="InherentSkill2" :character="character" size="xs" :has-no-level="true" />
         </div>
         <!-- Resonance Liberation -->
-        <div class="w-full flex items-center">
-          <SkillIcon :skill="ResonanceLiberation" :character="character" class="ml-[3em]" />
+        <div class="h-full flex flex-col-reverse items-center">
+          <SkillIcon :skill="ResonanceLiberation" :character="character" class="mb-[2em]" />
           <SkillIconSeparator :skill="LiberationStatBonus1" />
           <SkillBonusIcon :skill="LiberationStatBonus1" :next-skill="LiberationStatBonus2" />
           <SkillIconSeparator :skill="LiberationStatBonus2" />
-          <SkillBonusIcon :skill="LiberationStatBonus2" :previous-skill="LiberationStatBonus1" class="mr-[2em]" />
+          <SkillBonusIcon :skill="LiberationStatBonus2" :previous-skill="LiberationStatBonus1" class="mt-[4em]" />
         </div>
         <!-- Intro Skill -->
-        <div class="w-full flex items-center">
+        <div class="h-full flex flex-col-reverse items-center">
           <SkillIcon :skill="IntroSkill" :character="character" />
           <SkillIconSeparator :skill="IntroStatBonus1" />
           <SkillBonusIcon :skill="IntroStatBonus1" :next-skill="IntroStatBonus2" />
           <SkillIconSeparator :skill="IntroStatBonus2" />
-          <SkillBonusIcon :skill="IntroStatBonus2" :previous-skill="IntroStatBonus1" class="mr-[4em]" />
+          <SkillBonusIcon :skill="IntroStatBonus2" :previous-skill="IntroStatBonus1" class="mt-[6em]" />
         </div>
       </div>
     </template>

@@ -61,17 +61,22 @@ const GetSkillType = computed(() => {
         />
       </div>
     </template>
-    <div
-      class="rotate-45 cursor-pointer border-1 rounded-xs bg-black/88 backdrop-blur-4 transition-all duration-150"
-      :class="{
-        'border-gold-500': skill.Unlocked,
-        'border-white/14 hover:border-white/75': !skill.Unlocked,
-        'min-h-[3em] min-w-[3em]': !size,
-        'min-h-[2em] min-w-[2em]': size === 'xs',
-      }"
-    >
-      <NuxtImg v-if="character && !skill.Id.startsWith('Basic')" :src="`/images/characters/${character.Id}/${skill.Icon}`" class="p-1 -rotate-45" />
-      <NuxtImg v-else :src="`/images/icons/${skill.Icon}`" class="p-1 -rotate-45" />
+    <div class="relative">
+      <div
+        class="rotate-45 cursor-pointer border-1 rounded-xs bg-black/88 backdrop-blur-4 transition-all duration-150"
+        :class="{
+          'border-gold-500': skill.Unlocked,
+          'border-white/14 hover:border-white/75': !skill.Unlocked,
+          'min-h-[4em] h-[4em] min-w-[4em] w-[4em]': !size,
+          'min-h-[2.5em] h-[2.5em] min-w-[2.5em] w-[2.5em]': size === 'xs',
+        }"
+      >
+        <NuxtImg v-if="character && !skill.Id.startsWith('Basic')" :src="`/images/characters/${character.Id}/${skill.Icon}`" class="p-1 -rotate-45" />
+        <NuxtImg v-else :src="`/images/icons/${skill.Icon}`" class="p-1 -rotate-45" />
+      </div>
+      <div v-if="skill !== undefined && hasNoLevel !== true" class="text-center pt-3 font-semibold">
+        {{ t('label_level') }} {{ skill.Level }}
+      </div>
     </div>
   </UTooltip>
 </template>

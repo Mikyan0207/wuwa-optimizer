@@ -64,7 +64,18 @@ export default {
   '1104_name': 'Lingyang',
   '1105_name': 'Zhezhi',
   '1106_name': 'Youhu',
+
+  // 1107 - Carlotta
   '1107_name': 'Carlotta',
+  '1107_basic_attack': 'Silent Execution',
+  '1107_resonance_skill': 'Art of Violence',
+  '1107_resonance_liberation': 'Era of New Wave',
+  '1107_forte_circuit': 'Lethal Repertoire',
+  '1107_inherent_skill_1': 'Flawless Purity',
+  '1107_inherent_skill_2': 'Ars Gratia Artis',
+  '1107_outro_skill': 'Closing Remark',
+  '1107_intro_skill': 'Wintertime Aria',
+
   '1202_name': 'Chixia',
   '1203_name': 'Encore',
   '1204_name': 'Mortefi',

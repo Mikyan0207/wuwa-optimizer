@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <div
-    class="h-[1px] w-full"
+    class="w-[1px] h-full"
     :class="{ 'bg-gold-500': skill?.Unlocked, 'bg-white/7': !skill?.Unlocked }"
   />
 </template>

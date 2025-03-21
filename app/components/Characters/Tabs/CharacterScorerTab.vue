@@ -81,7 +81,7 @@ async function TakeScreenShotAsync() {
 </script>
 
 <template>
-  <div class="mb-14 xl:mb-4 px-4 xl:px-0">
+  <div class="mb-14 xl:mb-4">
     <UCard
       v-motion-pop
       :delay="50"
@@ -148,7 +148,7 @@ async function TakeScreenShotAsync() {
             </div>
           </div>
 
-          <div class="grid grid-cols-4 mt-2 gap-2 xl:grid-cols-5">
+          <div class="grid grid-cols-3 mt-2 gap-2 xl:grid-cols-5">
             <!-- Echoes -->
             <!-- We can simplify this for sure... -->
             <CharacterEchoCard

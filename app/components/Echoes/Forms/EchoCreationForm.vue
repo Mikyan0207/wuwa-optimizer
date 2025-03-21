@@ -236,7 +236,7 @@ const StepperItems = [
       body: Stepper?.hasNext === true ? 'pb-0!' : '',
     }"
   >
-    <UForm :schema="EditEchoSchema" :state="State">
+    <UForm :schema="EditEchoSchema" :state="State" @submit="OnSubmit">
       <UStepper
         ref="echo-creation-stepper"
         v-model="CurrentStep"
@@ -401,7 +401,7 @@ const StepperItems = [
             color="neutral" variant="outline" label="Previous" :disabled="!Stepper?.hasPrev"
             @click.prevent="Stepper?.prev()"
           />
-          <UButton color="primary" variant="subtle" label="Submit" @click.prevent="OnSubmit" />
+          <UButton color="primary" variant="subtle" label="Submit" type="submit" />
         </UButtonGroup>
       </div>
     </template>

@@ -24,22 +24,22 @@ const MenuItems = computed(() => [
       setLocale('en')
     },
   },
-  {
-    label: 'Français',
-    id: 'fr',
-    icon: 'circle-flags:fr',
-    onSelect() {
-      setLocale('fr')
-    },
-  },
-  {
-    label: '日本語',
-    id: 'jp',
-    icon: 'circle-flags:jp',
-    onSelect() {
-      setLocale('jp')
-    },
-  },
+  // {
+  //   label: 'Français',
+  //   id: 'fr',
+  //   icon: 'circle-flags:fr',
+  //   onSelect() {
+  //     setLocale('fr')
+  //   },
+  // },
+  // {
+  //   label: '日本語',
+  //   id: 'jp',
+  //   icon: 'circle-flags:jp',
+  //   onSelect() {
+  //     setLocale('jp')
+  //   },
+  // },
 ])
 
 const SelectedMenuItem = computed(() => MenuItems.value.find(x => x.id === locale.value))

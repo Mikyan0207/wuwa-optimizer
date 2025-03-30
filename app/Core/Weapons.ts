@@ -3,6 +3,24 @@ import { Rarity } from './Enums/Rarity'
 import { StatType } from './Enums/StatType'
 import { WeaponType } from './Enums/WeaponType'
 
+export const WhispersOfSirens: Weapon = {
+  Id: 21050056,
+  Name: 'Whispers of Sirens',
+  Icon: 'Weapon_Whispers_of_Sirens.webp',
+  Level: 90,
+  Rarity: Rarity.FIVE_STARS,
+  Type: WeaponType.RECTIFIER,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 500,
+  },
+  SecondaryStatistic: {
+    Type: StatType.CRIT_DMG,
+    Value: 72,
+  },
+  Rank: 1,
+}
+
 export const TheLastDance: Weapon = {
   Id: 21030016,
   Name: 'The Last Dance',
@@ -1336,6 +1354,7 @@ export const Sword_of_Voyager: Weapon = {
 }
 
 export const Weapons: Weapon[] = [
+  WhispersOfSirens,
   TheLastDance,
   AgesOfHarvest,
   EmeraldOfGenesis,

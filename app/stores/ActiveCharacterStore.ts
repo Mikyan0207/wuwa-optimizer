@@ -10,6 +10,11 @@ export const useActiveCharacterStore = defineStore('ActiveCharacterStore', () =>
   const CharactersStore = useCharactersStore()
   const EchoesStore = useEchoesStore()
   const WeaponsStore = useWeaponsStore()
+  const CharactersEventBus = useEventBus('CharactersEvents')
+
+  CharactersEventBus.on(() => {
+    ActiveWeapon.value = WeaponsStore.GetWeaponByEquipedId(ActiveCharacter.value?.Id)
+  })
 
   function Set(characterId: number | undefined) {
     if (characterId === undefined) {

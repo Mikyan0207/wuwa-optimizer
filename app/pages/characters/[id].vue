@@ -31,9 +31,8 @@ const TabItems = [{
 </script>
 
 <template>
-  <div>
-    <div class="mx-auto mb-4 xl:max-w-[100rem] px-8 text-sm text-gray-300">
-      <UTabs
+  <div class="mx-auto mb-4 xl:max-w-[100rem] px-8 text-sm text-gray-300">
+    <!-- <UTabs
         v-model="SelectedTab"
         :items="TabItems"
         color="neutral"
@@ -45,10 +44,9 @@ const TabItems = [{
         }"
       >
         <template #content>
-          <CharacterScorerTab v-if="SelectedTab === '0'" />
           <CharacterAscensionTab v-if="SelectedTab === '1'" />
         </template>
-      </UTabs>
-    </div>
+      </UTabs> -->
+    <CharacterScorerTab />
   </div>
 </template>

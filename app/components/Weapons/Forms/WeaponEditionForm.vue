@@ -25,8 +25,9 @@ function OnSubmit() {
   SelectedWeapon.value.Rank = SelectedWeaponRank.value
   SelectedWeapon.value.EquipedBy = ActiveStore.ActiveCharacter.Id
 
-  CharactersStore.UpdateWeapon(ActiveStore.ActiveCharacter.Id, SelectedWeaponId.value)
+  WeaponsStore.RemoveEquipedWeapons(ActiveStore.ActiveCharacter.Id)
   WeaponsStore.UpdateWeapon(unref(SelectedWeapon.value), ActiveStore.ActiveCharacter.Id)
+  CharactersStore.UpdateWeapon(ActiveStore.ActiveCharacter.Id, SelectedWeaponId.value)
 
   OnClose()
 }

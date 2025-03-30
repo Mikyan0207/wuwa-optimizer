@@ -6,6 +6,7 @@ export default {
   'echoes_navigation_title': 'Echoes',
   'imports_navigation_title': 'Importer',
   'exports_navigation_title': 'Export',
+  'rotations_navigation_title': 'Rotations',
 
   'label_level': 'Lv.',
   'label_level_full': 'Level',
@@ -62,7 +63,10 @@ export default {
   '1102_name': 'Sanhua',
   '1103_name': 'Baizhi',
   '1104_name': 'Lingyang',
+
   '1105_name': 'Zhezhi',
+  '1105_resonance_liberation': 'Living Canvas',
+
   '1106_name': 'Youhu',
 
   // 1107 - Carlotta

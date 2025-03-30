@@ -26,6 +26,10 @@ export default defineNuxtConfig({
     '~/components/Importer',
     '~/components/Interface',
     '~/components/Navigation',
+    '~/components/Rotations',
+    '~/components/Rotations/Builder',
+    '~/components/Rotations/Lister',
+    '~/components/Rotations/Cards',
     '~/components/Skills',
     '~/components/Weapons',
     '~/components/Weapons/Forms',
@@ -98,6 +102,9 @@ export default defineNuxtConfig({
   },
 
   fonts: {
+    families: [
+      { name: 'Noto Sans', provider: 'google' },
+    ],
     defaults: {
       weights: [400],
       styles: ['normal', 'italic'],

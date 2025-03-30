@@ -33,6 +33,15 @@ const Section_02_Items = ref([
 
 const Section_03_Items = ref([
   {
+    label: 'rotations',
+    icon: 'i-carbon:rotate',
+    type: 'link',
+    to: '/rotations',
+  },
+] as NavigationMenuItem[])
+
+const Section_04_Items = ref([
+  {
     label: 'imports',
     icon: 'i-carbon:upload',
     type: 'link',
@@ -69,7 +78,13 @@ const Section_03_Items = ref([
       }"
     />
     <UNavigationMenu
-      :items="Section_03_Items"
+      :items="Section_03_Items" orientation="vertical" :highlight="true" highlight-color="primary" :ui="{
+        link: 'inline-block mx-auto w-full inset-x-2 w-min',
+        linkLabel: 'hidden w-0',
+      }"
+    />
+    <UNavigationMenu
+      :items="Section_04_Items"
       orientation="vertical"
       :highlight="true"
       highlight-color="primary" :ui="{

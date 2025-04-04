@@ -1,5 +1,3 @@
-# wuwa-optimizer
-
 <div id="top"></div>
 <div align="center">
  <h1>WuWa Optimizer</h1>

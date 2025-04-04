@@ -54,8 +54,9 @@ async function TakeScreenShotAsync() {
     height: h,
     width: w,
     style: {
-      zoom: `${scale}`,
+      scale: `${scale}`,
     },
+    quality: 1,
   }).then((blob) => {
     if (blob === null) {
       ShowScreenShotBackground.value = false

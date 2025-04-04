@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { SelectMenuItem } from '@nuxt/ui'
 import type Echo from '~/Core/Interfaces/Echo'
 import type Sonata from '~/Core/Interfaces/Sonata'
 import { z } from 'zod'
@@ -68,17 +69,17 @@ const LevelOptions = Array.from({ length: 25 }).fill(0).map((_, idx) => {
 
 const RarityOptions = [{
   label: '5✧',
-  type: Rarity.FIVE_STARS,
+  type: Rarity.FIVE_STARS.toString(),
 }, {
   label: '4✧',
-  type: Rarity.FOUR_STARS,
+  type: Rarity.FOUR_STARS.toString(),
 }, {
   label: '3✧',
-  type: Rarity.THREE_STARS,
+  type: Rarity.THREE_STARS.toString(),
 }, {
   label: '2✧',
-  type: Rarity.TWO_STARS,
-}]
+  type: Rarity.TWO_STARS.toString(),
+}] as SelectMenuItem[]
 
 const MainStatisticsOptions = computed(() => Object.entries(STAT_NAMES)
   .filter(([key, _]) => key !== StatType.NONE)
@@ -228,7 +229,6 @@ if (DisplayedEcho.value !== undefined && DisplayedEcho.value.Id !== -1) {
                     arrow
                     :search-input="false"
                     value-key="type"
-                    label-key="label"
                     class="my-2 w-full"
                   />
                 </UFormField>

@@ -3,7 +3,7 @@ import type Echo from '~/Core/Interfaces/Echo'
 import { StatType } from '~/Core/Enums/StatType'
 import { STAT_ICONS } from '~/Core/Statistics'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
-import { GetEchoCostText, GetEchoIcon } from '~/Core/Utils/EchoUtils'
+import { GetEchoCostText, GetEchoIcon, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
 const props = defineProps<{
   echo: Echo
@@ -65,7 +65,11 @@ function IsPercentageStat(statType: StatType) {
           />
         </div>
         <!-- Name -->
-        <div class="w-full flex items-center justify-between">
+        <div class="w-full flex items-center gap-1">
+          <NuxtImg
+            width="50" height="50" :src="GetSonataIcon(echo.Sonata.find(x => x.IsSelected === true)!)" style="color: transparent;"
+            class="w-4 h-4 object-cover"
+          />
           <div :title="t(`${echo.Id}_name`)" class="text-truncate">
             {{ t(`${echo.Id}_name`) }}
           </div>
@@ -87,7 +91,11 @@ function IsPercentageStat(statType: StatType) {
           <div
             v-for="(stat, idx) in [echo.MainStatistic, ...echo.Statistics]"
             :key="`${echo.Id}-${stat?.Type}-${idx}`"
-            class="relative flex items-center justify-between gap-1 bg-neutral-800 rounded-sm px-1 py-0.5"
+            class="relative flex items-center justify-between gap-1 rounded-sm px-1 py-0.5"
+            :class="{
+              'bg-primary-600/50': idx === 0,
+              'bg-neutral-800': idx !== 0,
+            }"
           >
             <div v-if="stat" class="flex items-center gap-2 text-gray-300">
               <NuxtImg :src="`/images/icons/${STAT_ICONS[stat.Type]}`" class="w-4 min-w-4 h-4" />

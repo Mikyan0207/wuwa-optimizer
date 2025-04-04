@@ -10,11 +10,6 @@ export const useActiveCharacterStore = defineStore('ActiveCharacterStore', () =>
   const CharactersStore = useCharactersStore()
   const EchoesStore = useEchoesStore()
   const WeaponsStore = useWeaponsStore()
-  const CharactersEventBus = useEventBus('CharactersEvents')
-
-  CharactersEventBus.on(() => {
-    ActiveWeapon.value = WeaponsStore.GetWeaponByEquipedId(ActiveCharacter.value?.Id)
-  })
 
   function Set(characterId: number | undefined) {
     if (characterId === undefined) {
@@ -35,6 +30,27 @@ export const useActiveCharacterStore = defineStore('ActiveCharacterStore', () =>
     return ActiveEchoes.value.find(x => x.EquipedSlot === echoSlot)
   }
 
+  function SetWeapon(weapon: Weapon) {
+    if (ActiveCharacter.value === undefined) {
+      return
+    }
+
+    WeaponsStore.RemoveEquipedWeapons(ActiveCharacter.value.Id)
+    CharactersStore.UpdateWeapon(ActiveCharacter.value.Id, weapon.Id)
+    WeaponsStore.UpdateWeapon(weapon, ActiveCharacter.value.Id)
+
+    ActiveWeapon.value = weapon
+  }
+
+  function SetEcho(echo: Echo, echoSlot: number) {
+    if (ActiveCharacter.value === undefined) {
+      return
+    }
+
+    EchoesStore.AddEcho(echo)
+    CharactersStore.UpdateEcho(ActiveCharacter.value.Id, echo.Id, echoSlot)
+  }
+
   function Reset() {
     ActiveCharacter.value = undefined
     ActiveEchoes.value = []
@@ -47,6 +63,8 @@ export const useActiveCharacterStore = defineStore('ActiveCharacterStore', () =>
     ActiveWeapon,
     Set,
     GetEchoBySlot,
+    SetWeapon,
+    SetEcho,
     Reset,
   }
 })

@@ -2,6 +2,7 @@
 import type Character from '~/Core/Interfaces/Character'
 import type IStatistic from '~/Core/Interfaces/Statistic'
 import { UBadge } from '#components'
+import { useStatsCalculator } from '~/composables/UseStatsCalculator'
 import { GetSequenceLevel } from '~/Core/Utils/CharacterUtils'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
@@ -12,7 +13,7 @@ const props = defineProps<{
 
 const { t } = useI18n()
 
-const StatsCalculator = useStatsCalculatorStore()
+const StatsCalculator = useStatsCalculator()
 const CharacterStats = computed<IStatistic[]>(() => StatsCalculator.CalculateTotalStats(props.character.Id, props.character.EquipedWeapon || -1, props.character.EquipedEchoes))
 
 const GetCharacterScoreNoteColor = computed(() => {

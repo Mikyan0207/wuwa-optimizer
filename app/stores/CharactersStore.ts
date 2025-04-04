@@ -7,7 +7,6 @@ import { TemplateCharacters } from '~/Core/Characters'
 export const useCharactersStore = defineStore('CharactersStore', () => {
   const Characters = useLocalStorage<Character[]>('Characters', [])
   const WeaponsStore = useWeaponsStore()
-  const CharactersEventBus = useEventBus('CharactersEvents')
 
   function AddCharacter(character: Character) {
     const idx = Characters.value.findIndex(x => x.Id === character.Id)
@@ -25,7 +24,6 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     }
 
     Characters.value[idx] = character
-    CharactersEventBus.emit()
   }
 
   function RemoveCharacter(id: number) {

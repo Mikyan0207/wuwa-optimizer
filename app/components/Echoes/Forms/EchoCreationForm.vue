@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { SelectMenuItem } from '@nuxt/ui'
 import type Echo from '~/Core/Interfaces/Echo'
 import type Sonata from '~/Core/Interfaces/Sonata'
 import { z } from 'zod'
@@ -22,8 +23,7 @@ const emits = defineEmits({
 const { t } = useI18n()
 const IsOpen = ref()
 const EchoesStore = useEchoesStore()
-const CharactersStore = useCharactersStore()
-const { ActiveCharacter } = useActiveCharacterStore()
+const ActiveStore = useActiveCharacterStore()
 
 const SelectedSonataEffect = ref<Sonata | undefined>(undefined)
 const SearchValue = ref<string>('')
@@ -125,14 +125,12 @@ function OnSubmit() {
       Type: s.Type as StatType,
       Value: Number.parseFloat(s.Value),
     })),
-    EquipedBy: ActiveCharacter!.Id,
+    EquipedBy: ActiveStore.ActiveCharacter!.Id,
     EquipedSlot: props.echoSlot,
   })
 
   e.Sonata.find(x => x.Name === State.Sonata!.Name)!.IsSelected = true
-
-  EchoesStore.AddEcho(e)
-  CharactersStore.UpdateEcho(ActiveCharacter!.Id, e.Id, props.echoSlot)
+  ActiveStore.SetEcho(e, props.echoSlot)
 
   return OnClose()
 }
@@ -151,17 +149,17 @@ const LevelOptions = Array.from({ length: 25 }).fill(0).map((_, idx) => {
 
 const RarityOptions = [{
   label: '5✧',
-  type: Rarity.FIVE_STARS,
+  type: Rarity.FIVE_STARS.toString(),
 }, {
   label: '4✧',
-  type: Rarity.FOUR_STARS,
+  type: Rarity.FOUR_STARS.toString(),
 }, {
   label: '3✧',
-  type: Rarity.THREE_STARS,
+  type: Rarity.THREE_STARS.toString(),
 }, {
   label: '2✧',
-  type: Rarity.TWO_STARS,
-}]
+  type: Rarity.TWO_STARS.toString(),
+}] as SelectMenuItem[]
 
 const MainStatisticsOptions = computed(() => Object.entries(STAT_NAMES)
   .filter(([key, _]) => key !== StatType.NONE)
@@ -340,7 +338,7 @@ const StepperItems = [
                       <USeparator label="Rarity" />
                       <USelectMenu
                         v-model="State.Rarity" :items="RarityOptions" arrow :search-input="false"
-                        value-key="type" label-key="label" class="my-2 w-full" :disabled="IsEchoSelected"
+                        value-key="type" class="my-2 w-full" :disabled="IsEchoSelected"
                       />
                     </UFormField>
                   </div>
@@ -401,7 +399,7 @@ const StepperItems = [
             color="neutral" variant="outline" label="Previous" :disabled="!Stepper?.hasPrev"
             @click.prevent="Stepper?.prev()"
           />
-          <UButton color="primary" variant="subtle" label="Submit" type="submit" />
+          <UButton color="primary" variant="subtle" label="Submit" type="submit" @click.prevent="OnSubmit" />
         </UButtonGroup>
       </div>
     </template>

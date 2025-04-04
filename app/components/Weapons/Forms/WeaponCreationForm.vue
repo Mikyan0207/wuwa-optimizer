@@ -5,7 +5,6 @@ import { GetWeaponIcon } from '~/Core/Utils/WeaponUtils'
 const emits = defineEmits(['close'])
 
 const { t } = useI18n()
-const CharactersStore = useCharactersStore()
 const ActiveStore = useActiveCharacterStore()
 const WeaponsStore = useWeaponsStore()
 
@@ -25,8 +24,7 @@ function OnSubmit() {
   SelectedWeapon.value.Rank = SelectedWeaponRank.value
   SelectedWeapon.value.EquipedBy = ActiveStore.ActiveCharacter.Id
 
-  CharactersStore.UpdateWeapon(ActiveStore.ActiveCharacter.Id, SelectedWeaponId.value)
-  WeaponsStore.UpdateWeapon(unref(SelectedWeapon.value), ActiveStore.ActiveCharacter.Id)
+  ActiveStore.SetWeapon(unref(SelectedWeapon.value))
 
   OnClose()
 }

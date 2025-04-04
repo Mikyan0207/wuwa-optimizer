@@ -223,8 +223,13 @@ if (DisplayedEcho.value !== undefined && DisplayedEcho.value.Id !== -1) {
                 <UFormField name="Rarity" class="w-full">
                   <USeparator label="Rarity" />
                   <USelectMenu
-                    v-model="State.Rarity" :items="RarityOptions" arrow :search-input="false"
-                    value-key="type" label-key="label" class="my-2 w-full"
+                    v-model="State.Rarity"
+                    :items="RarityOptions"
+                    arrow
+                    :search-input="false"
+                    value-key="type"
+                    label-key="label"
+                    class="my-2 w-full"
                   />
                 </UFormField>
               </div>

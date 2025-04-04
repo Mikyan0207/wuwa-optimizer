@@ -47,6 +47,7 @@ export const useActiveCharacterStore = defineStore('ActiveCharacterStore', () =>
       return
     }
 
+    EchoesStore.RemoveEcho(echo.Id, ActiveCharacter.value.Id)
     EchoesStore.AddEcho(echo)
     CharactersStore.UpdateEcho(ActiveCharacter.value.Id, echo.Id, echoSlot)
   }

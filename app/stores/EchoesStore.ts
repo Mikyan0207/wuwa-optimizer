@@ -74,6 +74,10 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     UpdateEcho(e)
   }
 
+  function RemoveEcho(echoId: number, characterId: number) {
+    Echoes.value = Echoes.value.filter(e => !(e.Id === echoId && e.EquipedBy === characterId))
+  }
+
   return {
     Echoes,
     GetEchoesByIds,
@@ -84,5 +88,6 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     GetCostById,
     AddEcho,
     RemoveCharacter,
+    RemoveEcho,
   }
 })

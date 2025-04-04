@@ -17,6 +17,7 @@ const emits = defineEmits(['close'])
 
 const { t } = useI18n()
 const ActiveCharacterStore = useActiveCharacterStore()
+const EchoesStore = useEchoesStore()
 
 const EditEchoSchema = z.object({
   EchoId: z.number().nonnegative({
@@ -135,7 +136,31 @@ function GetSubStatsValues(type: string) {
 }
 
 function OnSubmit() {
+  const e = unref(EchoesStore.GetEchoById(State.EchoId!))
 
+  if (!e) {
+    return OnClose()
+  }
+
+  Object.assign(e, {
+    Rarity: State.Rarity,
+    Level: State.Level,
+    MainStatistic: {
+      Type: State.MainStat!.Type as StatType,
+      Value: Number.parseFloat(State.MainStat!.Value),
+    },
+    Statistics: State.SubStats!.map(s => ({
+      Type: s.Type as StatType,
+      Value: Number.parseFloat(s.Value),
+    })),
+    EquipedBy: ActiveCharacterStore.ActiveCharacter!.Id,
+    EquipedSlot: props.echoSlot,
+  })
+
+  e.Sonata.find(x => x.Name === State.Sonata!.Name)!.IsSelected = true
+  ActiveCharacterStore.SetEcho(e, props.echoSlot)
+
+  return OnClose()
 }
 
 function OnClose() {
@@ -146,22 +171,24 @@ function OnClose() {
 const DisplayedEcho = computed<Echo | undefined>(() => ActiveCharacterStore.GetEchoBySlot(props.echoSlot))
 const DisplayedSelectedSonata = computed<Sonata | undefined>(() => DisplayedEcho.value?.Sonata.find(x => x.IsSelected === true))
 
-if (DisplayedEcho.value !== undefined && DisplayedEcho.value.Id !== -1) {
-  State.EchoId = DisplayedEcho.value.Id
-  State.MainStat!.Type = DisplayedEcho.value.MainStatistic!.Type
-  State.MainStat!.Value = DisplayedEcho.value.MainStatistic!.Value.toFixed(1)
-  State.Sonata!.Name = DisplayedEcho.value.Sonata.find(x => x.IsSelected)?.Name || ''
-  State.Level = DisplayedEcho.value.Level
-  State.Rarity = DisplayedEcho.value.Rarity
-  State.Cost = DisplayedEcho.value.Cost
+onMounted(() => {
+  if (DisplayedEcho.value !== undefined && DisplayedEcho.value.Id !== -1) {
+    State.EchoId = DisplayedEcho.value.Id
+    State.MainStat!.Type = DisplayedEcho.value.MainStatistic!.Type
+    State.MainStat!.Value = DisplayedEcho.value.MainStatistic!.Value.toFixed(1)
+    State.Sonata!.Name = DisplayedEcho.value.Sonata.find(x => x.IsSelected)?.Name || ''
+    State.Level = DisplayedEcho.value.Level
+    State.Rarity = DisplayedEcho.value.Rarity
+    State.Cost = DisplayedEcho.value.Cost
 
-  State.SubStats = DisplayedEcho.value.Statistics.map((s) => {
-    return {
-      Type: s.Type,
-      Value: s.Value.toFixed(1),
-    }
-  }) as [{ Type: StatType, Value: string }, ...{ Type: StatType, Value: string }[]]
-}
+    State.SubStats = DisplayedEcho.value.Statistics.map((s) => {
+      return {
+        Type: s.Type,
+        Value: s.Value.toFixed(1),
+      }
+    }) as [{ Type: StatType, Value: string }, ...{ Type: StatType, Value: string }[]]
+  }
+})
 </script>
 
 <template>

@@ -1,6 +1,6 @@
-import type { CharacterReleaseState } from '../Enums/CharacterReleaseState'
 import type { CharacterType } from '../Enums/CharacterType'
 import type { Rarity } from '../Enums/Rarity'
+import type { ReleaseState } from '../Enums/ReleaseState'
 import type { WeaponType } from '../Enums/WeaponType'
 import type Sequence from './Sequence'
 import type Skill from './Skill'
@@ -11,7 +11,7 @@ export default interface Character {
   Icon: string
   SplashArt: string
   Rarity: Rarity
-  ReleaseState?: CharacterReleaseState
+  ReleaseState?: ReleaseState
   Type: CharacterType
   WeaponType?: WeaponType
   EquipedWeapon?: number

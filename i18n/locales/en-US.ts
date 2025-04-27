@@ -415,6 +415,9 @@ export default {
   '1506_intro_skill': 'Golden Grace',
   '1506_outro_skill': 'Attentive Heart',
 
+  // 1507 - Zani
+  '1507_name': 'Zani',
+
   // 1601 - Taoqi
   '1601_name': 'Taoqi',
   '1601_basic_attack': 'Concealed Edge',

@@ -1,5 +1,6 @@
 import type Weapon from './Interfaces/Weapon'
 import { Rarity } from './Enums/Rarity'
+import { ReleaseState } from './Enums/ReleaseState'
 import { StatType } from './Enums/StatType'
 import { WeaponType } from './Enums/WeaponType'
 
@@ -7,6 +8,7 @@ export const WhispersOfSirens: Weapon = {
   Id: 21050056,
   Name: 'Whispers of Sirens',
   Icon: 'Weapon_Whispers_of_Sirens.webp',
+  ReleaseState: ReleaseState.NEW,
   Level: 90,
   Rarity: Rarity.FIVE_STARS,
   Type: WeaponType.RECTIFIER,

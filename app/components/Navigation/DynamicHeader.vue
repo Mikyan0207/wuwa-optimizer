@@ -51,15 +51,18 @@ const SelectedMenuItem = computed(() => MenuItems.value.find(x => x.id === local
     class="fixed left-16 top-0 right-0 z-30 h-12  flex items-center justify-between gap-2 bg-neutral-900 p-3 text-sm backdrop-blur-md"
   >
     <UBreadcrumb :items="Routes" />
-    <UDropdownMenu
-      :items="MenuItems"
-      arrow
-      :modal="false"
-      :content="{
-        sideOffset: 8,
-      }"
-    >
-      <UButton :icon="`${SelectedMenuItem ? SelectedMenuItem.icon : 'mdi:translate'}`" color="neutral" variant="ghost" size="md" />
-    </UDropdownMenu>
+    <div class="flex items-center">
+      <UButton href="https://github.com/Mikyan0207/wuwa-optimizer/issues" target="_blank" icon="mdi:github" size="xl" variant="link" color="neutral" />
+      <UDropdownMenu
+        :items="MenuItems"
+        arrow
+        :modal="false"
+        :content="{
+          sideOffset: 8,
+        }"
+      >
+        <UButton :icon="`${SelectedMenuItem ? SelectedMenuItem.icon : 'mdi:translate'}`" color="neutral" variant="ghost" size="md" />
+      </UDropdownMenu>
+    </div>
   </div>
 </template>

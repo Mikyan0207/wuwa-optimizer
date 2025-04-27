@@ -1,51 +1,42 @@
 <script setup lang="ts">
-import type Character from '~/Core/Interfaces/Character'
+import type Weapon from '~/Core/Interfaces/Weapon'
 import { UpcomingGameVersion } from '~/Core'
 import { ReleaseState } from '~/Core/Enums/ReleaseState'
-import { GetCharacterIcon, GetCharacterTypeIcon } from '~/Core/Utils/CharacterUtils'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
+import { GetWeaponIcon } from '~/Core/Utils/WeaponUtils'
 
 const props = defineProps<{
-  character: Character
+  weapon: Weapon
 }>()
 
 const { t } = useI18n()
 
-const BackgroundColor = computed(() => GetBackgroundColor(props.character.Rarity))
-const SecondaryColor = computed(() => GetSecondaryColor(props.character.Rarity))
-const HighlightColor = computed(() => GetHighlightColor(props.character.Rarity))
+const BackgroundColor = computed(() => GetBackgroundColor(props.weapon.Rarity))
+const SecondaryColor = computed(() => GetSecondaryColor(props.weapon.Rarity))
+const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
 </script>
 
 <template>
   <UCard
-    class="group relative cursor-pointer transition-all duration-100"
-    :ui="{
+    class="group relative cursor-pointer transition-all duration-100" :ui="{
       root: 'rounded-none rounded-br-xl border-0',
       body: 'p-0 sm:p-0',
     }"
   >
     <BorderLines :count="1" />
     <div class="relative min-h-32 w-32 flex items-center justify-center overflow-clip">
-      <div v-if="character.ReleaseState === ReleaseState.NEW" class="absolute left-1  top-0 z-2">
+      <div v-if="weapon.ReleaseState === ReleaseState.NEW" class="absolute left-1  top-0 z-2">
         <UBadge color="error" variant="solid" size="sm" class="text-neutral-200">
           NEW
         </UBadge>
       </div>
-      <div v-if="character.ReleaseState === ReleaseState.UPCOMING" class="absolute left-1 top-0 z-2">
-        <UBadge variant="solid" size="sm" class="px-2.5 text-neutral-200 bg-yellow-600">
+      <div v-if="weapon.ReleaseState === ReleaseState.UPCOMING" class="absolute left-1 top-0 z-2">
+        <UBadge color="info" variant="solid" size="sm" class="px-2.5 text-neutral-200">
           {{ UpcomingGameVersion }}
         </UBadge>
       </div>
-      <div class="absolute right-0 top-0 z-2">
-        <NuxtImg width="32" height="32" :src="GetCharacterTypeIcon(character)" style="color: transparent;" />
-      </div>
       <div class="absolute bottom-0">
-        <NuxtImg
-          width="160"
-          height="160"
-          :src="`${GetCharacterIcon(character)}`"
-          style="color: transparent;"
-        />
+        <NuxtImg width="160" height="160" :src="`${GetWeaponIcon(weapon)}`" style="color: transparent;" />
       </div>
       <div class="absolute bottom-0 w-full">
         <div class="relative w-full flex items-center">
@@ -64,7 +55,7 @@ const HighlightColor = computed(() => GetHighlightColor(props.character.Rarity))
       </div>
     </div>
     <div class="py-1 text-center text-xs">
-      {{ t(`${character.Id}_name`) }}
+      {{ t(`${weapon.Id}_name`) }}
     </div>
   </UCard>
 </template>

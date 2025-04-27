@@ -9,6 +9,8 @@
 </div>
 <br><br>
 
+![wuwa_optimizer_showcase_00](/.github/images/wuwa-optimizer-showcase-00.png)
+
 ## Characters and Echoes Scorer
 
 ![wuwa_optimizer_showcase_01](/.github/images/wuwa-optimizer-showcase-01.png)

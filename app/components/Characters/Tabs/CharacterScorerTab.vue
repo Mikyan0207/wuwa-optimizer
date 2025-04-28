@@ -18,25 +18,13 @@ if (ActiveCharacter === undefined || ActiveCharacter === null) {
 }
 
 function GetEchoes(): Echo[] {
-  const echoes: Echo[] = [
-    Empty_Echo,
-    Empty_Echo,
-    Empty_Echo,
-    Empty_Echo,
-    Empty_Echo,
-  ]
-
   if (ActiveCharacter === undefined || ActiveCharacter.EquipedEchoes.length === 0) {
-    return echoes
+    return []
   }
 
-  EchoesStore
+  return EchoesStore
     .GetEchoesByIds(ActiveCharacter.EquipedEchoes, ActiveCharacter.Id)
-    .forEach((echo, index) => {
-      echoes[echo.EquipedSlot || index] = echo
-    })
-
-  return echoes
+    .sort((a, b) => (a.EquipedSlot || 0) - (b.EquipedSlot || 0))
 }
 
 async function TakeScreenShotAsync() {

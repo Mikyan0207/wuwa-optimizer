@@ -22,7 +22,7 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
 </script>
 
 <template>
-  <div class="grid grid-cols-6 mx-auto gap-2 mb-12 px-8 x:px-0 xl:max-w-6xl">
+  <div class="grid grid-cols-6 mx-auto gap-2 mb-12 px-8 x:px-0 xl:container">
     <UCard
       v-motion-pop
       :delay="50"

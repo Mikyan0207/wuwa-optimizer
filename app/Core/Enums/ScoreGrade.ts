@@ -6,13 +6,8 @@ export enum ScoreGrade {
   SS = 'SS',
   S_PLUS = 'S+',
   S = 'S',
-  A_PLUS = 'A+',
   A = 'A',
-  B_PLUS = 'B+',
   B = 'B',
-  C_PLUS = 'C+',
   C = 'C',
-  D_PLUS = 'D+',
-  D = 'D',
   F = 'F',
 }

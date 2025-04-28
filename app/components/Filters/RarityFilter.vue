@@ -8,8 +8,6 @@ const emits = defineEmits<{
 
 const RarityOptions: Rarity[] = [
   Rarity.ALL,
-  Rarity.ONE_STAR,
-  Rarity.TWO_STARS,
   Rarity.THREE_STARS,
   Rarity.FOUR_STARS,
   Rarity.FIVE_STARS,

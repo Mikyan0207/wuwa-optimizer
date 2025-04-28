@@ -2,7 +2,8 @@
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
 const { t } = useI18n()
-const { ActiveWeapon } = useActiveCharacterStore()
+const ActiveStore = useActiveCharacterStore()
+const ActiveWeapon = computed(() => ActiveStore.ActiveWeapon)
 </script>
 
 <template>

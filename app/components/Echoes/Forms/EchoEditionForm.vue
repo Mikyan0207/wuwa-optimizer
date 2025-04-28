@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { SelectMenuItem } from '@nuxt/ui'
 import type Echo from '~/Core/Interfaces/Echo'
 import type Sonata from '~/Core/Interfaces/Sonata'
 import { z } from 'zod'
@@ -16,6 +17,7 @@ const emits = defineEmits(['close'])
 
 const { t } = useI18n()
 const ActiveCharacterStore = useActiveCharacterStore()
+const EchoesStore = useEchoesStore()
 
 const EditEchoSchema = z.object({
   EchoId: z.number().nonnegative({
@@ -68,17 +70,17 @@ const LevelOptions = Array.from({ length: 25 }).fill(0).map((_, idx) => {
 
 const RarityOptions = [{
   label: '5✧',
-  type: Rarity.FIVE_STARS,
+  type: Rarity.FIVE_STARS.toString(),
 }, {
   label: '4✧',
-  type: Rarity.FOUR_STARS,
+  type: Rarity.FOUR_STARS.toString(),
 }, {
   label: '3✧',
-  type: Rarity.THREE_STARS,
+  type: Rarity.THREE_STARS.toString(),
 }, {
   label: '2✧',
-  type: Rarity.TWO_STARS,
-}]
+  type: Rarity.TWO_STARS.toString(),
+}] as SelectMenuItem[]
 
 const MainStatisticsOptions = computed(() => Object.entries(STAT_NAMES)
   .filter(([key, _]) => key !== StatType.NONE)
@@ -134,7 +136,31 @@ function GetSubStatsValues(type: string) {
 }
 
 function OnSubmit() {
+  const e = unref(EchoesStore.GetEchoById(State.EchoId!))
 
+  if (!e) {
+    return OnClose()
+  }
+
+  Object.assign(e, {
+    Rarity: State.Rarity,
+    Level: State.Level,
+    MainStatistic: {
+      Type: State.MainStat!.Type as StatType,
+      Value: Number.parseFloat(State.MainStat!.Value),
+    },
+    Statistics: State.SubStats!.map(s => ({
+      Type: s.Type as StatType,
+      Value: Number.parseFloat(s.Value),
+    })),
+    EquipedBy: ActiveCharacterStore.ActiveCharacter!.Id,
+    EquipedSlot: props.echoSlot,
+  })
+
+  e.Sonata.find(x => x.Name === State.Sonata!.Name)!.IsSelected = true
+  ActiveCharacterStore.SetEcho(e, props.echoSlot)
+
+  return OnClose()
 }
 
 function OnClose() {
@@ -145,22 +171,24 @@ function OnClose() {
 const DisplayedEcho = computed<Echo | undefined>(() => ActiveCharacterStore.GetEchoBySlot(props.echoSlot))
 const DisplayedSelectedSonata = computed<Sonata | undefined>(() => DisplayedEcho.value?.Sonata.find(x => x.IsSelected === true))
 
-if (DisplayedEcho.value !== undefined && DisplayedEcho.value.Id !== -1) {
-  State.EchoId = DisplayedEcho.value.Id
-  State.MainStat!.Type = DisplayedEcho.value.MainStatistic!.Type
-  State.MainStat!.Value = DisplayedEcho.value.MainStatistic!.Value.toFixed(1)
-  State.Sonata!.Name = DisplayedEcho.value.Sonata.find(x => x.IsSelected)?.Name || ''
-  State.Level = DisplayedEcho.value.Level
-  State.Rarity = DisplayedEcho.value.Rarity
-  State.Cost = DisplayedEcho.value.Cost
+onMounted(() => {
+  if (DisplayedEcho.value !== undefined && DisplayedEcho.value.Id !== -1) {
+    State.EchoId = DisplayedEcho.value.Id
+    State.MainStat!.Type = DisplayedEcho.value.MainStatistic!.Type
+    State.MainStat!.Value = DisplayedEcho.value.MainStatistic!.Value.toFixed(1)
+    State.Sonata!.Name = DisplayedEcho.value.Sonata.find(x => x.IsSelected)?.Name || ''
+    State.Level = DisplayedEcho.value.Level
+    State.Rarity = DisplayedEcho.value.Rarity
+    State.Cost = DisplayedEcho.value.Cost
 
-  State.SubStats = DisplayedEcho.value.Statistics.map((s) => {
-    return {
-      Type: s.Type,
-      Value: s.Value.toFixed(1),
-    }
-  }) as [{ Type: StatType, Value: string }, ...{ Type: StatType, Value: string }[]]
-}
+    State.SubStats = DisplayedEcho.value.Statistics.map((s) => {
+      return {
+        Type: s.Type,
+        Value: s.Value.toFixed(1),
+      }
+    }) as [{ Type: StatType, Value: string }, ...{ Type: StatType, Value: string }[]]
+  }
+})
 </script>
 
 <template>
@@ -223,8 +251,12 @@ if (DisplayedEcho.value !== undefined && DisplayedEcho.value.Id !== -1) {
                 <UFormField name="Rarity" class="w-full">
                   <USeparator label="Rarity" />
                   <USelectMenu
-                    v-model="State.Rarity" :items="RarityOptions" arrow :search-input="false"
-                    value-key="type" label-key="label" class="my-2 w-full"
+                    v-model="State.Rarity"
+                    :items="RarityOptions"
+                    arrow
+                    :search-input="false"
+                    value-key="type"
+                    class="my-2 w-full"
                   />
                 </UFormField>
               </div>

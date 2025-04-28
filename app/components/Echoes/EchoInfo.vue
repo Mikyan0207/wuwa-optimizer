@@ -95,17 +95,15 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
     <div class="mx-auto my-2 h-[1px] w-full rounded-full bg-white/14" />
     <!-- Echo Score -->
     <div v-if="score" class="w-full flex flex-row items-end gap-4 font-semibold">
-      <div class="w-full flex items-start justify-between gap-12">
+      <div class="w-full flex items-center justify-between gap-12">
         <div class="flex items-center gap-2">
           <p>Score</p>
         </div>
-        <div v-if="IsValidEcho" class="w-full flex flex-row items-center justify-end gap-3">
-          <p v-if="score">
-            {{ (score.Score * 100).toFixed(1) }}
+        <div v-if="IsValidEcho && score" class="w-full flex flex-row items-center justify-end">
+          <p class="mr-2">
+            {{ (score.Score).toFixed(1) }}
           </p>
-          <p v-if="score">
-            (<EchoScore :value="score.NoteScore" :text="score.Note" />)
-          </p>
+          (<EchoScore :value="score.Score" :text="score.Grade" />)
         </div>
         <div v-else class="mt-1 w-full flex flex-row items-center justify-end">
           <USkeleton class="h-2 w-8" />

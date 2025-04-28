@@ -56,7 +56,6 @@ const TabItems = [
 ]
 </script>
 
-<!-- Wait... We should actually display owned weapons with equiped by info...(?) -->
 <template>
   <div class="mx-auto xl:max-w-7xl px-8 xl:px-0 space-y-8">
     <UTabs
@@ -80,10 +79,10 @@ const TabItems = [
               <RarityFilter @selected="(r: Rarity) => SelectedWeaponRarity = r" />
             </div>
           </div>
-          <div v-if="SelectedTab === '0'" class="mx-auto w-full grid grid-cols-3 justify-center gap-2 mb-8">
+          <div v-if="SelectedTab === '0'" class="mx-auto w-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-2 mb-8 md:max-w-xl lg:max-w-full">
             <EquipedWeaponIcon v-for="w in WeaponsList" :key="w.Id" :weapon="w" :character-id="w.EquipedBy" />
           </div>
-          <div v-if="SelectedTab === '1'" class="mx-auto w-full flex flex-wrap items-start justify-center gap-2 mb-8">
+          <div v-if="SelectedTab === '1'" class="mx-auto w-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-2 mb-8">
             <WeaponIcon v-for="w in WeaponsList" :key="w.Id" :weapon="w" />
           </div>
         </div>

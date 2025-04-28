@@ -43,7 +43,7 @@ const MenuItems = [
     icon: 'lucide:x',
     color: 'error' as const,
     onSelect() {
-      SelectedIndex.value = 2
+      SelectedIndex.value = 3
       IsOpen.value = true
     },
     disabled: CurrentEcho.value === undefined,
@@ -93,6 +93,11 @@ function OnClose() {
       />
       <EchoCreationForm
         v-else-if="SelectedIndex === 2"
+        :echo-slot="echoSlot"
+        @close="OnClose()"
+      />
+      <EchoUnequipForm
+        v-else-if="SelectedIndex === 3"
         :echo-slot="echoSlot"
         @close="OnClose()"
       />

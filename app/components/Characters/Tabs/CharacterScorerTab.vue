@@ -1,32 +1,21 @@
 <script setup lang="ts">
 import type Echo from '~/Core/Interfaces/Echo'
 import { domToBlob } from 'modern-screenshot'
+import { useScoreCalculator } from '~/composables/UseScoreCalculator'
 import { Empty_Echo } from '~/Core/Echoes'
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
 const EchoesStore = useEchoesStore()
-const ScoreCalculator = useScoreCalculatorStore()
-const CharactersEventBus = useEventBus('CharactersEvents')
+const ScoreCalculator = useScoreCalculator()
 
 const { ActiveCharacter } = useActiveCharacterStore()
-const CharacterScore = ref<ICharacterRatingResult>()
+const CharacterScore = computed<ICharacterRatingResult>(() => ScoreCalculator.GetCharacterScore(ActiveCharacter, ActiveCharacter?.EquipedEchoes || []))
 const ShowScreenShotBackground = ref<boolean>(false)
 
 if (ActiveCharacter === undefined || ActiveCharacter === null) {
   await navigateTo('/characters')
 }
-else {
-  CharacterScore.value = ScoreCalculator.GetCharacterScore(ActiveCharacter, ActiveCharacter.EquipedEchoes || [])
-}
-
-CharactersEventBus.on(() => {
-  if (ActiveCharacter === undefined) {
-    return
-  }
-
-  CharacterScore.value = ScoreCalculator.GetCharacterScore(ActiveCharacter, ActiveCharacter.EquipedEchoes || [])
-})
 
 function GetEchoes(): Echo[] {
   const echoes: Echo[] = [
@@ -65,8 +54,9 @@ async function TakeScreenShotAsync() {
     height: h,
     width: w,
     style: {
-      zoom: `${scale}`,
+      scale: `${scale}`,
     },
+    quality: 1,
   }).then((blob) => {
     if (blob === null) {
       ShowScreenShotBackground.value = false

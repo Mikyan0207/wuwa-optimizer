@@ -1,12 +1,12 @@
 <script setup lang="ts">
-
+const Step = ref<number>(0)
 </script>
 
 <template>
   <div class="mx-auto my-8 max-w-xl text-gray-300">
     <div class="flex flex-col gap-2">
       <!-- Step 1 -->
-      <div class="w-full flex gap-2">
+      <div v-if="Step >= 0" class="w-full flex gap-2">
         <div class="flex flex-col gap-2">
           <UBadge color="neutral" variant="solid" class="rounded-full">
             1
@@ -16,7 +16,7 @@
         <div class="mt-0.5 w-full">
           <p>Select an archive.</p>
           <div class="my-8 space-y-2 text-gray-400">
-            <UInput type="file" accept=".json" />
+            <UInput type="file" accept=".json" @update:model-value="Step = 1" />
             <p class="text-sm">
               Please select a valid JSON file created from the export tab of the site.
             </p>
@@ -25,7 +25,7 @@
       </div>
 
       <!-- Step 2 -->
-      <div class="w-full flex gap-2">
+      <div v-if="Step >= 1" class="w-full flex gap-2">
         <div class="flex flex-col gap-2">
           <UBadge color="neutral" variant="solid" class="rounded-full">
             2
@@ -55,7 +55,7 @@
       </div>
 
       <!-- Step 3 -->
-      <div class="w-full flex gap-2">
+      <div v-if="Step >= 2" class="w-full flex gap-2">
         <div class="flex flex-col gap-2">
           <UBadge color="neutral" variant="solid" class="rounded-full">
             3
@@ -78,7 +78,7 @@
       </div>
 
       <!-- Step 4 -->
-      <div class="w-full flex gap-2">
+      <div v-if="Step >= 3" class="w-full flex gap-2">
         <div class="flex flex-col gap-2">
           <UBadge color="neutral" variant="solid" class="rounded-full">
             4

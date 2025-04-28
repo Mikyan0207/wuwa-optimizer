@@ -29,7 +29,7 @@ const TabItems = [{
         :items="TabItems"
         color="neutral"
         class="max-w-7xl xl:max-w-[100rem] mx-auto"
-        :default-value="0"
+        default-value="0"
         :ui="{
           list: 'rounded-none border-neutral-600',
           indicator: 'rounded-none bg-neutral-300',
@@ -144,6 +144,8 @@ const TabItems = [{
                 </div>
               </div>
             </div>
+          </div>
+          <div v-if="SelectedTab === '1'">
             <div class="mx-auto my-8 max-w-xl text-sm text-gray-300">
               <div class="flex flex-col gap-2">
                 <!-- Step 1 -->

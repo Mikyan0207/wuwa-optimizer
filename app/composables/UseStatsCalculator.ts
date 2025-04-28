@@ -1,14 +1,14 @@
 import type Echo from '~/Core/Interfaces/Echo'
-import type { ISkill } from '~/Core/Interfaces/Skill'
-import type IStatistic from '~/Core/Interfaces/Statistic'
+import type Skill from '~/Core/Interfaces/Skill'
+import type Statistic from '~/Core/Interfaces/Statistic'
 import { StatType } from '~/Core/Enums/StatType'
 
-export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () => {
+export function useStatsCalculator() {
   const CharactersStore = useCharactersStore()
   const EchoesStore = useEchoesStore()
   const WeaponsStore = useWeaponsStore()
 
-  function CalculateTotalStats(characterId: number, weaponId: number, echoesIds: number[]): IStatistic[] {
+  function CalculateTotalStats(characterId: number, weaponId: number, echoesIds: number[]): Statistic[] {
     const character = CharactersStore.GetCharacter(characterId)
     const echoesStats = CalculateEchoesStats(echoesIds, characterId)
     const weaponStats = CalculateWeaponStats(weaponId)
@@ -19,9 +19,9 @@ export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () =>
 
     // Do we really need to do that...?
     const skillsStats = CalculateSkillsStats(JSON.parse(JSON.stringify(character.Skills)) || [])
-    const totalStats: IStatistic[] = JSON.parse(JSON.stringify(character.Stats))
+    const totalStats: Statistic[] = JSON.parse(JSON.stringify(character.Stats))
 
-    const addToTotalStats = (stat: IStatistic) => {
+    const addToTotalStats = (stat: Statistic) => {
       switch (stat.Type) {
         case StatType.ATTACK_PERCENTAGE: {
           const atkStat = totalStats.find(x => x.Type === StatType.ATTACK)!
@@ -56,10 +56,10 @@ export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () =>
     return totalStats
   }
 
-  function CalculateSkillsStats(skills: ISkill[]) {
-    const stats: IStatistic[] = []
+  function CalculateSkillsStats(skills: Skill[]) {
+    const stats: Statistic[] = []
 
-    skills.forEach((skill: ISkill) => {
+    skills.forEach((skill: Skill) => {
       if (skill.Unlocked && skill.Stat) {
         const existingStat = stats.find(s => s.Type === skill.Stat!.Type)
         if (existingStat) {
@@ -74,10 +74,10 @@ export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () =>
     return stats
   }
 
-  function CalculateEchoesStats(echoesIds: number[], characterId: number): IStatistic[] {
+  function CalculateEchoesStats(echoesIds: number[], characterId: number): Statistic[] {
     // Do we really need to do that...?
     const echoes = JSON.parse(JSON.stringify(EchoesStore.GetEchoesByIds(echoesIds, characterId)))
-    const stats: IStatistic[] = []
+    const stats: Statistic[] = []
 
     echoes.forEach((echo: Echo) => {
       if (echo.MainStatistic) {
@@ -103,9 +103,9 @@ export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () =>
     return stats
   }
 
-  function CalculateWeaponStats(weaponId: number): IStatistic[] {
+  function CalculateWeaponStats(weaponId: number): Statistic[] {
     const weapon = WeaponsStore.GetWeapon(weaponId)
-    const stats: IStatistic[] = []
+    const stats: Statistic[] = []
 
     if (weapon) {
       if (weapon.MainStatistic) {
@@ -122,4 +122,4 @@ export const useStatsCalculatorStore = defineStore('StatsCalculatorStore', () =>
   return {
     CalculateTotalStats,
   }
-})
+}

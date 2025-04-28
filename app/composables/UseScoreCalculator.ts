@@ -1,0 +1,254 @@
+import type { StatType } from '~/Core/Enums/StatType'
+import type Character from '~/Core/Interfaces/Character'
+import type Echo from '~/Core/Interfaces/Echo'
+import type IStatistic from '~/Core/Interfaces/Statistic'
+import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
+import { SUB_STAT_VALUES } from '~/Core/Statistics'
+
+export interface IEchoRatingResult {
+  Score: number
+  EchoId: number
+  Grade: ScoreGrade
+}
+
+export interface ICharacterRatingResult {
+  Score: number
+  EchoesScores: IEchoRatingResult[]
+  Note: ScoreGrade
+}
+
+export const ECHOES_SCORE_GRADES = [
+  {
+    Grade: ScoreGrade.PERFECT,
+    Score: 80,
+    Color: 'text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500',
+  },
+  {
+    Grade: ScoreGrade.SSS_PLUS,
+    Score: 77.5,
+    Color: 'text-amber-400',
+  },
+  {
+    Grade: ScoreGrade.SSS,
+    Score: 75,
+    Color: 'text-amber-400',
+  },
+  {
+    Grade: ScoreGrade.SS_PLUS,
+    Score: 70,
+    Color: 'text-orange-400',
+  },
+  {
+    Grade: ScoreGrade.SS,
+    Score: 65,
+    Color: 'text-orange-400',
+  },
+  {
+    Grade: ScoreGrade.S_PLUS,
+    Score: 60,
+    Color: 'text-red-400',
+  },
+  {
+    Grade: ScoreGrade.S,
+    Score: 55,
+    Color: 'text-red-400',
+  },
+  {
+    Grade: ScoreGrade.A,
+    Score: 35,
+    Color: 'text-purple-400',
+  },
+
+  {
+    Grade: ScoreGrade.B,
+    Score: 20,
+    Color: 'text-blue-400',
+  },
+  {
+    Grade: ScoreGrade.C,
+    Score: 12.5,
+    Color: 'text-green-400',
+  },
+  {
+    Grade: ScoreGrade.F,
+    Score: 5.0,
+    Color: 'text-gray-400',
+  },
+]
+
+export const TOTAL_SCORE_GRADES = [
+  {
+    Grade: ScoreGrade.PERFECT,
+    Score: 575,
+    Color: 'text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500',
+  },
+  {
+    Grade: ScoreGrade.SSS_PLUS,
+    Score: 550,
+    Color: 'text-amber-400',
+  },
+  {
+    Grade: ScoreGrade.SSS,
+    Score: 500,
+    Color: 'text-amber-400',
+  },
+  {
+    Grade: ScoreGrade.SS_PLUS,
+    Score: 475,
+    Color: 'text-orange-400',
+  },
+  {
+    Grade: ScoreGrade.SS,
+    Score: 450,
+    Color: 'text-orange-400',
+  },
+  {
+    Grade: ScoreGrade.S_PLUS,
+    Score: 425,
+    Color: 'text-red-400',
+  },
+  {
+    Grade: ScoreGrade.S,
+    Score: 400,
+    Color: 'text-red-400',
+  },
+  {
+    Grade: ScoreGrade.A,
+    Score: 350,
+    Color: 'text-purple-400',
+  },
+  {
+    Grade: ScoreGrade.B,
+    Score: 300,
+    Color: 'text-blue-400',
+  },
+  {
+    Grade: ScoreGrade.C,
+    Score: 200,
+    Color: 'text-green-400',
+  },
+  {
+    Grade: ScoreGrade.F,
+    Score: 50,
+    Color: 'text-gray-400',
+  },
+]
+
+export function useScoreCalculator() {
+  const EchoesStore = useEchoesStore()
+
+  function GetCharacterScore(character: Character | undefined, echoesIds: number[]): ICharacterRatingResult {
+    if (character === undefined) {
+      return {
+        Score: 0,
+        EchoesScores: [],
+        Note: ScoreGrade.F,
+      }
+    }
+
+    const echoes = JSON.parse(JSON.stringify(EchoesStore.GetEchoesByIds(echoesIds, character.Id)))
+    const echoesScores = CalculateEchoesScore(echoes, character.StatsWeights!)
+    let totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0)
+
+    totalScore += CalculateMainStatsScore(echoes)
+
+    return {
+      Score: totalScore,
+      EchoesScores: echoesScores,
+      Note: GetCharacterNote(totalScore),
+    }
+  }
+
+  function CalculateEchoesScore(echoes: Echo[], weights: Record<StatType, number>): IEchoRatingResult[] {
+    return echoes.map(echo => CalculateEchoScore(echo, weights))
+  }
+
+  function CalculateMainStatsScore(echoes: Echo[]) {
+    return echoes.reduce((total, echo) => {
+      return total + (echo.MainStatistic?.Value || 0)
+    }, 0)
+  }
+
+  function GetCharacterNote(score: number) {
+    if (score >= 630)
+      return ScoreGrade.PERFECT
+    if (score >= 600)
+      return ScoreGrade.SSS_PLUS
+    if (score >= 570)
+      return ScoreGrade.SSS
+    if (score >= 540)
+      return ScoreGrade.SS_PLUS
+    if (score >= 510)
+      return ScoreGrade.SS
+    if (score >= 480)
+      return ScoreGrade.S_PLUS
+    if (score >= 450)
+      return ScoreGrade.S
+    if (score >= 400)
+      return ScoreGrade.A
+    if (score >= 350)
+      return ScoreGrade.B
+    if (score >= 300)
+      return ScoreGrade.C
+    return ScoreGrade.F
+  }
+
+  function GetEchoNote(score: number) {
+    if (score >= 95)
+      return ScoreGrade.PERFECT
+    if (score >= 90)
+      return ScoreGrade.SSS_PLUS
+    if (score >= 85)
+      return ScoreGrade.SSS
+    if (score >= 80)
+      return ScoreGrade.SS_PLUS
+    if (score >= 75)
+      return ScoreGrade.SS
+    if (score >= 70)
+      return ScoreGrade.S_PLUS
+    if (score >= 67)
+      return ScoreGrade.S
+    if (score >= 50)
+      return ScoreGrade.A
+    if (score >= 40)
+      return ScoreGrade.B
+    if (score >= 30)
+      return ScoreGrade.C
+    return ScoreGrade.F
+  }
+
+  function CalculateEchoScore(echo: Echo, weights: Record<StatType, number>): IEchoRatingResult {
+    const isValidMainStat = echo.MainStatistic !== undefined && IsValidMainStat(echo.MainStatistic, weights)
+
+    const { totalScore, totalWeight } = echo.Statistics.reduce(
+      (acc, stat) => {
+        const value = stat.Value
+        const max = SUB_STAT_VALUES[stat.Type].at(-1) || 1
+        const weight = weights[stat.Type] || 0
+
+        acc.totalScore += (value / max) * weight
+        acc.totalWeight += weight
+        return acc
+      },
+      { totalScore: 0, totalWeight: 0 },
+    )
+
+    const finalScore = totalWeight > 0 ? Math.round((totalScore / totalWeight) * 100) : 0
+
+    return {
+      Score: finalScore,
+      EchoId: echo.Id,
+      Grade: isValidMainStat ? GetEchoNote(finalScore) : ScoreGrade.F,
+    }
+  }
+
+  function IsValidMainStat(stat: IStatistic, weights: Record<StatType, number>): boolean {
+    const v = weights[stat.Type]
+
+    return v !== undefined && v !== 0
+  }
+
+  return {
+    GetCharacterScore,
+  }
+}

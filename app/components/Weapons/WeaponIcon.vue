@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type Weapon from '~/Core/Interfaces/Weapon'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
-import { GetWeaponIcon } from '~/Core/Utils/WeaponUtils'
+import { GetTypeIcon, GetWeaponIcon } from '~/Core/Utils/WeaponUtils'
 
 const props = defineProps<{
   weapon: Weapon
@@ -21,9 +21,9 @@ const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
     }"
   >
     <BorderLines :count="1" />
-    <div class="flex">
+    <div class="flex w-full">
       <!-- Icon / Rarity -->
-      <div class="relative h-26 min-h-26 w-26 flex items-center justify-center overflow-clip">
+      <div class="relative h-32 min-h-32 min-w-32 w-32 flex items-center justify-center overflow-clip">
         <!-- Icon -->
         <div class="absolute bottom-0">
           <NuxtImg
@@ -51,11 +51,20 @@ const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
           <div class="h-[3px] rounded-bl" :class="HighlightColor" />
         </div>
       </div>
-      <div class="w-46 border-l border-white/14 p-2 text-xs">
+      <div class="w-full border-l border-white/14 px-4 py-2">
         <!-- Name -->
         <div class="w-full flex items-center justify-between">
           <div :title="weapon.Name" class="text-truncate">
             {{ weapon.Name }}
+          </div>
+        </div>
+
+        <!-- Weapon Level/Rank -->
+        <div>
+          <div class="flex items-center gap-1 mt-1 mb-3">
+            <UBadge color="neutral" variant="soft" size="sm" class="text-nowrap">
+              <NuxtImg :src="`${GetTypeIcon(weapon)}`" width="15" height="12" /> {{ weapon.Type }}
+            </UBadge>
           </div>
         </div>
 

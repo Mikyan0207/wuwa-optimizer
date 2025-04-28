@@ -1,7 +1,7 @@
 import type Character from './Interfaces/Character'
-import { CharacterReleaseState } from './Enums/CharacterReleaseState'
 import { CharacterType } from './Enums/CharacterType'
 import { Rarity } from './Enums/Rarity'
+import { ReleaseState } from './Enums/ReleaseState'
 import { StatType } from './Enums/StatType'
 import { WeaponType } from './Enums/WeaponType'
 
@@ -2412,7 +2412,6 @@ export const Changli: Character = {
 // 1206
 export const Brant: Character = {
   Id: 1206,
-  ReleaseState: CharacterReleaseState.NEW,
   Icon: 'Brant_Icon.webp',
   SplashArt: 'Brant_Portrait.webp',
   Rarity: Rarity.FIVE_STARS,
@@ -6047,6 +6046,250 @@ export const Phoebe: Character = {
   },
 }
 
+// 1507
+
+export const Zani: Character = {
+  Id: 1507,
+  Rarity: Rarity.FIVE_STARS,
+  ReleaseState: ReleaseState.UPCOMING,
+  Icon: 'Zani_Icon.webp',
+  SplashArt: 'Zani_Portrait.webp',
+  Type: CharacterType.SPECTRO,
+  WeaponType: WeaponType.GAUNTLETS,
+  Level: 90,
+  Stats: [
+    {
+      Value: 10825,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1259,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 413,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.SPECTRO_DMG_BONUS,
+    },
+  ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Zani_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Zani_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Zani_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Zani_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Zani_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Zani_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic_Attack',
+      Level: 1,
+      Icon: 'Skill_Rectifier.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 2.40,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 5.60,
+      },
+    },
+    {
+      Id: 'Resonance_Skill',
+      Level: 1,
+      Icon: 'Zani_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte_Circuit',
+      Level: 1,
+      Icon: 'Zani_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Zani_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Zani_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance_Liberation',
+      Level: 1,
+      Icon: 'Zani_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro_Skill',
+      Level: 1,
+      Icon: 'Zani_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 2.40,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 5.60,
+      },
+    },
+    {
+      Id: 'Outro_Skill',
+      Level: 1,
+      Icon: 'Zani_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  EquipedEchoes: [],
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.5,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0.75,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+    [StatType.SPECTRO_DMG_BONUS]: 0.1,
+  },
+}
+
 // 1601
 export const Taoqi: Character = {
   Id: 1601,
@@ -7257,6 +7500,248 @@ export const Roccia: Character = {
   },
 }
 
+export const Cantarella: Character = {
+  Id: 1607,
+  ReleaseState: ReleaseState.NEW,
+  Rarity: Rarity.FIVE_STARS,
+  Icon: 'Cantarella_Icon.webp',
+  SplashArt: 'Cantarella_Portrait.webp',
+  Type: CharacterType.HAVOC,
+  WeaponType: WeaponType.RECTIFIER,
+  Level: 90,
+  Stats: [
+    {
+      Value: 11600,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1100,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 400,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HAVOC_DMG_BONUS,
+    },
+  ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Cantarella_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Cantarella_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Cantarella_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Cantarella_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Cantarella_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Cantarella_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic_Attack',
+      Level: 1,
+      Icon: 'Skill_Rectifier.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 1.20,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 2.80,
+      },
+    },
+    {
+      Id: 'Resonance_Skill',
+      Level: 1,
+      Icon: 'Cantarella_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte_Circuit',
+      Level: 1,
+      Icon: 'Cantarella_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Cantarella_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Cantarella_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance_Liberation',
+      Level: 1,
+      Icon: 'Cantarella_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro_Skill',
+      Level: 1,
+      Icon: 'Cantarella_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 1.20,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_RATE,
+        Value: 2.80,
+      },
+    },
+    {
+      Id: 'Outro_Skill',
+      Level: 1,
+      Icon: 'Cantarella_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  EquipedEchoes: [],
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.5,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0.25,
+    [StatType.HAVOC_DMG_BONUS]: 0.1,
+  },
+}
+
 export const TemplateCharacters: Character[] = [
   Sanhua,
   Baizhi,
@@ -7283,9 +7768,11 @@ export const TemplateCharacters: Character[] = [
   Lumi,
   ShoreKeeper,
   Phoebe,
+  Zani,
   Taoqi,
   Danjin,
   Camellya,
   Rover_Havoc,
   Roccia,
+  Cantarella,
 ]

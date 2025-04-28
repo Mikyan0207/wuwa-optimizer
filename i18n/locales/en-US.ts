@@ -111,6 +111,8 @@ export default {
   '21020043_name': 'Sword of Voyager',
   '21040016_name': 'Verity\'s Handle',
   '21050046_name': 'Luminous Hymn',
+  '21030026_name': 'Woodland Aria',
+  '21040036_name': 'Blazing Justice',
 
   // === Skills ===
   'skill_basic_attack': 'Normal Attack',
@@ -349,6 +351,17 @@ export default {
   '1405_intro_skill': 'Essence of Tao',
   '1405_outro_skill': 'Transcendence',
 
+  // 1407 - Ciaccona
+  '1407_name': 'Ciaccona',
+  '1407_basic_attack': 'Quadruple Time Steps',
+  '1407_resonance_skill': 'Harmonic Allegro',
+  '1407_resonance_liberation': 'Singer\'s Triple Cadenza',
+  '1407_forte_circuit': 'Symphony of Wind and Verse',
+  '1407_inherent_skill_1': 'Interlude Tune',
+  '1407_inherent_skill_2': 'Winds of Rinascita',
+  '1407_intro_skill': 'Roaming with the Wind',
+  '1407_outro_skill': 'Windcalling Tune',
+
   // 1408 - Rover (Aero)
   '1408_name': 'Rover (Aero)',
   '1408_basic_attack': 'Wind Cutter',
@@ -417,6 +430,14 @@ export default {
 
   // 1507 - Zani
   '1507_name': 'Zani',
+  '1507_basic_attack': 'Routine Negotiation',
+  '1507_resonance_skill': 'Restless Watch',
+  '1507_resonance_liberation': 'Between Dawn and Dusk',
+  '1507_forte_circuit': 'There Will Be A Light',
+  '1507_inherent_skill_1': 'Quick Response',
+  '1507_inherent_skill_2': 'Fear No Pain',
+  '1507_intro_skill': 'Immediate Execution',
+  '1507_outro_skill': 'Beacon For the Future',
 
   // 1601 - Taoqi
   '1601_name': 'Taoqi',

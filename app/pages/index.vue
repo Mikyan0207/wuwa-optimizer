@@ -22,7 +22,7 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
 </script>
 
 <template>
-  <div class="grid grid-cols-6 mx-auto gap-2 mb-12 px-8 x:px-0 xl:container">
+  <div class="grid grid-cols-6 mx-auto gap-2 mb-12 px-8 x:px-0 xl:max-w-6xl">
     <UCard
       v-motion-pop
       :delay="50"
@@ -80,7 +80,7 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
     </UCard>
     <UCard
       v-motion-pop
-      class="col-span-3"
+      class="col-span-6"
       :delay="100"
       :ui="{
         root: 'rounded-none rounded-br-xl border-0',
@@ -96,7 +96,7 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
             Because your favorite Resonator deserves nothing less than perfection.
           </p>
         </div>
-        <NuxtImg src="/images/wuwa-optimizer-showcase-01.png" class="w-full" />
+        <NuxtImg src="/images/wuwa-optimizer-showcase-01.png" />
         <div v-motion-slide-bottom class="flex items-center gap-2" :delay="500">
           <UButton to="/characters" leading-icon="i-tabler:target-arrow" variant="subtle" class="text-xs xl:text-base">
             Character Scoring
@@ -107,7 +107,7 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
         </div>
       </div>
     </UCard>
-    <UCard
+    <!-- <UCard
       v-motion-pop class="col-span-3" :delay="100" :ui="{
         root: 'rounded-none rounded-br-xl border-0',
         body: 'p-4 sm:p-4',
@@ -127,7 +127,6 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
         <p class="text-xs xl:text-base mt-2 h-[480px]">
           Coming Soon
         </p>
-        <!-- <NuxtImg src="/images/character-bg-placeholder.webp" class="w-full h-full" width="700" height="490" /> -->
         <div v-motion-slide-bottom class="flex items-center gap-2" :delay="500">
           <UButton to="/rotations" leading-icon="i-material-symbols:rotate-90-degrees-ccw" variant="subtle" class="text-xs xl:text-base">
             Rotation Builder
@@ -137,10 +136,10 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
           </UBadge>
         </div>
       </div>
-    </UCard>
+    </UCard> -->
 
     <UCard
-      v-motion-pop class="col-span-3" :delay="100" :ui="{
+      v-motion-pop class="col-span-6" :delay="100" :ui="{
         root: 'rounded-none rounded-br-xl border-0',
         body: 'p-4 sm:p-4',
       }"

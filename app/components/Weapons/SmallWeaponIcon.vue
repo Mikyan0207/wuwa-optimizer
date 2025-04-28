@@ -31,7 +31,7 @@ const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
         </UBadge>
       </div>
       <div v-if="weapon.ReleaseState === ReleaseState.UPCOMING" class="absolute left-1 top-0 z-2">
-        <UBadge color="info" variant="solid" size="sm" class="px-2.5 text-neutral-200">
+        <UBadge variant="solid" size="sm" class="px-2.5 text-neutral-200 bg-yellow-600">
           {{ UpcomingGameVersion }}
         </UBadge>
       </div>

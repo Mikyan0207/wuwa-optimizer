@@ -4,11 +4,48 @@ import { ReleaseState } from './Enums/ReleaseState'
 import { StatType } from './Enums/StatType'
 import { WeaponType } from './Enums/WeaponType'
 
+export const WoodlandAria: Weapon = {
+  Id: 21030026,
+  Name: 'Woodland Aria',
+  Icon: 'Weapon_Woodland_Aria.webp',
+  ReleaseState: ReleaseState.UPCOMING,
+  Level: 90,
+  Rarity: Rarity.FIVE_STARS,
+  Type: WeaponType.PISTOLS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 500,
+  },
+  SecondaryStatistic: {
+    Type: StatType.CRIT_RATE,
+    Value: 36,
+  },
+  Rank: 1,
+}
+
+export const BlazingJustice: Weapon = {
+  Id: 21030026,
+  Name: 'Blazing Justice',
+  Icon: 'Weapon_Blazing_Justice.webp',
+  ReleaseState: ReleaseState.NEW,
+  Level: 90,
+  Rarity: Rarity.FIVE_STARS,
+  Type: WeaponType.GAUNTLETS,
+  MainStatistic: {
+    Type: StatType.ATTACK,
+    Value: 588,
+  },
+  SecondaryStatistic: {
+    Type: StatType.CRIT_DMG,
+    Value: 48.6,
+  },
+  Rank: 1,
+}
+
 export const WhispersOfSirens: Weapon = {
   Id: 21050056,
   Name: 'Whispers of Sirens',
   Icon: 'Weapon_Whispers_of_Sirens.webp',
-  ReleaseState: ReleaseState.NEW,
   Level: 90,
   Rarity: Rarity.FIVE_STARS,
   Type: WeaponType.RECTIFIER,
@@ -1356,6 +1393,8 @@ export const Sword_of_Voyager: Weapon = {
 }
 
 export const Weapons: Weapon[] = [
+  BlazingJustice,
+  WoodlandAria,
   WhispersOfSirens,
   TheLastDance,
   AgesOfHarvest,

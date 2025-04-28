@@ -4836,6 +4836,251 @@ export const Jianxin: Character = {
   },
 }
 
+// 1407
+export const Ciaccona: Character = {
+  Id: 1407,
+  Rarity: Rarity.FIVE_STARS,
+  Icon: 'Ciaccona_Icon.webp',
+  SplashArt: 'Ciaccona_Portrait.webp',
+  ReleaseState: ReleaseState.UPCOMING,
+  WeaponType: WeaponType.PISTOLS,
+  Type: CharacterType.AERO,
+  Level: 90,
+  Stats: [
+    {
+      Value: 12238,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1198,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 375,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.AERO_DMG_BONUS,
+    },
+  ],
+  Sequences: [
+    {
+      Name: '',
+      Icon: 'Ciaccona_Sequence_Node_01.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Ciaccona_Sequence_Node_02.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Ciaccona_Sequence_Node_03.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Ciaccona_Sequence_Node_04.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Ciaccona_Sequence_Node_05.webp',
+      Unlocked: false,
+    },
+    {
+      Name: '',
+      Icon: 'Ciaccona_Sequence_Node_06.webp',
+      Unlocked: false,
+    },
+  ],
+  Skills: [
+    {
+      Id: 'Basic_Attack',
+      Level: 1,
+      Icon: 'Skill_Pistols.webp',
+      Unlocked: true,
+
+    },
+    {
+      Id: 'Basic_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 2.40,
+      },
+    },
+    {
+      Id: 'Basic_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 5.60,
+      },
+    },
+    {
+      Id: 'Resonance_Skill',
+      Level: 1,
+      Icon: 'Ciaccona_Resonance_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Skill_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+    },
+    {
+      Id: 'Skill_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Forte_Circuit',
+      Level: 1,
+      Icon: 'Ciaccona_Forte_Circuit.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_1',
+      Level: 1,
+      Icon: 'Ciaccona_Inherent_Skill_01.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Inherent_Skill_2',
+      Level: 1,
+      Icon: 'Ciaccona_Inherent_Skill_02.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Resonance_Liberation',
+      Level: 1,
+      Icon: 'Ciaccona_Resonance_Liberation.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 1.80,
+      },
+
+    },
+    {
+      Id: 'Liberation_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Attack.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 4.20,
+      },
+    },
+    {
+      Id: 'Intro_Skill',
+      Level: 1,
+      Icon: 'Ciaccona_Intro_Skill.webp',
+      Unlocked: true,
+    },
+    {
+      Id: 'Intro_Stat_Bonus_1',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 2.40,
+      },
+    },
+    {
+      Id: 'Intro_Stat_Bonus_2',
+      Level: 1,
+      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Unlocked: true,
+      Stat: {
+        Type: StatType.CRIT_DMG,
+        Value: 5.60,
+      },
+    },
+    {
+      Id: 'Outro_Skill',
+      Level: 1,
+      Icon: 'Ciaccona_Outro_Skill.webp',
+      Unlocked: true,
+    },
+  ],
+  EquipedEchoes: [],
+  StatsWeights: {
+    [StatType.NONE]: 0,
+    [StatType.CRIT_DMG]: 1,
+    [StatType.CRIT_RATE]: 1,
+    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK_PERCENTAGE]: 0.75,
+    [StatType.HP]: 0,
+    [StatType.HP_PERCENTAGE]: 0,
+    [StatType.HEALING_BONUS]: 0,
+    [StatType.DEF]: 0,
+    [StatType.DEF_PERCENTAGE]: 0,
+    [StatType.ENERGY_REGENERATION]: 0.75,
+    [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0.25,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.25,
+    [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
+    [StatType.AERO_DMG_BONUS]: 0.1,
+  },
+}
+
 // 1502
 export const Rover_Spectro: Character = {
   Id: 1502,
@@ -6047,11 +6292,10 @@ export const Phoebe: Character = {
 }
 
 // 1507
-
 export const Zani: Character = {
   Id: 1507,
   Rarity: Rarity.FIVE_STARS,
-  ReleaseState: ReleaseState.UPCOMING,
+  ReleaseState: ReleaseState.NEW,
   Icon: 'Zani_Icon.webp',
   SplashArt: 'Zani_Portrait.webp',
   Type: CharacterType.SPECTRO,
@@ -6059,15 +6303,15 @@ export const Zani: Character = {
   Level: 90,
   Stats: [
     {
-      Value: 10825,
+      Value: 10775,
       Type: StatType.HP,
     },
     {
-      Value: 1259,
+      Value: 1137,
       Type: StatType.DEF,
     },
     {
-      Value: 413,
+      Value: 438,
       Type: StatType.ATTACK,
     },
     {
@@ -6143,27 +6387,27 @@ export const Zani: Character = {
     {
       Id: 'Basic_Attack',
       Level: 1,
-      Icon: 'Skill_Rectifier.webp',
+      Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Stat_Bonus_1',
       Level: 1,
-      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
-        Type: StatType.CRIT_DMG,
-        Value: 2.40,
+        Type: StatType.CRIT_RATE,
+        Value: 1.20,
       },
     },
     {
       Id: 'Basic_Stat_Bonus_2',
       Level: 1,
-      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
-        Type: StatType.CRIT_DMG,
-        Value: 5.60,
+        Type: StatType.CRIT_RATE,
+        Value: 2.80,
       },
     },
     {
@@ -6245,21 +6489,21 @@ export const Zani: Character = {
     {
       Id: 'Intro_Stat_Bonus_1',
       Level: 1,
-      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
-        Type: StatType.CRIT_DMG,
-        Value: 2.40,
+        Type: StatType.CRIT_RATE,
+        Value: 1.20,
       },
     },
     {
       Id: 'Intro_Stat_Bonus_2',
       Level: 1,
-      Icon: 'Icon_Attribute_Crit_DMG.webp',
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
-        Type: StatType.CRIT_DMG,
-        Value: 5.60,
+        Type: StatType.CRIT_RATE,
+        Value: 2.80,
       },
     },
     {
@@ -7502,7 +7746,6 @@ export const Roccia: Character = {
 
 export const Cantarella: Character = {
   Id: 1607,
-  ReleaseState: ReleaseState.NEW,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Cantarella_Icon.webp',
   SplashArt: 'Cantarella_Portrait.webp',
@@ -7763,6 +8006,7 @@ export const TemplateCharacters: Character[] = [
   Aalto,
   Jiyan,
   Jianxin,
+  Ciaccona,
   Rover_Spectro,
   Verina,
   Lumi,

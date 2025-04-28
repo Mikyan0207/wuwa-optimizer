@@ -148,9 +148,7 @@ export function useScoreCalculator() {
 
     const echoes = JSON.parse(JSON.stringify(EchoesStore.GetEchoesByIds(echoesIds, character.Id)))
     const echoesScores = CalculateEchoesScore(echoes, character.StatsWeights!)
-    let totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0)
-
-    totalScore += CalculateMainStatsScore(echoes)
+    const totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0)
 
     return {
       Score: totalScore,
@@ -163,33 +161,28 @@ export function useScoreCalculator() {
     return echoes.map(echo => CalculateEchoScore(echo, weights))
   }
 
-  function CalculateMainStatsScore(echoes: Echo[]) {
-    return echoes.reduce((total, echo) => {
-      return total + (echo.MainStatistic?.Value || 0)
-    }, 0)
-  }
-
-  function GetCharacterNote(score: number) {
-    if (score >= 630)
+  function GetCharacterNote(score: number): ScoreGrade {
+    if (score >= 475)
       return ScoreGrade.PERFECT
-    if (score >= 600)
+    if (score >= 460)
       return ScoreGrade.SSS_PLUS
-    if (score >= 570)
+    if (score >= 435)
       return ScoreGrade.SSS
-    if (score >= 540)
+    if (score >= 410)
       return ScoreGrade.SS_PLUS
-    if (score >= 510)
+    if (score >= 385)
       return ScoreGrade.SS
-    if (score >= 480)
+    if (score >= 360)
       return ScoreGrade.S_PLUS
-    if (score >= 450)
+    if (score >= 335)
       return ScoreGrade.S
-    if (score >= 400)
-      return ScoreGrade.A
-    if (score >= 350)
-      return ScoreGrade.B
     if (score >= 300)
+      return ScoreGrade.A
+    if (score >= 260)
+      return ScoreGrade.B
+    if (score >= 220)
       return ScoreGrade.C
+
     return ScoreGrade.F
   }
 

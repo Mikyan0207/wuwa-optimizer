@@ -2,7 +2,6 @@
 import type Echo from '~/Core/Interfaces/Echo'
 import { domToBlob } from 'modern-screenshot'
 import { useScoreCalculator } from '~/composables/UseScoreCalculator'
-import { Empty_Echo } from '~/Core/Echoes'
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 

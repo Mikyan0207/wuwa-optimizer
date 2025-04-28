@@ -28,7 +28,7 @@ const ShowEditModal = ref<boolean>(false)
     <div class="flex items-center w-full gap-8 ">
       <div v-if="IsHovered" class="absolute -top-2 -right-2 p-3 flex items-center gap-2">
         <UButton icon="i-carbon-pen" size="sm" color="success" variant="subtle" @click="ShowEditModal = true" />
-        <UButton icon="i-lucide-x" size="sm" color="error" variant="subtle" @click="RotationBuilderStore.RemoveCharacterAction(section.Index, action.Index)" />
+        <UButton icon="i-lucide-x" size="sm" color="error" variant="subtle" @click="RotationBuilderStore.RemoveAction(section.Index, action.Index)" />
       </div>
       <p class="font-bold text-2xl font-noto tracking-tight">
         {{ action.Order }}

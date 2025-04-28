@@ -43,10 +43,10 @@ export const useRotationBuilderStore = defineStore('RotationBuilderStore', () =>
     })
   }
 
-  function RemoveCharacterAction(sectionIdx: number, idx: number) {
+  function RemoveAction(sectionIdx: number, idx: number) {
     const section = Steps.value[sectionIdx]
 
-    if (section && idx >= 0 && idx < section.Actions.length) {
+    if (section && idx >= 0) {
       section.Actions.splice(idx, 1)
     }
   }
@@ -56,6 +56,6 @@ export const useRotationBuilderStore = defineStore('RotationBuilderStore', () =>
     AddCharacterAction,
     AddCharacterSwap,
     AddSection,
-    RemoveCharacterAction,
+    RemoveAction,
   }
 })

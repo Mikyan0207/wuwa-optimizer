@@ -1,18 +1,14 @@
+import type { StatType } from '~/Core/Enums/StatType'
 import type Character from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import type IStatistic from '~/Core/Interfaces/Statistic'
-import { EchoCost } from '~/Core/Enums/EchoCost'
-import { Rarity } from '~/Core/Enums/Rarity'
 import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
-import { StatType } from '~/Core/Enums/StatType'
-import { FOUR_COST_MAIN_STATS_VALUES, ONE_COST_MAIN_STATS_VALUES, SUB_STAT_VALUES, THREE_COST_MAIN_STATS_VALUES } from '~/Core/Statistics'
+import { SUB_STAT_VALUES } from '~/Core/Statistics'
 
 export interface IEchoRatingResult {
   Score: number
   EchoId: number
-  Note: ScoreGrade
-  NoteScore: number
-  IsValidMainStat: boolean
+  Grade: ScoreGrade
 }
 
 export interface ICharacterRatingResult {
@@ -58,44 +54,20 @@ export const ECHOES_SCORE_GRADES = [
     Color: 'text-red-400',
   },
   {
-    Grade: ScoreGrade.A_PLUS,
-    Score: 45,
-    Color: 'text-purple-400',
-  },
-  {
     Grade: ScoreGrade.A,
     Score: 35,
     Color: 'text-purple-400',
   },
-  {
-    Grade: ScoreGrade.B_PLUS,
-    Score: 30,
-    Color: 'text-blue-400',
-  },
+
   {
     Grade: ScoreGrade.B,
     Score: 20,
     Color: 'text-blue-400',
   },
   {
-    Grade: ScoreGrade.C_PLUS,
-    Score: 15,
-    Color: 'text-green-400',
-  },
-  {
     Grade: ScoreGrade.C,
     Score: 12.5,
     Color: 'text-green-400',
-  },
-  {
-    Grade: ScoreGrade.D_PLUS,
-    Score: 10,
-    Color: 'text-yellow-200',
-  },
-  {
-    Grade: ScoreGrade.D,
-    Score: 7.5,
-    Color: 'text-yellow-200',
   },
   {
     Grade: ScoreGrade.F,
@@ -141,19 +113,9 @@ export const TOTAL_SCORE_GRADES = [
     Color: 'text-red-400',
   },
   {
-    Grade: ScoreGrade.A_PLUS,
-    Score: 375,
-    Color: 'text-purple-400',
-  },
-  {
     Grade: ScoreGrade.A,
     Score: 350,
     Color: 'text-purple-400',
-  },
-  {
-    Grade: ScoreGrade.B_PLUS,
-    Score: 325,
-    Color: 'text-blue-400',
   },
   {
     Grade: ScoreGrade.B,
@@ -161,24 +123,9 @@ export const TOTAL_SCORE_GRADES = [
     Color: 'text-blue-400',
   },
   {
-    Grade: ScoreGrade.C_PLUS,
-    Score: 250,
-    Color: 'text-green-400',
-  },
-  {
     Grade: ScoreGrade.C,
     Score: 200,
     Color: 'text-green-400',
-  },
-  {
-    Grade: ScoreGrade.D_PLUS,
-    Score: 150,
-    Color: 'text-yellow-200',
-  },
-  {
-    Grade: ScoreGrade.D,
-    Score: 100,
-    Color: 'text-yellow-200',
   },
   {
     Grade: ScoreGrade.F,
@@ -201,32 +148,19 @@ export function useScoreCalculator() {
 
     const echoes = JSON.parse(JSON.stringify(EchoesStore.GetEchoesByIds(echoesIds, character.Id)))
     const echoesScores = CalculateEchoesScore(echoes, character.StatsWeights!)
-    let totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0) * 100
+    let totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0)
 
     totalScore += CalculateMainStatsScore(echoes)
-
-    const note = TOTAL_SCORE_GRADES.find(g => totalScore >= g.Score)?.Grade || ScoreGrade.F
 
     return {
       Score: totalScore,
       EchoesScores: echoesScores,
-      Note: note,
+      Note: GetCharacterNote(totalScore),
     }
   }
 
   function CalculateEchoesScore(echoes: Echo[], weights: Record<StatType, number>): IEchoRatingResult[] {
-    return echoes.map((echo) => {
-      const perfectEcho = GetPerfectEcho(echo, weights)
-      const perfectEchoScore = CalculateEchoScore(perfectEcho, weights)
-      const echoScore = CalculateEchoScore(echo, weights)
-      const note = echoScore.IsValidMainStat ? ECHOES_SCORE_GRADES.find(g => (echoScore.Score / perfectEchoScore.Score * 100) >= g.Score)?.Grade || ScoreGrade.F : ScoreGrade.F
-
-      return {
-        ...echoScore,
-        Score: echoScore.Score / perfectEchoScore.Score,
-        Note: note,
-      }
-    })
+    return echoes.map(echo => CalculateEchoScore(echo, weights))
   }
 
   function CalculateMainStatsScore(echoes: Echo[]) {
@@ -235,73 +169,76 @@ export function useScoreCalculator() {
     }, 0)
   }
 
-  function GetPerfectEcho(echo: Echo, weights: Record<StatType, number>): Echo {
-    const sortedStats = Object.entries(weights)
-      .filter(([_, weight]) => weight > 0)
-      .sort(([, weightA], [, weightB]) => weightB - weightA)
-      .slice(0, 5)
-      .map(([statType]) => statType as StatType)
+  function GetCharacterNote(score: number) {
+    if (score >= 630)
+      return ScoreGrade.PERFECT
+    if (score >= 600)
+      return ScoreGrade.SSS_PLUS
+    if (score >= 570)
+      return ScoreGrade.SSS
+    if (score >= 540)
+      return ScoreGrade.SS_PLUS
+    if (score >= 510)
+      return ScoreGrade.SS
+    if (score >= 480)
+      return ScoreGrade.S_PLUS
+    if (score >= 450)
+      return ScoreGrade.S
+    if (score >= 400)
+      return ScoreGrade.A
+    if (score >= 350)
+      return ScoreGrade.B
+    if (score >= 300)
+      return ScoreGrade.C
+    return ScoreGrade.F
+  }
 
-    const perfectEcho: Echo = {
-      MainStatistic: echo.MainStatistic,
-      Statistics: sortedStats.map(statType => ({
-        Type: statType,
-        Value: SUB_STAT_VALUES[statType].at(-1) || 0,
-      })),
-      Id: 0,
-      Icon: '',
-      Rarity: Rarity.FIVE_STARS,
-      Cost: EchoCost.FOUR_COST,
-      Level: 0,
-      Sonata: [],
-    }
-
-    return perfectEcho
+  function GetEchoNote(score: number) {
+    if (score >= 95)
+      return ScoreGrade.PERFECT
+    if (score >= 90)
+      return ScoreGrade.SSS_PLUS
+    if (score >= 85)
+      return ScoreGrade.SSS
+    if (score >= 80)
+      return ScoreGrade.SS_PLUS
+    if (score >= 75)
+      return ScoreGrade.SS
+    if (score >= 70)
+      return ScoreGrade.S_PLUS
+    if (score >= 67)
+      return ScoreGrade.S
+    if (score >= 50)
+      return ScoreGrade.A
+    if (score >= 40)
+      return ScoreGrade.B
+    if (score >= 30)
+      return ScoreGrade.C
+    return ScoreGrade.F
   }
 
   function CalculateEchoScore(echo: Echo, weights: Record<StatType, number>): IEchoRatingResult {
     const isValidMainStat = echo.MainStatistic !== undefined && IsValidMainStat(echo.MainStatistic, weights)
-    const totalWeightedScore = echo.Statistics.reduce((acc, subStat) =>
-      acc + CalculateSubStatScore(subStat.Type, subStat.Value, echo.Cost, weights[subStat.Type]), 0)
 
-    // Transformation exponentielle modérée pour augmenter la disparité
-    const adjustedScore = totalWeightedScore ** 0.8
+    const { totalScore, totalWeight } = echo.Statistics.reduce(
+      (acc, stat) => {
+        const value = stat.Value
+        const max = SUB_STAT_VALUES[stat.Type].at(-1) || 1
+        const weight = weights[stat.Type] || 0
 
-    // Normalisation par le score maximum possible
-    const maxPossibleScore = GetMaxPossibleScore(echo.Cost, weights) ** 0.8
-    const normalizedScore = (adjustedScore / maxPossibleScore) * 100 // Échelle de 0 à 100
+        acc.totalScore += (value / max) * weight
+        acc.totalWeight += weight
+        return acc
+      },
+      { totalScore: 0, totalWeight: 0 },
+    )
+
+    const finalScore = totalWeight > 0 ? Math.round((totalScore / totalWeight) * 100) : 0
 
     return {
-      Score: normalizedScore,
+      Score: finalScore,
       EchoId: echo.Id,
-      Note: ScoreGrade.F,
-      NoteScore: 0,
-      IsValidMainStat: isValidMainStat,
-    }
-  }
-
-  function GetMaxPossibleScore(echoCost: EchoCost, weights: Record<StatType, number>): number {
-    const maxStats = Object.keys(weights).map((statType) => {
-      return {
-        Type: statType as StatType,
-        Value: SUB_STAT_VALUES[statType as StatType].at(-1) || 0,
-      }
-    })
-
-    return maxStats.reduce((acc, stat) =>
-      acc + CalculateSubStatScore(stat.Type, stat.Value, echoCost, weights[stat.Type]), 0)
-  }
-
-  function CalculateSubStatScore(stat: StatType, value: number, echoCost: EchoCost, weight: number) {
-    switch (echoCost) {
-      case EchoCost.FOUR_COST:
-        return (weight) * ((FOUR_COST_MAIN_STATS_VALUES[StatType.CRIT_DMG]) || 1 / (FOUR_COST_MAIN_STATS_VALUES[stat] || 1)) * value
-      case EchoCost.THREE_COST:
-        return (weight) * ((THREE_COST_MAIN_STATS_VALUES[StatType.ATTACK_PERCENTAGE]) || 1 / (THREE_COST_MAIN_STATS_VALUES[stat] || 1)) * value
-      case EchoCost.ONE_COST:
-        return (weight) * ((ONE_COST_MAIN_STATS_VALUES[StatType.ATTACK_PERCENTAGE]) || 1 / (ONE_COST_MAIN_STATS_VALUES[stat] || 1)) * value
-      default:
-        return 0
+      Grade: isValidMainStat ? GetEchoNote(finalScore) : ScoreGrade.F,
     }
   }
 

@@ -5,7 +5,7 @@ const props = defineProps<{
 }>()
 
 const TextColor = computed(() => {
-  return ECHOES_SCORE_GRADES.find(x => x.Grade.toString() === props.text)?.Color
+  return ECHOES_SCORE_GRADES.find(x => x.Grade?.toString() === props.text)?.Color
 })
 </script>
 

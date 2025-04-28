@@ -2,6 +2,7 @@
 import type Echo from '~/Core/Interfaces/Echo'
 import { domToBlob } from 'modern-screenshot'
 import { useScoreCalculator } from '~/composables/UseScoreCalculator'
+import { Empty_Echo } from '~/Core/Echoes'
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
@@ -17,13 +18,24 @@ if (ActiveCharacter === undefined || ActiveCharacter === null) {
 }
 
 function GetEchoes(): Echo[] {
+  const echoes = [
+    Empty_Echo,
+    Empty_Echo,
+    Empty_Echo,
+    Empty_Echo,
+    Empty_Echo,
+  ]
+
   if (ActiveCharacter === undefined || ActiveCharacter.EquipedEchoes.length === 0) {
-    return []
+    return echoes
   }
 
-  return EchoesStore
+  EchoesStore
     .GetEchoesByIds(ActiveCharacter.EquipedEchoes, ActiveCharacter.Id)
     .sort((a, b) => (a.EquipedSlot || 0) - (b.EquipedSlot || 0))
+    .forEach((e, idx) => echoes[e.EquipedSlot || idx] = e)
+
+  return echoes
 }
 
 async function TakeScreenShotAsync() {

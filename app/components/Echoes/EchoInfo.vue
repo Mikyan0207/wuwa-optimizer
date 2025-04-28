@@ -25,22 +25,22 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
         <p v-if="IsValidEcho" class="text-lg text-white" :title="t(`${echo.Id}_name`)">
           {{ t(`${echo.Id}_name`) }}
         </p>
-        <USkeleton v-else class="h-3 w-22" />
+        <USkeleton v-else class="h-4 w-32" />
       </div>
     </div>
     <div v-motion-pop :delay="400" class="flex items-center justify-start w-full gap-1">
       <UBadge v-if="IsValidEcho" class="text-sm text-gray-300" size="xs" variant="soft" color="error">
         {{ `${t('label_level')} ${echo.Level}` }}
       </UBadge>
-      <USkeleton v-else class="h-3 w-10" />
+      <USkeleton v-else class="h-6 w-10" />
       <UBadge v-if="IsValidEcho" class="text-sm text-gray-300" size="xs" variant="soft" color="primary">
         {{ `${GetEchoRarityText(echo.Rarity)}✦` }}
       </UBadge>
-      <USkeleton v-else class="h-3 w-10" />
+      <USkeleton v-else class="h-6 w-10" />
       <UBadge v-if="IsValidEcho" class="text-sm text-gray-300" size="xs" variant="soft" color="info">
         {{ `Cost ${GetEchoCostText(echo.Cost)}` }}
       </UBadge>
-      <USkeleton v-else class="h-3 w-10" />
+      <USkeleton v-else class="h-6 w-10" />
       <UBadge
         v-if="IsValidEcho && echo.IsNightmare === true" class="text-sm ml-auto text-gray-300" size="xs"
         variant="soft" color="warning"
@@ -48,7 +48,7 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
         Nightmare
       </UBadge>
     </div>
-    <div class="mx-auto my-1 h-[1px] w-full rounded-full bg-white/14" />
+    <USeparator color="neutral" />
     <!-- Main Stat -->
     <div class="w-full flex flex-row gap-4">
       <div v-if="echo.MainStatistic && IsValidEcho" class="w-full flex items-start justify-between gap-12">
@@ -59,15 +59,11 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
           :is-main-stat="true"
         />
       </div>
-      <div v-else class="w-full flex items-center justify-between gap-12">
-        <div class="flex items-center gap-2">
-          <USkeleton class="h-6 w-6 rounded-full" />
-          <USkeleton class="mt-0.5 h-2 w-18" />
-        </div>
-        <USkeleton class="mt-0.5 h-2 w-8" />
+      <div v-else class="w-full flex items-center justify-between">
+        <USkeleton class="h-6 w-full" />
       </div>
     </div>
-    <div class="mx-auto my-1 h-[1px] w-full rounded-full bg-white/14" />
+    <USeparator color="neutral" />
     <!-- Sub Stats -->
     <div v-if="IsValidEcho" class="w-full flex flex-col gap-1">
       <StatLine
@@ -84,15 +80,11 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
       />
     </div>
     <div v-else class="w-full flex flex-col gap-1">
-      <div v-for="idx in 5" :key="idx" class="w-full flex items-center justify-between gap-12">
-        <div class="flex items-center gap-2">
-          <USkeleton class="h-6 w-6 rounded-full" />
-          <USkeleton class="mt-0.5 h-2 w-18" />
-        </div>
-        <USkeleton class="mt-0.5 h-2 w-8" />
+      <div v-for="idx in 5" :key="idx" class="w-full flex items-center justify-between">
+        <USkeleton class="h-8 w-full rounded" />
       </div>
     </div>
-    <div class="mx-auto my-2 h-[1px] w-full rounded-full bg-white/14" />
+    <USeparator color="neutral" />
     <!-- Echo Score -->
     <div v-if="score" class="w-full flex flex-row items-end gap-4 font-semibold">
       <div class="w-full flex items-center justify-between gap-12">
@@ -106,10 +98,10 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
           (<EchoScore :value="score.Score" :text="score.Grade" />)
         </div>
         <div v-else class="mt-1 w-full flex flex-row items-center justify-end">
-          <USkeleton class="h-2 w-8" />
+          <USkeleton class="h-4 w-8" />
         </div>
       </div>
     </div>
-    <USkeleton v-else class="w-full h-3" />
+    <USkeleton v-else class="w-full h-5" />
   </div>
 </template>

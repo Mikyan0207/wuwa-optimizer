@@ -96,7 +96,24 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
             Because your favorite Resonator deserves nothing less than perfection.
           </p>
         </div>
-        <NuxtImg src="/images/wuwa-optimizer-showcase-01.png" />
+        <div class="grid xl:grid-cols-2 gap-2 items-center w-full">
+          <NuxtImg
+            v-motion-pop
+            src="/images/wuwa-optimizer-showcase-01.png"
+            class="w-full"
+            :hovered="{
+              scale: 1.01,
+            }"
+          />
+          <NuxtImg
+            v-motion-pop
+            src="/images/wuwa-optimizer-showcase-02.png"
+            class="w-full"
+            :hovered="{
+              scale: 1.01,
+            }"
+          />
+        </div>
         <div v-motion-slide-bottom class="flex items-center gap-2" :delay="500">
           <UButton to="/characters" leading-icon="i-tabler:target-arrow" variant="subtle" class="text-xs xl:text-base">
             Character Scoring

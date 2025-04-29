@@ -33,7 +33,7 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
       }"
     >
       <NuxtImg v-motion-slide-right :delay="200" src="/images/characters/1506/Phoebe_Full_Sprite.webp" class="w-[50%] absolute -right-25 -top-10" />
-      <div v-motion-slide-top :delay="250" class="flex justify-between gap-6 xl:gap-12 flex-col p-4 h-full">
+      <div v-motion-slide-top :delay="250" class="flex justify-between gap-6 xl:gap-8 flex-col p-4 h-full">
         <div class="flex flex-col">
           <h1 class="text-xl xl:text-3xl font-semibold tracking-tight text-gold-500">
             <span class="text-gray-300 mr-2 font-bold">||</span>Wuthering Waves Optimizer
@@ -80,7 +80,7 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
     </UCard>
     <UCard
       v-motion-pop
-      class="col-span-6"
+      class="col-span-6 xl:col-span-3"
       :delay="100"
       :ui="{
         root: 'rounded-none rounded-br-xl border-0',
@@ -96,24 +96,14 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
             Because your favorite Resonator deserves nothing less than perfection.
           </p>
         </div>
-        <div class="grid xl:grid-cols-2 gap-2 items-center w-full">
-          <NuxtImg
-            v-motion-pop
-            src="/images/wuwa-optimizer-showcase-01.png"
-            class="w-full"
-            :hovered="{
-              scale: 1.01,
-            }"
-          />
-          <NuxtImg
-            v-motion-pop
-            src="/images/wuwa-optimizer-showcase-02.png"
-            class="w-full"
-            :hovered="{
-              scale: 1.01,
-            }"
-          />
-        </div>
+        <NuxtImg
+          v-motion-pop
+          src="/images/wuwa-optimizer-showcase-01.png"
+          class="w-full"
+          :hovered="{
+            scale: 1.01,
+          }"
+        />
         <div v-motion-slide-bottom class="flex items-center gap-2" :delay="500">
           <UButton to="/characters" leading-icon="i-tabler:target-arrow" variant="subtle" class="text-xs xl:text-base">
             Character Scoring
@@ -124,8 +114,11 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
         </div>
       </div>
     </UCard>
-    <!-- <UCard
-      v-motion-pop class="col-span-3" :delay="100" :ui="{
+    <UCard
+      v-motion-pop
+      class="col-span-6 xl:col-span-3"
+      :delay="100"
+      :ui="{
         root: 'rounded-none rounded-br-xl border-0',
         body: 'p-4 sm:p-4',
       }"
@@ -135,7 +128,7 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
           <h2 class="xl:text-xl tracking-tight">
             <span class="text-gray-300 mr-2 font-bold">||</span>Create and share your <span
               class="font-semibold text-primary-500"
-            >Rotations</span>
+            >rotations</span>
           </h2>
           <p class="text-xs xl:text-sm text-gray-400">
             Without mastery, even the perfect build falls short.
@@ -153,7 +146,7 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
           </UBadge>
         </div>
       </div>
-    </UCard> -->
+    </UCard>
 
     <UCard
       v-motion-pop class="col-span-6" :delay="100" :ui="{
@@ -166,7 +159,7 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
           <h2 class="xl:text-xl tracking-tight">
             <span class="text-gray-300 mr-2 font-bold">||</span>Import your <span
               class="font-semibold text-primary-500"
-            >Game</span> information
+            >characters</span> information
           </h2>
           <p class="text-xs xl:text-sm text-gray-400">
             Quickly bring your Wuthering Waves data into the site with the Archiver.

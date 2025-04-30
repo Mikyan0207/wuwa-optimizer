@@ -177,7 +177,7 @@ function GetSubStatsValues(type: string) {
 }
 
 function OnSubmit() {
-  const e = unref(EchoesStore.GetEchoById(State.EchoId!))
+  const e = unref(EchoesStore.Get(State.EchoId!))
 
   if (!e) {
     return OnClose()

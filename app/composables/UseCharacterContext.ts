@@ -20,6 +20,7 @@ export function useCharacterContext() {
   const CurrentWeapon = computed({
     get: () => WeaponsStore.GetWeaponByEquipedId(CharacterId.value),
     set: (val) => {
+      WeaponsStore.RemoveEquipedWeapons(CharacterId.value)
       CurrentCharacter.value.EquipedWeapon = val?.Id
     },
   })
@@ -29,7 +30,7 @@ export function useCharacterContext() {
 
     const ids = CurrentCharacter.value?.EquipedEchoes ?? []
     const equipped = ids
-      .map(id => EchoesStore.Get(id, CurrentCharacter.value.Id))
+      .map(id => EchoesStore.GetEquipedBy(id, CurrentCharacter.value.Id))
       .filter((e): e is Echo => e !== undefined)
 
     equipped.forEach((echo, idx) => {
@@ -40,11 +41,11 @@ export function useCharacterContext() {
   })
 
   const Stats = computed(() => {
-    return StatsCalculator.CalculateTotalStats(CharacterId.value, CurrentWeapon.value?.Id || -1, CurrentCharacter.value.EquipedEchoes || [])
+    return StatsCalculator.CalculateTotalStats(CharacterId.value, CurrentWeapon.value?.Id || -1)
   })
 
   const Score = computed(() => {
-    return ScoreCalculator.GetCharacterScore(CurrentCharacter.value, CurrentCharacter.value.EquipedEchoes || [])
+    return ScoreCalculator.GetCharacterScore(CurrentCharacter.value)
   })
 
   function UpdateEcho(slot: number, echo: Partial<Echo>) {

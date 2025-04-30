@@ -96,9 +96,9 @@ export function useStatsCalculator() {
     return stats
   }
 
-  function CalculateTotalStats(characterId: number, weaponId: number, echoesIds: number[]): Statistic[] {
+  function CalculateTotalStats(characterId: number, weaponId: number): Statistic[] {
     const character = CharactersStore.Get(characterId)
-    const echoes = EchoesStore.GetEchoesByIds(echoesIds, characterId)
+    const echoes = EchoesStore.GetAllEquipedBy(characterId)
 
     const echoesStats = CalculateEchoesStats(echoes)
     const sonataBonuses = CalculateSonataBonuses(echoes)

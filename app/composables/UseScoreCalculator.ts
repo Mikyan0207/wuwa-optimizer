@@ -137,7 +137,7 @@ export const TOTAL_SCORE_GRADES = [
 export function useScoreCalculator() {
   const EchoesStore = useEchoesStore()
 
-  function GetCharacterScore(character: Character | undefined, echoesIds: number[]): ICharacterRatingResult {
+  function GetCharacterScore(character: Character | undefined): ICharacterRatingResult {
     if (character === undefined) {
       return {
         Score: 0,
@@ -146,7 +146,7 @@ export function useScoreCalculator() {
       }
     }
 
-    const echoes = JSON.parse(JSON.stringify(EchoesStore.GetEchoesByIds(echoesIds, character.Id)))
+    const echoes = JSON.parse(JSON.stringify(EchoesStore.GetAllEquipedBy(character.Id)))
     const echoesScores = CalculateEchoesScore(echoes, character.StatsWeights!)
     const totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0)
 

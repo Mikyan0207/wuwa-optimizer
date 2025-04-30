@@ -110,13 +110,13 @@ function SelectEchoAndSonata(echoId: number, cost: EchoCost, sonata: Sonata) {
   State.Sonata!.Name = sonata.Name
   State.Cost = cost
 
-  DisplayedEcho.value = EchoesStore.GetEchoById(echoId)
+  DisplayedEcho.value = EchoesStore.Get(echoId)
 
   Stepper.value?.next()
 }
 
 function OnSubmit() {
-  const e = unref(EchoesStore.GetEchoById(State.EchoId!))
+  const e = unref(EchoesStore.Get(State.EchoId!))
 
   if (!e) {
     return OnClose()

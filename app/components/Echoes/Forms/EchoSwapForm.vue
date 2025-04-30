@@ -40,7 +40,7 @@ function OnClose() {
     <div class="grid grid-cols-2 w-full p-2 gap-2 h-full divide-x divide-(--ui-border)">
       <div class="col-span-3 p-2 max-h-[26em] xl:max-h-[32em] scrollbar-hidden w-full grid grid-cols-2 items-start gap-2 overflow-y-auto">
         <EquipedEchoCard
-          v-for="ec in EchoesStore.GetEchoes()"
+          v-for="ec in EchoesStore.Echoes"
           :key="ec.Id"
           :echo="ec"
           class="group"

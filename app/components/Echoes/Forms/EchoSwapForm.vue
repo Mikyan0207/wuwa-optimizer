@@ -9,8 +9,8 @@ const emits = defineEmits(['close'])
 
 const { t } = useI18n()
 const EchoesStore = useEchoesStore()
-const ActiveCharacterStore = useActiveCharacterStore()
-const CurrentEcho = computed(() => ActiveCharacterStore.GetEchoBySlot(props.echoSlot))
+const { GetEchoBySlot } = useCharacterContext()
+const CurrentEcho = computed(() => GetEchoBySlot(props.echoSlot))
 const SelectedEcho = ref<Echo | undefined>(undefined)
 
 function OnSubmit() {

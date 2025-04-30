@@ -10,7 +10,6 @@ if (CurrentCharacter.value === undefined || CurrentCharacter.value === null) {
   await navigateTo('/characters')
 }
 
-// const { ActiveCharacter } = useActiveCharacterStore()
 const ShowScreenShotBackground = ref<boolean>(false)
 
 async function TakeScreenShotAsync() {

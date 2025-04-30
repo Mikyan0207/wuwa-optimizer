@@ -9,7 +9,7 @@ const props = defineProps<{
 }>()
 
 const { t } = useI18n()
-const { ActiveCharacter } = useActiveCharacterStore()
+const { CurrentCharacter } = useCharacterContext()
 
 const IsValidEcho = computed(() => props.echo.Id !== -1)
 </script>
@@ -81,11 +81,11 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
         v-motion-slide-left
         :delay="500 + (idx * 100)"
         :stat="stat"
-        :weight="ActiveCharacter?.StatsWeights![stat.Type] || undefined"
+        :weight="CurrentCharacter?.StatsWeights![stat.Type] || undefined"
         :show-line="true"
         :show-roll-value="true"
         class="px-2 py-1"
-        :class="{ 'bg-neutral-800/75 rounded': ActiveCharacter?.StatsWeights![stat.Type] !== undefined && ActiveCharacter?.StatsWeights![stat.Type] || 0 > 0 }"
+        :class="{ 'bg-neutral-800/75 rounded': CurrentCharacter?.StatsWeights![stat.Type] !== undefined && CurrentCharacter?.StatsWeights![stat.Type] || 0 > 0 }"
       />
     </div>
     <div v-else class="w-full flex flex-col gap-1">

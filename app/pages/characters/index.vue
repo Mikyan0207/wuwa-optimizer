@@ -10,7 +10,6 @@ definePageMeta({
 })
 
 const { t } = useI18n()
-const ActiveCharacterStore = useActiveCharacterStore()
 
 const CharacterSortOptions: string[] = [
   'Default',
@@ -49,7 +48,6 @@ function FilterCharacters() {
 }
 
 function OnCharacterClicked(characterId: number | undefined) {
-  ActiveCharacterStore.Set(characterId)
   navigateTo(`/characters/${characterId}`)
 }
 </script>

@@ -6,16 +6,6 @@ definePageMeta({
 const Route = useRoute()
 const SelectedTab = ref<string>('0')
 
-const ActiveCharacterStore = useActiveCharacterStore()
-
-if (ActiveCharacterStore.ActiveCharacter === undefined && Route.params.id !== undefined) {
-  ActiveCharacterStore.Set(Number.parseInt(Route.params.id))
-
-  if (ActiveCharacterStore.ActiveCharacter === undefined) {
-    navigateTo('/characters')
-  }
-}
-
 const TabItems = [{
   label: 'Scorer',
   icon: 'i-mdi-calculator-variant-outline',

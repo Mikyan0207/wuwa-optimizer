@@ -16,9 +16,8 @@ const props = defineProps<{
 const emits = defineEmits(['close'])
 
 const { t } = useI18n()
-const ActiveCharacterStore = useActiveCharacterStore()
 const EchoesStore = useEchoesStore()
-const { UpdateEcho } = useCharacterContext()
+const { CurrentCharacter, CurrentEchoes, UpdateEcho } = useCharacterContext()
 
 const EditEchoSchema = z.object({
   EchoId: z.number().nonnegative({
@@ -202,7 +201,7 @@ function OnSubmit() {
       Type: s.Type as StatType,
       Value: Number.parseFloat(s.Value),
     })),
-    EquipedBy: ActiveCharacterStore.ActiveCharacter!.Id,
+    EquipedBy: CurrentCharacter.value!.Id,
     EquipedSlot: props.echoSlot,
   })
 
@@ -214,7 +213,7 @@ function OnClose() {
 }
 
 // This is only used to display the currently edited echo and get initials values.
-const DisplayedEcho = computed<Echo | undefined>(() => ActiveCharacterStore.GetEchoBySlot(props.echoSlot))
+const DisplayedEcho = computed<Echo | undefined>(() => CurrentEchoes.value.find(x => x.EquipedSlot === props.echoSlot))
 const DisplayedSelectedSonata = computed<Sonata | undefined>(() => DisplayedEcho.value?.Sonata.find(x => x.IsSelected === true))
 
 onMounted(() => {

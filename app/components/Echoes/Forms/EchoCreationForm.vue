@@ -25,8 +25,7 @@ const emits = defineEmits({
 const { t } = useI18n()
 const IsOpen = ref()
 const EchoesStore = useEchoesStore()
-const ActiveStore = useActiveCharacterStore()
-const { UpdateEcho } = useCharacterContext()
+const { CurrentCharacter, UpdateEcho } = useCharacterContext()
 
 const SelectedSonataEffect = ref<Sonata | undefined>(undefined)
 const SearchValue = ref<string>('')
@@ -142,7 +141,7 @@ function OnSubmit() {
       Type: s.Type as StatType,
       Value: Number.parseFloat(s.Value),
     })),
-    EquipedBy: ActiveStore.ActiveCharacter!.Id,
+    EquipedBy: CurrentCharacter.value!.Id,
     EquipedSlot: props.echoSlot,
   })
 

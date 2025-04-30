@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const ActiveStore = useActiveCharacterStore()
+const { CurrentWeapon } = useCharacterContext()
 
 const IsDropdownOpen = ref<boolean>(false)
 const SelectedIndex = ref<number | undefined>(undefined)
@@ -22,7 +22,7 @@ const MenuItems = [
       SelectedIndex.value = 3
       IsOpen.value = true
     },
-    disabled: ActiveStore.ActiveWeapon !== undefined,
+    disabled: CurrentWeapon.value === undefined,
   },
 ]
 

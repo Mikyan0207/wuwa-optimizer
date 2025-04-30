@@ -55,6 +55,10 @@ export function useCharacterContext() {
     CurrentCharacter.value.EquipedEchoes[slot] = echo.Id!
   }
 
+  function GetEchoBySlot(slot: number) {
+    return CurrentEchoes.value.find(x => x.EquipedSlot === slot)
+  }
+
   return {
     CurrentCharacter,
     CurrentWeapon,
@@ -62,5 +66,6 @@ export function useCharacterContext() {
     Stats,
     Score,
     UpdateEcho,
+    GetEchoBySlot,
   }
 }

@@ -10,6 +10,25 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     return Echoes.value
   }
 
+  function Get(echoId: number, characterId: number) {
+    return Echoes.value
+      .find(e => e.Id === echoId && e.EquipedBy === characterId)
+  }
+
+  function Update(echoId: number | undefined, data: Partial<Echo>) {
+    const index = Echoes.value.findIndex(e => e.Id === echoId)
+
+    if (index !== -1) {
+      Echoes.value[index] = {
+        ...Echoes.value[index],
+        ...data,
+      } as Echo
+    }
+    else {
+      Echoes.value.push({ Id: echoId, ...data } as Echo)
+    }
+  }
+
   function GetEchoesByIds(echoesIds: number[], characterId: number): Echo[] {
     return Echoes.value
       .filter(e => echoesIds.includes(e.Id) && e.EquipedBy === characterId)
@@ -80,6 +99,8 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
 
   return {
     Echoes,
+    Get,
+    Update,
     GetEchoesByIds,
     GetDefaultEchoes,
     GetEchoes,

@@ -1,42 +1,17 @@
 <script setup lang="ts">
-import type Echo from '~/Core/Interfaces/Echo'
 import { domToBlob } from 'modern-screenshot'
-import { useScoreCalculator } from '~/composables/UseScoreCalculator'
-import { Empty_Echo } from '~/Core/Echoes'
+import { useCharacterContext } from '~/composables/UseCharacterContext'
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
-const EchoesStore = useEchoesStore()
-const ScoreCalculator = useScoreCalculator()
+const { CurrentCharacter, CurrentEchoes, Score } = useCharacterContext()
 
-const { ActiveCharacter } = useActiveCharacterStore()
-const CharacterScore = computed<ICharacterRatingResult>(() => ScoreCalculator.GetCharacterScore(ActiveCharacter, ActiveCharacter?.EquipedEchoes || []))
-const ShowScreenShotBackground = ref<boolean>(false)
-
-if (ActiveCharacter === undefined || ActiveCharacter === null) {
+if (CurrentCharacter.value === undefined || CurrentCharacter.value === null) {
   await navigateTo('/characters')
 }
 
-function GetEchoes(): Echo[] {
-  const echoes = [
-    Empty_Echo,
-    Empty_Echo,
-    Empty_Echo,
-    Empty_Echo,
-    Empty_Echo,
-  ]
-
-  if (ActiveCharacter === undefined || ActiveCharacter.EquipedEchoes.length === 0) {
-    return echoes
-  }
-
-  EchoesStore
-    .GetEchoesByIds(ActiveCharacter.EquipedEchoes, ActiveCharacter.Id)
-    .sort((a, b) => (a.EquipedSlot || 0) - (b.EquipedSlot || 0))
-    .forEach((e, idx) => echoes[e.EquipedSlot || idx] = e)
-
-  return echoes
-}
+// const { ActiveCharacter } = useActiveCharacterStore()
+const ShowScreenShotBackground = ref<boolean>(false)
 
 async function TakeScreenShotAsync() {
   if (!CharacterInfoRef.value) {
@@ -87,7 +62,7 @@ async function TakeScreenShotAsync() {
                       Save Build
                     </UButton> -->
           <div class="w-full flex justify-end gap-1">
-            <ScoringAlgorithmCard v-if="ActiveCharacter !== undefined" :character="ActiveCharacter" />
+            <ScoringAlgorithmCard v-if="CurrentCharacter !== undefined" :character="CurrentCharacter" />
             <UButton
               color="neutral" size="xs" variant="subtle" icon="i-carbon:camera" :trailing="false"
               :loading="ShowScreenShotBackground" @click.prevent="TakeScreenShotAsync"
@@ -99,7 +74,7 @@ async function TakeScreenShotAsync() {
       </template>
     </UCard>
 
-    <div v-if="ActiveCharacter !== undefined && CharacterScore" class="mt-2">
+    <div v-if="CurrentCharacter !== undefined && Score" class="mt-2">
       <div class="mx-auto my-2">
         <div ref="CharacterInfoRef" class="relative p-0.25">
           <div v-if="ShowScreenShotBackground" class="absolute inset-0">
@@ -108,30 +83,30 @@ async function TakeScreenShotAsync() {
           <div class="grid grid-cols-2 mx-auto w-full gap-2 xl:grid-cols-5">
             <!-- Character Info (Art, Stats, Weapon, Skills) -->
             <CharacterArtCard
-              v-if="ActiveCharacter"
+              v-if="CurrentCharacter"
               v-motion-slide-left :delay="50"
-              :character="ActiveCharacter"
+              :character="CurrentCharacter"
               class="col-span-1 row-span-1 xl:col-span-2"
             />
             <div class="grid col-span-1 grid-cols-1 gap-2 xl:col-span-3 xl:grid-cols-2">
               <!-- Stats -->
               <CharacterStatsCard
-                v-motion-pop :delay="100"
-                :character="ActiveCharacter"
-                :score="CharacterScore"
+                v-motion-pop
+                :delay="100"
               />
               <!-- Weapon / Skills -->
               <div class="grid grid-rows-4 gap-2">
                 <!-- Weapon -->
                 <CharacterWeaponCard
-                  v-motion-slide-right :delay="150"
+                  v-motion-slide-right
+                  :delay="150"
                   class="row-span-1"
                 />
                 <!-- Skills -->
                 <CharacterSkillsCard
                   v-motion-slide-right
-                  class="row-span-3" :delay="200"
-                  :character="ActiveCharacter"
+                  class="row-span-3"
+                  :delay="200"
                 />
               </div>
             </div>
@@ -141,12 +116,13 @@ async function TakeScreenShotAsync() {
             <!-- Echoes -->
             <!-- We can simplify this for sure... -->
             <CharacterEchoCard
-              v-for="(echo, idx) in GetEchoes()"
-              :key="idx" v-motion-slide-bottom
+              v-for="(echo, idx) in CurrentEchoes"
+              :key="idx"
+              v-motion-slide-bottom
               :delay="200 + (idx * 25)"
               :echo="echo"
               :echo-slot="echo.EquipedSlot || idx"
-              :score="CharacterScore.EchoesScores.find(x => x.EchoId === echo.Id)"
+              :score="Score.EchoesScores.find(x => x.EchoId === echo.Id)"
             />
           </div>
         </div>

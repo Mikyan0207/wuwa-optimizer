@@ -6,24 +6,27 @@ import { TemplateCharacters } from '~/Core/Characters'
 
 export const useCharactersStore = defineStore('CharactersStore', () => {
   const Characters = useLocalStorage<Character[]>('Characters', [])
-  const WeaponsStore = useWeaponsStore()
 
-  function AddCharacter(character: Character) {
-    const idx = Characters.value.findIndex(x => x.Id === character.Id)
-
-    if (idx === -1) {
-      Characters.value.push(character)
+  function Get(characterId: number | undefined): Character {
+    const c = Characters.value.find(x => x.Id === characterId)
+    if (c !== undefined) {
+      return c
     }
+
+    const ct = TemplateCharacters.find(x => x.Id === characterId)
+    if (ct !== undefined) {
+      Characters.value.push(ct)
+    }
+
+    return Characters.value.find(x => x.Id === characterId)!
   }
 
-  function UpdateCharacter(character: Character) {
-    const idx = Characters.value.findIndex(x => x.Id === character.Id)
-
-    if (idx === -1) {
+  function Update(characterId: number, data: Partial<Character>) {
+    if (Characters.value[characterId] === undefined) {
       return
     }
 
-    Characters.value[idx] = character
+    Characters.value[characterId] = { ...Characters.value[characterId], ...data }
   }
 
   function RemoveCharacter(id: number) {
@@ -47,8 +50,6 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     if (echoIndex !== -1) {
       c.EquipedEchoes.splice(echoIndex, 1)
     }
-
-    UpdateCharacter(c)
   }
 
   function RemoveWeapon(characterId: number, weaponId: number | undefined) {
@@ -59,33 +60,10 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     }
 
     c.EquipedWeapon = undefined
-    UpdateCharacter(c)
   }
 
   function GetCharacters() {
     return Characters.value
-  }
-
-  function GetCharacter(characterId: number | undefined): Character | undefined {
-    const c = Characters.value.find(x => x.Id === characterId)
-    if (c !== undefined) {
-      return c
-    }
-
-    const ct = TemplateCharacters.find(x => x.Id === characterId)
-    if (ct !== undefined) {
-      Characters.value.push(ct)
-    }
-
-    return Characters.value.find(x => x.Id === characterId)
-  }
-
-  function GetWeapon(characterId: number | undefined) {
-    if (characterId === undefined) {
-      return undefined
-    }
-
-    return WeaponsStore.GetWeaponByEquipedId(characterId)
   }
 
   function UpdateEcho(characterId: number, echoId: number, slot: number) {
@@ -96,18 +74,6 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     }
 
     c.EquipedEchoes[slot] = echoId
-    UpdateCharacter(c)
-  }
-
-  function UpdateWeapon(characterId: number, weaponId: number) {
-    const c = Characters.value.find(x => x.Id === characterId)
-
-    if (c === undefined) {
-      return
-    }
-
-    c.EquipedWeapon = weaponId
-    UpdateCharacter(c)
   }
 
   function UpdateStatsWeights(characterId: number, weights: { Type: StatType, Value: number }[]) {
@@ -120,21 +86,17 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     weights.forEach((w) => {
       c.StatsWeights![w.Type] = w.Value
     })
-
-    UpdateCharacter(c)
   }
 
   return {
     Characters,
-    AddCharacter,
+    Get,
+    Update,
     RemoveCharacter,
     RemoveEcho,
     RemoveWeapon,
     GetCharacters,
-    GetCharacter,
-    GetWeapon,
     UpdateEcho,
-    UpdateWeapon,
     UpdateStatsWeights,
   }
 })

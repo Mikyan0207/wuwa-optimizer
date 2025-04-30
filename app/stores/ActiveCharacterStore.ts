@@ -16,7 +16,7 @@ export const useActiveCharacterStore = defineStore('ActiveCharacterStore', () =>
       return
     }
 
-    ActiveCharacter.value = CharactersStore.GetCharacter(characterId)
+    ActiveCharacter.value = CharactersStore.Get(characterId)
 
     if (ActiveCharacter.value === undefined) {
       return
@@ -36,7 +36,7 @@ export const useActiveCharacterStore = defineStore('ActiveCharacterStore', () =>
     }
 
     WeaponsStore.RemoveEquipedWeapons(ActiveCharacter.value.Id)
-    CharactersStore.UpdateWeapon(ActiveCharacter.value.Id, weapon.Id)
+    // CharactersStore.UpdateWeapon(ActiveCharacter.value.Id, weapon.Id)
     WeaponsStore.UpdateWeapon(weapon, ActiveCharacter.value.Id)
 
     ActiveWeapon.value = weapon

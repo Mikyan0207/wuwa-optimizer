@@ -79,7 +79,7 @@ const GetStatColorByRollValue = computed(() => {
     </div>
     <div v-if="showLine === true" class="my-auto h-[1px] w-full bg-white/14" />
     <p class="h-full flex items-center justify-center text-nowrap font-semibold">
-      <span :class="[GetStatColorByRollValue, isWantedColor]">{{ stat.Value.toFixed(1) }}</span>
+      <span :class="[GetStatColorByRollValue, isWantedColor]">{{ IsPercentageStat ? stat.Value.toFixed(1) : stat.Value }}</span>
       <span v-if="IsPercentageStat" :class="[GetStatColorByRollValue, isWantedColor]">%</span>
     </p>
   </div>

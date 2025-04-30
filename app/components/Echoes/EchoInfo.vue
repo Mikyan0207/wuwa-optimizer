@@ -49,17 +49,26 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
       </UBadge>
     </div>
     <USeparator color="neutral" />
-    <!-- Main Stat -->
-    <div class="w-full flex flex-row gap-4">
-      <div v-if="echo.MainStatistic && IsValidEcho" class="w-full flex items-start justify-between gap-12">
+    <!-- Main / Secondary Stat -->
+    <div class="w-full">
+      <div v-if="echo.MainStatistic && echo.SecondaryStatistic && IsValidEcho" class="flex flex-col items-center w-full gap-1">
         <StatLine
           v-motion-slide-left
           :delay="450"
           :stat="echo.MainStatistic"
+          :show-line="true"
           :is-main-stat="true"
         />
+        <StatLine
+          v-motion-slide-left
+          :delay="450"
+          :stat="echo.SecondaryStatistic"
+          :show-line="true"
+          :is-main-stat="false"
+        />
       </div>
-      <div v-else class="w-full flex items-center justify-between">
+      <div v-else class="w-full flex flex-col items-center justify-between gap-1">
+        <USkeleton class="h-6 w-full" />
         <USkeleton class="h-6 w-full" />
       </div>
     </div>

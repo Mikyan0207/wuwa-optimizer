@@ -13,6 +13,8 @@ export default interface Echo {
   EquipedSlot?: number
   Sonata: Sonata[]
   MainStatistic?: IStatistic
+  SecondaryStatistic?: IStatistic
   Statistics: IStatistic[]
+  ExtraStatistics?: IStatistic[]
   IsNightmare?: boolean
 }

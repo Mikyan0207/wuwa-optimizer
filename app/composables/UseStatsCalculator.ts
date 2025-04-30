@@ -145,7 +145,7 @@ export function useStatsCalculator() {
 
     echoes.forEach((echo: Echo) => {
       if (echo.MainStatistic) {
-        const existing = stats.find(s => s.Type === echo.MainStatistic.Type)
+        const existing = stats.find(s => s.Type === echo.MainStatistic!.Type)
         if (existing) {
           existing.Value += echo.MainStatistic.Value
         }
@@ -154,7 +154,7 @@ export function useStatsCalculator() {
         }
       }
       if (echo.SecondaryStatistic) {
-        const existing = stats.find(s => s.Type === echo.SecondaryStatistic.Type)
+        const existing = stats.find(s => s.Type === echo.SecondaryStatistic!.Type)
         if (existing) {
           existing.Value += echo.SecondaryStatistic.Value
         }
@@ -225,9 +225,7 @@ export function useStatsCalculator() {
         base.push({ ...weapon.MainStatistic })
       if (weapon.SecondaryStatistic)
         extra.push({ ...weapon.SecondaryStatistic })
-      if (weapon.ExtraStatistics?.length) {
-        weapon.ExtraStatistics.forEach(stat => extra.push({ ...stat }))
-      }
+      weapon.ExtraStatistics?.forEach(stat => extra.push({ ...stat }))
     }
 
     return { base, extra }

@@ -124,10 +124,12 @@ function OnSubmit() {
   }
 
   DisplayedEcho.value = e
+  e.Sonata.find(x => x.Name === State.Sonata!.Name)!.IsSelected = true
 
-  Object.assign(e, {
+  UpdateEcho(props.echoSlot, {
     Rarity: State.Rarity,
     Level: State.Level,
+    Sonata: e.Sonata,
     MainStatistic: {
       Type: State.MainStat!.Type as StatType,
       Value: Number.parseFloat(State.MainStat!.Value),
@@ -143,10 +145,6 @@ function OnSubmit() {
     EquipedBy: ActiveStore.ActiveCharacter!.Id,
     EquipedSlot: props.echoSlot,
   })
-
-  e.Sonata.find(x => x.Name === State.Sonata!.Name)!.IsSelected = true
-
-  UpdateEcho(props.echoSlot, e)
 
   return OnClose()
 }
@@ -189,7 +187,7 @@ const MainStatisticsOptions = computed(() => Object.entries(STAT_NAMES)
     }
   }))
 
-const SecondaryStatisticsOptions = computed(() => Object.entries(STAT_NAMES)
+const SecondaryStatisticsOptions = Object.entries(STAT_NAMES)
   .filter(([key, _]) => key !== StatType.NONE)
   .filter(([key, _]) => IsSecondaryStatType(key as unknown as keyof typeof STAT_NAMES, State.Cost ?? EchoCost.FOUR_COST))
   .map(([key, value]) => {
@@ -199,7 +197,7 @@ const SecondaryStatisticsOptions = computed(() => Object.entries(STAT_NAMES)
       Label: value,
       Type: k,
     }
-  }))
+  })
 
 const StatisticsOptions = Object.entries(STAT_NAMES)
   .filter(([key, _]) => key !== StatType.NONE)
@@ -393,7 +391,7 @@ const StepperItems = [
                   </div>
                 </UCard>
 
-                <!-- Main Stat -->
+                <!-- Main/Secondary Stat -->
                 <UCard>
                   <UFormField name="MainStat">
                     <USeparator label="Main / Secondary" />

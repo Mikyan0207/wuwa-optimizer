@@ -98,6 +98,16 @@ export const Sentry_Construct_Echo: Echo = {
     Frosty_Resolve,
   ],
   Statistics: [],
+  ExtraStatistics: [
+    {
+      Type: StatType.GLACIO_DMG_BONUS,
+      Value: 12.0,
+    },
+    {
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+      Value: 12.0,
+    },
+  ],
 }
 
 export const Lorelei_Echo: Echo = {

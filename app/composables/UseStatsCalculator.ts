@@ -98,10 +98,12 @@ export function useStatsCalculator() {
 
   function CalculateTotalStats(characterId: number, weaponId: number, echoesIds: number[]): Statistic[] {
     const character = CharactersStore.Get(characterId)
-    const echoesStats = CalculateEchoesStats(echoesIds, characterId)
     const echoes = EchoesStore.GetEchoesByIds(echoesIds, characterId)
+
+    const echoesStats = CalculateEchoesStats(echoes)
     const sonataBonuses = CalculateSonataBonuses(echoes)
     const skillsStats = CalculateSkillsStats(character.Skills || [])
+
     const baseStats: Statistic[] = character.Stats.filter(s =>
       s.Type !== StatType.ATTACK && s.Type !== StatType.HP && s.Type !== StatType.DEF,
     )
@@ -138,8 +140,7 @@ export function useStatsCalculator() {
     return stats
   }
 
-  function CalculateEchoesStats(echoesIds: number[], characterId: number): Statistic[] {
-    const echoes = EchoesStore.GetEchoesByIds(echoesIds, characterId)
+  function CalculateEchoesStats(echoes: Echo[]): Statistic[] {
     const stats: Statistic[] = []
 
     echoes.forEach((echo: Echo) => {

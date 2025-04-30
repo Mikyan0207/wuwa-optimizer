@@ -64,7 +64,7 @@ function IsStatWanted(stat: IStatistic) {
 
     <div class="mx-auto my-4 h-[1px] w-full rounded-full bg-white/14" />
     <div class="flex flex-col">
-      <div class="w-full flex flex-col items-start gap-1 relative text-lg">
+      <div class="w-full flex flex-col items-start gap-1 relative">
         <StatLine
           v-for="(st, idx) in Stats"
           :key="`${st.Type}-${st.Value}`"

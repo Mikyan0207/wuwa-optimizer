@@ -186,13 +186,13 @@ function OnSubmit() {
   e.Sonata.find(x => x.Name === State.Sonata!.Name)!.IsSelected = true
 
   UpdateEcho(props.echoSlot, {
+    ...e,
     Rarity: State.Rarity,
     Level: State.Level,
     MainStatistic: {
       Type: State.MainStat!.Type as StatType,
       Value: Number.parseFloat(State.MainStat!.Value),
     },
-    Sonata: e.Sonata,
     SecondaryStatistic: {
       Type: State.SecondaryStat!.Type as StatType,
       Value: Number.parseFloat(State.SecondaryStat!.Value),

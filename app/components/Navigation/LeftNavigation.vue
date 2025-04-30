@@ -68,7 +68,7 @@ const Section_03_Items = ref([
         linkLabel: 'hidden w-0',
       }"
     />
-    <UNavigationMenu
+    <!-- <UNavigationMenu
       :items="Section_03_Items"
       orientation="vertical"
       :highlight="true"
@@ -76,6 +76,6 @@ const Section_03_Items = ref([
         link: 'inline-block mx-auto w-full inset-x-2 w-min',
         linkLabel: 'hidden w-0',
       }"
-    />
+    /> -->
   </div>
 </template>

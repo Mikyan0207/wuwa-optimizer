@@ -25,7 +25,7 @@
 <br>
 <div align="center">
  <p align="center">
-   <h2>✨ Features ✨</h2>
+   <h2>Features</h2>
  </p>
 </div>
 <br>
@@ -40,7 +40,7 @@
 <br>
 <div align="center">
  <p align="center">
-   <h2>🧮 Scoring System 🧮</h2>
+   <h2>Scoring System</h2>
  </p>
 </div>
 <br>
@@ -60,14 +60,10 @@ The final Echo score is the sum of all weighted substats, normalized on a 0–10
 <br>
 <div align="center">
  <p align="center">
-   <h2>🧠 Auto Optimization (Coming Soon) 🧠</h2>
+   <h2>Auto Optimization (Coming Soon)</h2>
  </p>
 </div>
 <br>
-
-The optimization module elevates WuWa Optimizer from a scoring utility to a full recommendation engine.
-
-### How Optimization Works
 
 Each Echo in your inventory is evaluated not just by its current stats, but also by its **potential**. Echoes that haven't reached 5 substats have their missing rolls simulated using all valid stat combinations and realistic roll value distributions.
 
@@ -94,4 +90,4 @@ The system accounts for 2-piece and 5-piece set bonuses, slot types, and potenti
 
 ---
 
-**Personal project. Not affiliated with Kuro Games.**
+All rights reserved by © Guangzhou Kuro Technology Co., Ltd. This project is not affiliated with nor endorsed by Kuro Games. Wuthering Waves and other properties are trademarks of their respective owners.

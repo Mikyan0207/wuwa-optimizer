@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GameVersion, RotationBuilderGameVersion, ScorerGameVersion } from '~/Core'
+import { RotationBuilderGameVersion, ScorerGameVersion } from '~/Core'
 import { TemplateCharacters } from '~/Core/Characters'
 import { ReleaseState } from '~/Core/Enums/ReleaseState'
 import { TemplateWeapons } from '~/Core/Weapons'
@@ -8,10 +8,7 @@ definePageMeta({
   layout: 'default',
 })
 
-const ActiveCharacterStore = useActiveCharacterStore()
-
 function OnCharacterClicked(characterId: number | undefined) {
-  ActiveCharacterStore.Set(characterId)
   navigateTo(`/characters/${characterId}`)
 }
 

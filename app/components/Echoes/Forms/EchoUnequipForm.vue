@@ -7,15 +7,15 @@ const emits = defineEmits(['close'])
 
 const { t } = useI18n()
 const EchoesStore = useEchoesStore()
-const ActiveCharacterStore = useActiveCharacterStore()
-const CurrentEcho = computed(() => ActiveCharacterStore.GetEchoBySlot(props.echoSlot))
+const { CurrentCharacter, GetEchoBySlot } = useCharacterContext()
+const CurrentEcho = computed(() => GetEchoBySlot(props.echoSlot)!)
 
 function OnSubmit() {
-  if (CurrentEcho.value === undefined || ActiveCharacterStore.ActiveCharacter === undefined) {
+  if (CurrentEcho.value === undefined || CurrentCharacter.value === undefined) {
     return
   }
 
-  EchoesStore.RemoveEcho(CurrentEcho.value.Id, ActiveCharacterStore.ActiveCharacter.Id)
+  EchoesStore.RemoveEcho(CurrentEcho.value.Id, CurrentCharacter.value.Id)
   OnClose()
 }
 

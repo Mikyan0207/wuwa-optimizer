@@ -8,8 +8,8 @@ const SelectedIndex = ref<number | undefined>(undefined)
 const IsOpen = ref<boolean>(false)
 
 const EchoesStore = useEchoesStore()
-const ActiveStore = useActiveCharacterStore()
-const CurrentEcho = computed(() => ActiveStore.GetEchoBySlot(props.echoSlot))
+const { GetEchoBySlot } = useCharacterContext()
+const CurrentEcho = computed(() => GetEchoBySlot(props.echoSlot))
 
 const MenuItems = [
   {
@@ -46,7 +46,7 @@ const MenuItems = [
       SelectedIndex.value = 3
       IsOpen.value = true
     },
-    disabled: CurrentEcho.value === undefined,
+    disabled: CurrentEcho.value === undefined || CurrentEcho.value.Id === -1,
   },
 ]
 

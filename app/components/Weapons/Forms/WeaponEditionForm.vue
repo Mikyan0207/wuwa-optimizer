@@ -5,25 +5,25 @@ import { GetWeaponIcon } from '~/Core/Utils/WeaponUtils'
 const emits = defineEmits(['close'])
 
 const { t } = useI18n()
-const ActiveStore = useActiveCharacterStore()
+const { CurrentCharacter, CurrentWeapon } = useCharacterContext()
 const WeaponsStore = useWeaponsStore()
 
-const SelectedWeaponId = ref<number | undefined>(WeaponsStore.GetWeaponByEquipedId(ActiveStore.ActiveCharacter?.Id)?.Id || undefined)
+const SelectedWeaponId = ref<number | undefined>(WeaponsStore.GetWeaponByEquipedId(CurrentCharacter.value?.Id)?.Id || undefined)
 const SelectedWeapon = computed<Weapon | undefined>(() => SelectedWeaponId.value
   ? unref(WeaponsStore.GetDefaultWeapon(SelectedWeaponId.value))
-  : unref(WeaponsStore.GetWeaponByEquipedId(ActiveStore.ActiveCharacter?.Id)))
+  : unref(WeaponsStore.GetWeaponByEquipedId(CurrentCharacter.value?.Id)))
 const SelectedWeaponLevel = ref(SelectedWeapon.value?.Level ?? 1)
 const SelectedWeaponRank = ref(SelectedWeapon.value?.Rank ?? 0)
 
 function OnSubmit() {
-  if (!SelectedWeaponId.value || !SelectedWeapon.value || !ActiveStore.ActiveCharacter) {
+  if (!SelectedWeaponId.value || !SelectedWeapon.value || !CurrentCharacter.value) {
     return
   }
 
   SelectedWeapon.value.Level = SelectedWeaponLevel.value
   SelectedWeapon.value.Rank = SelectedWeaponRank.value
-  SelectedWeapon.value.EquipedBy = ActiveStore.ActiveCharacter.Id
-  ActiveStore.SetWeapon(unref(SelectedWeapon.value))
+  SelectedWeapon.value.EquipedBy = CurrentCharacter.value.Id
+  CurrentWeapon.value = SelectedWeapon.value
   OnClose()
 }
 
@@ -48,7 +48,7 @@ function OnClose() {
         <UFormField label="Weapon">
           <UInputMenu
             v-model="SelectedWeaponId" class="w-full"
-            :items="WeaponsStore.GetDefaultWeapons().filter(weapon => weapon.Type === ActiveStore.ActiveCharacter!.WeaponType)"
+            :items="WeaponsStore.GetDefaultWeapons().filter(weapon => weapon.Type === CurrentCharacter!.WeaponType)"
             option-key="Id" value-key="Id" size="lg"
           >
             <template #leading>

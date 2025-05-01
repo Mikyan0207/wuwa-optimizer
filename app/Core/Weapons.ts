@@ -33,12 +33,18 @@ export const BlazingJustice: Weapon = {
   Type: WeaponType.GAUNTLETS,
   MainStatistic: {
     Type: StatType.ATTACK,
-    Value: 588,
+    Value: 587,
   },
   SecondaryStatistic: {
     Type: StatType.CRIT_DMG,
     Value: 48.6,
   },
+  ExtraStatistics: [
+    {
+      Type: StatType.ATTACK_PERCENTAGE,
+      Value: 12.0,
+    },
+  ],
   Rank: 1,
 }
 
@@ -75,6 +81,12 @@ export const TheLastDance: Weapon = {
     Type: StatType.CRIT_DMG,
     Value: 72,
   },
+  ExtraStatistics: [
+    {
+      Type: StatType.ATTACK_PERCENTAGE,
+      Value: 12.0,
+    },
+  ],
   Rank: 1,
 }
 

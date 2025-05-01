@@ -1,6 +1,7 @@
 import type Echo from '~/Core/Interfaces/Echo'
 import { EchoCost } from './Enums/EchoCost'
 import { Rarity } from './Enums/Rarity'
+import { StatType } from './Enums/StatType'
 import { Celestial_Light, Empyrean_Anthem, Eternal_Radiance, Freezing_Frost, Frosty_Resolve, Lingering_Tunes, Midnight_Veil, Molten_Rift, Moonlit_Clouds, Rejuvenating_Glow, Sierra_Gale, SunSinking_Eclipse, Tidebreaking_Courage, Void_Thunder } from './Sonatas'
 
 export const Empty_Echo: Echo = {
@@ -97,6 +98,16 @@ export const Sentry_Construct_Echo: Echo = {
     Frosty_Resolve,
   ],
   Statistics: [],
+  ExtraStatistics: [
+    {
+      Type: StatType.GLACIO_DMG_BONUS,
+      Value: 12.0,
+    },
+    {
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+      Value: 12.0,
+    },
+  ],
 }
 
 export const Lorelei_Echo: Echo = {
@@ -230,6 +241,12 @@ export const Nightmare_Mourning_Aix_Echo: Echo = {
     Eternal_Radiance,
   ],
   Statistics: [],
+  ExtraStatistics: [
+    {
+      Type: StatType.SPECTRO_DMG_BONUS,
+      Value: 12.0,
+    },
+  ],
   IsNightmare: true,
 }
 // #endregion

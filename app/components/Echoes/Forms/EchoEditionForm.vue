@@ -6,7 +6,7 @@ import { z } from 'zod'
 import { EchoCost } from '~/Core/Enums/EchoCost'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { StatType } from '~/Core/Enums/StatType'
-import { FOUR_COST_MAIN_STATS_VALUES, IsMainStatType, IsSubStatType, ONE_COST_MAIN_STATS_VALUES, STAT_NAMES, SUB_STAT_VALUES, THREE_COST_MAIN_STATS_VALUES } from '~/Core/Statistics'
+import { FOUR_COST_MAIN_STATS_VALUES, FOUR_COST_SECONDARY_STATS_VALUES, IsMainStatType, IsSecondaryStatType, IsSubStatType, ONE_COST_MAIN_STATS_VALUES, ONE_COST_SECONDARY_STATS_VALUES, STAT_NAMES, SUB_STAT_VALUES, THREE_COST_MAIN_STATS_VALUES, THREE_COST_SECONDARY_STATS_VALUES } from '~/Core/Statistics'
 import { GetEchoBorderColor, GetEchoCostText, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
 const props = defineProps<{
@@ -16,8 +16,8 @@ const props = defineProps<{
 const emits = defineEmits(['close'])
 
 const { t } = useI18n()
-const ActiveCharacterStore = useActiveCharacterStore()
 const EchoesStore = useEchoesStore()
+const { CurrentCharacter, CurrentEchoes, UpdateEcho } = useCharacterContext()
 
 const EditEchoSchema = z.object({
   EchoId: z.number().nonnegative({
@@ -33,6 +33,10 @@ const EditEchoSchema = z.object({
     Type: z.nativeEnum(StatType).default(StatType.NONE),
     Value: z.string().nonempty(),
   }).required(),
+  SecondaryStat: z.object({
+    Type: z.nativeEnum(StatType).default(StatType.NONE),
+    Value: z.string().nonempty(),
+  }).required(),
   SubStats: z.array(z.object({
     Type: z.nativeEnum(StatType).default(StatType.NONE),
     Value: z.string(),
@@ -45,6 +49,10 @@ const State = reactive<Partial<FormSchema>>({
   Rarity: Rarity.FIVE_STARS,
   Level: 25,
   MainStat: {
+    Type: StatType.NONE,
+    Value: '',
+  },
+  SecondaryStat: {
     Type: StatType.NONE,
     Value: '',
   },
@@ -94,6 +102,18 @@ const MainStatisticsOptions = computed(() => Object.entries(STAT_NAMES)
     }
   }))
 
+const SecondaryStatisticsOptions = computed(() => Object.entries(STAT_NAMES)
+  .filter(([key, _]) => key !== StatType.NONE)
+  .filter(([key, _]) => IsSecondaryStatType(key as unknown as keyof typeof STAT_NAMES, State.Cost ?? EchoCost.FOUR_COST))
+  .map(([key, value]) => {
+    const k = key as unknown as keyof typeof STAT_NAMES
+
+    return {
+      Label: value,
+      Type: k,
+    }
+  }))
+
 const StatisticsOptions = Object.entries(STAT_NAMES)
   .filter(([key, _]) => key !== StatType.NONE)
   .filter(([key, _]) => IsSubStatType(key as unknown as keyof typeof STAT_NAMES))
@@ -127,6 +147,27 @@ function GetMainStatValue() {
   }
 }
 
+function GetSecondaryStatValue() {
+  if (State.SecondaryStat === undefined || State.SecondaryStat.Type === undefined || State.SecondaryStat.Type === StatType.NONE) {
+    return 0
+  }
+
+  switch (State.Cost) {
+    case EchoCost.FOUR_COST:
+      State.SecondaryStat.Value = (FOUR_COST_SECONDARY_STATS_VALUES[State.SecondaryStat.Type as StatType] || 0)
+        .toFixed(1)
+      break
+    case EchoCost.THREE_COST:
+      State.SecondaryStat.Value = (THREE_COST_SECONDARY_STATS_VALUES[State.SecondaryStat.Type as StatType] || 0)
+        .toFixed(1)
+      break
+    case EchoCost.ONE_COST:
+      State.SecondaryStat.Value = (ONE_COST_SECONDARY_STATS_VALUES[State.SecondaryStat.Type as StatType] || 0)
+        .toFixed(1)
+      break
+  }
+}
+
 function IsDisabled(type: string) {
   return type === undefined || type === StatType.NONE || type === ''
 }
@@ -136,29 +177,33 @@ function GetSubStatsValues(type: string) {
 }
 
 function OnSubmit() {
-  const e = unref(EchoesStore.GetEchoById(State.EchoId!))
+  const e = unref(EchoesStore.Get(State.EchoId!))
 
   if (!e) {
     return OnClose()
   }
 
-  Object.assign(e, {
+  e.Sonata.find(x => x.Name === State.Sonata!.Name)!.IsSelected = true
+
+  UpdateEcho(props.echoSlot, {
+    ...e,
     Rarity: State.Rarity,
     Level: State.Level,
     MainStatistic: {
       Type: State.MainStat!.Type as StatType,
       Value: Number.parseFloat(State.MainStat!.Value),
     },
+    SecondaryStatistic: {
+      Type: State.SecondaryStat!.Type as StatType,
+      Value: Number.parseFloat(State.SecondaryStat!.Value),
+    },
     Statistics: State.SubStats!.map(s => ({
       Type: s.Type as StatType,
       Value: Number.parseFloat(s.Value),
     })),
-    EquipedBy: ActiveCharacterStore.ActiveCharacter!.Id,
+    EquipedBy: CurrentCharacter.value!.Id,
     EquipedSlot: props.echoSlot,
   })
-
-  e.Sonata.find(x => x.Name === State.Sonata!.Name)!.IsSelected = true
-  ActiveCharacterStore.SetEcho(e, props.echoSlot)
 
   return OnClose()
 }
@@ -168,7 +213,7 @@ function OnClose() {
 }
 
 // This is only used to display the currently edited echo and get initials values.
-const DisplayedEcho = computed<Echo | undefined>(() => ActiveCharacterStore.GetEchoBySlot(props.echoSlot))
+const DisplayedEcho = computed<Echo | undefined>(() => CurrentEchoes.value.find(x => x.EquipedSlot === props.echoSlot))
 const DisplayedSelectedSonata = computed<Sonata | undefined>(() => DisplayedEcho.value?.Sonata.find(x => x.IsSelected === true))
 
 onMounted(() => {
@@ -176,6 +221,8 @@ onMounted(() => {
     State.EchoId = DisplayedEcho.value.Id
     State.MainStat!.Type = DisplayedEcho.value.MainStatistic!.Type
     State.MainStat!.Value = DisplayedEcho.value.MainStatistic!.Value.toFixed(1)
+    State.SecondaryStat!.Type = DisplayedEcho.value.SecondaryStatistic!.Type
+    State.SecondaryStat!.Value = DisplayedEcho.value.SecondaryStatistic!.Value.toFixed(1)
     State.Sonata!.Name = DisplayedEcho.value.Sonata.find(x => x.IsSelected)?.Name || ''
     State.Level = DisplayedEcho.value.Level
     State.Rarity = DisplayedEcho.value.Rarity
@@ -262,15 +309,14 @@ onMounted(() => {
               </div>
             </UCard>
 
-            <!-- Main Stat -->
+            <!-- Main/Secondary Stat -->
             <UCard>
               <UFormField name="MainStat">
-                <USeparator label="Main Stat" />
+                <USeparator label="Main / Secondary" />
                 <div class="my-2 flex items-start justify-between gap-2">
                   <UFormField name="MainStat.Type" class="w-full" :eager-validation="true">
                     <USelectMenu
-                      v-model="State.MainStat!.Type" value-key="Type" label-key="Label" arrow
-                      :search-input="{
+                      v-model="State.MainStat!.Type" value-key="Type" label-key="Label" arrow :search-input="{
                         icon: 'i-lucide-search',
                       }" :items="MainStatisticsOptions" class="w-full"
                       @update:model-value="GetMainStatValue()"
@@ -278,6 +324,19 @@ onMounted(() => {
                   </UFormField>
                   <UFormField name="MainStat.Value" class="w-[32%]">
                     <UInput v-model="State.MainStat!.Value" class="w-full" />
+                  </UFormField>
+                </div>
+                <div class="my-2 flex items-start justify-between gap-2">
+                  <UFormField name="SecondaryStat.Type" class="w-full" :eager-validation="true">
+                    <USelectMenu
+                      v-model="State.SecondaryStat!.Type" value-key="Type" label-key="Label" arrow :search-input="{
+                        icon: 'i-lucide-search',
+                      }" :items="SecondaryStatisticsOptions" class="w-full"
+                      @update:model-value="GetSecondaryStatValue()"
+                    />
+                  </UFormField>
+                  <UFormField name="SecondaryStat.Value" class="w-[32%]">
+                    <UInput v-model="State.SecondaryStat!.Value" class="w-full" />
                   </UFormField>
                 </div>
               </UFormField>

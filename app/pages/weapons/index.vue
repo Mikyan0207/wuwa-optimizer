@@ -79,10 +79,10 @@ const TabItems = [
               <RarityFilter @selected="(r: Rarity) => SelectedWeaponRarity = r" />
             </div>
           </div>
-          <div v-if="SelectedTab === '0'" class="mx-auto w-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-2 mb-8 md:max-w-xl lg:max-w-full">
+          <div v-if="SelectedTab === '0'" class="mx-auto w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-center gap-2 mb-8 md:max-w-xl lg:max-w-full">
             <EquipedWeaponIcon v-for="w in WeaponsList" :key="w.Id" :weapon="w" :character-id="w.EquipedBy" />
           </div>
-          <div v-if="SelectedTab === '1'" class="mx-auto w-full grid grid-cols-1 lg:grid-cols-3 justify-center gap-2 mb-8">
+          <div v-if="SelectedTab === '1'" class="mx-auto w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-center gap-2 mb-8 md:max-w-xl lg:max-w-full">
             <WeaponIcon v-for="w in WeaponsList" :key="w.Id" :weapon="w" />
           </div>
         </div>

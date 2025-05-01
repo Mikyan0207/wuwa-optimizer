@@ -186,7 +186,7 @@ const MainStatisticsOptions = computed(() => Object.entries(STAT_NAMES)
     }
   }))
 
-const SecondaryStatisticsOptions = Object.entries(STAT_NAMES)
+const SecondaryStatisticsOptions = computed(() => Object.entries(STAT_NAMES)
   .filter(([key, _]) => key !== StatType.NONE)
   .filter(([key, _]) => IsSecondaryStatType(key as unknown as keyof typeof STAT_NAMES, State.Cost ?? EchoCost.FOUR_COST))
   .map(([key, value]) => {
@@ -196,7 +196,7 @@ const SecondaryStatisticsOptions = Object.entries(STAT_NAMES)
       Label: value,
       Type: k,
     }
-  })
+  }))
 
 const StatisticsOptions = Object.entries(STAT_NAMES)
   .filter(([key, _]) => key !== StatType.NONE)

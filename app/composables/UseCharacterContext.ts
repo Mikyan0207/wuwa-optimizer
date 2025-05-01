@@ -20,8 +20,7 @@ export function useCharacterContext() {
   const CurrentWeapon = computed({
     get: () => WeaponsStore.GetWeaponByEquipedId(CharacterId.value),
     set: (val) => {
-      WeaponsStore.RemoveEquipedWeapons(CharacterId.value)
-      CurrentCharacter.value.EquipedWeapon = val?.Id
+      WeaponsStore.SetEquipedWeapon(CharacterId.value, val?.Id)
     },
   })
 

@@ -46,7 +46,7 @@ const MenuItems = [
       SelectedIndex.value = 3
       IsOpen.value = true
     },
-    disabled: CurrentEcho.value === undefined,
+    disabled: CurrentEcho.value === undefined || CurrentEcho.value.Id === -1,
   },
 ]
 

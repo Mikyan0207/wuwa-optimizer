@@ -79,7 +79,7 @@ export const ONE_COST_MAIN_STATS_VALUES: Record<StatType, number> = {
   [StatType.CRIT_RATE]: 0,
   [StatType.ATTACK]: 0,
   [StatType.ATTACK_PERCENTAGE]: 18.0,
-  [StatType.HP]: 2280,
+  [StatType.HP]: 0.0,
   [StatType.HP_PERCENTAGE]: 22.8,
   [StatType.HEALING_BONUS]: 0.0,
   [StatType.DEF]: 0,

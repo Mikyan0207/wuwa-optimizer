@@ -23,7 +23,7 @@ function OnSubmit() {
   SelectedWeapon.value.Level = SelectedWeaponLevel.value
   SelectedWeapon.value.Rank = SelectedWeaponRank.value
   SelectedWeapon.value.EquipedBy = CurrentCharacter.value.Id
-  CurrentWeapon.value = unref(SelectedWeapon.value)
+  CurrentWeapon.value = SelectedWeapon.value
   OnClose()
 }
 

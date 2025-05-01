@@ -24,6 +24,21 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     return Weapons.value.find(x => x.EquipedBy === equipedId)
   }
 
+  function SetEquipedWeapon(characterId: number, weaponId: number | undefined) {
+    if (weaponId === undefined) {
+      return
+    }
+
+    const c = Weapons.value.find(x => x.Id === weaponId)
+    if (c === undefined) {
+      const ct = TemplateWeapons.find(x => x.Id === weaponId)
+      if (ct !== undefined) {
+        Weapons.value.push(ct)
+      }
+    }
+
+    Weapons.value.find(x => x.Id === weaponId)!.EquipedBy = characterId
+  }
   function RemoveEquipedWeapons(characterId: number) {
     Weapons.value = Weapons.value.filter(x => x.EquipedBy !== characterId)
   }
@@ -35,6 +50,7 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     GetWeapon,
     GetDefaultWeapon,
     GetWeaponByEquipedId,
+    SetEquipedWeapon,
     RemoveEquipedWeapons,
   }
 })

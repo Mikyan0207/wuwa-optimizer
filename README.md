@@ -30,7 +30,7 @@
 </div>
 <br>
 
-🧠 **Auto Optimization**: Simulates your best possible builds by analyzing all your Echoes and suggesting the ideal setup for any character.<br><br>
+🧠 **Auto Optimization (Coming Soon)**: Simulates your best possible builds by analyzing all your Echoes and suggesting the ideal setup for any character.<br><br>
 🎯 **Echo Scoring**: Each Echo is evaluated using stat weightings tailored to each character.<br><br>
 🔍 **Character Overview**: Displays the total score of a character based on equipped Echoes.<br><br>
 🔁 **Rotation Builder**: Create and share full team rotations.<br><br>
@@ -60,7 +60,7 @@ The final Echo score is the sum of all weighted substats, normalized on a 0–10
 <br>
 <div align="center">
  <p align="center">
-   <h2>🧠 Auto Optimization 🧠</h2>
+   <h2>🧠 Auto Optimization (Coming Soon) 🧠</h2>
  </p>
 </div>
 <br>

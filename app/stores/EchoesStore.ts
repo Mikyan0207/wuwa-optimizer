@@ -39,6 +39,20 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     }
   }
 
+  function UpdateWithEquipedBy(echoId: number | undefined, characterId: number, data: Partial<Echo>) {
+    const index = Echoes.value.findIndex(e => e.Id === echoId && e.EquipedBy === characterId)
+
+    if (index !== -1) {
+      Echoes.value[index] = {
+        ...Echoes.value[index],
+        ...data,
+      } as Echo
+    }
+    else {
+      Echoes.value.push({ Id: echoId, ...data } as Echo)
+    }
+  }
+
   function RemoveEcho(echoId: number, characterId: number) {
     Echoes.value = Echoes.value.filter(e => !(e.Id === echoId && e.EquipedBy === characterId))
   }
@@ -49,6 +63,7 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     GetEquipedBy,
     GetAllEquipedBy,
     Update,
+    UpdateWithEquipedBy,
     RemoveEcho,
   }
 })

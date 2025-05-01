@@ -14,7 +14,42 @@ const CurrentEcho = computed(() => GetEchoBySlot(props.echoSlot))
 const SelectedEcho = ref<Echo | undefined>(undefined)
 
 function OnSubmit() {
+  if (CurrentEcho.value === undefined || SelectedEcho.value === undefined) {
+    return
+  }
 
+  const currentEchoSlot = CurrentEcho.value.EquipedSlot
+  const selectedEchoSlot = SelectedEcho.value.EquipedSlot
+
+  if (currentEchoSlot === undefined
+    || selectedEchoSlot === undefined
+    || CurrentEcho.value.EquipedBy === undefined
+    || SelectedEcho.value.EquipedBy === undefined) {
+    return
+  }
+
+  // This is just a swap on the same character.
+  if (CurrentEcho.value.EquipedBy === SelectedEcho.value.EquipedBy) {
+    EchoesStore.UpdateWithEquipedBy(CurrentEcho.value.Id, CurrentEcho.value.EquipedBy, {
+      EquipedSlot: selectedEchoSlot,
+    })
+    EchoesStore.UpdateWithEquipedBy(SelectedEcho.value.Id, CurrentEcho.value.EquipedBy, {
+      EquipedSlot: currentEchoSlot,
+    })
+  }
+  else {
+    EchoesStore.UpdateWithEquipedBy(SelectedEcho.value.Id, CurrentEcho.value.EquipedBy, {
+      EquipedBy: CurrentEcho.value.EquipedBy,
+      EquipedSlot: currentEchoSlot,
+    })
+
+    EchoesStore.UpdateWithEquipedBy(CurrentEcho.value.Id, CurrentEcho.value.EquipedBy, {
+      EquipedBy: SelectedEcho.value.EquipedBy,
+      EquipedSlot: selectedEchoSlot,
+    })
+  }
+
+  OnClose()
 }
 
 function OnClose() {

@@ -2,6 +2,7 @@
 import { TemplateCharacters } from '~/Core/Characters'
 import { CharacterType } from '~/Core/Enums/CharacterType'
 import { Rarity } from '~/Core/Enums/Rarity'
+import { ReleaseState } from '~/Core/Enums/ReleaseState'
 import { WeaponType } from '~/Core/Enums/WeaponType'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
@@ -65,7 +66,14 @@ function OnCharacterClicked(characterId: number | undefined) {
         :key="c.Id" v-motion-pop
         :delay="100 + (idx * 20)"
         :character="c"
-        @click.prevent="OnCharacterClicked(c.Id)"
+        :class="{ 'cursor-default': c.ReleaseState === ReleaseState.UPCOMING }"
+        @click.prevent="() => {
+          if (c.ReleaseState === ReleaseState.UPCOMING) {
+            return
+          }
+
+          OnCharacterClicked(c.Id)
+        }"
       />
     </div>
   </div>

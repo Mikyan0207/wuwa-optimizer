@@ -18,7 +18,7 @@ const HighlightColor = computed(() => GetHighlightColor(props.character.Rarity))
 
 <template>
   <UCard
-    class="group relative cursor-pointer transition-all duration-100"
+    class="group relative cursor-pointer transition-all duration-100 select-none"
     :ui="{
       root: 'rounded-none rounded-br-xl border-0',
       body: 'p-0 sm:p-0',

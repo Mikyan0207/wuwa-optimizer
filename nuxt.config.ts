@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     '~/components/Echoes/Forms',
     '~/components/Filters',
     '~/components/Importer',
+    '~/components/Importer/Cards',
     '~/components/Interface',
     '~/components/Navigation',
     '~/components/Skills',

@@ -246,3 +246,12 @@ export function IsSecondaryStatType(type: StatType, echoCost: EchoCost): boolean
 export function IsSubStatType(type: StatType) {
   return SUB_STAT_VALUES[type]?.length !== 0 || false
 }
+
+export function GetStatTypeFromName(name: string) {
+  for (const [key, value] of Object.entries(STAT_NAMES)) {
+    if (value.toLowerCase() === name.toLowerCase()) {
+      return key as StatType
+    }
+  }
+  return StatType.NONE
+}

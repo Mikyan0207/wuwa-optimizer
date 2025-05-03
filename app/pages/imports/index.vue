@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { NuxtImg } from '#components'
-import ScannerImporterTab from '~/components/Importer/ScannerImporterTab.vue'
-
 definePageMeta({
   layout: 'default',
 })

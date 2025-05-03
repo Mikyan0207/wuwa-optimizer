@@ -312,7 +312,7 @@ export function useCharacterScanner() {
 
   function CleanUp() {
     for (const c of Canvases) {
-      c.remove() // retire du DOM
+      c.remove()
     }
 
     Canvases = []

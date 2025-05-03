@@ -9,9 +9,9 @@ export function LevenshteinDistance(a: string, b: string): number {
     for (let j = 1; j <= b.length; j++) {
       const cost = a[i - 1] === b[j - 1] ? 0 : 1
       dp[i]![j] = Math.min(
-        dp[i - 1]![j]! + 1, // suppression
-        dp[i]![j - 1]! + 1, // insertion
-        dp[i - 1]![j - 1]! + cost, // substitution
+        dp[i - 1]![j]! + 1,
+        dp[i]![j - 1]! + 1,
+        dp[i - 1]![j - 1]! + cost,
       )
     }
   }

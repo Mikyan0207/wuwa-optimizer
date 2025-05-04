@@ -8,6 +8,5 @@ export default interface Sonata {
   IsSelected: boolean
   Effect1Active: boolean
   Effect2Active: boolean
-  Selected: boolean
   ExtraStats?: IStatistic[]
 }

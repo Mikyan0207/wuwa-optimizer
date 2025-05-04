@@ -2,7 +2,7 @@ import type Echo from '~/Core/Interfaces/Echo'
 import { EchoCost } from './Enums/EchoCost'
 import { Rarity } from './Enums/Rarity'
 import { StatType } from './Enums/StatType'
-import { Celestial_Light, Empyrean_Anthem, Eternal_Radiance, Freezing_Frost, Frosty_Resolve, Lingering_Tunes, Midnight_Veil, Molten_Rift, Moonlit_Clouds, Rejuvenating_Glow, Sierra_Gale, SunSinking_Eclipse, Tidebreaking_Courage, Void_Thunder } from './Sonatas'
+import { Celestial_Light, Empyrean_Anthem, Eternal_Radiance, Freezing_Frost, Frosty_Resolve, Gusts_of_Welkin, Lingering_Tunes, Midnight_Veil, Molten_Rift, Moonlit_Clouds, Rejuvenating_Glow, Sierra_Gale, SunSinking_Eclipse, Tidebreaking_Courage, Void_Thunder } from './Sonatas'
 
 export const Empty_Echo: Echo = {
   Id: -1,
@@ -588,6 +588,19 @@ export const Lumiscale_Construct_Echo: Echo = {
   ],
   Statistics: [],
 }
+
+export const Capitaneus_Echo: Echo = {
+  Id: 6000104,
+  Icon: 'Capitaneus_Icon.webp',
+  Rarity: Rarity.FIVE_STARS,
+  Cost: EchoCost.THREE_COST,
+  Level: 0,
+  Sonata: [
+    Eternal_Radiance,
+    Gusts_of_Welkin,
+  ],
+  Statistics: [],
+}
 // #endregion
 
 // #region === 1 COST ===
@@ -1027,6 +1040,7 @@ export const Echoes: Echo[] = [
   Abyssal_Mercator_Echo,
   Vitreum_Dancer_Echo,
   Lumiscale_Construct_Echo,
+  Capitaneus_Echo,
 
   Clang_Bang_Echo,
   Cruisewing_Echo,

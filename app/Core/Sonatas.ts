@@ -9,7 +9,6 @@ export const Frosty_Resolve: Sonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
-  Selected: false,
   ExtraStats: [
     {
       Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
@@ -26,7 +25,6 @@ export const Celestial_Light: Sonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
-  Selected: false,
   ExtraStats: [
     {
       Type: StatType.SPECTRO_DMG_BONUS,
@@ -43,7 +41,6 @@ export const Freezing_Frost: Sonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
-  Selected: false,
   ExtraStats: [
     {
       Type: StatType.GLACIO_DMG_BONUS,
@@ -60,7 +57,6 @@ export const Moonlit_Clouds: Sonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
-  Selected: false,
   ExtraStats: [
     {
       Type: StatType.ENERGY_REGENERATION,
@@ -77,7 +73,6 @@ export const Rejuvenating_Glow: Sonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
-  Selected: false,
   ExtraStats: [
     {
       Type: StatType.HEALING_BONUS,
@@ -94,7 +89,6 @@ export const Void_Thunder: Sonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
-  Selected: false,
   ExtraStats: [
     {
       Type: StatType.ELECTRO_DMG_BONUS,
@@ -111,7 +105,6 @@ export const SunSinking_Eclipse: Sonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
-  Selected: false,
   ExtraStats: [
     {
       Type: StatType.HAVOC_DMG_BONUS,
@@ -128,7 +121,6 @@ export const Molten_Rift: Sonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
-  Selected: false,
   ExtraStats: [
     {
       Type: StatType.FUSION_DMG_BONUS,
@@ -145,7 +137,6 @@ export const Lingering_Tunes: Sonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
-  Selected: false,
   ExtraStats: [
     {
       Type: StatType.ATTACK_PERCENTAGE,
@@ -162,7 +153,6 @@ export const Sierra_Gale: Sonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
-  Selected: false,
   ExtraStats: [
     {
       Type: StatType.AERO_DMG_BONUS,
@@ -179,7 +169,6 @@ export const Empyrean_Anthem: Sonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
-  Selected: false,
   ExtraStats: [
     {
       Type: StatType.ENERGY_REGENERATION,
@@ -196,7 +185,6 @@ export const Midnight_Veil: Sonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
-  Selected: false,
   ExtraStats: [
     {
       Type: StatType.HAVOC_DMG_BONUS,
@@ -213,7 +201,6 @@ export const Tidebreaking_Courage: Sonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
-  Selected: false,
   ExtraStats: [
     {
       Type: StatType.ENERGY_REGENERATION,
@@ -236,7 +223,6 @@ export const Eternal_Radiance: Sonata = {
   IsSelected: false,
   Effect1Active: false,
   Effect2Active: false,
-  Selected: false,
   ExtraStats: [
     {
       Type: StatType.SPECTRO_DMG_BONUS,

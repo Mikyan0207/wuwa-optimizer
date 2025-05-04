@@ -1,4 +1,5 @@
 import type Echo from '~/Core/Interfaces/Echo'
+import type Sonata from '~/Core/Interfaces/Sonata'
 import type { Rectangle } from '~/Core/Scanner/Rectangle'
 import cv from '@techstark/opencv-js'
 import Tesseract from 'tesseract.js'
@@ -7,8 +8,9 @@ import { TemplateEchoes } from '~/Core/Echoes'
 import { EchoCost } from '~/Core/Enums/EchoCost'
 import { StatType } from '~/Core/Enums/StatType'
 import { CHARACTER_LEVEL_REGION, CHARACTER_LEVEL_REGION_ALT, CHARACTER_NAME_REGION, ECHOES_REGIONS, WEAPON_LEVEL_REGION, WEAPON_NAME_REGION } from '~/Core/Scanner/Coordinates'
+import { Sonatas } from '~/Core/Sonatas'
 import { GetStatTypeFromName } from '~/Core/Statistics'
-import { GetEchoIcon } from '~/Core/Utils/EchoUtils'
+import { GetEchoIcon, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 import { IsFloatingPointNumber } from '~/Core/Utils/NumberUtils'
 import { GetSecondaryStat } from '~/Core/Utils/StatsUtils'
 import { LevenshteinDistance } from '~/Core/Utils/StringUtils'
@@ -171,13 +173,12 @@ export function useCharacterScanner() {
     const fields = await Promise.all(ECHOES_REGIONS.map(e => GetText(GetRegion(e))))
     const echoes: Echo[] = []
 
-    for (let i = 0; i < fields.length; i += 14) {
+    for (let i = 0; i < fields.length; i += 15) {
       if (OnProgress.value) {
-        OnProgress.value(ScannerStatus[`ECHOES_0${Math.floor(i / 14) + 1}` as keyof typeof ScannerStatus])
+        OnProgress.value(ScannerStatus[`ECHOES_0${Math.floor(i / 15) + 1}` as keyof typeof ScannerStatus])
       }
-      const chunk = fields.slice(i, i + 14)
+      const chunk = fields.slice(i, i + 15)
       const cost = GetCostFromText(GetFilteredText(chunk[1] || '', /\d+/))
-
       const echo = await GetEcho(ECHOES_REGIONS[i]!, cost)
 
       if (echo === undefined) {
@@ -190,14 +191,20 @@ export function useCharacterScanner() {
 
       const e = {
         ...echo,
-        MainStatistic: GetStatistic(chunk[2] || '', chunk[3] || '', true),
+        MainStatistic: GetStatistic(chunk[3] || '', chunk[4] || '', true),
         SecondaryStatistic: GetSecondaryStat(echo.Cost),
         Statistics: Array.from({ length: 5 }, (_, j) => {
-          const name = chunk[4 + j * 2] || ''
-          const rawValue = chunk[5 + j * 2] || '0'
+          const name = chunk[5 + j * 2] || ''
+          const rawValue = chunk[6 + j * 2] || '0'
 
           return GetStatistic(name, rawValue)
         }).filter(stat => stat.Type !== StatType.NONE && !Number.isNaN(stat.Value)),
+      }
+
+      const sonata = await GetSonata(ECHOES_REGIONS[i + 2]!)
+
+      if (sonata !== undefined && e.Sonata.find(x => x.Name === sonata.Name) !== undefined) {
+        e.Sonata.find(x => x.Name === sonata.Name)!.IsSelected = true
       }
 
       if (e.Statistics.length > 0)
@@ -209,68 +216,22 @@ export function useCharacterScanner() {
     return echoes
   }
 
-  function GetStatistic(name: string, value: string, isMainStat: boolean = false) {
-    let statType = GetStatTypeFromName(name || StatType.NONE)
-    const statValue = Number.parseFloat(GetFilteredText(value, /\d*\.\d+|\d+/))
-
-    if ((IsFloatingPointNumber(statValue) || isMainStat) && statType === StatType.HP) {
-      statType = StatType.HP_PERCENTAGE
-    }
-    if (IsFloatingPointNumber(statValue) && statType === StatType.DEF) {
-      statType = StatType.DEF_PERCENTAGE
-    }
-    else if ((IsFloatingPointNumber(statValue) || isMainStat) && statType === StatType.ATTACK) {
-      statType = StatType.ATTACK_PERCENTAGE
-    }
-
-    return {
-      Type: statType,
-      Value: statValue,
-    }
-  }
-
-  function GetCostFromText(text: string | undefined) {
-    if (text?.trim() === '4')
-      return EchoCost.FOUR_COST
-    if (text?.trim() === '3')
-      return EchoCost.THREE_COST
-
-    return EchoCost.ONE_COST
-  }
-
   async function GetEcho(iconRegion: Rectangle, cost: EchoCost) {
     const region = GetRegion(iconRegion)
     const srcMat = ConvertToGrayScale(region)
     const templates = TemplateEchoes.filter(x => x.Cost === cost)
 
-    return await FindBestMatch(srcMat, templates, region.width, region.height)
+    return await FindEcho(srcMat, templates, region.width, region.height)
   }
 
-  async function LoadEchoIcon(echo: Echo, width: number, height: number): Promise<cv.Mat> {
-    const refImage = await new Promise<HTMLImageElement>((resolve) => {
-      const img = new Image()
-      img.src = GetEchoIcon(echo)
-      img.onload = () => resolve(img)
-    })
+  async function GetSonata(iconRegion: Rectangle) {
+    const region = GetRegion(iconRegion)
+    const srcMat = ConvertToGrayScale(region)
 
-    const refRegion = GetRegion({
-      X: 0,
-      Y: 0,
-      Width: width,
-      Height: height,
-    })
-
-    DrawOnCanvas(refRegion, refImage, {
-      X: 0,
-      Y: 0,
-      Width: width,
-      Height: height,
-    })
-
-    return ConvertToGrayScale(refRegion)
+    return await FindSonata(srcMat, Sonatas, region.width, region.height)
   }
 
-  async function FindBestMatch(srcMat: cv.Mat, echoes: Echo[], width: number, height: number) {
+  async function FindEcho(srcMat: cv.Mat, echoes: Echo[], width: number, height: number) {
     let bestMatch: { echo: Echo | undefined, score: number } = {
       echo: undefined,
       score: 0,
@@ -328,6 +289,127 @@ export function useCharacterScanner() {
     return bestMatch.echo
   }
 
+  async function FindSonata(srcMat: cv.Mat, sonatas: Sonata[], width: number, height: number): Promise<Sonata | undefined> {
+    let bestMatch: { sonata: Sonata | undefined, score: number } = {
+      sonata: undefined,
+      score: Number.MAX_VALUE,
+    }
+
+    srcMat = UpscaleIfNeeded(srcMat)
+
+    const orb = new cv.ORB()
+    const kp1 = new cv.KeyPointVector()
+    const des1 = new cv.Mat()
+    orb.detectAndCompute(srcMat, new cv.Mat(), kp1, des1)
+
+    for (const sonata of sonatas) {
+      let templMat = await LoadSonataIcon(sonata, width, height)
+
+      if (templMat.cols !== srcMat.cols || templMat.rows !== srcMat.rows) {
+        cv.resize(templMat, templMat, new cv.Size(srcMat.cols, srcMat.rows))
+      }
+
+      templMat = UpscaleIfNeeded(templMat)
+
+      // DEBUG: render to canvas
+      // const srcCanvas = document.getElementById('srcCanvas') as HTMLCanvasElement
+      // const templCanvas = document.getElementById('templCanvas') as HTMLCanvasElement
+      // if (srcCanvas && templCanvas) {
+      //   renderMatToCanvas(srcMat, srcCanvas)
+      //   renderMatToCanvas(templMat, templCanvas)
+      // }
+
+      const kp2 = new cv.KeyPointVector()
+      const des2 = new cv.Mat()
+      orb.detectAndCompute(templMat, new cv.Mat(), kp2, des2)
+
+      const distance = ComputeDistance(des1, des2)
+
+      // console.log(`→ ${sonata.Name} | avg distance: ${distance.toFixed(2)}`)
+
+      if (distance < bestMatch.score) {
+        bestMatch = { sonata, score: distance }
+      }
+
+      templMat.delete()
+      kp2.delete()
+      des2.delete()
+    }
+
+    kp1.delete()
+    des1.delete()
+    orb.delete()
+
+    return bestMatch.sonata
+  }
+
+  function UpscaleIfNeeded(mat: cv.Mat, targetSize: number = 96): cv.Mat {
+    if (mat.cols < targetSize || mat.rows < targetSize) {
+      const upscaled = new cv.Mat()
+      cv.resize(mat, upscaled, new cv.Size(targetSize, targetSize), 0, 0, cv.INTER_CUBIC)
+      return upscaled
+    }
+    return mat
+  }
+
+  function ComputeDistance(des1: cv.Mat, des2: cv.Mat): number {
+    if (des1.rows === 0 || des2.rows === 0)
+      return Number.MAX_VALUE
+
+    const bf = new cv.BFMatcher()
+    const matches = new cv.DMatchVector()
+    bf.match(des1, des2, matches)
+
+    let totalDistance = 0
+    for (let i = 0; i < matches.size(); i++) {
+      totalDistance += matches.get(i).distance
+    }
+
+    const avgDistance = matches.size() > 0 ? totalDistance / matches.size() : Number.MAX_VALUE
+
+    matches.delete()
+    bf.delete()
+
+    return avgDistance
+  }
+
+  function GetStatistic(name: string, value: string, isMainStat: boolean = false) {
+    let statType = GetStatTypeFromName(name || StatType.NONE)
+    const statValue = Number.parseFloat(GetFilteredText(value, /\d*\.\d+|\d+/))
+
+    // console.log(name, value, statType, statValue)
+
+    if ((IsFloatingPointNumber(statValue) || isMainStat) && statType === StatType.HP) {
+      statType = StatType.HP_PERCENTAGE
+    }
+    else if (IsFloatingPointNumber(statValue) && statType === StatType.DEF) {
+      statType = StatType.DEF_PERCENTAGE
+    }
+    else if ((IsFloatingPointNumber(statValue) || isMainStat) && statType === StatType.ATTACK) {
+      statType = StatType.ATTACK_PERCENTAGE
+    }
+
+    return {
+      Type: statType,
+      Value: statValue,
+    }
+  }
+
+  function GetCostFromText(text: string | undefined) {
+    if (text === undefined) {
+      return EchoCost.ONE_COST
+    }
+
+    const trimmed = text.trim()
+
+    if (trimmed === '4')
+      return EchoCost.FOUR_COST
+    if (trimmed === '3')
+      return EchoCost.THREE_COST
+
+    return EchoCost.ONE_COST
+  }
+
   function GetRegion(rect: Rectangle) {
     const temp = document.createElement('canvas')
 
@@ -343,6 +425,54 @@ export function useCharacterScanner() {
     return temp
   }
 
+  async function LoadEchoIcon(echo: Echo, width: number, height: number): Promise<cv.Mat> {
+    const refImage = await new Promise<HTMLImageElement>((resolve) => {
+      const img = new Image()
+      img.src = GetEchoIcon(echo)
+      img.onload = () => resolve(img)
+    })
+
+    const refRegion = GetRegion({
+      X: 0,
+      Y: 0,
+      Width: width,
+      Height: height,
+    })
+
+    DrawOnCanvas(refRegion, refImage, {
+      X: 0,
+      Y: 0,
+      Width: width,
+      Height: height,
+    })
+
+    return ConvertToGrayScale(refRegion)
+  }
+
+  async function LoadSonataIcon(sonata: Sonata, width: number, height: number): Promise<cv.Mat> {
+    const refImage = await new Promise<HTMLImageElement>((resolve) => {
+      const img = new Image()
+      img.src = GetSonataIcon(sonata)
+      img.onload = () => resolve(img)
+    })
+
+    const refRegion = GetRegion({
+      X: 0,
+      Y: 0,
+      Width: width,
+      Height: height,
+    })
+
+    DrawOnCanvas(refRegion, refImage, {
+      X: 0,
+      Y: 0,
+      Width: width,
+      Height: height,
+    })
+
+    return ConvertToGrayScale(refRegion)
+  }
+
   function DrawOnCanvas(canvas: HTMLCanvasElement, image: HTMLImageElement, rect: Rectangle) {
     const refCtx = canvas.getContext('2d', { willReadFrequently: true })!
     refCtx.drawImage(image, rect.X, rect.Y, rect.Width, rect.Height)
@@ -352,6 +482,22 @@ export function useCharacterScanner() {
     const srcMat = cv.imread(region)
     cv.cvtColor(srcMat, srcMat, cv.COLOR_RGBA2GRAY)
     return srcMat
+  }
+
+  // DEBUG
+  function renderMatToCanvas(mat: cv.Mat, canvas: HTMLCanvasElement) {
+    const rgba = new cv.Mat()
+    if (mat.channels() === 1) {
+      cv.cvtColor(mat, rgba, cv.COLOR_GRAY2RGBA)
+    }
+    else if (mat.channels() === 3) {
+      cv.cvtColor(mat, rgba, cv.COLOR_RGB2RGBA)
+    }
+    else {
+      mat.copyTo(rgba)
+    }
+    cv.imshow(canvas, rgba)
+    rgba.delete()
   }
 
   async function GetText(canvas: HTMLCanvasElement) {

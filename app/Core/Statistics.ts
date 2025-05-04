@@ -264,11 +264,11 @@ export function GetStatTypeFromName(name: string) {
     const isBasicOrHeavy = lowerCaseName.startsWith('basic') || lowerCaseName.startsWith('heavy')
     const distance = LevenshteinDistance(lowerCaseValue, lowerCaseName)
 
-    if (isResonanceLib && distance <= 15) {
+    if (isResonanceLib && distance <= 15 && lowerCaseValue.includes('lib')) {
       return key as StatType
     }
 
-    if (isResonanceSkill && distance <= 15) {
+    if (isResonanceSkill && distance <= 10 && lowerCaseValue.includes('skill')) {
       return key as StatType
     }
 

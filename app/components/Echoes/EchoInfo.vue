@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type Echo from '~/Core/Interfaces/Echo'
-import { GetEchoCostText, GetEchoIcon, GetEchoRarityText } from '~/Core/Utils/EchoUtils'
+import { GetEchoCostText, GetEchoIcon, GetEchoRarityText, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
 const props = withDefaults(defineProps<{
   echo: Echo
@@ -15,6 +15,7 @@ const { t } = useI18n()
 const { CurrentCharacter } = useCharacterContext()
 
 const IsValidEcho = computed(() => props.echo.Id !== -1)
+const GetSonata = computed(() => props.echo.Sonata.find(x => x.IsSelected === true))
 </script>
 
 <template>
@@ -25,9 +26,12 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
         <USkeleton v-else class="h-12 w-12 rounded-full" />
       </div>
       <div v-motion-pop :delay="400" class="flex flex-col">
-        <p v-if="IsValidEcho" class="text-lg text-white" :title="t(`${echo.Id}_name`)">
-          {{ t(`${echo.Id}_name`) }}
-        </p>
+        <div v-if="IsValidEcho" class="text-lg text-white" :title="t(`${echo.Id}_name`)">
+          <div class="flex items-center gap-2 w-full">
+            <span>{{ t(`${echo.Id}_name`) }}</span>
+            <NuxtImg v-if="GetSonata" :src="GetSonataIcon(GetSonata)" class="h-6 w-6" />
+          </div>
+        </div>
         <USkeleton v-else class="h-4 w-32" />
       </div>
     </div>

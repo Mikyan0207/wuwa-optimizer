@@ -54,6 +54,10 @@ function GetFileObject(event: Event) {
 
 <template>
   <div class="mx-auto my-8 max-w-6xl text-gray-300">
+    <!-- <div class="flex items-center gap-2 mx-auto">
+      <canvas id="srcCanvas" width="186" height="186" />
+      <canvas id="templCanvas" width="186" height="186" />
+    </div> -->
     <div class="flex flex-col gap-2">
       <!-- Step 1 -->
       <div v-if="Step >= 0" v-motion-slide-left :delay="100" class="w-full flex gap-2">

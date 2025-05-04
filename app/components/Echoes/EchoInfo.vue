@@ -2,11 +2,14 @@
 import type Echo from '~/Core/Interfaces/Echo'
 import { GetEchoCostText, GetEchoIcon, GetEchoRarityText } from '~/Core/Utils/EchoUtils'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   echo: Echo
   echoSlot: number
   score?: IEchoRatingResult
-}>()
+  showScore?: boolean
+}>(), {
+  showScore: true,
+})
 
 const { t } = useI18n()
 const { CurrentCharacter } = useCharacterContext()
@@ -93,9 +96,9 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
         <USkeleton class="h-8 w-full rounded" />
       </div>
     </div>
-    <USeparator color="neutral" />
+    <USeparator v-if="showScore === true" color="neutral" />
     <!-- Echo Score -->
-    <div v-if="score" class="w-full flex flex-row items-end gap-4 font-semibold">
+    <div v-if="score && showScore === true" class="w-full flex flex-row items-end gap-4 font-semibold">
       <div class="w-full flex items-center justify-between gap-12">
         <div class="flex items-center gap-2">
           <p>Score</p>
@@ -111,6 +114,6 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
         </div>
       </div>
     </div>
-    <USkeleton v-else class="w-full h-5" />
+    <USkeleton v-else-if="!score && showScore === true" class="w-full h-5" />
   </div>
 </template>

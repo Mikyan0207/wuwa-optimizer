@@ -112,8 +112,8 @@ export default {
   '21020043_name': 'Sword of Voyager',
   '21040016_name': 'Verity\'s Handle',
   '21050046_name': 'Luminous Hymn',
-  '21030026_name': 'Woodland Aria',
-  '21040036_name': 'Blazing Justice',
+  '21030026_name': 'Blazing Justice',
+  '21040036_name': 'Woodland Aria',
 
   // === Skills ===
   'skill_basic_attack': 'Normal Attack',

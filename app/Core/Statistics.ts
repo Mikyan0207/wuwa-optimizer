@@ -1,5 +1,6 @@
 import { EchoCost } from './Enums/EchoCost'
 import { StatType } from './Enums/StatType'
+import { LevenshteinDistance } from './Utils/StringUtils'
 
 export const STAT_NAMES: Record<StatType, string> = {
   [StatType.NONE]: '',
@@ -248,8 +249,34 @@ export function IsSubStatType(type: StatType) {
 }
 
 export function GetStatTypeFromName(name: string) {
+  const lowerCaseName = name.toLocaleLowerCase()
+
   for (const [key, value] of Object.entries(STAT_NAMES)) {
-    if (value.toLowerCase() === name.toLowerCase()) {
+    const lowerCaseValue = value.toLowerCase()
+
+    // If HP is on the first line, its detected as 1???
+    if (lowerCaseName === 'hp' || lowerCaseName === '1') {
+      return StatType.HP
+    }
+
+    const isResonanceSkill = lowerCaseName.includes('resonance') && lowerCaseName.includes('skill')
+    const isResonanceLib = lowerCaseName.includes('resonance') && lowerCaseName.includes('liberation')
+    const isBasicOrHeavy = lowerCaseName.startsWith('basic') || lowerCaseName.startsWith('heavy')
+    const distance = LevenshteinDistance(lowerCaseValue, lowerCaseName)
+
+    if (isResonanceLib && distance <= 15) {
+      return key as StatType
+    }
+
+    if (isResonanceSkill && distance <= 15) {
+      return key as StatType
+    }
+
+    if (isBasicOrHeavy && distance <= 5) {
+      return key as StatType
+    }
+
+    if (distance <= 1) {
       return key as StatType
     }
   }

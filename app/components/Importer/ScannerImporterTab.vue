@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type Character from '~/Core/Interfaces/Character'
+import type Echo from '~/Core/Interfaces/Echo'
 import type Weapon from '~/Core/Interfaces/Weapon'
+import ImportedEchoCard from './Cards/ImportedEchoCard.vue'
 
 const Step = ref<number>(0)
 const Scanner = useCharacterScanner()
@@ -11,6 +13,7 @@ const Progress = ref<ScannerStatus>(ScannerStatus.IDLE)
 
 const ImportedCharacter = ref<Character | undefined>(undefined)
 const ImportedWeapon = ref<Weapon | undefined>(undefined)
+const ImportedEchoes = ref<Echo[]>([])
 
 async function OnImportClicked() {
   if (SelectedFile.value === undefined) {
@@ -32,6 +35,7 @@ async function OnImportClicked() {
 
   ImportedCharacter.value = character
   ImportedWeapon.value = weapon
+  ImportedEchoes.value = echoes
   Step.value = 3
 }
 
@@ -49,7 +53,7 @@ function GetFileObject(event: Event) {
 </script>
 
 <template>
-  <div class="mx-auto my-8 max-w-5xl text-gray-300">
+  <div class="mx-auto my-8 max-w-6xl text-gray-300">
     <div class="flex flex-col gap-2">
       <!-- Step 1 -->
       <div v-if="Step >= 0" v-motion-slide-left :delay="100" class="w-full flex gap-2">
@@ -106,15 +110,20 @@ function GetFileObject(event: Event) {
         </div>
         <div class="mt-0.5 w-full">
           <p>Verify the imported data</p>
-          <div class="my-8 w-full grid grid-cols-2 gap-2">
+          <div class="mb-2 mt-8 w-full grid grid-cols-4 gap-1">
             <ImportedCharacterCard
               v-if="ImportedCharacter"
               :character="ImportedCharacter"
+              class="col-span-2"
             />
             <ImportedWeaponCard
               v-if="ImportedWeapon"
               :weapon="ImportedWeapon"
+              class="col-span-2"
             />
+          </div>
+          <div class="w-full mb-8 grid grid-cols-3 gap-2">
+            <ImportedEchoCard v-for="echo in ImportedEchoes" :key="echo.Id" :echo="echo" />
           </div>
         </div>
       </div>

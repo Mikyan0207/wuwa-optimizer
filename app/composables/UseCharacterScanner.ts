@@ -1,5 +1,4 @@
 import type Echo from '~/Core/Interfaces/Echo'
-import type Statistic from '~/Core/Interfaces/Statistic'
 import type { Rectangle } from '~/Core/Scanner/Rectangle'
 import cv from '@techstark/opencv-js'
 import Tesseract from 'tesseract.js'
@@ -7,26 +6,13 @@ import { TemplateCharacters } from '~/Core/Characters'
 import { TemplateEchoes } from '~/Core/Echoes'
 import { EchoCost } from '~/Core/Enums/EchoCost'
 import { StatType } from '~/Core/Enums/StatType'
-import { CHARACTER_LEVEL_REGION, CHARACTER_NAME_REGION, ECHOES_REGIONS, WEAPON_LEVEL_REGION, WEAPON_NAME_REGION } from '~/Core/Scanner/Coordinates'
+import { CHARACTER_LEVEL_REGION, CHARACTER_LEVEL_REGION_ALT, CHARACTER_NAME_REGION, ECHOES_REGIONS, WEAPON_LEVEL_REGION, WEAPON_NAME_REGION } from '~/Core/Scanner/Coordinates'
 import { GetStatTypeFromName } from '~/Core/Statistics'
 import { GetEchoIcon } from '~/Core/Utils/EchoUtils'
+import { IsFloatingPointNumber } from '~/Core/Utils/NumberUtils'
 import { GetSecondaryStat } from '~/Core/Utils/StatsUtils'
 import { LevenshteinDistance } from '~/Core/Utils/StringUtils'
 import { TemplateWeapons } from '~/Core/Weapons'
-
-export interface ScannedCharacterInfo {
-  Name: string
-  Level: number
-  WeaponName: string
-  WeaponLevel: number
-}
-
-export interface ScannedEchoInfo {
-  Id: number
-  MainStatistic: Statistic
-  SecondaryStatistic: Statistic
-  Statistics: Statistic[]
-}
 
 export enum ScannerStatus {
   IDLE,
@@ -68,27 +54,24 @@ export function useCharacterScanner() {
       weapon,
       echoes,
     ] = await Promise.all([
-      GetCharacterAsync().then((c) => {
+      (async () => {
         if (onProgress) {
           onProgress(ScannerStatus.CHARACTER)
         }
-
-        return c
-      }),
-      GetWeaponAsync().then((w) => {
+        return GetCharacterAsync()
+      })(),
+      (async () => {
         if (onProgress) {
           onProgress(ScannerStatus.WEAPON)
         }
-
-        return w
-      }),
-      GetEchoesAsync().then((e) => {
+        return GetWeaponAsync()
+      })(),
+      (async () => {
         if (onProgress) {
           onProgress(ScannerStatus.ECHOES)
         }
-
-        return e
-      }),
+        return GetEchoesAsync()
+      })(),
     ])
 
     CleanUp()
@@ -138,9 +121,11 @@ export function useCharacterScanner() {
     const [
       characterName,
       characterLevel,
+      characterLevelAlt,
     ] = await Promise.all([
       GetText(GetRegion(CHARACTER_NAME_REGION)),
       GetText(GetRegion(CHARACTER_LEVEL_REGION)),
+      GetText(GetRegion(CHARACTER_LEVEL_REGION_ALT)),
     ])
 
     const character = TemplateCharacters.find((x) => {
@@ -161,7 +146,15 @@ export function useCharacterScanner() {
       return undefined
     }
 
-    character.Level = Number.parseInt(GetFilteredText(characterLevel, /\d+/))
+    // TODO: Change the way we parse the character level. Do it per chunk on the line of the level until we get something that
+    // is not a NaN or above 1. If we still didn't get any numbers in the end, we assume the character is level 1 or 90.
+    let parsedCharacterLevel = Number.parseInt(GetFilteredText(characterLevel, /\d+/))
+
+    if (Number.isNaN(parsedCharacterLevel)) {
+      parsedCharacterLevel = Number.parseInt(GetFilteredText(characterLevelAlt, /\d+/))
+    }
+
+    character.Level = parsedCharacterLevel
 
     return character
   }
@@ -170,9 +163,13 @@ export function useCharacterScanner() {
     const fields = await Promise.all(ECHOES_REGIONS.map(e => GetText(GetRegion(e))))
     const echoes: Echo[] = []
 
+    console.log(fields.length)
+
     for (let i = 0; i < fields.length; i += 14) {
       const chunk = fields.slice(i, i + 14)
-      const cost = chunk[1]
+      const cost = GetFilteredText(chunk[1] || '', /\d+/)
+
+      console.log('cost', cost, GetCostFromText(cost))
 
       const echo = await GetEcho(ECHOES_REGIONS[i]!, GetCostFromText(cost))
 
@@ -181,18 +178,50 @@ export function useCharacterScanner() {
         continue
       }
 
-      echoes.push({
+      // TODO: Set EquipedSlot & EquipedBy
+      // TODO: Instead of using the parsed stat value, we should get the closest one from the possible values.
+
+      const e = {
         ...echo,
-        MainStatistic: {
-          Type: GetStatTypeFromName(chunk[2] || StatType.NONE),
-          Value: Number.parseFloat(GetFilteredText(chunk[3] || '0', /\d*\.\d+|\d+/)),
-        },
+        MainStatistic: GetStatistic(chunk[2] || '', chunk[3] || '', true),
         SecondaryStatistic: GetSecondaryStat(echo.Cost),
-        Statistics: [],
-      })
+        Statistics: Array.from({ length: 5 }, (_, j) => {
+          const name = chunk[4 + j * 2] || ''
+          const rawValue = chunk[5 + j * 2] || '0'
+
+          return GetStatistic(name, rawValue)
+        }).filter(stat => stat.Type !== StatType.NONE && !Number.isNaN(stat.Value)),
+      }
+
+      if (e.Statistics.length > 0)
+        e.Level = 5 * (e.Statistics.length)
+
+      echoes.push(e)
     }
 
     return echoes
+  }
+
+  function GetStatistic(name: string, value: string, isMainStat: boolean = false) {
+    let statType = GetStatTypeFromName(name || StatType.NONE)
+    const statValue = Number.parseFloat(GetFilteredText(value, /\d*\.\d+|\d+/))
+
+    console.log(name, statType, value, statValue)
+
+    if ((IsFloatingPointNumber(statValue) || isMainStat) && statType === StatType.HP) {
+      statType = StatType.HP_PERCENTAGE
+    }
+    if (IsFloatingPointNumber(statValue) && statType === StatType.DEF) {
+      statType = StatType.DEF_PERCENTAGE
+    }
+    else if ((IsFloatingPointNumber(statValue) || isMainStat) && statType === StatType.ATTACK) {
+      statType = StatType.ATTACK_PERCENTAGE
+    }
+
+    return {
+      Type: statType,
+      Value: statValue,
+    }
   }
 
   function GetCostFromText(text: string | undefined) {
@@ -209,9 +238,9 @@ export function useCharacterScanner() {
     const srcMat = ConvertToGrayScale(region)
     const templates = TemplateEchoes.filter(x => x.Cost === cost)
 
-    const bestMatch = await FindBestMatch(srcMat, templates, region.width, region.height)
+    console.log(templates.length)
 
-    return bestMatch.score < 0.3 ? bestMatch.echo : undefined // Return undefined if no match is found
+    return await FindBestMatch(srcMat, templates, region.width, region.height)
   }
 
   async function LoadEchoIcon(echo: Echo, width: number, height: number): Promise<cv.Mat> {
@@ -244,25 +273,47 @@ export function useCharacterScanner() {
       score: Number.MAX_VALUE,
     }
 
+    const orb = new cv.ORB()
+    const kp1 = new cv.KeyPointVector()
+    const des1 = new cv.Mat()
+    orb.detectAndCompute(srcMat, new cv.Mat(), kp1, des1)
+
+    const bf = new cv.BFMatcher(cv.NORM_L2)
+
     for (const template of echoes) {
       const templMat = await LoadEchoIcon(template, width, height)
 
-      const result = new cv.Mat()
-      const resultSize = new cv.Size(srcMat.cols - templMat.cols + 1, srcMat.rows - templMat.rows + 1)
-      result.create(resultSize.height, resultSize.width, cv.CV_32FC1)
+      const kp2 = new cv.KeyPointVector()
+      const des2 = new cv.Mat()
+      orb.detectAndCompute(templMat, new cv.Mat(), kp2, des2)
 
-      cv.matchTemplate(srcMat, templMat, result, cv.TM_SQDIFF_NORMED)
-      const minVal = cv.minMaxLoc(result, new cv.Mat()).minVal
+      const matches = new cv.DMatchVector()
+      bf.match(des1, des2, matches)
 
-      if (minVal < bestMatch.score) {
-        bestMatch = { echo: template, score: minVal }
+      let totalDistance = 0
+      for (let i = 0; i < matches.size(); i++) {
+        totalDistance += matches.get(i).distance
+      }
+      const averageDistance = matches.size() > 0 ? totalDistance / matches.size() : Number.MAX_VALUE
+
+      if (averageDistance < bestMatch.score) {
+        bestMatch = { echo: template, score: averageDistance }
       }
 
+      console.log(template.Id, averageDistance)
+
       templMat.delete()
-      result.delete()
+      kp2.delete()
+      des2.delete()
+      matches.delete()
     }
 
-    return bestMatch
+    kp1.delete()
+    des1.delete()
+    bf.delete()
+    orb.delete()
+
+    return bestMatch.echo
   }
 
   function GetRegion(rect: Rectangle) {

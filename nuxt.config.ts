@@ -103,6 +103,16 @@ export default defineNuxtConfig({
       weights: [400],
       styles: ['normal', 'italic'],
     },
+    families: [
+      {
+        name: 'Flow Circular',
+        provider: 'google',
+      },
+      {
+        name: 'Quicksand',
+        provider: 'google',
+      },
+    ],
   },
 
   i18n: {

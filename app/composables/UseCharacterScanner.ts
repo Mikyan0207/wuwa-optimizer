@@ -19,6 +19,11 @@ export enum ScannerStatus {
   CHARACTER,
   WEAPON,
   ECHOES,
+  ECHOES_01,
+  ECHOES_02,
+  ECHOES_03,
+  ECHOES_04,
+  ECHOES_05,
   DONE,
 }
 
@@ -29,6 +34,8 @@ export function useCharacterScanner() {
   let Canvases: HTMLCanvasElement[] = []
 
   const IsLoading = ref<boolean>(false)
+
+  const OnProgress = ref<(status: ScannerStatus) => void>()
 
   async function LoadAsync(file: File) {
     IsLoading.value = true
@@ -45,8 +52,9 @@ export function useCharacterScanner() {
   }
 
   async function ScanAsync(onProgress?: (status: ScannerStatus) => void) {
-    if (onProgress) {
-      onProgress(ScannerStatus.IDLE)
+    OnProgress.value = onProgress
+    if (OnProgress.value) {
+      OnProgress.value(ScannerStatus.IDLE)
     }
 
     const [
@@ -55,20 +63,20 @@ export function useCharacterScanner() {
       echoes,
     ] = await Promise.all([
       (async () => {
-        if (onProgress) {
-          onProgress(ScannerStatus.CHARACTER)
+        if (OnProgress.value) {
+          OnProgress.value(ScannerStatus.CHARACTER)
         }
         return GetCharacterAsync()
       })(),
       (async () => {
-        if (onProgress) {
-          onProgress(ScannerStatus.WEAPON)
+        if (OnProgress.value) {
+          OnProgress.value(ScannerStatus.WEAPON)
         }
         return GetWeaponAsync()
       })(),
       (async () => {
-        if (onProgress) {
-          onProgress(ScannerStatus.ECHOES)
+        if (OnProgress.value) {
+          OnProgress.value(ScannerStatus.ECHOES)
         }
         return GetEchoesAsync()
       })(),
@@ -163,15 +171,14 @@ export function useCharacterScanner() {
     const fields = await Promise.all(ECHOES_REGIONS.map(e => GetText(GetRegion(e))))
     const echoes: Echo[] = []
 
-    console.log(fields.length)
-
     for (let i = 0; i < fields.length; i += 14) {
+      if (OnProgress.value) {
+        OnProgress.value(ScannerStatus[`ECHOES_0${Math.floor(i / 14) + 1}` as keyof typeof ScannerStatus])
+      }
       const chunk = fields.slice(i, i + 14)
-      const cost = GetFilteredText(chunk[1] || '', /\d+/)
+      const cost = GetCostFromText(GetFilteredText(chunk[1] || '', /\d+/))
 
-      console.log('cost', cost, GetCostFromText(cost))
-
-      const echo = await GetEcho(ECHOES_REGIONS[i]!, GetCostFromText(cost))
+      const echo = await GetEcho(ECHOES_REGIONS[i]!, cost)
 
       if (echo === undefined) {
         console.log('couldn\'t find echo')
@@ -206,8 +213,6 @@ export function useCharacterScanner() {
     let statType = GetStatTypeFromName(name || StatType.NONE)
     const statValue = Number.parseFloat(GetFilteredText(value, /\d*\.\d+|\d+/))
 
-    console.log(name, statType, value, statValue)
-
     if ((IsFloatingPointNumber(statValue) || isMainStat) && statType === StatType.HP) {
       statType = StatType.HP_PERCENTAGE
     }
@@ -237,8 +242,6 @@ export function useCharacterScanner() {
     const region = GetRegion(iconRegion)
     const srcMat = ConvertToGrayScale(region)
     const templates = TemplateEchoes.filter(x => x.Cost === cost)
-
-    console.log(templates.length)
 
     return await FindBestMatch(srcMat, templates, region.width, region.height)
   }
@@ -270,7 +273,7 @@ export function useCharacterScanner() {
   async function FindBestMatch(srcMat: cv.Mat, echoes: Echo[], width: number, height: number) {
     let bestMatch: { echo: Echo | undefined, score: number } = {
       echo: undefined,
-      score: Number.MAX_VALUE,
+      score: 0,
     }
 
     const orb = new cv.ORB()
@@ -278,7 +281,7 @@ export function useCharacterScanner() {
     const des1 = new cv.Mat()
     orb.detectAndCompute(srcMat, new cv.Mat(), kp1, des1)
 
-    const bf = new cv.BFMatcher(cv.NORM_L2)
+    const bf = new cv.BFMatcher()
 
     for (const template of echoes) {
       const templMat = await LoadEchoIcon(template, width, height)
@@ -287,25 +290,34 @@ export function useCharacterScanner() {
       const des2 = new cv.Mat()
       orb.detectAndCompute(templMat, new cv.Mat(), kp2, des2)
 
-      const matches = new cv.DMatchVector()
-      bf.match(des1, des2, matches)
+      const knnMatches = new cv.DMatchVectorVector()
+      bf.knnMatch(des1, des2, knnMatches, 2)
 
-      let totalDistance = 0
-      for (let i = 0; i < matches.size(); i++) {
-        totalDistance += matches.get(i).distance
+      let goodMatches = 0
+      for (let i = 0; i < knnMatches.size(); i++) {
+        const matchPair = knnMatches.get(i)
+        if (matchPair.size() < 2)
+          continue
+
+        const m = matchPair.get(0)
+        const n = matchPair.get(1)
+
+        if (m.distance < 0.8 * n.distance) {
+          goodMatches++
+        }
       }
-      const averageDistance = matches.size() > 0 ? totalDistance / matches.size() : Number.MAX_VALUE
 
-      if (averageDistance < bestMatch.score) {
-        bestMatch = { echo: template, score: averageDistance }
+      const attemptedMatches = Math.min(kp1.size(), kp2.size())
+      const ratio = attemptedMatches > 0 ? goodMatches / attemptedMatches : 0
+
+      if (ratio > bestMatch.score) {
+        bestMatch = { echo: template, score: ratio }
       }
-
-      console.log(template.Id, averageDistance)
 
       templMat.delete()
       kp2.delete()
       des2.delete()
-      matches.delete()
+      knnMatches.delete()
     }
 
     kp1.delete()

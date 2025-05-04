@@ -94,7 +94,7 @@ function GetFileObject(event: Event) {
               v-model="Progress"
               class="w-full mt-4"
               status
-              :max="['Waiting...', 'Characters...', 'Weapons...', 'Echoes...', 'Done!']"
+              :max="['Waiting...', 'Characters...', 'Weapons...', 'Echoes...', 'Echo 1/5', 'Echo 2/5', 'Echo 3/5', 'Echo 4/5', 'Echo 5/5', 'Done!']"
             />
           </div>
         </div>

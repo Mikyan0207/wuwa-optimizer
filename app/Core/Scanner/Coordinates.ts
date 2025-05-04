@@ -73,6 +73,50 @@ export const ECHO_3_STAT_4_VALUE_REGION = new Rectangle(1063, 984, 68, 41)
 export const ECHO_3_STAT_5_NAME_REGION = new Rectangle(812, 1019, 238, 41)
 export const ECHO_3_STAT_5_VALUE_REGION = new Rectangle(1063, 1019, 68, 36)
 
+// === Echo 04 ===
+export const ECHO_4_ICON_REGION = new Rectangle(1144, 652, 186, 186)
+export const ECHO_4_COST_REGION = new Rectangle(1450, 675, 35, 25)
+
+export const ECHO_4_MAIN_STAT_NAME_REGION = new Rectangle(1345, 723, 170, 25)
+export const ECHO_4_MAIN_STAT_VALUE_REGION = new Rectangle(1388, 753, 145, 35)
+
+export const ECHO_4_STAT_1_NAME_REGION = new Rectangle(1187, 881, 235, 36)
+export const ECHO_4_STAT_1_VALUE_REGION = new Rectangle(1435, 881, 68, 41)
+
+export const ECHO_4_STAT_2_NAME_REGION = new Rectangle(1187, 916, 238, 41)
+export const ECHO_4_STAT_2_VALUE_REGION = new Rectangle(1435, 916, 68, 41)
+
+export const ECHO_4_STAT_3_NAME_REGION = new Rectangle(1187, 951, 238, 41)
+export const ECHO_4_STAT_3_VALUE_REGION = new Rectangle(1435, 949, 68, 41)
+
+export const ECHO_4_STAT_4_NAME_REGION = new Rectangle(1187, 984, 238, 41)
+export const ECHO_4_STAT_4_VALUE_REGION = new Rectangle(1435, 984, 68, 41)
+
+export const ECHO_4_STAT_5_NAME_REGION = new Rectangle(1187, 1019, 238, 41)
+export const ECHO_4_STAT_5_VALUE_REGION = new Rectangle(1435, 1019, 68, 36)
+
+// === Echo 05 ===
+export const ECHO_5_ICON_REGION = new Rectangle(1520, 652, 186, 186)
+export const ECHO_5_COST_REGION = new Rectangle(1834, 675, 35, 25)
+
+export const ECHO_5_MAIN_STAT_NAME_REGION = new Rectangle(1709, 723, 170, 25)
+export const ECHO_5_MAIN_STAT_VALUE_REGION = new Rectangle(1739, 753, 145, 35)
+
+export const ECHO_5_STAT_1_NAME_REGION = new Rectangle(1560, 881, 235, 36)
+export const ECHO_5_STAT_1_VALUE_REGION = new Rectangle(1803, 881, 68, 41)
+
+export const ECHO_5_STAT_2_NAME_REGION = new Rectangle(1560, 916, 238, 41)
+export const ECHO_5_STAT_2_VALUE_REGION = new Rectangle(1803, 916, 68, 41)
+
+export const ECHO_5_STAT_3_NAME_REGION = new Rectangle(1560, 951, 238, 41)
+export const ECHO_5_STAT_3_VALUE_REGION = new Rectangle(1803, 949, 68, 41)
+
+export const ECHO_5_STAT_4_NAME_REGION = new Rectangle(1560, 984, 238, 41)
+export const ECHO_5_STAT_4_VALUE_REGION = new Rectangle(1803, 984, 68, 41)
+
+export const ECHO_5_STAT_5_NAME_REGION = new Rectangle(1560, 1019, 238, 41)
+export const ECHO_5_STAT_5_VALUE_REGION = new Rectangle(1803, 1019, 68, 36)
+
 export const ECHOES_REGIONS: Rectangle[] = [
   // === Echo 01 ===
   ECHO_1_ICON_REGION,
@@ -121,4 +165,36 @@ export const ECHOES_REGIONS: Rectangle[] = [
   ECHO_3_STAT_4_VALUE_REGION,
   ECHO_3_STAT_5_NAME_REGION,
   ECHO_3_STAT_5_VALUE_REGION,
+
+  // === Echo 04 ===
+  ECHO_4_ICON_REGION,
+  ECHO_4_COST_REGION,
+  ECHO_4_MAIN_STAT_NAME_REGION,
+  ECHO_4_MAIN_STAT_VALUE_REGION,
+  ECHO_4_STAT_1_NAME_REGION,
+  ECHO_4_STAT_1_VALUE_REGION,
+  ECHO_4_STAT_2_NAME_REGION,
+  ECHO_4_STAT_2_VALUE_REGION,
+  ECHO_4_STAT_3_NAME_REGION,
+  ECHO_4_STAT_3_VALUE_REGION,
+  ECHO_4_STAT_4_NAME_REGION,
+  ECHO_4_STAT_4_VALUE_REGION,
+  ECHO_4_STAT_5_NAME_REGION,
+  ECHO_4_STAT_5_VALUE_REGION,
+
+  // === Echo 05 ===
+  ECHO_5_ICON_REGION,
+  ECHO_5_COST_REGION,
+  ECHO_5_MAIN_STAT_NAME_REGION,
+  ECHO_5_MAIN_STAT_VALUE_REGION,
+  ECHO_5_STAT_1_NAME_REGION,
+  ECHO_5_STAT_1_VALUE_REGION,
+  ECHO_5_STAT_2_NAME_REGION,
+  ECHO_5_STAT_2_VALUE_REGION,
+  ECHO_5_STAT_3_NAME_REGION,
+  ECHO_5_STAT_3_VALUE_REGION,
+  ECHO_5_STAT_4_NAME_REGION,
+  ECHO_5_STAT_4_VALUE_REGION,
+  ECHO_5_STAT_5_NAME_REGION,
+  ECHO_5_STAT_5_VALUE_REGION,
 ]

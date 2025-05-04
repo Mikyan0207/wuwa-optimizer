@@ -247,38 +247,3 @@ export function IsSecondaryStatType(type: StatType, echoCost: EchoCost): boolean
 export function IsSubStatType(type: StatType) {
   return SUB_STAT_VALUES[type]?.length !== 0 || false
 }
-
-export function GetStatTypeFromName(name: string) {
-  const lowerCaseName = name.toLocaleLowerCase()
-
-  for (const [key, value] of Object.entries(STAT_NAMES)) {
-    const lowerCaseValue = value.toLowerCase()
-
-    // If HP is on the first line, its detected as 1???
-    if (lowerCaseName === 'hp' || lowerCaseName === '1') {
-      return StatType.HP
-    }
-
-    const isResonanceSkill = lowerCaseName.includes('resonance') && lowerCaseName.includes('skill')
-    const isResonanceLib = lowerCaseName.includes('resonance') && lowerCaseName.includes('liberation')
-    const isBasicOrHeavy = lowerCaseName.startsWith('basic') || lowerCaseName.startsWith('heavy')
-    const distance = LevenshteinDistance(lowerCaseValue, lowerCaseName)
-
-    if (isResonanceLib && distance <= 15 && lowerCaseValue.includes('lib')) {
-      return key as StatType
-    }
-
-    if (isResonanceSkill && distance <= 10 && lowerCaseValue.includes('skill')) {
-      return key as StatType
-    }
-
-    if (isBasicOrHeavy && distance <= 5) {
-      return key as StatType
-    }
-
-    if (distance <= 1) {
-      return key as StatType
-    }
-  }
-  return StatType.NONE
-}

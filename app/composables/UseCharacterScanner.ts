@@ -9,7 +9,7 @@ import { EchoCost } from '~/Core/Enums/EchoCost'
 import { StatType } from '~/Core/Enums/StatType'
 import { CHARACTER_LEVEL_REGION, CHARACTER_LEVEL_REGION_ALT, CHARACTER_NAME_REGION, ECHOES_REGIONS, WEAPON_LEVEL_REGION, WEAPON_NAME_REGION } from '~/Core/Scanner/Coordinates'
 import { Sonatas } from '~/Core/Sonatas'
-import { GetStatTypeFromName } from '~/Core/Statistics'
+import { STAT_NAMES } from '~/Core/Statistics'
 import { GetEchoIcon, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 import { IsFloatingPointNumber } from '~/Core/Utils/NumberUtils'
 import { GetSecondaryStat } from '~/Core/Utils/StatsUtils'
@@ -484,20 +484,39 @@ export function useCharacterScanner() {
     return srcMat
   }
 
-  // DEBUG
-  function renderMatToCanvas(mat: cv.Mat, canvas: HTMLCanvasElement) {
-    const rgba = new cv.Mat()
-    if (mat.channels() === 1) {
-      cv.cvtColor(mat, rgba, cv.COLOR_GRAY2RGBA)
+  function GetStatTypeFromName(name: string) {
+    const lowerCaseName = name.toLocaleLowerCase()
+
+    for (const [key, value] of Object.entries(STAT_NAMES)) {
+      const lowerCaseValue = value.toLowerCase()
+
+      // If HP is on the first line, its detected as 1???
+      if (lowerCaseName === 'hp' || lowerCaseName === '1') {
+        return StatType.HP
+      }
+
+      const isResonanceSkill = lowerCaseName.includes('resonance') && lowerCaseName.includes('skill')
+      const isResonanceLib = lowerCaseName.includes('resonance') && lowerCaseName.includes('liberation')
+      const isBasicOrHeavy = lowerCaseName.startsWith('basic') || lowerCaseName.startsWith('heavy')
+      const distance = LevenshteinDistance(lowerCaseValue, lowerCaseName)
+
+      if (isResonanceLib && distance <= 15 && lowerCaseValue.includes('lib')) {
+        return key as StatType
+      }
+
+      if (isResonanceSkill && distance <= 10 && lowerCaseValue.includes('skill')) {
+        return key as StatType
+      }
+
+      if (isBasicOrHeavy && distance <= 5) {
+        return key as StatType
+      }
+
+      if (distance <= 1) {
+        return key as StatType
+      }
     }
-    else if (mat.channels() === 3) {
-      cv.cvtColor(mat, rgba, cv.COLOR_RGB2RGBA)
-    }
-    else {
-      mat.copyTo(rgba)
-    }
-    cv.imshow(canvas, rgba)
-    rgba.delete()
+    return StatType.NONE
   }
 
   async function GetText(canvas: HTMLCanvasElement) {
@@ -525,6 +544,12 @@ export function useCharacterScanner() {
     }
 
     Canvases = []
+  }
+
+  // DEBUG
+  // eslint-disable-next-line unused-imports/no-unused-vars
+  function renderMatToCanvas(mat: cv.Mat, canvas: HTMLCanvasElement) {
+    cv.imshow(canvas, mat)
   }
 
   return {

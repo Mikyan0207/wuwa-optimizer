@@ -330,7 +330,7 @@ const StepperItems = [
                 </div>
               </div>
             </div>
-            <div class="max-h-[26em] xl:max-h-[32em] scrollbar-hidden w-full grid grid-cols-3 gap-2 overflow-y-auto p-4 pb-2">
+            <div class="max-h-[26em] xl:max-h-[32em] scrollbar-hidden w-full grid grid-cols-2 gap-2 overflow-y-auto p-4 pb-2">
               <EchoWithSonataSelectorCard
                 v-for="ec in FilteredEchoes"
                 :key="ec.Id"

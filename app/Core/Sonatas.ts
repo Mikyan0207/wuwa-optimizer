@@ -33,6 +33,22 @@ export const Celestial_Light: Sonata = {
   ],
 }
 
+export const Havoc_Eclipse: Sonata = {
+  Name: 'Havoc Eclipse',
+  Icon: 'Icon_Havoc_Eclipse.webp',
+  Effect1: 'Havoc DMG +10%.',
+  Effect2: 'Havoc DMG +7.5% after releasing Basic Attack or Heavy Attack. This effect stacks up to 4 times, each stack lasts 15s.',
+  IsSelected: false,
+  Effect1Active: false,
+  Effect2Active: false,
+  ExtraStats: [
+    {
+      Type: StatType.HAVOC_DMG_BONUS,
+      Value: 10.0,
+    },
+  ],
+}
+
 export const Freezing_Frost: Sonata = {
   Name: 'Freezing Frost',
   Icon: 'Icon_Freezing_Frost.webp',
@@ -92,22 +108,6 @@ export const Void_Thunder: Sonata = {
   ExtraStats: [
     {
       Type: StatType.ELECTRO_DMG_BONUS,
-      Value: 10.0,
-    },
-  ],
-}
-
-export const SunSinking_Eclipse: Sonata = {
-  Name: 'Sun-Sinking Eclipse',
-  Icon: 'Icon_SunSinking_Eclipse.webp',
-  Effect1: 'Havoc DMG +10%.',
-  Effect2: 'Havoc DMG +7.5% after releasing Basic Attack or Heavy Attack. This effect stacks up to 4 times, each stack lasts 15s.',
-  IsSelected: false,
-  Effect1Active: false,
-  Effect2Active: false,
-  ExtraStats: [
-    {
-      Type: StatType.HAVOC_DMG_BONUS,
       Value: 10.0,
     },
   ],
@@ -210,8 +210,6 @@ export const Tidebreaking_Courage: Sonata = {
       Type: StatType.ATTACK_PERCENTAGE,
       Value: 15.0,
     },
-
-    // TODO: Add Attribute DMG bonus when we can handle conditions on sonata buffs...
   ],
 }
 
@@ -253,7 +251,6 @@ export const Sonatas: Sonata[] = [
   Freezing_Frost,
   Moonlit_Clouds,
   Rejuvenating_Glow,
-  SunSinking_Eclipse,
   Molten_Rift,
   Lingering_Tunes,
   Sierra_Gale,
@@ -262,6 +259,8 @@ export const Sonatas: Sonata[] = [
   Tidebreaking_Courage,
   Eternal_Radiance,
   Gusts_of_Welkin,
+  Void_Thunder,
+  Havoc_Eclipse,
 ]
 
 export const Sonatas_1_0: Sonata[] = [
@@ -269,7 +268,6 @@ export const Sonatas_1_0: Sonata[] = [
   Freezing_Frost,
   Moonlit_Clouds,
   Rejuvenating_Glow,
-  SunSinking_Eclipse,
   Molten_Rift,
   Lingering_Tunes,
   Sierra_Gale,
@@ -281,4 +279,5 @@ export const Sonatas_2_0: Sonata[] = [
   Midnight_Veil,
   Tidebreaking_Courage,
   Eternal_Radiance,
+  Gusts_of_Welkin,
 ]

@@ -53,7 +53,7 @@ function OnClose() {
   >
     <UButton
       color="neutral"
-      variant="subtle"
+      variant="soft"
       icon="solar:tuning-broken"
       :trailing="false"
       @click.prevent="ShowWeightsModal = true"

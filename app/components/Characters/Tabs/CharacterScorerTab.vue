@@ -63,7 +63,7 @@ async function TakeScreenShotAsync() {
           <div class="w-full flex justify-end gap-1">
             <ScoringAlgorithmCard v-if="CurrentCharacter !== undefined" :character="CurrentCharacter" />
             <UButton
-              color="neutral" variant="subtle" icon="solar:camera-broken" :trailing="false"
+              color="neutral" variant="soft" icon="solar:camera-broken" :trailing="false"
               :loading="ShowScreenShotBackground" @click.prevent="TakeScreenShotAsync"
             >
               Screenshot

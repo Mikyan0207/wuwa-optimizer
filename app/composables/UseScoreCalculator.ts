@@ -239,7 +239,7 @@ export function useScoreCalculator() {
       totalScore /= 5 - echo.Statistics.length + 1
     }
 
-    const finalScore = totalWeight > 0 ? Math.round((totalScore / totalWeight) * 100) : 0
+    const finalScore = totalWeight > 0 ? (totalScore / totalWeight) * 100 : 0
 
     return {
       Score: finalScore,

@@ -121,6 +121,7 @@ function OnConfirmClicked() {
               v-model="Progress"
               class="w-full mt-4"
               status
+              animation="carousel"
               :max="['Waiting...', 'Character...', 'Weapon...', 'Echoes...', 'Echo 1/5', 'Echo 2/5', 'Echo 3/5', 'Echo 4/5', 'Echo 5/5', 'Done!']"
             />
             <UAlert v-if="ScannerResult === ScannerResultStatus.INVALID_CHARACTER" color="error" variant="subtle">

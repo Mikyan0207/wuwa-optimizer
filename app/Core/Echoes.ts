@@ -27,7 +27,7 @@ export const Echoes: Echo[] = [
   },
   {
     Id: 6000084,
-    Icon: 'Dragon_Of_Dirge_Icon.webp',
+    Icon: 'Dragon_of_Dirge_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
@@ -443,7 +443,7 @@ export const Echoes: Echo[] = [
     ],
     Statistics: [],
   },
-  { 
+  {
     Id: 390077022,
     Icon: 'Flautist_Icon.webp',
     Rarity: Rarity.FIVE_STARS,

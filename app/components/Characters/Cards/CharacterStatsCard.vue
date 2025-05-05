@@ -83,7 +83,7 @@ function IsStatWanted(stat: IStatistic) {
           {{ t('label_character_score') }}
         </p>
         <div>
-          {{ Score.Score }} (<div :class="GetCharacterScoreNoteColor" class="inline-block font-semibold">
+          {{ Score.Score.toFixed(2) }} (<div :class="GetCharacterScoreNoteColor" class="inline-block font-semibold">
             {{ Score.Note }}
           </div>)
         </div>

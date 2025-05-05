@@ -120,7 +120,7 @@ function IsWantedStat(stat: Statistic) {
         </div>
         <div v-if="IsValidEcho && score" class="w-full flex flex-row items-center justify-end">
           <p class="mr-2">
-            {{ (score.Score).toFixed(1) }}
+            {{ (score.Score).toFixed(2) }}
           </p>
           (<EchoScore :value="score.Score" :text="score.Grade" />)
         </div>

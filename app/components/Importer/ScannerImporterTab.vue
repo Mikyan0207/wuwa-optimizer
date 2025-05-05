@@ -193,9 +193,6 @@ function OnConfirmClicked() {
           <p>Confirm</p>
           <div class="my-8 space-y-4 w-full">
             <UButtonGroup>
-              <UButton color="success" variant="subtle" icon="i-material-symbols:check-circle-outline-rounded" @click.prevent="OnConfirmClicked">
-                Confirm
-              </UButton>
               <UButton
                 color="neutral" variant="subtle" icon="i-material-symbols:arrow-right-alt-rounded" @click.prevent="() => {
                   OnConfirmClicked()

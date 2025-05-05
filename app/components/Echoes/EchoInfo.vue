@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type Echo from '~/Core/Interfaces/Echo'
+import type Statistic from '~/Core/Interfaces/Statistic'
+import { StatType } from '~/Core/Enums/StatType'
 import { GetEchoCostText, GetEchoIcon, GetEchoRarityText, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
 const props = withDefaults(defineProps<{
@@ -16,6 +18,10 @@ const { CurrentCharacter } = useCharacterContext()
 
 const IsValidEcho = computed(() => props.echo.Id !== -1)
 const GetSonata = computed(() => props.echo.Sonata.find(x => x.IsSelected === true))
+
+function IsWantedStat(stat: Statistic) {
+  return CurrentCharacter.value?.StatsWeights![stat.Type] !== undefined && CurrentCharacter.value?.StatsWeights![stat.Type]
+}
 </script>
 
 <template>
@@ -82,18 +88,24 @@ const GetSonata = computed(() => props.echo.Sonata.find(x => x.IsSelected === tr
     <USeparator color="neutral" />
     <!-- Sub Stats -->
     <div v-if="IsValidEcho" class="w-full flex flex-col gap-1">
-      <StatLine
-        v-for="(stat, idx) in echo.Statistics"
-        :key="`stat-${stat.Type}-${idx}`"
-        v-motion-slide-left
-        :delay="500 + (idx * 100)"
-        :stat="stat"
-        :weight="CurrentCharacter?.StatsWeights![stat.Type] || undefined"
-        :show-line="true"
-        :show-roll-value="true"
-        class="px-2 py-1"
-        :class="{ 'bg-neutral-800/75 rounded': CurrentCharacter?.StatsWeights![stat.Type] !== undefined && CurrentCharacter?.StatsWeights![stat.Type] || 0 > 0 }"
-      />
+      <div
+        v-for="idx in [...Array(5).keys()]" :key="`stat-${idx}`"
+      >
+        <StatLine
+          v-if="echo.Statistics[idx]"
+          v-motion-slide-left
+          :delay="500 + (idx * 100)"
+          :stat="echo.Statistics[idx]"
+          :weight="CurrentCharacter?.StatsWeights![echo.Statistics[idx].Type] || undefined"
+          :show-line="true"
+          :show-roll-value="true"
+          class="px-2 py-1"
+          :class="{ 'bg-neutral-800/75 rounded': IsWantedStat(echo.Statistics[idx]) }"
+        />
+        <div v-else class="h-8 flex items-center justify-center">
+          <USkeleton class="h-1 w-full rounded" />
+        </div>
+      </div>
     </div>
     <div v-else class="w-full flex flex-col gap-1">
       <div v-for="idx in 5" :key="idx" class="w-full flex items-center justify-between">

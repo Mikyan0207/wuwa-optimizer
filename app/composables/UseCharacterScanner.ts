@@ -209,8 +209,11 @@ export function useCharacterScanner() {
         Statistics: Array.from({ length: 5 }, (_, j) => {
           const name = chunk[5 + j * 2] || ''
           const rawValue = chunk[6 + j * 2] || '0'
+          const stat = GetStatistic(name, rawValue, echo.Cost)
 
-          return GetStatistic(name, rawValue, echo.Cost)
+          console.log(`[Stat ${j}]`, name, rawValue, stat)
+
+          return stat
         }).filter(stat => stat.Type !== StatType.NONE && !Number.isNaN(stat.Value)),
         EquipedSlot: index,
         EquipedBy: characterId,
@@ -398,7 +401,7 @@ export function useCharacterScanner() {
     if ((IsFloatingPointNumber(statValue) || isMainStat) && statType === StatType.HP) {
       statType = StatType.HP_PERCENTAGE
     }
-    else if (IsFloatingPointNumber(statValue) && statType === StatType.DEF) {
+    else if ((IsFloatingPointNumber(statValue) || isMainStat || value.includes('%')) && statType === StatType.DEF) {
       statType = StatType.DEF_PERCENTAGE
     }
     else if ((IsFloatingPointNumber(statValue) || isMainStat) && statType === StatType.ATTACK) {

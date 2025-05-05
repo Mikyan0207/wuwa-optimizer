@@ -1,6 +1,7 @@
+import type Character from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import type Sonata from '~/Core/Interfaces/Sonata'
-import type { Rectangle } from '~/Core/Scanner/Rectangle'
+import type Weapon from '~/Core/Interfaces/Weapon'
 import cv from '@techstark/opencv-js'
 import Tesseract from 'tesseract.js'
 import { TemplateCharacters } from '~/Core/Characters'
@@ -8,8 +9,9 @@ import { TemplateEchoes } from '~/Core/Echoes'
 import { EchoCost } from '~/Core/Enums/EchoCost'
 import { StatType } from '~/Core/Enums/StatType'
 import { CHARACTER_LEVEL_REGION, CHARACTER_LEVEL_REGION_ALT, CHARACTER_NAME_REGION, ECHOES_REGIONS, WEAPON_LEVEL_REGION, WEAPON_NAME_REGION } from '~/Core/Scanner/Coordinates'
+import { Rectangle } from '~/Core/Scanner/Rectangle'
 import { Sonatas } from '~/Core/Sonatas'
-import { STAT_NAMES } from '~/Core/Statistics'
+import { FOUR_COST_MAIN_STATS_VALUES, ONE_COST_MAIN_STATS_VALUES, STAT_NAMES, SUB_STAT_VALUES, THREE_COST_MAIN_STATS_VALUES } from '~/Core/Statistics'
 import { GetEchoIcon, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 import { IsFloatingPointNumber } from '~/Core/Utils/NumberUtils'
 import { GetSecondaryStat } from '~/Core/Utils/StatsUtils'
@@ -29,19 +31,24 @@ export enum ScannerStatus {
   DONE,
 }
 
+export enum ScannerResultStatus {
+  ERROR,
+  INVALID_IMAGE,
+  INVALID_CHARACTER,
+  INVALID_WEAPON,
+  INVALID_ECHO,
+  SUCCESS,
+}
+
 export function useCharacterScanner() {
   let Worker: Tesseract.Worker | undefined
   let Canvas: HTMLCanvasElement | undefined
   let CanvasContext: CanvasRenderingContext2D | null
   let Canvases: HTMLCanvasElement[] = []
 
-  const IsLoading = ref<boolean>(false)
-
   const OnProgress = ref<(status: ScannerStatus) => void>()
 
   async function LoadAsync(file: File) {
-    IsLoading.value = true
-
     const image = await createImageBitmap(file)
     Canvas = document.createElement('canvas')
     CanvasContext = Canvas.getContext('2d', { willReadFrequently: true })!
@@ -53,36 +60,38 @@ export function useCharacterScanner() {
     Worker = await Tesseract.createWorker('eng', 1)
   }
 
-  async function ScanAsync(onProgress?: (status: ScannerStatus) => void) {
+  async function ScanAsync(onProgress?: (status: ScannerStatus) => void): Promise<{ Status: ScannerResultStatus, Character?: Character | undefined, Weapon?: Weapon | undefined, Echoes?: Echo[] }> {
     OnProgress.value = onProgress
     if (OnProgress.value) {
       OnProgress.value(ScannerStatus.IDLE)
     }
 
-    const [
-      character,
-      weapon,
-      echoes,
-    ] = await Promise.all([
-      (async () => {
-        if (OnProgress.value) {
-          OnProgress.value(ScannerStatus.CHARACTER)
-        }
-        return GetCharacterAsync()
-      })(),
-      (async () => {
-        if (OnProgress.value) {
-          OnProgress.value(ScannerStatus.WEAPON)
-        }
-        return GetWeaponAsync()
-      })(),
-      (async () => {
-        if (OnProgress.value) {
-          OnProgress.value(ScannerStatus.ECHOES)
-        }
-        return GetEchoesAsync()
-      })(),
-    ])
+    if (OnProgress.value) {
+      OnProgress.value(ScannerStatus.CHARACTER)
+    }
+
+    const character = await GetCharacterAsync()
+
+    if (character === undefined) {
+      return {
+        Status: ScannerResultStatus.INVALID_CHARACTER,
+      }
+    }
+
+    if (OnProgress.value) {
+      OnProgress.value(ScannerStatus.WEAPON)
+    }
+    const weapon = await GetWeaponAsync()
+
+    if (OnProgress.value) {
+      OnProgress.value(ScannerStatus.ECHOES)
+    }
+    const echoes = await GetEchoesAsync(character.Id)
+
+    character.EquipedWeapon = weapon?.Id
+    echoes.forEach((e) => {
+      character.EquipedEchoes.push(e.Id)
+    })
 
     CleanUp()
 
@@ -97,9 +106,10 @@ export function useCharacterScanner() {
     }
 
     return {
-      character,
-      weapon,
-      echoes,
+      Status: ScannerResultStatus.SUCCESS,
+      Character: character,
+      Weapon: weapon,
+      Echoes: echoes,
     }
   }
 
@@ -128,15 +138,7 @@ export function useCharacterScanner() {
   }
 
   async function GetCharacterAsync() {
-    const [
-      characterName,
-      characterLevel,
-      characterLevelAlt,
-    ] = await Promise.all([
-      GetText(GetRegion(CHARACTER_NAME_REGION)),
-      GetText(GetRegion(CHARACTER_LEVEL_REGION)),
-      GetText(GetRegion(CHARACTER_LEVEL_REGION_ALT)),
-    ])
+    const characterName = await GetText(GetRegion(CHARACTER_NAME_REGION))
 
     const character = TemplateCharacters.find((x) => {
       const name = x.Icon.split('_')[0]?.toLowerCase() || ''
@@ -156,26 +158,46 @@ export function useCharacterScanner() {
       return undefined
     }
 
-    // TODO: Change the way we parse the character level. Do it per chunk on the line of the level until we get something that
-    // is not a NaN or above 1. If we still didn't get any numbers in the end, we assume the character is level 1 or 90.
-    let parsedCharacterLevel = Number.parseInt(GetFilteredText(characterLevel, /\d+/))
-
-    if (Number.isNaN(parsedCharacterLevel)) {
-      parsedCharacterLevel = Number.parseInt(GetFilteredText(characterLevelAlt, /\d+/))
-    }
-
-    character.Level = parsedCharacterLevel
+    character.Level = await GetCharacterLevelAsync()
 
     return character
   }
 
-  async function GetEchoesAsync() {
+  async function GetCharacterLevelAsync(): Promise<number> {
+    const chunkWidth = 35
+    const step = 10
+    const chunkHeight = CHARACTER_LEVEL_REGION.Height
+    const y = CHARACTER_LEVEL_REGION.Y
+    const startX = CHARACTER_LEVEL_REGION.X
+    const endX = 650
+    let bestLevel = 1
+
+    for (let x = startX; x <= endX; x += step) {
+      const region = new Rectangle(x, y, chunkWidth, chunkHeight)
+      const text = await GetText(GetRegion(region))
+      const match = text.match(/\d{1,2}/)
+
+      if (match) {
+        const level = Number.parseInt(match[0])
+
+        if (!Number.isNaN(level) && level > bestLevel) {
+          bestLevel = level
+        }
+      }
+    }
+
+    return bestLevel
+  }
+
+  async function GetEchoesAsync(characterId: number) {
     const fields = await Promise.all(ECHOES_REGIONS.map(e => GetText(GetRegion(e))))
     const echoes: Echo[] = []
 
     for (let i = 0; i < fields.length; i += 15) {
+      const index = Math.floor(i / 15)
+
       if (OnProgress.value) {
-        OnProgress.value(ScannerStatus[`ECHOES_0${Math.floor(i / 15) + 1}` as keyof typeof ScannerStatus])
+        OnProgress.value(ScannerStatus[`ECHOES_0${index + 1}` as keyof typeof ScannerStatus])
       }
       const chunk = fields.slice(i, i + 15)
       const cost = GetCostFromText(GetFilteredText(chunk[1] || '', /\d+/))
@@ -186,26 +208,28 @@ export function useCharacterScanner() {
         continue
       }
 
-      // TODO: Set EquipedSlot & EquipedBy
       // TODO: Instead of using the parsed stat value, we should get the closest one from the possible values.
 
       const e = {
         ...echo,
-        MainStatistic: GetStatistic(chunk[3] || '', chunk[4] || '', true),
+        MainStatistic: GetStatistic(chunk[3] || '', chunk[4] || '', echo.Cost, true),
         SecondaryStatistic: GetSecondaryStat(echo.Cost),
         Statistics: Array.from({ length: 5 }, (_, j) => {
           const name = chunk[5 + j * 2] || ''
           const rawValue = chunk[6 + j * 2] || '0'
 
-          return GetStatistic(name, rawValue)
+          return GetStatistic(name, rawValue, echo.Cost)
         }).filter(stat => stat.Type !== StatType.NONE && !Number.isNaN(stat.Value)),
-      }
+        EquipedSlot: index,
+        EquipedBy: characterId,
+      } as Echo
 
       const sonata = await GetSonata(ECHOES_REGIONS[i + 2]!)
 
-      if (sonata !== undefined && e.Sonata.find(x => x.Name === sonata.Name) !== undefined) {
-        e.Sonata.find(x => x.Name === sonata.Name)!.IsSelected = true
-      }
+      e.Sonata = echo.Sonata.map(s => ({
+        ...s,
+        IsSelected: LevenshteinDistance(s.Name.toLowerCase(), sonata?.Name.toLowerCase() || '') <= 1,
+      }))
 
       if (e.Statistics.length > 0)
         e.Level = 5 * (e.Statistics.length)
@@ -373,7 +397,7 @@ export function useCharacterScanner() {
     return avgDistance
   }
 
-  function GetStatistic(name: string, value: string, isMainStat: boolean = false) {
+  function GetStatistic(name: string, value: string, echoCost: EchoCost, isMainStat: boolean = false) {
     let statType = GetStatTypeFromName(name || StatType.NONE)
     const statValue = Number.parseFloat(GetFilteredText(value, /\d*\.\d+|\d+/))
 
@@ -389,10 +413,51 @@ export function useCharacterScanner() {
       statType = StatType.ATTACK_PERCENTAGE
     }
 
+    const closestStatValue = GetClosestStatValue(
+      statType,
+      Number.parseFloat(GetFilteredText(value, /\d*\.\d+|\d+/)),
+      echoCost,
+      isMainStat,
+    )
+
     return {
       Type: statType,
-      Value: statValue,
+      Value: closestStatValue,
     }
+  }
+
+  function GetClosestStatValue(type: StatType, value: number, echoCost: EchoCost, isMainStat: boolean): number {
+    if (type === StatType.NONE)
+      return 0
+
+    if (isMainStat) {
+      let mainStatsMap: Record<StatType, number>
+
+      switch (echoCost) {
+        case EchoCost.ONE_COST:
+          mainStatsMap = ONE_COST_MAIN_STATS_VALUES
+          break
+        case EchoCost.THREE_COST:
+          mainStatsMap = THREE_COST_MAIN_STATS_VALUES
+          break
+        case EchoCost.FOUR_COST:
+          mainStatsMap = FOUR_COST_MAIN_STATS_VALUES
+          break
+        default:
+          return 0
+      }
+
+      return mainStatsMap[type] ?? 0
+    }
+
+    const values = SUB_STAT_VALUES[type]
+    if (!values || values.length === 0)
+      return 0
+
+    // Find closest substat value
+    return values.reduce((closest, current) =>
+      Math.abs(current - value) < Math.abs(closest - value) ? current : closest,
+    )
   }
 
   function GetCostFromText(text: string | undefined) {

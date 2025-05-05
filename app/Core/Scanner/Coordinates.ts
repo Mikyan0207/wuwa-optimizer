@@ -1,8 +1,8 @@
 import { Rectangle } from './Rectangle'
 
-export const CHARACTER_NAME_REGION = new Rectangle(55, 15, 450, 75)
-export const CHARACTER_LEVEL_REGION = new Rectangle(285, 32, 75, 35)
-export const CHARACTER_LEVEL_REGION_ALT = new Rectangle(514, 32, 75, 35)
+export const CHARACTER_NAME_REGION = new Rectangle(65, 15, 450, 75)
+// This one is a bit special...
+export const CHARACTER_LEVEL_REGION = new Rectangle(50, 30, 50, 35)
 
 export const WEAPON_NAME_REGION = new Rectangle(1600, 451, 250, 30)
 export const WEAPON_LEVEL_REGION = new Rectangle(1640, 500, 70, 30)
@@ -56,7 +56,7 @@ export const ECHO_2_STAT_5_VALUE_REGION = new Rectangle(685, 1019, 68, 41)
 // === Echo 03 ===
 export const ECHO_3_ICON_REGION = new Rectangle(770, 651, 186, 186)
 export const ECHO_3_COST_REGION = new Rectangle(1084, 675, 25, 30)
-export const ECHO_3_SONATA_REGION = new Rectangle(1110, 662, 50, 50)
+export const ECHO_3_SONATA_REGION = new Rectangle(1014, 662, 50, 50)
 
 export const ECHO_3_MAIN_STAT_NAME_REGION = new Rectangle(966, 723, 170, 25)
 export const ECHO_3_MAIN_STAT_VALUE_REGION = new Rectangle(1022, 753, 145, 35)

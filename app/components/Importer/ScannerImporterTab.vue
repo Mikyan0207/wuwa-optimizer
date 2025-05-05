@@ -10,6 +10,7 @@ const Scanner = useCharacterScanner()
 const SelectedFile = ref<File | undefined>(undefined)
 const LockImportButton = ref<boolean>(false)
 const Progress = ref<ScannerStatus>(ScannerStatus.IDLE)
+const ScannerResult = ref<ScannerResultStatus>(ScannerResultStatus.SUCCESS)
 
 const ImportedCharacter = ref<Character | undefined>(undefined)
 const ImportedWeapon = ref<Weapon | undefined>(undefined)
@@ -22,20 +23,26 @@ async function OnImportClicked() {
 
   await Scanner.LoadAsync(SelectedFile.value)
   const {
-    character,
-    weapon,
-    echoes,
+    Status,
+    Character,
+    Weapon,
+    Echoes,
   } = await Scanner.ScanAsync((status) => {
     Progress.value = status
 
-    if (Progress.value === ScannerStatus.DONE) {
+    if (Progress.value === ScannerStatus.DONE || Progress.value !== ScannerStatus.IDLE) {
       LockImportButton.value = true
     }
   })
 
-  ImportedCharacter.value = character
-  ImportedWeapon.value = weapon
-  ImportedEchoes.value = echoes
+  if (Status !== ScannerResultStatus.SUCCESS) {
+    LockImportButton.value = true
+  }
+
+  ScannerResult.value = Status
+  ImportedCharacter.value = Character
+  ImportedWeapon.value = Weapon
+  ImportedEchoes.value = Echoes || []
   Step.value = 3
 }
 
@@ -86,7 +93,7 @@ function GetFileObject(event: Event) {
           <USeparator class="h-full" orientation="vertical" size="xs" />
         </div>
         <div class="mt-0.5 w-full">
-          <p>Import the data.</p>
+          <p>Import the data</p>
           <div class="mt-8 space-y-2">
             <UButton
               color="neutral" variant="outline"
@@ -98,14 +105,34 @@ function GetFileObject(event: Event) {
               v-model="Progress"
               class="w-full mt-4"
               status
-              :max="['Waiting...', 'Characters...', 'Weapons...', 'Echoes...', 'Echo 1/5', 'Echo 2/5', 'Echo 3/5', 'Echo 4/5', 'Echo 5/5', 'Done!']"
+              :max="['Waiting...', 'Character...', 'Weapon...', 'Echoes...', 'Echo 1/5', 'Echo 2/5', 'Echo 3/5', 'Echo 4/5', 'Echo 5/5', 'Done!']"
             />
+            <UAlert v-if="ScannerResult === ScannerResultStatus.INVALID_CHARACTER" color="error" variant="subtle">
+              <template #title>
+                ❌ Character could not be identified.
+              </template>
+              <template #description>
+                <p class="mt-4">
+                  This may happen if:
+                  <ul>
+                    <li>・The characters name is partially cropped or unreadable</li>
+                    <li>・The image resolution is too low or blurry</li>
+                    <li>・An unsupported language or font is being used</li>
+                    <li>・The image is not from Wuthering Waves or does not show a valid character profile</li>
+                    <li>・The character is not yet available in the game and is not recognized by the optimizer</li>
+                  </ul>
+                </p>
+                <p class="mt-4 font-semibold">
+                  Please try again with a valid screenshot.
+                </p>
+              </template>
+            </UAlert>
           </div>
         </div>
       </div>
 
       <!-- Step 3 -->
-      <div v-if="Step >= 3" v-motion-slide-left class="w-full flex gap-2">
+      <div v-if="Step >= 3 && ScannerResult === ScannerResultStatus.SUCCESS" v-motion-slide-left class="w-full flex gap-2">
         <div class="flex flex-col gap-2">
           <UBadge color="neutral" variant="solid" class="rounded-full">
             3
@@ -114,16 +141,22 @@ function GetFileObject(event: Event) {
         </div>
         <div class="mt-0.5 w-full">
           <p>Verify the imported data</p>
-          <div class="mb-2 mt-8 w-full grid grid-cols-4 gap-1">
+          <UAlert
+            class="my-8"
+            color="warning" variant="subtle"
+            description="⚠️ If some of the information is incorrect or missing, you can manually edit it directly from the character's profile. The imported data will be saved once you press the confirm button."
+          />
+
+          <div class="my-2 w-full grid grid-cols-3 gap-1">
             <ImportedCharacterCard
               v-if="ImportedCharacter"
               :character="ImportedCharacter"
-              class="col-span-2"
+              class="col-span-1"
             />
             <ImportedWeaponCard
               v-if="ImportedWeapon"
               :weapon="ImportedWeapon"
-              class="col-span-2"
+              class="col-span-1"
             />
           </div>
           <div class="w-full mb-8 grid grid-cols-3 gap-2">
@@ -133,7 +166,7 @@ function GetFileObject(event: Event) {
       </div>
 
       <!-- Step 4 -->
-      <div v-if="Step >= 3" v-motion-slide-left class="w-full flex gap-2">
+      <div v-if="Step >= 3 && ScannerResult === ScannerResultStatus.SUCCESS" v-motion-slide-left class="w-full flex gap-2">
         <div class="flex flex-col gap-2">
           <UBadge color="neutral" variant="solid" class="rounded-full">
             4

@@ -209,11 +209,7 @@ export function useCharacterScanner() {
         Statistics: Array.from({ length: 5 }, (_, j) => {
           const name = chunk[5 + j * 2] || ''
           const rawValue = chunk[6 + j * 2] || '0'
-          const stat = GetStatistic(name, rawValue, echo.Cost)
-
-          console.log(`[Stat ${j}]`, name, rawValue, stat)
-
-          return stat
+          return GetStatistic(name, rawValue, echo.Cost)
         }).filter(stat => stat.Type !== StatType.NONE && !Number.isNaN(stat.Value)),
         EquipedSlot: index,
         EquipedBy: characterId,

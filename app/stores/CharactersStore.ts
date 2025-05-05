@@ -31,9 +31,22 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     } as Character
   }
 
+  function AddOrUpdate(character: Character) {
+    if (!Characters.value)
+      return
+
+    const exists = Characters.value.some(c => c.Id === character.Id)
+    if (exists) {
+      return Update(character.Id, character)
+    }
+
+    Characters.value.push(character)
+  }
+
   return {
     Characters,
     Get,
     Update,
+    AddOrUpdate,
   }
 })

@@ -7,6 +7,10 @@ import ImportedEchoCard from './Cards/ImportedEchoCard.vue'
 const Step = ref<number>(0)
 const Scanner = useCharacterScanner()
 
+const CharactersStore = useCharactersStore()
+const WeaponsStore = useWeaponsStore()
+const EchoesStore = useEchoesStore()
+
 const SelectedFile = ref<File | undefined>(undefined)
 const LockImportButton = ref<boolean>(false)
 const Progress = ref<ScannerStatus>(ScannerStatus.IDLE)
@@ -56,6 +60,18 @@ function GetFileObject(event: Event) {
     LockImportButton.value = false
     Progress.value = ScannerStatus.IDLE
   }
+}
+
+function OnConfirmClicked() {
+  if (ImportedCharacter.value === undefined || ImportedWeapon.value === undefined || ImportedEchoes.value === undefined) {
+    return
+  }
+
+  CharactersStore.AddOrUpdate(ImportedCharacter.value)
+  WeaponsStore.AddOrUpdate(ImportedWeapon.value, ImportedCharacter.value!.Id)
+  ImportedEchoes.value.forEach((echo) => {
+    EchoesStore.AddOrUpdate(echo, ImportedCharacter.value!.Id)
+  })
 }
 </script>
 
@@ -175,7 +191,21 @@ function GetFileObject(event: Event) {
         </div>
         <div class="mt-0.5 w-full">
           <p>Confirm</p>
-          <div class="my-8 space-y-4 w-full" />
+          <div class="my-8 space-y-4 w-full">
+            <UButtonGroup>
+              <UButton color="success" variant="subtle" icon="i-material-symbols:check-circle-outline-rounded" @click.prevent="OnConfirmClicked">
+                Confirm
+              </UButton>
+              <UButton
+                color="neutral" variant="subtle" icon="i-material-symbols:arrow-right-alt-rounded" @click.prevent="() => {
+                  OnConfirmClicked()
+                  navigateTo(`/characters/${ImportedCharacter!.Id}`)
+                }"
+              >
+                Character Profile
+              </UButton>
+            </UButtonGroup>
+          </div>
         </div>
       </div>
     </div>

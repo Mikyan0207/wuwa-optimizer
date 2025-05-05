@@ -8,7 +8,7 @@ import { TemplateCharacters } from '~/Core/Characters'
 import { TemplateEchoes } from '~/Core/Echoes'
 import { EchoCost } from '~/Core/Enums/EchoCost'
 import { StatType } from '~/Core/Enums/StatType'
-import { CHARACTER_LEVEL_REGION, CHARACTER_LEVEL_REGION_ALT, CHARACTER_NAME_REGION, ECHOES_REGIONS, WEAPON_LEVEL_REGION, WEAPON_NAME_REGION } from '~/Core/Scanner/Coordinates'
+import { CHARACTER_LEVEL_REGION, CHARACTER_NAME_REGION, ECHOES_REGIONS, WEAPON_LEVEL_REGION, WEAPON_NAME_REGION } from '~/Core/Scanner/Coordinates'
 import { Rectangle } from '~/Core/Scanner/Rectangle'
 import { Sonatas } from '~/Core/Sonatas'
 import { FOUR_COST_MAIN_STATS_VALUES, ONE_COST_MAIN_STATS_VALUES, STAT_NAMES, SUB_STAT_VALUES, THREE_COST_MAIN_STATS_VALUES } from '~/Core/Statistics'
@@ -81,7 +81,7 @@ export function useCharacterScanner() {
     if (OnProgress.value) {
       OnProgress.value(ScannerStatus.WEAPON)
     }
-    const weapon = await GetWeaponAsync()
+    const weapon = await GetWeaponAsync(character.Id)
 
     if (OnProgress.value) {
       OnProgress.value(ScannerStatus.ECHOES)
@@ -95,12 +95,6 @@ export function useCharacterScanner() {
 
     CleanUp()
 
-    console.log(
-      character,
-      weapon,
-      echoes,
-    )
-
     if (onProgress) {
       onProgress(ScannerStatus.DONE)
     }
@@ -113,7 +107,7 @@ export function useCharacterScanner() {
     }
   }
 
-  async function GetWeaponAsync() {
+  async function GetWeaponAsync(characterId: number) {
     const [
       weaponName,
       weaponLevel,
@@ -132,6 +126,7 @@ export function useCharacterScanner() {
       return undefined
     }
 
+    weapon.EquipedBy = characterId
     weapon.Level = Number.parseInt(GetFilteredText(weaponLevel, /\d+/))
 
     return weapon
@@ -204,11 +199,8 @@ export function useCharacterScanner() {
       const echo = await GetEcho(ECHOES_REGIONS[i]!, cost)
 
       if (echo === undefined) {
-        console.log('couldn\'t find echo')
         continue
       }
-
-      // TODO: Instead of using the parsed stat value, we should get the closest one from the possible values.
 
       const e = {
         ...echo,

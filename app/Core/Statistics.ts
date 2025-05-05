@@ -1,6 +1,5 @@
 import { EchoCost } from './Enums/EchoCost'
 import { StatType } from './Enums/StatType'
-import { LevenshteinDistance } from './Utils/StringUtils'
 
 export const STAT_NAMES: Record<StatType, string> = {
   [StatType.NONE]: '',

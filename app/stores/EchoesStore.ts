@@ -57,6 +57,18 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     Echoes.value = Echoes.value.filter(e => !(e.Id === echoId && e.EquipedBy === characterId))
   }
 
+  function AddOrUpdate(echo: Echo, characterId: number) {
+    if (!Echoes.value)
+      return
+
+    const exists = Echoes.value.some(c => c.Id === echo.Id && c.EquipedBy === characterId)
+    if (exists) {
+      return UpdateWithEquipedBy(echo.Id, characterId, echo)
+    }
+
+    Echoes.value.push(echo)
+  }
+
   return {
     Echoes,
     Get,
@@ -65,5 +77,6 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     Update,
     UpdateWithEquipedBy,
     RemoveEcho,
+    AddOrUpdate,
   }
 })

@@ -409,7 +409,7 @@ export const Echoes: Echo[] = [
   },
   {
     Id: 390077005,
-    Icon: 'Cyan_feathered_Heron_Icon.webp',
+    Icon: 'Cyan_Feathered_Heron_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
@@ -622,7 +622,7 @@ export const Echoes: Echo[] = [
   },
   {
     Id: 390077004,
-    Icon: 'Violet_feathered_Heron_Icon.webp',
+    Icon: 'Violet_Feathered_Heron_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,

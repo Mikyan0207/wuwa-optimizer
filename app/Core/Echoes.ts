@@ -194,7 +194,7 @@ export const Echoes: Echo[] = [
   },
   {
     Id: 6000059,
-    Icon: 'Jué_Icon.webp',
+    Icon: 'Jue_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,

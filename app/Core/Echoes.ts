@@ -17,7 +17,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000042,
     Icon: 'Crownless_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -28,7 +28,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000084,
     Icon: 'Dragon_Of_Dirge_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -39,7 +39,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000060,
     Icon: 'Fallacy_Of_No_Return_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -50,7 +50,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000043,
     Icon: 'Feilian_Beringal_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -61,7 +61,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000052,
     Icon: 'Impermanence_Heron_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -73,7 +73,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390080007,
     Icon: 'Inferno_Rider_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -84,7 +84,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000044,
     Icon: 'Lampylumen_Myriad_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -95,7 +95,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000082,
     Icon: 'Lorelei_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -106,7 +106,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000048,
     Icon: 'Mech_Abomination_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -117,7 +117,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000045,
     Icon: 'Mourning_Aix_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -128,7 +128,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000083,
     Icon: 'Sentry_Construct_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -139,7 +139,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000039,
     Icon: 'Tempest_Mephis_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -150,7 +150,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390080003,
     Icon: 'Thundering_Mephis_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -161,7 +161,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390080005,
     Icon: 'Bell_Borne_Geochelone_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -173,7 +173,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000053,
     Icon: 'Dreamless_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -184,7 +184,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000085,
     Icon: 'Hecate_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -195,7 +195,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000059,
     Icon: 'Jué_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -206,7 +206,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000086,
     Icon: 'Nightmare_Feilian_Beringal_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -218,7 +218,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000087,
     Icon: 'Nightmare_Impermanence_Heron_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -231,7 +231,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000088,
     Icon: 'Nightmare_Thundering_Mephis_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -243,7 +243,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000089,
     Icon: 'Nightmare_Tempest_Mephis_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -255,7 +255,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000090,
     Icon: 'Nightmare_Crownless_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -267,7 +267,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000091,
     Icon: 'Nightmare_Inferno_Rider_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -279,11 +279,11 @@ export const Echoes: Echo[] = [
   {
     Id: 6000092,
     Icon: 'Nightmare_Mourning_Aix_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
-      Celestial_Light,
+      Eternal_Radiance,
     ],
     Statistics: [],
     IsNightmare: true,
@@ -291,7 +291,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000105,
     Icon: 'Nightmare_Lampylumen_Myriad_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -303,7 +303,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000106,
     Icon: 'Reminiscence_Fleurdelys_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
@@ -314,7 +314,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000077,
     Icon: 'Abyssal_Gladius_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -326,7 +326,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000078,
     Icon: 'Abyssal_Mercator_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -338,7 +338,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000076,
     Icon: 'Abyssal_Patricius_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -350,7 +350,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000049,
     Icon: 'Autopuppet_Scout_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -362,7 +362,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000046,
     Icon: 'Carapace_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -374,7 +374,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390077025,
     Icon: 'Chasm_Guardian_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -386,7 +386,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000079,
     Icon: 'Chop_Chop_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -398,7 +398,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000081,
     Icon: 'Cuddle_Wuddle_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -410,7 +410,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390077005,
     Icon: 'Cyan_feathered_Heron_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -422,7 +422,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000074,
     Icon: 'Diurnus_Knight_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -432,9 +432,21 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
+    Id: 6000104,
+    Icon: 'Capitaneus_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.THREE_COST,
+    Level: 0,
+    Sonata: [
+      Eternal_Radiance,
+      Gusts_of_Welkin,
+    ],
+    Statistics: [],
+  },
+  { 
     Id: 390077022,
     Icon: 'Flautist_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -446,7 +458,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000056,
     Icon: 'Glacio_Dreadmane_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -458,7 +470,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390077033,
     Icon: 'Havoc_Dreadmane_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -470,7 +482,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000040,
     Icon: 'Hoochief_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -482,7 +494,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000097,
     Icon: 'Hurriclaw_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -493,7 +505,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000058,
     Icon: 'Lightcrusher_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -504,7 +516,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000057,
     Icon: 'Lumiscale_Construct_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -516,7 +528,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000075,
     Icon: 'Nocturnus_Knight_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -528,7 +540,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000073,
     Icon: 'Questless_Knight_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -540,7 +552,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000096,
     Icon: 'Rage_Against_The_Statue_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -551,7 +563,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390077024,
     Icon: 'Rocksteady_Guardian_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -563,7 +575,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390077029,
     Icon: 'Roseshroom_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -575,7 +587,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390077038,
     Icon: 'Spearback_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -587,7 +599,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390077021,
     Icon: 'Stonewall_Bracer_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -599,7 +611,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390077023,
     Icon: 'Tambourinist_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -611,7 +623,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390077004,
     Icon: 'Violet_feathered_Heron_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -623,7 +635,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390077028,
     Icon: 'Viridblaze_Saurian_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -635,7 +647,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000080,
     Icon: 'Vitreum_Dancer_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
@@ -647,7 +659,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070071,
     Icon: 'Aero_Predator_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -659,7 +671,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000095,
     Icon: 'Aero_Prism_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -671,7 +683,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070078,
     Icon: 'Baby_Viridblaze_Saurian_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -684,7 +696,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000094,
     Icon: 'Calcified_Junrock_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -696,7 +708,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000072,
     Icon: 'Chest_Mimic_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -709,7 +721,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000047,
     Icon: 'Chirpuff_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -721,7 +733,7 @@ export const Echoes: Echo[] = [
   {
     Id: 7,
     Icon: 'Chop_Chop_Headless_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -733,7 +745,7 @@ export const Echoes: Echo[] = [
   {
     Id: 8,
     Icon: 'Chop_Chop_Leftless_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -745,7 +757,7 @@ export const Echoes: Echo[] = [
   {
     Id: 9,
     Icon: 'Chop_Chop_Rightless_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -757,7 +769,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000051,
     Icon: 'Clang_Bang_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -769,7 +781,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070074,
     Icon: 'Cruisewing_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -782,7 +794,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000041,
     Icon: 'Diamondclaw_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -794,7 +806,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000071,
     Icon: 'Diggy_Duggy_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -806,7 +818,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000055,
     Icon: 'Dwarf_Cassowary_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -818,7 +830,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070053,
     Icon: 'Electro_Predator_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -830,7 +842,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070077,
     Icon: 'Excarat_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -842,7 +854,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000067,
     Icon: 'Fae_Ignis_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -854,7 +866,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070052,
     Icon: 'Fission_Junrock_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -867,7 +879,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000063,
     Icon: 'Frostscourge_Stalker_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -879,7 +891,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070100,
     Icon: 'Fusion_Dreadmane_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -891,7 +903,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390077012,
     Icon: 'Fusion_Prism_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -904,7 +916,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070064,
     Icon: 'Fusion_Warrior_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -917,7 +929,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000061,
     Icon: 'Galescourge_Stalker_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -929,7 +941,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070070,
     Icon: 'Glacio_Predator_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -941,7 +953,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390077013,
     Icon: 'Glacio_Prism_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -954,7 +966,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000093,
     Icon: 'Golden_Junrock_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -966,7 +978,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070076,
     Icon: 'Gulpuff_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -978,7 +990,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390077017,
     Icon: 'Havoc_Prism_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -991,7 +1003,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070065,
     Icon: 'Havoc_Warrior_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1003,7 +1015,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070105,
     Icon: 'Hoartoise_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1015,7 +1027,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000069,
     Icon: 'Hocus_Pocus_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1027,7 +1039,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000038,
     Icon: 'Hooscamp_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1039,7 +1051,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000054,
     Icon: 'Lava_Larva_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1051,7 +1063,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000070,
     Icon: 'Lottie_Lost_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1063,7 +1075,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000068,
     Icon: 'Nimbus_Wraith_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1075,7 +1087,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070075,
     Icon: 'Sabyr_Boar_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1088,7 +1100,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070066,
     Icon: 'Snip_Snap_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1101,7 +1113,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390077016,
     Icon: 'Spectro_Prism_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1114,7 +1126,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070069,
     Icon: 'Tick_Tack_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1127,7 +1139,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000050,
     Icon: 'Traffic_Illuminator_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1140,7 +1152,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070051,
     Icon: 'Vanguard_Junrock_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1153,7 +1165,7 @@ export const Echoes: Echo[] = [
   {
     Id: 6000062,
     Icon: 'Voltscourge_Stalker_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1165,7 +1177,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070068,
     Icon: 'Whiff_Whaff_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1178,7 +1190,7 @@ export const Echoes: Echo[] = [
   {
     Id: 390070079,
     Icon: 'Young_Roseshroom_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
@@ -1190,13 +1202,25 @@ export const Echoes: Echo[] = [
   {
     Id: 390070067,
     Icon: 'Zig_Zag_Icon.webp',
-    Rarity: Rarity.FOUR_STARS,
+    Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
       Celestial_Light,
       Moonlit_Clouds,
       Lingering_Tunes,
+    ],
+    Statistics: [],
+  },
+  {
+    Id: 6000098,
+    Icon: 'La_Guardia_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.ONE_COST,
+    Level: 0,
+    Sonata: [
+      Midnight_Veil,
+      Gusts_of_Welkin,
     ],
     Statistics: [],
   },

@@ -128,7 +128,7 @@ function OnConfirmClicked() {
                 ❌ Character could not be identified.
               </template>
               <template #description>
-                <p class="mt-4">
+                <div class="mt-4">
                   This may happen if:
                   <ul>
                     <li>・The characters name is partially cropped or unreadable</li>
@@ -137,7 +137,7 @@ function OnConfirmClicked() {
                     <li>・The image is not from Wuthering Waves or does not show a valid character profile</li>
                     <li>・The character is not yet available in the game and is not recognized by the optimizer</li>
                   </ul>
-                </p>
+                </div>
                 <p class="mt-4 font-semibold">
                   Please try again with a valid screenshot.
                 </p>

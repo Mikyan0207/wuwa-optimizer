@@ -1,8 +1,8 @@
-import type { StatType } from '~/Core/Enums/StatType'
 import type Character from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import type IStatistic from '~/Core/Interfaces/Statistic'
 import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
+import { StatType } from '~/Core/Enums/StatType'
 import { SUB_STAT_VALUES } from '~/Core/Statistics'
 
 export interface IEchoRatingResult {
@@ -213,18 +213,31 @@ export function useScoreCalculator() {
   function CalculateEchoScore(echo: Echo, weights: Record<StatType, number>): IEchoRatingResult {
     const isValidMainStat = echo.MainStatistic !== undefined && IsValidMainStat(echo.MainStatistic, weights)
 
-    const { totalScore, totalWeight } = echo.Statistics.reduce(
+    let { totalScore, totalWeight } = echo.Statistics.reduce(
       (acc, stat) => {
         const value = stat.Value
         const max = SUB_STAT_VALUES[stat.Type].at(-1) || 1
         const weight = weights[stat.Type] || 0
 
-        acc.totalScore += (value / max) * weight
+        // We want to weight down HP flat even if we have a weight of 1.0
+        if (stat.Type === StatType.HP || stat.Type === StatType.DEF) {
+          acc.totalScore += ((value / max) * weight) / 2
+        }
+        else {
+          acc.totalScore += (value / max) * weight
+        }
+
         acc.totalWeight += weight
         return acc
       },
       { totalScore: 0, totalWeight: 0 },
     )
+
+    // If we're missing some substats, divide the score by the number of missing stats.
+    // We don't want an SS+ on a 3 stats Echo, but we still want to see the potential...
+    if (echo.Statistics.length < 5) {
+      totalScore /= 5 - echo.Statistics.length + 1
+    }
 
     const finalScore = totalWeight > 0 ? Math.round((totalScore / totalWeight) * 100) : 0
 

@@ -278,7 +278,7 @@ export function useCharacterScanner() {
         const m = matchPair.get(0)
         const n = matchPair.get(1)
 
-        if (m.distance < 0.8 * n.distance) {
+        if (m.distance < 0.75 * n.distance) {
           goodMatches++
         }
       }
@@ -474,9 +474,7 @@ export function useCharacterScanner() {
 
     Canvases.push(temp)
 
-    const tempCtx = temp.getContext('2d')!
-
-    tempCtx.putImageData(CanvasContext!.getImageData(rect.X, rect.Y, rect.Width, rect.Height), 0, 0)
+    DrawOnCanvasFromRegion(temp, CanvasContext!.getImageData(rect.X, rect.Y, rect.Width, rect.Height))
 
     return temp
   }
@@ -532,6 +530,11 @@ export function useCharacterScanner() {
   function DrawOnCanvas(canvas: HTMLCanvasElement, image: HTMLImageElement, rect: Rectangle) {
     const refCtx = canvas.getContext('2d', { willReadFrequently: true })!
     refCtx.drawImage(image, rect.X, rect.Y, rect.Width, rect.Height)
+  }
+
+  function DrawOnCanvasFromRegion(canvas: HTMLCanvasElement, data: ImageData) {
+    const refCtx = canvas.getContext('2d', { willReadFrequently: true })!
+    refCtx.putImageData(data, 0, 0)
   }
 
   function ConvertToGrayScale(region: HTMLCanvasElement): cv.Mat {
@@ -603,7 +606,6 @@ export function useCharacterScanner() {
   }
 
   // DEBUG
-  // eslint-disable-next-line unused-imports/no-unused-vars
   function renderMatToCanvas(mat: cv.Mat, canvas: HTMLCanvasElement) {
     cv.imshow(canvas, mat)
   }

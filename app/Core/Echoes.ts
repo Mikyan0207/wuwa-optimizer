@@ -38,7 +38,7 @@ export const Echoes: Echo[] = [
   },
   {
     Id: 6000060,
-    Icon: 'Fallacy_Of_No_Return_Icon.webp',
+    Icon: 'Fallacy_of_No_Return_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,

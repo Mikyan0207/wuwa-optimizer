@@ -8,7 +8,7 @@ const IsOpen = ref<boolean>(false)
 const MenuItems = [
   {
     label: 'Edit',
-    icon: 'mdi:pencil-outline',
+    icon: 'solar:pen-new-square-broken',
     onSelect() {
       SelectedIndex.value = 0
       IsOpen.value = true
@@ -16,7 +16,7 @@ const MenuItems = [
   },
   {
     label: 'Remove',
-    icon: 'lucide:x',
+    icon: 'solar:notification-remove-broken',
     color: 'error' as const,
     onSelect() {
       SelectedIndex.value = 3
@@ -46,7 +46,7 @@ function OnClose() {
       }"
       @update:open="(v: boolean) => IsDropdownOpen = v"
     >
-      <UButton icon="i-lucide-menu" color="neutral" variant="ghost" size="sm" />
+      <UButton icon="solar:menu-dots-circle-broken" color="primary" variant="ghost" />
     </UDropdownMenu>
   </div>
   <UModal

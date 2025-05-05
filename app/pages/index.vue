@@ -36,7 +36,7 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
             <span class="text-gray-300 mr-2 font-bold">||</span>Wuthering Waves Optimizer
           </h1>
           <p class="text-xs xl:text-sm max-w-2xl text-gray-300">
-            Evaluate and compare your Echoes instantly. Find your best pieces, fast.
+            Evaluate and compare your Echoes instantly. Find your best pieces.
           </p>
         </div>
         <div class="flex items-center gap-1">
@@ -101,11 +101,14 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
             scale: 1.01,
           }"
         />
-        <div v-motion-slide-bottom class="flex items-center gap-2" :delay="500">
-          <UButton to="/characters" leading-icon="i-tabler:target-arrow" variant="subtle" class="text-xs xl:text-base">
-            Character Scoring
+        <div v-motion-slide-bottom class="flex items-center gap-1" :delay="500">
+          <UButton color="error" to="/imports" leading-icon="solar:import-broken" variant="subtle" class="text-xs xl:text-base">
+            Import Character
           </UButton>
-          <UBadge color="success" variant="soft" size="sm" icon="i-heroicons-check-badge">
+          <UButton to="/characters" leading-icon="solar:soundwave-circle-broken" variant="subtle" class="text-xs xl:text-base">
+            Characters
+          </UButton>
+          <UBadge color="success" class="ml-auto" variant="soft" size="sm" icon="i-heroicons-check-badge">
             Updated for version {{ ScorerGameVersion }}
           </UBadge>
         </div>
@@ -135,37 +138,13 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
           Coming Soon
         </p>
         <div v-motion-slide-bottom class="flex items-center gap-2" :delay="500">
-          <UButton to="/rotations" leading-icon="i-material-symbols:rotate-90-degrees-ccw" variant="subtle" class="text-xs xl:text-base">
+          <UButton :disabled="true" leading-icon="solar:round-transfer-vertical-broken" variant="subtle" class="text-xs xl:text-base">
             Rotation Builder
           </UButton>
-          <UBadge color="warning" variant="soft" size="sm" icon="i-heroicons-x-circle">
+          <UBadge class="ml-auto" color="error" variant="soft" size="sm" icon="i-heroicons-x-circle">
             Updated for version {{ RotationBuilderGameVersion }}
           </UBadge>
         </div>
-      </div>
-    </UCard>
-
-    <UCard
-      v-motion-pop class="col-span-6" :delay="100" :ui="{
-        root: 'rounded-none rounded-br-xl border-0',
-        body: 'p-4 sm:p-4',
-      }"
-    >
-      <div class="flex flex-col gap-2">
-        <div>
-          <h2 class="xl:text-xl tracking-tight">
-            <span class="text-gray-300 mr-2 font-bold">||</span>Import your <span
-              class="font-semibold text-primary-500"
-            >characters</span> information
-          </h2>
-          <p class="text-xs xl:text-sm text-gray-400">
-            Quickly bring your Wuthering Waves data into the site with the Archiver.
-          </p>
-        </div>
-        <p class="text-xs xl:text-base mt-4">
-          Coming Soon
-        </p>
-        <!-- <NuxtImg src="/images/character-bg-placeholder.webp" class="w-full h-full" width="700" height="490" /> -->
       </div>
     </UCard>
   </div>

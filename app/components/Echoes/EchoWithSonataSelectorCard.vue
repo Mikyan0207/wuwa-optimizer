@@ -59,7 +59,7 @@ function OnSelectSonata(sonata: Sonata) {
       </div>
       <div class="w-46 border-l border-neutral-700 p-2 space-y-1 text-sm">
         <!-- Name -->
-        <div class="w-full flex items-center justify-between">
+        <div class="w-full flex items-center justify-between text-nowrap">
           <div :title="t(`${echo.Id}_name`)" class="text-truncate">
             {{ t(`${echo.Id}_name`) }}
           </div>

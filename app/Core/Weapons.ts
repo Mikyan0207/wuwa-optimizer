@@ -85,7 +85,7 @@ export const Weapons: Weapon[] = [
       Value: 587.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_DMG,
       Value: 48.6,
     },
   },
@@ -119,7 +119,7 @@ export const Weapons: Weapon[] = [
       Value: 337.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 51.84,
     },
   },
@@ -136,7 +136,7 @@ export const Weapons: Weapon[] = [
       Value: 587.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_RATE,
       Value: 24.3,
     },
   },
@@ -153,7 +153,7 @@ export const Weapons: Weapon[] = [
       Value: 412.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 32.4,
     },
   },
@@ -170,7 +170,7 @@ export const Weapons: Weapon[] = [
       Value: 300.0,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 32.4,
     },
   },
@@ -255,7 +255,7 @@ export const Weapons: Weapon[] = [
       Value: 412.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_RATE,
       Value: 20.25,
     },
   },
@@ -357,7 +357,7 @@ export const Weapons: Weapon[] = [
       Value: 587.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_RATE,
       Value: 24.3,
     },
   },
@@ -374,7 +374,7 @@ export const Weapons: Weapon[] = [
       Value: 587.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_DMG,
       Value: 48.6,
     },
   },
@@ -425,7 +425,7 @@ export const Weapons: Weapon[] = [
       Value: 337.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 51.84,
     },
   },
@@ -442,7 +442,7 @@ export const Weapons: Weapon[] = [
       Value: 587.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_RATE,
       Value: 24.3,
     },
   },
@@ -476,7 +476,7 @@ export const Weapons: Weapon[] = [
       Value: 412.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 77.04,
     },
   },
@@ -493,7 +493,7 @@ export const Weapons: Weapon[] = [
       Value: 300.0,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 32.4,
     },
   },
@@ -527,7 +527,7 @@ export const Weapons: Weapon[] = [
       Value: 587.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 38.88,
     },
   },
@@ -680,7 +680,7 @@ export const Weapons: Weapon[] = [
       Value: 587.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_RATE,
       Value: 24.3,
     },
   },
@@ -697,7 +697,7 @@ export const Weapons: Weapon[] = [
       Value: 500.0,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_DMG,
       Value: 72.0,
     },
   },
@@ -731,7 +731,7 @@ export const Weapons: Weapon[] = [
       Value: 337.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 51.84,
     },
   },
@@ -748,7 +748,7 @@ export const Weapons: Weapon[] = [
       Value: 500.0,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_RATE,
       Value: 36.0,
     },
   },
@@ -969,7 +969,7 @@ export const Weapons: Weapon[] = [
       Value: 587.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_RATE,
       Value: 24.3,
     },
   },
@@ -986,7 +986,7 @@ export const Weapons: Weapon[] = [
       Value: 300.0,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_DMG,
       Value: 40.5,
     },
   },
@@ -1003,7 +1003,7 @@ export const Weapons: Weapon[] = [
       Value: 337.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 51.84,
     },
   },
@@ -1020,7 +1020,7 @@ export const Weapons: Weapon[] = [
       Value: 587.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_RATE,
       Value: 24.3,
     },
   },
@@ -1037,7 +1037,7 @@ export const Weapons: Weapon[] = [
       Value: 387.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 38.88,
     },
   },
@@ -1054,7 +1054,7 @@ export const Weapons: Weapon[] = [
       Value: 587.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_DMG,
       Value: 48.6,
     },
   },
@@ -1139,7 +1139,7 @@ export const Weapons: Weapon[] = [
       Value: 412.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_RATE,
       Value: 20.25,
     },
   },
@@ -1258,7 +1258,7 @@ export const Weapons: Weapon[] = [
       Value: 500.0,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_RATE,
       Value: 36.0,
     },
   },
@@ -1275,7 +1275,7 @@ export const Weapons: Weapon[] = [
       Value: 337.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 51.84,
     },
   },
@@ -1309,7 +1309,7 @@ export const Weapons: Weapon[] = [
       Value: 337.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 51.84,
     },
   },
@@ -1326,7 +1326,7 @@ export const Weapons: Weapon[] = [
       Value: 500.0,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_DMG,
       Value: 72.0,
     },
   },
@@ -1360,7 +1360,7 @@ export const Weapons: Weapon[] = [
       Value: 337.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 51.84,
     },
   },
@@ -1377,7 +1377,7 @@ export const Weapons: Weapon[] = [
       Value: 412.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 77.04,
     },
   },
@@ -1394,7 +1394,7 @@ export const Weapons: Weapon[] = [
       Value: 300.0,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.ENERGY_REGENERATION,
       Value: 32.4,
     },
   },
@@ -1428,7 +1428,7 @@ export const Weapons: Weapon[] = [
       Value: 500.0,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_RATE,
       Value: 36.0,
     },
   },
@@ -1462,7 +1462,7 @@ export const Weapons: Weapon[] = [
       Value: 500.0,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_DMG,
       Value: 72.0,
     },
   },
@@ -1496,7 +1496,7 @@ export const Weapons: Weapon[] = [
       Value: 412.5,
     },
     SecondaryStatistic: {
-      Type: StatType.DEF_PERCENTAGE,
+      Type: StatType.CRIT_RATE,
       Value: 20.25,
     },
   },

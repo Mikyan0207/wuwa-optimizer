@@ -55,7 +55,7 @@ export const ECHO_2_STAT_5_VALUE_REGION = new Rectangle(685, 1019, 68, 41)
 
 // === Echo 03 ===
 export const ECHO_3_ICON_REGION = new Rectangle(770, 650, 186, 186)
-export const ECHO_3_COST_REGION = new Rectangle(1084, 675, 25, 30)
+export const ECHO_3_COST_REGION = new Rectangle(1082, 672, 35, 35)
 export const ECHO_3_SONATA_REGION = new Rectangle(1014, 662, 50, 50)
 
 export const ECHO_3_MAIN_STAT_NAME_REGION = new Rectangle(966, 723, 170, 25)

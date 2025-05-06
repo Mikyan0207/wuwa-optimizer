@@ -55,6 +55,7 @@ export function useCharacterScanner() {
 
     Canvas.width = image.width
     Canvas.height = image.height
+    CanvasContext.clearRect(0, 0, image.width, image.height)
     CanvasContext.drawImage(image, 0, 0)
 
     Worker = await Tesseract.createWorker('eng', 1)
@@ -137,16 +138,23 @@ export function useCharacterScanner() {
 
     const character = TemplateCharacters.find((x) => {
       const name = x.Icon.split('_')[0]?.toLowerCase() || ''
-      let scannedName = GetFilteredText(characterName, /[a-z ]+/i).toLowerCase()
+      const scannedNames = GetFilteredText(characterName, /[a-z ]+/i).toLowerCase().split(' ')
 
-      // Edge case for Shorekeeper because I'm too lazy.
-      if (scannedName.startsWith('the')) {
-        scannedName = scannedName.replace('the', '').trim()
+      let bestMatch = { distance: Infinity, name: '' }
+
+      for (let scannedName of scannedNames) {
+        if (scannedName.startsWith('the')) {
+          scannedName = scannedName.replace('the', '').trim()
+        }
+
+        const distance = LevenshteinDistance(name, scannedName)
+
+        if (distance < bestMatch.distance) {
+          bestMatch = { distance, name: scannedName }
+        }
       }
 
-      const distance = LevenshteinDistance(name, scannedName)
-
-      return distance <= 3
+      return bestMatch.distance <= 3
     })
 
     if (character === undefined) {
@@ -529,11 +537,13 @@ export function useCharacterScanner() {
 
   function DrawOnCanvas(canvas: HTMLCanvasElement, image: HTMLImageElement, rect: Rectangle) {
     const refCtx = canvas.getContext('2d', { willReadFrequently: true })!
+    refCtx.clearRect(rect.X, rect.Y, canvas.width, canvas.height)
     refCtx.drawImage(image, rect.X, rect.Y, rect.Width, rect.Height)
   }
 
   function DrawOnCanvasFromRegion(canvas: HTMLCanvasElement, data: ImageData) {
     const refCtx = canvas.getContext('2d', { willReadFrequently: true })!
+    refCtx.clearRect(0, 0, canvas.width, canvas.height)
     refCtx.putImageData(data, 0, 0)
   }
 

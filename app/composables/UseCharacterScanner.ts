@@ -154,7 +154,7 @@ export function useCharacterScanner() {
         }
       }
 
-      return bestMatch.distance <= 3
+      return bestMatch.distance <= 2
     })
 
     if (character === undefined) {

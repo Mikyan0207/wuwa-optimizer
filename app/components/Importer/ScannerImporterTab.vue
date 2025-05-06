@@ -27,6 +27,8 @@ async function OnImportClicked() {
     return
   }
 
+  ScannerResult.value = ScannerResultStatus.SUCCESS
+
   await Scanner.LoadAsync(SelectedFile.value)
   const {
     Status,
@@ -75,7 +77,6 @@ function TriggerFileInput() {
 }
 
 function HandleDrop(event: DragEvent) {
-  console.log(event.dataTransfer?.files?.[0])
   const file = event.dataTransfer?.files?.[0]
   if (file) {
     SetFile(file)
@@ -84,7 +85,6 @@ function HandleDrop(event: DragEvent) {
 
 function HandlePaste(event: ClipboardEvent) {
   const item = Array.from(event.clipboardData?.items || []).find(i => i.type.startsWith('image'))
-  console.log(item)
   if (item) {
     const file = item.getAsFile()
 
@@ -175,7 +175,61 @@ function OnConfirmClicked() {
               status
               animation="carousel"
               :max="['Waiting...', 'Character...', 'Weapon...', 'Echoes...', 'Echo 1/5', 'Echo 2/5', 'Echo 3/5', 'Echo 4/5', 'Echo 5/5', 'Done!']"
-            />
+            >
+              <template #step-1="{ step }">
+                <div class="flex items-center w-full justify-end gap-2">
+                  <UIcon name="solar:record-circle-broken" class="text-primary-500 animate-spin" size="24" />
+                  <span>{{ step }}</span>
+                </div>
+              </template>
+              <template #step-2="{ step }">
+                <div class="flex items-center w-full justify-end gap-2">
+                  <UIcon name="solar:record-circle-broken" class="text-primary-500 animate-spin" size="24" />
+                  <span>{{ step }}</span>
+                </div>
+              </template>
+              <template #step-3="{ step }">
+                <div class="flex items-center w-full justify-end gap-2">
+                  <UIcon name="solar:record-circle-broken" class="text-primary-500 animate-spin" size="24" />
+                  <span>{{ step }}</span>
+                </div>
+              </template>
+              <template #step-4="{ step }">
+                <div class="flex items-center w-full justify-end gap-2">
+                  <UIcon name="solar:record-circle-broken" class="text-primary-500 animate-spin" size="24" />
+                  <span>{{ step }}</span>
+                </div>
+              </template>
+              <template #step-5="{ step }">
+                <div class="flex items-center w-full justify-end gap-2">
+                  <UIcon name="solar:record-circle-broken" class="text-primary-500 animate-spin" size="24" />
+                  <span>{{ step }}</span>
+                </div>
+              </template>
+              <template #step-6="{ step }">
+                <div class="flex items-center w-full justify-end gap-2">
+                  <UIcon name="solar:record-circle-broken" class="text-primary-500 animate-spin" size="24" />
+                  <span>{{ step }}</span>
+                </div>
+              </template>
+              <template #step-7="{ step }">
+                <div class="flex items-center w-full justify-end gap-2">
+                  <UIcon name="solar:record-circle-broken" class="text-primary-500 animate-spin" size="24" />
+                  <span>{{ step }}</span>
+                </div>
+              </template>
+              <template #step-8="{ step }">
+                <div class="flex items-center w-full justify-end gap-2">
+                  <UIcon name="solar:record-circle-broken" class="text-primary-500 animate-spin" size="24" />
+                  <span>{{ step }}</span>
+                </div>
+              </template>
+              <template #step-9>
+                <div class="flex items-center w-full justify-end gap-2">
+                  <UIcon name="solar:check-circle-broken" class="text-primary-500" size="24" />
+                </div>
+              </template>
+            </UProgress>
             <UAlert v-if="ScannerResult === ScannerResultStatus.INVALID_CHARACTER" color="error" variant="subtle">
               <template #title>
                 ❌ Character could not be identified.

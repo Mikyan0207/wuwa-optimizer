@@ -1,5 +1,6 @@
 import type Weapon from './Interfaces/Weapon'
 import { Rarity } from './Enums/Rarity'
+import { ReleaseState } from './Enums/ReleaseState'
 import { StatType } from './Enums/StatType'
 import { WeaponType } from './Enums/WeaponType'
 
@@ -739,6 +740,7 @@ export const Weapons: Weapon[] = [
     Id: 21030026,
     Name: 'Woodland Aria',
     Icon: 'Woodland_Aria_Icon.webp',
+    ReleaseState: ReleaseState.UPCOMING,
     Type: WeaponType.PISTOLS,
     Rarity: Rarity.FIVE_STARS,
     Level: 0,
@@ -1047,6 +1049,7 @@ export const Weapons: Weapon[] = [
     Icon: 'Blazing_Justice_Icon.webp',
     Type: WeaponType.GAUNTLETS,
     Rarity: Rarity.FIVE_STARS,
+    ReleaseState: ReleaseState.NEW,
     Level: 0,
     Rank: 1,
     MainStatistic: {

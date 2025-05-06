@@ -126,7 +126,7 @@ function OnConfirmClicked() {
           <p>Select an Image</p>
           <div class="my-8 space-y-2 text-gray-400">
             <div
-              class="flex flex-col items-center justify-center w-full h-48 border border-dashed border-gold-500 rounded-lg cursor-pointer bg-neutral-800/50 hover:bg-neutral-800/85 duration-75 transition"
+              class="flex flex-col items-center justify-center w-full h-48 border border-dashed border-gold-500 rounded cursor-pointer bg-neutral-800/50 hover:bg-neutral-800/85 duration-75 transition"
               @dragover.prevent
               @dragenter.prevent
               @drop.prevent="HandleDrop"

@@ -39,8 +39,32 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
 
     Weapons.value.find(x => x.Id === weaponId)!.EquipedBy = characterId
   }
+
   function RemoveEquipedWeapons(characterId: number) {
     Weapons.value = Weapons.value.filter(x => x.EquipedBy !== characterId)
+  }
+
+  function Update(weaponId: number, characterId: number, data: Partial<Weapon>) {
+    const index = Weapons.value.findIndex(c => c.Id === weaponId && c.EquipedBy === characterId)
+    if (index === -1 || Weapons.value === undefined)
+      return
+
+    Weapons.value[index] = {
+      ...Weapons.value[index],
+      ...data,
+    } as Weapon
+  }
+
+  function AddOrUpdate(weapon: Weapon, characterId: number) {
+    if (!Weapons.value)
+      return
+
+    const exists = Weapons.value.some(c => c.Id === weapon.Id && c.EquipedBy === characterId)
+    if (exists) {
+      return Update(weapon.Id, characterId, weapon)
+    }
+
+    Weapons.value.push(weapon)
   }
 
   return {
@@ -52,5 +76,7 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     GetWeaponByEquipedId,
     SetEquipedWeapon,
     RemoveEquipedWeapons,
+    Update,
+    AddOrUpdate,
   }
 })

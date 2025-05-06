@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     '~/components/Echoes/Forms',
     '~/components/Filters',
     '~/components/Importer',
+    '~/components/Importer/Cards',
     '~/components/Interface',
     '~/components/Navigation',
     '~/components/Skills',
@@ -102,6 +103,16 @@ export default defineNuxtConfig({
       weights: [400],
       styles: ['normal', 'italic'],
     },
+    families: [
+      {
+        name: 'Flow Circular',
+        provider: 'google',
+      },
+      {
+        name: 'Quicksand',
+        provider: 'google',
+      },
+    ],
   },
 
   i18n: {

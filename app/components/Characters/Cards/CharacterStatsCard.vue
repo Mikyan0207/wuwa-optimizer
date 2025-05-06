@@ -56,7 +56,7 @@ function IsStatWanted(stat: IStatistic) {
     <h1 v-motion-pop :delay="500" class="mt-2 w-full text-center text-2xl">
       {{ t(`${CurrentCharacter.Id}_name`) }}
     </h1>
-    <UBadge v-motion-pop :delay="500" color="primary" variant="soft" class="mx-auto w-min flex items-center gap-1 text-nowrap">
+    <UBadge v-motion-pop :delay="500" color="primary" variant="soft" class="mx-auto text-gray-300 w-min flex items-center gap-1 text-nowrap">
       <p>{{ `${t('label_level')} ${CurrentCharacter.Level}` }}</p>
       <span>·</span>
       <p>S{{ GetSequenceLevel(CurrentCharacter) }}</p>
@@ -83,7 +83,7 @@ function IsStatWanted(stat: IStatistic) {
           {{ t('label_character_score') }}
         </p>
         <div>
-          {{ Score.Score }} (<div :class="GetCharacterScoreNoteColor" class="inline-block font-semibold">
+          {{ Score.Score.toFixed(2) }} (<div :class="GetCharacterScoreNoteColor" class="inline-block font-semibold">
             {{ Score.Note }}
           </div>)
         </div>

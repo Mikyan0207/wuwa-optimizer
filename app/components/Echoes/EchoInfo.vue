@@ -1,17 +1,26 @@
 <script setup lang="ts">
 import type Echo from '~/Core/Interfaces/Echo'
-import { GetEchoCostText, GetEchoIcon, GetEchoRarityText } from '~/Core/Utils/EchoUtils'
+import type Statistic from '~/Core/Interfaces/Statistic'
+import { GetEchoCostText, GetEchoIcon, GetEchoRarityText, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   echo: Echo
   echoSlot: number
   score?: IEchoRatingResult
-}>()
+  showScore?: boolean
+}>(), {
+  showScore: true,
+})
 
 const { t } = useI18n()
 const { CurrentCharacter } = useCharacterContext()
 
 const IsValidEcho = computed(() => props.echo.Id !== -1)
+const GetSonata = computed(() => props.echo.Sonata.find(x => x.IsSelected === true))
+
+function IsWantedStat(stat: Statistic) {
+  return CurrentCharacter.value?.StatsWeights![stat.Type] !== undefined && CurrentCharacter.value?.StatsWeights![stat.Type]
+}
 </script>
 
 <template>
@@ -22,9 +31,12 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
         <USkeleton v-else class="h-12 w-12 rounded-full" />
       </div>
       <div v-motion-pop :delay="400" class="flex flex-col">
-        <p v-if="IsValidEcho" class="text-lg text-white" :title="t(`${echo.Id}_name`)">
-          {{ t(`${echo.Id}_name`) }}
-        </p>
+        <div v-if="IsValidEcho" class="text-lg text-white" :title="t(`${echo.Id}_name`)">
+          <div class="flex items-center gap-2 w-full">
+            <span>{{ t(`${echo.Id}_name`) }}</span>
+            <NuxtImg v-if="GetSonata" :src="GetSonataIcon(GetSonata)" class="h-6 w-6" />
+          </div>
+        </div>
         <USkeleton v-else class="h-4 w-32" />
       </div>
     </div>
@@ -75,34 +87,40 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
     <USeparator color="neutral" />
     <!-- Sub Stats -->
     <div v-if="IsValidEcho" class="w-full flex flex-col gap-1">
-      <StatLine
-        v-for="(stat, idx) in echo.Statistics"
-        :key="`stat-${stat.Type}-${idx}`"
-        v-motion-slide-left
-        :delay="500 + (idx * 100)"
-        :stat="stat"
-        :weight="CurrentCharacter?.StatsWeights![stat.Type] || undefined"
-        :show-line="true"
-        :show-roll-value="true"
-        class="px-2 py-1"
-        :class="{ 'bg-neutral-800/75 rounded': CurrentCharacter?.StatsWeights![stat.Type] !== undefined && CurrentCharacter?.StatsWeights![stat.Type] || 0 > 0 }"
-      />
+      <div
+        v-for="idx in [...Array(5).keys()]" :key="`stat-${idx}`"
+      >
+        <StatLine
+          v-if="echo.Statistics[idx]"
+          v-motion-slide-left
+          :delay="500 + (idx * 100)"
+          :stat="echo.Statistics[idx]"
+          :weight="CurrentCharacter?.StatsWeights![echo.Statistics[idx].Type] || undefined"
+          :show-line="true"
+          :show-roll-value="true"
+          class="px-2 py-1"
+          :class="{ 'bg-neutral-800/75 rounded': IsWantedStat(echo.Statistics[idx]) }"
+        />
+        <div v-else class="h-8 flex items-center justify-center">
+          <USkeleton class="h-1 w-full rounded" />
+        </div>
+      </div>
     </div>
     <div v-else class="w-full flex flex-col gap-1">
       <div v-for="idx in 5" :key="idx" class="w-full flex items-center justify-between">
         <USkeleton class="h-8 w-full rounded" />
       </div>
     </div>
-    <USeparator color="neutral" />
+    <USeparator v-if="showScore === true" color="neutral" />
     <!-- Echo Score -->
-    <div v-if="score" class="w-full flex flex-row items-end gap-4 font-semibold">
+    <div v-if="score && showScore === true" class="w-full flex flex-row items-end gap-4 font-semibold">
       <div class="w-full flex items-center justify-between gap-12">
         <div class="flex items-center gap-2">
           <p>Score</p>
         </div>
         <div v-if="IsValidEcho && score" class="w-full flex flex-row items-center justify-end">
           <p class="mr-2">
-            {{ (score.Score).toFixed(1) }}
+            {{ (score.Score).toFixed(2) }}
           </p>
           (<EchoScore :value="score.Score" :text="score.Grade" />)
         </div>
@@ -111,6 +129,6 @@ const IsValidEcho = computed(() => props.echo.Id !== -1)
         </div>
       </div>
     </div>
-    <USkeleton v-else class="w-full h-5" />
+    <USkeleton v-else-if="!score && showScore === true" class="w-full h-5" />
   </div>
 </template>

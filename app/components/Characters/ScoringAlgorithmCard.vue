@@ -53,9 +53,9 @@ function OnClose() {
   >
     <UButton
       color="neutral"
-      variant="subtle"
-      icon="i-carbon:distribute-horizontal-center"
-      :trailing="false" size="xs"
+      variant="soft"
+      icon="solar:tuning-broken"
+      :trailing="false"
       @click.prevent="ShowWeightsModal = true"
     >
       {{ t('label_scoring_algorithm') }}

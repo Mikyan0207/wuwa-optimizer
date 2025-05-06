@@ -13,7 +13,7 @@ const SelectedWeapon = computed<Weapon | undefined>(() => SelectedWeaponId.value
   ? unref(WeaponsStore.GetDefaultWeapon(SelectedWeaponId.value))
   : unref(WeaponsStore.GetWeaponByEquipedId(CurrentCharacter.value?.Id)))
 const SelectedWeaponLevel = ref(SelectedWeapon.value?.Level ?? 1)
-const SelectedWeaponRank = ref(SelectedWeapon.value?.Rank ?? 0)
+const SelectedWeaponRank = ref(SelectedWeapon.value?.Rank ?? 1)
 
 function OnSubmit() {
   if (!SelectedWeaponId.value || !SelectedWeapon.value || !CurrentCharacter.value) {
@@ -95,7 +95,7 @@ function OnClose() {
             </template>
             <USlider
               v-if="SelectedWeapon" v-model="SelectedWeaponRank" class="w-46 mb-1 z-1" color="neutral"
-              size="xs" :step="1" :default-value="0" :max="5" :min="0"
+              size="xs" :step="1" :default-value="1" :max="5" :min="1"
             />
           </UFormField>
         </div>

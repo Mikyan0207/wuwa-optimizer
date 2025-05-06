@@ -4,7 +4,7 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 const Section_01_Items = ref([
   {
     label: 'home',
-    icon: 'i-carbon:home',
+    icon: 'solar:home-smile-broken',
     type: 'link',
     to: '/',
   },
@@ -34,16 +34,16 @@ const Section_02_Items = ref([
 const Section_03_Items = ref([
   {
     label: 'imports',
-    icon: 'i-carbon:upload',
+    icon: 'solar:import-broken',
     type: 'link',
     to: '/imports',
   },
-  {
-    label: 'exports',
-    icon: 'i-carbon:download',
-    type: 'link',
-    to: '/exports',
-  },
+  // {
+  //   label: 'exports',
+  //   icon: 'i-carbon:download',
+  //   type: 'link',
+  //   to: '/exports',
+  // },
 ] as NavigationMenuItem[])
 </script>
 
@@ -55,7 +55,7 @@ const Section_03_Items = ref([
       :highlight="true"
       highlight-color="primary"
       :ui="{
-        link: 'inline-block mx-auto w-full inset-x-2 w-min',
+        link: 'inline-block mx-auto inset-x-2.25 w-min',
         linkLabel: 'hidden w-0',
       }"
     />
@@ -64,18 +64,19 @@ const Section_03_Items = ref([
       orientation="vertical"
       :highlight="true"
       highlight-color="primary" :ui="{
-        link: 'inline-block mx-auto w-full inset-x-2 w-min',
+        link: 'inline-block mx-auto inset-x-2.25 w-min',
         linkLabel: 'hidden w-0',
       }"
     />
-    <!-- <UNavigationMenu
+    <UNavigationMenu
       :items="Section_03_Items"
       orientation="vertical"
       :highlight="true"
-      highlight-color="primary" :ui="{
-        link: 'inline-block mx-auto w-full inset-x-2 w-min',
-        linkLabel: 'hidden w-0',
+      highlight-color="primary"
+      :ui="{
+        link: 'inline-block mx-auto inset-x-2.25 w-min',
+        linkLabel: 'hidden w-0 h-0',
       }"
-    /> -->
+    />
   </div>
 </template>

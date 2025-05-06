@@ -12,6 +12,8 @@ const { t } = useI18n()
 const BackgroundColor = computed(() => GetBackgroundColor(props.echo.Rarity))
 const SecondaryColor = computed(() => GetSecondaryColor(props.echo.Rarity))
 const HighlightColor = computed(() => GetHighlightColor(props.echo.Rarity))
+
+const GetSonata = computed(() => props.echo.Sonata.find(x => x.IsSelected === true))
 </script>
 
 <template>
@@ -49,7 +51,7 @@ const HighlightColor = computed(() => GetHighlightColor(props.echo.Rarity))
       <BorderLines :count="1" />
       <div class="relative min-h-32 w-32 flex items-center justify-center overflow-clip">
         <div class="absolute right-1 top-1 z-2">
-          <NuxtImg width="26" height="26" :src="GetSonataIcon(echo.Sonata.find(x => x.IsSelected)!)" style="color: transparent;" />
+          <NuxtImg v-if="GetSonata" width="26" height="26" :src="GetSonataIcon(GetSonata)" style="color: transparent;" />
         </div>
         <div class="absolute bottom-0">
           <NuxtImg width="160" height="160" :src="`${GetEchoIcon(echo)}`" style="color: transparent;" />

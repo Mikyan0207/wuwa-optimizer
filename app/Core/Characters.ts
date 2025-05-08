@@ -4848,15 +4848,15 @@ export const Ciaccona: Character = {
   Level: 90,
   Stats: [
     {
-      Value: 12238,
+      Value: 12237.5,
       Type: StatType.HP,
     },
     {
-      Value: 1198,
+      Value: 1197.77,
       Type: StatType.DEF,
     },
     {
-      Value: 375,
+      Value: 375.0,
       Type: StatType.ATTACK,
     },
     {
@@ -5065,7 +5065,7 @@ export const Ciaccona: Character = {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
-    [StatType.ATTACK]: 0.5,
+    [StatType.ATTACK]: 0.25,
     [StatType.ATTACK_PERCENTAGE]: 0.75,
     [StatType.HP]: 0,
     [StatType.HP_PERCENTAGE]: 0,
@@ -5074,8 +5074,8 @@ export const Ciaccona: Character = {
     [StatType.DEF_PERCENTAGE]: 0,
     [StatType.ENERGY_REGENERATION]: 0.75,
     [StatType.BASIC_ATTACK_DMG_AMPLIFICATION]: 0,
-    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0.25,
-    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.25,
+    [StatType.HEAVY_ATTACK_DMG_AMPLIFICATION]: 0,
+    [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0,
     [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
     [StatType.AERO_DMG_BONUS]: 0.1,
   },

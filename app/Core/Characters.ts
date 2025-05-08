@@ -4848,15 +4848,15 @@ export const Ciaccona: Character = {
   Level: 90,
   Stats: [
     {
-      Value: 12238,
+      Value: 12237.5,
       Type: StatType.HP,
     },
     {
-      Value: 1198,
+      Value: 1197.77,
       Type: StatType.DEF,
     },
     {
-      Value: 375,
+      Value: 375.0,
       Type: StatType.ATTACK,
     },
     {

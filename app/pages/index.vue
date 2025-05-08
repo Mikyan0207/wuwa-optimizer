@@ -62,7 +62,7 @@ const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseStat
             v-motion-pop
             :delay="250"
             :character="c"
-            class="cursor-default"
+            @click.prevent="OnCharacterClicked(c.Id)"
           />
           <SmallWeaponIcon
             v-for="w in UpcomingWeapons"

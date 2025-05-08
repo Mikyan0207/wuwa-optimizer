@@ -66,14 +66,7 @@ function OnCharacterClicked(characterId: number | undefined) {
         :key="c.Id" v-motion-pop
         :delay="100 + (idx * 20)"
         :character="c"
-        :class="{ 'cursor-default': c.ReleaseState === ReleaseState.UPCOMING }"
-        @click.prevent="() => {
-          if (c.ReleaseState === ReleaseState.UPCOMING) {
-            return
-          }
-
-          OnCharacterClicked(c.Id)
-        }"
+        @click.prevent="OnCharacterClicked(c.Id)"
       />
     </div>
   </div>

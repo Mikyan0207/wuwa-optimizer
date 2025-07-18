@@ -44,8 +44,6 @@
         <LeftNavigation />
       </div>
 
-      <!-- Header -->
-      <!-- We should be able to get read of the ml-[3em] -->
       <DynamicHeader class="col-start-4 ml-[3em] pointer-events-auto" />
     </div>
 

@@ -49,6 +49,7 @@ export default {
   '21010024_name': 'Discord',
   '21010026_name': 'Ages Of Harvest',
   '21010034_name': 'Broadblade#41',
+  '21010036_name': 'Wildfire Mark',
   '21010043_name': 'Broadblade Of Voyager',
   '21010044_name': 'Dauntless Evernight',
   '21010053_name': 'Guardian Broadblade',
@@ -72,6 +73,7 @@ export default {
   '21020044_name': 'Commando Of Conviction',
   '21020046_name': 'Bloodpact\'s Pledge',
   '21020053_name': 'Guardian Sword',
+  '21020056_name': 'Defier\'s Thorn',
   '21020064_name': 'Lunar Cutter',
   '21020074_name': 'Lumingloss',
   '21020084_name': 'Endless Collapse',
@@ -130,6 +132,7 @@ export default {
   '21050074_name': 'Augment',
   '21050084_name': 'Fusion Accretion',
   '21050094_name': 'Waltz In Masquerade',
+
   // #endregion
 
   // #region === Skills ===
@@ -270,6 +273,17 @@ export default {
   '1206_inherent_skill_2': 'Trial by Fire and Tide',
   '1206_intro_skill': 'Applaud for Me!',
   '1206_outro_skill': 'The Course is Set!',
+
+  // 1207 - Lupa
+  '1207_name': 'Lupa',
+  '1207_basic_attack': 'Flaming Star',
+  '1207_resonance_skill': 'Shewolf\'s Hunt',
+  '1207_resonance_liberation': 'Fire-Kissed Glory',
+  '1207_forte_circuit': 'Ignis Lupa',
+  '1207_inherent_skill_1': 'Remember My Name',
+  '1207_inherent_skill_2': 'Applause of Victory',
+  '1207_intro_skill': 'Try Focusing, Eh?',
+  '1207_outro_skill': 'Stand by Me, Warrior',
 
   // 1301 - Calcharo
   '1301_name': 'Calcharo',
@@ -549,13 +563,11 @@ export default {
   '6000092_name': 'Mourning Aix',
   '6000105_name': 'Lampylumen Myriad',
   '6000106_name': 'Reminiscence: Fleurdelys',
-  '6000145_name': 'Mourning Aix',
-  '6010052_name': 'Impermanence Heron',
+  '6000113_name': 'Kelpie',
+  '6000114_name': 'Lioness Of Glory',
   '390080003_name': 'Thundering Mephis',
   '390080005_name': 'Bell Borne Geochelone',
   '390080007_name': 'Inferno Rider',
-  '390180010_name': 'Feilian Beringal',
-  '391080003_name': 'Thundering Mephis',
   '6000040_name': 'Hoochief',
   '6000046_name': 'Carapace',
   '6000049_name': 'Autopuppet Scout',
@@ -574,6 +586,8 @@ export default {
   '6000096_name': 'Rage Against The Statue',
   '6000097_name': 'Hurriclaw',
   '6000104_name': 'Capitaneus',
+  '6000111_name': 'Pilgrim\'s Shell',
+  '6000112_name': 'Kerasaur',
   '390077004_name': 'Violet Feathered Heron',
   '390077005_name': 'Cyan Feathered Heron',
   '390077021_name': 'Stonewall Bracer',
@@ -585,7 +599,6 @@ export default {
   '390077029_name': 'Roseshroom',
   '390077033_name': 'Havoc Dreadmane',
   '390077038_name': 'Spearback',
-  '391077024_name': 'Rocksteady Guardian',
   '6000038_name': 'Hooscamp',
   '6000041_name': 'Diamondclaw',
   '6000047_name': 'Chirpuff',
@@ -614,6 +627,10 @@ export default {
   '6000101_name': 'Aero Drake',
   '6000102_name': 'Electro Drake',
   '6000103_name': 'Glacio Drake',
+  '6000107_name': 'Fusion Drake',
+  '6000108_name': 'Spectro Drake',
+  '6000109_name': 'Havoc Drake',
+  '6000110_name': 'Devotee\'s Flesh',
   '390070051_name': 'Vanguard Junrock',
   '390070052_name': 'Fission Junrock',
   '390070053_name': 'Electro Predator',
@@ -637,6 +654,6 @@ export default {
   '390077013_name': 'Glacio Prism',
   '390077016_name': 'Spectro Prism',
   '390077017_name': 'Havoc Prism',
-  '391070105_name': 'Hoartoise',
+
   // #endregion
 }

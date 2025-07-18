@@ -278,24 +278,24 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000145,
-    Icon: 'Phantom_Mourning_Aix_Icon.webp',
+    Id: 6000113,
+    Icon: 'Nightmare_Kelpie_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
-      Celestial_Light,
+      Gusts_of_Welkin,
     ],
+    IsNightmare: true,
     Statistics: [],
   },
   {
-    Id: 6010052,
-    Icon: 'Phantom_Impermanence_Heron_Icon.webp',
+    Id: 6000114,
+    Icon: 'Lioness_Of_Glory_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
-      Moonlit_Clouds,
     ],
     Statistics: [],
   },
@@ -330,28 +330,6 @@ export const Echoes: Echo[] = [
     Level: 0,
     Sonata: [
       Molten_Rift,
-    ],
-    Statistics: [],
-  },
-  {
-    Id: 390180010,
-    Icon: 'Phantom_Feilian_Beringal_Icon.webp',
-    Rarity: Rarity.FIVE_STARS,
-    Cost: EchoCost.FOUR_COST,
-    Level: 0,
-    Sonata: [
-      Sierra_Gale,
-    ],
-    Statistics: [],
-  },
-  {
-    Id: 391080003,
-    Icon: 'Phantom_Thundering_Mephis_Icon.webp',
-    Rarity: Rarity.FIVE_STARS,
-    Cost: EchoCost.FOUR_COST,
-    Level: 0,
-    Sonata: [
-      Void_Thunder,
     ],
     Statistics: [],
   },
@@ -573,6 +551,26 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
+    Id: 6000111,
+    Icon: 'Pilgrim\'s_Shell_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.THREE_COST,
+    Level: 0,
+    Sonata: [
+    ],
+    Statistics: [],
+  },
+  {
+    Id: 6000112,
+    Icon: 'Kerasaur_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.THREE_COST,
+    Level: 0,
+    Sonata: [
+    ],
+    Statistics: [],
+  },
+  {
     Id: 390077004,
     Icon: 'Violet_Feathered_Heron_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
@@ -701,18 +699,6 @@ export const Echoes: Echo[] = [
     Sonata: [
       Moonlit_Clouds,
       Lingering_Tunes,
-    ],
-    Statistics: [],
-  },
-  {
-    Id: 391077024,
-    Icon: 'Phantom_Rocksteady_Guardian_Icon.webp',
-    Rarity: Rarity.FIVE_STARS,
-    Cost: EchoCost.THREE_COST,
-    Level: 0,
-    Sonata: [
-      Celestial_Light,
-      Rejuvenating_Glow,
     ],
     Statistics: [],
   },
@@ -1056,6 +1042,47 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
+    Id: 6000107,
+    Icon: 'Fusion_Drake_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.ONE_COST,
+    Level: 0,
+    Sonata: [
+    ],
+    Statistics: [],
+  },
+  {
+    Id: 6000108,
+    Icon: 'Spectro_Drake_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.ONE_COST,
+    Level: 0,
+    Sonata: [
+    ],
+    Statistics: [],
+  },
+  {
+    Id: 6000109,
+    Icon: 'Havoc_Drake_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.ONE_COST,
+    Level: 0,
+    Sonata: [
+    ],
+    Statistics: [],
+  },
+  {
+    Id: 6000110,
+    Icon: 'Devotee\'s_Flesh_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.ONE_COST,
+    Level: 0,
+    Sonata: [
+      Gusts_of_Welkin,
+    ],
+    Statistics: [],
+  },
+  {
     Id: 390070051,
     Icon: 'Vanguard_Junrock_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
@@ -1342,18 +1369,6 @@ export const Echoes: Echo[] = [
       Void_Thunder,
       Celestial_Light,
       Havoc_Eclipse,
-    ],
-    Statistics: [],
-  },
-  {
-    Id: 391070105,
-    Icon: 'Phantom_Hoartoise_Icon.webp',
-    Rarity: Rarity.FIVE_STARS,
-    Cost: EchoCost.ONE_COST,
-    Level: 0,
-    Sonata: [
-      Freezing_Frost,
-      Celestial_Light,
     ],
     Statistics: [],
   },

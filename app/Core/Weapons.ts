@@ -159,6 +159,23 @@ export const Weapons: Weapon[] = [
     },
   },
   {
+    Id: 21010036,
+    Name: 'Wildfire Mark',
+    Icon: 'Wildfire_Mark_Icon.webp',
+    Type: WeaponType.BROADBLADE,
+    Rarity: Rarity.FIVE_STARS,
+    Level: 0,
+    Rank: 1,
+    MainStatistic: {
+      Type: StatType.ATTACK,
+      Value: 587.5,
+    },
+    SecondaryStatistic: {
+      Type: StatType.CRIT_DMG,
+      Value: 48.6,
+    },
+  },
+  {
     Id: 21010043,
     Name: 'Broadblade Of Voyager',
     Icon: 'Broadblade_Of_Voyager_Icon.webp',
@@ -550,6 +567,24 @@ export const Weapons: Weapon[] = [
     },
   },
   {
+    Id: 21020056,
+    Name: 'Defier\'s Thorn',
+    Icon: 'Defiers_Thorn_Icon.webp',
+    ReleaseState: ReleaseState.NEW,
+    Type: WeaponType.SWORD,
+    Rarity: Rarity.FIVE_STARS,
+    Level: 0,
+    Rank: 1,
+    MainStatistic: {
+      Type: StatType.ATTACK,
+      Value: 412.5,
+    },
+    SecondaryStatistic: {
+      Type: StatType.HP_PERCENTAGE,
+      Value: 72.23,
+    },
+  },
+  {
     Id: 21020064,
     Name: 'Lunar Cutter',
     Icon: 'Lunar_Cutter_Icon.webp',
@@ -740,7 +775,6 @@ export const Weapons: Weapon[] = [
     Id: 21030026,
     Name: 'Woodland Aria',
     Icon: 'Woodland_Aria_Icon.webp',
-    ReleaseState: ReleaseState.UPCOMING,
     Type: WeaponType.PISTOLS,
     Rarity: Rarity.FIVE_STARS,
     Level: 0,
@@ -1049,7 +1083,6 @@ export const Weapons: Weapon[] = [
     Icon: 'Blazing_Justice_Icon.webp',
     Type: WeaponType.GAUNTLETS,
     Rarity: Rarity.FIVE_STARS,
-    ReleaseState: ReleaseState.NEW,
     Level: 0,
     Rank: 1,
     MainStatistic: {

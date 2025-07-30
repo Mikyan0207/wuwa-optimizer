@@ -1,6 +1,5 @@
 import type Weapon from './Interfaces/Weapon'
 import { Rarity } from './Enums/Rarity'
-import { ReleaseState } from './Enums/ReleaseState'
 import { StatType } from './Enums/StatType'
 import { WeaponType } from './Enums/WeaponType'
 
@@ -570,7 +569,6 @@ export const Weapons: Weapon[] = [
     Id: 21020056,
     Name: 'Defier\'s Thorn',
     Icon: 'Defiers_Thorn_Icon.webp',
-    ReleaseState: ReleaseState.NEW,
     Type: WeaponType.SWORD,
     Rarity: Rarity.FIVE_STARS,
     Level: 0,
@@ -1517,6 +1515,23 @@ export const Weapons: Weapon[] = [
     SecondaryStatistic: {
       Type: StatType.HP_PERCENTAGE,
       Value: 30.38,
+    },
+  },
+  {
+    Id: 21050066,
+    Name: 'Lethean Elegy',
+    Icon: 'Lethean_Elegy_Icon.webp',
+    Type: WeaponType.RECTIFIER,
+    Rarity: Rarity.FIVE_STARS,
+    Level: 0,
+    Rank: 1,
+    MainStatistic: {
+      Type: StatType.ATTACK,
+      Value: 587.5,
+    },
+    SecondaryStatistic: {
+      Type: StatType.CRIT_RATE,
+      Value: 24.3,
     },
   },
   {

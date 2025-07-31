@@ -1,5 +1,6 @@
 import type Weapon from './Interfaces/Weapon'
 import { Rarity } from './Enums/Rarity'
+import { ReleaseState } from './Enums/ReleaseState'
 import { StatType } from './Enums/StatType'
 import { WeaponType } from './Enums/WeaponType'
 
@@ -1521,6 +1522,7 @@ export const Weapons: Weapon[] = [
     Id: 21050066,
     Name: 'Lethean Elegy',
     Icon: 'Lethean_Elegy_Icon.webp',
+    ReleaseState: ReleaseState.NEW,
     Type: WeaponType.RECTIFIER,
     Rarity: Rarity.FIVE_STARS,
     Level: 0,

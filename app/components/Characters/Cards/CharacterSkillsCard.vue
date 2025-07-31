@@ -8,11 +8,11 @@ const BasicAttack = computed<Skill | undefined>(() =>
 )
 
 const BasicStatBonus1 = computed<Skill | undefined>(() =>
-  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Basic_Stat_Bonus_1'),
+  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Basic_Stat_Bonus_1' || skill.Id === 'Basic_Attack_Bonus_Stat_01'),
 )
 
 const BasicStatBonus2 = computed<Skill | undefined>(() =>
-  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Basic_Stat_Bonus_2'),
+  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Basic_Stat_Bonus_2' || skill.Id === 'Basic_Attack_Bonus_Stat_02'),
 )
 
 const ResonanceSkill = computed<Skill | undefined>(() =>
@@ -20,11 +20,11 @@ const ResonanceSkill = computed<Skill | undefined>(() =>
 )
 
 const SkillStatBonus1 = computed<Skill | undefined>(() =>
-  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Skill_Stat_Bonus_1'),
+  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Skill_Stat_Bonus_1' || skill.Id === 'Resonance_Skill_Bonus_Stat_01'),
 )
 
 const SkillStatBonus2 = computed<Skill | undefined>(() =>
-  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Skill_Stat_Bonus_2'),
+  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Skill_Stat_Bonus_2' || skill.Id === 'Resonance_Skill_Bonus_Stat_02'),
 )
 
 const ResonanceLiberation = computed<Skill | undefined>(() =>
@@ -32,11 +32,11 @@ const ResonanceLiberation = computed<Skill | undefined>(() =>
 )
 
 const LiberationStatBonus1 = computed<Skill | undefined>(() =>
-  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Liberation_Stat_Bonus_1'),
+  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Liberation_Stat_Bonus_1' || skill.Id === 'Resonance_Liberation_Bonus_Stat_01'),
 )
 
 const LiberationStatBonus2 = computed<Skill | undefined>(() =>
-  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Liberation_Stat_Bonus_2'),
+  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Liberation_Stat_Bonus_2' || skill.Id === 'Resonance_Liberation_Bonus_Stat_02'),
 )
 
 const OutroSkill = computed<Skill | undefined>(() =>
@@ -48,11 +48,11 @@ const ForteCircuit = computed<Skill | undefined>(() =>
 )
 
 const InherentSkill1 = computed<Skill | undefined>(() =>
-  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Inherent_Skill_1'),
+  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Inherent_Skill_1' || skill.Id === 'Inherent_Skill_01'),
 )
 
 const InherentSkill2 = computed<Skill | undefined>(() =>
-  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Inherent_Skill_2'),
+  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Inherent_Skill_2' || skill.Id === 'Inherent_Skill_02'),
 )
 
 const IntroSkill = computed<Skill | undefined>(() =>
@@ -60,11 +60,11 @@ const IntroSkill = computed<Skill | undefined>(() =>
 )
 
 const IntroStatBonus1 = computed<Skill | undefined>(() =>
-  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Intro_Stat_Bonus_1'),
+  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Intro_Stat_Bonus_1' || skill.Id === 'Intro_Skill_Bonus_Stat_01'),
 )
 
 const IntroStatBonus2 = computed<Skill | undefined>(() =>
-  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Intro_Stat_Bonus_2'),
+  CurrentCharacter.value.Skills?.find(skill => skill.Id === 'Intro_Stat_Bonus_2' || skill.Id === 'Intro_Skill_Bonus_Stat_02'),
 )
 
 // TODO: Simplify skill update with a single global method that is called on skill click.

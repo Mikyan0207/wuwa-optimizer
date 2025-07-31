@@ -3,6 +3,16 @@ import { EchoCost } from './Enums/EchoCost'
 import { Rarity } from './Enums/Rarity'
 import { Celestial_Light, Dream_of_the_Lost, Empyrean_Anthem, Eternal_Radiance, Flaming_Clawprint, Freezing_Frost, Frosty_Resolve, Gusts_of_Welkin, Havoc_Eclipse, Lingering_Tunes, Midnight_Veil, Molten_Rift, Moonlit_Clouds, Rejuvenating_Glow, Sierra_Gale, Tidebreaking_Courage, Void_Thunder } from './Sonatas'
 
+export const Empty_Echo: Echo = {
+  Id: -1,
+  Icon: '',
+  Rarity: Rarity.FOUR_STARS,
+  Cost: EchoCost.ONE_COST,
+  Level: 0,
+  Sonata: [],
+  Statistics: [],
+}
+
 export const Echoes: Echo[] = [
   {
     Id: 6000039,
@@ -1430,3 +1440,5 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
 ]
+
+export const TemplateEchoes: Echo[] = Echoes

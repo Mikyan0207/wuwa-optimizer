@@ -141,8 +141,8 @@ export default {
   'skill_resonance_skill': 'Resonance Skill',
   'skill_resonance_liberation': 'Resonance Liberation',
   'skill_forte_circuit': 'Forte Circuit',
-  'skill_inherent_skill_1': 'Inherent Skill',
-  'skill_inherent_skill_2': 'Inherent Skill',
+  'skill_inherent_skill_01': 'Inherent Skill',
+  'skill_inherent_skill_02': 'Inherent Skill',
   'skill_outro_skill': 'Outro Skill',
   'skill_intro_skill': 'Intro Skill',
 

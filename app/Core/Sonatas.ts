@@ -246,7 +246,7 @@ export const Gusts_of_Welkin: Sonata = {
 }
 
 export const Flaming_Clawprint: Sonata = {
-  Name: 'Gusts of Welkin',
+  Name: 'Flaming Clawprint',
   Icon: 'Icon_Flaming_Clawprint.webp',
   Effect1: 'Fusion DMG +10%.',
   Effect2: 'Casting Resonance Liberation grants all Resonators in the team 15% Fusion DMG Bonus and the caster 20% Resonance Liberation DMG Bonus, lasting for 35s.',
@@ -262,7 +262,7 @@ export const Flaming_Clawprint: Sonata = {
 }
 
 export const Dream_of_the_Lost: Sonata = {
-  Name: 'Gusts of Welkin',
+  Name: 'Dream of the Lost',
   Icon: 'Icon_Dream_of_the_Lost.webp',
   Effect1: 'Holding 0 Resonance Energy increases Crit. Rate by 20% and grants 35% Echo Skill DMG Bonus',
   Effect2: '',

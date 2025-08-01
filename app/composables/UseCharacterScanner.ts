@@ -18,6 +18,16 @@ import { GetSecondaryStat } from '~/Core/Utils/StatsUtils'
 import { LevenshteinDistance } from '~/Core/Utils/StringUtils'
 import { TemplateWeapons } from '~/Core/Weapons'
 
+// Utility function for timeout
+function withTimeout<T>(promise: Promise<T>, timeoutMs: number = 10000): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error(`Operation timeout after ${timeoutMs}ms`)), timeoutMs),
+    ),
+  ])
+}
+
 export enum ScannerStatus {
   IDLE,
   CHARACTER,
@@ -63,48 +73,60 @@ export function useCharacterScanner() {
 
   async function ScanAsync(onProgress?: (status: ScannerStatus) => void): Promise<{ Status: ScannerResultStatus, Character?: Character | undefined, Weapon?: Weapon | undefined, Echoes?: Echo[] }> {
     OnProgress.value = onProgress
-    if (OnProgress.value) {
-      OnProgress.value(ScannerStatus.IDLE)
-    }
 
-    if (OnProgress.value) {
-      OnProgress.value(ScannerStatus.CHARACTER)
-    }
+    try {
+      if (OnProgress.value) {
+        OnProgress.value(ScannerStatus.IDLE)
+      }
 
-    const character = await GetCharacterAsync()
+      if (OnProgress.value) {
+        OnProgress.value(ScannerStatus.CHARACTER)
+      }
 
-    if (character === undefined) {
+      const character = await withTimeout(GetCharacterAsync(), 5000)
+
+      if (character === undefined) {
+        return {
+          Status: ScannerResultStatus.INVALID_CHARACTER,
+        }
+      }
+
+      if (OnProgress.value) {
+        OnProgress.value(ScannerStatus.WEAPON)
+      }
+
+      const weapon = await withTimeout(GetWeaponAsync(character.Id), 3000)
+
+      if (OnProgress.value) {
+        OnProgress.value(ScannerStatus.ECHOES)
+      }
+
+      const echoes = await withTimeout(GetEchoesAsync(character.Id), 30000)
+
+      character.EquipedWeapon = weapon?.Id
+      echoes.forEach((e) => {
+        character.EquipedEchoes.push(e.Id)
+      })
+
+      if (onProgress) {
+        onProgress(ScannerStatus.DONE)
+      }
+
       return {
-        Status: ScannerResultStatus.INVALID_CHARACTER,
+        Status: ScannerResultStatus.SUCCESS,
+        Character: character,
+        Weapon: weapon,
+        Echoes: echoes,
       }
     }
-
-    if (OnProgress.value) {
-      OnProgress.value(ScannerStatus.WEAPON)
+    catch (error) {
+      console.error('Scanner error:', error)
+      return {
+        Status: ScannerResultStatus.ERROR,
+      }
     }
-    const weapon = await GetWeaponAsync(character.Id)
-
-    if (OnProgress.value) {
-      OnProgress.value(ScannerStatus.ECHOES)
-    }
-    const echoes = await GetEchoesAsync(character.Id)
-
-    character.EquipedWeapon = weapon?.Id
-    echoes.forEach((e) => {
-      character.EquipedEchoes.push(e.Id)
-    })
-
-    CleanUp()
-
-    if (onProgress) {
-      onProgress(ScannerStatus.DONE)
-    }
-
-    return {
-      Status: ScannerResultStatus.SUCCESS,
-      Character: character,
-      Weapon: weapon,
-      Echoes: echoes,
+    finally {
+      CleanUp()
     }
   }
 
@@ -192,48 +214,108 @@ export function useCharacterScanner() {
     return bestLevel
   }
 
+  function FindMostCommonSonata(echoes: Echo[]): Sonata | undefined {
+    const sonataCounts = new Map<string, { sonata: Sonata, count: number }>()
+
+    for (const echo of echoes) {
+      for (const sonata of echo.Sonata) {
+        const key = sonata.Name
+        const existing = sonataCounts.get(key)
+        if (existing) {
+          existing.count++
+        }
+        else {
+          sonataCounts.set(key, { sonata, count: 1 })
+        }
+      }
+    }
+
+    let mostCommon: { sonata: Sonata, count: number } | undefined
+    for (const [_, data] of sonataCounts) {
+      if (!mostCommon || data.count > mostCommon.count) {
+        mostCommon = data
+      }
+    }
+
+    return mostCommon?.sonata
+  }
+
   async function GetEchoesAsync(characterId: number) {
-    const fields = await Promise.all(ECHOES_REGIONS.map(e => GetText(GetRegion(e))))
     const echoes: Echo[] = []
 
-    for (let i = 0; i < fields.length; i += 15) {
+    for (let i = 0; i < ECHOES_REGIONS.length; i += 15) {
       const index = Math.floor(i / 15)
 
       if (OnProgress.value) {
         OnProgress.value(ScannerStatus[`ECHOES_0${index + 1}` as keyof typeof ScannerStatus])
       }
-      const chunk = fields.slice(i, i + 15)
-      const cost = GetCostFromText(GetFilteredText(chunk[1] || '', /\d+/))
-      const echo = await GetEcho(ECHOES_REGIONS[i]!, cost)
 
-      if (echo === undefined) {
+      try {
+        const regionsForThisEcho = ECHOES_REGIONS.slice(i, i + 15)
+        const fields = await withTimeout(
+          Promise.all(regionsForThisEcho.map(e => GetText(GetRegion(e)))),
+          5000,
+        )
+
+        const chunk = fields.slice(0, 15)
+        const cost = GetCostFromText(GetFilteredText(chunk[1] || '', /\d+/))
+
+        const echo = await withTimeout(
+          GetEcho(ECHOES_REGIONS[i]!, cost),
+          3000,
+        )
+
+        if (echo === undefined) {
+          continue
+        }
+
+        const e = {
+          ...echo,
+          MainStatistic: GetStatistic(chunk[3] || '', chunk[4] || '', echo.Cost, true),
+          SecondaryStatistic: GetSecondaryStat(echo.Cost),
+          Statistics: Array.from({ length: 5 }, (_, j) => {
+            const name = chunk[5 + j * 2] || ''
+            const rawValue = chunk[6 + j * 2] || '0'
+            return GetStatistic(name, rawValue, echo.Cost)
+          }).filter(stat => stat.Type !== StatType.NONE && !Number.isNaN(stat.Value)),
+          EquipedSlot: index,
+          EquipedBy: characterId,
+        } as Echo
+
+        const sonata = await withTimeout(
+          GetSonata(ECHOES_REGIONS[i + 2]!),
+          2000,
+        )
+
+        e.Sonata = echo.Sonata.map(s => ({
+          ...s,
+          IsSelected: sonata ? LevenshteinDistance(s.Name.toLowerCase(), sonata.Name.toLowerCase()) <= 1 : false,
+        }))
+
+        if (e.Statistics.length > 0)
+          e.Level = 5 * (e.Statistics.length)
+
+        echoes.push(e)
+      }
+      catch (error) {
+        console.error(`Error processing echo slot ${index + 1}:`, error)
         continue
       }
+    }
 
-      const e = {
-        ...echo,
-        MainStatistic: GetStatistic(chunk[3] || '', chunk[4] || '', echo.Cost, true),
-        SecondaryStatistic: GetSecondaryStat(echo.Cost),
-        Statistics: Array.from({ length: 5 }, (_, j) => {
-          const name = chunk[5 + j * 2] || ''
-          const rawValue = chunk[6 + j * 2] || '0'
-          return GetStatistic(name, rawValue, echo.Cost)
-        }).filter(stat => stat.Type !== StatType.NONE && !Number.isNaN(stat.Value)),
-        EquipedSlot: index,
-        EquipedBy: characterId,
-      } as Echo
-
-      const sonata = await GetSonata(ECHOES_REGIONS[i + 2]!)
-
-      e.Sonata = echo.Sonata.map(s => ({
-        ...s,
-        IsSelected: LevenshteinDistance(s.Name.toLowerCase(), sonata?.Name.toLowerCase() || '') <= 1,
-      }))
-
-      if (e.Statistics.length > 0)
-        e.Level = 5 * (e.Statistics.length)
-
-      echoes.push(e)
+    // Apply fallback sonata if needed
+    const mostCommonSonata = FindMostCommonSonata(echoes)
+    if (mostCommonSonata) {
+      for (const echo of echoes) {
+        // Check if this echo has no selected sonata
+        const hasSelectedSonata = echo.Sonata.some(s => s.IsSelected)
+        if (!hasSelectedSonata) {
+          echo.Sonata = echo.Sonata.map(s => ({
+            ...s,
+            IsSelected: s.Name === mostCommonSonata.Name,
+          }))
+        }
+      }
     }
 
     return echoes
@@ -263,51 +345,66 @@ export function useCharacterScanner() {
     const orb = new cv.ORB()
     const kp1 = new cv.KeyPointVector()
     const des1 = new cv.Mat()
-    orb.detectAndCompute(srcMat, new cv.Mat(), kp1, des1)
-
     const bf = new cv.BFMatcher()
 
-    for (const template of echoes) {
-      const templMat = await LoadEchoIcon(template, width, height)
+    try {
+      orb.detectAndCompute(srcMat, new cv.Mat(), kp1, des1)
 
-      const kp2 = new cv.KeyPointVector()
-      const des2 = new cv.Mat()
-      orb.detectAndCompute(templMat, new cv.Mat(), kp2, des2)
+      for (const template of echoes) {
+        let templMat: cv.Mat | undefined
+        let kp2: cv.KeyPointVector | undefined
+        let des2: cv.Mat | undefined
+        let knnMatches: cv.DMatchVectorVector | undefined
 
-      const knnMatches = new cv.DMatchVectorVector()
-      bf.knnMatch(des1, des2, knnMatches, 2)
+        try {
+          templMat = await LoadEchoIcon(template, width, height)
 
-      let goodMatches = 0
-      for (let i = 0; i < knnMatches.size(); i++) {
-        const matchPair = knnMatches.get(i)
-        if (matchPair.size() < 2)
-          continue
+          kp2 = new cv.KeyPointVector()
+          des2 = new cv.Mat()
+          orb.detectAndCompute(templMat, new cv.Mat(), kp2, des2)
 
-        const m = matchPair.get(0)
-        const n = matchPair.get(1)
+          knnMatches = new cv.DMatchVectorVector()
+          bf.knnMatch(des1, des2, knnMatches, 2)
 
-        if (m.distance < 0.75 * n.distance) {
-          goodMatches++
+          let goodMatches = 0
+          for (let i = 0; i < knnMatches.size(); i++) {
+            const matchPair = knnMatches.get(i)
+            if (matchPair.size() < 2)
+              continue
+
+            const m = matchPair.get(0)
+            const n = matchPair.get(1)
+
+            if (m.distance < 0.75 * n.distance) {
+              goodMatches++
+            }
+          }
+
+          const attemptedMatches = Math.min(kp1.size(), kp2.size())
+          const ratio = attemptedMatches > 0 ? goodMatches / attemptedMatches : 0
+
+          if (ratio > bestMatch.score) {
+            bestMatch = { echo: template, score: ratio }
+          }
+        }
+        finally {
+          if (templMat)
+            templMat.delete()
+          if (kp2)
+            kp2.delete()
+          if (des2)
+            des2.delete()
+          if (knnMatches)
+            knnMatches.delete()
         }
       }
-
-      const attemptedMatches = Math.min(kp1.size(), kp2.size())
-      const ratio = attemptedMatches > 0 ? goodMatches / attemptedMatches : 0
-
-      if (ratio > bestMatch.score) {
-        bestMatch = { echo: template, score: ratio }
-      }
-
-      templMat.delete()
-      kp2.delete()
-      des2.delete()
-      knnMatches.delete()
     }
-
-    kp1.delete()
-    des1.delete()
-    bf.delete()
-    orb.delete()
+    finally {
+      kp1.delete()
+      des1.delete()
+      bf.delete()
+      orb.delete()
+    }
 
     return bestMatch.echo
   }
@@ -323,45 +420,60 @@ export function useCharacterScanner() {
     const orb = new cv.ORB()
     const kp1 = new cv.KeyPointVector()
     const des1 = new cv.Mat()
-    orb.detectAndCompute(srcMat, new cv.Mat(), kp1, des1)
 
-    for (const sonata of sonatas) {
-      let templMat = await LoadSonataIcon(sonata, width, height)
+    try {
+      orb.detectAndCompute(srcMat, new cv.Mat(), kp1, des1)
 
-      if (templMat.cols !== srcMat.cols || templMat.rows !== srcMat.rows) {
-        cv.resize(templMat, templMat, new cv.Size(srcMat.cols, srcMat.rows))
+      for (let i = 0; i < sonatas.length; i++) {
+        const sonata = sonatas[i]
+        if (!sonata)
+          continue
+
+        let templMat: cv.Mat | undefined
+        let kp2: cv.KeyPointVector | undefined
+        let des2: cv.Mat | undefined
+
+        try {
+          templMat = await withTimeout(
+            LoadSonataIcon(sonata, width, height),
+            5000,
+          )
+
+          if (templMat.cols !== srcMat.cols || templMat.rows !== srcMat.rows) {
+            cv.resize(templMat, templMat, new cv.Size(srcMat.cols, srcMat.rows))
+          }
+
+          templMat = UpscaleIfNeeded(templMat)
+
+          kp2 = new cv.KeyPointVector()
+          des2 = new cv.Mat()
+          orb.detectAndCompute(templMat, new cv.Mat(), kp2, des2)
+
+          const distance = ComputeDistance(des1, des2)
+
+          if (distance < bestMatch.score) {
+            bestMatch = { sonata, score: distance }
+          }
+        }
+        catch (error) {
+          console.error(`Error processing sonata slot ${i + 1}:`, error)
+          continue
+        }
+        finally {
+          if (templMat)
+            templMat.delete()
+          if (kp2)
+            kp2.delete()
+          if (des2)
+            des2.delete()
+        }
       }
-
-      templMat = UpscaleIfNeeded(templMat)
-
-      // DEBUG: render to canvas
-      // const srcCanvas = document.getElementById('srcCanvas') as HTMLCanvasElement
-      // const templCanvas = document.getElementById('templCanvas') as HTMLCanvasElement
-      // if (srcCanvas && templCanvas) {
-      //   renderMatToCanvas(srcMat, srcCanvas)
-      //   renderMatToCanvas(templMat, templCanvas)
-      // }
-
-      const kp2 = new cv.KeyPointVector()
-      const des2 = new cv.Mat()
-      orb.detectAndCompute(templMat, new cv.Mat(), kp2, des2)
-
-      const distance = ComputeDistance(des1, des2)
-
-      // console.log(`→ ${sonata.Name} | avg distance: ${distance.toFixed(2)}`)
-
-      if (distance < bestMatch.score) {
-        bestMatch = { sonata, score: distance }
-      }
-
-      templMat.delete()
-      kp2.delete()
-      des2.delete()
     }
-
-    kp1.delete()
-    des1.delete()
-    orb.delete()
+    finally {
+      kp1.delete()
+      des1.delete()
+      orb.delete()
+    }
 
     return bestMatch.sonata
   }
@@ -381,26 +493,27 @@ export function useCharacterScanner() {
 
     const bf = new cv.BFMatcher()
     const matches = new cv.DMatchVector()
-    bf.match(des1, des2, matches)
 
-    let totalDistance = 0
-    for (let i = 0; i < matches.size(); i++) {
-      totalDistance += matches.get(i).distance
+    try {
+      bf.match(des1, des2, matches)
+
+      let totalDistance = 0
+      for (let i = 0; i < matches.size(); i++) {
+        totalDistance += matches.get(i).distance
+      }
+
+      const avgDistance = matches.size() > 0 ? totalDistance / matches.size() : Number.MAX_VALUE
+      return avgDistance
     }
-
-    const avgDistance = matches.size() > 0 ? totalDistance / matches.size() : Number.MAX_VALUE
-
-    matches.delete()
-    bf.delete()
-
-    return avgDistance
+    finally {
+      matches.delete()
+      bf.delete()
+    }
   }
 
   function GetStatistic(name: string, value: string, echoCost: EchoCost, isMainStat: boolean = false) {
     let statType = GetStatTypeFromName(name || StatType.NONE)
     const statValue = Number.parseFloat(GetFilteredText(value, /\d*\.\d+|\d+/))
-
-    // console.log(name, value, statType, statValue)
 
     if ((IsFloatingPointNumber(statValue) || isMainStat) && statType === StatType.HP) {
       statType = StatType.HP_PERCENTAGE
@@ -512,11 +625,22 @@ export function useCharacterScanner() {
   }
 
   async function LoadSonataIcon(sonata: Sonata, width: number, height: number): Promise<cv.Mat> {
-    const refImage = await new Promise<HTMLImageElement>((resolve) => {
-      const img = new Image()
-      img.src = GetSonataIcon(sonata)
-      img.onload = () => resolve(img)
-    })
+    const iconPath = GetSonataIcon(sonata)
+
+    const refImage = await withTimeout(
+      new Promise<HTMLImageElement>((resolve, reject) => {
+        const img = new Image()
+        img.onload = () => {
+          resolve(img)
+        }
+        img.onerror = (error) => {
+          console.error(`Failed to load sonata icon: ${iconPath}`, error)
+          reject(new Error(`Failed to load sonata icon: ${sonata.Name} (${iconPath})`))
+        }
+        img.src = iconPath
+      }),
+      3000,
+    )
 
     const refRegion = GetRegion({
       X: 0,
@@ -611,13 +735,15 @@ export function useCharacterScanner() {
     for (const c of Canvases) {
       c.remove()
     }
-
     Canvases = []
-  }
 
-  // DEBUG
-  function renderMatToCanvas(mat: cv.Mat, canvas: HTMLCanvasElement) {
-    cv.imshow(canvas, mat)
+    if (Worker) {
+      Worker.terminate()
+      Worker = undefined
+    }
+
+    Canvas = undefined
+    CanvasContext = null
   }
 
   return {

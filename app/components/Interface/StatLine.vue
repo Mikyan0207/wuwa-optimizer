@@ -28,11 +28,7 @@ const GetIconSize = computed(() => {
 })
 
 const GetMargin = computed(() => {
-  if (props.iconSize === undefined || props.iconSize === 'md') {
-    return 'mr-6'
-  }
-
-  return 'mr-4'
+  return ''
 })
 
 const GetStatName = computed(() => {
@@ -70,15 +66,15 @@ const GetStatColorByRollValue = computed(() => {
 </script>
 
 <template>
-  <div class="relative w-full flex items-center justify-between gap-2">
-    <div class="flex items-center gap-2 text-gray-300">
+  <div class="relative flex items-center min-w-0 w-full">
+    <div class="flex items-center gap-1 text-gray-300 flex-shrink-0 min-w-0">
       <NuxtImg :src="`/images/icons/${STAT_ICONS[stat.Type]}`" :class="GetIconSize" />
-      <p class="text-nowrap" :class="GetMargin">
+      <p class="text-sm truncate" :class="GetMargin" :title="GetStatName">
         {{ GetStatName }}
       </p>
     </div>
-    <div v-if="showLine === true" class="my-auto h-[1px] w-full bg-white/14" />
-    <p class="h-full flex items-center justify-center text-nowrap font-semibold">
+    <div v-if="showLine === true" class="flex-1 h-[1px] bg-white/14 min-w-[12px] mx-2" />
+    <p class="flex items-center text-nowrap font-semibold flex-shrink-0 text-sm">
       <span :class="[GetStatColorByRollValue, isWantedColor]">{{ IsPercentageStat ? isMainStat ? stat.Value.toFixed(2) : stat.Value.toFixed(1) : stat.Value }}</span>
       <span v-if="IsPercentageStat" :class="[GetStatColorByRollValue, isWantedColor]">%</span>
     </p>

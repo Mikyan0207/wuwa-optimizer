@@ -1,13 +1,13 @@
 import type Echo from './Interfaces/Echo'
 import { EchoCost } from './Enums/EchoCost'
 import { Rarity } from './Enums/Rarity'
-import { Celestial_Light, Empyrean_Anthem, Eternal_Radiance, Freezing_Frost, Frosty_Resolve, Gusts_of_Welkin, Havoc_Eclipse, Lingering_Tunes, Midnight_Veil, Molten_Rift, Moonlit_Clouds, Rejuvenating_Glow, Sierra_Gale, Tidebreaking_Courage, Void_Thunder } from './Sonatas'
+import { Celestial_Light, Dream_of_the_Lost, Empyrean_Anthem, Eternal_Radiance, Flaming_Clawprint, Freezing_Frost, Frosty_Resolve, Gusts_of_Welkin, Havoc_Eclipse, Lingering_Tunes, Midnight_Veil, Molten_Rift, Moonlit_Clouds, Rejuvenating_Glow, Sierra_Gale, Tidebreaking_Courage, Void_Thunder } from './Sonatas'
 
 export const Empty_Echo: Echo = {
   Id: -1,
   Icon: '',
-  Rarity: Rarity.FIVE_STARS,
-  Cost: EchoCost.FOUR_COST,
+  Rarity: Rarity.FOUR_STARS,
+  Cost: EchoCost.ONE_COST,
   Level: 0,
   Sonata: [],
   Statistics: [],
@@ -278,24 +278,48 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000145,
-    Icon: 'Phantom_Mourning_Aix_Icon.webp',
+    Id: 6000113,
+    Icon: 'Nightmare_Kelpie_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
-      Celestial_Light,
+      Gusts_of_Welkin,
+    ],
+    IsNightmare: true,
+    Statistics: [],
+  },
+  {
+    Id: 6000114,
+    Icon: 'Lioness_Of_Glory_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.FOUR_COST,
+    Level: 0,
+    Sonata: [
+      Flaming_Clawprint,
     ],
     Statistics: [],
   },
   {
-    Id: 6010052,
-    Icon: 'Phantom_Impermanence_Heron_Icon.webp',
+    Id: 6000115,
+    Icon: 'Nightmare_Hecate_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
     Level: 0,
     Sonata: [
-      Moonlit_Clouds,
+      Dream_of_the_Lost,
+    ],
+    IsNightmare: true,
+    Statistics: [],
+  },
+  {
+    Id: 6000116,
+    Icon: 'Reminiscence_Fenrico_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.FOUR_COST,
+    Level: 0,
+    Sonata: [
+      Dream_of_the_Lost,
     ],
     Statistics: [],
   },
@@ -330,28 +354,6 @@ export const Echoes: Echo[] = [
     Level: 0,
     Sonata: [
       Molten_Rift,
-    ],
-    Statistics: [],
-  },
-  {
-    Id: 390180010,
-    Icon: 'Phantom_Feilian_Beringal_Icon.webp',
-    Rarity: Rarity.FIVE_STARS,
-    Cost: EchoCost.FOUR_COST,
-    Level: 0,
-    Sonata: [
-      Sierra_Gale,
-    ],
-    Statistics: [],
-  },
-  {
-    Id: 391080003,
-    Icon: 'Phantom_Thundering_Mephis_Icon.webp',
-    Rarity: Rarity.FIVE_STARS,
-    Cost: EchoCost.FOUR_COST,
-    Level: 0,
-    Sonata: [
-      Void_Thunder,
     ],
     Statistics: [],
   },
@@ -507,6 +509,7 @@ export const Echoes: Echo[] = [
     Sonata: [
       Empyrean_Anthem,
       Tidebreaking_Courage,
+      Dream_of_the_Lost,
     ],
     Statistics: [],
   },
@@ -529,8 +532,6 @@ export const Echoes: Echo[] = [
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
-      Molten_Rift,
-      Void_Thunder,
       Frosty_Resolve,
       Midnight_Veil,
     ],
@@ -570,6 +571,40 @@ export const Echoes: Echo[] = [
       Eternal_Radiance,
       Gusts_of_Welkin,
     ],
+    Statistics: [],
+  },
+  {
+    Id: 6000111,
+    Icon: 'Pilgrim\'s_Shell_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.THREE_COST,
+    Level: 0,
+    Sonata: [
+      Flaming_Clawprint,
+    ],
+    Statistics: [],
+  },
+  {
+    Id: 6000112,
+    Icon: 'Kerasaur_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.THREE_COST,
+    Level: 0,
+    Sonata: [
+      Flaming_Clawprint,
+    ],
+    Statistics: [],
+  },
+  {
+    Id: 6000119,
+    Icon: 'Nightmare_Tambourinist_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.THREE_COST,
+    Level: 0,
+    Sonata: [
+      Dream_of_the_Lost,
+    ],
+    IsNightmare: true,
     Statistics: [],
   },
   {
@@ -701,18 +736,6 @@ export const Echoes: Echo[] = [
     Sonata: [
       Moonlit_Clouds,
       Lingering_Tunes,
-    ],
-    Statistics: [],
-  },
-  {
-    Id: 391077024,
-    Icon: 'Phantom_Rocksteady_Guardian_Icon.webp',
-    Rarity: Rarity.FIVE_STARS,
-    Cost: EchoCost.THREE_COST,
-    Level: 0,
-    Sonata: [
-      Celestial_Light,
-      Rejuvenating_Glow,
     ],
     Statistics: [],
   },
@@ -882,6 +905,7 @@ export const Echoes: Echo[] = [
     Sonata: [
       Eternal_Radiance,
       Midnight_Veil,
+      Dream_of_the_Lost,
     ],
     Statistics: [],
   },
@@ -916,9 +940,6 @@ export const Echoes: Echo[] = [
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
-      Celestial_Light,
-      Moonlit_Clouds,
-      Lingering_Tunes,
       Frosty_Resolve,
       Tidebreaking_Courage,
     ],
@@ -994,6 +1015,7 @@ export const Echoes: Echo[] = [
     Sonata: [
       Midnight_Veil,
       Gusts_of_Welkin,
+      Flaming_Clawprint,
     ],
     Statistics: [],
   },
@@ -1006,6 +1028,7 @@ export const Echoes: Echo[] = [
     Sonata: [
       Eternal_Radiance,
       Gusts_of_Welkin,
+      Flaming_Clawprint,
     ],
     Statistics: [],
   },
@@ -1029,6 +1052,7 @@ export const Echoes: Echo[] = [
     Sonata: [
       Tidebreaking_Courage,
       Gusts_of_Welkin,
+      Flaming_Clawprint,
     ],
     Statistics: [],
   },
@@ -1041,6 +1065,7 @@ export const Echoes: Echo[] = [
     Sonata: [
       Midnight_Veil,
       Gusts_of_Welkin,
+      Flaming_Clawprint,
     ],
     Statistics: [],
   },
@@ -1053,6 +1078,75 @@ export const Echoes: Echo[] = [
     Sonata: [
       Gusts_of_Welkin,
     ],
+    Statistics: [],
+  },
+  {
+    Id: 6000107,
+    Icon: 'Fusion_Drake_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.ONE_COST,
+    Level: 0,
+    Sonata: [
+      Flaming_Clawprint,
+    ],
+    Statistics: [],
+  },
+  {
+    Id: 6000108,
+    Icon: 'Spectro_Drake_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.ONE_COST,
+    Level: 0,
+    Sonata: [
+      Flaming_Clawprint,
+    ],
+    Statistics: [],
+  },
+  {
+    Id: 6000109,
+    Icon: 'Havoc_Drake_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.ONE_COST,
+    Level: 0,
+    Sonata: [
+      Flaming_Clawprint,
+    ],
+    Statistics: [],
+  },
+  {
+    Id: 6000110,
+    Icon: 'Devotee\'s_Flesh_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.ONE_COST,
+    Level: 0,
+    Sonata: [
+      Gusts_of_Welkin,
+      Flaming_Clawprint,
+    ],
+    Statistics: [],
+  },
+  {
+    Id: 6000117,
+    Icon: 'Nightmare_Havoc_Warrior_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.ONE_COST,
+    Level: 0,
+    Sonata: [
+      Dream_of_the_Lost,
+    ],
+    IsNightmare: true,
+    Statistics: [],
+  },
+  {
+    Id: 6000118,
+    Icon: 'Nightmare_Glacio_Predator_Icon.webp',
+    Rarity: Rarity.FIVE_STARS,
+    Cost: EchoCost.ONE_COST,
+    Level: 0,
+    Sonata: [
+      Dream_of_the_Lost,
+    ],
+    IsNightmare: true,
     Statistics: [],
   },
   {
@@ -1342,18 +1436,6 @@ export const Echoes: Echo[] = [
       Void_Thunder,
       Celestial_Light,
       Havoc_Eclipse,
-    ],
-    Statistics: [],
-  },
-  {
-    Id: 391070105,
-    Icon: 'Phantom_Hoartoise_Icon.webp',
-    Rarity: Rarity.FIVE_STARS,
-    Cost: EchoCost.ONE_COST,
-    Level: 0,
-    Sonata: [
-      Freezing_Frost,
-      Celestial_Light,
     ],
     Statistics: [],
   },

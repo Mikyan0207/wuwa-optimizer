@@ -101,7 +101,7 @@ export function useCharacterScanner() {
         OnProgress.value(ScannerStatus.ECHOES)
       }
 
-      const echoes = await withTimeout(GetEchoesAsync(character.Id), 30000)
+      const echoes = await withTimeout(GetEchoesAsync(character.Id), 3000000)
 
       character.EquipedWeapon = weapon?.Id
       echoes.forEach((e) => {
@@ -254,7 +254,7 @@ export function useCharacterScanner() {
         const regionsForThisEcho = ECHOES_REGIONS.slice(i, i + 15)
         const fields = await withTimeout(
           Promise.all(regionsForThisEcho.map(e => GetText(GetRegion(e)))),
-          5000,
+          30000,
         )
 
         const chunk = fields.slice(0, 15)
@@ -262,7 +262,7 @@ export function useCharacterScanner() {
 
         const echo = await withTimeout(
           GetEcho(ECHOES_REGIONS[i]!, cost),
-          3000,
+          30000,
         )
 
         if (echo === undefined) {
@@ -284,7 +284,7 @@ export function useCharacterScanner() {
 
         const sonata = await withTimeout(
           GetSonata(ECHOES_REGIONS[i + 2]!),
-          2000,
+          30000,
         )
 
         e.Sonata = echo.Sonata.map(s => ({

@@ -15,6 +15,14 @@ const MenuItems = [
     },
   },
   {
+    label: 'Create',
+    icon: 'solar:add-square-broken',
+    onSelect() {
+      SelectedIndex.value = 1
+      IsOpen.value = true
+    },
+  },
+  {
     label: 'Remove',
     icon: 'solar:notification-remove-broken',
     color: 'error' as const,
@@ -49,14 +57,15 @@ function OnClose() {
       <UButton icon="solar:menu-dots-circle-broken" color="primary" variant="ghost" />
     </UDropdownMenu>
   </div>
-  <UModal
+  <USlideover
     v-model:open="IsOpen"
     :overlay="true"
     variant="subtle"
     color="neutral"
-    :ui="{
-      content: 'xl:min-w-4xl w-5xl min-w-5xl xl:w-4xl bg-transparent border-0 backdrop-blur-none shadow-none! ring-0! ',
-    }"
+    side="right"
+    :transition="true"
+    class="w-full md:w-1/3 lg:w-1/5 max-w-full"
+    close-icon="i-lucide-arrow-right"
     @close="SelectedIndex = undefined"
   >
     <template #content>
@@ -64,6 +73,10 @@ function OnClose() {
         v-if="SelectedIndex === 0"
         @close="OnClose()"
       />
+      <WeaponCreationForm
+        v-if="SelectedIndex === 1"
+        @close="OnClose()"
+      />
     </template>
-  </UModal>
+  </USlideover>
 </template>

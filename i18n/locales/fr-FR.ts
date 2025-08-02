@@ -49,6 +49,7 @@ export default {
   '1204_name': 'Mortefi',
   '1205_name': 'Changli',
   '1206_name': 'Brant',
+  '1207_name': 'Lupa',
   '1301_name': 'Calcharo',
   '1302_name': 'Yinlin',
   '1303_name': 'Yuanwu',

@@ -12,6 +12,8 @@ const { t } = useI18n()
 const BackgroundColor = computed(() => GetBackgroundColor(props.echo.Rarity))
 const SecondaryColor = computed(() => GetSecondaryColor(props.echo.Rarity))
 const HighlightColor = computed(() => GetHighlightColor(props.echo.Rarity))
+
+const GetSonata = computed(() => props.echo.Sonata.find(x => x.IsSelected === true))
 </script>
 
 <template>
@@ -21,6 +23,13 @@ const HighlightColor = computed(() => GetHighlightColor(props.echo.Rarity))
   >
     <template #content>
       <div class="w-64 flex flex-col space-y-3">
+        <div class="flex mb-4 items-center gap-2">
+          <span>{{ t(`${echo.Id}_name`) }}</span>
+          <UBadge color="error" variant="soft" size="sm" class="text-nowrap">
+            {{ `${t(`label_level`)} ${echo.Level}` }}
+          </UBadge>
+        </div>
+        <USeparator />
         <div class="w-full">
           <div v-if="echo.MainStatistic" class="w-full flex items-start justify-between gap-12">
             <StatLine :stat="echo.MainStatistic" />
@@ -33,24 +42,19 @@ const HighlightColor = computed(() => GetHighlightColor(props.echo.Rarity))
         </div>
       </div>
     </template>
-    <div
-      class="group relative cursor-pointer border border-white/14 rounded-md bg-black/66"
+    <UCard
+      class="group relative transition-all duration-100" :ui="{
+        root: 'rounded-none rounded-br-xl border-0',
+        body: 'p-0 sm:p-0',
+      }"
     >
-      <div class="relative min-h-26 w-26 flex items-center justify-center overflow-clip">
-        <div class="absolute bottom-1.5 left-0.5 z-1 w-8 flex items-center justify-center border border-white/14 rounded bg-black px-1 text-[10px]">
-          +{{ echo.Level }}
-        </div>
-        <div class="absolute right-1 top-1 z-10 flex items-center justify-center gap-1">
-          <NuxtImg :src="GetSonataIcon(echo.Sonata.find(x => x.IsSelected)!)" class="h-6 w-6 object-contain" />
+      <BorderLines :count="1" />
+      <div class="relative min-h-32 w-32 flex items-center justify-center overflow-clip">
+        <div class="absolute right-1 top-1 z-2">
+          <NuxtImg v-if="GetSonata" width="26" height="26" :src="GetSonataIcon(GetSonata)" style="color: transparent;" />
         </div>
         <div class="absolute bottom-0">
-          <NuxtImg
-            width="160"
-            height="160"
-            :src="`${GetEchoIcon(echo)}`"
-            style="color: transparent;"
-            class="rounded-t"
-          />
+          <NuxtImg width="160" height="160" :src="`${GetEchoIcon(echo)}`" style="color: transparent;" />
         </div>
         <div class="absolute bottom-0 w-full">
           <div class="relative w-full flex items-center">
@@ -68,9 +72,9 @@ const HighlightColor = computed(() => GetHighlightColor(props.echo.Rarity))
           <div class="h-[3px]" :class="HighlightColor" />
         </div>
       </div>
-      <div :title="t(`${echo.Id}_name`)" class="w-26 truncate text-nowrap border-b border-l border-r border-white/14 rounded-b bg-black/44 px-2 py-0.75 text-center text-xs">
+      <div class="py-1 text-center text-xs">
         {{ t(`${echo.Id}_name`) }}
       </div>
-    </div>
+    </UCard>
   </UTooltip>
 </template>

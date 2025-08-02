@@ -1,15 +1,10 @@
 <script setup lang="ts">
-import type Character from '~/Core/Interfaces/Character'
 import * as z from 'zod'
 import { StatType } from '~/Core/Enums/StatType'
 
-const props = defineProps<{
-  character: Character
-}>()
-
 const { t } = useI18n()
 
-const CharactersStore = useCharactersStore()
+const { CurrentCharacter } = useCharacterContext()
 const ShowWeightsModal = ref<boolean>(false)
 
 const EditWeightsSchema = z.object({
@@ -22,7 +17,7 @@ const EditWeightsSchema = z.object({
 type FormSchema = z.output<typeof EditWeightsSchema>
 
 const State = reactive<Partial<FormSchema>>({
-  Weights: Object.entries(props.character.StatsWeights!)
+  Weights: Object.entries(CurrentCharacter.value.StatsWeights!)
     .filter(([key]) => key !== StatType.NONE)
     .map(([key, value]) => {
       return {
@@ -34,7 +29,9 @@ const State = reactive<Partial<FormSchema>>({
 
 function OnSubmit() {
   if (State.Weights !== undefined) {
-    CharactersStore.UpdateStatsWeights(props.character.Id, State.Weights)
+    State.Weights.forEach((w) => {
+      CurrentCharacter.value.StatsWeights![w.Type] = w.Value
+    })
   }
   ShowWeightsModal.value = false
 }
@@ -56,9 +53,9 @@ function OnClose() {
   >
     <UButton
       color="neutral"
-      variant="subtle"
-      icon="i-carbon:distribute-horizontal-center"
-      :trailing="false" size="xs"
+      variant="soft"
+      icon="solar:tuning-broken"
+      :trailing="false"
       @click.prevent="ShowWeightsModal = true"
     >
       {{ t('label_scoring_algorithm') }}

@@ -24,37 +24,47 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     return Weapons.value.find(x => x.EquipedBy === equipedId)
   }
 
-  function IsWeaponListed(weaponId: number) {
-    return Weapons.value.findIndex(x => x.Id === weaponId) !== -1
-  }
-
-  function AddWeapon(weapon: Weapon) {
-    Weapons.value.push(weapon)
-  }
-
-  function UpdateWeapon(weapon: Weapon, equipedById: number) {
-    const idx = Weapons.value.findIndex(x => x.Id === weapon.Id && x.EquipedBy === equipedById)
-
-    if (idx === -1) {
-      Weapons.value.push(weapon)
+  function SetEquipedWeapon(characterId: number, weaponId: number | undefined) {
+    if (weaponId === undefined) {
+      return
     }
-    else {
-      Weapons.value[idx] = weapon
+
+    const c = Weapons.value.find(x => x.Id === weaponId)
+    if (c === undefined) {
+      const ct = TemplateWeapons.find(x => x.Id === weaponId)
+      if (ct !== undefined) {
+        Weapons.value.push(ct)
+      }
     }
+
+    Weapons.value.find(x => x.Id === weaponId)!.EquipedBy = characterId
   }
 
   function RemoveEquipedWeapons(characterId: number) {
     Weapons.value = Weapons.value.filter(x => x.EquipedBy !== characterId)
   }
 
-  function RemoveWeaponByCharacterId(weaponId: number | undefined, characterId: number) {
-    const idx = Weapons.value.findIndex(x => x.Id === weaponId && x.EquipedBy === characterId)
-
-    if (idx === -1) {
+  function Update(weaponId: number, characterId: number, data: Partial<Weapon>) {
+    const index = Weapons.value.findIndex(c => c.Id === weaponId && c.EquipedBy === characterId)
+    if (index === -1 || Weapons.value === undefined)
       return
+
+    Weapons.value[index] = {
+      ...Weapons.value[index],
+      ...data,
+    } as Weapon
+  }
+
+  function AddOrUpdate(weapon: Weapon, characterId: number) {
+    if (!Weapons.value)
+      return
+
+    const exists = Weapons.value.some(c => c.Id === weapon.Id && c.EquipedBy === characterId)
+    if (exists) {
+      return Update(weapon.Id, characterId, weapon)
     }
 
-    Weapons.value.splice(idx, 1)
+    Weapons.value.push(weapon)
   }
 
   return {
@@ -64,10 +74,9 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     GetWeapon,
     GetDefaultWeapon,
     GetWeaponByEquipedId,
-    IsWeaponListed,
-    AddWeapon,
-    UpdateWeapon,
+    SetEquipedWeapon,
     RemoveEquipedWeapons,
-    RemoveWeaponByCharacterId,
+    Update,
+    AddOrUpdate,
   }
 })

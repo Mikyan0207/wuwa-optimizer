@@ -1,25 +1,11 @@
 import type Echo from '~/Core/Interfaces/Echo'
 import { defineStore } from 'pinia'
 import { TemplateEchoes } from '~/Core/Echoes'
-import { EchoCost } from '~/Core/Enums/EchoCost'
 
 export const useEchoesStore = defineStore('EchoesStore', () => {
   const Echoes = useLocalStorage<Echo[]>('Echoes', [])
 
-  function GetEchoes() {
-    return Echoes.value
-  }
-
-  function GetEchoesByIds(echoesIds: number[], characterId: number): Echo[] {
-    return Echoes.value
-      .filter(e => echoesIds.includes(e.Id) && e.EquipedBy === characterId)
-  }
-
-  function GetDefaultEchoes() {
-    return TemplateEchoes
-  }
-
-  function GetEchoById(echoId: number) {
+  function Get(echoId: number) {
     const e = TemplateEchoes.find(x => x.Id === echoId)
 
     if (e === undefined) {
@@ -29,65 +15,68 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     return e
   }
 
-  function GetSonataById(echoId: number) {
-    return TemplateEchoes
-      .find(x => x.Id === echoId)
-      ?.Sonata || []
+  function GetEquipedBy(echoId: number, characterId: number) {
+    return Echoes.value
+      .find(e => e.Id === echoId && e.EquipedBy === characterId)
   }
 
-  function GetCostById(echoId: number) {
-    if (echoId === -1) {
-      return EchoCost.FOUR_COST
-    }
-
-    return TemplateEchoes
-      .find(x => x.Id === echoId)
-      ?.Cost ?? EchoCost.FOUR_COST
+  function GetAllEquipedBy(characterId: number): Echo[] {
+    return Echoes.value
+      .filter(e => e.EquipedBy === characterId)
   }
 
-  function UpdateEcho(echo: Echo) {
-    const idx = Echoes.value.findIndex(x => x.Id === echo.Id)
+  function Update(echoId: number | undefined, data: Partial<Echo>) {
+    const index = Echoes.value.findIndex(e => e.Id === echoId)
 
-    if (idx === -1) {
-      return
+    if (index !== -1) {
+      Echoes.value[index] = {
+        ...Echoes.value[index],
+        ...data,
+      } as Echo
     }
-
-    Echoes.value[idx] = echo as Echo
+    else {
+      Echoes.value.push({ Id: echoId, ...data } as Echo)
+    }
   }
 
-  function AddEcho(echo: Echo) {
-    if (Echoes.value === undefined) {
-      return
+  function UpdateWithEquipedBy(echoId: number | undefined, characterId: number, data: Partial<Echo>) {
+    const index = Echoes.value.findIndex(e => e.Id === echoId && e.EquipedBy === characterId)
+
+    if (index !== -1) {
+      Echoes.value[index] = {
+        ...Echoes.value[index],
+        ...data,
+      } as Echo
     }
-
-    Echoes.value.push(echo)
-  }
-
-  function RemoveCharacter(echoId: number) {
-    const e = GetEchoById(echoId)
-
-    if (e === undefined) {
-      return
+    else {
+      Echoes.value.push({ Id: echoId, ...data } as Echo)
     }
-
-    e.EquipedBy = undefined
-    UpdateEcho(e)
   }
 
   function RemoveEcho(echoId: number, characterId: number) {
     Echoes.value = Echoes.value.filter(e => !(e.Id === echoId && e.EquipedBy === characterId))
   }
 
+  function AddOrUpdate(echo: Echo, characterId: number) {
+    if (!Echoes.value)
+      return
+
+    const exists = Echoes.value.some(c => c.Id === echo.Id && c.EquipedBy === characterId)
+    if (exists) {
+      return UpdateWithEquipedBy(echo.Id, characterId, echo)
+    }
+
+    Echoes.value.push(echo)
+  }
+
   return {
     Echoes,
-    GetEchoesByIds,
-    GetDefaultEchoes,
-    GetEchoes,
-    GetEchoById,
-    GetSonataById,
-    GetCostById,
-    AddEcho,
-    RemoveCharacter,
+    Get,
+    GetEquipedBy,
+    GetAllEquipedBy,
+    Update,
+    UpdateWithEquipedBy,
     RemoveEcho,
+    AddOrUpdate,
   }
 })

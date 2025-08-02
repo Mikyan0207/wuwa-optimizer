@@ -15,4 +15,5 @@ export default interface Weapon {
   Type: WeaponType
   MainStatistic: Statistic
   SecondaryStatistic: Statistic
+  ExtraStatistics?: Statistic[]
 }

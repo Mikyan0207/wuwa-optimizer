@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     '~/components/Echoes/Forms',
     '~/components/Filters',
     '~/components/Importer',
+    '~/components/Importer/Cards',
     '~/components/Interface',
     '~/components/Navigation',
     '~/components/Rotations',
@@ -36,7 +37,7 @@ export default defineNuxtConfig({
   ],
 
   devtools: {
-    enabled: true,
+    enabled: false,
   },
   app: {
     head: {
@@ -71,9 +72,6 @@ export default defineNuxtConfig({
   },
 
   experimental: {
-    // when using generate, payload js assets included in sw precache manifest
-    // but missing on offline, disabling extraction it until fixed
-    payloadExtraction: false,
     renderJsonPayloads: true,
     typedPages: true,
   },
@@ -109,6 +107,16 @@ export default defineNuxtConfig({
       weights: [400],
       styles: ['normal', 'italic'],
     },
+    families: [
+      {
+        name: 'Flow Circular',
+        provider: 'google',
+      },
+      {
+        name: 'Quicksand',
+        provider: 'google',
+      },
+    ],
   },
 
   i18n: {

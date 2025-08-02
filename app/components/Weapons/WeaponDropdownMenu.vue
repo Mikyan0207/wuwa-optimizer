@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const ActiveStore = useActiveCharacterStore()
+const { CurrentWeapon } = useCharacterContext()
 
 const IsDropdownOpen = ref<boolean>(false)
 const SelectedIndex = ref<number | undefined>(undefined)
@@ -8,21 +8,29 @@ const IsOpen = ref<boolean>(false)
 const MenuItems = [
   {
     label: 'Edit',
-    icon: 'mdi:pencil-outline',
+    icon: 'solar:pen-new-square-broken',
     onSelect() {
       SelectedIndex.value = 0
       IsOpen.value = true
     },
   },
   {
+    label: 'Create',
+    icon: 'solar:add-square-broken',
+    onSelect() {
+      SelectedIndex.value = 1
+      IsOpen.value = true
+    },
+  },
+  {
     label: 'Remove',
-    icon: 'lucide:x',
+    icon: 'solar:notification-remove-broken',
     color: 'error' as const,
     onSelect() {
       SelectedIndex.value = 3
       IsOpen.value = true
     },
-    disabled: ActiveStore.ActiveWeapon !== undefined,
+    disabled: CurrentWeapon.value === undefined,
   },
 ]
 
@@ -46,17 +54,18 @@ function OnClose() {
       }"
       @update:open="(v: boolean) => IsDropdownOpen = v"
     >
-      <UButton icon="i-lucide-menu" color="neutral" variant="ghost" size="sm" />
+      <UButton icon="solar:menu-dots-circle-broken" color="primary" variant="ghost" />
     </UDropdownMenu>
   </div>
-  <UModal
+  <USlideover
     v-model:open="IsOpen"
     :overlay="true"
     variant="subtle"
     color="neutral"
-    :ui="{
-      content: 'xl:min-w-4xl w-5xl min-w-5xl xl:w-4xl bg-transparent border-0 backdrop-blur-none shadow-none! ring-0! ',
-    }"
+    side="right"
+    :transition="true"
+    class="w-full md:w-1/3 lg:w-1/4 max-w-full"
+    close-icon="i-lucide-arrow-right"
     @close="SelectedIndex = undefined"
   >
     <template #content>
@@ -64,6 +73,10 @@ function OnClose() {
         v-if="SelectedIndex === 0"
         @close="OnClose()"
       />
+      <WeaponCreationForm
+        v-if="SelectedIndex === 1"
+        @close="OnClose()"
+      />
     </template>
-  </UModal>
+  </USlideover>
 </template>

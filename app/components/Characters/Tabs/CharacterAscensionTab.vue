@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const { t } = useI18n()
-const { ActiveCharacter } = useActiveCharacterStore()
+const { CurrentCharacter } = useCharacterContext()
 </script>
 
 <template>
-  <div v-if="ActiveCharacter" class="grid grid-cols-3 gap-2">
+  <div v-if="CurrentCharacter" class="grid grid-cols-3 gap-2">
     <UCard
       class="col-span-3"
       :ui="{
@@ -12,7 +12,7 @@ const { ActiveCharacter } = useActiveCharacterStore()
       }"
     >
       <template #header>
-        {{ t(`${ActiveCharacter.Id}_name`) }}
+        {{ t(`${CurrentCharacter.Id}_name`) }}
       </template>
     </UCard>
     <UCard

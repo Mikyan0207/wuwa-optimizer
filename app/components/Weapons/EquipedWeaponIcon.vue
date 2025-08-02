@@ -12,7 +12,7 @@ const props = defineProps<{
 const { t } = useI18n()
 const CharactersStore = useCharactersStore()
 
-const EquipedBy = ref(CharactersStore.GetCharacter(props.characterId))
+const EquipedBy = ref(CharactersStore.Get(props.characterId))
 const BackgroundColor = computed(() => GetBackgroundColor(props.weapon.Rarity))
 const SecondaryColor = computed(() => GetSecondaryColor(props.weapon.Rarity))
 const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))

@@ -1,8 +1,8 @@
-import type { StatType } from '~/Core/Enums/StatType'
 import type Character from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import type IStatistic from '~/Core/Interfaces/Statistic'
 import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
+import { StatType } from '~/Core/Enums/StatType'
 import { SUB_STAT_VALUES } from '~/Core/Statistics'
 
 export interface IEchoRatingResult {
@@ -137,7 +137,7 @@ export const TOTAL_SCORE_GRADES = [
 export function useScoreCalculator() {
   const EchoesStore = useEchoesStore()
 
-  function GetCharacterScore(character: Character | undefined, echoesIds: number[]): ICharacterRatingResult {
+  function GetCharacterScore(character: Character | undefined): ICharacterRatingResult {
     if (character === undefined) {
       return {
         Score: 0,
@@ -146,11 +146,9 @@ export function useScoreCalculator() {
       }
     }
 
-    const echoes = JSON.parse(JSON.stringify(EchoesStore.GetEchoesByIds(echoesIds, character.Id)))
+    const echoes = JSON.parse(JSON.stringify(EchoesStore.GetAllEquipedBy(character.Id)))
     const echoesScores = CalculateEchoesScore(echoes, character.StatsWeights!)
-    let totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0)
-
-    totalScore += CalculateMainStatsScore(echoes)
+    const totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0)
 
     return {
       Score: totalScore,
@@ -163,33 +161,28 @@ export function useScoreCalculator() {
     return echoes.map(echo => CalculateEchoScore(echo, weights))
   }
 
-  function CalculateMainStatsScore(echoes: Echo[]) {
-    return echoes.reduce((total, echo) => {
-      return total + (echo.MainStatistic?.Value || 0)
-    }, 0)
-  }
-
-  function GetCharacterNote(score: number) {
-    if (score >= 630)
+  function GetCharacterNote(score: number): ScoreGrade {
+    if (score >= 475)
       return ScoreGrade.PERFECT
-    if (score >= 600)
+    if (score >= 460)
       return ScoreGrade.SSS_PLUS
-    if (score >= 570)
+    if (score >= 435)
       return ScoreGrade.SSS
-    if (score >= 540)
+    if (score >= 410)
       return ScoreGrade.SS_PLUS
-    if (score >= 510)
+    if (score >= 385)
       return ScoreGrade.SS
-    if (score >= 480)
+    if (score >= 360)
       return ScoreGrade.S_PLUS
-    if (score >= 450)
+    if (score >= 335)
       return ScoreGrade.S
-    if (score >= 400)
-      return ScoreGrade.A
-    if (score >= 350)
-      return ScoreGrade.B
     if (score >= 300)
+      return ScoreGrade.A
+    if (score >= 260)
+      return ScoreGrade.B
+    if (score >= 220)
       return ScoreGrade.C
+
     return ScoreGrade.F
   }
 
@@ -220,20 +213,33 @@ export function useScoreCalculator() {
   function CalculateEchoScore(echo: Echo, weights: Record<StatType, number>): IEchoRatingResult {
     const isValidMainStat = echo.MainStatistic !== undefined && IsValidMainStat(echo.MainStatistic, weights)
 
-    const { totalScore, totalWeight } = echo.Statistics.reduce(
+    let { totalScore, totalWeight } = echo.Statistics.reduce(
       (acc, stat) => {
         const value = stat.Value
         const max = SUB_STAT_VALUES[stat.Type].at(-1) || 1
         const weight = weights[stat.Type] || 0
 
-        acc.totalScore += (value / max) * weight
+        // We want to weight down HP flat even if we have a weight of 1.0
+        if (stat.Type === StatType.HP || stat.Type === StatType.DEF) {
+          acc.totalScore += ((value / max) * weight) / 2
+        }
+        else {
+          acc.totalScore += (value / max) * weight
+        }
+
         acc.totalWeight += weight
         return acc
       },
       { totalScore: 0, totalWeight: 0 },
     )
 
-    const finalScore = totalWeight > 0 ? Math.round((totalScore / totalWeight) * 100) : 0
+    // If we're missing some substats, divide the score by the number of missing stats.
+    // We don't want an SS+ on a 3 stats Echo, but we still want to see the potential...
+    if (echo.Statistics.length < 5) {
+      totalScore /= 5 - echo.Statistics.length + 1
+    }
+
+    const finalScore = totalWeight > 0 ? (totalScore / totalWeight) * 100 : 0
 
     return {
       Score: finalScore,

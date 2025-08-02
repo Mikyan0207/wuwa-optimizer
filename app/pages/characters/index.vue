@@ -2,6 +2,7 @@
 import { TemplateCharacters } from '~/Core/Characters'
 import { CharacterType } from '~/Core/Enums/CharacterType'
 import { Rarity } from '~/Core/Enums/Rarity'
+import { ReleaseState } from '~/Core/Enums/ReleaseState'
 import { WeaponType } from '~/Core/Enums/WeaponType'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
@@ -10,7 +11,6 @@ definePageMeta({
 })
 
 const { t } = useI18n()
-const ActiveCharacterStore = useActiveCharacterStore()
 
 const CharacterSortOptions: string[] = [
   'Default',
@@ -49,7 +49,6 @@ function FilterCharacters() {
 }
 
 function OnCharacterClicked(characterId: number | undefined) {
-  ActiveCharacterStore.Set(characterId)
   navigateTo(`/characters/${characterId}`)
 }
 </script>

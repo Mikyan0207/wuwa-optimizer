@@ -1,72 +1,28 @@
-import type { StatType } from '~/Core/Enums/StatType'
 import type Character from '~/Core/Interfaces/Character'
 import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { TemplateCharacters } from '~/Core/Characters'
+import { CharacterMigrationService } from '~/Core/Services/CharacterMigrationService'
 
 export const useCharactersStore = defineStore('CharactersStore', () => {
   const Characters = useLocalStorage<Character[]>('Characters', [])
-  const WeaponsStore = useWeaponsStore()
+  const MigrationService = new CharacterMigrationService()
 
-  function AddCharacter(character: Character) {
-    const idx = Characters.value.findIndex(x => x.Id === character.Id)
-
-    if (idx === -1) {
-      Characters.value.push(character)
+  async function Migration() {
+    if (MigrationService.NeedsMigration()) {
+      try {
+        Characters.value = await MigrationService.MigrateCharacters()
+      }
+      catch (error) {
+        console.error('Migration failed:', error)
+      }
+      finally {
+        MigrationService.CleanUp()
+      }
     }
   }
 
-  function UpdateCharacter(character: Character) {
-    const idx = Characters.value.findIndex(x => x.Id === character.Id)
-
-    if (idx === -1) {
-      return
-    }
-
-    Characters.value[idx] = character
-  }
-
-  function RemoveCharacter(id: number) {
-    const idx = Characters.value.findIndex(x => x.Id === id)
-
-    if (idx === -1) {
-      return
-    }
-
-    Characters.value.splice(idx, 1)
-  }
-
-  function RemoveEcho(characterId: number, echoId: number) {
-    const c = Characters.value.find(x => x.Id === characterId)
-
-    if (c === undefined) {
-      return
-    }
-
-    const echoIndex = c.EquipedEchoes.findIndex(x => x === echoId)
-    if (echoIndex !== -1) {
-      c.EquipedEchoes.splice(echoIndex, 1)
-    }
-
-    UpdateCharacter(c)
-  }
-
-  function RemoveWeapon(characterId: number, weaponId: number | undefined) {
-    const c = Characters.value.find(x => x.Id === characterId && x.EquipedWeapon === weaponId)
-
-    if (c === undefined) {
-      return
-    }
-
-    c.EquipedWeapon = undefined
-    UpdateCharacter(c)
-  }
-
-  function GetCharacters() {
-    return Characters.value
-  }
-
-  function GetCharacter(characterId: number | undefined): Character | undefined {
+  function Get(characterId: number | undefined): Character {
     const c = Characters.value.find(x => x.Id === characterId)
     if (c !== undefined) {
       return c
@@ -77,64 +33,37 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
       Characters.value.push(ct)
     }
 
-    return Characters.value.find(x => x.Id === characterId)
+    return Characters.value.find(x => x.Id === characterId)!
   }
 
-  function GetWeapon(characterId: number | undefined) {
-    if (characterId === undefined) {
-      return undefined
-    }
-
-    return WeaponsStore.GetWeaponByEquipedId(characterId)
-  }
-
-  function UpdateEcho(characterId: number, echoId: number, slot: number) {
-    const c = Characters.value.find(x => x.Id === characterId)
-
-    if (c === undefined) {
+  function Update(characterId: number, data: Partial<Character>) {
+    const index = Characters.value.findIndex(c => c.Id === characterId)
+    if (index === -1 || Characters.value === undefined)
       return
-    }
 
-    c.EquipedEchoes[slot] = echoId
-    UpdateCharacter(c)
+    Characters.value[index] = {
+      ...Characters.value[index],
+      ...data,
+    } as Character
   }
 
-  function UpdateWeapon(characterId: number, weaponId: number) {
-    const c = Characters.value.find(x => x.Id === characterId)
-
-    if (c === undefined) {
+  function AddOrUpdate(character: Character) {
+    if (!Characters.value)
       return
+
+    const exists = Characters.value.some(c => c.Id === character.Id)
+    if (exists) {
+      return Update(character.Id, character)
     }
 
-    c.EquipedWeapon = weaponId
-    UpdateCharacter(c)
-  }
-
-  function UpdateStatsWeights(characterId: number, weights: { Type: StatType, Value: number }[]) {
-    const c = Characters.value.find(x => x.Id === characterId)
-
-    if (c === undefined || c.StatsWeights === undefined) {
-      return
-    }
-
-    weights.forEach((w) => {
-      c.StatsWeights![w.Type] = w.Value
-    })
-
-    UpdateCharacter(c)
+    Characters.value.push(character)
   }
 
   return {
     Characters,
-    AddCharacter,
-    RemoveCharacter,
-    RemoveEcho,
-    RemoveWeapon,
-    GetCharacters,
-    GetCharacter,
-    GetWeapon,
-    UpdateEcho,
-    UpdateWeapon,
-    UpdateStatsWeights,
+    Get,
+    Update,
+    AddOrUpdate,
+    Migration,
   }
 })

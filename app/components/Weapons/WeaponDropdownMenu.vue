@@ -4,6 +4,7 @@ const { CurrentWeapon } = useCharacterContext()
 const IsDropdownOpen = ref<boolean>(false)
 const SelectedIndex = ref<number | undefined>(undefined)
 const IsOpen = ref<boolean>(false)
+const IsHovered = ref<boolean>(false)
 
 const MenuItems = [
   {
@@ -37,11 +38,22 @@ const MenuItems = [
 function OnClose() {
   IsOpen.value = false
 }
+
+watch(IsDropdownOpen, (newValue) => {
+  if (newValue) {
+    IsHovered.value = true
+  }
+})
 </script>
 
 <template>
   <div
-    class="absolute right-1 top-1 z-10 transition-all duration-75"
+    class="absolute right-1 top-1 z-10 transition-all duration-75 opacity-0 group-hover:opacity-100"
+    :class="{
+      'opacity-100': IsDropdownOpen || IsHovered,
+    }"
+    @mouseenter="IsHovered = true"
+    @mouseleave="IsHovered = false"
   >
     <UDropdownMenu
       :items="MenuItems"

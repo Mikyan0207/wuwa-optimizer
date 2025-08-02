@@ -3,6 +3,7 @@ export default {
   'characters_navigation_title': 'Personnages',
   'weapons_navigation_title': 'Armes',
   'imports_navigation_title': 'Importer',
+  'rotations_navigation_title': 'Rotations',
 
   'label_level': 'Nv.',
   'label_character_score': 'Score du personnage',

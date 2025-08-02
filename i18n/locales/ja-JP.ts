@@ -3,6 +3,7 @@ export default {
   'characters_navigation_title': 'キャラクター',
   'weapons_navigation_title': 'ウェポン',
   'imports_navigation_title': 'インポート',
+  'rotations_navigation_title': 'ローテーションズ',
 
   'label_level': 'レベル',
   'label_character_score': 'キャラクタースコアー',

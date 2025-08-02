@@ -65,14 +65,14 @@ function IsStatWanted(stat: IStatistic) {
           :key="`${st.Type}-${st.Value}`"
           v-motion-slide-left
           :delay="500 + (idx * 50)"
-          class="w-full flex items-center justify-between px-2 py-1"
-          :class="{ 'bg-neutral-800/75 rounded': CurrentCharacter.StatsWeights![st.Type] !== undefined && CurrentCharacter.StatsWeights![st.Type] || 0 > 0 }"
+          class="w-full flex items-center justify-between"
         >
           <StatLine
             :stat="st"
             :show-line="true"
             :is-wanted-color="IsStatWanted(st)"
-            class="flex-1"
+            :show-wanted-highlight="true"
+            class="flex-1 px-2 py-1"
           />
         </div>
       </div>

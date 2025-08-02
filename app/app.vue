@@ -4,6 +4,12 @@ import { AppName } from './Core'
 useHead({
   title: AppName,
 })
+
+const CharactersStore = useCharactersStore()
+
+onMounted(async () => {
+  await CharactersStore.Migration()
+})
 </script>
 
 <template>

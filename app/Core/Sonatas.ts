@@ -245,6 +245,22 @@ export const Gusts_of_Welkin: Sonata = {
   ],
 }
 
+export const Windward_Pilgrimage: Sonata = {
+  Name: 'Windward Pilgrimage',
+  Icon: 'Icon_Windward_Pilgrimage.webp',
+  Effect1: 'Aero DMG +10%.',
+  Effect2: 'Hitting a target with Aero Erosion increases Crit. Rate by 10% and grants 30% Aero DMG Bonus, lasting for 10s.',
+  IsSelected: false,
+  Effect1Active: false,
+  Effect2Active: false,
+  ExtraStats: [
+    {
+      Type: StatType.AERO_DMG_BONUS,
+      Value: 10.0,
+    },
+  ],
+}
+
 export const Flaming_Clawprint: Sonata = {
   Name: 'Flaming Clawprint',
   Icon: 'Icon_Flaming_Clawprint.webp',
@@ -290,6 +306,7 @@ export const Sonatas: Sonata[] = [
   Havoc_Eclipse,
   Flaming_Clawprint,
   Dream_of_the_Lost,
+  Windward_Pilgrimage,
 ]
 
 export const Sonatas_1_0: Sonata[] = [
@@ -309,6 +326,7 @@ export const Sonatas_2_0: Sonata[] = [
   Tidebreaking_Courage,
   Eternal_Radiance,
   Gusts_of_Welkin,
+  Windward_Pilgrimage,
   Flaming_Clawprint,
   Dream_of_the_Lost,
 ]

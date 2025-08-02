@@ -1,7 +1,7 @@
 import type Echo from './Interfaces/Echo'
 import { EchoCost } from './Enums/EchoCost'
 import { Rarity } from './Enums/Rarity'
-import { Celestial_Light, Dream_of_the_Lost, Empyrean_Anthem, Eternal_Radiance, Flaming_Clawprint, Freezing_Frost, Frosty_Resolve, Gusts_of_Welkin, Havoc_Eclipse, Lingering_Tunes, Midnight_Veil, Molten_Rift, Moonlit_Clouds, Rejuvenating_Glow, Sierra_Gale, Tidebreaking_Courage, Void_Thunder } from './Sonatas'
+import { Celestial_Light, Dream_of_the_Lost, Empyrean_Anthem, Eternal_Radiance, Flaming_Clawprint, Freezing_Frost, Frosty_Resolve, Gusts_of_Welkin, Havoc_Eclipse, Lingering_Tunes, Midnight_Veil, Molten_Rift, Moonlit_Clouds, Rejuvenating_Glow, Sierra_Gale, Tidebreaking_Courage, Void_Thunder, Windward_Pilgrimage } from './Sonatas'
 
 export const Empty_Echo: Echo = {
   Id: -1,
@@ -274,6 +274,7 @@ export const Echoes: Echo[] = [
     Level: 0,
     Sonata: [
       Gusts_of_Welkin,
+      Windward_Pilgrimage,
     ],
     Statistics: [],
   },
@@ -285,6 +286,7 @@ export const Echoes: Echo[] = [
     Level: 0,
     Sonata: [
       Gusts_of_Welkin,
+      Windward_Pilgrimage,
     ],
     IsNightmare: true,
     Statistics: [],
@@ -570,6 +572,7 @@ export const Echoes: Echo[] = [
     Sonata: [
       Eternal_Radiance,
       Gusts_of_Welkin,
+      Windward_Pilgrimage,
     ],
     Statistics: [],
   },
@@ -580,6 +583,7 @@ export const Echoes: Echo[] = [
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
+      Windward_Pilgrimage,
       Flaming_Clawprint,
     ],
     Statistics: [],
@@ -591,6 +595,7 @@ export const Echoes: Echo[] = [
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
+      Windward_Pilgrimage,
       Flaming_Clawprint,
     ],
     Statistics: [],
@@ -1040,6 +1045,7 @@ export const Echoes: Echo[] = [
     Level: 0,
     Sonata: [
       Gusts_of_Welkin,
+      Windward_Pilgrimage,
     ],
     Statistics: [],
   },
@@ -1077,6 +1083,7 @@ export const Echoes: Echo[] = [
     Level: 0,
     Sonata: [
       Gusts_of_Welkin,
+      Windward_Pilgrimage,
     ],
     Statistics: [],
   },
@@ -1087,6 +1094,7 @@ export const Echoes: Echo[] = [
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
+      Windward_Pilgrimage,
       Flaming_Clawprint,
     ],
     Statistics: [],
@@ -1098,6 +1106,7 @@ export const Echoes: Echo[] = [
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
+      Windward_Pilgrimage,
       Flaming_Clawprint,
     ],
     Statistics: [],
@@ -1109,6 +1118,7 @@ export const Echoes: Echo[] = [
     Cost: EchoCost.ONE_COST,
     Level: 0,
     Sonata: [
+      Windward_Pilgrimage,
       Flaming_Clawprint,
     ],
     Statistics: [],
@@ -1121,6 +1131,7 @@ export const Echoes: Echo[] = [
     Level: 0,
     Sonata: [
       Gusts_of_Welkin,
+      Windward_Pilgrimage,
       Flaming_Clawprint,
     ],
     Statistics: [],

@@ -153,10 +153,10 @@ function GetRarityAsNumber(rarity: Rarity) {
               :class="{ 'bg-primary-500/20 border-primary-500/50 ring-2 ring-primary-500/50': SelectedWeaponId === weapon.Id }"
               @click="SelectWeapon(weapon.Id)"
             >
-              <div class="flex">
+              <div class="flex h-full">
                 <!-- Icon -->
-                <div class="relative h-26 min-h-26 w-26 flex items-center justify-center overflow-clip">
-                  <div class="absolute w-full h-full bottom-0">
+                <div class="relative flex items-center justify-center overflow-clip">
+                  <div class="w-32 h-32">
                     <NuxtImg
                       width="160" height="160" :src="`/images/weapons/${weapon.Icon}`" style="color: transparent;"
                       class="w-full h-full object-cover"

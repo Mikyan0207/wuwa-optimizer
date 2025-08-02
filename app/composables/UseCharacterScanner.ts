@@ -104,8 +104,15 @@ export function useCharacterScanner() {
       const echoes = await withTimeout(GetEchoesAsync(character.Id), 3000000)
 
       character.EquipedWeapon = weapon?.Id
+
+      // Initialize EquipedEchoes array with 5 slots
+      character.EquipedEchoes = Array.from({ length: 5 }, () => -1)
+
+      // Place echoes in their correct slots
       echoes.forEach((e) => {
-        character.EquipedEchoes.push(e.Id)
+        if (e.EquipedSlot !== undefined && e.EquipedSlot >= 0 && e.EquipedSlot < 5) {
+          character.EquipedEchoes[e.EquipedSlot] = e.Id
+        }
       })
 
       if (onProgress) {
@@ -140,7 +147,10 @@ export function useCharacterScanner() {
     ])
 
     const weapon = TemplateWeapons.find((x) => {
-      const distance = LevenshteinDistance(x.Name.toLowerCase(), GetFilteredText(weaponName, /[a-z ]+/i).toLowerCase())
+      const distance = LevenshteinDistance(
+        x.Name.toLowerCase(),
+        GetFilteredText(weaponName, /[a-z' ]+/i).toLowerCase(),
+      )
 
       return distance <= 2
     })
@@ -211,6 +221,13 @@ export function useCharacterScanner() {
       }
     }
 
+    // TODO: Remove this once the scanner is fixed.
+    // Sometimes the scanner returns 19 as the level, which is incorrect because the character is level 90.
+    // But if the character is actually level 19, this will cause the character to be set to level 90.
+    if (bestLevel === 19) {
+      bestLevel = 90
+    }
+
     return bestLevel
   }
 
@@ -219,13 +236,16 @@ export function useCharacterScanner() {
 
     for (const echo of echoes) {
       for (const sonata of echo.Sonata) {
-        const key = sonata.Name
-        const existing = sonataCounts.get(key)
-        if (existing) {
-          existing.count++
-        }
-        else {
-          sonataCounts.set(key, { sonata, count: 1 })
+        // Only count selected sonatas
+        if (sonata.IsSelected === true) {
+          const key = sonata.Name
+          const existing = sonataCounts.get(key)
+          if (existing) {
+            existing.count++
+          }
+          else {
+            sonataCounts.set(key, { sonata, count: 1 })
+          }
         }
       }
     }
@@ -305,14 +325,25 @@ export function useCharacterScanner() {
 
     // Apply fallback sonata if needed
     const mostCommonSonata = FindMostCommonSonata(echoes)
-    if (mostCommonSonata) {
+
+    // If no sonata is selected, use the first available sonata from any echo
+    let fallbackSonata = mostCommonSonata
+    if (!fallbackSonata) {
       for (const echo of echoes) {
-        // Check if this echo has no selected sonata
+        if (echo.Sonata.length > 0) {
+          fallbackSonata = echo.Sonata[0]
+          break
+        }
+      }
+    }
+
+    if (fallbackSonata) {
+      for (const echo of echoes) {
         const hasSelectedSonata = echo.Sonata.some(s => s.IsSelected)
         if (!hasSelectedSonata) {
           echo.Sonata = echo.Sonata.map(s => ({
             ...s,
-            IsSelected: s.Name === mostCommonSonata.Name,
+            IsSelected: s.Name === fallbackSonata!.Name,
           }))
         }
       }

@@ -64,7 +64,7 @@ function OnClose() {
     color="neutral"
     side="right"
     :transition="true"
-    class="w-full md:w-1/3 lg:w-1/5 max-w-full"
+    class="w-full md:w-1/3 lg:w-1/4 max-w-full"
     close-icon="i-lucide-arrow-right"
     @close="SelectedIndex = undefined"
   >

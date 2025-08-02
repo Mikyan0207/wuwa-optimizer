@@ -3,7 +3,7 @@ import type Statistic from '~/Core/Interfaces/Statistic'
 import { StatType } from '~/Core/Enums/StatType'
 import { STAT_ICONS } from '~/Core/Statistics'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   stat: Statistic
   weight?: number
   isMainStat?: boolean
@@ -11,9 +11,16 @@ const props = defineProps<{
   showLine?: boolean
   showRollValue?: boolean
   isWantedColor?: string
-}>()
+  showWantedHighlight?: boolean
+}>(), {
+  isMainStat: false,
+  showLine: false,
+  showRollValue: false,
+  showWantedHighlight: false,
+})
 
 const { t } = useI18n()
+const { CurrentCharacter } = useCharacterContext()
 
 const IsPercentageStat = computed(() => {
   return !(props.stat.Type === StatType.ATTACK || props.stat.Type === StatType.HP || props.stat.Type === StatType.DEF)
@@ -44,29 +51,36 @@ const GetStatColorByRollValue = computed(() => {
     return 'text-gray-400'
   }
 
-  if (props.weight >= 1.0) {
-    return 'text-amber-500'
+  const weightColorMap: Record<number, string> = {
+    1.0: 'text-amber-500',
+    0.9: 'text-orange-500',
+    0.8: 'text-red-500',
+    0.7: 'text-purple-500',
+    0.6: 'text-indigo-500',
+    0.5: 'text-blue-500',
+    0.4: 'text-cyan-500',
+    0.3: 'text-teal-500',
+    0.2: 'text-green-500',
+    0.1: 'text-lime-500',
+    0.0: 'text-gray-400',
   }
-  else if (props.weight >= 0.75) {
-    return 'text-purple-500'
+
+  const weight = Math.floor(props.weight * 10) / 10
+
+  return weightColorMap[weight] || weightColorMap[0.0]
+})
+
+const IsWantedStat = computed(() => {
+  if (!props.showWantedHighlight) {
+    return false
   }
-  else if (props.weight >= 0.5) {
-    return 'text-blue-500'
-  }
-  else if (props.weight >= 0.25) {
-    return 'text-green-500'
-  }
-  else if (props.weight === 0.1) {
-    return 'text-gold-500'
-  }
-  else {
-    return 'text-gray-400'
-  }
+  const statsWeights = CurrentCharacter.value?.StatsWeights
+  return statsWeights?.[props.stat.Type] !== undefined && (statsWeights[props.stat.Type] ?? 0) > 0.5
 })
 </script>
 
 <template>
-  <div class="relative flex items-center min-w-0 w-full">
+  <div class="relative flex items-center min-w-0 w-full" :class="{ 'bg-neutral-800/75 rounded': IsWantedStat }">
     <div class="flex items-center gap-1 text-gray-300 flex-shrink-0 min-w-0">
       <NuxtImg :src="`/images/icons/${STAT_ICONS[stat.Type]}`" :class="GetIconSize" />
       <p class="text-sm truncate" :class="GetMargin" :title="GetStatName">

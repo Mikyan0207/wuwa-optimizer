@@ -17,10 +17,6 @@ const { CurrentCharacter } = useCharacterContext()
 
 const IsValidEcho = computed(() => props.echo.Id !== -1)
 const GetSonata = computed(() => props.echo.Sonata.find(x => x.IsSelected === true))
-
-function IsWantedStat(stat: Statistic) {
-  return CurrentCharacter.value?.StatsWeights![stat.Type] !== undefined && CurrentCharacter.value?.StatsWeights![stat.Type]
-}
 </script>
 
 <template>
@@ -98,8 +94,8 @@ function IsWantedStat(stat: Statistic) {
           :weight="CurrentCharacter?.StatsWeights![echo.Statistics[idx].Type] || undefined"
           :show-line="true"
           :show-roll-value="true"
+          :show-wanted-highlight="true"
           class="px-2 py-1"
-          :class="{ 'bg-neutral-800/75 rounded': IsWantedStat(echo.Statistics[idx]) }"
         />
         <div v-else class="h-8 flex items-center justify-center">
           <USkeleton class="h-1 w-full rounded" />

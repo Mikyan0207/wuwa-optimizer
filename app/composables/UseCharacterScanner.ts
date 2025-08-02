@@ -221,6 +221,13 @@ export function useCharacterScanner() {
       }
     }
 
+    // TODO: Remove this once the scanner is fixed.
+    // Sometimes the scanner returns 19 as the level, which is incorrect because the character is level 90.
+    // But if the character is actually level 19, this will cause the character to be set to level 90.
+    if (bestLevel === 19) {
+      bestLevel = 90
+    }
+
     return bestLevel
   }
 

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type Echo from '~/Core/Interfaces/Echo'
-import type Statistic from '~/Core/Interfaces/Statistic'
 import { GetEchoCostText, GetEchoIcon, GetEchoRarityText, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
 const props = withDefaults(defineProps<{

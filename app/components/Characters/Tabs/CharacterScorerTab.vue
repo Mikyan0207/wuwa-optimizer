@@ -1,14 +1,43 @@
 <script setup lang="ts">
+import type Echo from '~/Core/Interfaces/Echo'
 import { domToBlob } from 'modern-screenshot'
 import VueDraggable from 'vuedraggable'
 import { useCharacterContext } from '~/composables/UseCharacterContext'
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
-const { CurrentCharacter, CurrentEchoes, Score } = useCharacterContext()
+const { CurrentCharacter, CurrentWeapon, CurrentEchoes, Score } = useCharacterContext()
+const BuildsStore = useBuildsStore()
+const EchoesStore = useEchoesStore()
+const Toast = useToast()
 
 if (CurrentCharacter.value === undefined || CurrentCharacter.value === null) {
   await navigateTo('/characters')
+}
+
+// Force async to trigger Suspense
+await new Promise(resolve => setTimeout(resolve, 0))
+
+function SaveCurrentBuild() {
+  if (!CurrentCharacter.value)
+    return
+
+  const defaultBuild = BuildsStore.GetDefaultBuild(CurrentCharacter.value.Id)
+  const equippedEchoes = defaultBuild?.EquipedEchoes || []
+
+  const build = BuildsStore.SaveCurrentBuild(
+    CurrentCharacter.value.Id,
+    CurrentWeapon.value?.Id,
+    equippedEchoes,
+    Score.value?.Score,
+    Score.value?.Note,
+  )
+
+  Toast.add({
+    title: 'Build saved!',
+    description: `"${build.Name}" has been saved successfully.`,
+    color: 'success',
+  })
 }
 
 const ShowScreenShotBackground = ref<boolean>(false)
@@ -17,16 +46,48 @@ const DraggableEchoes = computed({
   get: () => CurrentEchoes.value || [],
   set: (newOrder: any[]) => {
     if (CurrentCharacter.value) {
-      const EchoesStore = useEchoesStore()
+      const defaultBuild = BuildsStore.GetDefaultBuild(CurrentCharacter.value.Id)
 
-      newOrder.forEach((echo, index) => {
-        if (echo.Id !== -1) {
-          EchoesStore.Update(echo.Id, {
-            ...echo,
-            EquipedSlot: index,
+      if (defaultBuild) {
+        const updatedEquipedEchoes = [...(defaultBuild.EquipedEchoes || [])]
+        const updatedEchoesData = [...(defaultBuild.EchoesData || [])]
+
+        newOrder.forEach((echo, index) => {
+          if (echo.Id !== -1) {
+            EchoesStore.Update(echo.Id, {
+              ...echo,
+              EquipedSlot: index,
+            })
+
+            updatedEquipedEchoes[index] = echo.Id
+
+            // Mettre à jour EchoesData avec le nouveau slot
+            const echoDataIndex = updatedEchoesData.findIndex(e => e.Id === echo.Id)
+            if (echoDataIndex >= 0) {
+              updatedEchoesData[echoDataIndex] = {
+                ...updatedEchoesData[echoDataIndex],
+                EquipedSlot: index,
+              } as Echo & { BuildId: number }
+            }
+          }
+        })
+
+        BuildsStore.UpdateBuild(defaultBuild.Id, {
+          EquipedEchoes: updatedEquipedEchoes,
+          EchoesData: updatedEchoesData,
+        })
+
+        // Recalculer et sauvegarder le score
+        const ScoreCalculator = useScoreCalculator()
+        const updatedScore = ScoreCalculator.GetCharacterScore(CurrentCharacter.value, defaultBuild)
+        if (updatedScore) {
+          BuildsStore.UpdateBuild(defaultBuild.Id, {
+            Score: updatedScore.Score,
+            Note: updatedScore.Note,
+            EchoesScores: updatedScore.EchoesScores,
           })
         }
-      })
+      }
     }
   },
 })
@@ -142,10 +203,9 @@ async function TakeScreenShotAsync() {
         </div>
       </div>
 
-      <!-- Menu latéral compact pour screenshot -->
       <div class="fixed right-4 top-1/3 z-50">
         <div class="bg-black/90 backdrop-blur-md rounded-xl border border-white/20 shadow-xl">
-          <div class="p-1.5">
+          <div class="p-1.5 flex flex-col space-y-1">
             <!-- Screenshot Button -->
             <UButton
               color="neutral"
@@ -156,6 +216,17 @@ async function TakeScreenShotAsync() {
               size="sm"
               class="w-9 h-9 justify-center text-white hover:text-white hover:bg-white/10 rounded-lg"
               @click.prevent="TakeScreenShotAsync"
+            />
+            <USeparator />
+            <!-- Save Build Button -->
+            <UButton
+              color="neutral"
+              variant="ghost"
+              icon="solar:diskette-broken"
+              :trailing="false"
+              size="sm"
+              class="w-9 h-9 justify-center text-white hover:text-white hover:bg-white/10 rounded-lg"
+              @click.prevent="SaveCurrentBuild"
             />
           </div>
         </div>

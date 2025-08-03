@@ -1,3 +1,4 @@
+import type Build from '~/Core/Interfaces/Build'
 import type Character from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import type IStatistic from '~/Core/Interfaces/Statistic'
@@ -136,8 +137,10 @@ export const TOTAL_SCORE_GRADES = [
 
 export function useScoreCalculator() {
   const EchoesStore = useEchoesStore()
+  const BuildsStore = useBuildsStore()
+  const CharactersStore = useCharactersStore()
 
-  function GetCharacterScore(character: Character | undefined): ICharacterRatingResult {
+  function GetCharacterScore(character: Character | undefined, buildOrBuildId?: Build | string): ICharacterRatingResult {
     if (character === undefined) {
       return {
         Score: 0,
@@ -146,7 +149,23 @@ export function useScoreCalculator() {
       }
     }
 
-    const echoes = JSON.parse(JSON.stringify(EchoesStore.GetAllEquipedBy(character.Id)))
+    let echoes: Echo[] = []
+
+    if (buildOrBuildId) {
+      if (typeof buildOrBuildId === 'string') {
+        const build = BuildsStore.GetBuild(buildOrBuildId)
+        if (build?.EchoesData) {
+          echoes = build.EchoesData.filter(echo => echo.Id !== -1)
+        }
+      }
+      else {
+        echoes = buildOrBuildId.EchoesData?.filter(echo => echo.Id !== -1) || []
+      }
+    }
+    else {
+      echoes = JSON.parse(JSON.stringify(EchoesStore.GetAllEquipedBy(character.Id)))
+    }
+
     const echoesScores = CalculateEchoesScore(echoes, character.StatsWeights!)
     const totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0)
 
@@ -155,6 +174,20 @@ export function useScoreCalculator() {
       EchoesScores: echoesScores,
       Note: GetCharacterNote(totalScore),
     }
+  }
+
+  function GetBuildScore(buildId: string): ICharacterRatingResult {
+    const build = BuildsStore.GetBuild(buildId)
+    if (!build) {
+      return {
+        Score: 0,
+        EchoesScores: [],
+        Note: ScoreGrade.F,
+      }
+    }
+
+    const character = CharactersStore.Get(build.CharacterId)
+    return GetCharacterScore(character, build)
   }
 
   function CalculateEchoesScore(echoes: Echo[], weights: Record<StatType, number>): IEchoRatingResult[] {
@@ -219,7 +252,6 @@ export function useScoreCalculator() {
         const max = SUB_STAT_VALUES[stat.Type].at(-1) || 1
         const weight = weights[stat.Type] || 0
 
-        // We want to weight down HP flat even if we have a weight of 1.0
         if (stat.Type === StatType.HP || stat.Type === StatType.DEF) {
           acc.totalScore += ((value / max) * weight) / 2
         }
@@ -233,8 +265,6 @@ export function useScoreCalculator() {
       { totalScore: 0, totalWeight: 0 },
     )
 
-    // If we're missing some substats, divide the score by the number of missing stats.
-    // We don't want an SS+ on a 3 stats Echo, but we still want to see the potential...
     if (echo.Statistics.length < 5) {
       totalScore /= 5 - echo.Statistics.length + 1
     }
@@ -256,5 +286,6 @@ export function useScoreCalculator() {
 
   return {
     GetCharacterScore,
+    GetBuildScore,
   }
 }

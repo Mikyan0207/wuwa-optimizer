@@ -104,6 +104,49 @@ function OnConfirmClicked() {
   ImportedEchoes.value.forEach((echo) => {
     EchoesStore.AddOrUpdate(echo, ImportedCharacter.value!.Id)
   })
+
+  const ScoreCalculator = useScoreCalculator()
+  const score = ScoreCalculator.GetCharacterScore(ImportedCharacter.value)
+
+  const BuildsStore = useBuildsStore()
+  const existingDefaultBuild = BuildsStore.GetDefaultBuild(ImportedCharacter.value!.Id)
+
+  if (existingDefaultBuild
+    && (!existingDefaultBuild.WeaponId || existingDefaultBuild.WeaponId === -1)
+    && (!existingDefaultBuild.EquipedEchoes || existingDefaultBuild.EquipedEchoes.length === 0
+      || existingDefaultBuild.EquipedEchoes.every(id => id === -1))) {
+    BuildsStore.DeleteBuild(existingDefaultBuild.Id)
+  }
+
+  const existingBuilds = BuildsStore.GetBuildsByCharacter(ImportedCharacter.value!.Id)
+  const equippedEchoes = ImportedEchoes.value.map(echo => echo.Id)
+
+  const existingActiveBuild = existingBuilds.find(build =>
+    build.IsDefault
+    && build.WeaponId === ImportedWeapon.value!.Id
+    && build.EquipedEchoes.length === equippedEchoes.length
+    && build.EquipedEchoes.every(id => equippedEchoes.includes(id)),
+  )
+
+  if (existingActiveBuild) {
+    BuildsStore.DeleteBuild(existingActiveBuild.Id)
+  }
+
+  const importedBuild = BuildsStore.SaveCurrentBuild(
+    ImportedCharacter.value!.Id,
+    ImportedWeapon.value!.Id,
+    equippedEchoes,
+    score?.Score,
+    score?.Note,
+  )
+
+  if (score?.EchoesScores) {
+    BuildsStore.UpdateBuild(importedBuild.Id, {
+      EchoesScores: score.EchoesScores,
+    })
+  }
+
+  BuildsStore.SetDefaultBuild(ImportedCharacter.value!.Id, importedBuild.Id)
 }
 </script>
 

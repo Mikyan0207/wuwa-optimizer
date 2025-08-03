@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { domToBlob } from 'modern-screenshot'
+import VueDraggable from 'vuedraggable'
 import { useCharacterContext } from '~/composables/UseCharacterContext'
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
@@ -11,6 +12,24 @@ if (CurrentCharacter.value === undefined || CurrentCharacter.value === null) {
 }
 
 const ShowScreenShotBackground = ref<boolean>(false)
+
+const DraggableEchoes = computed({
+  get: () => CurrentEchoes.value || [],
+  set: (newOrder: any[]) => {
+    if (CurrentCharacter.value) {
+      const EchoesStore = useEchoesStore()
+
+      newOrder.forEach((echo, index) => {
+        if (echo.Id !== -1) {
+          EchoesStore.Update(echo.Id, {
+            ...echo,
+            EquipedSlot: index,
+          })
+        }
+      })
+    }
+  },
+})
 
 async function TakeScreenShotAsync() {
   if (!CharacterInfoRef.value) {
@@ -112,17 +131,25 @@ async function TakeScreenShotAsync() {
           </div>
 
           <div class="grid grid-cols-3 mt-2 gap-2 xl:grid-cols-5">
-            <!-- Echoes -->
-            <!-- We can simplify this for sure... -->
-            <CharacterEchoCard
-              v-for="(echo, idx) in CurrentEchoes"
-              :key="idx"
-              v-motion-slide-bottom
-              :delay="200 + (idx * 25)"
-              :echo="echo"
-              :echo-slot="echo.EquipedSlot || idx"
-              :score="Score.EchoesScores.find(x => x.EchoId === echo.Id)"
-            />
+            <VueDraggable
+              v-model="DraggableEchoes"
+              :animation="200"
+              ghost-class="opacity-65"
+              chosen-class="scale-102"
+              drag-class="scale-106"
+              class="contents transition-all duration-150"
+              item-key="Id"
+            >
+              <template #item="{ element: echo, index: idx }">
+                <CharacterEchoCard
+                  v-motion-slide-bottom
+                  :delay="200 + (idx * 25)"
+                  :echo="echo"
+                  :echo-slot="echo.EquipedSlot || idx"
+                  :score="Score.EchoesScores.find(x => x.EchoId === echo.Id)"
+                />
+              </template>
+            </VueDraggable>
           </div>
         </div>
       </div>

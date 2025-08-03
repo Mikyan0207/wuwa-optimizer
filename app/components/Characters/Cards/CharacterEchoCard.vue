@@ -10,7 +10,7 @@ defineProps<{
 
 <template>
   <div
-    class="group relative"
+    class="group relative cursor-grab active:cursor-grabbing"
   >
     <EchoDropdownMenu :echo-slot="echoSlot" />
     <UCard
@@ -19,7 +19,6 @@ defineProps<{
         root: 'rounded-none rounded-br-xl border-0',
       }"
     >
-      <!-- Echo Details -->
       <template #default>
         <BorderLines />
         <EchoInfo :echo="echo" :echo-slot="echoSlot" :score="score" />

@@ -8,7 +8,6 @@ const SelectedIndex = ref<number | undefined>(undefined)
 const IsOpen = ref<boolean>(false)
 const IsHovered = ref<boolean>(false)
 
-const EchoesStore = useEchoesStore()
 const { GetEchoBySlot } = useCharacterContext()
 const CurrentEcho = computed(() => GetEchoBySlot(props.echoSlot))
 
@@ -23,19 +22,10 @@ const MenuItems = [
     disabled: CurrentEcho.value === undefined,
   },
   {
-    label: 'Change',
-    icon: 'solar:square-transfer-vertical-broken',
-    onSelect() {
-      SelectedIndex.value = 1
-      IsOpen.value = true
-    },
-    disabled: EchoesStore.Echoes.length === 0,
-  },
-  {
     label: 'New',
     icon: 'solar:add-square-broken',
     onSelect() {
-      SelectedIndex.value = 2
+      SelectedIndex.value = 1
       IsOpen.value = true
     },
   },
@@ -44,7 +34,7 @@ const MenuItems = [
     icon: 'solar:notification-remove-broken',
     color: 'error' as const,
     onSelect() {
-      SelectedIndex.value = 3
+      SelectedIndex.value = 2
       IsOpen.value = true
     },
     disabled: CurrentEcho.value === undefined || CurrentEcho.value.Id === -1,
@@ -99,18 +89,13 @@ watch(IsDropdownOpen, (newValue) => {
         :echo-slot="echoSlot"
         @close="OnClose()"
       />
-      <EchoSwapForm
-        v-if="SelectedIndex === 1"
-        :echo-slot="echoSlot"
-        @close="OnClose()"
-      />
       <EchoCreationForm
-        v-else-if="SelectedIndex === 2"
+        v-else-if="SelectedIndex === 1"
         :echo-slot="echoSlot"
         @close="OnClose()"
       />
       <EchoUnequipForm
-        v-else-if="SelectedIndex === 3"
+        v-else-if="SelectedIndex === 2"
         :echo-slot="echoSlot"
         @close="OnClose()"
       />

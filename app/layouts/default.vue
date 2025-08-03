@@ -40,7 +40,7 @@
         </div>
       </div>
       <!-- Navigation -->
-      <div class="z-23 col-span-1 mx-auxo w-full row-span-2 row-start-4 pointer-events-auto">
+      <div class="z-23 col-span-1 mx-auxo row-span-2 row-start-4 pointer-events-auto">
         <LeftNavigation />
       </div>
 

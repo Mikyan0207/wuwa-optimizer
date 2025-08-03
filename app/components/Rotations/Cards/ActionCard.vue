@@ -2,71 +2,105 @@
 import type { Action } from '~/Core/Interfaces/Action'
 import type { Section } from '~/Core/Interfaces/Section'
 import { GetCharacterIcon } from '~/Core/Utils/CharacterUtils'
+import ActionEditForm from '../Forms/ActionEditForm.vue'
 
 defineProps<{
   section: Section
   action: Action
+  sectionIndex: number
+  actionIndex: number
 }>()
 
 const RotationBuilderStore = useRotationBuilderStore()
-
 const { t } = useI18n()
 const IsHovered = ref<boolean>(false)
 const ShowEditModal = ref<boolean>(false)
 </script>
 
 <template>
-  <UCard
-    v-motion-slide-left
-    class="w-full relative"
-    :delay="100 * action.Index"
-    @mouseenter="IsHovered = true"
-    @mouseleave="IsHovered = false"
-    @touchstart="IsHovered = true"
-    @blur="IsHovered = false"
-  >
-    <div class="flex items-center w-full gap-8 ">
-      <div v-if="IsHovered" class="absolute -top-2 -right-2 p-3 flex items-center gap-2">
-        <UButton icon="i-carbon-pen" size="sm" color="success" variant="subtle" @click="ShowEditModal = true" />
-        <UButton icon="i-lucide-x" size="sm" color="error" variant="subtle" @click="RotationBuilderStore.RemoveAction(section.Index, action.Index)" />
-      </div>
-      <p class="font-bold text-2xl font-noto tracking-tight">
-        {{ action.Order }}
-      </p>
-      <div class="flex items-center w-lg gap-2">
-        <NuxtImg
-          v-if="action.Character1"
-          :src="GetCharacterIcon(action.Character1)"
-          class="w-12 h-12 border-2 border-neutral-600 object-cover rounded-full"
-        />
-        <USkeleton v-else class="w-12 h-12 rounded-full" />
-        <p v-if="action.Character1" class="text-lg">
-          {{ t(`${action.Character1.Id}_name`) }}
-        </p>
-        <USkeleton v-else class="w-16 h-2 rounded-xs" />
-      </div>
-      <div class="flex items-center gap-2 w-full justify-between">
-        <div class="flex items-center gap-2">
-          <UBadge v-if="action.Skill" color="neutral" variant="subtle" :label="t(`skill_${action.Skill.Id.toLowerCase()}`)" />
-          <USkeleton v-else class="w-24 h-3 rounded-xs" />
-          <p v-if="action.Character1 && action.Skill">
-            {{ t(`${action.Character1.Id}_${action.Skill.Id.toLowerCase()}`) }}
-          </p>
-          <USkeleton v-else class="w-36 h-3 rounded-xs" />
+  <div>
+    <div
+      v-motion-slide-visible-once-left
+      class="w-full relative cursor-grab active:cursor-grabbing group pl-8 py-2 bg-neutral-800/20 rounded-sm border border-neutral-600/30 hover:border-neutral-500/50 transition-all duration-200"
+      :delay="100 * action.Index"
+      draggable="true"
+      @mouseenter="IsHovered = true"
+      @mouseleave="IsHovered = false"
+      @touchstart="IsHovered = true"
+      @blur="IsHovered = false"
+    >
+      <div class="flex items-center gap-4">
+        <div class="flex-shrink-0">
+          <NuxtImg
+            v-if="action.Character1"
+            :src="GetCharacterIcon(action.Character1)"
+            class="w-16 h-16 border border-neutral-600 object-cover rounded-sm"
+          />
+          <USkeleton v-else class="w-16 h-16 rounded-sm" />
         </div>
-        <p class="text-sm text-gray-300">
-          {{ action.Description }}
-        </p>
+
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-3 mb-2">
+            <span v-if="action.Character1" class="font-semibold text-white text-sm">
+              {{ t(`${action.Character1.Id}_name`) }}
+            </span>
+            <USkeleton v-else class="w-20 h-4 rounded-sm" />
+          </div>
+
+          <div class="flex items-center gap-2">
+            <span v-if="action.Skill" class="px-3 py-1 bg-neutral-700/50 text-neutral-200 text-xs rounded-sm border border-neutral-600">
+              {{ action.Skill.Id === 'Echo_Skill' ? 'Echo Skill' : t(`skill_${action.Skill.Id.toLowerCase()}`) }}
+            </span>
+            <USkeleton v-else class="w-24 h-5 rounded-sm" />
+
+            <span v-if="action.RepeatCount && action.RepeatCount > 1" class="px-2 py-1 bg-yellow-600/20 text-yellow-300 text-xs font-medium rounded-sm border border-yellow-500/30">
+              ×{{ action.RepeatCount }}
+            </span>
+          </div>
+
+          <p v-if="action.Description" class="text-xs text-neutral-400 truncate mt-1">
+            {{ action.Description }}
+          </p>
+        </div>
+
+        <div v-if="IsHovered" class="flex-shrink-0 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+          <UButton
+            icon="i-carbon-pen"
+            size="xs"
+            color="primary"
+            variant="ghost"
+            @click="ShowEditModal = true"
+          />
+          <UButton
+            icon="i-lucide-x"
+            size="xs"
+            color="error"
+            variant="ghost"
+            @click="RotationBuilderStore.RemoveAction(sectionIndex, actionIndex)"
+          />
+        </div>
       </div>
     </div>
-  </UCard>
-  <UModal
-    v-model:open="ShowEditModal"
-    :overlay="true"
-    variant="subtle"
-    color="neutral"
-    :ui="{
-      content: 'xl:min-w-4xl w-5xl min-w-5xl xl:w-4xl rounded-xs border-0 backdrop-blur-none shadow-none! ring-0! ',
-    }"
-  />
+
+    <USlideover
+      v-model:open="ShowEditModal"
+      :overlay="true"
+      variant="subtle"
+      color="neutral"
+      side="right"
+      :transition="true"
+      class="w-full md:w-1/2 lg:w-1/3 max-w-full"
+      close-icon="i-lucide-arrow-right"
+    >
+      <template #content>
+        <ActionEditForm
+          :section="section"
+          :action="action"
+          :section-index="sectionIndex"
+          :action-index="actionIndex"
+          @close="ShowEditModal = false"
+        />
+      </template>
+    </USlideover>
+  </div>
 </template>

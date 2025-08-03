@@ -29,3 +29,23 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+/* Drag & Drop Classes */
+.draggable-ghost {
+  opacity: 0.5;
+  background-color: rgba(38, 38, 38, 0.3);
+  border: 2px dashed rgb(115, 115, 115);
+  border-radius: 0.125rem;
+}
+
+.draggable-chosen {
+  background-color: rgba(38, 38, 38, 0.5);
+  border: 1px solid rgb(59, 130, 246);
+  border-radius: 0.125rem;
+}
+
+.draggable-drag {
+  background-color: rgba(55, 65, 81, 0.8);
+  border: 1px solid rgb(96, 165, 250);
+  border-radius: 0.125rem;
+}

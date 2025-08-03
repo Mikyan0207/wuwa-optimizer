@@ -9,4 +9,5 @@ export interface Action {
   Skill?: Skill
   Order?: number
   Description?: string
+  RepeatCount?: number
 }

@@ -4,6 +4,7 @@ import type Skill from '~/Core/Interfaces/Skill'
 import type Statistic from '~/Core/Interfaces/Statistic'
 import { StatType } from '~/Core/Enums/StatType'
 import { Sonatas } from '~/Core/Sonatas'
+import { useSetStatsStore } from '~/stores/SetStatsStore'
 
 export function useStatsCalculator() {
   const CharactersStore = useCharactersStore()
@@ -99,9 +100,10 @@ export function useStatsCalculator() {
   function CalculateTotalStats(characterId: number, weaponId: number): Statistic[] {
     const character = CharactersStore.Get(characterId)
     const echoes = EchoesStore.GetAllEquipedBy(characterId)
+    const setStatsStore = useSetStatsStore()
 
     const echoesStats = CalculateEchoesStats(echoes)
-    const sonataBonuses = CalculateSonataBonuses(echoes)
+    const sonataBonuses = setStatsStore.IncludeSetStats ? CalculateSonataBonuses(echoes) : []
     const skillsStats = CalculateSkillsStats(character.Skills || [])
 
     const baseStats: Statistic[] = character.Stats.filter(s =>

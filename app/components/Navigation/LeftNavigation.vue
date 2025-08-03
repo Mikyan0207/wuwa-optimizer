@@ -80,13 +80,13 @@ const ActiveSection03Item = computed(() => {
       }"
     >
       <template #item="{ item, index }">
-        <UNavigationMenuLink
+        <NuxtLink
           class="inline-block mx-auto pt-[0.35em] inset-x-[0.5em] w-min"
           :to="item.to as string"
           :class="ActiveSection01Item === index ? 'text-primary' : ''"
         >
           <UIcon v-if="item.icon" :name="item.icon" class="w-6 h-6" />
-        </UNavigationMenuLink>
+        </NuxtLink>
       </template>
     </UNavigationMenu>
 
@@ -100,13 +100,13 @@ const ActiveSection03Item = computed(() => {
       }"
     >
       <template #item="{ item, index }">
-        <UNavigationMenuLink
+        <NuxtLink
           class="inline-block mx-auto pt-[0.35em] inset-x-[0.5em] w-min"
           :to="item.to as string"
           :class="ActiveSection02Item === index ? 'text-primary' : ''"
         >
           <UIcon v-if="item.icon" :name="item.icon" class="w-6 h-6" />
-        </UNavigationMenuLink>
+        </NuxtLink>
       </template>
     </UNavigationMenu>
 
@@ -120,13 +120,13 @@ const ActiveSection03Item = computed(() => {
       }"
     >
       <template #item="{ item, index }">
-        <UNavigationMenuLink
+        <NuxtLink
           class="inline-block mx-auto pt-[0.35em] inset-x-[0.5em] w-min"
           :to="item.to as string"
           :class="ActiveSection03Item === index ? 'text-primary' : ''"
         >
           <UIcon v-if="item.icon" :name="item.icon" class="w-6 h-6" />
-        </UNavigationMenuLink>
+        </NuxtLink>
       </template>
     </UNavigationMenu>
   </div>

@@ -14,12 +14,17 @@ defineProps<{
   >
     <EchoDropdownMenu :echo-slot="echoSlot" />
     <UCard
-      class="min-h-[26em] h-full w-full"
+      class="min-h-[26em] h-full w-full relative"
       :ui="{
         root: 'rounded-none rounded-br-xl border-0',
       }"
     >
       <template #default>
+        <!-- Bordure colorée pour le set principal -->
+        <div
+          v-if="echo.Sonata && echo.Sonata.length > 0"
+          class="absolute inset-0 rounded-br-xl pointer-events-none z-10"
+        />
         <BorderLines />
         <EchoInfo :echo="echo" :echo-slot="echoSlot" :score="score" />
       </template>

@@ -8,5 +8,7 @@ export default interface Sonata {
   IsSelected: boolean
   Effect1Active: boolean
   Effect2Active: boolean
+  Effect1RequiredEchoes?: number
+  Effect2RequiredEchoes?: number
   ExtraStats?: IStatistic[]
 }

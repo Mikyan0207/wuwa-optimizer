@@ -6,9 +6,13 @@ useHead({
 })
 
 const CharactersStore = useCharactersStore()
+const SonatasStore = useSonatasStore()
+const EchoesStore = useEchoesStore()
 
 onMounted(async () => {
   await CharactersStore.Migration()
+  await SonatasStore.Migration()
+  await EchoesStore.Migration()
 })
 </script>
 

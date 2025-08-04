@@ -5,6 +5,30 @@ definePageMeta({
 
 const SelectedTab = ref<string>('0')
 
+const Route = useRoute()
+const CharacterId = computed<string | undefined>(() => {
+  if (Route.params
+    && typeof (Route.params as Record<string, unknown>).id === 'string') {
+    return (Route.params as { id: string }).id
+  }
+
+  return undefined
+})
+
+const IsCharacterAvailable = computed(() => {
+  return CharacterId.value !== '9901'
+    && CharacterId.value !== '9902'
+    && CharacterId.value !== undefined
+})
+
+onMounted(() => {
+  if (CharacterId.value === '9901'
+    || CharacterId.value === '9902'
+    || CharacterId.value === undefined) {
+    navigateTo('/characters')
+  }
+})
+
 const TabItems = [{
   label: 'Scorer',
   icon: 'i-solar-calculator-minimalistic-broken',
@@ -22,7 +46,7 @@ const TabItems = [{
 </script>
 
 <template>
-  <div>
+  <div v-if="IsCharacterAvailable">
     <Suspense>
       <template #default>
         <div class="mx-auto mb-4 xl:max-w-[100rem] px-8 text-sm text-gray-300">

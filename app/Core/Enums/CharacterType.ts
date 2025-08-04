@@ -6,5 +6,5 @@ export enum CharacterType {
   FUSION = 'FUSION',
   AERO = 'AERO',
   ELECTRO = 'ELECTRO',
-
+  NONE = 'NONE',
 }

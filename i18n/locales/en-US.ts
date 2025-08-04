@@ -561,6 +561,21 @@ export default {
   '1608_intro_skill': 'Suite of Quietus',
   '1608_outro_skill': 'Unfinished Piece',
 
+  // 9901 - Augusta
+  '9901_name': 'Augusta',
+
+  // 9902 - Iuno
+  '9902_name': 'Iuno',
+
+  // 9903 - Galbrena
+  '9903_name': 'Galbrena',
+
+  // 9904 - Qiuyuan
+  '9904_name': 'Qiuyuan',
+
+  // 9905 - Chisa
+  '9905_name': 'Chisa',
+
   // #endregion
 
   // #region === Echoes === (Generated)

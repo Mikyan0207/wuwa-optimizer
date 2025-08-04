@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type Character from '~/Core/Interfaces/Character'
 import { TemplateCharacters } from '~/Core/Characters'
 import { CharacterType } from '~/Core/Enums/CharacterType'
 import { Rarity } from '~/Core/Enums/Rarity'
@@ -51,6 +52,10 @@ function FilterCharacters() {
 function OnCharacterClicked(characterId: number | undefined) {
   navigateTo(`/characters/${characterId}`)
 }
+
+function IsCharacterAvailable(character: Character) {
+  return character.ReleaseState !== ReleaseState.UPCOMING
+}
 </script>
 
 <template>
@@ -66,7 +71,8 @@ function OnCharacterClicked(characterId: number | undefined) {
         :key="c.Id" v-motion-pop
         :delay="100 + (idx * 20)"
         :character="c"
-        @click.prevent="OnCharacterClicked(c.Id)"
+        :class="{ 'cursor-pointer': IsCharacterAvailable(c) }"
+        @click.prevent="IsCharacterAvailable(c) ? OnCharacterClicked(c.Id) : null"
       />
     </div>
   </div>

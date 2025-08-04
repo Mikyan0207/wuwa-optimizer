@@ -1,14 +1,17 @@
+import type Build from '~/Core/Interfaces/Build'
 import type Character from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import type Skill from '~/Core/Interfaces/Skill'
 import type Statistic from '~/Core/Interfaces/Statistic'
 import { StatType } from '~/Core/Enums/StatType'
 import { Sonatas } from '~/Core/Sonatas'
+import { useSetStatsStore } from '~/stores/SetStatsStore'
 
 export function useStatsCalculator() {
   const CharactersStore = useCharactersStore()
   const EchoesStore = useEchoesStore()
   const WeaponsStore = useWeaponsStore()
+  const BuildsStore = useBuildsStore()
 
   function DeepCloneStats(stats: Statistic[]): Statistic[] {
     return stats.map(s => ({ ...s }))
@@ -96,12 +99,30 @@ export function useStatsCalculator() {
     return stats
   }
 
-  function CalculateTotalStats(characterId: number, weaponId: number): Statistic[] {
+  function CalculateTotalStats(characterId: number, buildOrBuildId?: Build | string): Statistic[] {
     const character = CharactersStore.Get(characterId)
-    const echoes = EchoesStore.GetAllEquipedBy(characterId)
+    let weaponId = -1
+    let echoes: Echo[] = []
+
+    if (buildOrBuildId) {
+      if (typeof buildOrBuildId === 'string') {
+        const build = BuildsStore.GetBuild(buildOrBuildId)
+        if (build) {
+          weaponId = build.WeaponId || -1
+          echoes = build.EchoesData?.filter(echo => echo.Id !== -1) || []
+        }
+      } else {
+        weaponId = buildOrBuildId.WeaponId || -1
+        echoes = buildOrBuildId.EchoesData?.filter(echo => echo.Id !== -1) || []
+      }
+    } else {
+      echoes = EchoesStore.GetAllEquipedBy(characterId)
+    }
+
+    const setStatsStore = useSetStatsStore()
 
     const echoesStats = CalculateEchoesStats(echoes)
-    const sonataBonuses = CalculateSonataBonuses(echoes)
+    const sonataBonuses = setStatsStore.IncludeSetStats ? CalculateSonataBonuses(echoes) : []
     const skillsStats = CalculateSkillsStats(character.Skills || [])
 
     const baseStats: Statistic[] = character.Stats.filter(s =>
@@ -171,7 +192,6 @@ export function useStatsCalculator() {
           stats.push({ ...stat })
         }
       })
-      // Some echoes gives bonus stats when equiped as the main echo.
       if (echo.EquipedSlot === 0) {
         echo.ExtraStatistics?.forEach((stat) => {
           const existing = stats.find(s => s.Type === stat.Type)

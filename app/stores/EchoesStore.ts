@@ -1,9 +1,25 @@
 import type Echo from '~/Core/Interfaces/Echo'
 import { defineStore } from 'pinia'
 import { TemplateEchoes } from '~/Core/Echoes'
+import { EchoMigrationService } from '~/Core/Services/EchoMigrationService'
 
 export const useEchoesStore = defineStore('EchoesStore', () => {
   const Echoes = useLocalStorage<Echo[]>('Echoes', [])
+  const MigrationService = new EchoMigrationService()
+
+  async function Migration() {
+    if (MigrationService.NeedsMigration()) {
+      try {
+        Echoes.value = await MigrationService.MigrateEchoes()
+      }
+      catch (error) {
+        console.error('Echo migration failed:', error)
+      }
+      finally {
+        MigrationService.CleanUp()
+      }
+    }
+  }
 
   function Get(echoId: number) {
     const e = TemplateEchoes.find(x => x.Id === echoId)
@@ -78,5 +94,6 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     UpdateWithEquipedBy,
     RemoveEcho,
     AddOrUpdate,
+    Migration,
   }
 })

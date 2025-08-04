@@ -284,8 +284,14 @@ export const Dream_of_the_Lost: Sonata = {
   Effect2: '',
   IsSelected: false,
   Effect1Active: false,
+  Effect1RequiredEchoes: 3,
   Effect2Active: false,
-  ExtraStats: [],
+  ExtraStats: [
+    {
+      Type: StatType.CRIT_RATE,
+      Value: 20.0,
+    },
+  ],
 }
 
 export const Sonatas: Sonata[] = [

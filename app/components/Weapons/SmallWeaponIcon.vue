@@ -25,13 +25,13 @@ const HighlightColor = computed(() => GetHighlightColor(props.weapon.Rarity))
   >
     <BorderLines :count="1" />
     <div class="relative min-h-32 w-32 flex items-center justify-center overflow-clip">
-      <div v-if="weapon.ReleaseState === ReleaseState.NEW" class="absolute left-1  top-0 z-2">
-        <UBadge color="error" variant="solid" size="sm" class="text-neutral-200">
+      <div v-if="weapon.ReleaseState === ReleaseState.NEW" class="absolute left-1 top-0 z-2">
+        <UBadge color="error" variant="solid" size="sm" class="rounded-full!">
           NEW
         </UBadge>
       </div>
       <div v-if="weapon.ReleaseState === ReleaseState.UPCOMING" class="absolute left-1 top-0 z-2">
-        <UBadge variant="solid" size="sm" class="px-2.5 text-neutral-200 bg-yellow-600">
+        <UBadge color="warning" variant="solid" size="sm" class="px-2.5 rounded-full!">
           {{ UpcomingGameVersion }}
         </UBadge>
       </div>

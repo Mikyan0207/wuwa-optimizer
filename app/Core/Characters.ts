@@ -8960,6 +8960,112 @@ export const Phrolova: Character = {
   },
 }
 
+// 9901
+export const Augusta: Character = {
+  Id: 9901,
+  Rarity: Rarity.FIVE_STARS,
+  ReleaseState: ReleaseState.UPCOMING,
+  Icon: 'Augusta_Icon.webp',
+  SplashArt: 'Augusta_Portrait.webp',
+  WeaponType: WeaponType.BROADBLADE,
+  Type: CharacterType.ELECTRO,
+  Level: 90,
+  Stats: [
+  ],
+  Sequences: [
+  ],
+  Skills: [
+
+  ],
+  EquipedEchoes: [],
+  StatsWeights: {
+  },
+}
+
+// 9902
+export const Iuno: Character = {
+  Id: 9902,
+  Rarity: Rarity.FIVE_STARS,
+  ReleaseState: ReleaseState.UPCOMING,
+  Icon: 'Iuno_Icon.webp',
+  SplashArt: 'Iuno_Portrait.webp',
+  WeaponType: WeaponType.GAUNTLETS,
+  Type: CharacterType.AERO,
+  Level: 90,
+  Stats: [
+  ],
+  Sequences: [
+  ],
+  Skills: [
+  ],
+  EquipedEchoes: [],
+  StatsWeights: {
+  },
+}
+
+// 9903
+export const Galbrena: Character = {
+  Id: 9903,
+  Rarity: Rarity.FIVE_STARS,
+  ReleaseState: ReleaseState.UNKNOWN,
+  Icon: 'Galbrena_Icon.webp',
+  SplashArt: 'Galbrena_Portrait.webp',
+  WeaponType: WeaponType.GAUNTLETS,
+  Type: CharacterType.NONE,
+  Level: 90,
+  Stats: [
+  ],
+  Sequences: [
+  ],
+  Skills: [
+  ],
+  EquipedEchoes: [],
+  StatsWeights: {
+  },
+}
+
+// 9904
+export const Qiuyuan: Character = {
+  Id: 9904,
+  Rarity: Rarity.FIVE_STARS,
+  ReleaseState: ReleaseState.UNKNOWN,
+  Icon: 'Qiuyuan_Icon.webp',
+  SplashArt: 'Qiuyuan_Portrait.webp',
+  WeaponType: WeaponType.NONE,
+  Type: CharacterType.NONE,
+  Level: 90,
+  Stats: [
+  ],
+  Sequences: [
+  ],
+  Skills: [
+  ],
+  EquipedEchoes: [],
+  StatsWeights: {
+  },
+}
+
+// 9905
+export const Chisa: Character = {
+  Id: 9905,
+  Rarity: Rarity.FIVE_STARS,
+  ReleaseState: ReleaseState.UNKNOWN,
+  Icon: 'Chisa_Icon.webp',
+  SplashArt: 'Chisa_Portrait.webp',
+  WeaponType: WeaponType.NONE,
+  Type: CharacterType.NONE,
+  Level: 90,
+  Stats: [
+  ],
+  Sequences: [
+  ],
+  Skills: [
+  ],
+  EquipedEchoes: [],
+  StatsWeights: {
+  },
+}
+
 export const TemplateCharacters: Character[] = [
   Sanhua,
   Baizhi,
@@ -8998,4 +9104,9 @@ export const TemplateCharacters: Character[] = [
   Roccia,
   Cantarella,
   Phrolova,
+  Augusta,
+  Iuno,
+  Galbrena,
+  Qiuyuan,
+  Chisa,
 ]

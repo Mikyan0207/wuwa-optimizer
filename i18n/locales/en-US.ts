@@ -561,6 +561,21 @@ export default {
   '1608_intro_skill': 'Suite of Quietus',
   '1608_outro_skill': 'Unfinished Piece',
 
+  // 9901 - Augusta
+  '9901_name': 'Augusta',
+
+  // 9902 - Iuno
+  '9902_name': 'Iuno',
+
+  // 9903 - Galbrena
+  '9903_name': 'Galbrena',
+
+  // 9904 - Qiuyuan
+  '9904_name': 'Qiuyuan',
+
+  // 9905 - Chisa
+  '9905_name': 'Chisa',
+
   // #endregion
 
   // #region === Echoes === (Generated)
@@ -586,11 +601,11 @@ export default {
   '6000091_name': 'Inferno Rider',
   '6000092_name': 'Mourning Aix',
   '6000105_name': 'Lampylumen Myriad',
-  '6000106_name': 'Fleurdelys',
+  '6000106_name': 'Reminescence: Fleurdelys',
   '6000113_name': 'Kelpie',
   '6000114_name': 'Lioness Of Glory',
   '6000115_name': 'Hecate',
-  '6000116_name': 'Fenrico',
+  '6000116_name': 'Reminescence: Fenrico',
   '390080003_name': 'Thundering Mephis',
   '390080005_name': 'Bell Borne Geochelone',
   '390080007_name': 'Inferno Rider',

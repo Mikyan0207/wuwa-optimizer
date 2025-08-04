@@ -68,9 +68,9 @@ function IsPercentageStat(statType: StatType) {
         <div class="w-full flex items-center gap-1">
           <NuxtImg
             width="50" height="50" :src="GetSonataIcon(echo.Sonata.find(x => x.IsSelected === true)!)" style="color: transparent;"
-            class="w-4 h-4 object-cover"
+            class="w-4 h-4 object-cover flex-shrink-0"
           />
-          <div :title="t(`${echo.Id}_name`)" class="text-truncate">
+          <div :title="t(`${echo.Id}_name`)" class="text-truncate min-w-0 flex-1">
             {{ t(`${echo.Id}_name`) }}
           </div>
         </div>

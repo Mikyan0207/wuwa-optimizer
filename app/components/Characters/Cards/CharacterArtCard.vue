@@ -2,6 +2,50 @@
 import { GetCharacterTypeIcon, GetCharacterWeaponTypeIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
 
 const { CurrentCharacter } = useCharacterContext()
+
+function ToggleSequence(sequenceIndex: number) {
+  if (!CurrentCharacter.value) {
+    return
+  }
+
+  const sequence = CurrentCharacter.value.Sequences[sequenceIndex]
+  if (!sequence) {
+    return
+  }
+
+  if (CanUnlockSequence(sequenceIndex)) {
+    sequence.Unlocked = !sequence.Unlocked
+
+    if (!sequence.Unlocked) {
+      for (let i = sequenceIndex + 1; i < CurrentCharacter.value.Sequences.length; i++) {
+        const nextSequence = CurrentCharacter.value.Sequences[i]
+        if (nextSequence) {
+          nextSequence.Unlocked = false
+        }
+      }
+    }
+
+    CurrentCharacter.value = { ...CurrentCharacter.value }
+  }
+}
+
+function CanUnlockSequence(sequenceIndex: number): boolean {
+  if (!CurrentCharacter.value)
+    return false
+
+  const sequence = CurrentCharacter.value.Sequences[sequenceIndex]
+  if (!sequence)
+    return false
+
+  if (sequence.Unlocked)
+    return true
+
+  if (sequenceIndex === 0)
+    return true
+
+  const previousSequence = CurrentCharacter.value.Sequences[sequenceIndex - 1]
+  return previousSequence?.Unlocked === true
+}
 </script>
 
 <template>
@@ -28,14 +72,28 @@ const { CurrentCharacter } = useCharacterContext()
     <div class="absolute left-2 top-2 z-20">
       <div class="flex flex-col gap-3">
         <div
-          v-for="s in CurrentCharacter.Sequences"
-          :key="s.Name"
-          class="relative h-12 w-12 border-2 border-white/14 rounded-full bg-neutral-700 p-1"
+          v-for="(s, index) in CurrentCharacter.Sequences"
+          :key="`sequence-${index}-${s.Unlocked}`"
+          class="relative h-12 w-12 border rounded-full p-1 transition-all duration-200"
+          :class="{
+            'border-gold-400 bg-gold-900 cursor-pointer hover:scale-110 hover:border-gold-300 hover:bg-gold-800': CanUnlockSequence(index),
+            'border-neutral-600 bg-neutral-800 cursor-not-allowed': !CanUnlockSequence(index),
+          }"
+          @click="ToggleSequence(index)"
         >
-          <div v-if="s.Unlocked === false" class="absolute inset-0 rounded-full bg-black/75" />
-          <!-- Not sure about this strike-out... -->
-          <!-- <div v-if="s.Unlocked === false" class="absolute inset-0 left-0 top-50% h-2px bg-white/28 -right-1px -rotate-45" /> -->
-          <NuxtImg :src="`/images/characters/${CurrentCharacter.Id}/${s.Icon}`" />
+          <div
+            v-if="s.Unlocked === false"
+            class="absolute inset-0 rounded-full bg-black/70 transition-opacity duration-300"
+          />
+          <div
+            v-if="s.Unlocked === true"
+            class="absolute inset-0 rounded-full bg-gold-400/20 transition-all duration-300"
+          />
+          <NuxtImg
+            :src="`/images/characters/${CurrentCharacter.Id}/${s.Icon}`"
+            class="w-full h-full object-cover transition-all duration-200"
+            :class="{ 'opacity-30': s.Unlocked === false }"
+          />
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type Character from '~/Core/Interfaces/Character'
 import { UpcomingGameVersion } from '~/Core'
+import { CharacterType } from '~/Core/Enums/CharacterType'
 import { ReleaseState } from '~/Core/Enums/ReleaseState'
 import { GetCharacterIcon, GetCharacterTypeIcon } from '~/Core/Utils/CharacterUtils'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
@@ -18,7 +19,7 @@ const HighlightColor = computed(() => GetHighlightColor(props.character.Rarity))
 
 <template>
   <UCard
-    class="group relative cursor-pointer transition-all duration-100 select-none"
+    class="group relative transition-all duration-100 select-none"
     :ui="{
       root: 'rounded-none rounded-br-xl border-0',
       body: 'p-0 sm:p-0',
@@ -26,17 +27,22 @@ const HighlightColor = computed(() => GetHighlightColor(props.character.Rarity))
   >
     <BorderLines :count="1" />
     <div class="relative min-h-32 w-32 flex items-center justify-center overflow-clip">
-      <div v-if="character.ReleaseState === ReleaseState.NEW" class="absolute left-1  top-0 z-2">
-        <UBadge color="error" variant="solid" size="sm" class="text-neutral-200">
+      <div v-if="character.ReleaseState === ReleaseState.NEW" class="absolute left-1 top-0 z-2">
+        <UBadge color="error" variant="solid" size="sm" class="rounded-full!">
           NEW
         </UBadge>
       </div>
       <div v-if="character.ReleaseState === ReleaseState.UPCOMING" class="absolute left-1 top-0 z-2">
-        <UBadge variant="solid" size="sm" class="px-2.5 text-neutral-200 bg-yellow-600">
+        <UBadge color="warning" variant="solid" size="sm" class="px-2.5 rounded-full!">
           {{ UpcomingGameVersion }}
         </UBadge>
       </div>
-      <div class="absolute right-0 top-0 z-2">
+      <div v-if="character.ReleaseState === ReleaseState.UNKNOWN" class="absolute left-1 top-0 z-2">
+        <UBadge color="neutral" variant="solid" size="sm" class="px-2.5 rounded-full!">
+          2.X
+        </UBadge>
+      </div>
+      <div v-if="character.Type !== CharacterType.NONE" class="absolute right-0 top-0 z-2">
         <NuxtImg width="32" height="32" :src="GetCharacterTypeIcon(character)" style="color: transparent;" />
       </div>
       <div class="absolute bottom-0">

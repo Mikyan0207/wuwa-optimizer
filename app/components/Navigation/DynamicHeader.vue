@@ -2,18 +2,31 @@
 const Route = useRoute()
 const { t, setLocale, locale } = useI18n()
 
-const Routes = computed(() => Route.path.split('/').filter(p => p !== undefined && p.length !== 0).map((p) => {
-  if (Number.isInteger(+p)) {
-    // Means this is a character Id...?
-    return {
-      label: t(`${p}_name`),
+const Routes = computed(() => {
+  const pathSegments = Route.path.split('/').filter(p => p !== undefined && p.length !== 0)
+  const breadcrumbItems = []
+  let currentPath = ''
+
+  for (const segment of pathSegments) {
+    currentPath += `/${segment}`
+
+    if (Number.isInteger(+segment)) {
+      // Means this is a character Id...?
+      breadcrumbItems.push({
+        label: t(`${segment}_name`),
+        to: currentPath,
+      })
+    }
+    else {
+      breadcrumbItems.push({
+        label: t(`${segment}_navigation_title`),
+        to: currentPath,
+      })
     }
   }
 
-  return {
-    label: t(`${p}_navigation_title`),
-  }
-}))
+  return breadcrumbItems
+})
 
 const MenuItems = computed(() => [
   {
@@ -46,7 +59,6 @@ const SelectedMenuItem = computed(() => MenuItems.value.find(x => x.id === local
 </script>
 
 <template>
-  <!-- Header -->
   <div
     class="fixed left-16 top-0 right-0 z-30 h-12  flex items-center justify-between gap-2 bg-neutral-900 p-3 text-sm backdrop-blur-md"
   >

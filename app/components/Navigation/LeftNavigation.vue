@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 
-const Section_01_Items = ref([
+const route = useRoute()
+
+const Section01Items = ref([
   {
     label: 'home',
     icon: 'solar:home-smile-broken',
@@ -10,7 +12,7 @@ const Section_01_Items = ref([
   },
 ] as NavigationMenuItem[])
 
-const Section_02_Items = ref([
+const Section02Items = ref([
   {
     label: 'characters',
     icon: 'solar:soundwave-circle-broken',
@@ -31,7 +33,7 @@ const Section_02_Items = ref([
   },
 ] as NavigationMenuItem[])
 
-const Section_03_Items = ref([
+const Section03Items = ref([
   {
     label: 'imports',
     icon: 'solar:import-broken',
@@ -45,38 +47,87 @@ const Section_03_Items = ref([
   //   to: '/exports',
   // },
 ] as NavigationMenuItem[])
+
+function IsActiveRoute(itemPath: string) {
+  if (itemPath === '/') {
+    return route.path === '/'
+  }
+  return route.path.startsWith(itemPath)
+}
+
+const ActiveSection01Item = computed(() => {
+  return Section01Items.value.findIndex(item => IsActiveRoute(item.to as string))
+})
+
+const ActiveSection02Item = computed(() => {
+  return Section02Items.value.findIndex(item => IsActiveRoute(item.to as string))
+})
+
+const ActiveSection03Item = computed(() => {
+  return Section03Items.value.findIndex(item => IsActiveRoute(item.to as string))
+})
 </script>
 
 <template>
   <div class="space-y-4">
     <UNavigationMenu
-      :items="Section_01_Items"
+      :items="Section01Items"
       orientation="vertical"
       :highlight="true"
-      highlight-color="primary"
       :ui="{
-        link: 'inline-block mx-auto inset-x-2.25 w-min',
+        link: 'inline-block mx-auto inset-x-[0.5em] w-min',
         linkLabel: 'hidden w-0',
       }"
-    />
+    >
+      <template #item="{ item, index }">
+        <NuxtLink
+          class="inline-block mx-auto pt-[0.35em] inset-x-[0.5em] w-min"
+          :to="item.to as string"
+          :class="ActiveSection01Item === index ? 'text-primary' : ''"
+        >
+          <UIcon v-if="item.icon" :name="item.icon" class="w-6 h-6" />
+        </NuxtLink>
+      </template>
+    </UNavigationMenu>
+
     <UNavigationMenu
-      :items="Section_02_Items"
+      :items="Section02Items"
       orientation="vertical"
       :highlight="true"
-      highlight-color="primary" :ui="{
-        link: 'inline-block mx-auto inset-x-2.25 w-min',
+      :ui="{
+        link: 'inline-block mx-auto inset-x-[0.5em] w-min',
         linkLabel: 'hidden w-0',
       }"
-    />
+    >
+      <template #item="{ item, index }">
+        <NuxtLink
+          class="inline-block mx-auto pt-[0.35em] inset-x-[0.5em] w-min"
+          :to="item.to as string"
+          :class="ActiveSection02Item === index ? 'text-primary' : ''"
+        >
+          <UIcon v-if="item.icon" :name="item.icon" class="w-6 h-6" />
+        </NuxtLink>
+      </template>
+    </UNavigationMenu>
+
     <UNavigationMenu
-      :items="Section_03_Items"
+      :items="Section03Items"
       orientation="vertical"
       :highlight="true"
-      highlight-color="primary"
       :ui="{
-        link: 'inline-block mx-auto inset-x-2.25 w-min',
+        link: 'inline-block mx-auto inset-x-[0.5em] w-min',
         linkLabel: 'hidden w-0 h-0',
       }"
-    />
+    >
+      <template #item="{ item, index }">
+        <NuxtLink
+          class="inline-block mx-auto pt-[0.35em] inset-x-[0.5em] w-min"
+          :to="item.to as string"
+          :class="ActiveSection03Item === index ? 'text-primary' : ''"
+        >
+          <UIcon v-if="item.icon" :name="item.icon" class="w-6 h-6" />
+        </NuxtLink>
+      </template>
+    </UNavigationMenu>
   </div>
 </template>

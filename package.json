@@ -51,6 +51,7 @@
     "eslint": "^9.31.0",
     "eslint-plugin-format": "^1.0.1",
     "nuxt": "^3.17.7",
+    "nuxt-gtag": "3.0.3",
     "pinia": "^3.0.3",
     "typescript": "^5.8.3",
     "vue-tsc": "^2.2.12",

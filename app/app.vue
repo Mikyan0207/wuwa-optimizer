@@ -9,10 +9,19 @@ const CharactersStore = useCharactersStore()
 const SonatasStore = useSonatasStore()
 const EchoesStore = useEchoesStore()
 
+function ConsentGrantedAnalytics() {
+  const { gtag } = useGtag()
+  gtag('consent', 'update', {
+    analytics_storage: 'granted',
+  })
+}
+
 onMounted(async () => {
   await CharactersStore.Migration()
   await SonatasStore.Migration()
   await EchoesStore.Migration()
+
+  ConsentGrantedAnalytics()
 })
 </script>
 

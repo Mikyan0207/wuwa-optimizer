@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxtjs/i18n',
     '@nuxthub/core',
+    'nuxt-gtag',
   ],
 
   ssr: false,
@@ -110,6 +111,20 @@ export default defineNuxtConfig({
         name: 'Quicksand',
         provider: 'google',
       },
+    ],
+  },
+
+  gtag: {
+    enabled: process.env.NODE_ENV === 'production',
+    initCommands: [
+      // Setup up consent mode
+      ['consent', 'default', {
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500,
+      }],
     ],
   },
 

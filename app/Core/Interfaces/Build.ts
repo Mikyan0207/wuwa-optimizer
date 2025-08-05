@@ -1,3 +1,4 @@
+import type { ScoreGrade } from '../Enums/ScoreGrade'
 import type { IEchoRatingResult } from '~/composables/UseScoreCalculator'
 import type Echo from '~/Core/Interfaces/Echo'
 
@@ -14,7 +15,7 @@ export default interface Build {
   EquipedEchoes: number[]
   EchoesData?: BuildEcho[]
   Score?: number
-  Note?: string
+  Note?: ScoreGrade
   EchoesScores?: IEchoRatingResult[]
   CreatedAt: Date
   UpdatedAt: Date

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type IStatistic from '~/Core/Interfaces/Statistic'
-import { UBadge } from '#components'
+import { GetTotalGradeColor } from '~/composables/UseScoreCalculator'
 import { GetSequenceLevel } from '~/Core/Utils/CharacterUtils'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
@@ -8,7 +8,7 @@ const { t } = useI18n()
 const { CurrentCharacter, Stats, Score } = useCharacterContext()
 
 const GetCharacterScoreNoteColor = computed(() => {
-  return TOTAL_SCORE_GRADES.find(x => x.Grade === Score.value.Note)?.Color
+  return GetTotalGradeColor(Score.value.Note)
 })
 
 function IsStatWanted(stat: IStatistic) {
@@ -77,14 +77,18 @@ function IsStatWanted(stat: IStatistic) {
         </div>
       </div>
       <div class="mx-auto my-4 h-[1px] w-full rounded-full bg-white/14" />
-      <div v-motion-slide-bottom :delay="500" class="w-full flex text-lg items-center justify-evenly">
+      <div v-motion-slide-bottom :delay="500" class="w-full flex text-lg items-center justify-between">
         <p>
           {{ t('label_character_score') }}
         </p>
-        <div>
-          {{ Score.Score.toFixed(2) }} (<div :class="GetCharacterScoreNoteColor" class="inline-block font-semibold">
+        <div class="flex flex-row items-center justify-end">
+          <span class="font-semibold">
+            {{ Score.Score.toFixed(2) }}
+          </span>
+          <USeparator color="neutral" orientation="vertical" class="h-4 mx-2" />
+          <span :class="GetCharacterScoreNoteColor" class="inline-block font-semibold">
             {{ Score.Note }}
-          </div>)
+          </span>
         </div>
       </div>
     </div>

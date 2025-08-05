@@ -5,7 +5,7 @@ import type Weapon from '~/Core/Interfaces/Weapon'
 import ImportedEchoCard from './Cards/ImportedEchoCard.vue'
 
 const Step = ref<number>(0)
-const Scanner = useCharacterScanner()
+const Scanner = await useCharacterScanner()
 
 const CharactersStore = useCharactersStore()
 const WeaponsStore = useWeaponsStore()
@@ -105,9 +105,6 @@ function OnConfirmClicked() {
     EchoesStore.AddOrUpdate(echo, ImportedCharacter.value!.Id)
   })
 
-  const ScoreCalculator = useScoreCalculator()
-  const score = ScoreCalculator.GetCharacterScore(ImportedCharacter.value)
-
   const BuildsStore = useBuildsStore()
   const existingDefaultBuild = BuildsStore.GetDefaultBuild(ImportedCharacter.value!.Id)
 
@@ -136,15 +133,7 @@ function OnConfirmClicked() {
     ImportedCharacter.value!.Id,
     ImportedWeapon.value!.Id,
     equippedEchoes,
-    score?.Score,
-    score?.Note,
   )
-
-  if (score?.EchoesScores) {
-    BuildsStore.UpdateBuild(importedBuild.Id, {
-      EchoesScores: score.EchoesScores,
-    })
-  }
 
   BuildsStore.SetDefaultBuild(ImportedCharacter.value!.Id, importedBuild.Id)
 }

@@ -1,3 +1,4 @@
+import type { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 import type Build from '~/Core/Interfaces/Build'
 import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
@@ -5,6 +6,7 @@ import { TemplateEchoes } from '~/Core/Echoes'
 
 export const useBuildsStore = defineStore('BuildsStore', () => {
   const Builds = useLocalStorage<Build[]>('Builds', [])
+  const ScoreCalculator = useScoreCalculator()
 
   function GetBuildsByCharacter(characterId: number): Build[] {
     return Builds.value
@@ -67,7 +69,7 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     )
   }
 
-  function SaveCurrentBuild(characterId: number, weaponId?: number, equippedEchoes: number[] = [], score?: number, note?: string): Build {
+  function SaveCurrentBuild(characterId: number, weaponId?: number, equippedEchoes: number[] = [], score?: number, note?: ScoreGrade): Build {
     const build = CreateBuild(characterId, `Build ${new Date().toLocaleDateString()}`)
 
     const EchoesStore = useEchoesStore()
@@ -84,18 +86,18 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
       })
       .filter((echo): echo is NonNullable<typeof echo> => echo !== undefined)
 
-    const ScoreCalculator = useScoreCalculator()
-    const CharactersStore = useCharactersStore()
-    const character = CharactersStore.Get(characterId)
-    const echoesScores = score && character ? ScoreCalculator.GetCharacterScore(character, build)?.EchoesScores : undefined
-
     UpdateBuild(build.Id, {
       WeaponId: weaponId,
       EquipedEchoes: equippedEchoes,
       EchoesData: echoesData,
-      Score: score,
-      Note: note,
-      EchoesScores: echoesScores,
+    })
+
+    const finalScore = ScoreCalculator.GetBuildScore(build.Id)
+
+    UpdateBuild(build.Id, {
+      Score: finalScore?.Score ?? score,
+      Note: finalScore?.Note ?? note,
+      EchoesScores: finalScore?.EchoesScores,
     })
 
     return build
@@ -164,7 +166,6 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
       EquipedEchoes: equippedEchoes,
     })
 
-    // Recalculer et sauvegarder le score du build
     const character = CharactersStore.Get(build.CharacterId)
     if (character) {
       const ScoreCalculator = useScoreCalculator()

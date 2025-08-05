@@ -1,5 +1,6 @@
 import type Echo from '~/Core/Interfaces/Echo'
 import { Empty_Echo } from '~/Core/Echoes'
+import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 
 export function useCharacterContext() {
   const Route = useRoute()
@@ -78,14 +79,14 @@ export function useCharacterContext() {
       return {
         Score: buildScore,
         EchoesScores: echoesScores,
-        Note: DefaultBuild.value.Note || 'F',
+        Note: DefaultBuild.value.Note || ScoreGrade.F,
       }
     }
 
     return {
       Score: 0,
       EchoesScores: [],
-      Note: 'F',
+      Note: ScoreGrade.F,
     }
   })
 

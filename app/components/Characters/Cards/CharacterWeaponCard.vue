@@ -63,7 +63,7 @@ const { CurrentWeapon } = useCharacterContext()
           fit="cover"
           width="160"
           height="160"
-          class="absolute z-0 rounded-lg object-contain -right-4 -top-4"
+          class="absolute z-0 object-contain border-l border-neutral-800 -right-4 -top-4"
         />
         <USkeleton v-else class="absolute right-1 top-1 h-[4em] w-[4em]" />
       </div>

@@ -113,12 +113,7 @@ const GetSonata = computed(() => props.echo.Sonata.find(x => x.IsSelected === tr
         <div class="flex items-center gap-2">
           <p>Score</p>
         </div>
-        <div v-if="IsValidEcho && score" class="w-full flex flex-row items-center justify-end">
-          <p class="mr-2">
-            {{ (score.Score).toFixed(2) }}
-          </p>
-          (<EchoScore :value="score.Score" :text="score.Grade" />)
-        </div>
+        <EchoScore v-if="IsValidEcho && score" class="w-full flex flex-row items-center justify-end" :score="score.Score" :grade="score.Grade" />
         <div v-else class="mt-1 w-full flex flex-row items-center justify-end">
           <USkeleton class="h-4 w-8" />
         </div>

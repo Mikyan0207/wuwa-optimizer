@@ -11,7 +11,6 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxtjs/i18n',
     '@nuxthub/core',
-    'nuxt-gtag',
   ],
 
   ssr: false,
@@ -114,20 +113,6 @@ export default defineNuxtConfig({
     ],
   },
 
-  gtag: {
-    enabled: process.env.NODE_ENV === 'production',
-    initCommands: [
-      // Setup up consent mode
-      ['consent', 'default', {
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        ad_storage: 'denied',
-        analytics_storage: 'denied',
-        wait_for_update: 500,
-      }],
-    ],
-  },
-
   i18n: {
     strategy: 'no_prefix',
     locales: [
@@ -135,7 +120,6 @@ export default defineNuxtConfig({
       { code: 'fr', language: 'fr-FR', file: 'fr-FR.ts' },
       { code: 'jp', language: 'ja-JP', file: 'ja-JP.ts' },
     ],
-    lazy: false,
     detectBrowserLanguage: {
       useCookie: true,
       fallbackLocale: 'en',

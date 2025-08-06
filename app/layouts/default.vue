@@ -4,7 +4,7 @@
 
 <template>
   <div
-    class="[background-size:16px_16px] bg-fixed min-h-100vh w-full flex flex-row overflow-hidden bg-[radial-gradient(#ffffff12_1px,transparent_1px)]"
+    class="[background-size:16px_16px] bg-fixed min-h-100vh w-full flex flex-col overflow-hidden bg-[radial-gradient(#ffffff12_1px,transparent_1px)]"
   >
     <!-- Background -->
     <div class="fixed inset-0 h-full w-full -z-1">
@@ -47,8 +47,24 @@
       <DynamicHeader class="col-start-4 ml-[3em] pointer-events-auto" />
     </div>
 
-    <main class="ml-[3.5em] mt-[6em] w-full">
-      <slot />
-    </main>
+    <div class="flex flex-row flex-1">
+      <main class="ml-[3.5em] mt-[6em] w-full">
+        <slot />
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full bg-neutral-900/90 backdrop-blur-md border-t border-neutral-700">
+      <div class="ml-[3.5em] px-4 py-2">
+        <p class="text-xs text-gray-400 text-center">
+          <span class="font-bold">Wuthering Waves Optimizer</span> is a fan-made project and is not affiliated with nor endorsed by Kuro Games.
+        </p>
+
+        <p class="text-xs text-gray-400 text-center">
+          Wuthering Waves and other properties are trademarks of their respective owners.
+          All rights reserved by © Guangzhou Kuro Technology Co., Ltd.
+        </p>
+      </div>
+    </footer>
   </div>
 </template>

@@ -7,6 +7,32 @@ import { WeaponType } from '~/Core/Enums/WeaponType'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 import { TemplateWeapons } from '~/Core/Weapons'
 
+useHead({
+  title: 'Weapons - Wuthering Waves Optimizer',
+  meta: [
+    {
+      name: 'description',
+      content: 'Browse all Wuthering Waves weapons and optimize your equipment. Find the best weapons for each character and maximize your damage output.',
+    },
+    {
+      name: 'keywords',
+      content: 'WuWa weapons, Wuthering Waves weapons, weapon list, weapon optimization, weapon calculator, WuWa equipment',
+    },
+    {
+      property: 'og:title',
+      content: 'Weapons - Wuthering Waves Optimizer',
+    },
+    {
+      property: 'og:description',
+      content: 'Browse all Wuthering Waves weapons and optimize your equipment.',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+  ],
+})
+
 const WeaponsStore = useWeaponsStore()
 const SelectedTab = ref<string>('0')
 

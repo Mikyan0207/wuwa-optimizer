@@ -13,6 +13,32 @@ definePageMeta({
 
 const { t } = useI18n()
 
+useHead({
+  title: 'Characters - Wuthering Waves Optimizer',
+  meta: [
+    {
+      name: 'description',
+      content: 'Browse all Wuthering Waves characters and optimize their builds. Find the best echoes and weapons for each character to maximize your damage.',
+    },
+    {
+      name: 'keywords',
+      content: 'WuWa characters, Wuthering Waves characters, character list, WuWa builds, character optimization, echo calculator',
+    },
+    {
+      property: 'og:title',
+      content: 'Characters - Wuthering Waves Optimizer',
+    },
+    {
+      property: 'og:description',
+      content: 'Browse all Wuthering Waves characters and optimize their builds.',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+  ],
+})
+
 const CharacterSortOptions: string[] = [
   'Default',
   'Name',

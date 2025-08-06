@@ -252,7 +252,7 @@ export function useScoreCalculator() {
       const rollQuality = (stat.Value / maxValue) * 100
       const weight = weights[stat.Type] || 0
 
-      const amplifiedWeight = weight ** 1.3
+      const amplifiedWeight = weight ** 0.55
       totalWeightedQuality += rollQuality * amplifiedWeight
       totalWeight += amplifiedWeight
     }
@@ -263,13 +263,13 @@ export function useScoreCalculator() {
     const criticalBonus = criticalStats.length * 25
 
     const importantStats = echo.Statistics.filter(stat => (weights[stat.Type] || 0) >= 0.75)
-    const importantBonus = importantStats.length * 15
+    const importantBonus = importantStats.length * 10
 
     const unlockedStats = echo.Statistics.length
-    const incompleteMalus = (5 - unlockedStats) * 10
+    const incompleteMalus = (5 - unlockedStats) * 25
 
     const uselessStats = echo.Statistics.filter(stat => (weights[stat.Type] || 0) === 0)
-    const uselessMalus = uselessStats.length * 30
+    const uselessMalus = uselessStats.length * 20
 
     const baseFinalScore = baseScore + criticalBonus + importantBonus - incompleteMalus - uselessMalus
 

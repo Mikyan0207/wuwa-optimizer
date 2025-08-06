@@ -42,7 +42,7 @@ const { CurrentWeapon } = useCharacterContext()
             <USkeleton v-else class="h-3 w-10" />
           </div>
           <!-- Stats -->
-          <div class="gap-1 flex flex-col items-start text-gray-300">
+          <div class="flex flex-col items-start text-gray-300">
             <StatLine
               v-if="CurrentWeapon && CurrentWeapon.MainStatistic"
               :stat="CurrentWeapon.MainStatistic"
@@ -54,15 +54,15 @@ const { CurrentWeapon } = useCharacterContext()
               :stat="CurrentWeapon.SecondaryStatistic"
               :show-line="true"
             />
-            <USkeleton v-else class="h-3 w-24" />
+            <USkeleton v-else class="h-3 mt-1 w-24" />
           </div>
         </div>
         <NuxtImg
           v-if="CurrentWeapon"
           :src="`/images/weapons/${CurrentWeapon.Icon}`"
           fit="cover"
-          width="160"
-          height="160"
+          width="176"
+          height="176"
           class="absolute z-0 object-contain border-l border-neutral-800 -right-4 -top-4"
         />
         <USkeleton v-else class="absolute right-1 top-1 h-[4em] w-[4em]" />

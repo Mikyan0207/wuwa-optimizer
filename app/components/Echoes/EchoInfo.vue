@@ -94,7 +94,6 @@ const GetSonata = computed(() => props.echo.Sonata.find(x => x.IsSelected === tr
           :show-line="true"
           :show-roll-value="true"
           :show-wanted-highlight="true"
-          class="px-2 py-1"
         />
         <div v-else class="h-8 flex items-center justify-center">
           <USkeleton class="h-1 w-full rounded" />

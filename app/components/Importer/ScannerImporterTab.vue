@@ -135,7 +135,9 @@ function OnConfirmClicked() {
     equippedEchoes,
   )
 
-  BuildsStore.SetDefaultBuild(ImportedCharacter.value!.Id, importedBuild.Id)
+  if (importedBuild) {
+    BuildsStore.SetDefaultBuild(ImportedCharacter.value!.Id, importedBuild.Id)
+  }
 }
 </script>
 

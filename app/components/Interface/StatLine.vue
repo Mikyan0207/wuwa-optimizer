@@ -9,18 +9,16 @@ const props = withDefaults(defineProps<{
   isMainStat?: boolean
   iconSize?: 'xs' | 'md'
   showLine?: boolean
-  showRollValue?: boolean
-  isWantedColor?: string
   showWantedHighlight?: boolean
 }>(), {
   isMainStat: false,
   showLine: false,
-  showRollValue: false,
   showWantedHighlight: false,
+  showWantedLine: false,
 })
 
-const { t } = useI18n()
 const { CurrentCharacter } = useCharacterContext()
+const { t } = useI18n()
 
 const IsPercentageStat = computed(() => {
   return !(props.stat.Type === StatType.ATTACK || props.stat.Type === StatType.HP || props.stat.Type === StatType.DEF)
@@ -42,13 +40,29 @@ const GetStatName = computed(() => {
   return t(`label_stat_${props.stat.Type.toLowerCase()}`)
 })
 
-const GetStatColorByRollValue = computed(() => {
-  if (!props.showRollValue || props.isMainStat) {
-    return ''
+const Weight = computed(() => {
+  if (CurrentCharacter.value.StatsWeights === undefined) {
+    return 0
   }
 
-  if (props.weight === undefined) {
-    return 'text-gray-400'
+  let w = CurrentCharacter.value.StatsWeights[props.stat.Type]
+
+  if (w === 0) {
+    const percentageStatType = GetPercentageStatType(props.stat.Type)
+    if (percentageStatType) {
+      const percentageWeight = CurrentCharacter.value.StatsWeights[percentageStatType]
+      if (percentageWeight && percentageWeight > 0) {
+        w = percentageWeight
+      }
+    }
+  }
+
+  return w
+})
+
+const HightlightColor = computed(() => {
+  if (props.isMainStat) {
+    return ''
   }
 
   const weightColorMap: Record<number, string> = {
@@ -65,32 +79,42 @@ const GetStatColorByRollValue = computed(() => {
     0.0: 'text-gray-400',
   }
 
-  const weight = Math.floor(props.weight * 10) / 10
+  const w = Weight.value ?? 0
+  const weight = Math.floor(w * 10) / 10
 
   return weightColorMap[weight] || weightColorMap[0.0]
 })
 
-const IsWantedStat = computed(() => {
-  if (!props.showWantedHighlight) {
-    return false
+function GetPercentageStatType(statType: string): string | null {
+  switch (statType) {
+    case 'ATTACK':
+      return 'ATTACK_PERCENTAGE'
+    case 'HP':
+      return 'HP_PERCENTAGE'
+    case 'DEF':
+      return 'DEF_PERCENTAGE'
+    default:
+      return null
   }
-  const statsWeights = CurrentCharacter.value?.StatsWeights
-  return statsWeights?.[props.stat.Type] !== undefined && (statsWeights[props.stat.Type] ?? 0) > 0.5
+}
+
+const ShowBorder = computed(() => {
+  return Weight.value !== undefined && Weight.value >= 0.5 && props.showWantedHighlight
 })
 </script>
 
 <template>
-  <div class="relative flex items-center min-w-0 w-full" :class="{ 'bg-neutral-800/75 rounded': IsWantedStat }">
+  <div class="relative flex items-center min-w-0 w-full px-2 py-1" :class="{ 'bg-neutral-800/75 rounded': ShowBorder }">
     <div class="flex items-center gap-1 text-gray-300 flex-shrink-0 min-w-0">
       <NuxtImg :src="`/images/icons/${STAT_ICONS[stat.Type]}`" :class="GetIconSize" />
-      <p class="text-sm truncate" :class="GetMargin" :title="GetStatName">
+      <span class="text-sm truncate" :class="GetMargin" :title="GetStatName">
         {{ GetStatName }}
-      </p>
+      </span>
     </div>
     <div v-if="showLine === true" class="flex-1 h-[1px] bg-white/14 min-w-[12px] mx-2" />
-    <p class="flex items-center text-nowrap font-semibold flex-shrink-0 text-sm">
-      <span :class="[GetStatColorByRollValue, isWantedColor]">{{ IsPercentageStat ? isMainStat ? stat.Value.toFixed(2) : stat.Value.toFixed(1) : stat.Value }}</span>
-      <span v-if="IsPercentageStat" :class="[GetStatColorByRollValue, isWantedColor]">%</span>
-    </p>
+    <div class="flex items-center text-nowrap font-semibold flex-shrink-0 text-sm" :class="[HightlightColor]">
+      <span>{{ IsPercentageStat ? isMainStat ? stat.Value.toFixed(2) : stat.Value.toFixed(1) : stat.Value }}</span>
+      <span v-if="IsPercentageStat">%</span>
+    </div>
   </div>
 </template>

@@ -11,29 +11,68 @@ const GetCharacterScoreNoteColor = computed(() => {
   return GetTotalGradeColor(Score.value.Note)
 })
 
-function IsStatWanted(stat: IStatistic) {
+function GetStatWantedColor(stat: IStatistic) {
   if (CurrentCharacter.value.StatsWeights === undefined) {
-    return ''
+    return 'text-gray-400'
   }
 
-  const w = CurrentCharacter.value.StatsWeights[stat.Type]
-
-  if (w === undefined) {
-    return ''
+  const weightColorMap: Record<number, string> = {
+    1.0: 'text-amber-500',
+    0.9: 'text-orange-500',
+    0.8: 'text-red-500',
+    0.7: 'text-purple-500',
+    0.6: 'text-indigo-500',
+    0.5: 'text-blue-500',
+    0.4: 'text-cyan-500',
+    0.3: 'text-teal-500',
+    0.2: 'text-green-500',
+    0.1: 'text-lime-500',
+    0.0: 'text-gray-400',
   }
 
-  switch (true) {
-    case (w > 0 && w <= 0.25):
-      return 'text-green-500'
-    case (w > 0.25 && w <= 0.5):
-      return 'text-blue-500'
-    case (w > 0.5 && w <= 0.75):
-      return 'text-purple-500'
-    case (w > 0.75 && w <= 1.0):
-      return 'text-amber-500'
+  const w = GetWeight(stat) ?? 0
+  const weight = Math.floor(w * 10) / 10
+
+  return weightColorMap[weight] || weightColorMap[0.0]
+}
+
+function GetWeight(stat: IStatistic) {
+  if (CurrentCharacter.value.StatsWeights === undefined) {
+    return 0
+  }
+
+  let w = CurrentCharacter.value.StatsWeights[stat.Type]
+
+  if (w === 0) {
+    const percentageStatType = GetPercentageStatType(stat.Type)
+    if (percentageStatType) {
+      const percentageWeight = CurrentCharacter.value.StatsWeights[percentageStatType]
+      if (percentageWeight && percentageWeight > 0) {
+        w = percentageWeight
+      }
+    }
+  }
+
+  return w
+}
+
+function GetPercentageStatType(statType: string): string | null {
+  switch (statType) {
+    case 'ATTACK':
+      return 'ATTACK_PERCENTAGE'
+    case 'HP':
+      return 'HP_PERCENTAGE'
+    case 'DEF':
+      return 'DEF_PERCENTAGE'
     default:
-      return ''
+      return null
   }
+}
+
+function IsStatWantedLine(stat: IStatistic) {
+  const w = GetWeight(stat) || 0
+
+  return w >= 0.5
 }
 </script>
 
@@ -65,19 +104,20 @@ function IsStatWanted(stat: IStatistic) {
           :key="`${st.Type}-${st.Value}`"
           v-motion-slide-left
           :delay="500 + (idx * 50)"
-          class="w-full flex items-center justify-between"
+          class="w-full"
         >
           <StatLine
             :stat="st"
             :show-line="true"
-            :is-wanted-color="IsStatWanted(st)"
+            :is-wanted-color="GetStatWantedColor(st)"
             :show-wanted-highlight="true"
-            class="flex-1 px-2 py-1"
+            :show-wanted-line="IsStatWantedLine(st)"
+            :weight="CurrentCharacter.StatsWeights?.[st.Type] ?? 0"
           />
         </div>
       </div>
-      <div class="mx-auto my-4 h-[1px] w-full rounded-full bg-white/14" />
-      <div v-motion-slide-bottom :delay="500" class="w-full flex text-lg items-center justify-between">
+      <USeparator color="neutral" class="w-full my-4" />
+      <div v-motion-slide-bottom :delay="500" class="w-full flex text-lg items-end justify-between">
         <p>
           {{ t('label_character_score') }}
         </p>

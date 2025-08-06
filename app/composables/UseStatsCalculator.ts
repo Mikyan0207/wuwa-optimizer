@@ -38,15 +38,28 @@ export function useStatsCalculator() {
   }
 
   function CalculateAttack(base: number, weapon: number, flat: number, percent: number): number {
-    return Math.round((base + weapon) * (1 + percent / 100) + flat)
+    // ATK = (Base ATKCharacter + Base ATKWeapon) × (1 + %Bonus ATK) + Flat Bonus ATK
+    const totalBase = base + weapon
+    const percentMultiplier = 1 + (percent / 100)
+    const totalWithPercent = Math.floor(totalBase * percentMultiplier)
+    const finalValue = totalWithPercent + flat
+    return Math.floor(finalValue)
   }
 
   function CalculateHealth(base: number, flat: number, percent: number): number {
-    return Math.round((base) * (1 + percent / 100) + flat)
+    // Max HP = Base HP_Character × (1 + % HP Bonus) + HP Flat Bonus
+    const percentMultiplier = 1 + (percent / 100)
+    const totalWithPercent = Math.floor(base * percentMultiplier)
+
+    return Math.floor(totalWithPercent + flat)
   }
 
   function CalculateDefense(base: number, flat: number, percent: number): number {
-    return Math.round((base) * (1 + percent / 100) + flat)
+    // DEF = Base DEF × (1 + %Bonus DEF) + Flat Bonus DEF
+    const percentMultiplier = 1 + (percent / 100)
+    const totalWithPercent = Math.floor(base * percentMultiplier)
+    const finalValue = totalWithPercent + flat
+    return Math.floor(finalValue)
   }
 
   function CalculateFlatStats(
@@ -55,26 +68,30 @@ export function useStatsCalculator() {
     flatStats: Statistic[],
     percentStats: Statistic[],
   ) {
-    const getStatValue = (type: StatType, source: Statistic[]) => source.find(s => s.Type === type)?.Value ?? 0
-    const sumStats = (type: StatType, source: Statistic[]) => source.filter(s => s.Type === type).reduce((acc, s) => acc + s.Value, 0)
+    const GetStatValue = (type: StatType, source: Statistic[]) => source.find(s => s.Type === type)?.Value ?? 0
+    const SumStats = (type: StatType, source: Statistic[]) => {
+      const stats = source.filter(s => s.Type === type)
+
+      return stats.reduce((acc, s) => acc + s.Value, 0)
+    }
 
     const atk = CalculateAttack(
-      getStatValue(StatType.ATTACK, character.Stats),
-      getStatValue(StatType.ATTACK, weaponStats),
-      sumStats(StatType.ATTACK, flatStats),
-      sumStats(StatType.ATTACK_PERCENTAGE, percentStats),
+      GetStatValue(StatType.ATTACK, character.Stats),
+      GetStatValue(StatType.ATTACK, weaponStats),
+      SumStats(StatType.ATTACK, flatStats),
+      SumStats(StatType.ATTACK_PERCENTAGE, percentStats),
     )
 
     const hp = CalculateHealth(
-      getStatValue(StatType.HP, character.Stats),
-      sumStats(StatType.HP, flatStats),
-      sumStats(StatType.HP_PERCENTAGE, percentStats),
+      GetStatValue(StatType.HP, character.Stats),
+      SumStats(StatType.HP, flatStats),
+      SumStats(StatType.HP_PERCENTAGE, percentStats),
     )
 
     const def = CalculateDefense(
-      getStatValue(StatType.DEF, character.Stats),
-      sumStats(StatType.DEF, flatStats),
-      sumStats(StatType.DEF_PERCENTAGE, percentStats),
+      GetStatValue(StatType.DEF, character.Stats),
+      SumStats(StatType.DEF, flatStats),
+      SumStats(StatType.DEF_PERCENTAGE, percentStats),
     )
 
     return [
@@ -111,11 +128,13 @@ export function useStatsCalculator() {
           weaponId = build.WeaponId || -1
           echoes = build.EchoesData?.filter(echo => echo.Id !== -1) || []
         }
-      } else {
+      }
+      else {
         weaponId = buildOrBuildId.WeaponId || -1
         echoes = buildOrBuildId.EchoesData?.filter(echo => echo.Id !== -1) || []
       }
-    } else {
+    }
+    else {
       echoes = EchoesStore.GetAllEquipedBy(characterId)
     }
 

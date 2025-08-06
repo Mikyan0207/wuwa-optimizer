@@ -69,7 +69,25 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     )
   }
 
-  function SaveCurrentBuild(characterId: number, weaponId?: number, equippedEchoes: number[] = [], score?: number, note?: ScoreGrade): Build {
+  function IsDuplicateBuild(characterId: number, weaponId?: number, equippedEchoes: number[] = []): boolean {
+    const existingBuilds = GetBuildsByCharacter(characterId)
+
+    return existingBuilds.some((build) => {
+      if (build.WeaponId !== weaponId)
+        return false
+
+      if (build.EquipedEchoes.length !== equippedEchoes.length)
+        return false
+
+      return build.EquipedEchoes.every((echoId, index) => echoId === equippedEchoes[index])
+    })
+  }
+
+  function SaveCurrentBuild(characterId: number, weaponId?: number, equippedEchoes: number[] = [], score?: number, note?: ScoreGrade): Build | null {
+    if (IsDuplicateBuild(characterId, weaponId, equippedEchoes)) {
+      return null
+    }
+
     const build = CreateBuild(characterId, `Build ${new Date().toLocaleDateString()}`)
 
     const EchoesStore = useEchoesStore()

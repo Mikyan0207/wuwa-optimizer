@@ -48,6 +48,15 @@ const Section03Items = ref([
   // },
 ] as NavigationMenuItem[])
 
+const BottomSectionItems = ref([
+  {
+    label: 'roadmap',
+    icon: 'solar:map-line-duotone',
+    type: 'link',
+    to: '/roadmap',
+  },
+] as NavigationMenuItem[])
+
 function IsActiveRoute(itemPath: string) {
   if (itemPath === '/') {
     return route.path === '/'
@@ -69,7 +78,7 @@ const ActiveSection03Item = computed(() => {
 </script>
 
 <template>
-  <div class="space-y-4">
+  <div class="space-y-4 flex flex-col h-full">
     <UNavigationMenu
       :items="Section01Items"
       orientation="vertical"
@@ -124,6 +133,26 @@ const ActiveSection03Item = computed(() => {
           class="inline-block mx-auto pt-[0.35em] inset-x-[0.5em] w-min"
           :to="item.to as string"
           :class="ActiveSection03Item === index ? 'text-primary' : ''"
+        >
+          <UIcon v-if="item.icon" :name="item.icon" class="w-6 h-6" />
+        </NuxtLink>
+      </template>
+    </UNavigationMenu>
+
+    <UNavigationMenu
+      :items="BottomSectionItems"
+      orientation="vertical"
+      :highlight="true"
+      :ui="{
+        link: 'inline-block mx-auto inset-x-[0.5em] w-min',
+        linkLabel: 'hidden w-0 h-0',
+      }"
+      class="mt-auto mb-4"
+    >
+      <template #item="{ item }">
+        <NuxtLink
+          class="inline-block mx-auto pt-[0.35em] inset-x-[0.5em] w-min"
+          :to="item.to as string"
         >
           <UIcon v-if="item.icon" :name="item.icon" class="w-6 h-6" />
         </NuxtLink>

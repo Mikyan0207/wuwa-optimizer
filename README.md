@@ -2,7 +2,7 @@
 <div align="center">
  <h1>WuWa Optimizer</h1>
   <p align="center">
-  <h4>A tool for scoring, optimizing, and building rotations for characters in Wuthering Waves.</h4>
+  <h4>A tool for scoring and optimizing characters builds in Wuthering Waves.</h4>
  </p>
   <p align="center">
 

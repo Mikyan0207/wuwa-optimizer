@@ -58,9 +58,7 @@ const Routes = computed(() => {
 // const SelectedMenuItem = computed(() => MenuItems.value.find(x => x.id === locale.value))
 
 onMounted(() => {
-  if (locale.value === undefined) {
-    setLocale('en')
-  }
+  setLocale('en')
 })
 </script>
 

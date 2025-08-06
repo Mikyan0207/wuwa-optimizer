@@ -64,6 +64,12 @@ export default defineNuxtConfig({
     classPrefix: '',
   },
 
+  runtimeConfig: {
+    public: {
+      siteUrl: 'https://wuwa-optimizer.com',
+    },
+  },
+
   future: {
     compatibilityVersion: 4,
   },

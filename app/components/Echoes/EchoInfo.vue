@@ -12,7 +12,6 @@ const props = withDefaults(defineProps<{
 })
 
 const { t } = useI18n()
-const { CurrentCharacter } = useCharacterContext()
 
 const IsValidEcho = computed(() => props.echo.Id !== -1)
 const GetSonata = computed(() => props.echo.Sonata.find(x => x.IsSelected === true))
@@ -90,7 +89,6 @@ const GetSonata = computed(() => props.echo.Sonata.find(x => x.IsSelected === tr
           v-motion-slide-left
           :delay="500 + (idx * 100)"
           :stat="echo.Statistics[idx]"
-          :weight="CurrentCharacter?.StatsWeights![echo.Statistics[idx].Type] || undefined"
           :show-line="true"
           :show-roll-value="true"
           :show-wanted-highlight="true"

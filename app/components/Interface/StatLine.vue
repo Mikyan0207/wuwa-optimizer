@@ -41,6 +41,10 @@ const GetStatName = computed(() => {
 })
 
 const Weight = computed(() => {
+  if (CurrentCharacter.value === undefined) {
+    return 0
+  }
+
   if (CurrentCharacter.value.StatsWeights === undefined) {
     return 0
   }
@@ -104,7 +108,7 @@ const ShowBorder = computed(() => {
 </script>
 
 <template>
-  <div class="relative flex items-center min-w-0 w-full px-2 py-1" :class="{ 'bg-neutral-800/75 rounded': ShowBorder }">
+  <div class="relative flex items-center min-w-0 h-min w-full px-2 py-1" :class="{ 'bg-neutral-800/75 rounded': ShowBorder }">
     <div class="flex items-center gap-1 text-gray-300 flex-shrink-0 min-w-0">
       <NuxtImg :src="`/images/icons/${STAT_ICONS[stat.Type]}`" :class="GetIconSize" />
       <span class="text-sm truncate" :class="GetMargin" :title="GetStatName">

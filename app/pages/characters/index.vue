@@ -55,6 +55,7 @@ function OnCharacterClicked(characterId: number | undefined) {
 
 function IsCharacterAvailable(character: Character) {
   return character.ReleaseState !== ReleaseState.UPCOMING
+    && character.ReleaseState !== ReleaseState.UNKNOWN
 }
 </script>
 

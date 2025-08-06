@@ -6,6 +6,8 @@ definePageMeta({
 const SelectedTab = ref<string>('0')
 
 const Route = useRoute()
+const { t } = useI18n()
+
 const CharacterId = computed<string | undefined>(() => {
   if (Route.params
     && typeof (Route.params as Record<string, unknown>).id === 'string') {
@@ -15,16 +17,47 @@ const CharacterId = computed<string | undefined>(() => {
   return undefined
 })
 
+const CharacterName = computed(() => {
+  if (CharacterId.value) {
+    return t(`${CharacterId.value}_name`)
+  }
+  return 'Character'
+})
+
 const IsCharacterAvailable = computed(() => {
-  return CharacterId.value !== '9901'
-    && CharacterId.value !== '9902'
-    && CharacterId.value !== undefined
+  return CharacterId.value
+    && Number(CharacterId.value) < 2000
+})
+
+useHead({
+  title: computed(() => `${CharacterName.value} - Wuthering Waves Optimizer`),
+  meta: [
+    {
+      name: 'description',
+      content: computed(() => `Optimize your ${CharacterName.value} builds with our Wuthering Waves stats calculator. Compare echoes, weapons and sequences to maximize your damage.`),
+    },
+    {
+      name: 'keywords',
+      content: computed(() => `${CharacterName.value}, WuWa builds, Wuthering Waves, character optimization, echo calculator`),
+    },
+    {
+      property: 'og:title',
+      content: computed(() => `${CharacterName.value} Builds - Wuthering Waves Optimizer`),
+    },
+    {
+      property: 'og:description',
+      content: computed(() => `Optimize your ${CharacterName.value} builds with our Wuthering Waves stats calculator.`),
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+  ],
 })
 
 onMounted(() => {
-  if (CharacterId.value === '9901'
-    || CharacterId.value === '9902'
-    || CharacterId.value === undefined) {
+  if (!CharacterId.value
+    || Number(CharacterId.value) >= 2000) {
     navigateTo('/characters')
   }
 })

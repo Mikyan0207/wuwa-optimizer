@@ -101,12 +101,13 @@ function IsCharacterAvailable(character: Character) {
             :class="{ 'cursor-pointer': IsCharacterAvailable(c) }"
             @click.prevent="IsCharacterAvailable(c) ? OnCharacterClicked(c.Id) : null"
           />
-          <SmallWeaponIcon
+          <WeaponIcon
             v-for="w in AddedWeapons"
             :key="w.Id"
             v-motion-pop
             :delay="250"
             :weapon="w"
+            variant="small"
             class="cursor-default"
           />
           <CharacterIcon
@@ -118,11 +119,12 @@ function IsCharacterAvailable(character: Character) {
             :class="{ 'cursor-pointer': IsCharacterAvailable(c) }"
             @click.prevent="IsCharacterAvailable(c) ? OnCharacterClicked(c.Id) : null"
           />
-          <SmallWeaponIcon
+          <WeaponIcon
             v-for="w in UpcomingWeapons"
             :key="w.Id"
             v-motion-pop
             :weapon="w"
+            variant="small"
             class="cursor-default"
           />
         </div>

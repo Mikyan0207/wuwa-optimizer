@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import WeaponTypeFilter from '~/components/Filters/WeaponTypeFilter.vue'
-import EquipedWeaponIcon from '~/components/Weapons/EquipedWeaponIcon.vue'
-import WeaponIcon from '~/components/Weapons/WeaponIcon.vue'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { WeaponType } from '~/Core/Enums/WeaponType'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
@@ -72,7 +69,7 @@ const WeaponsList = computed(() => {
 
 const TabItems = [
   {
-    label: 'Unlocked Weapons',
+    label: 'Equiped Weapons',
     disabled: false,
   },
   {
@@ -106,10 +103,10 @@ const TabItems = [
             </div>
           </div>
           <div v-if="SelectedTab === '0'" class="mx-auto w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-center gap-2 mb-8 md:max-w-xl lg:max-w-full">
-            <EquipedWeaponIcon v-for="w in WeaponsList" :key="w.Id" :weapon="w" :character-id="w.EquipedBy" />
+            <WeaponIcon v-for="w in WeaponsList" :key="w.Id" variant="equiped" :weapon="w" :character-id="w.EquipedBy" />
           </div>
           <div v-if="SelectedTab === '1'" class="mx-auto w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-center gap-2 mb-8 md:max-w-xl lg:max-w-full">
-            <WeaponIcon v-for="w in WeaponsList" :key="w.Id" :weapon="w" />
+            <WeaponIcon v-for="w in WeaponsList" :key="w.Id" variant="normal" :weapon="w" />
           </div>
         </div>
       </template>

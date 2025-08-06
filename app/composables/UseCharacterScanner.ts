@@ -1,8 +1,9 @@
+import type { DMatchVectorVector, KeyPointVector, Mat } from '@techstark/opencv-js'
 import type Character from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import type Sonata from '~/Core/Interfaces/Sonata'
 import type Weapon from '~/Core/Interfaces/Weapon'
-import cv from '@techstark/opencv-js'
+import cvReadyPromise from '@techstark/opencv-js'
 import Tesseract from 'tesseract.js'
 import { TemplateCharacters } from '~/Core/Characters'
 import { TemplateEchoes } from '~/Core/Echoes'
@@ -50,11 +51,18 @@ export enum ScannerResultStatus {
   SUCCESS,
 }
 
-export function useCharacterScanner() {
+export async function GetOpenCV() {
+  const cv = await cvReadyPromise
+
+  return cv
+}
+
+export async function useCharacterScanner() {
   let Worker: Tesseract.Worker | undefined
   let Canvas: HTMLCanvasElement | undefined
   let CanvasContext: CanvasRenderingContext2D | null
   let Canvases: HTMLCanvasElement[] = []
+  const cv = await GetOpenCV()
 
   const OnProgress = ref<(status: ScannerStatus) => void>()
 
@@ -367,7 +375,7 @@ export function useCharacterScanner() {
     return await FindSonata(srcMat, Sonatas, region.width, region.height)
   }
 
-  async function FindEcho(srcMat: cv.Mat, echoes: Echo[], width: number, height: number) {
+  async function FindEcho(srcMat: Mat, echoes: Echo[], width: number, height: number) {
     let bestMatch: { echo: Echo | undefined, score: number } = {
       echo: undefined,
       score: 0,
@@ -382,17 +390,17 @@ export function useCharacterScanner() {
       orb.detectAndCompute(srcMat, new cv.Mat(), kp1, des1)
 
       for (const template of echoes) {
-        let templMat: cv.Mat | undefined
-        let kp2: cv.KeyPointVector | undefined
-        let des2: cv.Mat | undefined
-        let knnMatches: cv.DMatchVectorVector | undefined
+        let templMat: Mat | undefined
+        let kp2: KeyPointVector | undefined
+        let des2: Mat | undefined
+        let knnMatches: DMatchVectorVector | undefined
 
         try {
           templMat = await LoadEchoIcon(template, width, height)
 
           kp2 = new cv.KeyPointVector()
           des2 = new cv.Mat()
-          orb.detectAndCompute(templMat, new cv.Mat(), kp2, des2)
+          orb.detectAndCompute(templMat!, new cv.Mat(), kp2, des2)
 
           knnMatches = new cv.DMatchVectorVector()
           bf.knnMatch(des1, des2, knnMatches, 2)
@@ -440,7 +448,7 @@ export function useCharacterScanner() {
     return bestMatch.echo
   }
 
-  async function FindSonata(srcMat: cv.Mat, sonatas: Sonata[], width: number, height: number): Promise<Sonata | undefined> {
+  async function FindSonata(srcMat: Mat, sonatas: Sonata[], width: number, height: number): Promise<Sonata | undefined> {
     let bestMatch: { sonata: Sonata | undefined, score: number } = {
       sonata: undefined,
       score: Number.MAX_VALUE,
@@ -460,15 +468,18 @@ export function useCharacterScanner() {
         if (!sonata)
           continue
 
-        let templMat: cv.Mat | undefined
-        let kp2: cv.KeyPointVector | undefined
-        let des2: cv.Mat | undefined
+        let templMat: Mat | undefined
+        let kp2: KeyPointVector | undefined
+        let des2: Mat | undefined
 
         try {
           templMat = await withTimeout(
             LoadSonataIcon(sonata, width, height),
             5000,
           )
+
+          if (!templMat)
+            continue
 
           if (templMat.cols !== srcMat.cols || templMat.rows !== srcMat.rows) {
             cv.resize(templMat, templMat, new cv.Size(srcMat.cols, srcMat.rows))
@@ -509,7 +520,7 @@ export function useCharacterScanner() {
     return bestMatch.sonata
   }
 
-  function UpscaleIfNeeded(mat: cv.Mat, targetSize: number = 96): cv.Mat {
+  function UpscaleIfNeeded(mat: Mat, targetSize: number = 96): Mat {
     if (mat.cols < targetSize || mat.rows < targetSize) {
       const upscaled = new cv.Mat()
       cv.resize(mat, upscaled, new cv.Size(targetSize, targetSize), 0, 0, cv.INTER_CUBIC)
@@ -518,7 +529,7 @@ export function useCharacterScanner() {
     return mat
   }
 
-  function ComputeDistance(des1: cv.Mat, des2: cv.Mat): number {
+  function ComputeDistance(des1: Mat, des2: Mat): number {
     if (des1.rows === 0 || des2.rows === 0)
       return Number.MAX_VALUE
 
@@ -631,7 +642,7 @@ export function useCharacterScanner() {
     return temp
   }
 
-  async function LoadEchoIcon(echo: Echo, width: number, height: number): Promise<cv.Mat> {
+  async function LoadEchoIcon(echo: Echo, width: number, height: number): Promise<Mat> {
     const refImage = await new Promise<HTMLImageElement>((resolve) => {
       const img = new Image()
       img.src = GetEchoIcon(echo)
@@ -655,7 +666,7 @@ export function useCharacterScanner() {
     return ConvertToGrayScale(refRegion)
   }
 
-  async function LoadSonataIcon(sonata: Sonata, width: number, height: number): Promise<cv.Mat> {
+  async function LoadSonataIcon(sonata: Sonata, width: number, height: number): Promise<Mat> {
     const iconPath = GetSonataIcon(sonata)
 
     const refImage = await withTimeout(
@@ -702,7 +713,7 @@ export function useCharacterScanner() {
     refCtx.putImageData(data, 0, 0)
   }
 
-  function ConvertToGrayScale(region: HTMLCanvasElement): cv.Mat {
+  function ConvertToGrayScale(region: HTMLCanvasElement): Mat {
     const srcMat = cv.imread(region)
     cv.cvtColor(srcMat, srcMat, cv.COLOR_RGBA2GRAY)
     return srcMat

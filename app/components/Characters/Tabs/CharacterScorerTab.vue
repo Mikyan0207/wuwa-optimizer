@@ -33,11 +33,19 @@ function SaveCurrentBuild() {
     Score.value?.Note,
   )
 
-  Toast.add({
-    title: 'Build saved!',
-    description: `"${build.Name}" has been saved successfully.`,
-    color: 'success',
-  })
+  if (build) {
+    Toast.add({
+      title: 'Build saved!',
+      description: `"${build.Name}" has been saved successfully.`,
+      color: 'success',
+    })
+  } else {
+    Toast.add({
+      title: 'Build already exists!',
+      description: 'A build with the same configuration already exists.',
+      color: 'warning',
+    })
+  }
 }
 
 const ShowScreenShotBackground = ref<boolean>(false)

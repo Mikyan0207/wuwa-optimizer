@@ -174,6 +174,12 @@ export const Weapons: Weapon[] = [
       Type: StatType.CRIT_DMG,
       Value: 48.6,
     },
+    ExtraStatistics: [
+      {
+        Type: StatType.ATTACK_PERCENTAGE,
+        Value: 12.0,
+      },
+    ],
   },
   {
     Id: 21010043,
@@ -1415,6 +1421,12 @@ export const Weapons: Weapon[] = [
       Type: StatType.ENERGY_REGENERATION,
       Value: 77.04,
     },
+    ExtraStatistics: [
+      {
+        Type: StatType.HP_PERCENTAGE,
+        Value: 12.0,
+      },
+    ],
   },
   {
     Id: 21050043,

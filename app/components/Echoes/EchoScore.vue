@@ -1,14 +1,23 @@
 <script setup lang="ts">
+import type { ScoreGrade } from '~/Core/Enums/ScoreGrade'
+import { GetEchoGradeColor } from '~/composables/UseScoreCalculator'
+
 const props = defineProps<{
-  value: number
-  text: string
+  score: number
+  grade: ScoreGrade
 }>()
 
 const TextColor = computed(() => {
-  return ECHOES_SCORE_GRADES.find(x => x.Grade?.toString() === props.text)?.Color
+  return GetEchoGradeColor(props.grade)
 })
 </script>
 
 <template>
-  <span :class="TextColor">{{ text }}</span>
+  <div class="flex">
+    <p>
+      {{ (score).toFixed(2) }}
+    </p>
+    <USeparator color="neutral" orientation="vertical" class="h-4 mx-2" />
+    <span :class="TextColor">{{ grade }}</span>
+  </div>
 </template>

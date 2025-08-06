@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type Build from '~/Core/Interfaces/Build'
 import type Sonata from '~/Core/Interfaces/Sonata'
-import { TOTAL_SCORE_GRADES } from '~/composables/UseScoreCalculator'
 import { GetCharacterIcon } from '~/Core/Utils/CharacterUtils'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
 import { GetEchoIcon, GetSonataIcon } from '~/Core/Utils/EchoUtils'
@@ -91,7 +90,7 @@ const GetCharacterScoreNoteColor = computed(() => {
   if (!props.build.Note)
     return 'text-gray-400'
 
-  return TOTAL_SCORE_GRADES.find(x => x.Grade === props.build.Note)?.Color
+  return GetTotalGradeColor(props.build.Note)
 })
 
 watch(IsDropdownOpen, (newValue) => {

@@ -17,6 +17,7 @@ export default defineNuxtConfig({
 
   components: [
     '~/components',
+    '~/components/ui-core',
     '~/components/Characters',
     '~/components/Characters/Tabs',
     '~/components/Characters/Cards',

@@ -56,7 +56,7 @@ function CanUnlockSequence(sequenceIndex: number): boolean {
       root: 'rounded-none rounded-br-xl border-0',
     }"
   >
-    <BorderLines />
+    <MBorderLines />
     <div class="absolute inset-0 z-20 from-black/25 via-transparent to-transparent bg-gradient-to-bl" />
     <NuxtImg
       fit="cover"

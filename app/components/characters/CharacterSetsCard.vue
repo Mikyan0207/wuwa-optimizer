@@ -3,9 +3,11 @@ import type Echo from '~/Core/Interfaces/Echo'
 import type Sonata from '~/Core/Interfaces/Sonata'
 import { GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
-const props = defineProps<{
+interface CharacterSetsCardProps {
   echoes: Echo[]
-}>()
+}
+
+const props = defineProps<CharacterSetsCardProps>()
 
 const SetStatsStore = useSetStatsStore()
 
@@ -59,7 +61,7 @@ const ActiveSets = computed(() => {
     }"
   >
     <template #default>
-      <BorderLines />
+      <MBorderLines />
       <div class="p-2">
         <div v-if="ActiveSets.length === 0" class="text-gray-400 text-center py-4">
           No active sets

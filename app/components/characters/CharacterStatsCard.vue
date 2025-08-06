@@ -30,24 +30,15 @@ const GetCharacterScoreNoteColor = computed(() => {
       <p>S{{ GetSequenceLevel(CurrentCharacter) }}</p>
     </UBadge>
 
-    <div class="mx-auto my-4 h-[1px] w-full rounded-full bg-white/14" />
-    <div class="w-full flex flex-col items-start gap-1 relative">
-      <div
-        v-for="(st, idx) in Stats"
-        :key="`${st.Type}-${st.Value}`"
-        v-motion-slide-left
-        :delay="500 + (idx * 50)"
-        class="w-full"
-      >
-        <MStatLine
-          :stat="st"
-          :show-line="true"
-          :show-roll-value="true"
-          :show-wanted-highlight="true"
-          :weights="CurrentCharacter.StatsWeights!"
-        />
-      </div>
-    </div>
+    <USeparator color="neutral" class="w-full my-4" />
+    <MStatList
+      :stats="Stats"
+      :stats-count="Stats.length"
+      :weights="CurrentCharacter.StatsWeights!"
+      :show-roll-value="true"
+      :show-wanted-highlight="true"
+    />
+
     <USeparator color="neutral" class="w-full my-4" />
     <div v-motion-slide-bottom :delay="500" class="w-full flex text-lg items-end justify-between">
       <p>

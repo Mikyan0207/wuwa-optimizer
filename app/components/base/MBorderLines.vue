@@ -12,14 +12,14 @@ const props = withDefaults(defineProps<BorderLinesProps>(), {
 const ZIndex = 'z-50'
 
 const BorderClasses = computed(() => ({
-  Base: `${ZIndex} absolute inset-0 border pointer-events-none`,
-  Color: props.color,
+  base: `${ZIndex} absolute inset-0 border pointer-events-none`,
+  color: props.color,
 }))
 
 const BorderConfigs = computed(() => [
-  { Class: 'rounded-br-xl' },
-  { Class: 'rounded-br-3xl' },
-  { Class: 'rounded-br-[2rem]' },
+  { class: 'rounded-br-xl' },
+  { class: 'rounded-br-3xl' },
+  { class: 'rounded-br-[2rem]' },
 ])
 
 const ActiveBorders = computed(() =>
@@ -31,6 +31,6 @@ const ActiveBorders = computed(() =>
   <div
     v-for="(border, index) in ActiveBorders"
     :key="index"
-    :class="[BorderClasses.Base, BorderClasses.Color, border.Class]"
+    :class="[BorderClasses.base, BorderClasses.color, border.class]"
   />
 </template>

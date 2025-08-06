@@ -3,15 +3,12 @@ import { UpcomingGameVersion } from '~/Core'
 import { ReleaseState } from '~/Core/Enums/ReleaseState'
 
 interface IconFrameProps {
-  // Couleurs de rareté
   background?: string
   secondary?: string
   highlight?: string
 
-  // État de release
   releaseStatus?: ReleaseState
 
-  // Configuration d'affichage
   size?: 'sm' | 'md' | 'lg'
   showRarityGlow?: boolean
   showStatusBadge?: boolean
@@ -29,7 +26,6 @@ const props = withDefaults(defineProps<IconFrameProps>(), {
   animated: true,
 })
 
-// Tailles
 const SizeClasses = computed(() => {
   switch (props.size) {
     case 'sm': return 'min-h-24 w-24'
@@ -38,7 +34,6 @@ const SizeClasses = computed(() => {
   }
 })
 
-// Classes CSS
 const CardClasses = computed(() => ({
   'group relative transition-all duration-100': true,
   'cursor-pointer': props.clickable,

@@ -69,8 +69,10 @@ onMounted(() => {
     class="fixed left-16 top-0 right-0 z-30 h-12  flex items-center justify-between gap-2 bg-neutral-900 p-3 text-sm backdrop-blur-md"
   >
     <UBreadcrumb :items="Routes" />
-    <div class="flex items-center">
+    <div class="flex items-center gap-1">
       <UButton href="https://github.com/Mikyan0207/wuwa-optimizer/issues" target="_blank" icon="mdi:github" size="xl" variant="link" color="neutral" />
+      <BuyMeACoffee />
+
       <!-- <UDropdownMenu
         :items="MenuItems"
         arrow

@@ -47,12 +47,14 @@ const { CurrentWeapon } = useCharacterContext()
               v-if="CurrentWeapon && CurrentWeapon.MainStatistic"
               :stat="CurrentWeapon.MainStatistic"
               :show-line="true"
+              class="p-0!"
             />
             <USkeleton v-else class="mt-4 h-3 w-24" />
             <StatLine
               v-if="CurrentWeapon && CurrentWeapon.SecondaryStatistic"
               :stat="CurrentWeapon.SecondaryStatistic"
               :show-line="true"
+              class="p-0!"
             />
             <USkeleton v-else class="h-3 mt-1 w-24" />
           </div>
@@ -61,8 +63,8 @@ const { CurrentWeapon } = useCharacterContext()
           v-if="CurrentWeapon"
           :src="`/images/weapons/${CurrentWeapon.Icon}`"
           fit="cover"
-          width="176"
-          height="176"
+          width="155"
+          height="155"
           class="absolute z-0 object-contain border-l border-neutral-800 -right-4 -top-4"
         />
         <USkeleton v-else class="absolute right-1 top-1 h-[4em] w-[4em]" />

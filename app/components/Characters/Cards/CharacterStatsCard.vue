@@ -78,7 +78,6 @@ function IsStatWantedLine(stat: IStatistic) {
 
 <template>
   <UCard
-    class="flex flex-col overflow-clip"
     :ui="{
       root: 'rounded-none rounded-br-xl border-0',
     }"
@@ -97,39 +96,37 @@ function IsStatWantedLine(stat: IStatistic) {
     </UBadge>
 
     <div class="mx-auto my-4 h-[1px] w-full rounded-full bg-white/14" />
-    <div class="flex flex-col">
-      <div class="w-full flex flex-col items-start gap-1 relative">
-        <div
-          v-for="(st, idx) in Stats"
-          :key="`${st.Type}-${st.Value}`"
-          v-motion-slide-left
-          :delay="500 + (idx * 50)"
-          class="w-full"
-        >
-          <StatLine
-            :stat="st"
-            :show-line="true"
-            :is-wanted-color="GetStatWantedColor(st)"
-            :show-wanted-highlight="true"
-            :show-wanted-line="IsStatWantedLine(st)"
-            :weight="CurrentCharacter.StatsWeights?.[st.Type] ?? 0"
-          />
-        </div>
+    <div class="w-full flex flex-col items-start gap-1 relative">
+      <div
+        v-for="(st, idx) in Stats"
+        :key="`${st.Type}-${st.Value}`"
+        v-motion-slide-left
+        :delay="500 + (idx * 50)"
+        class="w-full"
+      >
+        <StatLine
+          :stat="st"
+          :show-line="true"
+          :is-wanted-color="GetStatWantedColor(st)"
+          :show-wanted-highlight="true"
+          :show-wanted-line="IsStatWantedLine(st)"
+          :weight="CurrentCharacter.StatsWeights?.[st.Type] ?? 0"
+        />
       </div>
-      <USeparator color="neutral" class="w-full my-4" />
-      <div v-motion-slide-bottom :delay="500" class="w-full flex text-lg items-end justify-between">
-        <p>
-          {{ t('label_character_score') }}
-        </p>
-        <div class="flex flex-row items-center justify-end">
-          <span class="font-semibold">
-            {{ Score.Score.toFixed(2) }}
-          </span>
-          <USeparator color="neutral" orientation="vertical" class="h-4 mx-2" />
-          <span :class="GetCharacterScoreNoteColor" class="inline-block font-semibold">
-            {{ Score.Note }}
-          </span>
-        </div>
+    </div>
+    <USeparator color="neutral" class="w-full my-4" />
+    <div v-motion-slide-bottom :delay="500" class="w-full flex text-lg items-end justify-between">
+      <p>
+        {{ t('label_character_score') }}
+      </p>
+      <div class="flex flex-row items-center justify-end">
+        <span class="font-semibold">
+          {{ Score.Score.toFixed(2) }}
+        </span>
+        <USeparator color="neutral" orientation="vertical" class="h-4 mx-2" />
+        <span :class="GetCharacterScoreNoteColor" class="inline-block font-semibold">
+          {{ Score.Note }}
+        </span>
       </div>
     </div>
   </UCard>

@@ -28,34 +28,40 @@ const Routes = computed(() => {
   return breadcrumbItems
 })
 
-const MenuItems = computed(() => [
-  {
-    label: 'English',
-    id: 'en',
-    icon: 'circle-flags:en',
-    onSelect() {
-      setLocale('en')
-    },
-  },
-  // {
-  //   label: 'Français',
-  //   id: 'fr',
-  //   icon: 'circle-flags:fr',
-  //   onSelect() {
-  //     setLocale('fr')
-  //   },
-  // },
-  // {
-  //   label: '日本語',
-  //   id: 'jp',
-  //   icon: 'circle-flags:jp',
-  //   onSelect() {
-  //     setLocale('jp')
-  //   },
-  // },
-])
+// const MenuItems = computed(() => [
+//   {
+//     label: 'English',
+//     id: 'en',
+//     icon: 'circle-flags:en',
+//     onSelect() {
+//       setLocale('en')
+//     },
+//   },
+//   // {
+//   //   label: 'Français',
+//   //   id: 'fr',
+//   //   icon: 'circle-flags:fr',
+//   //   onSelect() {
+//   //     setLocale('fr')
+//   //   },
+//   // },
+//   // {
+//   //   label: '日本語',
+//   //   id: 'jp',
+//   //   icon: 'circle-flags:jp',
+//   //   onSelect() {
+//   //     setLocale('jp')
+//   //   },
+//   // },
+// ])
 
-const SelectedMenuItem = computed(() => MenuItems.value.find(x => x.id === locale.value))
+// const SelectedMenuItem = computed(() => MenuItems.value.find(x => x.id === locale.value))
+
+onMounted(() => {
+  if (locale.value === undefined) {
+    setLocale('en')
+  }
+})
 </script>
 
 <template>
@@ -63,9 +69,11 @@ const SelectedMenuItem = computed(() => MenuItems.value.find(x => x.id === local
     class="fixed left-16 top-0 right-0 z-30 h-12  flex items-center justify-between gap-2 bg-neutral-900 p-3 text-sm backdrop-blur-md"
   >
     <UBreadcrumb :items="Routes" />
-    <div class="flex items-center">
+    <div class="flex items-center gap-1">
       <UButton href="https://github.com/Mikyan0207/wuwa-optimizer/issues" target="_blank" icon="mdi:github" size="xl" variant="link" color="neutral" />
-      <UDropdownMenu
+      <BuyMeACoffee />
+
+      <!-- <UDropdownMenu
         :items="MenuItems"
         arrow
         :modal="false"
@@ -74,7 +82,7 @@ const SelectedMenuItem = computed(() => MenuItems.value.find(x => x.id === local
         }"
       >
         <UButton :icon="`${SelectedMenuItem ? SelectedMenuItem.icon : 'mdi:translate'}`" color="neutral" variant="ghost" size="md" />
-      </UDropdownMenu>
+      </UDropdownMenu> -->
     </div>
   </div>
 </template>

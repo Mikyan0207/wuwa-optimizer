@@ -9,6 +9,52 @@ definePageMeta({
   layout: 'default',
 })
 
+useHead({
+  title: 'Wuthering Waves Optimizer',
+  meta: [
+    {
+      name: 'description',
+      content: 'The ultimate Wuthering Waves optimizer tool. Calculate character builds, evaluate echoes, maximize your damage with our comprehensive calculator.',
+    },
+    {
+      name: 'keywords',
+      content: 'Wuthering Waves optimizer, WuWa calculator, echo guide, character builds, weapon optimization, damage calculator, WuWa builds',
+    },
+    {
+      property: 'og:title',
+      content: 'Wuthering Waves Optimizer',
+    },
+    {
+      property: 'og:description',
+      content: 'The ultimate Wuthering Waves optimizer tool. Calculate character builds and maximize your damage.',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+    {
+      property: 'og:image',
+      content: '/images/wuwa-optimizer-showcase-00.webp',
+    },
+    {
+      property: 'og:image:width',
+      content: '1920',
+    },
+    {
+      property: 'og:image:height',
+      content: '1080',
+    },
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+    {
+      name: 'twitter:image',
+      content: '/images/wuwa-optimizer-showcase-00.webp',
+    },
+  ],
+})
+
 function OnCharacterClicked(characterId: number | undefined) {
   navigateTo(`/characters/${characterId}`)
 }
@@ -55,12 +101,13 @@ function IsCharacterAvailable(character: Character) {
             :class="{ 'cursor-pointer': IsCharacterAvailable(c) }"
             @click.prevent="IsCharacterAvailable(c) ? OnCharacterClicked(c.Id) : null"
           />
-          <SmallWeaponIcon
+          <WeaponIcon
             v-for="w in AddedWeapons"
             :key="w.Id"
             v-motion-pop
             :delay="250"
             :weapon="w"
+            variant="small"
             class="cursor-default"
           />
           <CharacterIcon
@@ -72,11 +119,12 @@ function IsCharacterAvailable(character: Character) {
             :class="{ 'cursor-pointer': IsCharacterAvailable(c) }"
             @click.prevent="IsCharacterAvailable(c) ? OnCharacterClicked(c.Id) : null"
           />
-          <SmallWeaponIcon
+          <WeaponIcon
             v-for="w in UpcomingWeapons"
             :key="w.Id"
             v-motion-pop
             :weapon="w"
+            variant="small"
             class="cursor-default"
           />
         </div>

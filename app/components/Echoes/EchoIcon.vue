@@ -23,7 +23,7 @@ const GetSonata = computed(() => props.echo.Sonata.find(x => x.IsSelected === tr
   >
     <template #content>
       <div class="w-64 flex flex-col space-y-3">
-        <div class="flex mb-4 items-center gap-2">
+        <div class="flex mb-4 items-center text-lg gap-2">
           <span>{{ t(`${echo.Id}_name`) }}</span>
           <UBadge color="error" variant="soft" size="sm" class="text-nowrap">
             {{ `${t(`label_level`)} ${echo.Level}` }}
@@ -32,7 +32,10 @@ const GetSonata = computed(() => props.echo.Sonata.find(x => x.IsSelected === tr
         <USeparator />
         <div class="w-full">
           <div v-if="echo.MainStatistic" class="w-full flex items-start justify-between gap-12">
-            <StatLine :stat="echo.MainStatistic" />
+            <StatLine :stat="echo.MainStatistic" :show-line="true" />
+          </div>
+          <div v-if="echo.SecondaryStatistic" class="w-full flex items-start justify-between gap-12">
+            <StatLine :stat="echo.SecondaryStatistic" :show-line="true" />
           </div>
         </div>
         <USeparator />

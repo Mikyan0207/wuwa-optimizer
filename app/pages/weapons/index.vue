@@ -1,11 +1,34 @@
 <script setup lang="ts">
-import WeaponTypeFilter from '~/components/Filters/WeaponTypeFilter.vue'
-import EquipedWeaponIcon from '~/components/Weapons/EquipedWeaponIcon.vue'
-import WeaponIcon from '~/components/Weapons/WeaponIcon.vue'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { WeaponType } from '~/Core/Enums/WeaponType'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 import { TemplateWeapons } from '~/Core/Weapons'
+
+useHead({
+  title: 'Weapons - Wuthering Waves Optimizer',
+  meta: [
+    {
+      name: 'description',
+      content: 'Browse all Wuthering Waves weapons and optimize your equipment. Find the best weapons for each character and maximize your damage output.',
+    },
+    {
+      name: 'keywords',
+      content: 'WuWa weapons, Wuthering Waves weapons, weapon list, weapon optimization, weapon calculator, WuWa equipment',
+    },
+    {
+      property: 'og:title',
+      content: 'Weapons - Wuthering Waves Optimizer',
+    },
+    {
+      property: 'og:description',
+      content: 'Browse all Wuthering Waves weapons and optimize your equipment.',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+  ],
+})
 
 const WeaponsStore = useWeaponsStore()
 const SelectedTab = ref<string>('0')
@@ -46,7 +69,7 @@ const WeaponsList = computed(() => {
 
 const TabItems = [
   {
-    label: 'Unlocked Weapons',
+    label: 'Equiped Weapons',
     disabled: false,
   },
   {
@@ -80,10 +103,10 @@ const TabItems = [
             </div>
           </div>
           <div v-if="SelectedTab === '0'" class="mx-auto w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-center gap-2 mb-8 md:max-w-xl lg:max-w-full">
-            <EquipedWeaponIcon v-for="w in WeaponsList" :key="w.Id" :weapon="w" :character-id="w.EquipedBy" />
+            <WeaponIcon v-for="w in WeaponsList" :key="w.Id" variant="equiped" :weapon="w" :character-id="w.EquipedBy" />
           </div>
           <div v-if="SelectedTab === '1'" class="mx-auto w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-center gap-2 mb-8 md:max-w-xl lg:max-w-full">
-            <WeaponIcon v-for="w in WeaponsList" :key="w.Id" :weapon="w" />
+            <WeaponIcon v-for="w in WeaponsList" :key="w.Id" variant="normal" :weapon="w" />
           </div>
         </div>
       </template>

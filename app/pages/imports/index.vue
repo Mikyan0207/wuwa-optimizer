@@ -3,6 +3,32 @@ definePageMeta({
   layout: 'default',
 })
 
+useHead({
+  title: 'Import Characters - Wuthering Waves Optimizer',
+  meta: [
+    {
+      name: 'description',
+      content: 'Automatically import your Wuthering Waves characters, weapons and echoes using our OCR scanner. Scan screenshots to instantly load your builds.',
+    },
+    {
+      name: 'keywords',
+      content: 'WuWa import, Wuthering Waves scanner, OCR import, character scanner, auto import, screenshot scanner',
+    },
+    {
+      property: 'og:title',
+      content: 'Import Characters - Wuthering Waves Optimizer',
+    },
+    {
+      property: 'og:description',
+      content: 'Automatically import your Wuthering Waves characters using our OCR scanner.',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+  ],
+})
+
 const SelectedTab = ref<string>('0')
 
 const TabItems = [{

@@ -3,13 +3,6 @@ definePageMeta({
   layout: 'default',
 })
 
-const { SetEmbedMetaTags } = useMetaTags()
-
-SetEmbedMetaTags(
-  'Roadmap - Wuthering Waves Optimizer',
-  'Découvrez les futures fonctionnalités du Wuthering Waves Optimizer. Calculateur de dégâts, système de comptes, leaderboards et plus encore.',
-)
-
 const roadmapItems = [
   {
     version: 'v0.1',

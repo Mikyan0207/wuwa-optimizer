@@ -17,7 +17,7 @@ const { t } = useI18n()
     }"
   >
     <template #default>
-      <BorderLines :count="1" />
+      <MBorderLines :count="1" />
       <div class="flex gap-2">
         <NuxtImg width="120" height="120" :src="`${GetCharacterIcon(character)}`" style="color: transparent;" class="border-r border-neutral-800" />
         <div class="my-2 flex flex-col gap-2">

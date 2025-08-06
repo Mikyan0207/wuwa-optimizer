@@ -11,7 +11,7 @@ export function useGameIcon(Icon: Character | Weapon | Echo) {
   const IconType = computed(() => {
     if ('Sequences' in Icon)
       return 'character'
-    if ('WeaponType' in Icon)
+    if ('Type' in Icon)
       return 'weapon'
     if ('Sonata' in Icon)
       return 'echo'
@@ -40,60 +40,73 @@ export function useGameIcon(Icon: Character | Weapon | Echo) {
     return GetTypeIcon(Icon as Weapon)
   })
 
-  const Name = computed(() => t(`${Icon.Id}_name`))
+  const Name = computed(() => {
+    return t(`${(Icon as Character | Weapon | Echo).Id}_name`)
+  })
 
-  const CharacterData = computed(() => {
+  const CharacterInfo = computed(() => {
     if (IconType.value !== 'character')
       return null
-    const Character = Icon as Character
+
+    const character = Icon as Character
+
     return {
-      Type: Character.Type,
-      ReleaseState: Character.ReleaseState,
-      Level: Character.Level,
-      Rarity: Character.Rarity,
+      Type: character.Type,
+      ReleaseState: character.ReleaseState,
+      Level: character.Level,
+      Rarity: character.Rarity,
     }
   })
 
-  const WeaponData = computed(() => {
+  const WeaponInfo = computed(() => {
     if (IconType.value !== 'weapon')
       return null
-    const Weapon = Icon as Weapon
+
+    const weapon = Icon as Weapon
+
     return {
-      Type: Weapon.Type,
-      ReleaseState: Weapon.ReleaseState,
-      Level: Weapon.Level,
-      Rank: Weapon.Rank,
-      Rarity: Weapon.Rarity,
+      Type: weapon.Type,
+      ReleaseState: weapon.ReleaseState,
+      Level: weapon.Level,
+      Rank: weapon.Rank,
+      Rarity: weapon.Rarity,
     }
   })
 
-  const EchoData = computed(() => {
+  const EchoInfo = computed(() => {
     if (IconType.value !== 'echo')
       return null
-    const Echo = Icon as Echo
+
+    const echo = Icon as Echo
+
     return {
-      Level: Echo.Level,
-      Cost: Echo.Cost,
-      Rarity: Echo.Rarity,
-      IsNightmare: Echo.IsNightmare,
-      Sonata: Echo.Sonata.find(x => x.IsSelected),
+      Level: echo.Level,
+      Cost: echo.Cost,
+      Rarity: echo.Rarity,
+      IsNightmare: echo.IsNightmare,
+      Sonata: echo.Sonata.find(x => x.IsSelected),
     }
   })
 
   const Sonata = computed(() => {
     if (IconType.value !== 'echo')
       return null
-    const Echo = Icon as Echo
-    return Echo.Sonata.find(x => x.IsSelected)
+
+    const echo = Icon as Echo
+
+    return echo.Sonata.find(x => x.IsSelected)
   })
 
   const SonataIcon = computed(() => {
     if (!Sonata.value)
       return null
+
     return GetSonataIcon(Sonata.value)
   })
 
-  const IsValid = computed(() => Icon.Id !== -1)
+  const IsValid = computed(() => {
+    return (Icon as Character | Weapon | Echo).Id !== -1
+  })
   const HasTypeIcon = computed(() => TypeIcon.value || WeaponTypeIcon.value)
   const HasSonata = computed(() => Sonata.value)
 
@@ -107,9 +120,9 @@ export function useGameIcon(Icon: Character | Weapon | Echo) {
     SonataIcon,
 
     Name,
-    CharacterData,
-    WeaponData,
-    EchoData,
+    CharacterInfo,
+    WeaponInfo,
+    EchoInfo,
     Sonata,
 
     HasTypeIcon,

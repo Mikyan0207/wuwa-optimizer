@@ -17,7 +17,8 @@ export default defineNuxtConfig({
 
   components: [
     '~/components',
-    '~/components/ui-core',
+    '~/components/base',
+    '~/components/Stats',
     '~/components/Characters',
     '~/components/Characters/Tabs',
     '~/components/Characters/Cards',
@@ -26,7 +27,6 @@ export default defineNuxtConfig({
     '~/components/Filters',
     '~/components/Importer',
     '~/components/Importer/Cards',
-    '~/components/Interface',
     '~/components/Navigation',
     '~/components/Skills',
     '~/components/Weapons',

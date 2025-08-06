@@ -54,7 +54,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="w-full bg-neutral-900/90 backdrop-blur-md border-t border-neutral-700">
+    <footer class="w-full bg-neutral-900/90 backdrop-blur-md border-t mt-4 border-neutral-700">
       <div class="ml-[3.5em] px-4 py-2">
         <p class="text-xs text-gray-400 text-center">
           <span class="font-bold">Wuthering Waves Optimizer</span> is a fan-made project and is not affiliated with nor endorsed by Kuro Games.

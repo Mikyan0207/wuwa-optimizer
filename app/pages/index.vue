@@ -53,7 +53,7 @@ function IsCharacterAvailable(character: Character) {
           </p>
         </div>
         <div class="flex w-full flex-wrap items-center gap-1">
-          <CharacterIcon
+          <MCharacterIcon
             v-for="c in AddedCharacters"
             :key="c.Id"
             v-motion-pop
@@ -62,15 +62,14 @@ function IsCharacterAvailable(character: Character) {
             :class="{ 'cursor-pointer': IsCharacterAvailable(c) }"
             @click.prevent="IsCharacterAvailable(c) ? OnCharacterClicked(c.Id) : null"
           />
-          <WeaponIcon
+          <MWeaponIcon
             v-for="w in AddedWeapons"
             :key="w.Id"
             v-motion-pop
             :weapon="w"
-            variant="small"
             class="cursor-default"
           />
-          <CharacterIcon
+          <MCharacterIcon
             v-for="c in UpcomingCharacters"
             :key="c.Id"
             v-motion-pop
@@ -79,12 +78,11 @@ function IsCharacterAvailable(character: Character) {
             :class="{ 'cursor-pointer': IsCharacterAvailable(c) }"
             @click.prevent="IsCharacterAvailable(c) ? OnCharacterClicked(c.Id) : null"
           />
-          <WeaponIcon
+          <MWeaponIcon
             v-for="w in UpcomingWeapons"
             :key="w.Id"
             v-motion-pop
             :weapon="w"
-            variant="small"
             class="cursor-default"
           />
         </div>

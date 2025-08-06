@@ -79,7 +79,7 @@ const IntroStatBonus2 = computed<Skill | undefined>(() =>
     }"
   >
     <template #default>
-      <BorderLines />
+      <MBorderLines />
       <div class="h-full w-full p-4 flex items-center justify-evenly gap-6">
         <!-- Normal Attack -->
         <div class="h-full flex flex-col-reverse items-center">

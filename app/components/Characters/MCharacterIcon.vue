@@ -1,26 +1,26 @@
 <script setup lang="ts">
 import type Character from '~/Core/Interfaces/Character'
-import { useGameIcon } from '~/composables/ui-core/UseGameIcon'
-import { useRarityEffects } from '~/composables/ui-core/UseRarityEffects'
+import { useGameIcon } from '~/composables/core/UseGameIcon'
+import { useRarityEffects } from '~/composables/core/UseRarityEffects'
 import { ReleaseState } from '~/Core/Enums/ReleaseState'
 
 const props = defineProps<{ character: Character }>()
 
 const { Background, Secondary, Highlight } = useRarityEffects(props.character.Rarity)
-const { MainIcon, TypeIcon, Name, CharacterData } = useGameIcon(props.character)
+const { MainIcon, TypeIcon, Name, CharacterInfo } = useGameIcon(props.character)
 </script>
 
 <template>
-  <IconFrame
+  <MIconFrame
     :background="Background"
     :secondary="Secondary"
     :highlight="Highlight"
-    :release-status="CharacterData?.ReleaseState ?? ReleaseState.RELEASED"
+    :release-status="CharacterInfo?.ReleaseState ?? ReleaseState.RELEASED"
   >
     <!-- Type Icon -->
     <template #type-icon>
       <NuxtImg
-        v-if="TypeIcon"
+        v-if="TypeIcon && CharacterInfo?.ReleaseState !== ReleaseState.UNKNOWN"
         :width="32"
         :height="32"
         :src="TypeIcon"
@@ -40,7 +40,13 @@ const { MainIcon, TypeIcon, Name, CharacterData } = useGameIcon(props.character)
 
     <!-- Name -->
     <template #name>
-      {{ Name }}
+      <div
+        class="overflow-hidden mx-auto text-ellipsis whitespace-nowrap"
+        style="width: 115px;"
+        :title="Name"
+      >
+        {{ Name }}
+      </div>
     </template>
-  </IconFrame>
+  </MIconFrame>
 </template>

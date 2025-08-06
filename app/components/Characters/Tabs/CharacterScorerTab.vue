@@ -39,7 +39,8 @@ function SaveCurrentBuild() {
       description: `"${build.Name}" has been saved successfully.`,
       color: 'success',
     })
-  } else {
+  }
+  else {
     Toast.add({
       title: 'Build already exists!',
       description: 'A build with the same configuration already exists.',
@@ -173,6 +174,7 @@ async function TakeScreenShotAsync() {
 
           <div class="grid grid-cols-3 mt-2 gap-2 xl:grid-cols-5">
             <VueDraggable
+              v-if="CurrentCharacter"
               v-model="DraggableEchoes"
               :animation="200"
               ghost-class="opacity-65"
@@ -182,12 +184,14 @@ async function TakeScreenShotAsync() {
               item-key="Id"
             >
               <template #item="{ element: echo, index: idx }">
-                <CharacterEchoCard
+                <MEchoCard
                   v-motion-slide-bottom
                   :delay="200 + (idx * 25)"
+                  :equiped-slot="echo.EquipedSlot || idx"
                   :echo="echo"
-                  :echo-slot="echo.EquipedSlot || idx"
-                  :score="Score.EchoesScores.find(x => x.EchoId === echo.Id)"
+                  :score="Score.EchoesScores.find(x => x.EchoId === echo.Id)?.Score"
+                  :grade="Score.EchoesScores.find(x => x.EchoId === echo.Id)?.Grade"
+                  :weights="CurrentCharacter.StatsWeights!"
                 />
               </template>
             </VueDraggable>
@@ -202,12 +206,7 @@ async function TakeScreenShotAsync() {
               :echoes="CurrentEchoes"
             />
           </div>
-          <div class="col-span-1">
-            <!-- <CharacterStatsChart
-              v-motion-slide-bottom
-              :delay="350"
-            /> -->
-          </div>
+          <div class="col-span-1" />
         </div>
       </div>
 

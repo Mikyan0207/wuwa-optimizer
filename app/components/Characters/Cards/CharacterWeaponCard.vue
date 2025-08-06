@@ -2,7 +2,7 @@
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
 const { t } = useI18n()
-const { CurrentWeapon } = useCharacterContext()
+const { CurrentWeapon, CurrentCharacter } = useCharacterContext()
 </script>
 
 <template>
@@ -16,7 +16,7 @@ const { CurrentWeapon } = useCharacterContext()
         root: 'rounded-none rounded-br-xl border-0',
       }"
     >
-      <BorderLines />
+      <MBorderLines />
       <div class="relative h-full flex justify-between gap-4">
         <div class="flex w-[50%] flex-col gap-1">
           <!-- Name -->
@@ -42,18 +42,22 @@ const { CurrentWeapon } = useCharacterContext()
             <USkeleton v-else class="h-3 w-10" />
           </div>
           <!-- Stats -->
-          <div class="flex flex-col items-start text-gray-300">
-            <StatLine
+          <div class="flex flex-col items-start text-gray-300 gap-1">
+            <MStatLine
               v-if="CurrentWeapon && CurrentWeapon.MainStatistic"
               :stat="CurrentWeapon.MainStatistic"
               :show-line="true"
+              :show-roll-value="true"
+              :weights="CurrentCharacter.StatsWeights!"
               class="p-0!"
             />
             <USkeleton v-else class="mt-4 h-3 w-24" />
-            <StatLine
+            <MStatLine
               v-if="CurrentWeapon && CurrentWeapon.SecondaryStatistic"
               :stat="CurrentWeapon.SecondaryStatistic"
               :show-line="true"
+              :show-roll-value="true"
+              :weights="CurrentCharacter.StatsWeights!"
               class="p-0!"
             />
             <USkeleton v-else class="h-3 mt-1 w-24" />

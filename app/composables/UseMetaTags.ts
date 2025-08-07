@@ -1,5 +1,5 @@
 export function useMetaTags() {
-  function SetEmbedMetaTags(title: string, description: string, imagePath: string = '/images/wuwa-optimizer-discord-embed.webp') {
+  function SetEmbedMetaTags(title: string, description: string, imagePath: string = '/images/wuwa-optimizer-showcase-00.webp') {
     const config = useRuntimeConfig()
     const baseUrl = (config.public.siteUrl as string) || 'https://wuwa-optimizer.nuxt.dev'
 
@@ -10,7 +10,6 @@ export function useMetaTags() {
           name: 'description',
           content: description,
         },
-        // Open Graph (Facebook, Discord, etc.)
         {
           property: 'og:title',
           content: title,

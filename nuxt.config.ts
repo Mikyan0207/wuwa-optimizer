@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxtjs/i18n',
     '@nuxthub/core',
+    'nuxt-gtag',
   ],
 
   ssr: false,
@@ -117,6 +118,15 @@ export default defineNuxtConfig({
         provider: 'google',
       },
     ],
+  },
+
+  gtag: {
+    // eslint-disable-next-line node/prefer-global/process
+    enabled: process.env.NODE_ENV === 'production',
+    config: {
+      page_title: 'Wuthering Waves Optimizer',
+      page_location: 'https://wuwa-optimizer.com',
+    },
   },
 
   i18n: {

@@ -127,6 +127,16 @@ export default defineNuxtConfig({
       page_title: 'Wuthering Waves Optimizer',
       page_location: 'https://wuwa-optimizer.com',
     },
+    initCommands: [
+      // Setup up consent mode
+      ['consent', 'default', {
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        ad_storage: 'denied',
+        analytics_storage: 'granted',
+        wait_for_update: 500,
+      }],
+    ],
   },
 
   i18n: {

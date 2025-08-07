@@ -36,6 +36,15 @@ const IsSlideoverOpen = computed({
   },
 })
 
+function CloseSlideover() {
+  SelectedAction.value = undefined
+}
+
+defineExpose({
+  CloseSlideover,
+  SelectedAction,
+})
+
 const MenuItems = computed(() =>
   props.actions.map((action, index) => ({
     label: action.label,

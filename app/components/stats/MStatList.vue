@@ -19,9 +19,11 @@ withDefaults(defineProps<StatDisplayProps>(), {
 
 <template>
   <div class="w-full flex flex-col gap-1">
-    <div v-for="idx in [...Array(statsCount).keys()]" :key="`stat-${idx}`">
+    <div v-for="idx in [...Array(statsCount).keys()]" :key="`stat-${idx}-${stats[idx]?.Value}`">
       <MStatLine
         v-if="stats[idx]"
+        v-motion-slide-left
+        :delay="idx * 125"
         :stat="stats[idx]"
         :weights="weights"
         :show-roll-value="showRollValue"

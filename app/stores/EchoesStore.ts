@@ -1,28 +1,12 @@
 import type Echo from '~/Core/Interfaces/Echo'
 import { defineStore } from 'pinia'
 import { TemplateEchoes } from '~/Core/Echoes'
-import { EchoMigrationService } from '~/Core/Services/EchoMigrationService'
 
 export const useEchoesStore = defineStore('EchoesStore', () => {
   const Echoes = useLocalStorage<Echo[]>('Echoes', [])
-  const MigrationService = new EchoMigrationService()
 
-  async function Migration() {
-    if (MigrationService.NeedsMigration()) {
-      try {
-        Echoes.value = await MigrationService.MigrateEchoes()
-      }
-      catch (error) {
-        console.error('Echo migration failed:', error)
-      }
-      finally {
-        MigrationService.CleanUp()
-      }
-    }
-  }
-
-  function Get(echoId: number) {
-    const e = TemplateEchoes.find(x => x.Id === echoId)
+  function Get(gameId: number) {
+    const e = TemplateEchoes.find(x => x.GameId === gameId)
 
     if (e === undefined) {
       return undefined
@@ -31,7 +15,15 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     return e
   }
 
-  function GetEquipedBy(echoId: number, characterId: number) {
+  function GetById(echoId: string): Echo | undefined {
+    return Echoes.value.find(e => e.Id === echoId)
+  }
+
+  function GetByGameId(gameId: number): Echo | undefined {
+    return Echoes.value.find(e => e.GameId === gameId)
+  }
+
+  function GetEquipedBy(echoId: string, characterId: number) {
     return Echoes.value
       .find(e => e.Id === echoId && e.EquipedBy === characterId)
   }
@@ -41,7 +33,15 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
       .filter(e => e.EquipedBy === characterId)
   }
 
-  function Update(echoId: number | undefined, data: Partial<Echo>) {
+  function GetByBuildId(echoId: string, buildId: string): Echo | undefined {
+    return Echoes.value.find(e => e.Id === echoId && e.BuildId === buildId)
+  }
+
+  function GetAllByBuildId(buildId: string): Echo[] {
+    return Echoes.value.filter(e => e.BuildId === buildId)
+  }
+
+  function Update(echoId: string | undefined, data: Partial<Echo>) {
     const index = Echoes.value.findIndex(e => e.Id === echoId)
 
     if (index !== -1) {
@@ -55,7 +55,7 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     }
   }
 
-  function UpdateWithEquipedBy(echoId: number | undefined, characterId: number, data: Partial<Echo>) {
+  function UpdateWithEquipedBy(echoId: string | undefined, characterId: number, data: Partial<Echo>) {
     const index = Echoes.value.findIndex(e => e.Id === echoId && e.EquipedBy === characterId)
 
     if (index !== -1) {
@@ -69,7 +69,7 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
     }
   }
 
-  function RemoveEcho(echoId: number, characterId: number) {
+  function RemoveEcho(echoId: string, characterId: number) {
     Echoes.value = Echoes.value.filter(e => !(e.Id === echoId && e.EquipedBy === characterId))
   }
 
@@ -88,12 +88,15 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
   return {
     Echoes,
     Get,
+    GetById,
+    GetByGameId,
     GetEquipedBy,
     GetAllEquipedBy,
+    GetByBuildId,
+    GetAllByBuildId,
     Update,
     UpdateWithEquipedBy,
     RemoveEcho,
     AddOrUpdate,
-    Migration,
   }
 })

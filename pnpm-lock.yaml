@@ -31,6 +31,9 @@ importers:
       tesseract.js:
         specifier: 6.0.1
         version: 6.0.1
+      uuid:
+        specifier: ^11.1.0
+        version: 11.1.0
       vuedraggable:
         specifier: ^4.1.0
         version: 4.1.0(vue@3.5.18(typescript@5.9.2))

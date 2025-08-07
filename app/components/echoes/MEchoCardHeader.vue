@@ -10,7 +10,7 @@ const props = defineProps<EchoCardHeaderProps>()
 
 const { t } = useI18n()
 
-const IsValidEcho = computed(() => props.echo && props.echo.Id !== -1)
+const IsValidEcho = computed(() => props.echo && props.echo.GameId !== -1)
 const SelectedSonata = computed(() => props.echo && props.echo.Sonata.find(x => x.IsSelected === true))
 </script>
 
@@ -21,9 +21,9 @@ const SelectedSonata = computed(() => props.echo && props.echo.Sonata.find(x => 
       <USkeleton v-else class="h-12 w-12 rounded-full" />
     </div>
     <div v-motion-pop :delay="400" class="flex flex-col min-w-0 flex-1">
-      <div v-if="IsValidEcho" class="text-white" :title="t(`${echo!.Id}_name`)">
+      <div v-if="IsValidEcho" class="text-white" :title="t(`${echo!.GameId}_name`)">
         <div class="flex items-center gap-2 w-full min-w-0">
-          <span class="text-lg leading-none min-w-0 flex-1" style="font-size: clamp(0.75rem, 2.5vw, 1.125rem);">{{ t(`${echo!.Id}_name`) }}</span>
+          <span class="text-lg leading-none min-w-0 flex-1" style="font-size: clamp(0.75rem, 2.5vw, 1.125rem);">{{ t(`${echo!.GameId}_name`) }}</span>
           <NuxtImg v-if="SelectedSonata" :src="GetSonataIcon(SelectedSonata)" class="h-6 w-6 flex-shrink-0" />
         </div>
       </div>

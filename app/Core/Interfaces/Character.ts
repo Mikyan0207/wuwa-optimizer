@@ -19,6 +19,5 @@ export default interface Character {
   Stats: Statistic[]
   Sequences: Sequence[]
   Skills: Skill[]
-  EquipedEchoes: number[]
   StatsWeights?: Record<string, number>
 }

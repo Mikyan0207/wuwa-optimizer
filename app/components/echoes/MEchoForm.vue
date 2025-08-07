@@ -2,6 +2,7 @@
 import type Echo from '~/Core/Interfaces/Echo'
 import type Sonata from '~/Core/Interfaces/Sonata'
 import { z } from 'zod'
+import { useBuild } from '~/composables/builds/UseBuild'
 import { EchoCost } from '~/Core/Enums/EchoCost'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { StatType } from '~/Core/Enums/StatType'
@@ -21,7 +22,7 @@ const emits = defineEmits<{
 }>()
 
 const EchoesStore = useEchoesStore()
-const { CurrentCharacter, CurrentEchoes, UpdateEcho } = useCharacterContext()
+const { CurrentEchoes, UpdateEcho } = useBuild()
 
 const Steps = [
   { id: 'echo', title: 'Echo', description: 'Select your Echo and Sonata effect.' },
@@ -139,8 +140,8 @@ const CurrentEcho = computed<Echo | undefined>(() =>
 )
 
 onMounted(() => {
-  if (props.mode === 'edit' && CurrentEcho.value !== undefined && CurrentEcho.value.Id !== -1) {
-    State.EchoId = CurrentEcho.value.Id
+  if (props.mode === 'edit' && CurrentEcho.value !== undefined && CurrentEcho.value.GameId !== -1) {
+    State.EchoId = CurrentEcho.value.GameId
     State.MainStat.Type = CurrentEcho.value.MainStatistic!.Type
     State.MainStat.Value = CurrentEcho.value.MainStatistic!.Value.toFixed(1)
     State.SecondaryStat.Type = CurrentEcho.value.SecondaryStatistic!.Type
@@ -246,8 +247,6 @@ function OnSubmit() {
         Type: s.Type,
         Value: Number.parseFloat(s.Value),
       })),
-    EquipedBy: CurrentCharacter.value!.Id,
-    EquipedSlot: props.echoSlot,
   })
 
   return OnClose()

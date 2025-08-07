@@ -1,11 +1,13 @@
-import type { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 import type Build from '~/Core/Interfaces/Build'
+import type Echo from '~/Core/Interfaces/Echo'
 import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
-import { TemplateEchoes } from '~/Core/Echoes'
+import { v4 as uuidv4 } from 'uuid'
 
 export const useBuildsStore = defineStore('BuildsStore', () => {
   const Builds = useLocalStorage<Build[]>('Builds', [])
+  const EchoesStore = useEchoesStore()
+  const CharactersStore = useCharactersStore()
   const ScoreCalculator = useScoreCalculator()
 
   function GetBuildsByCharacter(characterId: number): Build[] {
@@ -18,31 +20,75 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     return Builds.value.find(build => build.Id === buildId)
   }
 
-  function CreateBuild(characterId: number, name: string, description?: string): Build {
-    const existingBuilds = GetBuildsByCharacter(characterId)
-    const maxOrder = existingBuilds.length > 0 ? Math.max(...existingBuilds.map(b => b.Order || 0)) : -1
+  function GetDefaultBuild(characterId: number): Build | undefined {
+    return Builds.value.find(build =>
+      build.CharacterId === characterId && build.IsDefault,
+    )
+  }
 
+  function CreateBuild(name: string, characterId: number, weaponId?: number, echoes?: Echo[], description?: string): Build | undefined {
+    if (BuildExists(characterId, name, weaponId, echoes))
+      return Builds.value.find(build => build.CharacterId === characterId && build.Name === name)
+
+    const buildId = uuidv4()
     const build: Build = {
-      Id: `${Date.now()}-${crypto.randomUUID()}`,
+      Id: buildId,
       CharacterId: characterId,
       Name: name,
       Description: description,
-      WeaponId: undefined,
-      EquipedEchoes: [],
+      WeaponId: weaponId,
+      Echoes: echoes?.map(echo => ({
+        ...echo,
+        Id: uuidv4(),
+        BuildId: buildId,
+      })) ?? [],
       CreatedAt: new Date(),
       UpdatedAt: new Date(),
       IsDefault: false,
-      Order: maxOrder + 1,
+      Order: GetOrder(characterId),
     }
 
     Builds.value.push(build)
+
+    CalculateScore(build)
+
     return build
+  }
+
+  function CalculateScore(build: Build) {
+    const character = CharactersStore.Get(build.CharacterId)
+    if (!character) {
+      return
+    }
+
+    const score = ScoreCalculator.GetCharacterScore(character, build)
+    if (!score) {
+      return
+    }
+
+    UpdateBuild(build.Id, {
+      Score: score.Score,
+      Note: score.Note,
+      Echoes: build.Echoes.map((echo, idx) => ({
+        ...echo,
+        Score: score.EchoesScores[idx]?.Score,
+        Note: score.EchoesScores[idx]?.Grade,
+      })),
+    })
   }
 
   function UpdateBuild(buildId: string, data: Partial<Build>) {
     const index = Builds.value.findIndex(build => build.Id === buildId)
     if (index === -1)
       return
+
+    if (data.Echoes) {
+      data.Echoes.forEach((echo) => {
+        if (echo.Id) {
+          EchoesStore.Update(echo.Id, echo)
+        }
+      })
+    }
 
     Builds.value[index] = {
       ...Builds.value[index],
@@ -55,158 +101,49 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     Builds.value = Builds.value.filter(build => build.Id !== buildId)
   }
 
-  function SetDefaultBuild(characterId: number, buildId: string) {
+  function SetDefaultBuild(buildId: string) {
     Builds.value.forEach((build) => {
-      if (build.CharacterId === characterId) {
-        build.IsDefault = build.Id === buildId
-      }
+      build.IsDefault = build.Id === buildId
     })
   }
 
-  function GetDefaultBuild(characterId: number): Build | undefined {
-    return Builds.value.find(build =>
-      build.CharacterId === characterId && build.IsDefault,
+  function GetOrder(characterId: number): number {
+    const builds = GetBuildsByCharacter(characterId)
+
+    if (builds.length === 0)
+      return 0
+
+    return Math.max(...builds.map(b => b.Order || 0)) + 1
+  }
+
+  function BuildExists(characterId: number, name: string, weaponId?: number, echoes?: Echo[]): boolean {
+    return Builds.value.some(b => b.CharacterId === characterId
+      && b.Name === name
+      && b.WeaponId === weaponId
+      && b.Echoes.every((echo, index) => echo.GameId === echoes?.[index]?.GameId
+        && echo.Id === echoes?.[index]?.Id
+        && echo.Statistics.every((stat, i) => stat.Value === echoes?.[index]?.Statistics?.[i]?.Value)),
     )
-  }
-
-  function IsDuplicateBuild(characterId: number, weaponId?: number, equippedEchoes: number[] = []): boolean {
-    const existingBuilds = GetBuildsByCharacter(characterId)
-
-    return existingBuilds.some((build) => {
-      if (build.WeaponId !== weaponId)
-        return false
-
-      if (build.EquipedEchoes.length !== equippedEchoes.length)
-        return false
-
-      return build.EquipedEchoes.every((echoId, index) => echoId === equippedEchoes[index])
-    })
-  }
-
-  function SaveCurrentBuild(characterId: number, weaponId?: number, equippedEchoes: number[] = [], score?: number, note?: ScoreGrade): Build | null {
-    if (IsDuplicateBuild(characterId, weaponId, equippedEchoes)) {
-      return null
-    }
-
-    const build = CreateBuild(characterId, `Build ${new Date().toLocaleDateString()}`)
-
-    const EchoesStore = useEchoesStore()
-    const echoesData = equippedEchoes
-      .map((id, index) => {
-        const echo = EchoesStore.GetEquipedBy(id, characterId)
-        if (echo) {
-          return {
-            ...echo,
-            BuildId: Date.now() + Math.random() + index,
-          }
-        }
-        return null
-      })
-      .filter((echo): echo is NonNullable<typeof echo> => echo !== undefined)
-
-    UpdateBuild(build.Id, {
-      WeaponId: weaponId,
-      EquipedEchoes: equippedEchoes,
-      EchoesData: echoesData,
-    })
-
-    const finalScore = ScoreCalculator.GetBuildScore(build.Id)
-
-    UpdateBuild(build.Id, {
-      Score: finalScore?.Score ?? score,
-      Note: finalScore?.Note ?? note,
-      EchoesScores: finalScore?.EchoesScores,
-    })
-
-    return build
   }
 
   function LoadBuild(buildId: string) {
     const build = GetBuild(buildId)
+
     if (!build)
       return
 
-    const CharactersStore = useCharactersStore()
-    const WeaponsStore = useWeaponsStore()
-    const EchoesStore = useEchoesStore()
-
-    SetDefaultBuild(build.CharacterId, build.Id)
-
-    if (build.WeaponId) {
-      WeaponsStore.SetEquipedWeapon(build.CharacterId, build.WeaponId)
-    }
-
-    const equippedEchoes: number[] = []
-
-    if (build.EchoesData && build.EchoesData.length > 0) {
-      build.EchoesData.forEach((echoData, index) => {
-        const newEcho = {
-          ...echoData,
-          Id: echoData.Id,
-          EquipedBy: build.CharacterId,
-          EquipedSlot: index,
-        }
-
-        EchoesStore.AddOrUpdate(newEcho, build.CharacterId)
-        equippedEchoes.push(newEcho.Id)
-      })
-    }
-    else {
-      build.EquipedEchoes.forEach((echoId, index) => {
-        let echo = EchoesStore.Get(echoId)
-
-        if (!echo && echoId !== -1) {
-          const templateEcho = TemplateEchoes.find(t => t.Id === echoId)
-          if (templateEcho) {
-            const newEcho = {
-              ...templateEcho,
-              Id: Date.now() + Math.random() + index,
-              EquipedBy: build.CharacterId,
-              EquipedSlot: index,
-            }
-
-            EchoesStore.AddOrUpdate(newEcho, build.CharacterId)
-            echo = newEcho
-          }
-        }
-
-        if (echo) {
-          EchoesStore.Update(echo.Id, {
-            EquipedBy: build.CharacterId,
-            EquipedSlot: index,
-          })
-          equippedEchoes.push(echo.Id)
-        }
-      })
-    }
-
-    CharactersStore.Update(build.CharacterId, {
-      EquipedEchoes: equippedEchoes,
-    })
-
-    const character = CharactersStore.Get(build.CharacterId)
-    if (character) {
-      const ScoreCalculator = useScoreCalculator()
-      const score = ScoreCalculator.GetCharacterScore(character, build)
-
-      UpdateBuild(build.Id, {
-        Score: score?.Score,
-        Note: score?.Note,
-        EchoesScores: score?.EchoesScores,
-      })
-    }
+    SetDefaultBuild(build.Id)
   }
 
   return {
     Builds,
     GetBuildsByCharacter,
     GetBuild,
+    GetDefaultBuild,
     CreateBuild,
     UpdateBuild,
     DeleteBuild,
     SetDefaultBuild,
-    GetDefaultBuild,
-    SaveCurrentBuild,
     LoadBuild,
   }
 })

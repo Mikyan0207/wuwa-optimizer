@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { StatType } from '~/Core/Enums/StatType'
 import type Echo from '~/Core/Interfaces/Echo'
-import { useEchoStats } from '~/composables/echoes/UseEchoStats'
 
 interface EchoStatsProps {
   echo: Echo
@@ -9,7 +8,21 @@ interface EchoStatsProps {
 }
 
 const props = defineProps<EchoStatsProps>()
-const { MainStatistic, SecondaryStatistic, SubStats } = useEchoStats(props.echo)
+
+const MainStatistic = computed(() => {
+  return props.echo?.MainStatistic
+})
+
+const SecondaryStatistic = computed(() => {
+  return props.echo?.SecondaryStatistic
+})
+
+const SubStats = computed(() => {
+  if (!props.echo || props.echo.GameId === -1)
+    return []
+
+  return props.echo?.Statistics ?? []
+})
 </script>
 
 <template>

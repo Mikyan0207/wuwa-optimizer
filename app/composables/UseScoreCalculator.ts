@@ -7,8 +7,8 @@ import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 import { SUB_STAT_VALUES } from '~/Core/Statistics'
 
 export interface IEchoRatingResult {
+  EchoId: string
   Score: number
-  EchoId: number
   Grade: ScoreGrade
 }
 
@@ -193,12 +193,12 @@ export function useScoreCalculator() {
     if (buildOrBuildId) {
       if (typeof buildOrBuildId === 'string') {
         const build = BuildsStore.GetBuild(buildOrBuildId)
-        if (build?.EchoesData) {
-          echoes = build.EchoesData.filter(echo => echo.Id !== -1)
+        if (build?.Echoes) {
+          echoes = build.Echoes.filter(echo => echo.Id !== undefined)
         }
       }
       else {
-        echoes = buildOrBuildId.EchoesData?.filter(echo => echo.Id !== -1) || []
+        echoes = buildOrBuildId.Echoes?.filter(echo => echo.Id !== undefined) || []
       }
     }
     else {
@@ -276,8 +276,8 @@ export function useScoreCalculator() {
     const finalScore = isValidMainStat ? baseFinalScore : baseFinalScore * 0.25
 
     return {
+      EchoId: echo.Id!,
       Score: Math.max(0, finalScore),
-      EchoId: echo.Id,
       Grade: GetEchoNote(finalScore),
     }
   }

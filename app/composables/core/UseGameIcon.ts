@@ -41,7 +41,10 @@ export function useGameIcon(Icon: Character | Weapon | Echo) {
   })
 
   const Name = computed(() => {
-    return t(`${(Icon as Character | Weapon | Echo).Id}_name`)
+    if (IconType.value === 'echo') {
+      return t(`${(Icon as Echo).GameId}_name`)
+    }
+    return t(`${(Icon as Character | Weapon).Id}_name`)
   })
 
   const CharacterInfo = computed(() => {

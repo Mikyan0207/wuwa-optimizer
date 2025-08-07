@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import type Build from '~/Core/Interfaces/Build'
+import type Echo from '~/Core/Interfaces/Echo'
+import { v4 as uuidv4 } from 'uuid'
 import VueDraggable from 'vuedraggable'
+import { useBuild } from '~/composables/builds/UseBuild'
+import { useCharacter } from '~/composables/characters/UseCharacter'
 
-const { CurrentCharacter, CurrentWeapon } = useCharacterContext()
+const { CurrentCharacter } = useCharacter()
+const { CurrentWeapon } = useBuild()
 const BuildsStore = useBuildsStore()
 const Toast = useToast()
 const { t } = useI18n()
@@ -12,11 +17,11 @@ function IsBuildEmpty(build: Build): boolean {
     return false
   }
 
-  if (build.EchoesData && build.EchoesData.length > 0) {
+  if (build.Echoes && build.Echoes.length > 0) {
     return false
   }
 
-  if (build.EquipedEchoes && build.EquipedEchoes.length > 0) {
+  if (build.Echoes && build.Echoes.length > 0) {
     return false
   }
 
@@ -43,10 +48,10 @@ const AvailableSonatas = computed(() => {
   const sonatas = new Set<string>()
 
   AllBuilds.value.forEach((build) => {
-    if (build.EchoesData) {
-      build.EchoesData.forEach((echo) => {
+    if (build.Echoes) {
+      build.Echoes.forEach((echo: Echo) => {
         if (echo.Sonata && echo.Sonata.length > 0) {
-          const selectedSonata = echo.Sonata.find(s => s.IsSelected) || echo.Sonata[0]
+          const selectedSonata = echo.Sonata.find((s: any) => s.IsSelected) || echo.Sonata[0]
           if (selectedSonata && selectedSonata.Name) {
             sonatas.add(selectedSonata.Name)
           }
@@ -63,13 +68,13 @@ const FilteredAllBuilds = computed(() => {
     return AllBuilds.value
 
   return AllBuilds.value.filter((build) => {
-    if (!build.EchoesData)
+    if (!build.Echoes)
       return false
 
     const buildSonatas = new Set<string>()
-    build.EchoesData.forEach((echo) => {
+    build.Echoes.forEach((echo: Echo) => {
       if (echo.Sonata && echo.Sonata.length > 0) {
-        const selectedSonata = echo.Sonata.find(s => s.IsSelected) || echo.Sonata[0]
+        const selectedSonata = echo.Sonata.find((s: any) => s.IsSelected) || echo.Sonata[0]
         if (selectedSonata && selectedSonata.Name) {
           buildSonatas.add(selectedSonata.Name)
         }
@@ -103,12 +108,7 @@ function IsCurrentBuild(build: Build): boolean {
     return false
   }
 
-  const currentEchoIds = CurrentCharacter.value.EquipedEchoes
-  if (build.EquipedEchoes.length !== currentEchoIds.length) {
-    return false
-  }
-
-  return build.EquipedEchoes.every(echoId => currentEchoIds.includes(echoId))
+  return false
 }
 
 function LoadBuild(build: Build) {
@@ -118,7 +118,9 @@ function LoadBuild(build: Build) {
 
 function DeleteBuild(build: Build) {
   console.warn('Deleting build:', build.Id, build.Name)
+
   BuildsStore.DeleteBuild(build.Id)
+
   if (SelectedBuild.value?.Id === build.Id) {
     SelectedBuild.value = null
   }
@@ -131,7 +133,7 @@ function DeleteBuild(build: Build) {
 }
 
 function SetDefaultBuild(build: Build) {
-  BuildsStore.SetDefaultBuild(CurrentCharacter.value?.Id || 0, build.Id)
+  BuildsStore.SetDefaultBuild(build.Id)
 }
 
 function EditBuild(build: Build) {
@@ -161,46 +163,32 @@ function ToggleSonataFilter(sonataName: string) {
 }
 
 function CopyBuildToCurrentCharacter(build: Build) {
-  const EchoesStore = useEchoesStore()
-
   const newBuild = BuildsStore.CreateBuild(
-    CurrentCharacter.value?.Id || 0,
     `${build.Name} (copied from ${t(`${build.CharacterId}_name`)})`,
+    CurrentCharacter.value?.Id || 0,
   )
 
-  const newWeaponId = build.WeaponId
-
-  const newEquipedEchoes: number[] = []
-  const newEchoesData: any[] = []
-
-  if (build.EchoesData && build.EchoesData.length > 0) {
-    build.EchoesData.forEach((echoData, index) => {
-      const newEcho = {
-        ...echoData,
-        Id: Date.now() + Math.random() + index,
-        EquipedBy: CurrentCharacter.value?.Id || 0,
-        EquipedSlot: index,
-        BuildId: Date.now() + Math.random() + index,
-      }
-
-      EchoesStore.AddOrUpdate(newEcho, CurrentCharacter.value?.Id || 0)
-      newEquipedEchoes.push(newEcho.Id)
-      newEchoesData.push(newEcho)
+  if (!newBuild) {
+    Toast.add({
+      title: 'Build not copied!',
+      description: `"${build.Name}" already exists in ${t(`${CurrentCharacter.value?.Id}_name`)}.`,
+      color: 'error',
     })
+
+    return
   }
 
   BuildsStore.UpdateBuild(newBuild.Id, {
-    WeaponId: newWeaponId,
-    EquipedEchoes: newEquipedEchoes,
-    EchoesData: newEchoesData,
+    WeaponId: build.WeaponId,
+    Echoes: build.Echoes.map(echo => ({
+      ...echo,
+      Id: uuidv4(),
+      EquipedSlot: echo.EquipedSlot,
+      EquipedBy: CurrentCharacter.value?.Id || 0,
+      BuildId: newBuild.Id,
+    })),
     Score: build.Score,
     Note: build.Note,
-    EchoesScores: build.EchoesScores,
-  })
-
-  const CharactersStore = useCharactersStore()
-  CharactersStore.Update(CurrentCharacter.value?.Id || 0, {
-    EquipedEchoes: newEquipedEchoes,
   })
 
   Toast.add({

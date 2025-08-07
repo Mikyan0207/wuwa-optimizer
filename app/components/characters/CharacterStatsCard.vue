@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { useBuild } from '~/composables/builds/UseBuild'
+import { useCharacter } from '~/composables/characters/UseCharacter'
 import { GetTotalGradeColor } from '~/composables/UseScoreCalculator'
 import { GetSequenceLevel } from '~/Core/Utils/CharacterUtils'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
 const { t } = useI18n()
-const { CurrentCharacter, Stats, Score } = useCharacterContext()
+const { CurrentCharacter } = useCharacter()
+const { Stats, Score } = useBuild()
 
 const GetCharacterScoreNoteColor = computed(() => {
   return GetTotalGradeColor(Score.value.Note)

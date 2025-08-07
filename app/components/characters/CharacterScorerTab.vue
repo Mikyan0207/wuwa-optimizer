@@ -2,35 +2,30 @@
 import type Echo from '~/Core/Interfaces/Echo'
 import { domToBlob } from 'modern-screenshot'
 import VueDraggable from 'vuedraggable'
-import { useCharacterContext } from '~/composables/UseCharacterContext'
+import { useBuild } from '~/composables/builds/UseBuild'
+import { useCharacter } from '~/composables/characters/UseCharacter'
+import { useBuildsStore } from '~/stores/BuildsStore'
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
-const { CurrentCharacter, CurrentWeapon, CurrentEchoes, Score } = useCharacterContext()
+const { CurrentCharacter } = useCharacter()
+const { CurrentWeapon, CurrentEchoes, Score } = useBuild()
 const BuildsStore = useBuildsStore()
-const EchoesStore = useEchoesStore()
 const Toast = useToast()
 
 if (CurrentCharacter.value === undefined || CurrentCharacter.value === null) {
   await navigateTo('/characters')
 }
 
-// Force async to trigger Suspense
-await new Promise(resolve => setTimeout(resolve, 0))
-
-function SaveCurrentBuild() {
+async function SaveCurrentBuild() {
   if (!CurrentCharacter.value)
     return
 
-  const defaultBuild = BuildsStore.GetDefaultBuild(CurrentCharacter.value.Id)
-  const equippedEchoes = defaultBuild?.EquipedEchoes || []
-
-  const build = BuildsStore.SaveCurrentBuild(
+  const build = BuildsStore.CreateBuild(
+    'Current Build',
     CurrentCharacter.value.Id,
     CurrentWeapon.value?.Id,
-    equippedEchoes,
-    Score.value?.Score,
-    Score.value?.Note,
+    CurrentEchoes.value,
   )
 
   if (build) {
@@ -52,50 +47,29 @@ function SaveCurrentBuild() {
 const ShowScreenShotBackground = ref<boolean>(false)
 
 const DraggableEchoes = computed({
-  get: () => CurrentEchoes.value || [],
+  get: () => CurrentEchoes || [],
   set: (newOrder: any[]) => {
     if (CurrentCharacter.value) {
       const defaultBuild = BuildsStore.GetDefaultBuild(CurrentCharacter.value.Id)
 
       if (defaultBuild) {
-        const updatedEquipedEchoes = [...(defaultBuild.EquipedEchoes || [])]
-        const updatedEchoesData = [...(defaultBuild.EchoesData || [])]
+        const updatedEchoes = [...(defaultBuild.Echoes || [])]
 
         newOrder.forEach((echo, index) => {
-          if (echo.Id !== -1) {
-            EchoesStore.Update(echo.Id, {
-              ...echo,
-              EquipedSlot: index,
-            })
-
-            updatedEquipedEchoes[index] = echo.Id
-
-            // Mettre à jour EchoesData avec le nouveau slot
-            const echoDataIndex = updatedEchoesData.findIndex(e => e.Id === echo.Id)
+          if (echo.GameId !== -1) {
+            const echoDataIndex = updatedEchoes.findIndex(e => e.GameId === echo.GameId)
             if (echoDataIndex >= 0) {
-              updatedEchoesData[echoDataIndex] = {
-                ...updatedEchoesData[echoDataIndex],
+              updatedEchoes[echoDataIndex] = {
+                ...updatedEchoes[echoDataIndex],
                 EquipedSlot: index,
-              } as Echo & { BuildId: number }
+              } as Echo
             }
           }
         })
 
         BuildsStore.UpdateBuild(defaultBuild.Id, {
-          EquipedEchoes: updatedEquipedEchoes,
-          EchoesData: updatedEchoesData,
+          Echoes: updatedEchoes,
         })
-
-        // Recalculer et sauvegarder le score
-        const ScoreCalculator = useScoreCalculator()
-        const updatedScore = ScoreCalculator.GetCharacterScore(CurrentCharacter.value, defaultBuild)
-        if (updatedScore) {
-          BuildsStore.UpdateBuild(defaultBuild.Id, {
-            Score: updatedScore.Score,
-            Note: updatedScore.Note,
-            EchoesScores: updatedScore.EchoesScores,
-          })
-        }
       }
     }
   },
@@ -175,7 +149,7 @@ async function TakeScreenShotAsync() {
           <div class="grid grid-cols-3 mt-2 gap-2 xl:grid-cols-5">
             <VueDraggable
               v-if="CurrentCharacter"
-              v-model="DraggableEchoes"
+              v-model="DraggableEchoes.value"
               :animation="200"
               ghost-class="opacity-65"
               chosen-class="scale-102"

@@ -1,14 +1,16 @@
 <script setup lang="ts">
+import { useBuild } from '~/composables/builds/UseBuild'
+
 interface EchoDropdownProps {
   echoSlot: number
 }
 
 const props = defineProps<EchoDropdownProps>()
 
-const IsOpen = ref<boolean>(false)
-
-const { GetEchoBySlot } = useCharacterContext()
+const { GetEchoBySlot } = useBuild()
 const CurrentEcho = computed(() => GetEchoBySlot(props.echoSlot))
+
+const DropdownRef = ref()
 
 const Actions = computed(() => [
   {
@@ -28,19 +30,19 @@ const Actions = computed(() => [
     label: 'Unequip',
     icon: 'solar:notification-remove-broken',
     color: 'error',
-    disabled: CurrentEcho.value === undefined || CurrentEcho.value.Id === -1,
+    disabled: CurrentEcho.value === undefined || CurrentEcho.value.GameId === -1,
     onExecute() {
     },
   },
 ])
 
 function OnClose() {
-  IsOpen.value = false
+  DropdownRef.value?.CloseSlideover()
 }
 </script>
 
 <template>
-  <MDropdown :actions="Actions" @close="OnClose">
+  <MDropdown ref="DropdownRef" :actions="Actions" @close="OnClose">
     <template #default="{ selectedAction }">
       <MEchoForm
         v-if="selectedAction === 0"

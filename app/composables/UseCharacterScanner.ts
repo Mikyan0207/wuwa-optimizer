@@ -113,16 +113,6 @@ export async function useCharacterScanner() {
 
       character.EquipedWeapon = weapon?.Id
 
-      // Initialize EquipedEchoes array with 5 slots
-      character.EquipedEchoes = Array.from({ length: 5 }, () => -1)
-
-      // Place echoes in their correct slots
-      echoes.forEach((e) => {
-        if (e.EquipedSlot !== undefined && e.EquipedSlot >= 0 && e.EquipedSlot < 5) {
-          character.EquipedEchoes[e.EquipedSlot] = e.Id
-        }
-      })
-
       if (onProgress) {
         onProgress(ScannerStatus.DONE)
       }

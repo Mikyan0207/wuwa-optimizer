@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import { useBuild } from '~/composables/builds/UseBuild'
+import { useCharacter } from '~/composables/characters/UseCharacter'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
 const { t } = useI18n()
-const { CurrentWeapon, CurrentCharacter } = useCharacterContext()
+const { CurrentCharacter } = useCharacter()
+const { CurrentWeapon } = useBuild()
 </script>
 
 <template>

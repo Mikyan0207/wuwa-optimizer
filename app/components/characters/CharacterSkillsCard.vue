@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { CurrentCharacter } = useCharacterContext()
+import { useCharacter } from '~/composables/characters/UseCharacter'
+
+const { CurrentCharacter } = useCharacter()
 </script>
 
 <template>

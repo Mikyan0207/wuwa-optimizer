@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { StatType } from '~/Core/Enums/StatType'
 import type Statistic from '~/Core/Interfaces/Statistic'
-import { useStat } from '~/composables/stats/UseStat'
+import { StatType } from '~/Core/Enums/StatType'
+import { STAT_ICONS } from '~/Core/Statistics'
 
 interface StatLineProps {
   stat: Statistic | undefined
@@ -19,13 +19,43 @@ const props = withDefaults(defineProps<StatLineProps>(), {
   showRollValue: true,
 })
 
-const {
-  Name,
-  Icon,
-  FormattedValue,
-  Weight,
-  GetWeightColor,
-} = useStat(props.stat, props.weights, props.isMainStat)
+const { t } = useI18n()
+
+const Name = computed(() => {
+  if (!props.stat)
+    return ''
+
+  return t(`label_stat_${props.stat.Type.toLowerCase()}`)
+})
+
+const Icon = computed(() => {
+  if (!props.stat)
+    return ''
+
+  return STAT_ICONS[props.stat.Type]
+})
+
+const FormattedValue = computed(() => {
+  if (!props.stat)
+    return ''
+
+  const isMainStat = props.isMainStat
+
+  if (!IsPercentageStat(props.stat.Type))
+    return props.stat.Value.toString()
+
+  const decimals = isMainStat === true ? 2 : 1
+  return `${props.stat.Value.toFixed(decimals)}%`
+})
+
+const Weight = computed(() => {
+  const statValue = props.stat
+  const weightsValue = props.weights
+
+  if (!statValue || !weightsValue)
+    return 0
+  return weightsValue[statValue.Type] || 0
+})
 
 const ShouldHighlightBorder = computed(() => {
   return Weight.value !== undefined && Weight.value >= 0.6 && props.showWantedHighlight
@@ -36,8 +66,30 @@ const WeightColor = computed(() => {
     return ''
   }
 
-  return GetWeightColor()
+  // Logique simple pour la couleur
+  const weight = Math.floor(Weight.value * 10) / 10
+  const weightColorMap: Record<number, string> = {
+    1.0: 'text-amber-500',
+    0.9: 'text-orange-500',
+    0.8: 'text-red-500',
+    0.7: 'text-purple-500',
+    0.6: 'text-indigo-500',
+    0.5: 'text-blue-500',
+    0.4: 'text-cyan-500',
+    0.3: 'text-teal-500',
+    0.2: 'text-green-500',
+    0.1: 'text-lime-500',
+    0.0: 'text-gray-400',
+  }
+
+  return weightColorMap[weight] || weightColorMap[0.0]
 })
+
+function IsPercentageStat(statType: StatType): boolean {
+  return statType !== StatType.HP
+    && statType !== StatType.DEF
+    && statType !== StatType.ATTACK
+}
 </script>
 
 <template>

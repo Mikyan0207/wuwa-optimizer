@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { useCharacter } from '~/composables/characters/UseCharacter'
 import { GetCharacterTypeIcon, GetCharacterWeaponTypeIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
 
-const { CurrentCharacter } = useCharacterContext()
+const { CurrentCharacter } = useCharacter()
 
 function ToggleSequence(sequenceIndex: number) {
   if (!CurrentCharacter.value) {

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type Build from '~/Core/Interfaces/Build'
 import type Sonata from '~/Core/Interfaces/Sonata'
+import { useCharacter } from '~/composables/characters/UseCharacter'
 import { GetCharacterIcon } from '~/Core/Utils/CharacterUtils'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
 import { GetEchoIcon, GetSonataIcon } from '~/Core/Utils/EchoUtils'
@@ -22,9 +23,8 @@ const emit = defineEmits<{
 }>()
 
 const WeaponsStore = useWeaponsStore()
-const EchoesStore = useEchoesStore()
 const CharactersStore = useCharactersStore()
-const { CurrentCharacter } = useCharacterContext()
+const { CurrentCharacter } = useCharacter()
 const { t } = useI18n()
 
 const weapon = computed(() => {
@@ -33,28 +33,15 @@ const weapon = computed(() => {
   return WeaponsStore.GetWeapon(props.build.WeaponId)
 })
 
-const character = computed(() => {
+const Character = computed(() => {
   return CharactersStore.Get(props.build.CharacterId)
 })
 
-const echoes = computed(() => {
-  if (props.build.EchoesData && props.build.EchoesData.length > 0) {
-    return [...props.build.EchoesData].sort((a, b) => (a.EquipedSlot || 0) - (b.EquipedSlot || 0))
-  }
-
-  return props.build.EquipedEchoes
-    .map(id => EchoesStore.Get(id))
-    .filter((echo): echo is NonNullable<typeof echo> =>
-      echo !== undefined && echo.EquipedBy === props.build.CharacterId,
-    )
-    .sort((a, b) => (a.EquipedSlot || 0) - (b.EquipedSlot || 0))
-})
-
-const activeSets = computed(() => {
+const ActiveSets = computed(() => {
   const setCounts = new Map<string, { count: number, sonata: Sonata }>()
 
-  echoes.value.forEach((echo) => {
-    if (echo.Id !== -1 && echo.Sonata && echo.Sonata.length > 0) {
+  props.build.Echoes.forEach((echo) => {
+    if (echo.Id !== undefined && echo.Sonata && echo.Sonata.length > 0) {
       const selectedSonata = echo.Sonata.find(s => s.IsSelected) || echo.Sonata[0]
       if (selectedSonata && selectedSonata.Name) {
         const key = selectedSonata.Name
@@ -156,12 +143,12 @@ function HandleCharacterClick() {
             @click="HandleCharacterClick"
           >
             <NuxtImg
-              :src="GetCharacterIcon(character)"
-              :alt="t(`${character.Id}_name`)"
+              :src="GetCharacterIcon(Character)"
+              :alt="t(`${Character.Id}_name`)"
               class="w-5 h-5 object-cover rounded-sm"
             />
             <span class="text-xs text-blue-400 font-medium">
-              {{ t(`${character.Id}_name`) }}
+              {{ t(`${Character.Id}_name`) }}
             </span>
             <UIcon name="i-solar-arrow-right-broken" class="w-3 h-3 text-blue-400" />
           </div>
@@ -233,7 +220,7 @@ function HandleCharacterClick() {
                 size="sm"
                 class="shrink-0"
               >
-                {{ isOtherCharacter ? `Equipped by ${t(`${character.Id}_name`)}` : 'Active' }}
+                {{ isOtherCharacter ? `Equipped by ${t(`${Character.Id}_name`)}` : 'Active' }}
               </UBadge>
               <UBadge
                 v-if="isOtherCharacter"
@@ -374,21 +361,21 @@ function HandleCharacterClick() {
                 :key="slot"
                 class="relative group/echo"
               >
-                <div v-if="echoes[slot - 1]" class="w-full aspect-square rounded-sm bg-neutral-800/30 flex items-center justify-center relative overflow-hidden border border-gray-600/50">
+                <div v-if="build.Echoes[slot - 1]" class="w-full aspect-square rounded-sm bg-neutral-800/30 flex items-center justify-center relative overflow-hidden border border-gray-600/50">
                   <!-- Echo Icon - Cover -->
                   <NuxtImg
-                    :src="GetEchoIcon(echoes[slot - 1]!)"
-                    :alt="echoes[slot - 1]!.Id.toString()"
+                    :src="GetEchoIcon(build.Echoes[slot - 1]!)"
+                    :alt="build.Echoes[slot - 1]!.Id"
                     class="w-full h-full object-cover"
                   />
 
                   <!-- Set Icon Overlay - Larger without badge -->
-                  <div v-if="echoes[slot - 1]!.Sonata && echoes[slot - 1]!.Sonata.length > 0" class="absolute top-1 right-1">
+                  <div v-if="build.Echoes[slot - 1]!.Sonata && build.Echoes[slot - 1]!.Sonata.length > 0" class="absolute top-1 right-1">
                     <div class="w-6 h-6 rounded-sm bg-black/40 backdrop-blur-sm flex items-center justify-center">
                       <NuxtImg
-                        v-if="(echoes[slot - 1]!.Sonata.find(s => s.IsSelected) || echoes[slot - 1]!.Sonata[0])"
-                        :src="GetSonataIcon(echoes[slot - 1]!.Sonata.find(s => s.IsSelected) || echoes[slot - 1]!.Sonata[0]!)"
-                        :alt="(echoes[slot - 1]!.Sonata.find(s => s.IsSelected) || echoes[slot - 1]!.Sonata[0])!.Name"
+                        v-if="(build.Echoes[slot - 1]!.Sonata.find(s => s.IsSelected) || build.Echoes[slot - 1]!.Sonata[0])"
+                        :src="GetSonataIcon(build.Echoes[slot - 1]!.Sonata.find(s => s.IsSelected) || build.Echoes[slot - 1]!.Sonata[0]!)"
+                        :alt="(build.Echoes[slot - 1]!.Sonata.find(s => s.IsSelected) || build.Echoes[slot - 1]!.Sonata[0])!.Name"
                         class="w-4 h-4 object-contain"
                       />
                     </div>
@@ -397,7 +384,7 @@ function HandleCharacterClick() {
                   <!-- Level Badge -->
                   <div class="absolute bottom-1 left-1">
                     <div class="w-4 h-4 rounded-sm bg-black/60 backdrop-blur-sm flex items-center justify-center">
-                      <span class="text-[8px] font-mono text-gray-300">{{ echoes[slot - 1]!.Level }}</span>
+                      <span class="text-[8px] font-mono text-gray-300">{{ build.Echoes[slot - 1]!.Level }}</span>
                     </div>
                   </div>
 
@@ -408,15 +395,15 @@ function HandleCharacterClick() {
                         <div class="absolute mt-auto h-2 w-full -bottom-1">
                           <div
                             class="absolute bottom-0 h-1.5 w-full blur-sm"
-                            :class="GetBackgroundColor(echoes[slot - 1]!.Rarity)"
+                            :class="GetBackgroundColor(build.Echoes[slot - 1]!.Rarity)"
                           />
                           <div
                             class="absolute bottom-0 h-1 w-full blur"
-                            :class="GetSecondaryColor(echoes[slot - 1]!.Rarity)"
+                            :class="GetSecondaryColor(build.Echoes[slot - 1]!.Rarity)"
                           />
                         </div>
                       </div>
-                      <div class="h-[2px]" :class="GetHighlightColor(echoes[slot - 1]!.Rarity)" />
+                      <div class="h-[2px]" :class="GetHighlightColor(build.Echoes[slot - 1]!.Rarity)" />
                     </div>
                   </div>
                 </div>
@@ -428,8 +415,8 @@ function HandleCharacterClick() {
               </div>
 
               <!-- 6th slot (if needed) -->
-              <div v-if="echoes.length > 5" class="w-full aspect-square rounded-sm bg-gray-800/20 border border-gray-700/30 flex items-center justify-center">
-                <span class="text-xs text-gray-500">+{{ echoes.length - 5 }}</span>
+              <div v-if="build.Echoes.length > 5" class="w-full aspect-square rounded-sm bg-gray-800/20 border border-gray-700/30 flex items-center justify-center">
+                <span class="text-xs text-gray-500">+{{ build.Echoes.length - 5 }}</span>
               </div>
             </div>
           </div>
@@ -441,9 +428,9 @@ function HandleCharacterClick() {
               <span class="text-xs font-medium text-gray-400 uppercase tracking-wide">Active Sets</span>
             </div>
 
-            <div v-if="activeSets.length > 0" class="grid grid-cols-1 gap-1.5">
+            <div v-if="ActiveSets.length > 0" class="grid grid-cols-1 gap-1.5">
               <div
-                v-for="set in activeSets"
+                v-for="set in ActiveSets"
                 :key="set.name"
                 class="flex items-center justify-between p-2 bg-neutral-800/50 rounded-xs"
               >
@@ -462,8 +449,8 @@ function HandleCharacterClick() {
                 </div>
               </div>
 
-              <div v-if="activeSets.length > 2" class="text-xs text-gray-500 text-center py-1">
-                +{{ activeSets.length - 2 }} more
+              <div v-if="ActiveSets.length > 2" class="text-xs text-gray-500 text-center py-1">
+                +{{ ActiveSets.length - 2 }} more
               </div>
             </div>
 

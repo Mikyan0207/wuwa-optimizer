@@ -1,38 +1,11 @@
 import type Character from '~/Core/Interfaces/Character'
-import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { TemplateCharacters } from '~/Core/Characters'
-import { CharacterMigrationService } from '~/Core/Services/CharacterMigrationService'
 
 export const useCharactersStore = defineStore('CharactersStore', () => {
-  const Characters = useLocalStorage<Character[]>('Characters', [])
-  const MigrationService = new CharacterMigrationService()
+  const Characters = ref<Character[]>(TemplateCharacters)
 
-  async function Migration() {
-    if (MigrationService.NeedsMigration()) {
-      try {
-        Characters.value = await MigrationService.MigrateCharacters()
-      }
-      catch (error) {
-        console.error('Migration failed:', error)
-      }
-      finally {
-        MigrationService.CleanUp()
-      }
-    }
-  }
-
-  function Get(characterId: number | undefined): Character {
-    const c = Characters.value.find(x => x.Id === characterId)
-    if (c !== undefined) {
-      return c
-    }
-
-    const ct = TemplateCharacters.find(x => x.Id === characterId)
-    if (ct !== undefined) {
-      Characters.value.push(ct)
-    }
-
+  function Get(characterId: number): Character {
     return Characters.value.find(x => x.Id === characterId)!
   }
 
@@ -64,6 +37,5 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     Get,
     Update,
     AddOrUpdate,
-    Migration,
   }
 })

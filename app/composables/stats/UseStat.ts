@@ -4,20 +4,20 @@ import { STAT_ICONS } from '~/Core/Statistics'
 
 export function useStat(stat: Statistic | undefined, weights: Record<StatType, number>, isMainStat: boolean) {
   const { t } = useI18n()
-  const Stat = computed(() => stat)
-  const Weights = computed(() => weights)
-  const IsMainStat = computed(() => isMainStat)
 
   const Weight = computed(() => {
-    if (!Stat.value || !Weights.value)
+    const statValue = toValue(stat)
+    const weightsValue = toValue(weights)
+
+    if (!statValue || !weightsValue)
       return 0
 
-    let weight = Weights.value[Stat.value.Type] || 0
+    let weight = weightsValue[statValue.Type] || 0
 
     if (weight === 0) {
-      const percentageType = GetPercentageStatType(Stat.value.Type)
+      const percentageType = GetPercentageStatType(statValue.Type)
       if (percentageType) {
-        weight = Weights.value[percentageType] || 0
+        weight = weightsValue[percentageType] || 0
       }
     }
 
@@ -25,28 +25,31 @@ export function useStat(stat: Statistic | undefined, weights: Record<StatType, n
   })
 
   const Name = computed(() => {
-    if (!Stat.value)
+    const statValue = toValue(stat)
+    if (!statValue)
       return ''
 
-    return t(`label_stat_${Stat.value!.Type.toLowerCase()}`)
+    return t(`label_stat_${statValue.Type.toLowerCase()}`)
   })
 
   const Icon = computed(() => {
-    if (!Stat.value)
+    const statValue = toValue(stat)
+    if (!statValue)
       return ''
 
-    return STAT_ICONS[Stat.value.Type]
+    return STAT_ICONS[statValue.Type]
   })
 
   const FormattedValue = computed(() => {
-    if (!Stat.value)
+    const statValue = toValue(stat)
+    if (!statValue)
       return ''
 
-    const value = Stat.value.Value
-    if (!IsPercentageStat(Stat.value.Type))
+    const value = statValue.Value
+    if (!IsPercentageStat(statValue.Type))
       return value.toString()
 
-    const decimals = IsMainStat.value === true ? 2 : 1
+    const decimals = toValue(isMainStat) === true ? 2 : 1
     return `${value.toFixed(decimals)}%`
   })
 
@@ -91,10 +94,8 @@ export function useStat(stat: Statistic | undefined, weights: Record<StatType, n
   }
 
   return {
-    Stat,
     Name,
     Icon,
-    Weights,
     Weight,
     FormattedValue,
     GetWeightColor,

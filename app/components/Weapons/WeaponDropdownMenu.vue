@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { CurrentWeapon } = useCharacterContext()
+import { useBuild } from '~/composables/builds/UseBuild'
+
+const { CurrentWeapon } = useBuild()
 
 const IsDropdownOpen = ref<boolean>(false)
 const SelectedIndex = ref<number | undefined>(undefined)

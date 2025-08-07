@@ -123,7 +123,7 @@ export default defineNuxtConfig({
   gtag: {
     // eslint-disable-next-line node/prefer-global/process
     enabled: process.env.NODE_ENV === 'production',
-    id: '',
+    id: 'G-Z51E9PE81V',
     config: {
       page_title: 'Wuthering Waves Optimizer',
       page_location: 'https://wuwa-optimizer.com',

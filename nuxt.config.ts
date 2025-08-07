@@ -20,8 +20,6 @@ export default defineNuxtConfig({
     '~/components/base',
     '~/components/stats',
     '~/components/characters',
-    '~/components/characters/Tabs',
-    '~/components/characters/Cards',
     '~/components/echoes',
     '~/components/Filters',
     '~/components/Importer',

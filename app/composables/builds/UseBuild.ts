@@ -1,8 +1,9 @@
 import type Build from '~/Core/Interfaces/Build'
 import type Echo from '~/Core/Interfaces/Echo'
+import { useScoreCalculator } from '~/composables/calculators/UseScoreCalculator'
+import { useStatsCalculator } from '~/composables/calculators/UseStatsCalculator'
 import { useCharacter } from '~/composables/characters/UseCharacter'
 import { Empty_Echo } from '~/Core/Echoes'
-import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 import { useBuildsStore } from '~/stores/BuildsStore'
 import { useWeaponsStore } from '~/stores/WeaponsStore'
 
@@ -15,7 +16,7 @@ export function useBuild() {
   const ScoreCalculator = useScoreCalculator()
 
   const DefaultBuild = computed(() => {
-    return BuildsStore.GetDefaultBuild(CurrentCharacter.value.Id)
+    const build = BuildsStore.GetDefaultBuild(CurrentCharacter.value.Id)
       || BuildsStore.CreateBuild('Default Build', CurrentCharacter.value.Id)
       || {
         Id: '',
@@ -27,6 +28,12 @@ export function useBuild() {
         Order: 0,
         Echoes: [],
       } as Build
+
+    if (build && build.Score === undefined && build.Note === undefined) {
+      BuildsStore.CalculateScore(build)
+    }
+
+    return build
   })
 
   const CurrentWeapon = computed({
@@ -66,31 +73,6 @@ export function useBuild() {
     return StatsCalculator.CalculateTotalStats(DefaultBuild.value)
   })
 
-  const Score = computed(() => {
-    const currentScore = ScoreCalculator.GetCharacterScore(CurrentCharacter.value, DefaultBuild.value)
-
-    if (currentScore) {
-      if (currentScore.Score !== DefaultBuild.value.Score) {
-        BuildsStore.UpdateBuild(DefaultBuild.value.Id, {
-          Score: currentScore.Score,
-          Note: currentScore.Note,
-        })
-      }
-
-      return {
-        Score: currentScore.Score,
-        EchoesScores: currentScore.EchoesScores,
-        Note: currentScore.Note,
-      }
-    }
-
-    return {
-      Score: 0,
-      EchoesScores: [],
-      Note: ScoreGrade.F,
-    }
-  })
-
   function UpdateEcho(slot: number, echo: Partial<Echo>) {
     const updatedEchoes: Echo[] = [...((DefaultBuild.value.Echoes as Echo[]) || [])]
     const existingEchoIndex = updatedEchoes.findIndex(e => e.EquipedSlot === slot)
@@ -126,7 +108,6 @@ export function useBuild() {
     CurrentWeapon,
     CurrentEchoes,
     Stats,
-    Score,
     UpdateEcho,
     GetEchoBySlot,
   }

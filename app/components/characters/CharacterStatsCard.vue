@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { useBuild } from '~/composables/builds/UseBuild'
+import { GetTotalGradeColor } from '~/composables/calculators/UseScoreCalculator'
 import { useCharacter } from '~/composables/characters/UseCharacter'
-import { GetTotalGradeColor } from '~/composables/UseScoreCalculator'
+import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 import { GetSequenceLevel } from '~/Core/Utils/CharacterUtils'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
 const { t } = useI18n()
 const { CurrentCharacter } = useCharacter()
-const { Stats, Score } = useBuild()
+const { Stats, DefaultBuild } = useBuild()
 
 const GetCharacterScoreNoteColor = computed(() => {
-  return GetTotalGradeColor(Score.value.Note)
+  return GetTotalGradeColor(DefaultBuild.value.Note || ScoreGrade.F)
 })
 </script>
 
@@ -49,11 +50,11 @@ const GetCharacterScoreNoteColor = computed(() => {
       </p>
       <div class="flex flex-row items-center justify-end">
         <span class="font-semibold">
-          {{ Score.Score.toFixed(2) }}
+          {{ DefaultBuild.Score?.toFixed(2) ?? 0 }}
         </span>
         <USeparator color="neutral" orientation="vertical" class="h-4 mx-2" />
         <span :class="GetCharacterScoreNoteColor" class="inline-block font-semibold">
-          {{ Score.Note }}
+          {{ DefaultBuild.Note || ScoreGrade.F }}
         </span>
       </div>
     </div>

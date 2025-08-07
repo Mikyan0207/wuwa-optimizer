@@ -3,6 +3,7 @@ import type Echo from '~/Core/Interfaces/Echo'
 import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { v4 as uuidv4 } from 'uuid'
+import { useScoreCalculator } from '~/composables/calculators/UseScoreCalculator'
 
 export const useBuildsStore = defineStore('BuildsStore', () => {
   const Builds = useLocalStorage<Build[]>('Builds', [])
@@ -145,5 +146,6 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     DeleteBuild,
     SetDefaultBuild,
     LoadBuild,
+    CalculateScore,
   }
 })

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type Build from '~/Core/Interfaces/Build'
 import type Sonata from '~/Core/Interfaces/Sonata'
+import { GetTotalGradeColor } from '~/composables/calculators/UseScoreCalculator'
 import { useCharacter } from '~/composables/characters/UseCharacter'
 import { GetCharacterIcon } from '~/Core/Utils/CharacterUtils'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'

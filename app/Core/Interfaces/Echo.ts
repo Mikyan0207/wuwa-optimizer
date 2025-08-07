@@ -22,7 +22,7 @@ export default interface Echo {
   BuildId?: string
   EquipedSlot?: number
   Score?: number
-  Grade?: ScoreGrade
+  Note?: ScoreGrade
 
   // Legacy properties, will be removed in the future
   EquipedBy?: number

@@ -1,20 +1,15 @@
 <script setup lang="ts">
 import type { StatType } from '~/Core/Enums/StatType'
 import type Echo from '~/Core/Interfaces/Echo'
-import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 
 interface EchoCardProps {
   echo: Echo
   equipedSlot: number
-  score?: number
-  grade?: ScoreGrade
   showScore?: boolean
   weights: Record<StatType, number>
 }
 
 withDefaults(defineProps<EchoCardProps>(), {
-  score: 0,
-  grade: ScoreGrade.F,
   showScore: true,
 })
 </script>
@@ -31,7 +26,7 @@ withDefaults(defineProps<EchoCardProps>(), {
       <USeparator class="w-full" />
       <MEchoStats :echo="echo" :weights="weights" />
       <USeparator class="w-full" />
-      <MEchoScore :score="score" :grade="grade" />
+      <MEchoScore :show="showScore" :score="echo.Score" :note="echo.Note" />
     </div>
   </MCard>
 </template>

@@ -9,7 +9,7 @@ import { useBuildsStore } from '~/stores/BuildsStore'
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
 const { CurrentCharacter } = useCharacter()
-const { CurrentWeapon, CurrentEchoes, Score } = useBuild()
+const { CurrentWeapon, CurrentEchoes } = useBuild()
 const BuildsStore = useBuildsStore()
 const Toast = useToast()
 
@@ -108,7 +108,7 @@ async function TakeScreenShotAsync() {
 
 <template>
   <div class="mb-14 xl:mb-4">
-    <div v-if="CurrentCharacter !== undefined && Score" class="mt-2 relative">
+    <div v-if="CurrentCharacter !== undefined" class="mt-2 relative">
       <div class="mx-auto my-2">
         <div ref="CharacterInfoRef" class="relative p-0.25">
           <div v-if="ShowScreenShotBackground" class="absolute inset-0">
@@ -163,8 +163,6 @@ async function TakeScreenShotAsync() {
                   :delay="200 + (idx * 25)"
                   :equiped-slot="echo.EquipedSlot || idx"
                   :echo="echo"
-                  :score="Score.EchoesScores.find(x => x.EchoId === echo.Id)?.Score"
-                  :grade="Score.EchoesScores.find(x => x.EchoId === echo.Id)?.Grade"
                   :weights="CurrentCharacter.StatsWeights!"
                 />
               </template>

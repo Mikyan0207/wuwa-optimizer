@@ -10,6 +10,10 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     return Characters.value.get(gameId) ?? DefaultCharacters.value.find(x => x.Id === gameId)!
   }
 
+  function GetByGameId(gameId: number): Character {
+    return DefaultCharacters.value.find(x => x.Id === gameId)!
+  }
+
   function UpdateById(characterId: number, data: Partial<Character>) {
     const character = GetById(characterId)
 
@@ -24,6 +28,7 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
   return {
     Characters,
     GetById,
+    GetByGameId,
     UpdateById,
   }
 })

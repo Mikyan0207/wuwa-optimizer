@@ -164,7 +164,7 @@ async function TakeScreenShotAsync() {
           <!-- Main Layout Grid -->
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-2 auto-rows-auto">
             <!-- Character Art Card -->
-            <CharacterArtCard
+            <CharacterAnimatedArtCard
               v-if="CurrentCharacter"
               v-motion-slide-left
               :delay="50"
@@ -224,14 +224,18 @@ async function TakeScreenShotAsync() {
           </div>
         </div>
 
+        <div class="mt-12">
+          <MSectionTitle title="Sets" color="emerald" />
+        </div>
+
         <!-- Sets Section -->
-        <!-- <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-2">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-2">
           <CharacterSetsCard
             v-motion-slide-bottom
             :delay="300"
             :echoes="CurrentEchoes"
           />
-        </div> -->
+        </div>
       </div>
 
       <!-- Fixed Action Buttons -->

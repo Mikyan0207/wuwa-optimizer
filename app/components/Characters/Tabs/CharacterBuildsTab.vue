@@ -217,7 +217,7 @@ function navigateToCharacter(characterId: number) {
         </h3>
       </div>
 
-      <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <VueDraggable
           v-model="DraggableBuilds"
           :animation="200"
@@ -277,7 +277,7 @@ function navigateToCharacter(characterId: number) {
         </div>
       </div>
 
-      <div v-if="ShowAllBuilds" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div v-if="ShowAllBuilds" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <BuildCard
           v-for="build in FilteredAllBuilds"
           :key="build.Id"

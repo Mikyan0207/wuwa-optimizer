@@ -6,9 +6,9 @@ const { CurrentCharacter } = useCharacter()
 </script>
 
 <template>
-  <div class="bg-fixed min-h-100vh w-full flex flex-col overflow-hidden">
+  <div class="[background-size:16px_16px] bg-[radial-gradient(#ffffff12_1px,transparent_1px)] bg-fixed min-h-100vh w-full flex flex-col overflow-hidden">
     <!-- Background -->
-    <div class="fixed inset-0 h-full w-full -z-1">
+    <div class="fixed inset-0 h-full w-full -z-1 scale-120">
       <div
         class=" fixed inset-0 h-full w-full bg-neutral-900/65"
       />

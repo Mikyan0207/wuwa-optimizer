@@ -13,8 +13,13 @@
       />
       <div class="absolute h-full w-full -left-[50%] -top-[50%]">
         <video
-          key="particles-video-default" playsinline autoplay loop muted
-          class="pointer-events-none h-full w-full object-cover mix-blend-screen"
+          key="particles-video-default"
+          playsinline
+          autoplay
+          loop
+          muted
+          preload="metadata"
+          class="pointer-events-none absolute inset-0 h-full w-full object-cover mix-blend-screen"
         >
           <source src="/images/particles.mp4">
         </video>
@@ -47,11 +52,9 @@
       <DynamicHeader class="col-start-4 ml-[3em] pointer-events-auto" />
     </div>
 
-    <div class="flex flex-row flex-1">
-      <main class="ml-[3.5em] mt-[6em] w-full">
-        <slot />
-      </main>
-    </div>
+    <main class="ml-[3.5em] mt-[6em] w-full min-h-screen h-full">
+      <slot />
+    </main>
 
     <!-- Footer -->
     <footer class="w-full bg-neutral-900/90 backdrop-blur-md border-t mt-4 border-neutral-700">

@@ -1,6 +1,9 @@
-export function useCharacter() {
+import type Character from '~/Core/Interfaces/Character'
+import { GetCharacterAnimatedArt, HasAnimatedArt } from '~/Core/Utils/CharacterUtils'
+
+export function useCharacter(character?: Character | undefined) {
   const Route = useRoute()
-  const CharacterId = computed(() => Number.parseInt((Route.params as { id: string }).id))
+  const CharacterId = computed(() => character?.Id ?? Number.parseInt((Route.params as { id: string }).id))
 
   const CharactersStore = useCharactersStore()
 
@@ -57,11 +60,29 @@ export function useCharacter() {
     }
   }
 
+  function GetAnimatedArt() {
+    if (!CurrentCharacter.value)
+      return undefined
+
+    if (HasAnimatedArt(CurrentCharacter.value)) {
+      return GetCharacterAnimatedArt(CurrentCharacter.value)
+    }
+
+    const character = CharactersStore.GetByGameId(CurrentCharacter.value.Id)
+
+    if (HasAnimatedArt(character)) {
+      return GetCharacterAnimatedArt(character)
+    }
+
+    return undefined
+  }
+
   return {
     CharacterId,
     CurrentCharacter,
     StatsWeights,
     CanUnlockSequence,
     ToggleSequence,
+    GetAnimatedArt,
   }
 }

@@ -356,60 +356,13 @@ function HandleCharacterClick() {
               <span class="text-xs font-medium text-gray-400 uppercase tracking-wide">Echoes</span>
             </div>
 
-            <div class="grid grid-cols-3 gap-1.5">
+            <div class="flex flex-wrap gap-1">
               <div
                 v-for="slot in 5"
                 :key="slot"
-                class="relative group/echo"
+                class="relative"
               >
-                <div v-if="build.Echoes[slot - 1]" class="w-full aspect-square rounded-sm bg-neutral-800/30 flex items-center justify-center relative overflow-hidden border border-gray-600/50">
-                  <!-- Echo Icon - Cover -->
-                  <NuxtImg
-                    :src="GetEchoIcon(build.Echoes[slot - 1]!)"
-                    :alt="build.Echoes[slot - 1]!.Id"
-                    class="w-full h-full object-cover"
-                  />
-
-                  <!-- Set Icon Overlay - Larger without badge -->
-                  <div v-if="build.Echoes[slot - 1]!.Sonata && build.Echoes[slot - 1]!.Sonata.length > 0" class="absolute top-1 right-1">
-                    <div class="w-6 h-6 rounded-sm bg-black/40 backdrop-blur-sm flex items-center justify-center">
-                      <NuxtImg
-                        v-if="(build.Echoes[slot - 1]!.Sonata.find(s => s.IsSelected) || build.Echoes[slot - 1]!.Sonata[0])"
-                        :src="GetSonataIcon(build.Echoes[slot - 1]!.Sonata.find(s => s.IsSelected) || build.Echoes[slot - 1]!.Sonata[0]!)"
-                        :alt="(build.Echoes[slot - 1]!.Sonata.find(s => s.IsSelected) || build.Echoes[slot - 1]!.Sonata[0])!.Name"
-                        class="w-4 h-4 object-contain"
-                      />
-                    </div>
-                  </div>
-
-                  <!-- Level Badge -->
-                  <div class="absolute bottom-1 left-1">
-                    <div class="w-4 h-4 rounded-sm bg-black/60 backdrop-blur-sm flex items-center justify-center">
-                      <span class="text-[8px] font-mono text-gray-300">{{ build.Echoes[slot - 1]!.Level }}</span>
-                    </div>
-                  </div>
-
-                  <!-- Rarity Border Effect -->
-                  <div class="absolute inset-0 pointer-events-none">
-                    <div class="absolute bottom-0 w-full">
-                      <div class="relative w-full flex items-center">
-                        <div class="absolute mt-auto h-2 w-full -bottom-1">
-                          <div
-                            class="absolute bottom-0 h-1.5 w-full blur-sm"
-                            :class="GetBackgroundColor(build.Echoes[slot - 1]!.Rarity)"
-                          />
-                          <div
-                            class="absolute bottom-0 h-1 w-full blur"
-                            :class="GetSecondaryColor(build.Echoes[slot - 1]!.Rarity)"
-                          />
-                        </div>
-                      </div>
-                      <div class="h-[2px]" :class="GetHighlightColor(build.Echoes[slot - 1]!.Rarity)" />
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Empty slot placeholder -->
+                <MEchoIconAlt v-if="build.Echoes[slot - 1]" :echo="build.Echoes[slot - 1]" />
                 <div v-else class="w-full aspect-square rounded-sm bg-neutral-800/30 flex items-center justify-center border border-gray-600/50">
                   <USkeleton class="w-8 h-8 rounded-sm" />
                 </div>

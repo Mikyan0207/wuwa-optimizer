@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCharacter } from '~/composables/characters/UseCharacter'
-import { GetCharacterTypeIcon, GetCharacterWeaponTypeIcon, GetSplashArt, GetSplashArtV2 } from '~/Core/Utils/CharacterUtils'
+import { GetCharacterTypeIcon, GetCharacterWeaponTypeIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
 
 const { CurrentCharacter, CanUnlockSequence, ToggleSequence } = useCharacter()
 </script>
@@ -51,8 +51,6 @@ const { CurrentCharacter, CanUnlockSequence, ToggleSequence } = useCharacter()
     <NuxtImg
       :src="`${GetSplashArt(CurrentCharacter)}`"
       class="absolute inset-0 z-10 h-full w-full object-cover"
-      fit="cover"
-      quality="90"
     />
   </MCard>
 </template>

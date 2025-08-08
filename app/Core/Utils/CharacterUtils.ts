@@ -1,4 +1,5 @@
 import type Character from '../Interfaces/Character'
+import type { AnimatedArt } from '../Interfaces/Character'
 import type Sequence from '../Interfaces/Sequence'
 import { CharacterType } from '../Enums/CharacterType'
 import { Rarity } from '../Enums/Rarity'
@@ -70,5 +71,22 @@ export function GetCharacterTypeIcon(character: Character) {
 }
 
 export function GetSplashArt(character: Character) {
-  return `/images/characters/${character.Id}/${character.SplashArt}`
+  return `/images/characters/${character.Id}/${character.SplashArt.replace('.webp', '')}.webp`
+}
+
+export function GetCharacterBackground(character: Character) {
+  return `/images/characters/${character.Id}/Background.webp`
+}
+
+export function GetCharacterAnimatedArt(character: Character): AnimatedArt {
+  return {
+    Skeleton: `/images/characters/${character.Id}/${character.AnimatedArt?.Skeleton}`,
+    Atlas: `/images/characters/${character.Id}/${character.AnimatedArt?.Atlas}`,
+    OffsetX: character.AnimatedArt?.OffsetX ?? 0,
+    OffsetY: character.AnimatedArt?.OffsetY ?? 0,
+  }
+}
+
+export function HasAnimatedArt(character: Character) {
+  return character.AnimatedArt !== undefined
 }

@@ -10,7 +10,6 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
   const EchoesStore = useEchoesStore()
   const CharactersStore = useCharactersStore()
   const ScoreCalculator = useScoreCalculator()
-  const WeaponsStore = useWeaponsStore()
 
   function GetBuildsByCharacter(characterId: number): Build[] {
     return Builds.value
@@ -32,7 +31,6 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     if (BuildExists(characterId, name, echoes))
       return Builds.value.find(build => build.CharacterId === characterId && build.Name === name)
 
-    const weapon = WeaponsStore.GetById(weaponId)
     const buildId = uuidv4()
 
     const build: Build = {
@@ -40,14 +38,14 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
       CharacterId: characterId,
       Name: name,
       Description: description,
-      WeaponId: weapon?.Id,
+      WeaponId: weaponId,
       Echoes: echoes?.map(echo => ({
         ...echo,
         Id: uuidv4(),
         BuildId: buildId,
       })) ?? [],
-      CreatedAt: new Date(),
-      UpdatedAt: new Date(),
+      CreatedAt: new Date(Date.now()),
+      UpdatedAt: new Date(Date.now()),
       IsDefault: false,
       Order: GetOrder(characterId),
     }

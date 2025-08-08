@@ -14,7 +14,7 @@ defineProps<{
     }"
   >
     <template #default>
-      <BorderLines :count="1" />
+      <MBorderLines :count="1" />
       <EchoInfo :echo="echo" :echo-slot="echo.EquipedSlot || 0" :show-score="false" />
     </template>
   </UCard>

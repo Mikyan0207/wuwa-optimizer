@@ -1,69 +1,34 @@
 import type Character from '~/Core/Interfaces/Character'
-import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { TemplateCharacters } from '~/Core/Characters'
-import { CharacterMigrationService } from '~/Core/Services/CharacterMigrationService'
 
 export const useCharactersStore = defineStore('CharactersStore', () => {
-  const Characters = useLocalStorage<Character[]>('Characters', [])
-  const MigrationService = new CharacterMigrationService()
+  const DefaultCharacters = ref<Character[]>(TemplateCharacters)
+  const Characters = useLocalStorage<Map<number, Character>>('Characters', new Map(DefaultCharacters.value.map(x => [x.Id, x])))
 
-  async function Migration() {
-    if (MigrationService.NeedsMigration()) {
-      try {
-        Characters.value = await MigrationService.MigrateCharacters()
-      }
-      catch (error) {
-        console.error('Migration failed:', error)
-      }
-      finally {
-        MigrationService.CleanUp()
-      }
-    }
+  function GetById(gameId: number): Character {
+    return Characters.value.get(gameId) ?? DefaultCharacters.value.find(x => x.Id === gameId)!
   }
 
-  function Get(characterId: number | undefined): Character {
-    const c = Characters.value.find(x => x.Id === characterId)
-    if (c !== undefined) {
-      return c
-    }
-
-    const ct = TemplateCharacters.find(x => x.Id === characterId)
-    if (ct !== undefined) {
-      Characters.value.push(ct)
-    }
-
-    return Characters.value.find(x => x.Id === characterId)!
+  function GetByGameId(gameId: number): Character {
+    return DefaultCharacters.value.find(x => x.Id === gameId)!
   }
 
-  function Update(characterId: number, data: Partial<Character>) {
-    const index = Characters.value.findIndex(c => c.Id === characterId)
-    if (index === -1 || Characters.value === undefined)
-      return
+  function UpdateById(characterId: number, data: Partial<Character>) {
+    const character = GetById(characterId)
 
-    Characters.value[index] = {
-      ...Characters.value[index],
-      ...data,
-    } as Character
-  }
-
-  function AddOrUpdate(character: Character) {
-    if (!Characters.value)
-      return
-
-    const exists = Characters.value.some(c => c.Id === character.Id)
-    if (exists) {
-      return Update(character.Id, character)
+    if (character) {
+      Characters.value.set(character.Id, {
+        ...character,
+        ...data,
+      })
     }
-
-    Characters.value.push(character)
   }
 
   return {
     Characters,
-    Get,
-    Update,
-    AddOrUpdate,
-    Migration,
+    GetById,
+    GetByGameId,
+    UpdateById,
   }
 })

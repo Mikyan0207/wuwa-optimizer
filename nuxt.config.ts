@@ -18,18 +18,28 @@ export default defineNuxtConfig({
 
   components: [
     '~/components',
+    '~/components/Base',
+    '~/components/Stats',
+
+    // Characters
     '~/components/Characters',
-    '~/components/Characters/Tabs',
     '~/components/Characters/Cards',
+    '~/components/Characters/Tabs',
+
+    // Echoes
     '~/components/Echoes',
-    '~/components/Echoes/Forms',
+    '~/components/Echoes/MEchoCard',
+    '~/components/Echoes/MEchoForm',
+
     '~/components/Filters',
     '~/components/Importer',
     '~/components/Importer/Cards',
-    '~/components/Interface',
     '~/components/Navigation',
     '~/components/Skills',
+
+    // Weapons
     '~/components/Weapons',
+    '~/components/Weapons/MWeaponCard',
     '~/components/Weapons/Forms',
     '~/components/Events',
   ],

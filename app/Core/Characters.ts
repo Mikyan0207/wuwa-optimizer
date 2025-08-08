@@ -226,7 +226,6 @@ export const Sanhua: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -468,7 +467,6 @@ export const Baizhi: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0,
@@ -710,7 +708,6 @@ export const Lingyang: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -952,7 +949,6 @@ export const Zhezhi: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -1194,7 +1190,6 @@ export const Youhu: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -1221,6 +1216,13 @@ export const Carlotta: Character = {
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Carlotta_Icon.webp',
   SplashArt: 'Carlotta_Portrait.webp',
+  AnimatedArt: {
+    Skeleton: 'kelaita.skel',
+    Atlas: 'kelaita.atlas',
+    OffsetX: 125,
+    OffsetY: 350,
+    Scale: 2.25,
+  },
   WeaponType: WeaponType.PISTOLS,
   Type: CharacterType.GLACIO,
   Level: 90,
@@ -1436,7 +1438,6 @@ export const Carlotta: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -1678,7 +1679,6 @@ export const Chixia: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -1920,7 +1920,6 @@ export const Encore: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -2162,7 +2161,6 @@ export const Mortefi: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -2404,7 +2402,6 @@ export const Changli: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -2646,7 +2643,6 @@ export const Brant: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0.4,
@@ -2673,6 +2669,10 @@ export const Lupa: Character = {
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Lupa_Icon.webp',
   SplashArt: 'Lupa_Portrait.webp',
+  AnimatedArt: {
+    Skeleton: 'lupa.skel',
+    Atlas: 'lupa.atlas',
+  },
   WeaponType: WeaponType.BROADBLADE,
   Type: CharacterType.FUSION,
   Level: 90,
@@ -2888,7 +2888,6 @@ export const Lupa: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -3130,7 +3129,6 @@ export const Calcharo: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -3372,7 +3370,6 @@ export const Yinlin: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -3614,7 +3611,6 @@ export const Yuanwu: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0.4,
@@ -3856,7 +3852,6 @@ export const Jinhsi: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -4098,7 +4093,6 @@ export const Xiangli_Yao: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -4340,7 +4334,6 @@ export const Yangyang: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0.4,
@@ -4582,7 +4575,6 @@ export const Aalto: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -4824,7 +4816,6 @@ export const Jiyan: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -5066,7 +5057,6 @@ export const Jianxin: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
@@ -5308,7 +5298,6 @@ export const Ciaccona: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -5550,7 +5539,6 @@ export const Rover_Aero: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -5577,6 +5565,13 @@ export const Cartethyia: Character = {
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Cartethyia_Icon.webp',
   SplashArt: 'Cartethyia_Portrait.webp',
+  AnimatedArt: {
+    Skeleton: 'katixiya.skel',
+    Atlas: 'katixiya.atlas',
+    OffsetX: 0,
+    OffsetY: 0,
+    Scale: 2.5,
+  },
   WeaponType: WeaponType.SWORD,
   Type: CharacterType.AERO,
   Level: 90,
@@ -5672,21 +5667,21 @@ export const Cartethyia: Character = {
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
       Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
-        Type: StatType.ATTACK_PERCENTAGE,
+        Type: StatType.CRIT_RATE,
         Value: 1.8,
       },
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
       Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
-        Type: StatType.ATTACK_PERCENTAGE,
-        Value: 4.2,
+        Type: StatType.CRIT_RATE,
+        Value: 2.8,
       },
     },
     {
@@ -5716,21 +5711,21 @@ export const Cartethyia: Character = {
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
       Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
-        Type: StatType.ATTACK_PERCENTAGE,
+        Type: StatType.CRIT_RATE,
         Value: 1.8,
       },
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
       Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
-        Type: StatType.ATTACK_PERCENTAGE,
-        Value: 4.2,
+        Type: StatType.CRIT_RATE,
+        Value: 2.8,
       },
     },
     {
@@ -5792,7 +5787,6 @@ export const Cartethyia: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0.8,
@@ -6034,7 +6028,6 @@ export const Rover_Spectro: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -6276,7 +6269,6 @@ export const Verina: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0,
@@ -6518,7 +6510,6 @@ export const Lumi: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -6545,6 +6536,13 @@ export const Shorekeeper: Character = {
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Shorekeeper_Icon.webp',
   SplashArt: 'Shorekeeper_Portrait.webp',
+  AnimatedArt: {
+    Skeleton: 'shouanren.skel',
+    Atlas: 'shouanren.atlas',
+    OffsetX: 0,
+    OffsetY: 100,
+    Scale: 2.15,
+  },
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.SPECTRO,
   Level: 90,
@@ -6760,7 +6758,6 @@ export const Shorekeeper: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0.3,
@@ -7002,7 +6999,6 @@ export const Phoebe: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -7244,7 +7240,6 @@ export const Zani: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -7486,7 +7481,6 @@ export const Taoqi: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -7728,7 +7722,6 @@ export const Danjin: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -7970,7 +7963,6 @@ export const Camellya: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -8212,7 +8204,6 @@ export const Rover_Havoc: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -8454,7 +8445,6 @@ export const Roccia: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -8696,7 +8686,6 @@ export const Cantarella: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -8723,7 +8712,12 @@ export const Phrolova: Character = {
   Rarity: Rarity.FIVE_STARS,
   ReleaseState: ReleaseState.NEW,
   Icon: 'Phrolova_Icon.webp',
-  SplashArt: 'Phrolova_Portrait.webp',
+  SplashArt: 'Phrolova_Portrait',
+  AnimatedArt: {
+    Skeleton: 'fuluoluo.skel',
+    Atlas: 'fuluoluo.atlas',
+    Scale: 2.5,
+  },
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.HAVOC,
   Level: 90,
@@ -8939,7 +8933,6 @@ export const Phrolova: Character = {
       },
     },
   ],
-  EquipedEchoes: [],
   StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
@@ -8977,7 +8970,6 @@ export const Augusta: Character = {
   Skills: [
 
   ],
-  EquipedEchoes: [],
   StatsWeights: {
   },
 }
@@ -8998,7 +8990,6 @@ export const Iuno: Character = {
   ],
   Skills: [
   ],
-  EquipedEchoes: [],
   StatsWeights: {
   },
 }
@@ -9019,7 +9010,6 @@ export const Galbrena: Character = {
   ],
   Skills: [
   ],
-  EquipedEchoes: [],
   StatsWeights: {
   },
 }
@@ -9040,7 +9030,6 @@ export const Qiuyuan: Character = {
   ],
   Skills: [
   ],
-  EquipedEchoes: [],
   StatsWeights: {
   },
 }
@@ -9061,7 +9050,6 @@ export const Chisa: Character = {
   ],
   Skills: [
   ],
-  EquipedEchoes: [],
   StatsWeights: {
   },
 }

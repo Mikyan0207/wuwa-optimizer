@@ -2,35 +2,31 @@
 import type Echo from '~/Core/Interfaces/Echo'
 import { domToBlob } from 'modern-screenshot'
 import VueDraggable from 'vuedraggable'
-import { useCharacterContext } from '~/composables/UseCharacterContext'
+import { useBuild } from '~/composables/builds/UseBuild'
+import { useCharacter } from '~/composables/characters/UseCharacter'
+import { GetCharacterBackground } from '~/Core/Utils/CharacterUtils'
+import { useBuildsStore } from '~/stores/BuildsStore'
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 
-const { CurrentCharacter, CurrentWeapon, CurrentEchoes, Score } = useCharacterContext()
+const { CurrentCharacter } = useCharacter()
+const { CurrentWeapon, CurrentEchoes } = useBuild()
 const BuildsStore = useBuildsStore()
-const EchoesStore = useEchoesStore()
 const Toast = useToast()
 
 if (CurrentCharacter.value === undefined || CurrentCharacter.value === null) {
   await navigateTo('/characters')
 }
 
-// Force async to trigger Suspense
-await new Promise(resolve => setTimeout(resolve, 0))
-
-function SaveCurrentBuild() {
+async function SaveCurrentBuild() {
   if (!CurrentCharacter.value)
     return
 
-  const defaultBuild = BuildsStore.GetDefaultBuild(CurrentCharacter.value.Id)
-  const equippedEchoes = defaultBuild?.EquipedEchoes || []
-
-  const build = BuildsStore.SaveCurrentBuild(
+  const build = BuildsStore.CreateBuild(
+    'Current Build',
     CurrentCharacter.value.Id,
     CurrentWeapon.value?.Id,
-    equippedEchoes,
-    Score.value?.Score,
-    Score.value?.Note,
+    CurrentEchoes.value,
   )
 
   if (build) {
@@ -39,7 +35,8 @@ function SaveCurrentBuild() {
       description: `"${build.Name}" has been saved successfully.`,
       color: 'success',
     })
-  } else {
+  }
+  else {
     Toast.add({
       title: 'Build already exists!',
       description: 'A build with the same configuration already exists.',
@@ -51,50 +48,29 @@ function SaveCurrentBuild() {
 const ShowScreenShotBackground = ref<boolean>(false)
 
 const DraggableEchoes = computed({
-  get: () => CurrentEchoes.value || [],
+  get: () => CurrentEchoes || [],
   set: (newOrder: any[]) => {
     if (CurrentCharacter.value) {
       const defaultBuild = BuildsStore.GetDefaultBuild(CurrentCharacter.value.Id)
 
       if (defaultBuild) {
-        const updatedEquipedEchoes = [...(defaultBuild.EquipedEchoes || [])]
-        const updatedEchoesData = [...(defaultBuild.EchoesData || [])]
+        const updatedEchoes = [...(defaultBuild.Echoes || [])]
 
         newOrder.forEach((echo, index) => {
-          if (echo.Id !== -1) {
-            EchoesStore.Update(echo.Id, {
-              ...echo,
-              EquipedSlot: index,
-            })
-
-            updatedEquipedEchoes[index] = echo.Id
-
-            // Mettre à jour EchoesData avec le nouveau slot
-            const echoDataIndex = updatedEchoesData.findIndex(e => e.Id === echo.Id)
+          if (echo.GameId !== -1) {
+            const echoDataIndex = updatedEchoes.findIndex(e => e.GameId === echo.GameId)
             if (echoDataIndex >= 0) {
-              updatedEchoesData[echoDataIndex] = {
-                ...updatedEchoesData[echoDataIndex],
+              updatedEchoes[echoDataIndex] = {
+                ...updatedEchoes[echoDataIndex],
                 EquipedSlot: index,
-              } as Echo & { BuildId: number }
+              } as Echo
             }
           }
         })
 
         BuildsStore.UpdateBuild(defaultBuild.Id, {
-          EquipedEchoes: updatedEquipedEchoes,
-          EchoesData: updatedEchoesData,
+          Echoes: updatedEchoes,
         })
-
-        // Recalculer et sauvegarder le score
-        const ScoreCalculator = useScoreCalculator()
-        const updatedScore = ScoreCalculator.GetCharacterScore(CurrentCharacter.value, defaultBuild)
-        if (updatedScore) {
-          BuildsStore.UpdateBuild(defaultBuild.Id, {
-            Score: updatedScore.Score,
-            Note: updatedScore.Note,
-            EchoesScores: updatedScore.EchoesScores,
-          })
-        }
       }
     }
   },
@@ -107,73 +83,123 @@ async function TakeScreenShotAsync() {
 
   ShowScreenShotBackground.value = true
 
-  const scale = 1
-  const w = CharacterInfoRef.value.clientWidth * scale
-  const h = CharacterInfoRef.value.clientHeight * scale
+  await new Promise(resolve => setTimeout(resolve, 100))
 
-  domToBlob(CharacterInfoRef.value, {
-    height: h,
-    width: w,
-    style: {
-      scale: `${scale}`,
-    },
-    quality: 1,
-  }).then((blob) => {
-    if (blob === null) {
-      ShowScreenShotBackground.value = false
-      return
+  const originalWidth = CharacterInfoRef.value.clientWidth
+  const originalHeight = CharacterInfoRef.value.clientHeight
+  const aspectRatio = originalWidth / originalHeight
+
+  let targetWidth = 2560
+  let targetHeight = 1440
+
+  if (aspectRatio > 16 / 9) {
+    targetHeight = Math.round(targetWidth / aspectRatio)
+  }
+  else {
+    targetWidth = Math.round(targetHeight * aspectRatio)
+  }
+
+  const scaleX = targetWidth / originalWidth
+  const scaleY = targetHeight / originalHeight
+  const scale = Math.max(scaleX, scaleY)
+
+  try {
+    const blob = await domToBlob(CharacterInfoRef.value, {
+      height: targetHeight,
+      width: targetWidth,
+      style: {
+        transform: `scale(${scale})`,
+        transformOrigin: 'top left',
+        imageRendering: 'crisp-edges',
+      },
+      quality: 1,
+      type: 'image/png',
+      backgroundColor: '#000000',
+    })
+
+    if (blob) {
+      const url = URL.createObjectURL(blob)
+      window.open(url, '_blank')
+
+      setTimeout(() => {
+        URL.revokeObjectURL(url)
+      }, 1000)
+
+      Toast.add({
+        title: 'Screenshot generated!',
+        description: `Generated image (${targetWidth}x${targetHeight}) opened in new tab.`,
+        color: 'success',
+      })
     }
-
-    window.open(URL.createObjectURL(blob), '_blank')
-
+  }
+  catch (error) {
+    console.error('Screenshot error:', error)
+    Toast.add({
+      title: 'Screenshot failed',
+      description: 'Failed to generate high-quality screenshot.',
+      color: 'error',
+    })
+  }
+  finally {
     ShowScreenShotBackground.value = false
-  })
+  }
 }
 </script>
 
 <template>
   <div class="mb-14 xl:mb-4">
-    <div v-if="CurrentCharacter !== undefined && Score" class="mt-2 relative">
+    <div v-if="CurrentCharacter !== undefined" class="mt-2 relative">
       <div class="mx-auto my-2">
         <div ref="CharacterInfoRef" class="relative p-0.25">
-          <div v-if="ShowScreenShotBackground" class="absolute inset-0">
-            <NuxtImg src="/images/main-bg.webp" class="h-full w-full object-cover" />
+          <div v-if="ShowScreenShotBackground" class="absolute inset-0 blur-sm">
+            <div class="absolute -top-5 -left-5 -right-5 -bottom-5 bg-neutral-900/75" />
+            <NuxtImg :src="GetCharacterBackground(CurrentCharacter)" class="h-full w-full object-cover" />
           </div>
-          <div class="grid grid-cols-2 mx-auto w-full gap-2 xl:grid-cols-5">
-            <!-- Character Info (Art, Stats, Weapon, Skills) -->
-            <CharacterArtCard
+
+          <!-- Main Layout Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-2 auto-rows-auto">
+            <!-- Character Art Card -->
+            <CharacterAnimatedArtCard
               v-if="CurrentCharacter"
-              v-motion-slide-left :delay="50"
+              v-motion-slide-left
+              :delay="50"
               :character="CurrentCharacter"
-              class="col-span-1 row-span-1 xl:col-span-2"
+              class="md:col-span-1 xl:col-span-2"
             />
-            <div class="grid col-span-1 grid-cols-1 gap-2 xl:col-span-3 xl:grid-cols-2">
-              <!-- Stats -->
+
+            <!-- Stats & Weapon/Skills Container -->
+            <div class="md:col-span-1 xl:col-span-3 grid grid-cols-1 xl:grid-cols-2 gap-2">
+              <!-- Stats Card -->
               <CharacterStatsCard
                 v-motion-pop
+                class="col-span-1"
                 :delay="100"
               />
-              <!-- Weapon / Skills -->
-              <div class="grid grid-rows-4 gap-2">
-                <!-- Weapon -->
+
+              <!-- Weapon & Skills Container -->
+              <div class="grid grid-rows-4 gap-2 col-span-1">
+                <!-- Weapon Card -->
                 <CharacterWeaponCard
                   v-motion-slide-right
                   :delay="150"
                   class="row-span-1"
                 />
-                <!-- Skills -->
+
+                <!-- Skills Card -->
                 <CharacterSkillsCard
                   v-motion-slide-right
-                  class="row-span-3"
                   :delay="200"
+                  class="row-span-3"
                 />
               </div>
             </div>
           </div>
 
-          <div class="grid grid-cols-3 mt-2 gap-2 xl:grid-cols-5">
+          <!-- Echoes Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 mt-2">
             <VueDraggable
-              v-model="DraggableEchoes"
+              v-if="CurrentCharacter"
+              v-model="DraggableEchoes.value"
               :animation="200"
               ghost-class="opacity-65"
               chosen-class="scale-102"
@@ -182,39 +208,35 @@ async function TakeScreenShotAsync() {
               item-key="Id"
             >
               <template #item="{ element: echo, index: idx }">
-                <CharacterEchoCard
+                <MEchoCard
                   v-motion-slide-bottom
                   :delay="200 + (idx * 25)"
+                  :equiped-slot="echo.EquipedSlot || idx"
                   :echo="echo"
-                  :echo-slot="echo.EquipedSlot || idx"
-                  :score="Score.EchoesScores.find(x => x.EchoId === echo.Id)"
                 />
               </template>
             </VueDraggable>
           </div>
         </div>
 
-        <div class="grid grid-cols-2 mt-2 gap-2">
-          <div class="col-span-1">
-            <CharacterSetsCard
-              v-motion-slide-bottom
-              :delay="300"
-              :echoes="CurrentEchoes"
-            />
-          </div>
-          <div class="col-span-1">
-            <!-- <CharacterStatsChart
-              v-motion-slide-bottom
-              :delay="350"
-            /> -->
-          </div>
+        <div class="mt-12">
+          <MSectionTitle title="Sets" color="emerald" />
+        </div>
+
+        <!-- Sets Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-2">
+          <CharacterSetsCard
+            v-motion-slide-bottom
+            :delay="300"
+            :echoes="CurrentEchoes"
+          />
         </div>
       </div>
 
+      <!-- Fixed Action Buttons -->
       <div class="fixed right-4 top-1/3 z-50">
         <div class="bg-black/90 backdrop-blur-md rounded-xl border border-white/20 shadow-xl">
           <div class="p-1.5 flex flex-col space-y-1">
-            <!-- Screenshot Button -->
             <UButton
               color="neutral"
               variant="ghost"
@@ -226,7 +248,6 @@ async function TakeScreenShotAsync() {
               @click.prevent="TakeScreenShotAsync"
             />
             <USeparator />
-            <!-- Save Build Button -->
             <UButton
               color="neutral"
               variant="ghost"

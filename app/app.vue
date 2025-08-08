@@ -5,14 +5,10 @@ useHead({
   title: AppName,
 })
 
-const CharactersStore = useCharactersStore()
-const SonatasStore = useSonatasStore()
-const EchoesStore = useEchoesStore()
+const UpdaterStore = useUpdaterStore()
 
-onMounted(async () => {
-  await CharactersStore.Migration()
-  await SonatasStore.Migration()
-  await EchoesStore.Migration()
+onMounted(() => {
+  UpdaterStore.Migrate()
 })
 </script>
 

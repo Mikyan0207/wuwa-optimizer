@@ -1,75 +1,26 @@
 <script setup lang="ts">
+import { useCharacter } from '~/composables/characters/UseCharacter'
 import { GetCharacterTypeIcon, GetCharacterWeaponTypeIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
 
-const { CurrentCharacter } = useCharacterContext()
-
-function ToggleSequence(sequenceIndex: number) {
-  if (!CurrentCharacter.value) {
-    return
-  }
-
-  const sequence = CurrentCharacter.value.Sequences[sequenceIndex]
-  if (!sequence) {
-    return
-  }
-
-  if (CanUnlockSequence(sequenceIndex)) {
-    sequence.Unlocked = !sequence.Unlocked
-
-    if (!sequence.Unlocked) {
-      for (let i = sequenceIndex + 1; i < CurrentCharacter.value.Sequences.length; i++) {
-        const nextSequence = CurrentCharacter.value.Sequences[i]
-        if (nextSequence) {
-          nextSequence.Unlocked = false
-        }
-      }
-    }
-
-    CurrentCharacter.value = { ...CurrentCharacter.value }
-  }
-}
-
-function CanUnlockSequence(sequenceIndex: number): boolean {
-  if (!CurrentCharacter.value)
-    return false
-
-  const sequence = CurrentCharacter.value.Sequences[sequenceIndex]
-  if (!sequence)
-    return false
-
-  if (sequence.Unlocked)
-    return true
-
-  if (sequenceIndex === 0)
-    return true
-
-  const previousSequence = CurrentCharacter.value.Sequences[sequenceIndex - 1]
-  return previousSequence?.Unlocked === true
-}
+const { CurrentCharacter, CanUnlockSequence, ToggleSequence } = useCharacter()
 </script>
 
 <template>
-  <!-- Character Art -->
-  <UCard
+  <MCard
     class="relative overflow-hidden"
-    :ui="{
-      root: 'rounded-none rounded-br-xl border-0',
-    }"
+    :border-lines-count="3"
   >
-    <BorderLines />
     <div class="absolute inset-0 z-20 from-black/25 via-transparent to-transparent bg-gradient-to-bl" />
     <NuxtImg
       fit="cover"
       src="/images/character-bg-placeholder.webp"
       class="absolute top--25% z-0 h-200% w-200% rotate-180 object-cover blur-lg"
     />
-    <!-- Weapon Type & Character Type -->
-    <div class="absolute right-2 top-2 z-20 flex items-center gap-2">
+    <!-- <div class="absolute right-2 top-2 z-20 flex items-center gap-2">
       <NuxtImg :src="`${GetCharacterTypeIcon(CurrentCharacter)}`" class="h-8 w-8 object-cover" fit="cover" />
       <NuxtImg :src="`${GetCharacterWeaponTypeIcon(CurrentCharacter)}`" class="h-8 w-8 object-cover" fit="cover" />
-    </div>
-    <!-- Sequences -->
-    <div class="absolute left-2 top-2 z-20">
+    </div> -->
+    <div class="absolute left-4 top-4 z-20">
       <div class="flex flex-col gap-3">
         <div
           v-for="(s, index) in CurrentCharacter.Sequences"
@@ -100,8 +51,6 @@ function CanUnlockSequence(sequenceIndex: number): boolean {
     <NuxtImg
       :src="`${GetSplashArt(CurrentCharacter)}`"
       class="absolute inset-0 z-10 h-full w-full object-cover"
-      fit="cover"
-      quality="90"
     />
-  </UCard>
+  </MCard>
 </template>

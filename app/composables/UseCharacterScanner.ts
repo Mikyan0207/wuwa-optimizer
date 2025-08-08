@@ -103,25 +103,13 @@ export async function useCharacterScanner() {
         OnProgress.value(ScannerStatus.WEAPON)
       }
 
-      const weapon = await withTimeout(GetWeaponAsync(character.Id), 3000)
+      const weapon = await withTimeout(GetWeaponAsync(), 3000)
 
       if (OnProgress.value) {
         OnProgress.value(ScannerStatus.ECHOES)
       }
 
-      const echoes = await withTimeout(GetEchoesAsync(character.Id), 3000000)
-
-      character.EquipedWeapon = weapon?.Id
-
-      // Initialize EquipedEchoes array with 5 slots
-      character.EquipedEchoes = Array.from({ length: 5 }, () => -1)
-
-      // Place echoes in their correct slots
-      echoes.forEach((e) => {
-        if (e.EquipedSlot !== undefined && e.EquipedSlot >= 0 && e.EquipedSlot < 5) {
-          character.EquipedEchoes[e.EquipedSlot] = e.Id
-        }
-      })
+      const echoes = await withTimeout(GetEchoesAsync(), 3000000)
 
       if (onProgress) {
         onProgress(ScannerStatus.DONE)
@@ -145,7 +133,7 @@ export async function useCharacterScanner() {
     }
   }
 
-  async function GetWeaponAsync(characterId: number) {
+  async function GetWeaponAsync() {
     const [
       weaponName,
       weaponLevel,
@@ -167,7 +155,6 @@ export async function useCharacterScanner() {
       return undefined
     }
 
-    weapon.EquipedBy = characterId
     weapon.Level = Number.parseInt(GetFilteredText(weaponLevel, /\d+/))
 
     return weapon
@@ -268,7 +255,7 @@ export async function useCharacterScanner() {
     return mostCommon?.sonata
   }
 
-  async function GetEchoesAsync(characterId: number) {
+  async function GetEchoesAsync() {
     const echoes: Echo[] = []
 
     for (let i = 0; i < ECHOES_REGIONS.length; i += 15) {
@@ -307,7 +294,6 @@ export async function useCharacterScanner() {
             return GetStatistic(name, rawValue, echo.Cost)
           }).filter(stat => stat.Type !== StatType.NONE && !Number.isNaN(stat.Value)),
           EquipedSlot: index,
-          EquipedBy: characterId,
         } as Echo
 
         const sonata = await withTimeout(

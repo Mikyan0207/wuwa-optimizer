@@ -1,82 +1,43 @@
 import type Weapon from '~/Core/Interfaces/Weapon'
+import { v4 as uuidv4 } from 'uuid'
 import { TemplateWeapons } from '~/Core/Weapons'
 
 export const useWeaponsStore = defineStore('WeaponsStore', () => {
+  const DefaultWeapons = ref<Weapon[]>(TemplateWeapons)
   const Weapons = useLocalStorage<Weapon[]>('Weapons', [])
 
-  function GetWeapons() {
-    return Weapons.value
-  }
-
-  function GetDefaultWeapons() {
-    return TemplateWeapons
-  }
-
-  function GetWeapon(weaponId: number | undefined): Weapon | undefined {
+  function GetById(weaponId: string | undefined): Weapon | undefined {
     return Weapons.value.find(x => x.Id === weaponId)
   }
 
-  function GetDefaultWeapon(weaponId: number | undefined): Weapon | undefined {
-    return TemplateWeapons.find(x => x.Id === weaponId)
+  function GetByGameId(gameId: number): Weapon | undefined {
+    return DefaultWeapons.value.find(x => x.GameId === gameId)
   }
 
-  function GetWeaponByEquipedId(equipedId: number | undefined): Weapon | undefined {
-    return Weapons.value.find(x => x.EquipedBy === equipedId)
-  }
+  function CreateFromGameId(gameId: number | undefined): Weapon | undefined {
+    if (!gameId)
+      return undefined
 
-  function SetEquipedWeapon(characterId: number, weaponId: number | undefined) {
-    if (weaponId === undefined) {
-      return
-    }
+    const weapon = GetByGameId(gameId)
 
-    const c = Weapons.value.find(x => x.Id === weaponId)
-    if (c === undefined) {
-      const ct = TemplateWeapons.find(x => x.Id === weaponId)
-      if (ct !== undefined) {
-        Weapons.value.push(ct)
-      }
-    }
+    if (!weapon)
+      return undefined
 
-    Weapons.value.find(x => x.Id === weaponId)!.EquipedBy = characterId
-  }
-
-  function RemoveEquipedWeapons(characterId: number) {
-    Weapons.value = Weapons.value.filter(x => x.EquipedBy !== characterId)
-  }
-
-  function Update(weaponId: number, characterId: number, data: Partial<Weapon>) {
-    const index = Weapons.value.findIndex(c => c.Id === weaponId && c.EquipedBy === characterId)
-    if (index === -1 || Weapons.value === undefined)
-      return
-
-    Weapons.value[index] = {
-      ...Weapons.value[index],
-      ...data,
+    const weaponId = uuidv4()
+    const weaponToAdd = {
+      ...weapon,
+      Id: weaponId,
     } as Weapon
-  }
 
-  function AddOrUpdate(weapon: Weapon, characterId: number) {
-    if (!Weapons.value)
-      return
+    Weapons.value.push(weaponToAdd)
 
-    const exists = Weapons.value.some(c => c.Id === weapon.Id && c.EquipedBy === characterId)
-    if (exists) {
-      return Update(weapon.Id, characterId, weapon)
-    }
-
-    Weapons.value.push(weapon)
+    return weaponToAdd
   }
 
   return {
     Weapons,
-    GetWeapons,
-    GetDefaultWeapons,
-    GetWeapon,
-    GetDefaultWeapon,
-    GetWeaponByEquipedId,
-    SetEquipedWeapon,
-    RemoveEquipedWeapons,
-    Update,
-    AddOrUpdate,
+    GetById,
+    GetByGameId,
+    CreateFromGameId,
   }
 })

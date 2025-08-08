@@ -3,9 +3,11 @@ import type Echo from '~/Core/Interfaces/Echo'
 import type Sonata from '~/Core/Interfaces/Sonata'
 import { GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
-const props = defineProps<{
+interface CharacterSetsCardProps {
   echoes: Echo[]
-}>()
+}
+
+const props = defineProps<CharacterSetsCardProps>()
 
 const SetStatsStore = useSetStatsStore()
 
@@ -13,7 +15,7 @@ const ActiveSets = computed(() => {
   const setCounts = new Map<string, { count: number, sonata: Sonata }>()
 
   props.echoes.forEach((echo) => {
-    if (echo.Id !== -1 && echo.Sonata) {
+    if (echo.Id !== undefined && echo.Sonata) {
       echo.Sonata.forEach((sonata) => {
         if (sonata.IsSelected) {
           const key = sonata.Name
@@ -52,14 +54,11 @@ const ActiveSets = computed(() => {
 </script>
 
 <template>
-  <UCard
-    class="w-full"
-    :ui="{
-      root: 'rounded-none rounded-br-xl border-0',
-    }"
+  <MCard
+    :border-lines-count="3"
   >
     <template #default>
-      <BorderLines />
+      <MBorderLines />
       <div class="p-2">
         <div v-if="ActiveSets.length === 0" class="text-gray-400 text-center py-4">
           No active sets
@@ -150,5 +149,5 @@ const ActiveSets = computed(() => {
         </div>
       </div>
     </template>
-  </UCard>
+  </MCard>
 </template>

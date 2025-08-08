@@ -6,7 +6,7 @@ import { WeaponType } from './Enums/WeaponType'
 
 export const Weapons: Weapon[] = [
   {
-    Id: 21010011,
+    GameId: 21010011,
     Name: 'Training Broadblade',
     Icon: 'Training_Broadblade_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -23,7 +23,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010012,
+    GameId: 21010012,
     Name: 'Tyro Broadblade',
     Icon: 'Tyro_Broadblade_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -40,7 +40,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010013,
+    GameId: 21010013,
     Name: 'Broadblade Of Night',
     Icon: 'Broadblade_Of_Night_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -57,7 +57,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010015,
+    GameId: 21010015,
     Name: 'Lustrous Razor',
     Icon: 'Lustrous_Razor_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -74,7 +74,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010016,
+    GameId: 21010016,
     Name: 'Verdant Summit',
     Icon: 'Verdant_Summit_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -91,7 +91,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010023,
+    GameId: 21010023,
     Name: 'Originite: Type I',
     Icon: 'Originite_Type_I_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -108,7 +108,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010024,
+    GameId: 21010024,
     Name: 'Discord',
     Icon: 'Discord_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -125,7 +125,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010026,
+    GameId: 21010026,
     Name: 'Ages Of Harvest',
     Icon: 'Ages_Of_Harvest_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -142,7 +142,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010034,
+    GameId: 21010034,
     Name: 'Broadblade#41',
     Icon: 'Broadblade41_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -159,7 +159,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010036,
+    GameId: 21010036,
     Name: 'Wildfire Mark',
     Icon: 'Wildfire_Mark_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -182,7 +182,7 @@ export const Weapons: Weapon[] = [
     ],
   },
   {
-    Id: 21010043,
+    GameId: 21010043,
     Name: 'Broadblade Of Voyager',
     Icon: 'Broadblade_Of_Voyager_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -199,7 +199,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010044,
+    GameId: 21010044,
     Name: 'Dauntless Evernight',
     Icon: 'Dauntless_Evernight_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -216,7 +216,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010053,
+    GameId: 21010053,
     Name: 'Guardian Broadblade',
     Icon: 'Guardian_Broadblade_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -233,7 +233,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010063,
+    GameId: 21010063,
     Name: 'Beguiling Melody',
     Icon: 'Beguiling_Melody_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -250,7 +250,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010064,
+    GameId: 21010064,
     Name: 'Helios Cleaver',
     Icon: 'Helios_Cleaver_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -267,7 +267,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010074,
+    GameId: 21010074,
     Name: 'Autumntrace',
     Icon: 'Autumntrace_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -284,7 +284,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010084,
+    GameId: 21010084,
     Name: 'Waning Redshift',
     Icon: 'Waning_Redshift_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -301,7 +301,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21010094,
+    GameId: 21010094,
     Name: 'Meditations On Mercy',
     Icon: 'Meditations_On_Mercy_Icon.webp',
     Type: WeaponType.BROADBLADE,
@@ -318,7 +318,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020011,
+    GameId: 21020011,
     Name: 'Training Sword',
     Icon: 'Training_Sword_Icon.webp',
     Type: WeaponType.SWORD,
@@ -335,7 +335,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020012,
+    GameId: 21020012,
     Name: 'Tyro Sword',
     Icon: 'Tyro_Sword_Icon.webp',
     Type: WeaponType.SWORD,
@@ -352,7 +352,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020013,
+    GameId: 21020013,
     Name: 'Sword Of Night',
     Icon: 'Sword_Of_Night_Icon.webp',
     Type: WeaponType.SWORD,
@@ -369,7 +369,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020015,
+    GameId: 21020015,
     Name: 'Emerald Of Genesis',
     Icon: 'Emerald_Of_Genesis_Icon.webp',
     Type: WeaponType.SWORD,
@@ -386,7 +386,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020016,
+    GameId: 21020016,
     Name: 'Blazing Brilliance',
     Icon: 'Blazing_Brilliance_Icon.webp',
     Type: WeaponType.SWORD,
@@ -403,7 +403,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020017,
+    GameId: 21020017,
     Name: 'Somnoire Anchor',
     Icon: 'Somnoire_Anchor_Icon.webp',
     Type: WeaponType.SWORD,
@@ -420,7 +420,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020023,
+    GameId: 21020023,
     Name: 'Originite: Type Ii',
     Icon: 'Originite_Type_Ii_Icon.webp',
     Type: WeaponType.SWORD,
@@ -437,7 +437,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020024,
+    GameId: 21020024,
     Name: 'Overture',
     Icon: 'Overture_Icon.webp',
     Type: WeaponType.SWORD,
@@ -454,7 +454,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020026,
+    GameId: 21020026,
     Name: 'Red Spring',
     Icon: 'Red_Spring_Icon.webp',
     Type: WeaponType.SWORD,
@@ -471,7 +471,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020034,
+    GameId: 21020034,
     Name: 'Sword#18',
     Icon: 'Sword18_Icon.webp',
     Type: WeaponType.SWORD,
@@ -488,7 +488,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020036,
+    GameId: 21020036,
     Name: 'Unflickering Valor',
     Icon: 'Unflickering_Valor_Icon.webp',
     Type: WeaponType.SWORD,
@@ -505,7 +505,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020043,
+    GameId: 21020043,
     Name: 'Sword Of Voyager',
     Icon: 'Sword_Of_Voyager_Icon.webp',
     Type: WeaponType.SWORD,
@@ -522,7 +522,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020044,
+    GameId: 21020044,
     Name: 'Commando Of Conviction',
     Icon: 'Commando_Of_Conviction_Icon.webp',
     Type: WeaponType.SWORD,
@@ -539,7 +539,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020046,
+    GameId: 21020046,
     Name: 'Bloodpact\'s Pledge',
     Icon: 'Bloodpacts_Pledge_Icon.webp',
     Type: WeaponType.SWORD,
@@ -556,7 +556,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020053,
+    GameId: 21020053,
     Name: 'Guardian Sword',
     Icon: 'Guardian_Sword_Icon.webp',
     Type: WeaponType.SWORD,
@@ -573,7 +573,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020056,
+    GameId: 21020056,
     Name: 'Defier\'s Thorn',
     Icon: 'Defiers_Thorn_Icon.webp',
     Type: WeaponType.SWORD,
@@ -590,7 +590,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020064,
+    GameId: 21020064,
     Name: 'Lunar Cutter',
     Icon: 'Lunar_Cutter_Icon.webp',
     Type: WeaponType.SWORD,
@@ -607,7 +607,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020074,
+    GameId: 21020074,
     Name: 'Lumingloss',
     Icon: 'Lumingloss_Icon.webp',
     Type: WeaponType.SWORD,
@@ -624,7 +624,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020084,
+    GameId: 21020084,
     Name: 'Endless Collapse',
     Icon: 'Endless_Collapse_Icon.webp',
     Type: WeaponType.SWORD,
@@ -641,7 +641,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21020094,
+    GameId: 21020094,
     Name: 'Fables Of Wisdom',
     Icon: 'Fables_Of_Wisdom_Icon.webp',
     Type: WeaponType.SWORD,
@@ -658,7 +658,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030011,
+    GameId: 21030011,
     Name: 'Training Pistols',
     Icon: 'Training_Pistols_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -675,7 +675,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030012,
+    GameId: 21030012,
     Name: 'Tyro Pistols',
     Icon: 'Tyro_Pistols_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -692,7 +692,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030013,
+    GameId: 21030013,
     Name: 'Pistols Of Night',
     Icon: 'Pistols_Of_Night_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -709,7 +709,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030015,
+    GameId: 21030015,
     Name: 'Static Mist',
     Icon: 'Static_Mist_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -726,7 +726,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030016,
+    GameId: 21030016,
     Name: 'The Last Dance',
     Icon: 'The_Last_Dance_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -743,7 +743,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030023,
+    GameId: 21030023,
     Name: 'Originite: Type Iii',
     Icon: 'Originite_Type_Iii_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -760,7 +760,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030024,
+    GameId: 21030024,
     Name: 'Cadenza',
     Icon: 'Cadenza_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -777,7 +777,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030026,
+    GameId: 21030026,
     Name: 'Woodland Aria',
     Icon: 'Woodland_Aria_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -794,7 +794,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030034,
+    GameId: 21030034,
     Name: 'Pistols#26',
     Icon: 'Pistols26_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -811,7 +811,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030043,
+    GameId: 21030043,
     Name: 'Pistols Of Voyager',
     Icon: 'Pistols_Of_Voyager_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -828,7 +828,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030044,
+    GameId: 21030044,
     Name: 'Undying Flame',
     Icon: 'Undying_Flame_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -845,7 +845,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030053,
+    GameId: 21030053,
     Name: 'Guardian Pistols',
     Icon: 'Guardian_Pistols_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -862,7 +862,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030064,
+    GameId: 21030064,
     Name: 'Novaburst',
     Icon: 'Novaburst_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -879,7 +879,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030074,
+    GameId: 21030074,
     Name: 'Thunderbolt',
     Icon: 'Thunderbolt_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -896,7 +896,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030084,
+    GameId: 21030084,
     Name: 'Relativistic Jet',
     Icon: 'Relativistic_Jet_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -913,7 +913,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21030094,
+    GameId: 21030094,
     Name: 'Romance In Farewell',
     Icon: 'Romance_In_Farewell_Icon.webp',
     Type: WeaponType.PISTOLS,
@@ -930,7 +930,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040011,
+    GameId: 21040011,
     Name: 'Training Gauntlets',
     Icon: 'Training_Gauntlets_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -947,7 +947,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040012,
+    GameId: 21040012,
     Name: 'Tyro Gauntlets',
     Icon: 'Tyro_Gauntlets_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -964,7 +964,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040013,
+    GameId: 21040013,
     Name: 'Gauntlets Of Night',
     Icon: 'Gauntlets_Of_Night_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -981,7 +981,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040015,
+    GameId: 21040015,
     Name: 'Abyss Surges',
     Icon: 'Abyss_Surges_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -998,7 +998,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040016,
+    GameId: 21040016,
     Name: 'Verity\'s Handle',
     Icon: 'Veritys_Handle_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -1015,7 +1015,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040023,
+    GameId: 21040023,
     Name: 'Originite: Type Iv',
     Icon: 'Originite_Type_Iv_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -1032,7 +1032,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040024,
+    GameId: 21040024,
     Name: 'Marcato',
     Icon: 'Marcato_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -1049,7 +1049,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040026,
+    GameId: 21040026,
     Name: 'Tragicomedy',
     Icon: 'Tragicomedy_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -1066,7 +1066,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040034,
+    GameId: 21040034,
     Name: 'Gauntlets#21d',
     Icon: 'Gauntlets21d_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -1083,7 +1083,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040036,
+    GameId: 21040036,
     Name: 'Blazing Justice',
     Icon: 'Blazing_Justice_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -1100,7 +1100,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040043,
+    GameId: 21040043,
     Name: 'Gauntlets Of Voyager',
     Icon: 'Gauntlets_Of_Voyager_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -1117,7 +1117,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040044,
+    GameId: 21040044,
     Name: 'Amity Accord',
     Icon: 'Amity_Accord_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -1134,7 +1134,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040053,
+    GameId: 21040053,
     Name: 'Guardian Gauntlets',
     Icon: 'Guardian_Gauntlets_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -1151,7 +1151,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040064,
+    GameId: 21040064,
     Name: 'Hollow Mirage',
     Icon: 'Hollow_Mirage_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -1168,7 +1168,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040074,
+    GameId: 21040074,
     Name: 'Stonard',
     Icon: 'Stonard_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -1185,7 +1185,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040084,
+    GameId: 21040084,
     Name: 'Celestial Spiral',
     Icon: 'Celestial_Spiral_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -1202,7 +1202,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21040094,
+    GameId: 21040094,
     Name: 'Legend Of Drunken Hero',
     Icon: 'Legend_Of_Drunken_Hero_Icon.webp',
     Type: WeaponType.GAUNTLETS,
@@ -1219,7 +1219,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050011,
+    GameId: 21050011,
     Name: 'Training Rectifier',
     Icon: 'Training_Rectifier_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1236,7 +1236,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050012,
+    GameId: 21050012,
     Name: 'Tyro Rectifier',
     Icon: 'Tyro_Rectifier_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1253,7 +1253,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050013,
+    GameId: 21050013,
     Name: 'Rectifier Of Night',
     Icon: 'Rectifier_Of_Night_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1270,7 +1270,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050015,
+    GameId: 21050015,
     Name: 'Cosmic Ripples',
     Icon: 'Cosmic_Ripples_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1287,7 +1287,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050016,
+    GameId: 21050016,
     Name: 'Stringmaster',
     Icon: 'Stringmaster_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1304,7 +1304,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050017,
+    GameId: 21050017,
     Name: 'Call Of The Abyss',
     Icon: 'Call_Of_The_Abyss_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1321,7 +1321,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050023,
+    GameId: 21050023,
     Name: 'Originite: Type V',
     Icon: 'Originite_Type_V_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1338,7 +1338,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050024,
+    GameId: 21050024,
     Name: 'Variation',
     Icon: 'Variation_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1355,7 +1355,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050026,
+    GameId: 21050026,
     Name: 'Rime Draped Sprouts',
     Icon: 'Rime_Draped_Sprouts_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1372,7 +1372,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050027,
+    GameId: 21050027,
     Name: 'Ocean\'s Gift',
     Icon: 'Oceans_Gift_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1389,7 +1389,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050034,
+    GameId: 21050034,
     Name: 'Rectifier#25',
     Icon: 'Rectifier25_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1406,7 +1406,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050036,
+    GameId: 21050036,
     Name: 'Stellar Symphony',
     Icon: 'Stellar_Symphony_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1429,7 +1429,7 @@ export const Weapons: Weapon[] = [
     ],
   },
   {
-    Id: 21050043,
+    GameId: 21050043,
     Name: 'Rectifier Of Voyager',
     Icon: 'Rectifier_Of_Voyager_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1446,7 +1446,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050044,
+    GameId: 21050044,
     Name: 'Jinzhou Keeper',
     Icon: 'Jinzhou_Keeper_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1463,7 +1463,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050046,
+    GameId: 21050046,
     Name: 'Luminous Hymn',
     Icon: 'Luminous_Hymn_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1480,7 +1480,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050053,
+    GameId: 21050053,
     Name: 'Guardian Rectifier',
     Icon: 'Guardian_Rectifier_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1497,7 +1497,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050056,
+    GameId: 21050056,
     Name: 'Whispers Of Sirens',
     Icon: 'Whispers_Of_Sirens_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1514,7 +1514,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050064,
+    GameId: 21050064,
     Name: 'Comet Flare',
     Icon: 'Comet_Flare_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1531,7 +1531,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050066,
+    GameId: 21050066,
     Name: 'Lethean Elegy',
     Icon: 'Lethean_Elegy_Icon.webp',
     ReleaseState: ReleaseState.NEW,
@@ -1549,7 +1549,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050074,
+    GameId: 21050074,
     Name: 'Augment',
     Icon: 'Augment_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1566,7 +1566,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050084,
+    GameId: 21050084,
     Name: 'Fusion Accretion',
     Icon: 'Fusion_Accretion_Icon.webp',
     Type: WeaponType.RECTIFIER,
@@ -1583,7 +1583,7 @@ export const Weapons: Weapon[] = [
     },
   },
   {
-    Id: 21050094,
+    GameId: 21050094,
     Name: 'Waltz In Masquerade',
     Icon: 'Waltz_In_Masquerade_Icon.webp',
     Type: WeaponType.RECTIFIER,

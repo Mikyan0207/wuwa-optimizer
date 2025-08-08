@@ -4,10 +4,8 @@ import { ReleaseState } from '~/Core/Enums/ReleaseState'
 import { Events } from '~/Core/Events'
 
 export const UseEventsStore = defineStore('EventsStore', () => {
-  // State
   const AllEvents = ref<Event[]>(Events)
 
-  // Getters
   const CurrentEvents = computed(() =>
     AllEvents.value.filter(event => event.ReleaseState === ReleaseState.NEW),
   )
@@ -52,16 +50,11 @@ export const UseEventsStore = defineStore('EventsStore', () => {
   }
 
   return {
-    // State
     AllEvents,
-
-    // Getters
     CurrentEvents,
     UpcomingEvents,
     AvailableEvents,
     PastEvents,
-
-    // Actions
     GetEventById,
     GetEventByCharacterId,
     UpdateEventStatuses,

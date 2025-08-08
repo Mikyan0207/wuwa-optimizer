@@ -1,22 +1,15 @@
 import type { ScoreGrade } from '../Enums/ScoreGrade'
-import type { IEchoRatingResult } from '~/composables/UseScoreCalculator'
 import type Echo from '~/Core/Interfaces/Echo'
-
-interface BuildEcho extends Echo {
-  BuildId: number
-}
 
 export default interface Build {
   Id: string
   CharacterId: number
   Name: string
   Description?: string
-  WeaponId?: number
-  EquipedEchoes: number[]
-  EchoesData?: BuildEcho[]
+  WeaponId?: string
+  Echoes: Echo[]
   Score?: number
   Note?: ScoreGrade
-  EchoesScores?: IEchoRatingResult[]
   CreatedAt: Date
   UpdatedAt: Date
   IsDefault?: boolean

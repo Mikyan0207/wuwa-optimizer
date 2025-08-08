@@ -93,7 +93,7 @@ function IsCharacterAvailable(character: Character) {
       <RarityFilter @selected="(r: Rarity) => SelectedCharacterRarity = r" />
     </div>
     <div class="flex flex-wrap w-full items-center justify-center gap-2">
-      <CharacterIcon
+      <MCharacterIcon
         v-for="(c, idx) in CharactersList"
         :key="c.Id" v-motion-pop
         :delay="100 + (idx * 20)"

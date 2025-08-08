@@ -10,15 +10,22 @@ export default interface Character {
   Id: number
   Icon: string
   SplashArt: string
+  AnimatedArt?: AnimatedArt
   Rarity: Rarity
   ReleaseState?: ReleaseState
   Type: CharacterType
-  WeaponType?: WeaponType
-  EquipedWeapon?: number
+  WeaponType: WeaponType
   Level: number
   Stats: Statistic[]
   Sequences: Sequence[]
   Skills: Skill[]
-  EquipedEchoes: number[]
-  StatsWeights?: Record<string, number>
+  StatsWeights: Record<string, number>
+}
+
+export interface AnimatedArt {
+  Skeleton: string
+  Atlas: string
+  OffsetX?: number
+  OffsetY?: number
+  Scale?: number
 }

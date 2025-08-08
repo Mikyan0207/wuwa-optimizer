@@ -7,9 +7,8 @@ import ImportedEchoCard from './Cards/ImportedEchoCard.vue'
 const Step = ref<number>(0)
 const Scanner = await useCharacterScanner()
 
-const CharactersStore = useCharactersStore()
-const WeaponsStore = useWeaponsStore()
 const EchoesStore = useEchoesStore()
+const WeaponsStore = useWeaponsStore()
 
 const FileInput = ref<HTMLInputElement | null>(null)
 const SelectedFile = ref<File | undefined>(undefined)
@@ -99,44 +98,45 @@ function OnConfirmClicked() {
     return
   }
 
-  CharactersStore.AddOrUpdate(ImportedCharacter.value)
-  WeaponsStore.AddOrUpdate(ImportedWeapon.value, ImportedCharacter.value!.Id)
   ImportedEchoes.value.forEach((echo) => {
     EchoesStore.AddOrUpdate(echo, ImportedCharacter.value!.Id)
   })
+
+  const weapon = WeaponsStore.CreateFromGameId(ImportedWeapon.value!.GameId)
 
   const BuildsStore = useBuildsStore()
   const existingDefaultBuild = BuildsStore.GetDefaultBuild(ImportedCharacter.value!.Id)
 
   if (existingDefaultBuild
-    && (!existingDefaultBuild.WeaponId || existingDefaultBuild.WeaponId === -1)
-    && (!existingDefaultBuild.EquipedEchoes || existingDefaultBuild.EquipedEchoes.length === 0
-      || existingDefaultBuild.EquipedEchoes.every(id => id === -1))) {
+    && (!existingDefaultBuild.WeaponId || existingDefaultBuild.WeaponId === undefined)
+    && (!existingDefaultBuild.Echoes || existingDefaultBuild.Echoes.length === 0
+      || existingDefaultBuild.Echoes.every(echo => echo.GameId === -1))) {
     BuildsStore.DeleteBuild(existingDefaultBuild.Id)
   }
 
   const existingBuilds = BuildsStore.GetBuildsByCharacter(ImportedCharacter.value!.Id)
-  const equippedEchoes = ImportedEchoes.value.map(echo => echo.Id)
+  const equippedEchoes = ImportedEchoes.value.map(echo => echo.GameId)
 
   const existingActiveBuild = existingBuilds.find(build =>
     build.IsDefault
-    && build.WeaponId === ImportedWeapon.value!.Id
-    && build.EquipedEchoes.length === equippedEchoes.length
-    && build.EquipedEchoes.every(id => equippedEchoes.includes(id)),
+    && build.WeaponId === weapon?.Id
+    && build.Echoes.length === equippedEchoes.length
+    && build.Echoes.every(echo => equippedEchoes.includes(echo.GameId)),
   )
 
   if (existingActiveBuild) {
     BuildsStore.DeleteBuild(existingActiveBuild.Id)
   }
 
-  const importedBuild = BuildsStore.SaveCurrentBuild(
+  const importedBuild = BuildsStore.CreateBuild(
+    'Imported Build',
     ImportedCharacter.value!.Id,
-    ImportedWeapon.value!.Id,
-    equippedEchoes,
+    weapon?.Id,
+    ImportedEchoes.value,
   )
 
   if (importedBuild) {
-    BuildsStore.SetDefaultBuild(ImportedCharacter.value!.Id, importedBuild.Id)
+    BuildsStore.SetDefaultBuild(importedBuild.Id)
   }
 }
 </script>

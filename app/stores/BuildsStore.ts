@@ -106,8 +106,15 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
   }
 
   function SetDefaultBuild(buildId: string) {
+    const targetBuild = Builds.value.find(build => build.Id === buildId)
+    if (!targetBuild)
+      return
+
+    // Mettre à jour seulement les builds du même personnage
     Builds.value.forEach((build) => {
-      build.IsDefault = build.Id === buildId
+      if (build.CharacterId === targetBuild.CharacterId) {
+        build.IsDefault = build.Id === buildId
+      }
     })
   }
 

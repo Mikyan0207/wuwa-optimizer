@@ -15,7 +15,7 @@ const ActiveSets = computed(() => {
   const setCounts = new Map<string, { count: number, sonata: Sonata }>()
 
   props.echoes.forEach((echo) => {
-    if (echo.Id !== -1 && echo.Sonata) {
+    if (echo.Id !== undefined && echo.Sonata) {
       echo.Sonata.forEach((sonata) => {
         if (sonata.IsSelected) {
           const key = sonata.Name
@@ -54,11 +54,8 @@ const ActiveSets = computed(() => {
 </script>
 
 <template>
-  <UCard
-    class="w-full"
-    :ui="{
-      root: 'rounded-none rounded-br-xl border-0',
-    }"
+  <MCard
+    :border-lines-count="3"
   >
     <template #default>
       <MBorderLines />
@@ -152,5 +149,5 @@ const ActiveSets = computed(() => {
         </div>
       </div>
     </template>
-  </UCard>
+  </MCard>
 </template>

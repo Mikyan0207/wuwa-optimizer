@@ -19,19 +19,18 @@ const GetCharacterScoreNoteColor = computed(() => {
   <MCard
     :border-lines-count="3"
   >
-    <div v-motion-pop :delay="500" class="mx-auto w-full flex items-center justify-center gap-1">
-      <NuxtImg v-for="idx in GetRarityAsNumber(CurrentCharacter.Rarity)" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-6 w-6 object-cover" fit="cover" />
-    </div>
-    <h1 v-motion-pop :delay="500" class="mt-2 w-full text-center text-2xl">
-      {{ t(`${CurrentCharacter.Id}_name`) }}
-    </h1>
-    <UBadge v-motion-pop :delay="500" color="primary" variant="soft" class="mx-auto text-gray-300 w-min flex items-center gap-1 text-nowrap">
-      <p>{{ `${t('label_level')} ${CurrentCharacter.Level}` }}</p>
-      <span>·</span>
-      <p>S{{ GetSequenceLevel(CurrentCharacter) }}</p>
-    </UBadge>
+    <div class="flex flex-col gap-1 mb-3">
+      <div class="flex justify-center items-center gap-2">
+        <h1 v-motion-pop :delay="500" class="text-2xl font-semibold">
+          {{ t(`${CurrentCharacter.Id}_name`) }}
+        </h1>
+      </div>
 
-    <USeparator color="neutral" class="w-full my-4" />
+      <div v-motion-pop :delay="500" class="flex items-center justify-center">
+        <NuxtImg v-for="idx in GetRarityAsNumber(CurrentCharacter.Rarity)" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-4 w-4 object-cover" fit="cover" />
+      </div>
+    </div>
+
     <MStatList
       :stats="Stats"
       :stats-count="Stats.length"

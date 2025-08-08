@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCharacter } from '~/composables/characters/UseCharacter'
-import { GetCharacterTypeIcon, GetCharacterWeaponTypeIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
+import { GetCharacterTypeIcon, GetCharacterWeaponTypeIcon, GetSplashArt, GetSplashArtV2 } from '~/Core/Utils/CharacterUtils'
 
 const { CurrentCharacter, CanUnlockSequence, ToggleSequence } = useCharacter()
 </script>
@@ -16,11 +16,11 @@ const { CurrentCharacter, CanUnlockSequence, ToggleSequence } = useCharacter()
       src="/images/character-bg-placeholder.webp"
       class="absolute top--25% z-0 h-200% w-200% rotate-180 object-cover blur-lg"
     />
-    <div class="absolute right-2 top-2 z-20 flex items-center gap-2">
+    <!-- <div class="absolute right-2 top-2 z-20 flex items-center gap-2">
       <NuxtImg :src="`${GetCharacterTypeIcon(CurrentCharacter)}`" class="h-8 w-8 object-cover" fit="cover" />
       <NuxtImg :src="`${GetCharacterWeaponTypeIcon(CurrentCharacter)}`" class="h-8 w-8 object-cover" fit="cover" />
-    </div>
-    <div class="absolute left-2 top-2 z-20">
+    </div> -->
+    <div class="absolute left-4 top-4 z-20">
       <div class="flex flex-col gap-3">
         <div
           v-for="(s, index) in CurrentCharacter.Sequences"

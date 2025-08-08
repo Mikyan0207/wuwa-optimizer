@@ -7,8 +7,6 @@ interface WeaponCardRarityProps {
 }
 
 defineProps<WeaponCardRarityProps>()
-
-const { t } = useI18n()
 </script>
 
 <template>
@@ -23,9 +21,5 @@ const { t } = useI18n()
       />
     </div>
     <USkeleton v-else class="h-3 w-20" />
-    <UBadge v-if="weapon" class="text-gray-300" variant="soft" color="primary">
-      {{ `${t('label_level')} ${weapon.Level} · R${weapon.Rank || 0}` }}
-    </UBadge>
-    <USkeleton v-else class="h-3 w-10" />
   </div>
 </template>

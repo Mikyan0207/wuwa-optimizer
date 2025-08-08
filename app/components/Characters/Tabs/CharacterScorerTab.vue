@@ -4,6 +4,7 @@ import { domToBlob } from 'modern-screenshot'
 import VueDraggable from 'vuedraggable'
 import { useBuild } from '~/composables/builds/UseBuild'
 import { useCharacter } from '~/composables/characters/UseCharacter'
+import { GetCharacterBackground } from '~/Core/Utils/CharacterUtils'
 import { useBuildsStore } from '~/stores/BuildsStore'
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
@@ -82,27 +83,71 @@ async function TakeScreenShotAsync() {
 
   ShowScreenShotBackground.value = true
 
-  const scale = 1
-  const w = CharacterInfoRef.value.clientWidth * scale
-  const h = CharacterInfoRef.value.clientHeight * scale
+  // Attendre un peu pour que le background se charge
+  await new Promise(resolve => setTimeout(resolve, 100))
 
-  domToBlob(CharacterInfoRef.value, {
-    height: h,
-    width: w,
-    style: {
-      scale: `${scale}`,
-    },
-    quality: 1,
-  }).then((blob) => {
-    if (blob === null) {
-      ShowScreenShotBackground.value = false
-      return
+  // Utiliser une résolution plus élevée pour une meilleure qualité
+  const originalWidth = CharacterInfoRef.value.clientWidth
+  const originalHeight = CharacterInfoRef.value.clientHeight
+  const aspectRatio = originalWidth / originalHeight
+
+  // Augmenter la résolution cible pour une meilleure qualité
+  let targetWidth = 2560 // 2K au lieu de 1080p
+  let targetHeight = 1440
+
+  // Ajuster pour garder le ratio original
+  if (aspectRatio > 16 / 9) {
+    targetHeight = Math.round(targetWidth / aspectRatio)
+  }
+  else {
+    targetWidth = Math.round(targetHeight * aspectRatio)
+  }
+
+  // Utiliser un scale plus précis
+  const scaleX = targetWidth / originalWidth
+  const scaleY = targetHeight / originalHeight
+  const scale = Math.max(scaleX, scaleY)
+
+  try {
+    const blob = await domToBlob(CharacterInfoRef.value, {
+      height: targetHeight,
+      width: targetWidth,
+      style: {
+        transform: `scale(${scale})`,
+        transformOrigin: 'top left',
+        imageRendering: 'crisp-edges',
+      },
+      quality: 1,
+      type: 'image/png',
+      backgroundColor: '#000000',
+    })
+
+    if (blob) {
+      const url = URL.createObjectURL(blob)
+      window.open(url, '_blank')
+
+      setTimeout(() => {
+        URL.revokeObjectURL(url)
+      }, 1000)
+
+      Toast.add({
+        title: 'Screenshot generated!',
+        description: `Generated image (${targetWidth}x${targetHeight}) opened in new tab.`,
+        color: 'success',
+      })
     }
-
-    window.open(URL.createObjectURL(blob), '_blank')
-
+  }
+  catch (error) {
+    console.error('Screenshot error:', error)
+    Toast.add({
+      title: 'Screenshot failed',
+      description: 'Failed to generate high-quality screenshot.',
+      color: 'error',
+    })
+  }
+  finally {
     ShowScreenShotBackground.value = false
-  })
+  }
 }
 </script>
 
@@ -111,42 +156,52 @@ async function TakeScreenShotAsync() {
     <div v-if="CurrentCharacter !== undefined" class="mt-2 relative">
       <div class="mx-auto my-2">
         <div ref="CharacterInfoRef" class="relative p-0.25">
-          <div v-if="ShowScreenShotBackground" class="absolute inset-0">
-            <NuxtImg src="/images/main-bg.webp" class="h-full w-full object-cover" />
+          <div v-if="ShowScreenShotBackground" class="absolute inset-0 blur-sm">
+            <div class="absolute -top-5 -left-5 -right-5 -bottom-5 bg-neutral-900/75" />
+            <NuxtImg :src="GetCharacterBackground(CurrentCharacter)" class="h-full w-full object-cover" />
           </div>
-          <div class="grid grid-cols-2 mx-auto w-full gap-2 xl:grid-cols-5">
-            <!-- Character Info (Art, Stats, Weapon, Skills) -->
+
+          <!-- Main Layout Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-2 auto-rows-auto">
+            <!-- Character Art Card -->
             <CharacterArtCard
               v-if="CurrentCharacter"
-              v-motion-slide-left :delay="50"
+              v-motion-slide-left
+              :delay="50"
               :character="CurrentCharacter"
-              class="col-span-1 row-span-1 xl:col-span-2"
+              class="md:col-span-1 xl:col-span-2"
             />
-            <div class="grid col-span-1 grid-cols-1 gap-2 xl:col-span-3 xl:grid-cols-2">
-              <!-- Stats -->
+
+            <!-- Stats & Weapon/Skills Container -->
+            <div class="md:col-span-1 xl:col-span-3 grid grid-cols-1 xl:grid-cols-2 gap-2">
+              <!-- Stats Card -->
               <CharacterStatsCard
                 v-motion-pop
+                class="col-span-1"
                 :delay="100"
               />
-              <!-- Weapon / Skills -->
-              <div class="grid grid-rows-4 gap-2">
-                <!-- Weapon -->
+
+              <!-- Weapon & Skills Container -->
+              <div class="grid grid-rows-4 gap-2 col-span-1">
+                <!-- Weapon Card -->
                 <CharacterWeaponCard
                   v-motion-slide-right
                   :delay="150"
                   class="row-span-1"
                 />
-                <!-- Skills -->
+
+                <!-- Skills Card -->
                 <CharacterSkillsCard
                   v-motion-slide-right
-                  class="row-span-3"
                   :delay="200"
+                  class="row-span-3"
                 />
               </div>
             </div>
           </div>
 
-          <div class="grid grid-cols-3 mt-2 gap-2 xl:grid-cols-5">
+          <!-- Echoes Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 mt-2">
             <VueDraggable
               v-if="CurrentCharacter"
               v-model="DraggableEchoes.value"
@@ -169,22 +224,20 @@ async function TakeScreenShotAsync() {
           </div>
         </div>
 
-        <div class="grid grid-cols-2 mt-2 gap-2">
-          <div class="col-span-1">
-            <CharacterSetsCard
-              v-motion-slide-bottom
-              :delay="300"
-              :echoes="CurrentEchoes"
-            />
-          </div>
-          <div class="col-span-1" />
-        </div>
+        <!-- Sets Section -->
+        <!-- <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-2">
+          <CharacterSetsCard
+            v-motion-slide-bottom
+            :delay="300"
+            :echoes="CurrentEchoes"
+          />
+        </div> -->
       </div>
 
+      <!-- Fixed Action Buttons -->
       <div class="fixed right-4 top-1/3 z-50">
         <div class="bg-black/90 backdrop-blur-md rounded-xl border border-white/20 shadow-xl">
           <div class="p-1.5 flex flex-col space-y-1">
-            <!-- Screenshot Button -->
             <UButton
               color="neutral"
               variant="ghost"
@@ -196,7 +249,6 @@ async function TakeScreenShotAsync() {
               @click.prevent="TakeScreenShotAsync"
             />
             <USeparator />
-            <!-- Save Build Button -->
             <UButton
               color="neutral"
               variant="ghost"

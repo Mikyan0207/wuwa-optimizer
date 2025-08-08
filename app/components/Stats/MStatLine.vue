@@ -100,7 +100,7 @@ function IsPercentageStat(statType: StatType): boolean {
 <template>
   <div
     class="relative flex items-center min-w-0 h-min w-full px-2 py-1"
-    :class="{ 'bg-neutral-800/75 rounded': ShouldHighlightBorder }"
+    :class="{ 'bg-neutral-600/25 rounded': ShouldHighlightBorder }"
   >
     <div class="flex items-center gap-1 text-gray-300 flex-shrink-0 min-w-0">
       <NuxtImg

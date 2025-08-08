@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'default',
+  layout: 'character-details',
 })
 
 const SelectedTab = ref<string>('0')

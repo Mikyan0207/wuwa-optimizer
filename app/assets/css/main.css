@@ -1,6 +1,19 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+@source inline("bg-neutral-{50,{100..900..100},950}");
+@source inline("bg-neutral-{50,{100..900..100},950}/0");
+@source inline("bg-neutral-{50,{100..900..100},950}/10");
+@source inline("bg-neutral-{50,{100..900..100},950}/20");
+@source inline("bg-neutral-{50,{100..900..100},950}/30");
+@source inline("bg-neutral-{50,{100..900..100},950}/40");
+@source inline("bg-neutral-{50,{100..900..100},950}/50");
+@source inline("bg-neutral-{50,{100..900..100},950}/60");
+@source inline("bg-neutral-{50,{100..900..100},950}/70");
+@source inline("bg-neutral-{50,{100..900..100},950}/80");
+@source inline("bg-neutral-{50,{100..900..100},950}/90");
+@source inline("bg-opacity-{0,{10..95..5}, 100}");
+
 @theme {
   --color-gold-50: #f5f6f0;
   --color-gold-100: #e9e9d8;

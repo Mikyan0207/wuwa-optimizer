@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<BorderLinesProps>(), {
 const ZIndex = 'z-50'
 
 const BorderClasses = computed(() => ({
-  base: `${ZIndex} absolute inset-0 border pointer-events-none`,
+  base: `${ZIndex} absolute inset-0 border-[1.5px] pointer-events-none`,
   color: props.color,
 }))
 

@@ -12,8 +12,13 @@ export default defineAppConfig({
     },
     card: {
       slots: {
-        root: 'bg-neutral-900 backdrop-blur-sm rounded-xs border border-neutral-700 ring-0',
+        root: 'bg-neutral-900/75! backdrop-blur-xs rounded-none ring-0! rounded-br-xl border-0!',
         body: 'p-2 sm:p-4',
+      },
+    },
+    separator: {
+      slots: {
+        root: 'border-neutral-600/25!',
       },
     },
     modal: {

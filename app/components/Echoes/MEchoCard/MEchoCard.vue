@@ -14,17 +14,16 @@ withDefaults(defineProps<EchoCardProps>(), {
 
 <template>
   <MCard
-    class="min-h-[26em] h-full w-full relative"
+    class="min-h-[22em] h-full w-full relative bg-opacity-0"
     :show-border-lines="true"
     :border-lines-count="3"
   >
     <MEchoCardDropdown :echo-slot="equipedSlot" />
     <div class="w-full flex flex-col items-center gap-2">
       <MEchoCardHeader :echo="echo" />
+      <MEchoStats :echo="echo" class="mt-4" />
       <USeparator class="w-full" />
-      <MEchoStats :echo="echo" />
-      <USeparator class="w-full" />
-      <MEchoScore :show="showScore" :score="echo.Score" :note="echo.Note" />
+      <MEchoScore :show="showScore" :score="echo.Score" :note="echo.Note" class="px-2" />
     </div>
   </MCard>
 </template>

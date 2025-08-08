@@ -28,7 +28,7 @@ const CardClasses = computed(() => ({
 }))
 
 const ContentClasses = computed(() => {
-  const baseClasses = 'w-full h-full flex flex-col items-center gap-2'
+  const baseClasses = 'w-full h-full flex flex-col gap-2'
 
   const paddingClasses = {
     default: 'p-4',
@@ -45,7 +45,6 @@ const ContentClasses = computed(() => {
   <UCard
     :class="CardClasses"
     :ui="{
-      root: 'rounded-none rounded-br-xl border-0',
       body: 'p-0 sm:p-0 w-full h-full',
     }"
   >

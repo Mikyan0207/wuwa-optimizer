@@ -83,19 +83,15 @@ async function TakeScreenShotAsync() {
 
   ShowScreenShotBackground.value = true
 
-  // Attendre un peu pour que le background se charge
   await new Promise(resolve => setTimeout(resolve, 100))
 
-  // Utiliser une résolution plus élevée pour une meilleure qualité
   const originalWidth = CharacterInfoRef.value.clientWidth
   const originalHeight = CharacterInfoRef.value.clientHeight
   const aspectRatio = originalWidth / originalHeight
 
-  // Augmenter la résolution cible pour une meilleure qualité
-  let targetWidth = 2560 // 2K au lieu de 1080p
+  let targetWidth = 2560
   let targetHeight = 1440
 
-  // Ajuster pour garder le ratio original
   if (aspectRatio > 16 / 9) {
     targetHeight = Math.round(targetWidth / aspectRatio)
   }
@@ -103,7 +99,6 @@ async function TakeScreenShotAsync() {
     targetWidth = Math.round(targetHeight * aspectRatio)
   }
 
-  // Utiliser un scale plus précis
   const scaleX = targetWidth / originalWidth
   const scaleY = targetHeight / originalHeight
   const scale = Math.max(scaleX, scaleY)

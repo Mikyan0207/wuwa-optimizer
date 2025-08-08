@@ -84,6 +84,7 @@ export function GetCharacterAnimatedArt(character: Character): AnimatedArt {
     Atlas: `/images/characters/${character.Id}/${character.AnimatedArt?.Atlas}`,
     OffsetX: character.AnimatedArt?.OffsetX ?? 0,
     OffsetY: character.AnimatedArt?.OffsetY ?? 0,
+    Scale: character.AnimatedArt?.Scale ?? 1.5,
   }
 }
 

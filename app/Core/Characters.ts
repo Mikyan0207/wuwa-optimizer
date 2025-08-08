@@ -1221,6 +1221,7 @@ export const Carlotta: Character = {
     Atlas: 'kelaita.atlas',
     OffsetX: 125,
     OffsetY: 350,
+    Scale: 2.25,
   },
   WeaponType: WeaponType.PISTOLS,
   Type: CharacterType.GLACIO,
@@ -5569,6 +5570,7 @@ export const Cartethyia: Character = {
     Atlas: 'katixiya.atlas',
     OffsetX: 0,
     OffsetY: 0,
+    Scale: 2.5,
   },
   WeaponType: WeaponType.SWORD,
   Type: CharacterType.AERO,
@@ -5665,21 +5667,21 @@ export const Cartethyia: Character = {
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
       Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
-        Type: StatType.ATTACK_PERCENTAGE,
+        Type: StatType.CRIT_RATE,
         Value: 1.8,
       },
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
       Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
-        Type: StatType.ATTACK_PERCENTAGE,
-        Value: 4.2,
+        Type: StatType.CRIT_RATE,
+        Value: 2.8,
       },
     },
     {
@@ -5709,21 +5711,21 @@ export const Cartethyia: Character = {
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
       Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
-        Type: StatType.ATTACK_PERCENTAGE,
+        Type: StatType.CRIT_RATE,
         Value: 1.8,
       },
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
       Level: 1,
-      Icon: 'Icon_Attribute_Attack.webp',
+      Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
-        Type: StatType.ATTACK_PERCENTAGE,
-        Value: 4.2,
+        Type: StatType.CRIT_RATE,
+        Value: 2.8,
       },
     },
     {
@@ -6539,6 +6541,7 @@ export const Shorekeeper: Character = {
     Atlas: 'shouanren.atlas',
     OffsetX: 0,
     OffsetY: 100,
+    Scale: 2.15,
   },
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.SPECTRO,
@@ -8713,6 +8716,7 @@ export const Phrolova: Character = {
   AnimatedArt: {
     Skeleton: 'fuluoluo.skel',
     Atlas: 'fuluoluo.atlas',
+    Scale: 2.5,
   },
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.HAVOC,

@@ -27,4 +27,5 @@ export interface AnimatedArt {
   Atlas: string
   OffsetX?: number
   OffsetY?: number
+  Scale?: number
 }

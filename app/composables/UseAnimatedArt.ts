@@ -54,8 +54,6 @@ export function useAnimatedArt(character: Character, canvasRef: Ref<HTMLCanvasEl
 
     const cachedResource = LoaderInstance.value.resources[`${character.Id}`]
 
-    console.log('Cached Resource', cachedResource)
-
     if (cachedResource && cachedResource.spineData) {
       SpineAnimation.value = new Spine(cachedResource.spineData)
 
@@ -109,7 +107,7 @@ export function useAnimatedArt(character: Character, canvasRef: Ref<HTMLCanvasEl
 
     const scaleX = rect.width / spineBounds.width
     const scaleY = rect.height / spineBounds.height
-    const scale = Math.max(scaleX, scaleY) * 2
+    const scale = Math.max(scaleX, scaleY) * (AnimatedArt.value?.Scale ?? 1.5)
 
     SpineAnimation.value.scale.set(scale)
     SpineAnimation.value.x = rect.width / 2 + offsetX

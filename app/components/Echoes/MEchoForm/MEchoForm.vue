@@ -194,7 +194,7 @@ function NavigateStep(direction: 'next' | 'previous') {
 function HandleEchoSelection(echoId: number, cost: EchoCost) {
   State.EchoId = echoId
   State.Cost = cost
-  DisplayedEcho.value = EchoesStore.Get(echoId)
+  DisplayedEcho.value = EchoesStore.GetByGameId(echoId)
   NavigateStep('next')
 }
 
@@ -219,7 +219,7 @@ function OnSubmit() {
     return
   }
 
-  const e = unref(EchoesStore.Get(State.EchoId))
+  const e = unref(EchoesStore.GetByGameId(State.EchoId))
 
   if (!e) {
     return OnClose()

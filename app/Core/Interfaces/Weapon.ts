@@ -4,7 +4,8 @@ import type { WeaponType } from '../Enums/WeaponType'
 import type Statistic from './Statistic'
 
 export default interface Weapon {
-  Id: number
+  Id?: string | undefined
+  GameId: number
   Name: string
   ReleaseState?: ReleaseState
   Level: number

@@ -39,7 +39,8 @@ export function useBuild() {
   const CurrentWeapon = computed({
     get: () => {
       const weaponId = DefaultBuild.value.WeaponId
-      return weaponId ? WeaponsStore.GetWeapon(weaponId) : undefined
+
+      return weaponId ? WeaponsStore.GetById(weaponId) : undefined
     },
     set: (val) => {
       BuildsStore.UpdateBuild(DefaultBuild.value.Id, {

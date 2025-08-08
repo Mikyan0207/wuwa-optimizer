@@ -14,9 +14,12 @@ export function useStatsCalculator() {
   const SetStatsStore = useSetStatsStore()
 
   function CalculateTotalStats(build: Build): Statistic[] {
-    const character = CharactersStore.Get(build.CharacterId)
-    const weapon = WeaponsStore.GetWeapon(build.WeaponId || -1)
+    const character = CharactersStore.GetById(build.CharacterId)
+    const weapon = WeaponsStore.GetById(build.WeaponId ?? '')
     const echoes = build.Echoes?.filter(echo => echo.Id !== undefined) || []
+
+    if (!character)
+      return []
 
     return [
       ...CalculateMainStats(character, weapon, echoes),

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface CardProps {
-  padding?: 'default' | 'compact' | 'detailed'
+  padding?: 'default' | 'compact' | 'none' | 'detailed'
 
   showBorderLines?: boolean
   borderLinesCount?: 1 | 2 | 3
@@ -33,6 +33,7 @@ const ContentClasses = computed(() => {
   const paddingClasses = {
     default: 'p-4',
     compact: 'p-2',
+    none: 'p-0',
     detailed: 'p-6',
   }
 

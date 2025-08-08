@@ -13,11 +13,10 @@ export default interface Character {
   Rarity: Rarity
   ReleaseState?: ReleaseState
   Type: CharacterType
-  WeaponType?: WeaponType
-  EquipedWeapon?: number
+  WeaponType: WeaponType
   Level: number
   Stats: Statistic[]
   Sequences: Sequence[]
   Skills: Skill[]
-  StatsWeights?: Record<string, number>
+  StatsWeights: Record<string, number>
 }

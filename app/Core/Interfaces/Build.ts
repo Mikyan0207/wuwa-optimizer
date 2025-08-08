@@ -6,7 +6,7 @@ export default interface Build {
   CharacterId: number
   Name: string
   Description?: string
-  WeaponId?: number
+  WeaponId?: string
   Echoes: Echo[]
   Score?: number
   Note?: ScoreGrade

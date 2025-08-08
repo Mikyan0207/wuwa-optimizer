@@ -175,7 +175,6 @@ export function GetTotalGradeColor(grade: ScoreGrade): string {
 }
 
 export function useScoreCalculator() {
-  const EchoesStore = useEchoesStore()
   const BuildsStore = useBuildsStore()
   const CharactersStore = useCharactersStore()
 
@@ -201,11 +200,8 @@ export function useScoreCalculator() {
         echoes = buildOrBuildId.Echoes?.filter(echo => echo.Id !== undefined) || []
       }
     }
-    else {
-      echoes = JSON.parse(JSON.stringify(EchoesStore.GetAllEquipedBy(character.Id)))
-    }
 
-    const echoesScores = CalculateEchoesScore(echoes, character.StatsWeights!)
+    const echoesScores = CalculateEchoesScore(echoes, character.StatsWeights || {})
     const totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0)
 
     return {
@@ -225,7 +221,8 @@ export function useScoreCalculator() {
       }
     }
 
-    const character = CharactersStore.Get(build.CharacterId)
+    const character = CharactersStore.GetById(build.CharacterId)
+
     return GetCharacterScore(character, build)
   }
 

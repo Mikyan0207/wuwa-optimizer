@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import type Weapon from '~/Core/Interfaces/Weapon'
+import type Echo from '~/Core/Interfaces/Echo'
 import { useGameIcon } from '~/composables/core/UseGameIcon'
 import { useRarityEffects } from '~/composables/core/UseRarityEffects'
-import { ReleaseState } from '~/Core/Enums/ReleaseState'
 
-interface WeaponIconProps {
-  weapon: Weapon
+interface EchoIconProps {
+  echo: Echo
 }
 
-const props = defineProps<WeaponIconProps>()
+const props = defineProps<EchoIconProps>()
 
-const { Background, Secondary, Highlight } = useRarityEffects(props.weapon.Rarity)
-const { MainIcon, Name, WeaponInfo } = useGameIcon(props.weapon)
+const { Background, Secondary, Highlight } = useRarityEffects(props.echo.Rarity)
+const { MainIcon, SonataIcon, Name } = useGameIcon(props.echo)
 </script>
 
 <template>
@@ -19,8 +18,19 @@ const { MainIcon, Name, WeaponInfo } = useGameIcon(props.weapon)
     :background="Background"
     :secondary="Secondary"
     :highlight="Highlight"
-    :release-status="WeaponInfo?.ReleaseState ?? ReleaseState.RELEASED"
   >
+    <!-- Sonata Icon -->
+    <template #sonata-icon>
+      <NuxtImg
+        v-if="SonataIcon"
+        :width="24"
+        :height="24"
+        :src="SonataIcon"
+        class="select-none"
+        style="color: transparent;"
+      />
+    </template>
+
     <!-- Main Icon -->
     <template #main-icon>
       <NuxtImg

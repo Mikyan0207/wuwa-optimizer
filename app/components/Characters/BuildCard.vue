@@ -31,11 +31,11 @@ const { t } = useI18n()
 const weapon = computed(() => {
   if (!props.build.WeaponId)
     return null
-  return WeaponsStore.GetWeapon(props.build.WeaponId)
+  return WeaponsStore.GetWeaponById(props.build.WeaponId)
 })
 
 const Character = computed(() => {
-  return CharactersStore.Get(props.build.CharacterId)
+  return CharactersStore.GetById(props.build.CharacterId)
 })
 
 const ActiveSets = computed(() => {

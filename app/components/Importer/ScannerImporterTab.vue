@@ -8,6 +8,7 @@ const Step = ref<number>(0)
 const Scanner = await useCharacterScanner()
 
 const EchoesStore = useEchoesStore()
+const WeaponsStore = useWeaponsStore()
 
 const FileInput = ref<HTMLInputElement | null>(null)
 const SelectedFile = ref<File | undefined>(undefined)
@@ -101,11 +102,13 @@ function OnConfirmClicked() {
     EchoesStore.AddOrUpdate(echo, ImportedCharacter.value!.Id)
   })
 
+  const weapon = WeaponsStore.CreateFromGameId(ImportedWeapon.value!.GameId)
+
   const BuildsStore = useBuildsStore()
   const existingDefaultBuild = BuildsStore.GetDefaultBuild(ImportedCharacter.value!.Id)
 
   if (existingDefaultBuild
-    && (!existingDefaultBuild.WeaponId || existingDefaultBuild.WeaponId === -1)
+    && (!existingDefaultBuild.WeaponId || existingDefaultBuild.WeaponId === undefined)
     && (!existingDefaultBuild.Echoes || existingDefaultBuild.Echoes.length === 0
       || existingDefaultBuild.Echoes.every(echo => echo.GameId === -1))) {
     BuildsStore.DeleteBuild(existingDefaultBuild.Id)
@@ -116,7 +119,7 @@ function OnConfirmClicked() {
 
   const existingActiveBuild = existingBuilds.find(build =>
     build.IsDefault
-    && build.WeaponId === ImportedWeapon.value!.Id
+    && build.WeaponId === weapon?.Id
     && build.Echoes.length === equippedEchoes.length
     && build.Echoes.every(echo => equippedEchoes.includes(echo.GameId)),
   )
@@ -128,7 +131,7 @@ function OnConfirmClicked() {
   const importedBuild = BuildsStore.CreateBuild(
     'Imported Build',
     ImportedCharacter.value!.Id,
-    ImportedWeapon.value!.Id,
+    weapon?.Id,
     ImportedEchoes.value,
   )
 

@@ -10,6 +10,7 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
   const EchoesStore = useEchoesStore()
   const CharactersStore = useCharactersStore()
   const ScoreCalculator = useScoreCalculator()
+  const WeaponsStore = useWeaponsStore()
 
   function GetBuildsByCharacter(characterId: number): Build[] {
     return Builds.value
@@ -27,17 +28,19 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     )
   }
 
-  function CreateBuild(name: string, characterId: number, weaponId?: number, echoes?: Echo[], description?: string): Build | undefined {
-    if (BuildExists(characterId, name, weaponId, echoes))
+  function CreateBuild(name: string, characterId: number, weaponId?: string, echoes?: Echo[], description?: string): Build | undefined {
+    if (BuildExists(characterId, name, echoes))
       return Builds.value.find(build => build.CharacterId === characterId && build.Name === name)
 
+    const weapon = WeaponsStore.GetById(weaponId)
     const buildId = uuidv4()
+
     const build: Build = {
       Id: buildId,
       CharacterId: characterId,
       Name: name,
       Description: description,
-      WeaponId: weaponId,
+      WeaponId: weapon?.Id,
       Echoes: echoes?.map(echo => ({
         ...echo,
         Id: uuidv4(),
@@ -57,7 +60,7 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
   }
 
   function CalculateScore(build: Build) {
-    const character = CharactersStore.Get(build.CharacterId)
+    const character = CharactersStore.GetById(build.CharacterId)
     if (!character) {
       return
     }
@@ -117,10 +120,9 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     return Math.max(...builds.map(b => b.Order || 0)) + 1
   }
 
-  function BuildExists(characterId: number, name: string, weaponId?: number, echoes?: Echo[]): boolean {
+  function BuildExists(characterId: number, name: string, echoes?: Echo[]): boolean {
     return Builds.value.some(b => b.CharacterId === characterId
       && b.Name === name
-      && b.WeaponId === weaponId
       && b.Echoes.every((echo, index) => echo.GameId === echoes?.[index]?.GameId
         && echo.Id === echoes?.[index]?.Id
         && echo.Statistics.every((stat, i) => stat.Value === echoes?.[index]?.Statistics?.[i]?.Value)),

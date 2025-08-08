@@ -16,12 +16,9 @@ const GetCharacterScoreNoteColor = computed(() => {
 </script>
 
 <template>
-  <UCard
-    :ui="{
-      root: 'rounded-none rounded-br-xl border-0',
-    }"
+  <MCard
+    :border-lines-count="3"
   >
-    <MBorderLines />
     <div v-motion-pop :delay="500" class="mx-auto w-full flex items-center justify-center gap-1">
       <NuxtImg v-for="idx in GetRarityAsNumber(CurrentCharacter.Rarity)" :key="idx" src="/images/icons/Icon_StarBig.webp" class="h-6 w-6 object-cover" fit="cover" />
     </div>
@@ -38,7 +35,6 @@ const GetCharacterScoreNoteColor = computed(() => {
     <MStatList
       :stats="Stats"
       :stats-count="Stats.length"
-      :weights="CurrentCharacter.StatsWeights!"
       :show-roll-value="true"
       :show-wanted-highlight="true"
     />
@@ -58,5 +54,5 @@ const GetCharacterScoreNoteColor = computed(() => {
         </span>
       </div>
     </div>
-  </UCard>
+  </MCard>
 </template>

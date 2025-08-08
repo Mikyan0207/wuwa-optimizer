@@ -5,22 +5,12 @@ import { TemplateEchoes } from '~/Core/Echoes'
 export const useEchoesStore = defineStore('EchoesStore', () => {
   const Echoes = useLocalStorage<Echo[]>('Echoes', [])
 
-  function Get(gameId: number) {
-    const e = TemplateEchoes.find(x => x.GameId === gameId)
-
-    if (e === undefined) {
-      return undefined
-    }
-
-    return e
-  }
-
   function GetById(echoId: string): Echo | undefined {
     return Echoes.value.find(e => e.Id === echoId)
   }
 
   function GetByGameId(gameId: number): Echo | undefined {
-    return Echoes.value.find(e => e.GameId === gameId)
+    return TemplateEchoes.find(e => e.GameId === gameId)
   }
 
   function GetEquipedBy(echoId: string, characterId: number) {
@@ -87,7 +77,6 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
 
   return {
     Echoes,
-    Get,
     GetById,
     GetByGameId,
     GetEquipedBy,

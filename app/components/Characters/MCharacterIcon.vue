@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import type Weapon from '~/Core/Interfaces/Weapon'
+import type Character from '~/Core/Interfaces/Character'
 import { useGameIcon } from '~/composables/core/UseGameIcon'
 import { useRarityEffects } from '~/composables/core/UseRarityEffects'
 import { ReleaseState } from '~/Core/Enums/ReleaseState'
 
-interface WeaponIconProps {
-  weapon: Weapon
+interface CharacterIconProps {
+  character: Character
 }
 
-const props = defineProps<WeaponIconProps>()
+const props = defineProps<CharacterIconProps>()
 
-const { Background, Secondary, Highlight } = useRarityEffects(props.weapon.Rarity)
-const { MainIcon, Name, WeaponInfo } = useGameIcon(props.weapon)
+const { Background, Secondary, Highlight } = useRarityEffects(props.character.Rarity)
+const { MainIcon, TypeIcon, Name, CharacterInfo } = useGameIcon(props.character)
 </script>
 
 <template>
@@ -19,8 +19,19 @@ const { MainIcon, Name, WeaponInfo } = useGameIcon(props.weapon)
     :background="Background"
     :secondary="Secondary"
     :highlight="Highlight"
-    :release-status="WeaponInfo?.ReleaseState ?? ReleaseState.RELEASED"
+    :release-status="CharacterInfo?.ReleaseState ?? ReleaseState.RELEASED"
   >
+    <!-- Type Icon -->
+    <template #type-icon>
+      <NuxtImg
+        v-if="TypeIcon && CharacterInfo?.ReleaseState !== ReleaseState.UNKNOWN"
+        :width="32"
+        :height="32"
+        :src="TypeIcon"
+        style="color: transparent;"
+      />
+    </template>
+
     <!-- Main Icon -->
     <template #main-icon>
       <NuxtImg

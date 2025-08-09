@@ -60,6 +60,9 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: AppDescription },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
+        { property: 'og:url', content: 'https://wuwa-optimizer.com' },
+        { property: 'twitter:url', content: 'https://wuwa-optimizer.com' },
+        { name: 'canonical', content: 'https://wuwa-optimizer.com' },
       ],
     },
     pageTransition: {

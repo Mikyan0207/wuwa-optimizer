@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useCharacter } from '~/composables/characters/UseCharacter'
-import { useAnalytics } from '~/composables/core/UseAnalytics'
-
 definePageMeta({
   layout: 'character-details',
 })
@@ -62,14 +59,6 @@ onMounted(() => {
   if (!CharacterId.value
     || Number(CharacterId.value) >= 2000) {
     navigateTo('/characters')
-  }
-  else {
-    const { TrackPageView } = useAnalytics()
-
-    TrackPageView(
-      'CharacterView',
-      CharacterName.value,
-    )
   }
 })
 

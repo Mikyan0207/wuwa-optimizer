@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useAnalytics } from '~/composables/core/UseAnalytics'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { WeaponType } from '~/Core/Enums/WeaponType'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
@@ -31,17 +30,8 @@ useHead({
   ],
 })
 
-const { TrackPageView } = useAnalytics()
-
 const WeaponsStore = useWeaponsStore()
 const SelectedTab = ref<string>('0')
-
-onMounted(() => {
-  TrackPageView(
-    'WeaponListView',
-    'Weapons',
-  )
-})
 
 const WeaponSortOptions: string[] = [
   'Default',
@@ -55,7 +45,7 @@ const SelectedWeaponRarity = ref<Rarity>(Rarity.ALL)
 const SelectedWeaponSort = ref<string>(WeaponSortOptions[0]!)
 
 const WeaponsList = computed(() => {
-  return (SelectedTab.value === '0' ? WeaponsStore.GetWeapons().filter(x => x.EquipedBy !== undefined) : TemplateWeapons)
+  return (SelectedTab.value === '0' ? WeaponsStore.Weapons.filter(x => x.EquipedBy !== undefined) : TemplateWeapons)
     .filter((weapon) => {
       const matchesType = SelectedWeaponType.value === WeaponType.ALL || weapon.Type === SelectedWeaponType.value
       const matchesRarity = SelectedWeaponRarity.value === Rarity.ALL || weapon.Rarity === SelectedWeaponRarity.value

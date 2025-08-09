@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useAnalytics } from '~/composables/core/UseAnalytics'
 import { AppName } from './Core'
 
 useHead({
@@ -6,6 +7,12 @@ useHead({
 })
 
 const UpdaterStore = useUpdaterStore()
+const route = useRoute()
+const { AutoTrackPageView } = useAnalytics()
+
+watch(() => route.path, () => {
+  AutoTrackPageView()
+}, { immediate: true })
 
 onMounted(() => {
   UpdaterStore.Migrate()

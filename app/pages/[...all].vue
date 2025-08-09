@@ -1,13 +1,5 @@
 <script setup lang="ts">
-import { useAnalytics } from '~/composables/core/UseAnalytics'
-
 const router = useRouter()
-const { TrackPageView } = useAnalytics()
-
-TrackPageView(
-  'NotFoundView',
-  'Not Found',
-)
 </script>
 
 <template>

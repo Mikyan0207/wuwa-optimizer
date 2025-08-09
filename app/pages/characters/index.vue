@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type Character from '~/Core/Interfaces/Character'
-import { useAnalytics } from '~/composables/core/UseAnalytics'
 import { TemplateCharacters } from '~/Core/Characters'
 import { CharacterType } from '~/Core/Enums/CharacterType'
 import { Rarity } from '~/Core/Enums/Rarity'
@@ -12,7 +11,6 @@ definePageMeta({
   layout: 'default',
 })
 
-const { TrackPageView } = useAnalytics()
 const { t } = useI18n()
 
 useHead({
@@ -39,13 +37,6 @@ useHead({
       content: 'website',
     },
   ],
-})
-
-onMounted(() => {
-  TrackPageView(
-    'CharacterListView',
-    'Characters',
-  )
 })
 
 const CharacterSortOptions: string[] = [

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type Character from '~/Core/Interfaces/Character'
-import { useAnalytics } from '~/composables/core/UseAnalytics'
 import { useMetaTags } from '~/composables/core/UseMetaTags'
 import { ScorerGameVersion } from '~/Core'
 import { TemplateCharacters } from '~/Core/Characters'
@@ -12,19 +11,11 @@ definePageMeta({
 })
 
 const { SetEmbedMetaTags } = useMetaTags()
-const { TrackPageView } = useAnalytics()
 
 SetEmbedMetaTags(
   'Wuthering Waves Optimizer',
   'The ultimate Wuthering Waves optimizer tool. Calculate character builds, evaluate echoes, maximize your damage with our comprehensive calculator.',
 )
-
-onMounted(() => {
-  TrackPageView(
-    'HomeView',
-    'Home',
-  )
-})
 
 function OnCharacterClicked(characterId: number | undefined) {
   navigateTo(`/characters/${characterId}`)

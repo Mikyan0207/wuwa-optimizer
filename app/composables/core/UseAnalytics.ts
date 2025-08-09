@@ -1,14 +1,13 @@
 export function useAnalytics() {
   const { gtag } = useGtag()
-  const route = useRoute()
 
-  function TrackPageView(screenName?: string, pageTitle?: string) {
+  function AutoTrackPageView() {
     if (import.meta.client) {
       gtag('event', 'screen_view', {
         app_name: 'Wuthering Waves Optimizer',
-        screen_name: screenName || route.name || 'Unknown',
-        page_title: pageTitle || route.name || 'Wuthering Waves Optimizer',
-        page_location: route.fullPath,
+        screen_name: document.title || 'Unknown',
+        page_title: document.title || 'Wuthering Waves Optimizer',
+        page_location: window.location.href,
       })
     }
   }
@@ -20,7 +19,7 @@ export function useAnalytics() {
   }
 
   return {
-    TrackPageView,
+    AutoTrackPageView,
     TrackEvent,
   }
 }

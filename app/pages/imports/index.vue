@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import { useAnalytics } from '~/composables/core/UseAnalytics'
-
 definePageMeta({
   layout: 'default',
 })
-
-const { TrackPageView } = useAnalytics()
 
 useHead({
   title: 'Import Characters - Wuthering Waves Optimizer',
@@ -31,13 +27,6 @@ useHead({
       content: 'website',
     },
   ],
-})
-
-onMounted(() => {
-  TrackPageView(
-    'ImportView',
-    'Import',
-  )
 })
 
 const SelectedTab = ref<string>('0')

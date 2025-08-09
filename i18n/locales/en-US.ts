@@ -6,6 +6,7 @@ export default {
   'echoes_navigation_title': 'Echoes',
   'imports_navigation_title': 'Importer',
   'exports_navigation_title': 'Export',
+  'roadmap_navigation_title': 'Roadmap',
 
   'label_level': 'Lv.',
   'label_level_full': 'Level',

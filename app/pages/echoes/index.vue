@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useAnalytics } from '~/composables/core/UseAnalytics'
+
 useHead({
   title: 'Echoes - Wuthering Waves Optimizer',
   meta: [
@@ -25,7 +27,15 @@ useHead({
   ],
 })
 
+const { TrackPageView } = useAnalytics()
 const EchoesStore = useEchoesStore()
+
+onMounted(() => {
+  TrackPageView(
+    'EchoListView',
+    'Echoes',
+  )
+})
 </script>
 
 <template>

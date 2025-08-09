@@ -2,7 +2,10 @@
 import type Character from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import type Weapon from '~/Core/Interfaces/Weapon'
+import { useAnalytics } from '~/composables/core/UseAnalytics'
 import ImportedEchoCard from './Cards/ImportedEchoCard.vue'
+
+const { TrackEvent } = useAnalytics()
 
 const Step = ref<number>(0)
 const Scanner = await useCharacterScanner()
@@ -28,29 +31,38 @@ async function OnImportClicked() {
 
   ScannerResult.value = ScannerResultStatus.SUCCESS
 
-  await Scanner.LoadAsync(SelectedFile.value)
-  const {
-    Status,
-    Character,
-    Weapon,
-    Echoes,
-  } = await Scanner.ScanAsync((status) => {
-    Progress.value = status
+  try {
+    await Scanner.LoadAsync(SelectedFile.value)
+    const {
+      Status,
+      Character,
+      Weapon,
+      Echoes,
+    } = await Scanner.ScanAsync((status) => {
+      Progress.value = status
 
-    if (Progress.value === ScannerStatus.DONE || Progress.value !== ScannerStatus.IDLE) {
+      if (Progress.value === ScannerStatus.DONE || Progress.value !== ScannerStatus.IDLE) {
+        LockImportButton.value = true
+      }
+    })
+
+    if (Status !== ScannerResultStatus.SUCCESS) {
       LockImportButton.value = true
     }
-  })
 
-  if (Status !== ScannerResultStatus.SUCCESS) {
-    LockImportButton.value = true
+    ScannerResult.value = Status
+    ImportedCharacter.value = Character
+    ImportedWeapon.value = Weapon
+    ImportedEchoes.value = Echoes || []
+    Step.value = 3
   }
-
-  ScannerResult.value = Status
-  ImportedCharacter.value = Character
-  ImportedWeapon.value = Weapon
-  ImportedEchoes.value = Echoes || []
-  Step.value = 3
+  catch (error) {
+    console.error(error)
+    TrackEvent('scanner_import_error', { error })
+  }
+  finally {
+    LockImportButton.value = false
+  }
 }
 
 function GetFileObject(event: Event) {

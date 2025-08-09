@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useCharacter } from '~/composables/characters/UseCharacter'
+import { useAnalytics } from '~/composables/core/UseAnalytics'
+
 definePageMeta({
   layout: 'character-details',
 })
@@ -60,18 +63,21 @@ onMounted(() => {
     || Number(CharacterId.value) >= 2000) {
     navigateTo('/characters')
   }
+  else {
+    const { TrackPageView } = useAnalytics()
+
+    TrackPageView(
+      'CharacterView',
+      CharacterName.value,
+    )
+  }
 })
 
 const TabItems = [{
   label: 'Scorer',
   icon: 'i-solar-calculator-minimalistic-broken',
   disabled: false,
-},
-// {
-//   label: 'Ascension',
-//   icon: 'i-material-symbols:arrow-upload-progress-rounded',
-// },
-{
+}, {
   label: 'Builds',
   icon: 'i-solar-settings-minimalistic-broken',
   disabled: false,

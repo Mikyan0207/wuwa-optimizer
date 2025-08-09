@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useAnalytics } from '~/composables/core/UseAnalytics'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { WeaponType } from '~/Core/Enums/WeaponType'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
@@ -30,8 +31,17 @@ useHead({
   ],
 })
 
+const { TrackPageView } = useAnalytics()
+
 const WeaponsStore = useWeaponsStore()
 const SelectedTab = ref<string>('0')
+
+onMounted(() => {
+  TrackPageView(
+    'WeaponListView',
+    'Weapons',
+  )
+})
 
 const WeaponSortOptions: string[] = [
   'Default',

@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     '~/components/Importer',
     '~/components/Importer/Cards',
     '~/components/Navigation',
+    '~/components/Settings',
     '~/components/Skills',
 
     // Weapons

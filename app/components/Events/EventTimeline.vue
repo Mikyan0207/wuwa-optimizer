@@ -50,7 +50,7 @@ const TimelineEvents = computed(() => {
     const startOffset = GetDaysBetween(TimelineStart, event.StartDate)
     const duration = GetDaysBetween(event.StartDate, event.EndDate)
     const character = event.Type === 'character' ? TemplateCharacters.find(c => c.Id === event.CharacterId) : undefined
-    const weapon = event.Type === 'weapon' ? TemplateWeapons.find(w => w.Id === event.WeaponId) : undefined
+    const weapon = event.Type === 'weapon' ? TemplateWeapons.find(w => w.GameId === event.WeaponId) : undefined
 
     result.push({
       ...event,

@@ -12,6 +12,7 @@ const CharacterInfoRef = ref<HTMLElement | null>(null)
 const { CurrentCharacter } = useCharacter()
 const { CurrentWeapon, CurrentEchoes } = useBuild()
 const BuildsStore = useBuildsStore()
+const SettingsStore = useSettingsStore()
 const Toast = useToast()
 
 if (CurrentCharacter.value === undefined || CurrentCharacter.value === null) {
@@ -160,7 +161,14 @@ async function TakeScreenShotAsync() {
           <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-2 auto-rows-auto">
             <!-- Character Art Card -->
             <CharacterAnimatedArtCard
-              v-if="CurrentCharacter"
+              v-if="CurrentCharacter && SettingsStore.GetSetting('Characters').EnableAnimatedArt === true"
+              v-motion-slide-left
+              :delay="50"
+              :character="CurrentCharacter"
+              class="md:col-span-1 xl:col-span-2"
+            />
+            <CharacterArtCard
+              v-else-if="CurrentCharacter"
               v-motion-slide-left
               :delay="50"
               :character="CurrentCharacter"

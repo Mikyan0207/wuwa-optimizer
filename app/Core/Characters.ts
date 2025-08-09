@@ -6787,7 +6787,6 @@ export const Phoebe: Character = {
   AnimatedArt: {
     Skeleton: 'feibi.skel',
     Atlas: 'feibi.atlas',
-    OffsetX: 0,
     OffsetY: 295,
     Scale: 2.15,
   },
@@ -7032,6 +7031,12 @@ export const Zani: Character = {
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Zani_Icon.webp',
   SplashArt: 'Zani_Portrait.webp',
+  AnimatedArt: {
+    Skeleton: 'zanni.skel',
+    Atlas: 'zanni.atlas',
+    OffsetY: 125,
+    Scale: 2.0,
+  },
   WeaponType: WeaponType.GAUNTLETS,
   Type: CharacterType.SPECTRO,
   Level: 90,

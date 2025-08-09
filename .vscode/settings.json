@@ -7,7 +7,6 @@
   },
 
   // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
   "editor.formatOnSave": false,
 
   // Auto fix
@@ -42,8 +41,10 @@
     "jsonc",
     "yaml"
   ],
-  "interline-translate.knownPopularWordCount": 6000,
   "iconify.annotations": true,
   "iconify.inplace": true,
-  "todo-tree.tree.showBadges": true
+  "typescript.preferences.includePackageJsonAutoImports": "on",
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "vue.inlayHints.optionsWrapper": true
 }

@@ -99,13 +99,13 @@ export const Sanhua: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Glacio_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -115,7 +115,7 @@ export const Sanhua: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Glacio_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -125,31 +125,31 @@ export const Sanhua: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Sanhua_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Sanhua_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Sanhua_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Sanhua_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Glacio_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -159,7 +159,7 @@ export const Sanhua: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Glacio_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -169,19 +169,19 @@ export const Sanhua: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Sanhua_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Sanhua_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -191,7 +191,7 @@ export const Sanhua: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -201,13 +201,13 @@ export const Sanhua: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Sanhua_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -217,7 +217,7 @@ export const Sanhua: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -340,13 +340,13 @@ export const Baizhi: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -356,7 +356,7 @@ export const Baizhi: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -366,31 +366,31 @@ export const Baizhi: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Baizhi_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Baizhi_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Baizhi_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Baizhi_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -400,7 +400,7 @@ export const Baizhi: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -410,19 +410,19 @@ export const Baizhi: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Baizhi_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Baizhi_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -432,7 +432,7 @@ export const Baizhi: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -442,13 +442,13 @@ export const Baizhi: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Baizhi_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -458,7 +458,7 @@ export const Baizhi: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -581,13 +581,13 @@ export const Lingyang: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Glacio_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -597,7 +597,7 @@ export const Lingyang: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Glacio_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -607,31 +607,31 @@ export const Lingyang: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Lingyang_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Lingyang_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Lingyang_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Lingyang_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Glacio_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -641,7 +641,7 @@ export const Lingyang: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Glacio_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -651,19 +651,19 @@ export const Lingyang: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Lingyang_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Lingyang_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -673,7 +673,7 @@ export const Lingyang: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -683,13 +683,13 @@ export const Lingyang: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Lingyang_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -699,7 +699,7 @@ export const Lingyang: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -822,13 +822,13 @@ export const Zhezhi: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -838,7 +838,7 @@ export const Zhezhi: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -848,31 +848,31 @@ export const Zhezhi: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Zhezhi_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Zhezhi_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Zhezhi_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Zhezhi_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -882,7 +882,7 @@ export const Zhezhi: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -892,19 +892,19 @@ export const Zhezhi: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Zhezhi_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Zhezhi_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -914,7 +914,7 @@ export const Zhezhi: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -924,13 +924,13 @@ export const Zhezhi: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Zhezhi_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -940,7 +940,7 @@ export const Zhezhi: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1063,13 +1063,13 @@ export const Youhu: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -1079,7 +1079,7 @@ export const Youhu: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -1089,31 +1089,31 @@ export const Youhu: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Youhu_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Youhu_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Youhu_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Youhu_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -1123,7 +1123,7 @@ export const Youhu: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -1133,19 +1133,19 @@ export const Youhu: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Youhu_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Youhu_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1155,7 +1155,7 @@ export const Youhu: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1165,13 +1165,13 @@ export const Youhu: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Youhu_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1181,7 +1181,7 @@ export const Youhu: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1311,13 +1311,13 @@ export const Carlotta: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Pistols.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -1327,7 +1327,7 @@ export const Carlotta: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -1337,31 +1337,31 @@ export const Carlotta: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Carlotta_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Carlotta_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Carlotta_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Carlotta_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -1371,7 +1371,7 @@ export const Carlotta: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -1381,19 +1381,19 @@ export const Carlotta: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Carlotta_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Carlotta_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1403,7 +1403,7 @@ export const Carlotta: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1413,13 +1413,13 @@ export const Carlotta: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Carlotta_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1429,7 +1429,7 @@ export const Carlotta: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1552,13 +1552,13 @@ export const Chixia: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Pistols.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Fusion_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -1568,7 +1568,7 @@ export const Chixia: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Fusion_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -1578,31 +1578,31 @@ export const Chixia: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Chixia_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Chixia_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Chixia_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Chixia_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Fusion_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -1612,7 +1612,7 @@ export const Chixia: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Fusion_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -1622,19 +1622,19 @@ export const Chixia: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Chixia_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Chixia_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1644,7 +1644,7 @@ export const Chixia: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1654,13 +1654,13 @@ export const Chixia: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Chixia_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1670,7 +1670,7 @@ export const Chixia: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1793,13 +1793,13 @@ export const Encore: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Fusion_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -1809,7 +1809,7 @@ export const Encore: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Fusion_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -1819,31 +1819,31 @@ export const Encore: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Encore_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Encore_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Encore_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Encore_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Fusion_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -1853,7 +1853,7 @@ export const Encore: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Fusion_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -1863,19 +1863,19 @@ export const Encore: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Encore_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Encore_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1885,7 +1885,7 @@ export const Encore: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1895,13 +1895,13 @@ export const Encore: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Encore_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -1911,7 +1911,7 @@ export const Encore: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2034,13 +2034,13 @@ export const Mortefi: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Pistols.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Fusion_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -2050,7 +2050,7 @@ export const Mortefi: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Fusion_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -2060,31 +2060,31 @@ export const Mortefi: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Mortefi_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Mortefi_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Mortefi_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Mortefi_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Fusion_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -2094,7 +2094,7 @@ export const Mortefi: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Fusion_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -2104,19 +2104,19 @@ export const Mortefi: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Mortefi_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Mortefi_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2126,7 +2126,7 @@ export const Mortefi: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2136,13 +2136,13 @@ export const Mortefi: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Mortefi_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2152,7 +2152,7 @@ export const Mortefi: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2275,13 +2275,13 @@ export const Changli: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -2291,7 +2291,7 @@ export const Changli: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -2301,31 +2301,31 @@ export const Changli: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Changli_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Changli_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Changli_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Changli_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -2335,7 +2335,7 @@ export const Changli: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -2345,19 +2345,19 @@ export const Changli: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Changli_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Changli_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2367,7 +2367,7 @@ export const Changli: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2377,13 +2377,13 @@ export const Changli: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Changli_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2393,7 +2393,7 @@ export const Changli: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2516,13 +2516,13 @@ export const Brant: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -2532,7 +2532,7 @@ export const Brant: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -2542,31 +2542,31 @@ export const Brant: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Brant_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Brant_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Brant_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Brant_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -2576,7 +2576,7 @@ export const Brant: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -2586,19 +2586,19 @@ export const Brant: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Brant_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Brant_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2608,7 +2608,7 @@ export const Brant: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2618,13 +2618,13 @@ export const Brant: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Brant_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2634,7 +2634,7 @@ export const Brant: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2761,13 +2761,13 @@ export const Lupa: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Broadblade.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -2777,7 +2777,7 @@ export const Lupa: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -2787,31 +2787,31 @@ export const Lupa: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Lupa_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Lupa_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Lupa_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Lupa_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -2821,7 +2821,7 @@ export const Lupa: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -2831,19 +2831,19 @@ export const Lupa: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Lupa_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Lupa_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2853,7 +2853,7 @@ export const Lupa: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2863,13 +2863,13 @@ export const Lupa: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Lupa_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -2879,7 +2879,7 @@ export const Lupa: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -3002,13 +3002,13 @@ export const Calcharo: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Broadblade.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -3018,7 +3018,7 @@ export const Calcharo: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -3028,31 +3028,31 @@ export const Calcharo: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Calcharo_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Calcharo_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Calcharo_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Calcharo_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -3062,7 +3062,7 @@ export const Calcharo: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -3072,19 +3072,19 @@ export const Calcharo: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Calcharo_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Calcharo_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -3094,7 +3094,7 @@ export const Calcharo: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -3104,13 +3104,13 @@ export const Calcharo: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Calcharo_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -3120,7 +3120,7 @@ export const Calcharo: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -3243,13 +3243,13 @@ export const Yinlin: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -3259,7 +3259,7 @@ export const Yinlin: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -3269,31 +3269,31 @@ export const Yinlin: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Yinlin_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Yinlin_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Yinlin_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Yinlin_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -3303,7 +3303,7 @@ export const Yinlin: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -3313,19 +3313,19 @@ export const Yinlin: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Yinlin_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Yinlin_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -3335,7 +3335,7 @@ export const Yinlin: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -3345,13 +3345,13 @@ export const Yinlin: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Yinlin_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -3361,7 +3361,7 @@ export const Yinlin: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -3484,13 +3484,13 @@ export const Yuanwu: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Electro_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -3500,7 +3500,7 @@ export const Yuanwu: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Electro_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -3510,31 +3510,31 @@ export const Yuanwu: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Yuanwu_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Yuanwu_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Yuanwu_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Yuanwu_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Electro_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -3544,7 +3544,7 @@ export const Yuanwu: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Electro_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -3554,19 +3554,19 @@ export const Yuanwu: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Yuanwu_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Yuanwu_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -3576,7 +3576,7 @@ export const Yuanwu: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -3586,13 +3586,13 @@ export const Yuanwu: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Yuanwu_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -3602,7 +3602,7 @@ export const Yuanwu: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -3725,13 +3725,13 @@ export const Jinhsi: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Broadblade.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -3741,7 +3741,7 @@ export const Jinhsi: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -3751,31 +3751,31 @@ export const Jinhsi: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Jinhsi_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Jinhsi_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Jinhsi_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Jinhsi_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -3785,7 +3785,7 @@ export const Jinhsi: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -3795,19 +3795,19 @@ export const Jinhsi: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Jinhsi_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Jinhsi_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -3817,7 +3817,7 @@ export const Jinhsi: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -3827,13 +3827,13 @@ export const Jinhsi: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Jinhsi_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -3843,7 +3843,7 @@ export const Jinhsi: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -3966,13 +3966,13 @@ export const Xiangli_Yao: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -3982,7 +3982,7 @@ export const Xiangli_Yao: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -3992,31 +3992,31 @@ export const Xiangli_Yao: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Xiangli_Yao_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Xiangli_Yao_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Xiangli_Yao_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Xiangli_Yao_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -4026,7 +4026,7 @@ export const Xiangli_Yao: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -4036,19 +4036,19 @@ export const Xiangli_Yao: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Xiangli_Yao_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Xiangli_Yao_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4058,7 +4058,7 @@ export const Xiangli_Yao: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4068,13 +4068,13 @@ export const Xiangli_Yao: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Xiangli_Yao_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4084,7 +4084,7 @@ export const Xiangli_Yao: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4207,13 +4207,13 @@ export const Yangyang: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Aero_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -4223,7 +4223,7 @@ export const Yangyang: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Aero_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -4233,31 +4233,31 @@ export const Yangyang: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Yangyang_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Yangyang_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Yangyang_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Yangyang_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Aero_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -4267,7 +4267,7 @@ export const Yangyang: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Aero_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -4277,19 +4277,19 @@ export const Yangyang: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Yangyang_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Yangyang_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4299,7 +4299,7 @@ export const Yangyang: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4309,13 +4309,13 @@ export const Yangyang: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Yangyang_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4325,7 +4325,7 @@ export const Yangyang: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4448,13 +4448,13 @@ export const Aalto: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Pistols.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Aero_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -4464,7 +4464,7 @@ export const Aalto: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Aero_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -4474,31 +4474,31 @@ export const Aalto: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Aalto_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Aalto_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Aalto_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Aalto_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Aero_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -4508,7 +4508,7 @@ export const Aalto: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Aero_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -4518,19 +4518,19 @@ export const Aalto: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Aalto_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Aalto_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4540,7 +4540,7 @@ export const Aalto: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4550,13 +4550,13 @@ export const Aalto: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Aalto_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4566,7 +4566,7 @@ export const Aalto: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4689,13 +4689,13 @@ export const Jiyan: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Broadblade.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -4705,7 +4705,7 @@ export const Jiyan: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -4715,31 +4715,31 @@ export const Jiyan: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Jiyan_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Jiyan_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Jiyan_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Jiyan_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -4749,7 +4749,7 @@ export const Jiyan: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -4759,19 +4759,19 @@ export const Jiyan: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Jiyan_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Jiyan_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4781,7 +4781,7 @@ export const Jiyan: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4791,13 +4791,13 @@ export const Jiyan: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Jiyan_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4807,7 +4807,7 @@ export const Jiyan: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -4930,13 +4930,13 @@ export const Jianxin: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -4946,7 +4946,7 @@ export const Jianxin: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -4956,31 +4956,31 @@ export const Jianxin: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Jianxin_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Jianxin_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Jianxin_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Jianxin_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -4990,7 +4990,7 @@ export const Jianxin: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -5000,19 +5000,19 @@ export const Jianxin: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Jianxin_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Jianxin_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -5022,7 +5022,7 @@ export const Jianxin: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -5032,13 +5032,13 @@ export const Jianxin: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Jianxin_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -5048,7 +5048,7 @@ export const Jianxin: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -5171,13 +5171,13 @@ export const Ciaccona: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Pistols.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -5187,7 +5187,7 @@ export const Ciaccona: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -5197,31 +5197,31 @@ export const Ciaccona: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Ciaccona_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Ciaccona_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Ciaccona_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Ciaccona_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -5231,7 +5231,7 @@ export const Ciaccona: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -5241,19 +5241,19 @@ export const Ciaccona: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Ciaccona_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Ciaccona_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -5263,7 +5263,7 @@ export const Ciaccona: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -5273,13 +5273,13 @@ export const Ciaccona: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Ciaccona_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -5289,7 +5289,7 @@ export const Ciaccona: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -5412,13 +5412,13 @@ export const Rover_Aero: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -5428,7 +5428,7 @@ export const Rover_Aero: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -5438,31 +5438,31 @@ export const Rover_Aero: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Aero_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Aero_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Aero_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Aero_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -5472,7 +5472,7 @@ export const Rover_Aero: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -5482,19 +5482,19 @@ export const Rover_Aero: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Aero_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Aero_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -5504,7 +5504,7 @@ export const Rover_Aero: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -5514,13 +5514,13 @@ export const Rover_Aero: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Aero_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -5530,7 +5530,7 @@ export const Rover_Aero: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -5660,13 +5660,13 @@ export const Cartethyia: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -5676,7 +5676,7 @@ export const Cartethyia: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -5686,31 +5686,31 @@ export const Cartethyia: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Cartethyia_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Cartethyia_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Cartethyia_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Cartethyia_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -5720,7 +5720,7 @@ export const Cartethyia: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -5730,19 +5730,19 @@ export const Cartethyia: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Cartethyia_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Cartethyia_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Health.webp',
       Unlocked: true,
       Stat: {
@@ -5752,7 +5752,7 @@ export const Cartethyia: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Health.webp',
       Unlocked: true,
       Stat: {
@@ -5762,13 +5762,13 @@ export const Cartethyia: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Cartethyia_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Health.webp',
       Unlocked: true,
       Stat: {
@@ -5778,7 +5778,7 @@ export const Cartethyia: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Health.webp',
       Unlocked: true,
       Stat: {
@@ -5901,13 +5901,13 @@ export const Rover_Spectro: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Spectro_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -5917,7 +5917,7 @@ export const Rover_Spectro: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Spectro_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -5927,31 +5927,31 @@ export const Rover_Spectro: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Spectro_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Spectro_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Spectro_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Spectro_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Spectro_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -5961,7 +5961,7 @@ export const Rover_Spectro: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Spectro_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -5971,19 +5971,19 @@ export const Rover_Spectro: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Spectro_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Spectro_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -5993,7 +5993,7 @@ export const Rover_Spectro: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -6003,13 +6003,13 @@ export const Rover_Spectro: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Spectro_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -6019,7 +6019,7 @@ export const Rover_Spectro: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -6142,13 +6142,13 @@ export const Verina: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -6158,7 +6158,7 @@ export const Verina: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -6168,31 +6168,31 @@ export const Verina: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Verina_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Verina_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Verina_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Verina_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -6202,7 +6202,7 @@ export const Verina: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -6212,19 +6212,19 @@ export const Verina: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Verina_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Verina_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -6234,7 +6234,7 @@ export const Verina: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -6244,13 +6244,13 @@ export const Verina: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Verina_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -6260,7 +6260,7 @@ export const Verina: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -6383,13 +6383,13 @@ export const Lumi: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Broadblade.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -6399,7 +6399,7 @@ export const Lumi: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -6409,31 +6409,31 @@ export const Lumi: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Lumi_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Lumi_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Lumi_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Lumi_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -6443,7 +6443,7 @@ export const Lumi: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -6453,19 +6453,19 @@ export const Lumi: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Lumi_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Lumi_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -6475,7 +6475,7 @@ export const Lumi: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -6485,13 +6485,13 @@ export const Lumi: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Lumi_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -6501,7 +6501,7 @@ export const Lumi: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -6631,13 +6631,13 @@ export const Shorekeeper: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -6647,7 +6647,7 @@ export const Shorekeeper: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -6657,31 +6657,31 @@ export const Shorekeeper: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Shorekeeper_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Shorekeeper_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Shorekeeper_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Shorekeeper_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -6691,7 +6691,7 @@ export const Shorekeeper: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Healing_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -6701,19 +6701,19 @@ export const Shorekeeper: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Shorekeeper_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Shorekeeper_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Health.webp',
       Unlocked: true,
       Stat: {
@@ -6723,7 +6723,7 @@ export const Shorekeeper: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Health.webp',
       Unlocked: true,
       Stat: {
@@ -6733,13 +6733,13 @@ export const Shorekeeper: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Shorekeeper_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Health.webp',
       Unlocked: true,
       Stat: {
@@ -6749,7 +6749,7 @@ export const Shorekeeper: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Health.webp',
       Unlocked: true,
       Stat: {
@@ -6784,6 +6784,13 @@ export const Phoebe: Character = {
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Phoebe_Icon.webp',
   SplashArt: 'Phoebe_Portrait.webp',
+  AnimatedArt: {
+    Skeleton: 'feibi.skel',
+    Atlas: 'feibi.atlas',
+    OffsetX: 0,
+    OffsetY: 295,
+    Scale: 2.15,
+  },
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.SPECTRO,
   Level: 90,
@@ -6872,13 +6879,13 @@ export const Phoebe: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -6888,7 +6895,7 @@ export const Phoebe: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -6898,31 +6905,31 @@ export const Phoebe: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Phoebe_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Phoebe_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Phoebe_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Phoebe_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -6932,7 +6939,7 @@ export const Phoebe: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -6942,19 +6949,19 @@ export const Phoebe: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Phoebe_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Phoebe_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -6964,7 +6971,7 @@ export const Phoebe: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -6974,13 +6981,13 @@ export const Phoebe: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Phoebe_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -6990,7 +6997,7 @@ export const Phoebe: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -7113,13 +7120,13 @@ export const Zani: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -7129,7 +7136,7 @@ export const Zani: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -7139,31 +7146,31 @@ export const Zani: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Zani_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Zani_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Zani_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Zani_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -7173,7 +7180,7 @@ export const Zani: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -7183,19 +7190,19 @@ export const Zani: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Zani_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Zani_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -7205,7 +7212,7 @@ export const Zani: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -7215,13 +7222,13 @@ export const Zani: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Zani_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -7231,7 +7238,7 @@ export const Zani: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -7354,13 +7361,13 @@ export const Taoqi: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Broadblade.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Havoc_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -7370,7 +7377,7 @@ export const Taoqi: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Havoc_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -7380,31 +7387,31 @@ export const Taoqi: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Taoqi_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Taoqi_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Taoqi_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Taoqi_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Havoc_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -7414,7 +7421,7 @@ export const Taoqi: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Havoc_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -7424,19 +7431,19 @@ export const Taoqi: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Taoqi_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Taoqi_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -7446,7 +7453,7 @@ export const Taoqi: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -7456,13 +7463,13 @@ export const Taoqi: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Taoqi_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -7472,7 +7479,7 @@ export const Taoqi: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -7595,13 +7602,13 @@ export const Danjin: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Havoc_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -7611,7 +7618,7 @@ export const Danjin: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Havoc_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -7621,31 +7628,31 @@ export const Danjin: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Danjin_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Danjin_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Danjin_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Danjin_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Havoc_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -7655,7 +7662,7 @@ export const Danjin: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Havoc_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -7665,19 +7672,19 @@ export const Danjin: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Danjin_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Danjin_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -7687,7 +7694,7 @@ export const Danjin: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -7697,13 +7704,13 @@ export const Danjin: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Danjin_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -7713,7 +7720,7 @@ export const Danjin: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -7836,13 +7843,13 @@ export const Camellya: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -7852,7 +7859,7 @@ export const Camellya: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -7862,31 +7869,31 @@ export const Camellya: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Camellya_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Camellya_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Camellya_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Camellya_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -7896,7 +7903,7 @@ export const Camellya: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -7906,19 +7913,19 @@ export const Camellya: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Camellya_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Camellya_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -7928,7 +7935,7 @@ export const Camellya: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -7938,13 +7945,13 @@ export const Camellya: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Camellya_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -7954,7 +7961,7 @@ export const Camellya: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8077,13 +8084,13 @@ export const Rover_Havoc: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Sword.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Havoc_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -8093,7 +8100,7 @@ export const Rover_Havoc: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Havoc_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -8103,31 +8110,31 @@ export const Rover_Havoc: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Havoc_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Havoc_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Havoc_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Havoc_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Havoc_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -8137,7 +8144,7 @@ export const Rover_Havoc: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Havoc_DMG_Bonus.webp',
       Unlocked: true,
       Stat: {
@@ -8147,19 +8154,19 @@ export const Rover_Havoc: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Havoc_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Havoc_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8169,7 +8176,7 @@ export const Rover_Havoc: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8179,13 +8186,13 @@ export const Rover_Havoc: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Rover_Havoc_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8195,7 +8202,7 @@ export const Rover_Havoc: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8318,13 +8325,13 @@ export const Roccia: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Gauntlets.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -8334,7 +8341,7 @@ export const Roccia: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -8344,31 +8351,31 @@ export const Roccia: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Roccia_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Roccia_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Roccia_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Roccia_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -8378,7 +8385,7 @@ export const Roccia: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_DMG.webp',
       Unlocked: true,
       Stat: {
@@ -8388,19 +8395,19 @@ export const Roccia: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Roccia_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Roccia_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8410,7 +8417,7 @@ export const Roccia: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8420,13 +8427,13 @@ export const Roccia: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Roccia_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8436,7 +8443,7 @@ export const Roccia: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8559,13 +8566,13 @@ export const Cantarella: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -8575,7 +8582,7 @@ export const Cantarella: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -8585,31 +8592,31 @@ export const Cantarella: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Cantarella_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Cantarella_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Cantarella_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Cantarella_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -8619,7 +8626,7 @@ export const Cantarella: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -8629,19 +8636,19 @@ export const Cantarella: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Cantarella_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Cantarella_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8651,7 +8658,7 @@ export const Cantarella: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8661,13 +8668,13 @@ export const Cantarella: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Cantarella_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8677,7 +8684,7 @@ export const Cantarella: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8806,13 +8813,13 @@ export const Phrolova: Character = {
   Skills: [
     {
       Id: 'Basic_Attack',
-      Level: 1,
+      Level: 10,
       Icon: 'Skill_Rectifier.webp',
       Unlocked: true,
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -8822,7 +8829,7 @@ export const Phrolova: Character = {
     },
     {
       Id: 'Basic_Attack_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -8832,31 +8839,31 @@ export const Phrolova: Character = {
     },
     {
       Id: 'Forte_Circuit',
-      Level: 1,
+      Level: 10,
       Icon: 'Phrolova_Forte_Circuit.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Phrolova_Inherent_Skill_01.webp',
       Unlocked: true,
     },
     {
       Id: 'Inherent_Skill_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Phrolova_Inherent_Skill_02.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Phrolova_Intro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -8866,7 +8873,7 @@ export const Phrolova: Character = {
     },
     {
       Id: 'Intro_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Crit_Rate.webp',
       Unlocked: true,
       Stat: {
@@ -8876,19 +8883,19 @@ export const Phrolova: Character = {
     },
     {
       Id: 'Outro_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Phrolova_Outro_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation',
-      Level: 1,
+      Level: 10,
       Icon: 'Phrolova_Resonance_Liberation.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8898,7 +8905,7 @@ export const Phrolova: Character = {
     },
     {
       Id: 'Resonance_Liberation_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8908,13 +8915,13 @@ export const Phrolova: Character = {
     },
     {
       Id: 'Resonance_Skill',
-      Level: 1,
+      Level: 10,
       Icon: 'Phrolova_Resonance_Skill.webp',
       Unlocked: true,
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_01',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {
@@ -8924,7 +8931,7 @@ export const Phrolova: Character = {
     },
     {
       Id: 'Resonance_Skill_Bonus_Stat_02',
-      Level: 1,
+      Level: 10,
       Icon: 'Icon_Attribute_Attack.webp',
       Unlocked: true,
       Stat: {

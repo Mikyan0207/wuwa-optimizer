@@ -126,8 +126,6 @@ function OnTakeScreenShotClicked() {
               <div class="grid grid-rows-4 gap-1 col-span-1">
                 <!-- Weapon Card -->
                 <CharacterWeaponCard
-                  v-motion-slide-right
-                  :delay="150"
                   class="row-span-1"
                 />
 

@@ -38,11 +38,12 @@ const Actions = computed(() => [
 <template>
   <MGameCardMenu :item="weapon" :actions="Actions">
     <template #content="{ selectedAction, onClose }">
-      <WeaponEditionForm
+      <MWeaponForm
         v-if="selectedAction === 0"
+        mode="edit"
         @close="onClose"
       />
-      <WeaponCreationForm
+      <MWeaponForm
         v-else-if="selectedAction === 1"
         @close="onClose"
       />

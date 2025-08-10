@@ -14,6 +14,10 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     return DefaultWeapons.value.find(x => x.GameId === gameId)
   }
 
+  function Add(weapon: Weapon) {
+    Weapons.value.push(weapon)
+  }
+
   function CreateFromGameId(gameId: number | undefined): Weapon | undefined {
     if (!gameId)
       return undefined
@@ -38,6 +42,7 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     Weapons,
     GetById,
     GetByGameId,
+    Add,
     CreateFromGameId,
   }
 })

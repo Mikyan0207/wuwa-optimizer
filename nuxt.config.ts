@@ -43,6 +43,9 @@ export default defineNuxtConfig({
     '~/components/Weapons/MWeaponCard',
     '~/components/Weapons/Forms',
     '~/components/Events',
+
+    // Sonatas
+    '~/components/Sonatas',
   ],
 
   devtools: {

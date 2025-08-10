@@ -55,6 +55,12 @@ async function OnImportClicked() {
     ImportedWeapon.value = Weapon
     ImportedEchoes.value = Echoes || []
     Step.value = 3
+
+    TrackEvent('scanner_import_success', {
+      character: Character?.Id,
+      weapon: Weapon?.GameId,
+      echoes: Echoes?.length,
+    })
   }
   catch (error) {
     console.error(error)

@@ -1,19 +1,22 @@
 <script setup lang="ts">
 import type Echo from '~/Core/Interfaces/Echo'
-import { domToBlob } from 'modern-screenshot'
 import VueDraggable from 'vuedraggable'
 import { useBuild } from '~/composables/builds/UseBuild'
 import { useCharacter } from '~/composables/characters/UseCharacter'
+import { useScreenshot } from '~/composables/core/UseScreenshot'
 import { GetCharacterBackground } from '~/Core/Utils/CharacterUtils'
 import { useBuildsStore } from '~/stores/BuildsStore'
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
+const ShowScreenShotBackground = ref<boolean>(false)
+const ForceStaticArt = ref<boolean>(false)
 
 const { CurrentCharacter } = useCharacter()
 const { CurrentWeapon, CurrentEchoes } = useBuild()
 const BuildsStore = useBuildsStore()
 const SettingsStore = useSettingsStore()
 const Toast = useToast()
+const { TakeScreenShotAsync } = useScreenshot(CharacterInfoRef)
 
 if (CurrentCharacter.value === undefined || CurrentCharacter.value === null) {
   await navigateTo('/characters')
@@ -46,8 +49,6 @@ async function SaveCurrentBuild() {
   }
 }
 
-const ShowScreenShotBackground = ref<boolean>(false)
-
 const DraggableEchoes = computed({
   get: () => CurrentEchoes || [],
   set: (newOrder: any[]) => {
@@ -77,79 +78,20 @@ const DraggableEchoes = computed({
   },
 })
 
-async function TakeScreenShotAsync() {
-  if (!CharacterInfoRef.value) {
-    return
-  }
-
-  ShowScreenShotBackground.value = true
-
-  await new Promise(resolve => setTimeout(resolve, 100))
-
-  const originalWidth = CharacterInfoRef.value.clientWidth
-  const originalHeight = CharacterInfoRef.value.clientHeight
-  const aspectRatio = originalWidth / originalHeight
-
-  let targetWidth = 2560
-  let targetHeight = 1440
-
-  if (aspectRatio > 16 / 9) {
-    targetHeight = Math.round(targetWidth / aspectRatio)
-  }
-  else {
-    targetWidth = Math.round(targetHeight * aspectRatio)
-  }
-
-  const scaleX = targetWidth / originalWidth
-  const scaleY = targetHeight / originalHeight
-  const scale = Math.max(scaleX, scaleY)
-
-  try {
-    const blob = await domToBlob(CharacterInfoRef.value, {
-      height: targetHeight,
-      width: targetWidth,
-      style: {
-        transform: `scale(${scale})`,
-        transformOrigin: 'top left',
-        imageRendering: 'crisp-edges',
-      },
-      quality: 1,
-      type: 'image/png',
-      backgroundColor: '#000000',
-    })
-
-    if (blob) {
-      const url = URL.createObjectURL(blob)
-      window.open(url, '_blank')
-
-      setTimeout(() => {
-        URL.revokeObjectURL(url)
-      }, 1000)
-
-      Toast.add({
-        title: 'Screenshot generated!',
-        description: `Generated image (${targetWidth}x${targetHeight}) opened in new tab.`,
-        color: 'success',
-      })
-    }
-  }
-  catch (error) {
-    console.error('Screenshot error:', error)
-    Toast.add({
-      title: 'Screenshot failed',
-      description: 'Failed to generate high-quality screenshot.',
-      color: 'error',
-    })
-  }
-  finally {
+function OnTakeScreenShotClicked() {
+  TakeScreenShotAsync(() => {
+    ForceStaticArt.value = true
+    ShowScreenShotBackground.value = true
+  }, () => {
     ShowScreenShotBackground.value = false
-  }
+    ForceStaticArt.value = false
+  })
 }
 </script>
 
 <template>
   <div class="mb-14 xl:mb-4">
-    <div v-if="CurrentCharacter !== undefined" class="mt-2 relative">
+    <div v-if="CurrentCharacter" class="mt-2 relative">
       <div class="mx-auto my-2">
         <div ref="CharacterInfoRef" class="relative p-0.25">
           <div v-if="ShowScreenShotBackground" class="absolute inset-0 blur-sm">
@@ -158,25 +100,21 @@ async function TakeScreenShotAsync() {
           </div>
 
           <!-- Main Layout Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-2 auto-rows-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-1 auto-rows-auto">
             <!-- Character Art Card -->
             <CharacterAnimatedArtCard
-              v-if="CurrentCharacter && SettingsStore.GetSetting('Characters').EnableAnimatedArt === true"
-              v-motion-slide-left
-              :delay="50"
+              v-if="CurrentCharacter && SettingsStore.GetSetting('Characters').EnableAnimatedArt === true && !ForceStaticArt"
               :character="CurrentCharacter"
               class="md:col-span-1 xl:col-span-2"
             />
             <CharacterArtCard
               v-else-if="CurrentCharacter"
-              v-motion-slide-left
-              :delay="50"
               :character="CurrentCharacter"
               class="md:col-span-1 xl:col-span-2"
             />
 
             <!-- Stats & Weapon/Skills Container -->
-            <div class="md:col-span-1 xl:col-span-3 grid grid-cols-1 xl:grid-cols-2 gap-2">
+            <div class="md:col-span-1 xl:col-span-3 grid grid-cols-1 xl:grid-cols-2 gap-1">
               <!-- Stats Card -->
               <CharacterStatsCard
                 v-motion-pop
@@ -185,7 +123,7 @@ async function TakeScreenShotAsync() {
               />
 
               <!-- Weapon & Skills Container -->
-              <div class="grid grid-rows-4 gap-2 col-span-1">
+              <div class="grid grid-rows-4 gap-1 col-span-1">
                 <!-- Weapon Card -->
                 <CharacterWeaponCard
                   v-motion-slide-right
@@ -204,7 +142,7 @@ async function TakeScreenShotAsync() {
           </div>
 
           <!-- Echoes Grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 mt-2">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1 mt-1">
             <VueDraggable
               v-if="CurrentCharacter"
               v-model="DraggableEchoes.value"
@@ -232,7 +170,7 @@ async function TakeScreenShotAsync() {
         </div>
 
         <!-- Sets Section -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-2">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-1 mt-2">
           <CharacterSetsCard
             v-motion-slide-bottom
             :delay="300"
@@ -253,7 +191,7 @@ async function TakeScreenShotAsync() {
               :loading="ShowScreenShotBackground"
               size="sm"
               class="w-9 h-9 justify-center text-white hover:text-white hover:bg-white/10 rounded-lg"
-              @click.prevent="TakeScreenShotAsync"
+              @click.prevent="OnTakeScreenShotClicked"
             />
             <USeparator />
             <UButton

@@ -1,23 +1,55 @@
 <script setup lang="ts">
 import type Weapon from '~/Core/Interfaces/Weapon'
+import { GetWeaponIcon } from '~/Core/Utils/WeaponUtils'
 
 interface WeaponCardProps {
   weapon: Weapon | undefined
+  showMenu?: boolean
 }
 
-defineProps<WeaponCardProps>()
+withDefaults(defineProps<WeaponCardProps>(), {
+  showMenu: true,
+})
+
+const { t } = useI18n()
 </script>
 
 <template>
-  <MCard class="group relative w-full h-full" padding="none" :border-lines-count="3">
-    <MWeaponCardDropdown />
-    <div class="h-full w-full flex justify-between items-start gap-4">
-      <div class="flex flex-col gap-1 flex-1 min-w-0 p-4">
-        <MWeaponCardHeader :weapon="weapon" />
-        <MWeaponCardRarity :weapon="weapon" />
-        <MWeaponCardStats :weapon="weapon" />
-      </div>
-      <MWeaponCardImage :weapon="weapon" />
-    </div>
-  </MCard>
+  <MGameCard :item="weapon" :show-menu="showMenu" :show-stats="true">
+    <template #menu>
+      <MWeaponCardMenu v-if="showMenu" :weapon="weapon" />
+    </template>
+
+    <template #header>
+      <MGameCardHeader
+        :item="weapon"
+        :get-name="(weapon: Weapon) => t(`${weapon.GameId}_name`)"
+        :get-level="(weapon: Weapon) => weapon.Level"
+        :get-additional-info="(weapon: Weapon) => `R${weapon.Rank || 0}`"
+      />
+    </template>
+
+    <template #rarity>
+      <MGameCardRarity
+        :item="weapon"
+        :get-rarity="(weapon: Weapon) => weapon.Rarity"
+      />
+    </template>
+
+    <template #stats>
+      <MGameCardStats
+        :item="weapon"
+        :get-main-stat="(weapon: Weapon) => weapon.MainStatistic"
+        :get-secondary-stat="(weapon: Weapon) => weapon.SecondaryStatistic"
+      />
+    </template>
+
+    <template #image>
+      <MGameCardImage
+        :item="weapon"
+        :get-image-src="(weapon: Weapon) => GetWeaponIcon(weapon)"
+        :get-image-alt="(weapon: Weapon) => t(`${weapon.GameId}_name`)"
+      />
+    </template>
+  </MGameCard>
 </template>

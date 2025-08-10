@@ -13,7 +13,7 @@ interface SonataSelectionStepProps {
 const props = defineProps<SonataSelectionStepProps>()
 
 const emit = defineEmits<{
-  'selectSonata': [sonata: Sonata]
+  selectSonata: [sonata: Sonata]
 }>()
 
 const { t } = useI18n()

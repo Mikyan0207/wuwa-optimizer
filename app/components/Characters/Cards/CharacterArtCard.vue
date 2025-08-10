@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCharacter } from '~/composables/characters/UseCharacter'
-import { GetCharacterTypeIcon, GetCharacterWeaponTypeIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
+import { GetSplashArt } from '~/Core/Utils/CharacterUtils'
 
 const { CurrentCharacter, CanUnlockSequence, ToggleSequence } = useCharacter()
 </script>

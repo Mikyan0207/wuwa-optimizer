@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useAnimatedArt } from '~/composables/characters/UseAnimatedArt'
 import { useCharacter } from '~/composables/characters/UseCharacter'
 import { GetSplashArt } from '~/Core/Utils/CharacterUtils'
 

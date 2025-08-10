@@ -5,7 +5,7 @@ import { GetTotalGradeColor } from '~/composables/calculators/UseScoreCalculator
 import { useCharacter } from '~/composables/characters/UseCharacter'
 import { GetCharacterIcon } from '~/Core/Utils/CharacterUtils'
 import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
-import { GetEchoIcon, GetSonataIcon } from '~/Core/Utils/EchoUtils'
+import { GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
 interface Props {
   build: Build

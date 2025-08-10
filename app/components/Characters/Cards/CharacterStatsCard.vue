@@ -3,7 +3,6 @@ import { useBuild } from '~/composables/builds/UseBuild'
 import { GetTotalGradeColor } from '~/composables/calculators/UseScoreCalculator'
 import { useCharacter } from '~/composables/characters/UseCharacter'
 import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
-import { GetSequenceLevel } from '~/Core/Utils/CharacterUtils'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
 const { t } = useI18n()

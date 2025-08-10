@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import type Weapon from '~/Core/Interfaces/Weapon'
 import { useBuild } from '~/composables/builds/UseBuild'
 
-const { CurrentWeapon } = useBuild()
+interface WeaponCardMenuProps {
+  weapon: Weapon | undefined
+}
 
-const DropdownRef = ref()
+defineProps<WeaponCardMenuProps>()
+
+const { CurrentWeapon } = useBuild()
 
 const Actions = computed(() => [
   {
@@ -28,27 +33,23 @@ const Actions = computed(() => [
     },
   },
 ])
-
-function OnClose() {
-  DropdownRef.value?.CloseSlideover()
-}
 </script>
 
 <template>
-  <MDropdown ref="DropdownRef" :actions="Actions" @close="OnClose">
-    <template #default="{ selectedAction }">
+  <MGameCardMenu :item="weapon" :actions="Actions">
+    <template #content="{ selectedAction, onClose }">
       <WeaponEditionForm
         v-if="selectedAction === 0"
-        @close="OnClose"
+        @close="onClose"
       />
       <WeaponCreationForm
         v-else-if="selectedAction === 1"
-        @close="OnClose"
+        @close="onClose"
       />
       <!-- <WeaponRemoveForm
         v-else-if="selectedAction === 2"
-        @close="OnClose"
+        @close="onClose"
       /> -->
     </template>
-  </MDropdown>
+  </MGameCardMenu>
 </template>

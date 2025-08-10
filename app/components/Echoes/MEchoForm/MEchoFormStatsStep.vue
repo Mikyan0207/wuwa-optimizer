@@ -153,7 +153,7 @@ function GetSubStatsValues(type: string) {
 }
 
 function UpdateState(updates: Partial<StatsConfigurationStepProps['state']>) {
-  const newState = { ...props.state,...updates }
+  const newState = { ...props.state, ...updates }
   emit('update:state', newState)
 }
 
@@ -178,7 +178,7 @@ function UpdateSubStatType(index: number, value: StatType) {
     return
 
   const newState = { ...props.state }
-  newState.SubStats[index] = { Type: value as StatType,Value: '0' }
+  newState.SubStats[index] = { Type: value as StatType, Value: '0' }
   emit('update:state', newState)
 }
 

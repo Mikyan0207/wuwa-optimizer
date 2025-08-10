@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type Echo from '~/Core/Interfaces/Echo'
-import { GetEchoIcon, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
 interface EchoCardHeaderProps {
   echo: Echo | undefined

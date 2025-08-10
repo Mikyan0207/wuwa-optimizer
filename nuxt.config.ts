@@ -25,6 +25,7 @@ export default defineNuxtConfig({
     '~/components/Characters',
     '~/components/Characters/Cards',
     '~/components/Characters/Tabs',
+    '~/components/Characters/MCharacterCard',
 
     // Echoes
     '~/components/Echoes',
@@ -33,7 +34,6 @@ export default defineNuxtConfig({
 
     '~/components/Filters',
     '~/components/Importer',
-    '~/components/Importer/Cards',
     '~/components/Navigation',
     '~/components/Settings',
     '~/components/Skills',

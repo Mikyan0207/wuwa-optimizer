@@ -11,8 +11,12 @@ const { Initialize, LoadSpineModel, IsSpineLoaded } = useAnimatedArt(CurrentChar
 const ShowOverlay = ref(true)
 
 onMounted(() => {
-  Initialize()
-  LoadSpineModel()
+  nextTick(() => {
+    setTimeout(() => {
+      Initialize()
+      LoadSpineModel()
+    }, 2500)
+  })
 })
 </script>
 
@@ -74,7 +78,7 @@ onMounted(() => {
     />
     <canvas
       ref="CanvasRef"
-      class="absolute inset-0 z-10 h-full w-full transition-opacity duration-250"
+      class="absolute inset-0 z-10 h-full w-full transition-opacity duration-500"
       :class="{ 'opacity-0': !IsSpineLoaded }"
     />
   </MCard>

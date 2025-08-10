@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAnalytics } from '~/composables/core/UseAnalytics'
-import { AppName } from './Core'
+import { AppName } from './Core/Versions'
 
 useHead({
   title: AppName,

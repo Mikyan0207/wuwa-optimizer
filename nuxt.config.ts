@@ -1,4 +1,4 @@
-import { AppDescription } from './app/Core'
+import { AppDescription } from './app/Core/Versions'
 
 export default defineNuxtConfig({
   modules: [

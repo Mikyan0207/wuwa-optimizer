@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type Character from '~/Core/Interfaces/Character'
 import { useMetaTags } from '~/composables/core/UseMetaTags'
-import { ScorerGameVersion } from '~/Core'
 import { TemplateCharacters } from '~/Core/Characters'
 import { ReleaseState } from '~/Core/Enums/ReleaseState'
+import { ScorerGameVersion } from '~/Core/Versions'
 import { TemplateWeapons } from '~/Core/Weapons'
 
 definePageMeta({

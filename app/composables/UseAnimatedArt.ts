@@ -33,6 +33,7 @@ export function useAnimatedArt(character: Character, canvasRef: Ref<HTMLCanvasEl
       antialias: true,
       resolution: window.devicePixelRatio || 1,
       autoDensity: true,
+      powerPreference: 'high-performance',
     })
   }
 

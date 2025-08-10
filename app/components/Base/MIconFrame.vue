@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { UpcomingGameVersion } from '~/Core'
 import { ReleaseState } from '~/Core/Enums/ReleaseState'
+import { UpcomingGameVersion } from '~/Core/Versions'
 
 interface IconFrameProps {
   background?: string
@@ -46,7 +46,6 @@ const ContainerClasses = computed(() => ({
   [SizeClasses.value]: true,
 }))
 
-// Couleurs par défaut si non fournies
 const DefaultBackground = computed(() => props.background || 'bg-neutral-800')
 const DefaultSecondary = computed(() => props.secondary || 'bg-neutral-700')
 const DefaultHighlight = computed(() => props.highlight || 'bg-neutral-600')

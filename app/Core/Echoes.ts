@@ -473,6 +473,7 @@ export const Echoes: Echo[] = [
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
+      Eternal_Radiance,
       Frosty_Resolve,
       Empyrean_Anthem,
     ],

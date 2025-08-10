@@ -46,7 +46,7 @@ function ClearAllCache() {
           unchecked-icon="i-lucide-x"
           checked-icon="i-lucide-check"
           label="Enable Animations"
-          description="Enable animations for a more dynamic experience"
+          description="Enable animations for a more dynamic experience."
         />
       </div>
     </div>
@@ -59,7 +59,7 @@ function ClearAllCache() {
           unchecked-icon="i-lucide-x"
           checked-icon="i-lucide-check"
           label="Animated Character Art"
-          description="Display animated character splash art for a better experience"
+          description="Display animated character splash art for a better experience."
         />
       </div>
     </div>

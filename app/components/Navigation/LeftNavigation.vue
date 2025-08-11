@@ -166,12 +166,21 @@ function OpenSettings() {
     >
       <template #item="{ item, index }">
         <div
+          v-if="item.type === 'trigger'"
           class="inline-block mx-auto pt-[0.35em] inset-x-[0.5em] w-min"
           :class="ActiveSection04Item === index ? 'text-primary' : ''"
           @click="OpenSettings"
         >
           <UIcon v-if="item.icon" :name="item.icon" class="w-6 h-6" />
         </div>
+        <NuxtLink
+          v-else
+          class="inline-block mx-auto pt-[0.35em] inset-x-[0.5em] w-min"
+          :to="item.to as string"
+          :class="ActiveSection04Item === index ? 'text-primary' : ''"
+        >
+          <UIcon v-if="item.icon" :name="item.icon" class="w-6 h-6" />
+        </NuxtLink>
       </template>
     </UNavigationMenu>
 

@@ -1,13 +1,16 @@
 <script setup lang="ts">
+import type Echo from '~/Core/Interfaces/Echo'
 import { useBuild } from '~/composables/builds/UseBuild'
 
 interface EchoDropdownProps {
+  echo: Echo
   echoSlot: number
 }
 
 const props = defineProps<EchoDropdownProps>()
 
 const { GetEchoBySlot } = useBuild()
+
 const CurrentEcho = computed(() => GetEchoBySlot(props.echoSlot))
 
 const DropdownRef = ref()

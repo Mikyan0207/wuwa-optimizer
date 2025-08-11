@@ -143,8 +143,8 @@ function SelectEcho(echoId: number, cost: EchoCost) {
           v-for="ec in FilteredEchoes"
           :key="ec.Id"
           class="group cursor-pointer bg-white/5 border border-white/10 rounded-br-lg transition-all duration-200 hover:bg-white/10 hover:border-white/20 relative"
-          :class="{ 'bg-primary-500/20 border-primary-500/50 ring-2 ring-primary-500/50': state.EchoId === ec.Id }"
-          @click="SelectEcho(ec.Id, ec.Cost)"
+          :class="{ 'bg-primary-500/20 border-primary-500/50 ring-2 ring-primary-500/50': state.EchoId === ec.GameId }"
+          @click="SelectEcho(ec.GameId, ec.Cost)"
         >
           <div class="flex">
             <!-- Icon / Rarity -->
@@ -178,8 +178,8 @@ function SelectEcho(echoId: number, cost: EchoCost) {
             <div class="border-l border-neutral-700 p-2 space-y-1 text-sm">
               <!-- Name -->
               <div class="w-full flex items-center justify-between text-nowrap">
-                <div :title="t(`${ec.Id}_name`)" class="text-truncate">
-                  {{ t(`${ec.Id}_name`) }}
+                <div :title="t(`${ec.GameId}_name`)" class="text-truncate">
+                  {{ t(`${ec.GameId}_name`) }}
                 </div>
               </div>
 

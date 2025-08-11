@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TabItem } from '@nuxt/ui'
+import type { TabsItem } from '@nuxt/ui'
 
 definePageMeta({
   layout: 'character-details',
@@ -74,7 +74,7 @@ const TabItems = [{
   icon: 'i-solar-settings-minimalistic-broken',
   disabled: false,
   slot: 'builds' as const,
-}] as TabItem[]
+}] as TabsItem[]
 </script>
 
 <template>

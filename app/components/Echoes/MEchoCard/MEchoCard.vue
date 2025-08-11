@@ -21,7 +21,7 @@ withDefaults(defineProps<EchoCardProps>(), {
     :show-border-lines="true"
     :border-lines-count="3"
   >
-    <MEchoCardDropdown v-if="showMenu" :echo-slot="equipedSlot" />
+    <MEchoCardDropdown v-if="showMenu" :echo="echo" :echo-slot="equipedSlot" />
     <div class="w-full flex flex-col items-center gap-2">
       <MEchoCardHeader :echo="echo" />
       <MEchoStats :echo="echo" class="mt-4" />

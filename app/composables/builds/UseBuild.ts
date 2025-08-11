@@ -101,7 +101,7 @@ export function useBuild() {
   }
 
   function GetEchoBySlot(slot: number) {
-    return CurrentEchoes.value.find((x: Echo) => x.EquipedSlot === slot)
+    return CurrentEchoes.value.at(slot)
   }
 
   return {

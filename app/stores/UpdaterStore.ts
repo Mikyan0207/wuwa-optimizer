@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const useUpdaterStore = defineStore('UpdaterStore', () => {
-  const CURRENT_VERSION = '1.0.0'
+  const CURRENT_VERSION = '1.0.1'
   const VERSION_KEY = 'wuwa-optimizer-version'
   const Version = useLocalStorage<string>(VERSION_KEY, '')
 
@@ -10,7 +10,7 @@ export const useUpdaterStore = defineStore('UpdaterStore', () => {
       return
     }
 
-    if (!Version.value) {
+    if (!Version.value || Version.value !== CURRENT_VERSION) {
       ClearAllData()
     }
 

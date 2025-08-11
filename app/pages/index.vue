@@ -43,7 +43,7 @@ function IsCharacterAvailable(character: Character) {
         body: 'p-0 sm:p-0 h-full',
       }"
     >
-      <NuxtImg v-motion-slide-right :delay="200" src="/images/characters/1506/Phoebe_Full_Sprite.webp" class="absolute -top-10 -right-55 object-cover" />
+      <NuxtImg v-motion-slide-right :delay="200" src="/characters/1506/images/Phoebe_Full_Sprite.webp" class="absolute -top-10 -right-55 object-cover" />
       <div v-motion-slide-top :delay="250" class="flex justify-between gap-6 xl:gap-8 flex-col p-4 h-full">
         <div class="flex flex-col">
           <h1 class="text-xl xl:text-3xl font-semibold tracking-tight text-gold-500">

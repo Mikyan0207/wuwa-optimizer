@@ -4,6 +4,7 @@ import { useScoreCalculator } from '~/composables/calculators/UseScoreCalculator
 import { useStatsCalculator } from '~/composables/calculators/UseStatsCalculator'
 import { useCharacter } from '~/composables/characters/UseCharacter'
 import { Empty_Echo } from '~/Core/Echoes'
+import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 import { useBuildsStore } from '~/stores/BuildsStore'
 import { useWeaponsStore } from '~/stores/WeaponsStore'
 
@@ -15,28 +16,26 @@ export function useBuild() {
   const StatsCalculator = useStatsCalculator()
   const ScoreCalculator = useScoreCalculator()
 
-  const DefaultBuild = computed(() => {
-    if (!CurrentCharacter.value)
-      return undefined
+  const DefaultBuild = ref<Build | undefined>(undefined)
 
-    const build = BuildsStore.GetDefaultBuild(CurrentCharacter.value.Id)
-      || BuildsStore.CreateBuild('Default Build', CurrentCharacter.value.Id)
-      || {
-        Id: '',
-        CharacterId: CurrentCharacter.value.Id,
-        Name: 'Default Build',
-        CreatedAt: new Date(),
-        UpdatedAt: new Date(),
-        IsDefault: false,
-        Order: 0,
-        Echoes: [],
-      } as Build
-
-    if (build && build.Score === undefined && build.Note === undefined) {
-      BuildsStore.CalculateScore(build)
+  watchEffect(() => {
+    if (CurrentCharacter.value) {
+      DefaultBuild.value = BuildsStore.GetDefaultBuild(CurrentCharacter.value.Id)
     }
+  })
 
-    return build
+  const Score = computed(() => {
+    if (!DefaultBuild.value)
+      return 0
+
+    return DefaultBuild.value.Score
+  })
+
+  const Note = computed(() => {
+    if (!DefaultBuild.value)
+      return ScoreGrade.F
+
+    return DefaultBuild.value.Note
   })
 
   const CurrentWeapon = computed({
@@ -56,15 +55,22 @@ export function useBuild() {
         WeaponId: val?.Id,
       })
 
-      const updatedScore = ScoreCalculator.GetCharacterScore(CurrentCharacter.value, DefaultBuild.value)
-      if (updatedScore) {
-        BuildsStore.UpdateBuild(DefaultBuild.value.Id, {
-          Score: updatedScore.Score,
-          Note: updatedScore.Note,
-        })
-      }
+      UpdateScore()
     },
   })
+
+  function UpdateScore() {
+    if (!DefaultBuild.value)
+      return
+
+    const updatedScore = ScoreCalculator.GetCharacterScore(CurrentCharacter.value, DefaultBuild.value)
+    if (updatedScore) {
+      BuildsStore.UpdateBuild(DefaultBuild.value.Id, {
+        Score: updatedScore.Score,
+        Note: updatedScore.Note,
+      })
+    }
+  }
 
   const CurrentEchoes = computed(() => {
     const base = Array.from({ length: 5 }, () => ({ ...Empty_Echo as Echo }))
@@ -127,6 +133,8 @@ export function useBuild() {
     CurrentWeapon,
     CurrentEchoes,
     Stats,
+    Score,
+    Note,
     UpdateEcho,
     GetEchoBySlot,
   }

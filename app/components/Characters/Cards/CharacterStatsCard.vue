@@ -6,7 +6,7 @@ import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
 const { CurrentCharacter } = useCharacter()
-const { DefaultBuild, Stats } = useBuild()
+const { DefaultBuild, Stats, Score, Note } = useBuild()
 const { t } = useI18n()
 
 const GetCharacterScoreNoteColor = computed(() => {
@@ -46,11 +46,11 @@ const GetCharacterScoreNoteColor = computed(() => {
       </p>
       <div class="flex flex-row items-center justify-end">
         <span class="font-semibold">
-          {{ DefaultBuild.Score?.toFixed(2) ?? 0 }}
+          {{ Score?.toFixed(2) ?? 0 }}
         </span>
         <USeparator color="neutral" orientation="vertical" class="h-4 mx-2" />
         <span :class="GetCharacterScoreNoteColor" class="inline-block font-semibold">
-          {{ DefaultBuild.Note || ScoreGrade.F }}
+          {{ Note || ScoreGrade.F }}
         </span>
       </div>
     </div>

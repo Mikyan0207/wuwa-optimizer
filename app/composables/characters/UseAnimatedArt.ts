@@ -2,7 +2,6 @@ import type Character from '~/Core/Interfaces/Character'
 import { Loader } from '@pixi/loaders'
 import { Spine } from 'pixi-spine'
 import * as PIXI from 'pixi.js'
-import { useCharacter } from '~/composables/characters/UseCharacter'
 import { GetCharacterAnimatedArt, HasAnimatedArt } from '~/Core/Utils/CharacterUtils'
 
 export function useAnimatedArt(character: Character, canvasRef: Ref<HTMLCanvasElement | undefined>) {

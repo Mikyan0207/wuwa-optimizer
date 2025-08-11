@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { StatType } from '~/Core/Enums/StatType'
 import type Echo from '~/Core/Interfaces/Echo'
 
 interface EchoCardProps {
@@ -6,6 +7,7 @@ interface EchoCardProps {
   equipedSlot: number
   showScore?: boolean
   showMenu?: boolean
+  weights?: Record<StatType, number>
 }
 
 withDefaults(defineProps<EchoCardProps>(), {
@@ -24,7 +26,7 @@ withDefaults(defineProps<EchoCardProps>(), {
     <MEchoCardDropdown v-if="showMenu" :echo-slot="equipedSlot" />
     <div class="w-full flex flex-col items-center gap-2">
       <MEchoCardHeader :echo="echo" />
-      <MEchoStats :echo="echo" class="mt-4" />
+      <MEchoStats :echo="echo" :weights="weights" class="mt-4" />
       <USeparator v-if="showScore" class="w-full" />
       <MEchoScore :show="showScore" :score="echo.Score" :note="echo.Note" class="px-2" />
     </div>

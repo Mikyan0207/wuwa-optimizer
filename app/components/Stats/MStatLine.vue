@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type Statistic from '~/Core/Interfaces/Statistic'
-import { useCharacter } from '~/composables/characters/UseCharacter'
 import { StatType } from '~/Core/Enums/StatType'
 import { STAT_ICONS } from '~/Core/Statistics'
 
@@ -21,10 +20,9 @@ const props = withDefaults(defineProps<StatLineProps>(), {
 })
 
 const { t } = useI18n()
-const { StatsWeights } = useCharacter()
 
 const EffectiveWeights = computed(() =>
-  props.weights || StatsWeights.value,
+  props.weights,
 )
 
 const Name = computed(() => {

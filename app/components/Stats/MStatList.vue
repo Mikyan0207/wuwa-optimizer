@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { StatType } from '~/Core/Enums/StatType'
 import type Statistic from '~/Core/Interfaces/Statistic'
-import { useCharacter } from '~/composables/characters/UseCharacter'
 
 interface StatDisplayProps {
   stats: Statistic[]
@@ -17,10 +16,8 @@ const props = withDefaults(defineProps<StatDisplayProps>(), {
   showWantedHighlight: false,
 })
 
-const { StatsWeights } = useCharacter()
-
 const EffectiveWeights = computed(() =>
-  props.weights || StatsWeights.value,
+  props.weights,
 )
 </script>
 

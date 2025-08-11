@@ -44,6 +44,7 @@ const Stats = ref<Statistic[]>(await StatsCalculator.CalculateTotalStats(Current
     <MStatList
       :stats="Stats"
       :stats-count="Stats.length"
+      :weights="CurrentCharacter.StatsWeights"
       :show-roll-value="true"
       :show-wanted-highlight="true"
     />

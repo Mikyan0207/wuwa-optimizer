@@ -1,4 +1,4 @@
-import type Character from '~/Core/Interfaces/Character'
+import type { BaseCharacter } from '~/Core/Interfaces/Character'
 import Tesseract from 'tesseract.js'
 import { TemplateCharacters } from '~/Core/Characters'
 import { CHARACTER_NAME_REGION } from '~/Core/Scanner/Regions'
@@ -8,22 +8,30 @@ export function useCharacterScanner() {
   let NameWorker: Tesseract.Worker | undefined
 
   const BaseContext = ref<CanvasRenderingContext2D | null>(null)
-  const CharacterNamesCache = new Map<Character, string>()
+  const CharacterNamesCache = new Map<BaseCharacter, string>()
+
+  const CharactersStore = useCharactersStore()
+
+  const Characters = ref<BaseCharacter[]>([])
 
   async function LoadAsync() {
     NameWorker = await Tesseract.createWorker('eng', 1)
 
-    for (const character of TemplateCharacters) {
+    const characters = await CharactersStore.GetAll()
+
+    for (const character of characters) {
       const name = character.Icon.split('_')[0]?.toLowerCase() || ''
       CharacterNamesCache.set(character, name)
     }
+
+    Characters.value = characters
   }
 
   function SetContext(context: CanvasRenderingContext2D | null) {
     BaseContext.value = context
   }
 
-  async function ScanCharacter(): Promise<Character | undefined> {
+  async function ScanCharacter(): Promise<BaseCharacter | undefined> {
     if (BaseContext.value === null) {
       return undefined
     }
@@ -31,10 +39,10 @@ export function useCharacterScanner() {
     return GetCharacterAsync()
   }
 
-  async function GetCharacterAsync(): Promise<Character | undefined> {
+  async function GetCharacterAsync(): Promise<BaseCharacter | undefined> {
     const characterNames = await GetCharacterNamesAsync()
 
-    return Promise.all(TemplateCharacters.map(async (character) => {
+    return Promise.all(Characters.value.map(async (character) => {
       const name = CharacterNamesCache.get(character)!
       const bestDistance = Math.min(...characterNames.map((scannedName) => {
         const cleanName = scannedName.startsWith('the')

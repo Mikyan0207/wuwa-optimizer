@@ -170,6 +170,7 @@ function OnTakeScreenShotClicked() {
                   :delay="200 + (idx * 25)"
                   :equiped-slot="echo.EquipedSlot || idx"
                   :echo="echo"
+                  :weights="CurrentCharacter.StatsWeights"
                 />
               </template>
             </VueDraggable>

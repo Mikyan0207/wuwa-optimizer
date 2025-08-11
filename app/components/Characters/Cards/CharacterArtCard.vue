@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { CharacterV2 } from '~/Core/Interfaces/Character'
-import { GetSplashArt } from '~/Core/Utils/CharacterUtils'
+import { GetSequenceIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
 
 const { character: CurrentCharacter } = defineProps<{
   character: CharacterV2
@@ -41,7 +41,7 @@ const { character: CurrentCharacter } = defineProps<{
             class="absolute inset-0 rounded-full bg-gold-400/20 transition-all duration-300"
           />
           <NuxtImg
-            :src="`/images/characters/${CurrentCharacter.Id}/${s.Icon}`"
+            :src="GetSequenceIcon(CurrentCharacter, s)"
             class="w-full h-full object-cover transition-all duration-200"
             :class="{ 'opacity-30': s.Unlocked === false }"
           />

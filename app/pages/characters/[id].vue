@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { TabItem } from '@nuxt/ui'
+
 definePageMeta({
   layout: 'character-details',
 })
@@ -66,39 +68,35 @@ const TabItems = [{
   label: 'Scorer',
   icon: 'i-solar-calculator-minimalistic-broken',
   disabled: false,
+  slot: 'scorer' as const,
 }, {
   label: 'Builds',
   icon: 'i-solar-settings-minimalistic-broken',
   disabled: false,
-}]
+  slot: 'builds' as const,
+}] as TabItem[]
 </script>
 
 <template>
-  <div v-if="IsCharacterAvailable">
-    <Suspense>
-      <template #default>
-        <div class="mx-auto mb-4 xl:max-w-[100rem] px-8 text-sm text-gray-300">
-          <UTabs
-            v-model="SelectedTab"
-            :items="TabItems"
-            color="neutral"
-            class="max-w-7xl xl:max-w-[100rem] mx-auto"
-            :default-value="0"
-            :ui="{
-              list: 'rounded-none border-neutral-600',
-              indicator: 'rounded-none bg-neutral-300',
-            }"
-          >
-            <template #content>
-              <CharacterScorerTab v-if="SelectedTab === '0'" />
-              <CharacterBuildsTab v-if="SelectedTab === '1'" />
-            </template>
-          </UTabs>
-        </div>
+  <div v-if="IsCharacterAvailable" class="mx-auto mb-4 xl:max-w-[100rem] px-8 text-sm text-gray-300">
+    <UTabs
+      v-model="SelectedTab"
+      :items="TabItems"
+      :unmount-on-hide="false"
+      color="neutral"
+      class="max-w-7xl xl:max-w-[100rem] mx-auto"
+      :default-value="0"
+      :ui="{
+        list: 'rounded-none border-neutral-600',
+        indicator: 'rounded-none bg-neutral-300',
+      }"
+    >
+      <template #scorer>
+        <CharacterScorerTab />
       </template>
-      <template #fallback>
-        <div />
+      <template #builds>
+        <CharacterBuildsTab />
       </template>
-    </Suspense>
+    </UTabs>
   </div>
 </template>

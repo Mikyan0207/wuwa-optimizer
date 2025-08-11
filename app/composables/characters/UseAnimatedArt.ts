@@ -1,10 +1,10 @@
-import type { CharacterV2 } from '~/Core/Interfaces/Character'
+import type Character from '~/Core/Interfaces/Character'
 import { Loader } from '@pixi/loaders'
 import { Spine } from 'pixi-spine'
 import * as PIXI from 'pixi.js'
 import { GetCharacterAnimatedArt, HasAnimatedArt } from '~/Core/Utils/CharacterUtils'
 
-export function useAnimatedArt(character: Ref<CharacterV2 | undefined>, canvasRef: Ref<HTMLCanvasElement | undefined>) {
+export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef: Ref<HTMLCanvasElement | undefined>) {
   const CurrentCharacter = computed(() => toValue(character))
   const AnimatedArt = computed(() => GetAnimatedArt())
 

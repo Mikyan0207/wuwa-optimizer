@@ -1,6 +1,5 @@
 import type Build from '~/Core/Interfaces/Build'
 import type Character from '~/Core/Interfaces/Character'
-import type { CharacterV2 } from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import type Skill from '~/Core/Interfaces/Skill'
 import type Statistic from '~/Core/Interfaces/Statistic'
@@ -11,7 +10,7 @@ import { Sonatas } from '~/Core/Sonatas'
 export function useStatsCalculator() {
   const WeaponsStore = useWeaponsStore()
 
-  function CalculateTotalStats(character: CharacterV2, build: Build): Statistic[] {
+  function CalculateTotalStats(character: Character, build: Build): Statistic[] {
     const weapon = WeaponsStore.GetById(build.WeaponId ?? '')
     const echoes = build.Echoes?.filter(echo => echo.Id !== undefined) || []
 

@@ -24,7 +24,6 @@ const emit = defineEmits<{
 }>()
 
 const WeaponsStore = useWeaponsStore()
-const CharactersStore = useCharactersStore()
 const { CurrentCharacter } = useCharacter()
 const { t } = useI18n()
 
@@ -32,10 +31,6 @@ const weapon = computed(() => {
   if (!props.build.WeaponId)
     return null
   return WeaponsStore.GetById(props.build.WeaponId)
-})
-
-const Character = computed(() => {
-  return CharactersStore.GetById(props.build.CharacterId)
 })
 
 const ActiveSets = computed(() => {
@@ -123,6 +118,7 @@ function HandleCharacterClick() {
 
 <template>
   <UCard
+    v-if="CurrentCharacter"
     v-motion-pop
     class="group transition-all duration-200 h-full flex flex-col"
     :class="[
@@ -144,12 +140,13 @@ function HandleCharacterClick() {
             @click="HandleCharacterClick"
           >
             <NuxtImg
-              :src="GetCharacterIcon(Character)"
-              :alt="t(`${Character.Id}_name`)"
+              v-if="CurrentCharacter"
+              :src="GetCharacterIcon(CurrentCharacter)"
+              :alt="t(`${CurrentCharacter.Id}_name`)"
               class="w-5 h-5 object-cover rounded-sm"
             />
             <span class="text-xs text-blue-400 font-medium">
-              {{ t(`${Character.Id}_name`) }}
+              {{ t(`${CurrentCharacter.Id}_name`) }}
             </span>
             <UIcon name="i-solar-arrow-right-broken" class="w-3 h-3 text-blue-400" />
           </div>
@@ -221,16 +218,7 @@ function HandleCharacterClick() {
                 size="sm"
                 class="shrink-0"
               >
-                {{ isOtherCharacter ? `Equipped by ${t(`${Character.Id}_name`)}` : 'Active' }}
-              </UBadge>
-              <UBadge
-                v-if="isOtherCharacter"
-                color="primary"
-                variant="subtle"
-                size="sm"
-                class="shrink-0"
-              >
-                Other Character
+                {{ 'Active' }}
               </UBadge>
             </div>
 

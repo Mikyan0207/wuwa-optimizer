@@ -6,23 +6,7 @@ import type Sequence from './Sequence'
 import type Skill from './Skill'
 import type Statistic from './Statistic'
 
-export default interface Character {
-  Id: number
-  Icon: string
-  SplashArt: string
-  AnimatedArt?: AnimatedArt
-  Rarity: Rarity
-  ReleaseState?: ReleaseState
-  Type: CharacterType
-  WeaponType: WeaponType
-  Level: number
-  Stats: Statistic[]
-  Sequences: Sequence[]
-  Skills: Skill[]
-  StatsWeights: Record<string, number>
-}
-
-export interface CharacterV2 extends BaseCharacter {
+export default interface Character extends BaseCharacter {
   Level: number
   Stats: Statistic[]
   Sequences: Sequence[]

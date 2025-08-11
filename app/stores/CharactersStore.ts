@@ -1,10 +1,11 @@
-import type { BaseCharacter, CharacterV2, PartialCharacter } from '~/Core/Interfaces/Character'
+import type { BaseCharacter, PartialCharacter } from '~/Core/Interfaces/Character'
+import type Character from '~/Core/Interfaces/Character'
 import { defineStore } from 'pinia'
 
 export const useCharactersStore = defineStore('CharactersStore', () => {
   const Characters = useLocalStorage<Map<number, PartialCharacter>>('Characters', new Map())
   const BaseCharacters = ref<BaseCharacter[]>([])
-  const CachedCharacters = ref<Map<number, CharacterV2>>(new Map())
+  const CachedCharacters = ref<Map<number, Character>>(new Map())
 
   async function GetBaseById(id: number): Promise<BaseCharacter> {
     const character = BaseCharacters.value.find(c => c.Id === id)
@@ -22,7 +23,7 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     return data
   }
 
-  async function GetById(gameId: number): Promise<CharacterV2> {
+  async function GetById(gameId: number): Promise<Character> {
     if (CachedCharacters.value.has(gameId)) {
       return CachedCharacters.value.get(gameId)!
     }
@@ -65,7 +66,7 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     }
   }
 
-  function Merge(partial: PartialCharacter | undefined, base: BaseCharacter): CharacterV2 {
+  function Merge(partial: PartialCharacter | undefined, base: BaseCharacter): Character {
     return {
       ...base,
       Level: partial?.Level ?? 90,

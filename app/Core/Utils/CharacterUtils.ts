@@ -1,11 +1,11 @@
 import type Character from '../Interfaces/Character'
-import type { AnimatedArt, BaseCharacter, CharacterV2 } from '../Interfaces/Character'
+import type { AnimatedArt } from '../Interfaces/Character'
 import type Sequence from '../Interfaces/Sequence'
 import { CharacterType } from '../Enums/CharacterType'
 import { Rarity } from '../Enums/Rarity'
 import { WeaponType } from '../Enums/WeaponType'
 
-export function GetCharacterIcon(character: Character | CharacterV2) {
+export function GetCharacterIcon(character: Character) {
   return `/characters/${character.Id}/images/${character.Icon}`
 }
 
@@ -74,7 +74,7 @@ export function GetSplashArt(character: Character) {
   return `/characters/${character.Id}/images/${character.SplashArt.replace('.webp', '')}.webp`
 }
 
-export function GetCharacterBackground(character: Character | CharacterV2) {
+export function GetCharacterBackground(character: Character) {
   return `/characters/${character.Id}/images/Background.webp`
 }
 

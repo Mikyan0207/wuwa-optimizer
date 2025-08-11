@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BaseCharacter, CharacterV2 } from '~/Core/Interfaces/Character'
+import type { BaseCharacter } from '~/Core/Interfaces/Character'
 import type Character from '~/Core/Interfaces/Character'
 import { CharacterType } from '~/Core/Enums/CharacterType'
 import { Rarity } from '~/Core/Enums/Rarity'
@@ -85,7 +85,7 @@ function OnCharacterClicked(characterId: number | undefined) {
   navigateTo(`/characters/${characterId}`)
 }
 
-function IsCharacterAvailable(character: BaseCharacter | Character | CharacterV2) {
+function IsCharacterAvailable(character: BaseCharacter) {
   return character.ReleaseState !== ReleaseState.UPCOMING
     && character.ReleaseState !== ReleaseState.UNKNOWN
 }
@@ -104,7 +104,7 @@ function IsCharacterAvailable(character: BaseCharacter | Character | CharacterV2
         :key="c.Id"
         v-motion-pop
         :delay="100 + (idx * 20)"
-        :character="c"
+        :character="c as Character"
         :class="{ 'cursor-pointer': IsCharacterAvailable(c) }"
         @click.prevent="IsCharacterAvailable(c) ? OnCharacterClicked(c.Id) : null"
       />

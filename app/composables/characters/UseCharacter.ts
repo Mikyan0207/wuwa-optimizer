@@ -1,4 +1,3 @@
-import type { CharacterV2 } from '~/Core/Interfaces/Character'
 import type Character from '~/Core/Interfaces/Character'
 import { GetCharacterAnimatedArt, HasAnimatedArt } from '~/Core/Utils/CharacterUtils'
 
@@ -7,7 +6,7 @@ export function useCharacter(character?: Character | undefined) {
   const CharactersStore = useCharactersStore()
 
   const CharacterId = computed(() => character?.Id ?? Number.parseInt((Route.params as { id: string }).id))
-  const CurrentCharacter = ref<CharacterV2 | undefined>(undefined)
+  const CurrentCharacter = ref<Character | undefined>(undefined)
 
   async function GetCurrentCharacterAsync() {
     if (CharacterId.value) {

@@ -5,7 +5,7 @@ import { CharacterType } from '../Enums/CharacterType'
 import { Rarity } from '../Enums/Rarity'
 import { WeaponType } from '../Enums/WeaponType'
 
-export function GetCharacterIcon(character: Character) {
+export function GetCharacterIcon(character: Character | CharacterV2) {
   return `/characters/${character.Id}/images/${character.Icon}`
 }
 

@@ -9,7 +9,7 @@ export function useGameIcon(Icon: Character | Weapon | Echo) {
   const { t } = useI18n()
 
   const IconType = computed(() => {
-    if ('Sequences' in Icon)
+    if ('SplashArt' in Icon)
       return 'character'
     if ('Type' in Icon)
       return 'weapon'

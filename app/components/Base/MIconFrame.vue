@@ -95,12 +95,12 @@ const DefaultHighlight = computed(() => props.highlight || 'bg-neutral-600')
       </div>
 
       <!-- Type Icon Slot (Character Type, Weapon Type, etc.) -->
-      <div class="absolute right-1 top-1 z-2">
+      <div class="absolute right-0.5 top-0.5 z-2">
         <slot name="type-icon" />
       </div>
 
       <!-- Sonata Icon Slot (Echoes) -->
-      <div class="absolute right-1 top-1 z-2">
+      <div class="absolute right-0.5 top-0.5 z-2">
         <slot name="sonata-icon" />
       </div>
 

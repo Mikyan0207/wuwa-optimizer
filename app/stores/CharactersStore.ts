@@ -39,6 +39,12 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     return Merge(Characters.value.get(gameId), base)
   }
 
+  async function GetAll(): Promise<BaseCharacter[]> {
+    const data = await $fetch<number[]>('/characters/characters.json')
+
+    return Promise.all(data.map(id => GetBaseById(id)))
+  }
+
   async function UpdateById(characterId: number, data: Partial<PartialCharacter>) {
     const character = await GetById(characterId)
 
@@ -63,6 +69,7 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
 
   return {
     Characters,
+    GetAll,
     GetById,
     UpdateById,
   }

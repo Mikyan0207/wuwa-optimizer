@@ -12,6 +12,10 @@ export function useCharacter(character?: Character | undefined) {
     set: val => CharactersStore.UpdateById(CharacterId.value, val),
   })
 
+  onMounted(() => {
+    
+  })
+
   const StatsWeights = computed(() =>
     CurrentCharacter.value?.StatsWeights || {},
   )

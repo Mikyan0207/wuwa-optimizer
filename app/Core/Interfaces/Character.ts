@@ -22,6 +22,38 @@ export default interface Character {
   StatsWeights: Record<string, number>
 }
 
+export interface CharacterV2 extends BaseCharacter {
+  Level: number
+  Stats: Statistic[]
+  Sequences: Sequence[]
+  Skills: Skill[]
+  StatsWeights: Record<string, number>
+}
+
+export interface BaseCharacter {
+  Id: number
+  Icon: string
+  SplashArt: string
+  AnimatedArt?: AnimatedArt
+  Rarity: Rarity
+  ReleaseState?: ReleaseState
+  Type: CharacterType
+  WeaponType: WeaponType
+  BaseStats: Statistic[]
+  BaseSequences: Sequence[]
+  BaseSkills: Skill[]
+  BaseStatsWeights: Record<string, number>
+}
+
+export interface PartialCharacter {
+  Id: number
+  Level: number
+  Stats: Statistic[]
+  Sequences: Sequence[]
+  Skills: Skill[]
+  StatsWeights: Record<string, number>
+}
+
 export interface AnimatedArt {
   Skeleton: string
   Atlas: string

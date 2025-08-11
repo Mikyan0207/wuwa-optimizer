@@ -1,0 +1,13 @@
+{
+  "Id": 9901,
+  "Rarity": "FIVE_STARS",
+  "Icon": "Augusta_Icon.webp",
+  "SplashArt": "Augusta_Portrait.webp",
+  "WeaponType": "BROADBLADE",
+  "Type": "ELECTRO",
+  "Level": 90,
+  "BaseStats": [],
+  "BaseSequences": [],
+  "BaseSkills": [],
+  "BaseStatsWeights": {}
+}

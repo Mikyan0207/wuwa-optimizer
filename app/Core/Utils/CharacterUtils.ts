@@ -1,12 +1,12 @@
 import type Character from '../Interfaces/Character'
-import type { AnimatedArt } from '../Interfaces/Character'
+import type { AnimatedArt, BaseCharacter, CharacterV2 } from '../Interfaces/Character'
 import type Sequence from '../Interfaces/Sequence'
 import { CharacterType } from '../Enums/CharacterType'
 import { Rarity } from '../Enums/Rarity'
 import { WeaponType } from '../Enums/WeaponType'
 
 export function GetCharacterIcon(character: Character) {
-  return `/images/characters/${character.Id}/${character.Icon}`
+  return `/characters/${character.Id}/images/${character.Icon}`
 }
 
 export function GetRarityIcon(character: Character) {
@@ -46,7 +46,7 @@ export function GetSequenceLevel(character: Character) {
 }
 
 export function GetSequenceIcon(character: Character, sequence: Sequence) {
-  return `/images/characters/${character.Id}/${sequence.Icon}`
+  return `/characters/${character.Id}/images/${sequence.Icon}`
 }
 
 export function GetCharacterTypeIcon(character: Character) {
@@ -71,17 +71,17 @@ export function GetCharacterTypeIcon(character: Character) {
 }
 
 export function GetSplashArt(character: Character) {
-  return `/images/characters/${character.Id}/${character.SplashArt.replace('.webp', '')}.webp`
+  return `/characters/${character.Id}/images/${character.SplashArt.replace('.webp', '')}.webp`
 }
 
-export function GetCharacterBackground(character: Character) {
-  return `/images/characters/${character.Id}/Background.webp`
+export function GetCharacterBackground(character: Character | CharacterV2) {
+  return `/characters/${character.Id}/images/Background.webp`
 }
 
 export function GetCharacterAnimatedArt(character: Character): AnimatedArt {
   return {
-    Skeleton: `/images/characters/${character.Id}/${character.AnimatedArt?.Skeleton}`,
-    Atlas: `/images/characters/${character.Id}/${character.AnimatedArt?.Atlas}`,
+    Skeleton: `/characters/${character.Id}/animated/${character.AnimatedArt?.Skeleton}`,
+    Atlas: `/characters/${character.Id}/animated/${character.AnimatedArt?.Atlas}`,
     OffsetX: character.AnimatedArt?.OffsetX ?? 0,
     OffsetY: character.AnimatedArt?.OffsetY ?? 0,
     Scale: character.AnimatedArt?.Scale ?? 1.5,

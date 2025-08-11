@@ -1,36 +1,39 @@
 <script setup lang="ts">
+import type Build from '~/Core/Interfaces/Build'
+import type { BaseCharacter, CharacterV2, PartialCharacter } from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import VueDraggable from 'vuedraggable'
 import { useBuild } from '~/composables/builds/UseBuild'
-import { useCharacter } from '~/composables/characters/UseCharacter'
 import { useScreenshot } from '~/composables/core/UseScreenshot'
+import { Empty_Echo } from '~/Core/Echoes'
 import { GetCharacterBackground } from '~/Core/Utils/CharacterUtils'
 import { useBuildsStore } from '~/stores/BuildsStore'
+
+interface Props {
+  character: CharacterV2
+}
+
+const { character: CurrentCharacter } = defineProps<Props>()
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 const ShowScreenShotBackground = ref<boolean>(false)
 const ForceStaticArt = ref<boolean>(false)
 
-const { CurrentCharacter } = useCharacter()
-const { CurrentWeapon, CurrentEchoes } = useBuild()
 const BuildsStore = useBuildsStore()
 const SettingsStore = useSettingsStore()
 const Toast = useToast()
 const { TakeScreenShotAsync } = useScreenshot(CharacterInfoRef)
 
-if (CurrentCharacter.value === undefined || CurrentCharacter.value === null) {
-  await navigateTo('/characters')
-}
+const DefaultBuild = computed<Build | undefined>(() => BuildsStore.GetDefaultBuild(CurrentCharacter.Id))
 
 async function SaveCurrentBuild() {
-  if (!CurrentCharacter.value)
+  if (!CurrentCharacter) {
     return
+  }
 
   const build = BuildsStore.CreateBuild(
     'Current Build',
-    CurrentCharacter.value.Id,
-    CurrentWeapon.value?.Id,
-    CurrentEchoes.value,
+    CurrentCharacter.Id,
   )
 
   if (build) {
@@ -50,30 +53,37 @@ async function SaveCurrentBuild() {
 }
 
 const DraggableEchoes = computed({
-  get: () => CurrentEchoes || [],
-  set: (newOrder: any[]) => {
-    if (CurrentCharacter.value) {
-      const defaultBuild = BuildsStore.GetDefaultBuild(CurrentCharacter.value.Id)
+  get: () => {
+    const base = Array.from({ length: 5 }, () => ({ ...Empty_Echo as Echo }))
 
-      if (defaultBuild) {
-        const updatedEchoes = [...(defaultBuild.Echoes || [])]
-
-        newOrder.forEach((echo, index) => {
-          if (echo.GameId !== -1) {
-            const echoDataIndex = updatedEchoes.findIndex(e => e.GameId === echo.GameId)
-            if (echoDataIndex >= 0) {
-              updatedEchoes[echoDataIndex] = {
-                ...updatedEchoes[echoDataIndex],
-                EquipedSlot: index,
-              } as Echo
-            }
-          }
-        })
-
-        BuildsStore.UpdateBuild(defaultBuild.Id, {
-          Echoes: updatedEchoes,
-        })
+    DefaultBuild.value?.Echoes.forEach((echo: Echo, idx: number) => {
+      const slot = echo.EquipedSlot ?? idx
+      if (slot >= 0 && slot < 5) {
+        base[slot] = { ...echo }
       }
+    })
+
+    return base
+  },
+  set: (newOrder: any[]) => {
+    if (CurrentCharacter && DefaultBuild.value) {
+      const updatedEchoes = [...(DefaultBuild.value.Echoes || [])]
+
+      newOrder.forEach((echo, index) => {
+        if (echo.GameId !== -1) {
+          const echoDataIndex = updatedEchoes.findIndex(e => e.GameId === echo.GameId)
+          if (echoDataIndex >= 0) {
+            updatedEchoes[echoDataIndex] = {
+              ...updatedEchoes[echoDataIndex],
+              EquipedSlot: index,
+            } as Echo
+          }
+        }
+      })
+
+      BuildsStore.UpdateBuild(DefaultBuild.value.Id, {
+        Echoes: updatedEchoes,
+      })
     }
   },
 })
@@ -91,7 +101,7 @@ function OnTakeScreenShotClicked() {
 
 <template>
   <div class="mb-14 xl:mb-4">
-    <div v-if="CurrentCharacter" class="mt-2 relative">
+    <div v-if="CurrentCharacter && DefaultBuild" class="mt-2 relative">
       <div class="mx-auto my-2">
         <div ref="CharacterInfoRef" class="relative p-0.25">
           <div v-if="ShowScreenShotBackground" class="absolute inset-0 blur-sm">
@@ -108,7 +118,7 @@ function OnTakeScreenShotClicked() {
               class="md:col-span-1 xl:col-span-2"
             />
             <CharacterArtCard
-              v-else-if="CurrentCharacter"
+              v-else
               :character="CurrentCharacter"
               class="md:col-span-1 xl:col-span-2"
             />
@@ -120,6 +130,8 @@ function OnTakeScreenShotClicked() {
                 v-motion-pop
                 class="col-span-1"
                 :delay="100"
+                :character="CurrentCharacter"
+                :build="DefaultBuild"
               />
 
               <!-- Weapon & Skills Container -->
@@ -127,6 +139,7 @@ function OnTakeScreenShotClicked() {
                 <!-- Weapon Card -->
                 <CharacterWeaponCard
                   class="row-span-1"
+                  :build="DefaultBuild"
                 />
 
                 <!-- Skills Card -->
@@ -134,6 +147,7 @@ function OnTakeScreenShotClicked() {
                   v-motion-slide-right
                   :delay="200"
                   class="row-span-3"
+                  :character="CurrentCharacter"
                 />
               </div>
             </div>
@@ -142,8 +156,7 @@ function OnTakeScreenShotClicked() {
           <!-- Echoes Grid -->
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1 mt-1">
             <VueDraggable
-              v-if="CurrentCharacter"
-              v-model="DraggableEchoes.value"
+              v-model="DraggableEchoes"
               :animation="200"
               ghost-class="opacity-65"
               chosen-class="scale-102"
@@ -172,7 +185,7 @@ function OnTakeScreenShotClicked() {
           <CharacterSetsCard
             v-motion-slide-bottom
             :delay="300"
-            :echoes="CurrentEchoes"
+            :echoes="DefaultBuild.Echoes || []"
           />
         </div>
       </div>

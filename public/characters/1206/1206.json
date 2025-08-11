@@ -1,0 +1,211 @@
+{
+  "Id": 1206,
+  "Rarity": "FIVE_STARS",
+  "Icon": "Brant_Icon.webp",
+  "SplashArt": "Brant_Portrait.webp",
+  "AnimatedArt": {
+    "Skeleton": "lupa.skel",
+    "Atlas": "lupa.atlas"
+  },
+  "WeaponType": "SWORD",
+  "Type": "FUSION",
+  "Level": 90,
+  "BaseStats": [
+    {
+      "Value": 11675,
+      "Type": "HP"
+    },
+    {
+      "Value": 1307.7754,
+      "Type": "DEF"
+    },
+    {
+      "Value": 375,
+      "Type": "ATTACK"
+    },
+    {
+      "Value": 5,
+      "Type": "CRIT_RATE"
+    },
+    {
+      "Value": 150,
+      "Type": "CRIT_DMG"
+    },
+    {
+      "Value": 100,
+      "Type": "ENERGY_REGENERATION"
+    },
+    {
+      "Value": 0,
+      "Type": "HEALING_BONUS"
+    },
+    {
+      "Value": 0,
+      "Type": "BASIC_ATTACK_DMG_AMPLIFICATION"
+    },
+    {
+      "Value": 0,
+      "Type": "HEAVY_ATTACK_DMG_AMPLIFICATION"
+    },
+    {
+      "Value": 0,
+      "Type": "RESONANCE_SKILL_DMG_AMPLIFICATION"
+    },
+    {
+      "Value": 0,
+      "Type": "RESONANCE_LIBERATION_DMG_AMPLIFICATION"
+    },
+    {
+      "Value": 0,
+      "Type": "FUSION_DMG_BONUS"
+    }
+  ],
+  "BaseSequences": [
+    {
+      "Name": "",
+      "Icon": "Brant_Sequence_Node_01.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Brant_Sequence_Node_02.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Brant_Sequence_Node_03.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Brant_Sequence_Node_04.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Brant_Sequence_Node_05.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Brant_Sequence_Node_06.webp",
+      "Unlocked": false
+    }
+  ],
+  "BaseSkills": [
+    {
+      "Id": "Basic_Attack",
+      "Level": 10,
+      "Icon": "Skill_Sword.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Basic_Attack_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Crit_Rate.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Basic_Attack_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Crit_Rate.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Forte_Circuit",
+      "Level": 10,
+      "Icon": "Brant_Forte_Circuit.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Inherent_Skill_01",
+      "Level": 10,
+      "Icon": "Brant_Inherent_Skill_01.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Inherent_Skill_02",
+      "Level": 10,
+      "Icon": "Brant_Inherent_Skill_02.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Intro_Skill",
+      "Level": 10,
+      "Icon": "Brant_Intro_Skill.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Intro_Skill_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Crit_Rate.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Intro_Skill_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Crit_Rate.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Outro_Skill",
+      "Level": 10,
+      "Icon": "Brant_Outro_Skill.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Liberation",
+      "Level": 10,
+      "Icon": "Brant_Resonance_Liberation.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Liberation_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Liberation_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Skill",
+      "Level": 10,
+      "Icon": "Brant_Resonance_Skill.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Skill_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Skill_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true
+    }
+  ],
+  "BaseStatsWeights": {
+    "NONE": 0,
+    "CRIT_DMG": 0.4,
+    "CRIT_RATE": 0.4,
+    "ATTACK": 0,
+    "ATTACK_PERCENTAGE": 0.5,
+    "HP": 0.7,
+    "HP_PERCENTAGE": 0.9,
+    "HEALING_BONUS": 0.8,
+    "DEF": 0.4,
+    "DEF_PERCENTAGE": 0.6,
+    "ENERGY_REGENERATION": 0.9,
+    "BASIC_ATTACK_DMG_AMPLIFICATION": 0.2,
+    "HEAVY_ATTACK_DMG_AMPLIFICATION": 0.2,
+    "RESONANCE_LIBERATION_DMG_AMPLIFICATION": 0.4,
+    "RESONANCE_SKILL_DMG_AMPLIFICATION": 0.4,
+    "FUSION_DMG_BONUS": 0.5
+  }
+}

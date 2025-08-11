@@ -81,6 +81,7 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
 
   function UpdateBuild(buildId: string, data: Partial<Build>) {
     const index = Builds.value.findIndex(build => build.Id === buildId)
+
     if (index === -1)
       return
 

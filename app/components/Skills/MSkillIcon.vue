@@ -40,7 +40,7 @@ const IconPath = computed(() => {
     return ''
 
   if (props.character && !props.skill.Id.startsWith('Basic')) {
-    return `/images/characters/${props.character.Id}/${props.skill.Icon}`
+    return `/characters/${props.character.Id}/images/${props.skill.Icon}`
   }
 
   return `/images/icons/${props.skill.Icon}`

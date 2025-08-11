@@ -1,0 +1,214 @@
+{
+  "Id": 1304,
+  "Rarity": "FIVE_STARS",
+  "Icon": "Jinhsi_Icon.webp",
+  "SplashArt": "Jinhsi_Portrait.webp",
+  "AnimatedArt": {
+    "Skeleton": "katixiya.skel",
+    "Atlas": "katixiya.atlas",
+    "OffsetX": 0,
+    "OffsetY": 0,
+    "Scale": 2.5
+  },
+  "WeaponType": "BROADBLADE",
+  "Type": "SPECTRO",
+  "Level": 90,
+  "BaseStats": [
+    {
+      "Value": 10825,
+      "Type": "HP"
+    },
+    {
+      "Value": 1258.8866,
+      "Type": "DEF"
+    },
+    {
+      "Value": 412.5,
+      "Type": "ATTACK"
+    },
+    {
+      "Value": 5,
+      "Type": "CRIT_RATE"
+    },
+    {
+      "Value": 150,
+      "Type": "CRIT_DMG"
+    },
+    {
+      "Value": 100,
+      "Type": "ENERGY_REGENERATION"
+    },
+    {
+      "Value": 0,
+      "Type": "HEALING_BONUS"
+    },
+    {
+      "Value": 0,
+      "Type": "BASIC_ATTACK_DMG_AMPLIFICATION"
+    },
+    {
+      "Value": 0,
+      "Type": "HEAVY_ATTACK_DMG_AMPLIFICATION"
+    },
+    {
+      "Value": 0,
+      "Type": "RESONANCE_SKILL_DMG_AMPLIFICATION"
+    },
+    {
+      "Value": 0,
+      "Type": "RESONANCE_LIBERATION_DMG_AMPLIFICATION"
+    },
+    {
+      "Value": 0,
+      "Type": "SPECTRO_DMG_BONUS"
+    }
+  ],
+  "BaseSequences": [
+    {
+      "Name": "",
+      "Icon": "Jinhsi_Sequence_Node_01.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Jinhsi_Sequence_Node_02.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Jinhsi_Sequence_Node_03.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Jinhsi_Sequence_Node_04.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Jinhsi_Sequence_Node_05.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Jinhsi_Sequence_Node_06.webp",
+      "Unlocked": false
+    }
+  ],
+  "BaseSkills": [
+    {
+      "Id": "Basic_Attack",
+      "Level": 10,
+      "Icon": "Skill_Broadblade.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Basic_Attack_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Crit_Rate.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Basic_Attack_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Crit_Rate.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Forte_Circuit",
+      "Level": 10,
+      "Icon": "Jinhsi_Forte_Circuit.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Inherent_Skill_01",
+      "Level": 10,
+      "Icon": "Jinhsi_Inherent_Skill_01.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Inherent_Skill_02",
+      "Level": 10,
+      "Icon": "Jinhsi_Inherent_Skill_02.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Intro_Skill",
+      "Level": 10,
+      "Icon": "Jinhsi_Intro_Skill.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Intro_Skill_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Crit_Rate.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Intro_Skill_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Crit_Rate.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Outro_Skill",
+      "Level": 10,
+      "Icon": "Jinhsi_Outro_Skill.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Liberation",
+      "Level": 10,
+      "Icon": "Jinhsi_Resonance_Liberation.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Liberation_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Liberation_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Skill",
+      "Level": 10,
+      "Icon": "Jinhsi_Resonance_Skill.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Skill_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Skill_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true
+    }
+  ],
+  "BaseStatsWeights": {
+    "NONE": 0,
+    "CRIT_DMG": 1,
+    "CRIT_RATE": 1,
+    "ATTACK": 0,
+    "ATTACK_PERCENTAGE": 0.8,
+    "HP": 0,
+    "HP_PERCENTAGE": 0,
+    "HEALING_BONUS": 0,
+    "DEF": 0,
+    "DEF_PERCENTAGE": 0,
+    "ENERGY_REGENERATION": 0.8,
+    "BASIC_ATTACK_DMG_AMPLIFICATION": 0.2,
+    "HEAVY_ATTACK_DMG_AMPLIFICATION": 0.3,
+    "RESONANCE_LIBERATION_DMG_AMPLIFICATION": 0.9,
+    "RESONANCE_SKILL_DMG_AMPLIFICATION": 0.6,
+    "SPECTRO_DMG_BONUS": 1
+  }
+}

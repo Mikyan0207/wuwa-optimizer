@@ -1,13 +1,17 @@
 <script setup lang="ts">
+import type { CharacterV2 } from '~/Core/Interfaces/Character'
 import { useAnimatedArt } from '~/composables/characters/UseAnimatedArt'
-import { useCharacter } from '~/composables/characters/UseCharacter'
-import { GetSplashArt } from '~/Core/Utils/CharacterUtils'
+import { GetSequenceIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
 
-const { CurrentCharacter, CanUnlockSequence, ToggleSequence } = useCharacter()
+interface Props {
+  character: CharacterV2
+}
+
+const { character: CurrentCharacter } = defineProps<Props>()
 
 const CanvasRef = ref<HTMLCanvasElement>()
 
-const { Initialize, LoadSpineModel, IsSpineLoaded } = useAnimatedArt(CurrentCharacter.value, CanvasRef)
+const { Initialize, LoadSpineModel, IsSpineLoaded } = useAnimatedArt(CurrentCharacter, CanvasRef)
 
 const ShowOverlay = ref(true)
 
@@ -42,10 +46,9 @@ onMounted(() => {
           :key="`sequence-${index}-${s.Unlocked}`"
           class="relative h-12 w-12 border rounded-full p-1 transition-all duration-200"
           :class="{
-            'border-neutral-600 bg-neutral-800 cursor-pointer hover:scale-110 hover:border-gold-300 hover:bg-gold-800': CanUnlockSequence(index),
-            'border-neutral-600 bg-neutral-800 cursor-not-allowed': !CanUnlockSequence(index),
+            'border-neutral-600 bg-neutral-800 cursor-pointer hover:scale-110 hover:border-gold-300 hover:bg-gold-800': s.Unlocked === false,
+            'border-neutral-600 bg-neutral-800 cursor-not-allowed': s.Unlocked === true,
           }"
-          @click="ToggleSequence(index)"
         >
           <div
             v-if="s.Unlocked === false"
@@ -56,7 +59,7 @@ onMounted(() => {
             class="absolute inset-0 rounded-full bg-gold-400/20 transition-all duration-300"
           />
           <NuxtImg
-            :src="`/images/characters/${CurrentCharacter.Id}/${s.Icon}`"
+            :src="GetSequenceIcon(CurrentCharacter, s)"
             class="w-full h-full object-cover transition-all duration-200"
             :class="{ 'opacity-30': s.Unlocked === false }"
           />

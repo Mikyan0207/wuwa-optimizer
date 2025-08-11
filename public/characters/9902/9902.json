@@ -1,0 +1,13 @@
+{
+  "Id": 9902,
+  "Rarity": "FIVE_STARS",
+  "Icon": "Iuno_Icon.webp",
+  "SplashArt": "Iuno_Portrait.webp",
+  "WeaponType": "GAUNTLETS",
+  "Type": "AERO",
+  "Level": 90,
+  "BaseStats": [],
+  "BaseSequences": [],
+  "BaseSkills": [],
+  "BaseStatsWeights": {}
+}

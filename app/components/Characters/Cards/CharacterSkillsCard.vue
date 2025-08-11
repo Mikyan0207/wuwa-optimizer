@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { useCharacter } from '~/composables/characters/UseCharacter'
+import type { CharacterV2 } from '~/Core/Interfaces/Character'
 
-const { CurrentCharacter } = useCharacter()
+interface Props {
+  character: CharacterV2
+}
+
+const { character: CurrentCharacter } = defineProps<Props>()
 </script>
 
 <template>

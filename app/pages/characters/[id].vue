@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { BaseCharacter, CharacterV2 } from '~/Core/Interfaces/Character'
+
 definePageMeta({
   layout: 'character-details',
 })
@@ -7,26 +9,26 @@ const SelectedTab = ref<string>('0')
 
 const Route = useRoute()
 const { t } = useI18n()
+const CharactersStore = useCharactersStore()
 
-const CharacterId = computed<string | undefined>(() => {
-  if (Route.params
-    && typeof (Route.params as Record<string, unknown>).id === 'string') {
-    return (Route.params as { id: string }).id
+const CurrentCharacter = ref<CharacterV2 | undefined>(undefined)
+
+await callOnce(async () => {
+  const id = Number.parseInt(Route.params.id as string)
+
+  if (!id || id >= 2000) {
+    navigateTo('/characters')
+    return
   }
 
-  return undefined
+  CurrentCharacter.value = await CharactersStore.GetById(id)
 })
 
 const CharacterName = computed(() => {
-  if (CharacterId.value) {
-    return t(`${CharacterId.value}_name`)
+  if (CurrentCharacter.value) {
+    return t(`${CurrentCharacter.value.Id}_name`)
   }
   return 'Character'
-})
-
-const IsCharacterAvailable = computed(() => {
-  return CharacterId.value
-    && Number(CharacterId.value) < 2000
 })
 
 useHead({
@@ -55,13 +57,6 @@ useHead({
   ],
 })
 
-onMounted(() => {
-  if (!CharacterId.value
-    || Number(CharacterId.value) >= 2000) {
-    navigateTo('/characters')
-  }
-})
-
 const TabItems = [{
   label: 'Scorer',
   icon: 'i-solar-calculator-minimalistic-broken',
@@ -74,7 +69,7 @@ const TabItems = [{
 </script>
 
 <template>
-  <div v-if="IsCharacterAvailable">
+  <div v-if="CurrentCharacter">
     <Suspense>
       <template #default>
         <div class="mx-auto mb-4 xl:max-w-[100rem] px-8 text-sm text-gray-300">
@@ -90,7 +85,10 @@ const TabItems = [{
             }"
           >
             <template #content>
-              <CharacterScorerTab v-if="SelectedTab === '0'" />
+              <CharacterScorerTab
+                v-if="SelectedTab === '0'"
+                :character="CurrentCharacter"
+              />
               <CharacterBuildsTab v-if="SelectedTab === '1'" />
             </template>
           </UTabs>

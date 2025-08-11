@@ -3,9 +3,10 @@ import { Loader } from '@pixi/loaders'
 import { Spine } from 'pixi-spine'
 import * as PIXI from 'pixi.js'
 import { useCharacter } from '~/composables/characters/UseCharacter'
+import { GetCharacterAnimatedArt, HasAnimatedArt } from '~/Core/Utils/CharacterUtils'
 
 export function useAnimatedArt(character: Character, canvasRef: Ref<HTMLCanvasElement | undefined>) {
-  const { GetAnimatedArt } = useCharacter(character)
+  const CurrentCharacter = computed(() => toValue(character))
   const AnimatedArt = computed(() => GetAnimatedArt())
 
   const CanvasRef = computed(() => toValue(canvasRef))
@@ -113,6 +114,17 @@ export function useAnimatedArt(character: Character, canvasRef: Ref<HTMLCanvasEl
     SpineAnimation.value.scale.set(scale)
     SpineAnimation.value.x = rect.width / 2 + offsetX
     SpineAnimation.value.y = rect.height / 2 + offsetY
+  }
+
+  function GetAnimatedArt() {
+    if (!CurrentCharacter.value)
+      return undefined
+
+    if (HasAnimatedArt(CurrentCharacter.value)) {
+      return GetCharacterAnimatedArt(CurrentCharacter.value)
+    }
+
+    return undefined
   }
 
   return {

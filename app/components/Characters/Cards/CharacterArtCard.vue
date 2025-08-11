@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { useCharacter } from '~/composables/characters/UseCharacter'
+import type { CharacterV2 } from '~/Core/Interfaces/Character'
 import { GetSplashArt } from '~/Core/Utils/CharacterUtils'
 
-const { CurrentCharacter, CanUnlockSequence, ToggleSequence } = useCharacter()
+const { character: CurrentCharacter } = defineProps<{
+  character: CharacterV2
+}>()
 </script>
 
 <template>
@@ -25,12 +27,10 @@ const { CurrentCharacter, CanUnlockSequence, ToggleSequence } = useCharacter()
         <div
           v-for="(s, index) in CurrentCharacter.Sequences"
           :key="`sequence-${index}-${s.Unlocked}`"
-          class="relative h-12 w-12 border rounded-full p-1 transition-all duration-200"
+          class="relative h-12 w-12 border rounded-full p-1 transition-all duration-200 border-gold-400 bg-gold-900 cursor-pointer hover:scale-110 hover:border-gold-300 hover:bg-gold-800"
           :class="{
-            'border-gold-400 bg-gold-900 cursor-pointer hover:scale-110 hover:border-gold-300 hover:bg-gold-800': CanUnlockSequence(index),
-            'border-neutral-600 bg-neutral-800 cursor-not-allowed': !CanUnlockSequence(index),
+            'border-neutral-600 bg-neutral-800 cursor-not-allowed': false,
           }"
-          @click="ToggleSequence(index)"
         >
           <div
             v-if="s.Unlocked === false"

@@ -1,8 +1,22 @@
 <script setup lang="ts">
-import { useCharacter } from '~/composables/characters/UseCharacter'
+import type { CharacterV2 } from '~/Core/Interfaces/Character'
 import { GetCharacterBackground } from '~/Core/Utils/CharacterUtils'
 
-const { CurrentCharacter } = useCharacter()
+const Route = useRoute()
+const CharactersStore = useCharactersStore()
+
+const CurrentCharacter = ref<CharacterV2 | undefined>(undefined)
+
+onMounted(async () => {
+  const id = Number.parseInt(Route.params.id as string)
+
+  if (!id || id >= 2000) {
+    navigateTo('/characters')
+    return
+  }
+
+  CurrentCharacter.value = await CharactersStore.GetById(id)
+})
 </script>
 
 <template>
@@ -12,7 +26,7 @@ const { CurrentCharacter } = useCharacter()
       <div
         class=" fixed inset-0 h-full w-full bg-neutral-900/65"
       />
-      <NuxtImg :src="GetCharacterBackground(CurrentCharacter)" class="h-full w-full object-cover" />
+      <NuxtImg v-if="CurrentCharacter" :src="GetCharacterBackground(CurrentCharacter)" class="h-full w-full object-cover" />
     </div>
 
     <div class="fixed grid grid-cols-[3.5em_1em_3em_1fr] pointer-events-none grid-rows-[3em_1em_3em_1fr] w-full h-full z-1">

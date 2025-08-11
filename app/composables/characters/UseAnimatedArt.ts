@@ -1,10 +1,10 @@
-import type Character from '~/Core/Interfaces/Character'
+import type { CharacterV2 } from '~/Core/Interfaces/Character'
 import { Loader } from '@pixi/loaders'
 import { Spine } from 'pixi-spine'
 import * as PIXI from 'pixi.js'
 import { GetCharacterAnimatedArt, HasAnimatedArt } from '~/Core/Utils/CharacterUtils'
 
-export function useAnimatedArt(character: Character, canvasRef: Ref<HTMLCanvasElement | undefined>) {
+export function useAnimatedArt(character: Ref<CharacterV2 | undefined>, canvasRef: Ref<HTMLCanvasElement | undefined>) {
   const CurrentCharacter = computed(() => toValue(character))
   const AnimatedArt = computed(() => GetAnimatedArt())
 
@@ -44,7 +44,7 @@ export function useAnimatedArt(character: Character, canvasRef: Ref<HTMLCanvasEl
   }
 
   function LoadSpineModel() {
-    if (!App.value)
+    if (!App.value || !CurrentCharacter.value)
       return
 
     if (!AnimatedArt.value)
@@ -53,7 +53,7 @@ export function useAnimatedArt(character: Character, canvasRef: Ref<HTMLCanvasEl
     if (!LoaderInstance.value)
       LoaderInstance.value = new Loader()
 
-    const cachedResource = LoaderInstance.value.resources[`${character.Id}`]
+    const cachedResource = LoaderInstance.value.resources[`${CurrentCharacter.value.Id}`]
 
     if (cachedResource && cachedResource.spineData) {
       SpineAnimation.value = new Spine(cachedResource.spineData)
@@ -72,13 +72,16 @@ export function useAnimatedArt(character: Character, canvasRef: Ref<HTMLCanvasEl
 
     LoaderInstance
       .value
-      .add(`${character.Id}`, AnimatedArt.value.Skeleton, {
+      .add(`${CurrentCharacter.value.Id}`, AnimatedArt.value.Skeleton, {
         metadata: {
           spineAtlasFile: AnimatedArt.value.Atlas,
         },
       })
       .load((_, resources) => {
-        const resource = resources[`${character.Id}`]
+        if (!CurrentCharacter.value)
+          return
+
+        const resource = resources[`${CurrentCharacter.value.Id}`]
         if (resource && resource.spineData) {
           SpineAnimation.value = new Spine(resource.spineData)
 

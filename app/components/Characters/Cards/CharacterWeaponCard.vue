@@ -1,18 +1,10 @@
 <script setup lang="ts">
-import type Build from '~/Core/Interfaces/Build'
 import { slideRight, useMotion } from '@vueuse/motion'
+import { useBuild } from '~/composables/builds/UseBuild'
 import { useSettingsStore } from '~/stores/SettingsStore'
 
-interface Props {
-  build: Build
-}
-
-const { build } = defineProps<Props>()
-
-const WeaponsStore = useWeaponsStore()
+const { CurrentWeapon } = useBuild()
 const SettingsStore = useSettingsStore()
-
-const CurrentWeapon = computed(() => build.WeaponId ? WeaponsStore.GetById(build.WeaponId) : undefined)
 
 const Target = ref<HTMLElement | null>(null)
 

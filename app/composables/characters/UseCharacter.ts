@@ -1,19 +1,24 @@
+import type { CharacterV2 } from '~/Core/Interfaces/Character'
 import type Character from '~/Core/Interfaces/Character'
 import { GetCharacterAnimatedArt, HasAnimatedArt } from '~/Core/Utils/CharacterUtils'
 
 export function useCharacter(character?: Character | undefined) {
   const Route = useRoute()
-  const CharacterId = computed(() => character?.Id ?? Number.parseInt((Route.params as { id: string }).id))
-
   const CharactersStore = useCharactersStore()
 
-  const CurrentCharacter = computed({
-    get: () => CharactersStore.GetById(CharacterId.value),
-    set: val => CharactersStore.UpdateById(CharacterId.value, val),
-  })
+  const CharacterId = computed(() => character?.Id ?? Number.parseInt((Route.params as { id: string }).id))
+  const CurrentCharacter = ref<CharacterV2 | undefined>(undefined)
 
-  onMounted(() => {
-    
+  async function GetCurrentCharacterAsync() {
+    if (CharacterId.value) {
+      CurrentCharacter.value = await CharactersStore.GetById(CharacterId.value)
+    }
+  }
+
+  watchEffect(() => {
+    CurrentCharacter.value = undefined
+
+    GetCurrentCharacterAsync()
   })
 
   const StatsWeights = computed(() =>
@@ -70,12 +75,6 @@ export function useCharacter(character?: Character | undefined) {
 
     if (HasAnimatedArt(CurrentCharacter.value)) {
       return GetCharacterAnimatedArt(CurrentCharacter.value)
-    }
-
-    const character = CharactersStore.GetByGameId(CurrentCharacter.value.Id)
-
-    if (HasAnimatedArt(character)) {
-      return GetCharacterAnimatedArt(character)
     }
 
     return undefined

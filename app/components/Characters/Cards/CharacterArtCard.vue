@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import type { CharacterV2 } from '~/Core/Interfaces/Character'
+import { useCharacter } from '~/composables/characters/UseCharacter'
 import { GetSequenceIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
 
-const { character: CurrentCharacter } = defineProps<{
-  character: CharacterV2
-}>()
+const { CurrentCharacter } = useCharacter()
 </script>
 
 <template>
   <MCard
+    v-if="CurrentCharacter"
     class="relative overflow-hidden"
     :border-lines-count="3"
   >

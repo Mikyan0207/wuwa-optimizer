@@ -27,7 +27,7 @@ const EffectiveWeights = computed(() =>
       <MStatLine
         v-if="stats[idx]"
         v-motion-slide-left
-        :delay="idx * 125"
+        :delay="idx * 75"
         :stat="stats[idx]"
         :weights="EffectiveWeights"
         :show-roll-value="showRollValue"

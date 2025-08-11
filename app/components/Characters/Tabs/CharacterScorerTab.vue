@@ -1,19 +1,14 @@
 <script setup lang="ts">
-import type Build from '~/Core/Interfaces/Build'
-import type { BaseCharacter, CharacterV2, PartialCharacter } from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import VueDraggable from 'vuedraggable'
 import { useBuild } from '~/composables/builds/UseBuild'
+import { useCharacter } from '~/composables/characters/UseCharacter'
 import { useScreenshot } from '~/composables/core/UseScreenshot'
-import { Empty_Echo } from '~/Core/Echoes'
 import { GetCharacterBackground } from '~/Core/Utils/CharacterUtils'
 import { useBuildsStore } from '~/stores/BuildsStore'
 
-interface Props {
-  character: CharacterV2
-}
-
-const { character: CurrentCharacter } = defineProps<Props>()
+const { CurrentCharacter } = useCharacter()
+const { DefaultBuild, CurrentEchoes } = useBuild()
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 const ShowScreenShotBackground = ref<boolean>(false)
@@ -24,16 +19,14 @@ const SettingsStore = useSettingsStore()
 const Toast = useToast()
 const { TakeScreenShotAsync } = useScreenshot(CharacterInfoRef)
 
-const DefaultBuild = computed<Build | undefined>(() => BuildsStore.GetDefaultBuild(CurrentCharacter.Id))
-
 async function SaveCurrentBuild() {
-  if (!CurrentCharacter) {
+  if (!CurrentCharacter.value) {
     return
   }
 
   const build = BuildsStore.CreateBuild(
     'Current Build',
-    CurrentCharacter.Id,
+    CurrentCharacter.value.Id,
   )
 
   if (build) {
@@ -53,20 +46,9 @@ async function SaveCurrentBuild() {
 }
 
 const DraggableEchoes = computed({
-  get: () => {
-    const base = Array.from({ length: 5 }, () => ({ ...Empty_Echo as Echo }))
-
-    DefaultBuild.value?.Echoes.forEach((echo: Echo, idx: number) => {
-      const slot = echo.EquipedSlot ?? idx
-      if (slot >= 0 && slot < 5) {
-        base[slot] = { ...echo }
-      }
-    })
-
-    return base
-  },
+  get: () => CurrentEchoes.value,
   set: (newOrder: any[]) => {
-    if (CurrentCharacter && DefaultBuild.value) {
+    if (CurrentCharacter.value && DefaultBuild.value) {
       const updatedEchoes = [...(DefaultBuild.value.Echoes || [])]
 
       newOrder.forEach((echo, index) => {
@@ -101,7 +83,7 @@ function OnTakeScreenShotClicked() {
 
 <template>
   <div class="mb-14 xl:mb-4">
-    <div v-if="CurrentCharacter && DefaultBuild" class="mt-2 relative">
+    <div v-if="CurrentCharacter" class="mt-2 relative">
       <div class="mx-auto my-2">
         <div ref="CharacterInfoRef" class="relative p-0.25">
           <div v-if="ShowScreenShotBackground" class="absolute inset-0 blur-sm">
@@ -114,7 +96,6 @@ function OnTakeScreenShotClicked() {
             <!-- Character Art Card -->
             <CharacterAnimatedArtCard
               v-if="CurrentCharacter && SettingsStore.GetSetting('Characters').EnableAnimatedArt === true && !ForceStaticArt"
-              :character="CurrentCharacter"
               class="md:col-span-1 xl:col-span-2"
             />
             <CharacterArtCard
@@ -170,7 +151,6 @@ function OnTakeScreenShotClicked() {
                   :delay="200 + (idx * 25)"
                   :equiped-slot="echo.EquipedSlot || idx"
                   :echo="echo"
-                  :weights="CurrentCharacter.StatsWeights"
                 />
               </template>
             </VueDraggable>
@@ -186,7 +166,6 @@ function OnTakeScreenShotClicked() {
           <CharacterSetsCard
             v-motion-slide-bottom
             :delay="300"
-            :echoes="DefaultBuild.Echoes || []"
           />
         </div>
       </div>

@@ -1,14 +1,9 @@
 <script setup lang="ts">
-import type Echo from '~/Core/Interfaces/Echo'
+import { useBuild } from '~/composables/builds/UseBuild'
 import { useCharacterSets } from '~/composables/characters/UseCharacterSets'
 
-interface CharacterSetsCardProps {
-  echoes: Echo[]
-}
-
-const props = defineProps<CharacterSetsCardProps>()
-
-const { ActiveSets } = useCharacterSets(props.echoes)
+const { CurrentEchoes } = useBuild()
+const { ActiveSets } = useCharacterSets(CurrentEchoes.value)
 </script>
 
 <template>

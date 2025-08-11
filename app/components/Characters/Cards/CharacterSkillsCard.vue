@@ -1,21 +1,18 @@
 <script setup lang="ts">
-import type { CharacterV2 } from '~/Core/Interfaces/Character'
+import { useCharacter } from '~/composables/characters/UseCharacter'
 
-interface Props {
-  character: CharacterV2
-}
-
-const { character: CurrentCharacter } = defineProps<Props>()
+const { CurrentCharacter } = useCharacter()
 </script>
 
 <template>
   <MCard
+    v-if="CurrentCharacter"
     :border-lines-count="3"
     class="h-full!"
   >
     <MSkillTree
-      :character="CurrentCharacter"
       class="w-full h-full"
+      :character="CurrentCharacter"
     />
   </MCard>
 </template>

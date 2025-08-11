@@ -21,9 +21,7 @@ const props = withDefaults(defineProps<StatLineProps>(), {
 
 const { t } = useI18n()
 
-const EffectiveWeights = computed(() =>
-  props.weights,
-)
+const EffectiveWeights = computed(() => props.weights)
 
 const Name = computed(() => {
   if (!props.stat)

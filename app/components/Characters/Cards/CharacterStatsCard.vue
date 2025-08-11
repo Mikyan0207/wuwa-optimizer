@@ -1,32 +1,22 @@
 <script setup lang="ts">
-import type Build from '~/Core/Interfaces/Build'
-import type { BaseCharacter, CharacterV2, PartialCharacter } from '~/Core/Interfaces/Character'
-import type Statistic from '~/Core/Interfaces/Statistic'
 import { useBuild } from '~/composables/builds/UseBuild'
 import { GetTotalGradeColor } from '~/composables/calculators/UseScoreCalculator'
-import { useStatsCalculator } from '~/composables/calculators/UseStatsCalculator'
+import { useCharacter } from '~/composables/characters/UseCharacter'
 import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
-interface Props {
-  character: CharacterV2
-  build: Build
-}
-
-const { character: CurrentCharacter, build: DefaultBuild } = defineProps<Props>()
-const StatsCalculator = useStatsCalculator()
+const { CurrentCharacter } = useCharacter()
+const { DefaultBuild, Stats } = useBuild()
 const { t } = useI18n()
 
 const GetCharacterScoreNoteColor = computed(() => {
-  return GetTotalGradeColor(DefaultBuild.Note || ScoreGrade.F)
+  return GetTotalGradeColor(DefaultBuild.value?.Note || ScoreGrade.F)
 })
-
-const Stats = ref<Statistic[]>(await StatsCalculator.CalculateTotalStats(CurrentCharacter, DefaultBuild))
 </script>
 
 <template>
   <MCard
-    v-if="CurrentCharacter"
+    v-if="CurrentCharacter && DefaultBuild && Stats"
     :border-lines-count="3"
   >
     <div class="flex flex-col gap-1 mb-3">

@@ -1,16 +1,11 @@
 <script setup lang="ts">
-import type { CharacterV2 } from '~/Core/Interfaces/Character'
 import { useAnimatedArt } from '~/composables/characters/UseAnimatedArt'
+import { useCharacter } from '~/composables/characters/UseCharacter'
 import { GetSequenceIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
-
-interface Props {
-  character: CharacterV2
-}
-
-const { character: CurrentCharacter } = defineProps<Props>()
 
 const CanvasRef = ref<HTMLCanvasElement>()
 
+const { CurrentCharacter, CanUnlockSequence, ToggleSequence } = useCharacter()
 const { Initialize, LoadSpineModel, IsSpineLoaded } = useAnimatedArt(CurrentCharacter, CanvasRef)
 
 const ShowOverlay = ref(true)
@@ -27,6 +22,7 @@ onMounted(() => {
 
 <template>
   <MCard
+    v-if="CurrentCharacter"
     class="relative overflow-hidden group"
     :border-lines-count="3"
   >
@@ -46,22 +42,19 @@ onMounted(() => {
           :key="`sequence-${index}-${s.Unlocked}`"
           class="relative h-12 w-12 border rounded-full p-1 transition-all duration-200"
           :class="{
-            'border-neutral-600 bg-neutral-800 cursor-pointer hover:scale-110 hover:border-gold-300 hover:bg-gold-800': s.Unlocked === false,
-            'border-neutral-600 bg-neutral-800 cursor-not-allowed': s.Unlocked === true,
+            'border-neutral-600 bg-neutral-800 cursor-pointer hover:scale-110 hover:border-gold-300 hover:bg-gold-800': CanUnlockSequence(index),
+            'border-neutral-600 bg-neutral-800 cursor-not-allowed': !CanUnlockSequence(index),
           }"
+          @click="ToggleSequence(index)"
         >
           <div
-            v-if="s.Unlocked === false"
+            v-if="!s.Unlocked"
             class="absolute inset-0 rounded-full bg-black/70 transition-opacity duration-300"
-          />
-          <div
-            v-if="s.Unlocked === true"
-            class="absolute inset-0 rounded-full bg-gold-400/20 transition-all duration-300"
           />
           <NuxtImg
             :src="GetSequenceIcon(CurrentCharacter, s)"
             class="w-full h-full object-cover transition-all duration-200"
-            :class="{ 'opacity-30': s.Unlocked === false }"
+            :class="{ 'opacity-30': !s.Unlocked }"
           />
         </div>
       </div>

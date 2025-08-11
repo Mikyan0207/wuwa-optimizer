@@ -1,22 +1,8 @@
 <script setup lang="ts">
-import type { CharacterV2 } from '~/Core/Interfaces/Character'
+import { useCharacter } from '~/composables/characters/UseCharacter'
 import { GetCharacterBackground } from '~/Core/Utils/CharacterUtils'
 
-const Route = useRoute()
-const CharactersStore = useCharactersStore()
-
-const CurrentCharacter = ref<CharacterV2 | undefined>(undefined)
-
-onMounted(async () => {
-  const id = Number.parseInt(Route.params.id as string)
-
-  if (!id || id >= 2000) {
-    navigateTo('/characters')
-    return
-  }
-
-  CurrentCharacter.value = await CharactersStore.GetById(id)
-})
+const { CurrentCharacter } = useCharacter()
 </script>
 
 <template>

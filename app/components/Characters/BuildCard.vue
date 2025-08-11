@@ -356,7 +356,7 @@ function HandleCharacterClick() {
               <span class="text-xs font-medium text-gray-400 uppercase tracking-wide">Echoes</span>
             </div>
 
-            <div class="flex flex-wrap gap-1">
+            <div class="flex flex-wrap gap-3">
               <div
                 v-for="slot in 5"
                 :key="slot"

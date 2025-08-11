@@ -4,6 +4,7 @@ import { defineStore } from 'pinia'
 export const useCharactersStore = defineStore('CharactersStore', () => {
   const Characters = useLocalStorage<Map<number, PartialCharacter>>('Characters', new Map())
   const BaseCharacters = ref<BaseCharacter[]>([])
+  const CachedCharacters = ref<Map<number, CharacterV2>>(new Map())
 
   async function GetBaseById(id: number): Promise<BaseCharacter> {
     const character = BaseCharacters.value.find(c => c.Id === id)
@@ -22,6 +23,10 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
   }
 
   async function GetById(gameId: number): Promise<CharacterV2> {
+    if (CachedCharacters.value.has(gameId)) {
+      return CachedCharacters.value.get(gameId)!
+    }
+
     const base = await GetBaseById(gameId)
     const partial = Characters.value.get(gameId)
 
@@ -36,7 +41,11 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
       })
     }
 
-    return Merge(Characters.value.get(gameId), base)
+    const character = Merge(Characters.value.get(gameId), base)
+
+    CachedCharacters.value.set(gameId, character)
+
+    return character
   }
 
   async function GetAll(): Promise<BaseCharacter[]> {

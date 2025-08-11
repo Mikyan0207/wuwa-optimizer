@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { TabsItem } from '@nuxt/ui'
 import type { BaseCharacter, CharacterV2 } from '~/Core/Interfaces/Character'
 
 definePageMeta({
@@ -61,11 +62,13 @@ const TabItems = [{
   label: 'Scorer',
   icon: 'i-solar-calculator-minimalistic-broken',
   disabled: false,
+  slot: 'scorer' as const,
 }, {
   label: 'Builds',
   icon: 'i-solar-settings-minimalistic-broken',
   disabled: false,
-}]
+  slot: 'builds' as const,
+}] as TabsItem[]
 </script>
 
 <template>
@@ -75,6 +78,7 @@ const TabItems = [{
         <div class="mx-auto mb-4 xl:max-w-[100rem] px-8 text-sm text-gray-300">
           <UTabs
             v-model="SelectedTab"
+            :unmount-on-hide="false"
             :items="TabItems"
             color="neutral"
             class="max-w-7xl xl:max-w-[100rem] mx-auto"
@@ -84,12 +88,13 @@ const TabItems = [{
               indicator: 'rounded-none bg-neutral-300',
             }"
           >
-            <template #content>
+            <template #scorer>
               <CharacterScorerTab
-                v-if="SelectedTab === '0'"
                 :character="CurrentCharacter"
               />
-              <CharacterBuildsTab v-if="SelectedTab === '1'" />
+            </template>
+            <template #builds>
+              <CharacterBuildsTab />
             </template>
           </UTabs>
         </div>

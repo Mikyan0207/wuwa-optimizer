@@ -1,18 +1,12 @@
 <script setup lang="ts">
 import type Character from '~/Core/Interfaces/Character'
 import type Event from '~/Core/Interfaces/Event'
+import type { EventInfo } from '~/stores/EventsStore'
 import { ReleaseState } from '~/Core/Enums/ReleaseState'
 import { GetCharacterIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
 
 interface Props {
-  event: Event & {
-    left: number
-    width: number
-    top: number
-    character?: Character
-    isFirst: boolean
-    isLast: boolean
-  }
+  event: EventInfo
 }
 
 defineProps<Props>()
@@ -45,7 +39,7 @@ function OnEventClick(event: Event) {
       left: `${event.left}px`,
       width: `${event.width}px`,
       top: `${event.top}px`,
-      backgroundImage: event.character ? `linear-gradient(to right, rgb(38 38 38) 20%, rgba(38,38,38,0.8) 30%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 100%), url(${GetSplashArt(event.character)})` : 'none',
+      backgroundImage: event.character ? `linear-gradient(to right, rgb(38 38 38) 20%, rgba(38,38,38,0.8) 30%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 100%), url(${GetSplashArt(event.character as Character)})` : 'none',
       backgroundSize: 'cover',
       backgroundPosition: 'top',
     }"
@@ -54,7 +48,7 @@ function OnEventClick(event: Event) {
     <div class="flex items-center gap-2 h-full">
       <img
         v-if="event.character"
-        :src="GetCharacterIcon(event.character)"
+        :src="GetCharacterIcon(event.character as Character)"
         :alt="t(`${event.CharacterId}_name`)"
         class="w-auto h-full object-cover rounded-full"
       >

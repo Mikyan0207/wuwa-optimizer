@@ -95,6 +95,7 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     Weapons: skipHydrate(Weapons),
     GetAll,
     GetById,
+    GetBaseById,
     GetByGameId,
     UpdateById,
     CreateFromGameId,

@@ -40,6 +40,16 @@ export const RoadmapItems: RoadmapItem[] = [
     progress: 50,
   },
   {
+    id: 'scoring-v2',
+    title: 'Character Scorer Update (v2.0)',
+    description: 'Update the existing character scorer to be more accurate and universal. Research and experiment with multiple approaches before deciding on the final direction.',
+    status: 'planned',
+    priority: 'medium',
+    category: 'improvement',
+    estimatedDate: CreateDateInUserTimezone('2025-09-31'),
+    progress: 0,
+  },
+  {
     id: 'builds-echoes-optimizer',
     title: 'Builds/Echoes Optimizer',
     description: 'Automatically find the best echo combinations for your characters. Simply select a character and weapon, and the system will analyze your entire echo collection to suggest the most powerful build possible.',

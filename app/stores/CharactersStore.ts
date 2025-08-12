@@ -133,6 +133,7 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     Characters: skipHydrate(Characters),
     GetAll,
     GetById,
+    GetBaseById,
     UpdateById,
   }
 })

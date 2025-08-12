@@ -63,7 +63,6 @@ export function useScreenshot(htmlRef: Ref<HTMLElement | null>) {
       }
     }
     catch (error) {
-      console.error('Screenshot error:', error)
       Toast.add({
         title: 'Screenshot failed',
         description: 'Failed to generate high-quality screenshot.',

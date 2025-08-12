@@ -1,9 +1,14 @@
 import { defineStore } from 'pinia'
+import { consola, LogLevels } from 'consola'
 
 export const useUpdaterStore = defineStore('UpdaterStore', () => {
   const CURRENT_VERSION = '1.0.1'
   const VERSION_KEY = 'wuwa-optimizer-version'
   const Version = useLocalStorage<string>(VERSION_KEY, '')
+
+  const Logger = consola.create({
+    level: process.env.NODE_ENV === 'production' ? LogLevels.warn : LogLevels.info,
+  })
 
   function Migrate(): void {
     if (Version.value === CURRENT_VERSION) {
@@ -22,7 +27,7 @@ export const useUpdaterStore = defineStore('UpdaterStore', () => {
   function ClearAllData(): void {
     localStorage.clear()
 
-    console.warn('Migration: Cleared all data for version', CURRENT_VERSION)
+    Logger.warn('Migration: Cleared all data for version', CURRENT_VERSION)
   }
 
   return {

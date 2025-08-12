@@ -5,6 +5,7 @@ import { z } from 'zod'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { StatType } from '~/Core/Enums/StatType'
 import { TemplateWeapons } from '~/Core/Weapons'
+import { consola, LogLevels } from 'consola'
 
 interface WeaponFormProps {
   mode?: 'create' | 'edit'
@@ -19,6 +20,10 @@ const props = withDefaults(defineProps<WeaponFormProps>(), {
 const emits = defineEmits<{
   close: []
 }>()
+
+const Logger = consola.create({
+  level: process.env.NODE_ENV === 'production' ? LogLevels.warn : LogLevels.info,
+})
 
 const CurrentCharacterStore = useCurrentCharacterStore()
 const WeaponsStore = useWeaponsStore()
@@ -131,7 +136,7 @@ function NavigateStep(direction: 'next' | 'previous') {
     const validation = ValidateCurrentStep()
 
     if (!validation.isValid) {
-      console.warn('Validation failed:', validation.errors)
+      Logger.warn('Validation failed:', validation.errors)
       return
     }
   }
@@ -170,12 +175,12 @@ function HandleStateUpdate(newState: Partial<typeof State>) {
 function OnSubmit() {
   const validation = ValidateCurrentStep()
   if (!validation.isValid) {
-    console.error('Form validation failed:', validation.errors)
+    Logger.error('Form validation failed:', validation.errors)
     return
   }
 
   if (!IsFormValid.value) {
-    console.error('Form validation failed:', validation.errors)
+    Logger.error('Form validation failed:', validation.errors)
     return
   }
 

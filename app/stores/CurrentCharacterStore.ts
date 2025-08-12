@@ -10,6 +10,7 @@ import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 import { useBuildsStore } from './BuildsStore'
 import { useCharactersStore } from './CharactersStore'
 import { useWeaponsStore } from './WeaponsStore'
+import { consola, LogLevels } from 'consola'
 
 export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () => {
   const CharacterId = ref<number | undefined>(undefined)
@@ -30,6 +31,10 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
   const HasCharacter = computed(() => CurrentCharacter.value !== undefined)
   const HasBuild = computed(() => CurrentBuild.value !== undefined)
   const HasWeapon = computed(() => CurrentWeapon.value !== undefined)
+
+  const Logger = consola.create({
+    level: process.env.NODE_ENV === 'production' ? LogLevels.warn : LogLevels.info,
+  })
 
   async function SetCharacter(characterId: number) {
     if (CharacterId.value === characterId)
@@ -60,7 +65,7 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
       await UpdateStatsAndScore()
     }
     catch (error) {
-      console.error('Failed to load character data:', error)
+      Logger.error('Failed to load character data:', error)
     }
   }
 

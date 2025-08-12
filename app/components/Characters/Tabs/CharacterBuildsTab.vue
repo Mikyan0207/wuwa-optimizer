@@ -43,8 +43,6 @@ function LoadBuild(build: Build) {
 }
 
 function DeleteBuild(build: Build) {
-  console.warn('Deleting build:', build.Id, build.Name)
-
   BuildsStore.DeleteBuild(build.Id)
 
   if (SelectedBuild.value?.Id === build.Id) {

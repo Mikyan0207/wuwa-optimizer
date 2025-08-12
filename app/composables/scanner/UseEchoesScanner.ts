@@ -9,12 +9,17 @@ import { EchoCost } from '~/Core/Enums/EchoCost'
 import { ECHO_REGIONS } from '~/Core/Scanner/Regions'
 import { Sonatas } from '~/Core/Sonatas'
 import { GetEchoIcon, GetSonataIcon } from '~/Core/Utils/EchoUtils'
+import { consola, LogLevels } from 'consola'
 
 export async function getOpenCv() {
   return await cvReadyPromise
 }
 
 export async function useEchoesScanner() {
+  const Logger = consola.create({
+    level: process.env.NODE_ENV === 'production' ? LogLevels.warn : LogLevels.info,
+  })
+
   const BaseContext = ref<CanvasRenderingContext2D | null>(null)
   let TesseractWorker: Tesseract.Worker | undefined
   let cv: typeof cvReadyPromise
@@ -137,7 +142,7 @@ export async function useEchoesScanner() {
         return echo
       }
       catch (error) {
-        console.error(`Error processing echo slot ${slotIndex + 1}:`, error)
+        Logger.error(`Error processing echo slot ${slotIndex + 1}:`, error)
         return null
       }
     })
@@ -172,7 +177,7 @@ export async function useEchoesScanner() {
       const matchPromises = echoes.map(async (template) => {
         const cached = OrbDescriptorsCache.get(template)
         if (!cached) {
-          console.warn(`⚠️ ORB descriptors not found for: ${template.GameId}`)
+          Logger.warn(`⚠️ ORB descriptors not found for: ${template.GameId}`)
           return { echo: template, score: 0 }
         }
 
@@ -229,7 +234,7 @@ export async function useEchoesScanner() {
       const matchPromises = Sonatas.map(async (template) => {
         const cached = SonataDescriptorsCache.get(template)
         if (!cached) {
-          console.warn(`⚠️ ORB descriptors not found for: ${template.Name}`)
+          Logger.warn(`⚠️ ORB descriptors not found for: ${template.Name}`)
           return { sonata: template, score: 0 }
         }
 
@@ -335,7 +340,7 @@ export async function useEchoesScanner() {
         resolve(img)
       }
       img.onerror = (error) => {
-        console.error(`Failed to load sonata icon: ${iconPath}`, error)
+        Logger.error(`Failed to load sonata icon: ${iconPath}`, error)
         reject(new Error(`Failed to load sonata icon: ${sonata.Name} (${iconPath})`))
       }
       img.src = iconPath

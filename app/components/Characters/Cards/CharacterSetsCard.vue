@@ -3,7 +3,7 @@ import { useBuild } from '~/composables/builds/UseBuild'
 import { useCharacterSets } from '~/composables/characters/UseCharacterSets'
 
 const { CurrentEchoes } = useBuild()
-const { ActiveSets } = useCharacterSets(CurrentEchoes.value)
+const { ActiveSets } = useCharacterSets(CurrentEchoes)
 </script>
 
 <template>

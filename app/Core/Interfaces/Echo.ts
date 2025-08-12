@@ -27,3 +27,11 @@ export default interface Echo {
   // Legacy properties, will be removed in the future
   EquipedBy?: number
 }
+
+export interface BaseEcho {
+
+}
+
+export interface PartialEcho {
+
+}

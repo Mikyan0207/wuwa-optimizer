@@ -4,7 +4,7 @@ import type Echo from '~/Core/Interfaces/Echo'
 import { useCharacter } from '~/composables/characters/UseCharacter'
 
 interface EchoStatsProps {
-  echo: Echo
+  echo: Echo | undefined
   weights?: Record<StatType, number>
 }
 
@@ -13,7 +13,7 @@ const props = defineProps<EchoStatsProps>()
 const { CurrentCharacter } = useCharacter()
 
 const SubStats = computed(() => {
-  if (!props.echo || props.echo.GameId === -1)
+  if (!props.echo)
     return []
 
   return props.echo?.Statistics ?? []

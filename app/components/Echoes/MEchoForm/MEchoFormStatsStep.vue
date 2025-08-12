@@ -241,7 +241,7 @@ function UpdateSubStatValue(index: number, value: string) {
           <div class="grid grid-cols-2 gap-3">
             <UFormField name="Level" label="Enhancement Level">
               <USelectMenu
-                :model-value="state.Level ?? 25"
+                :model-value="state.Level"
                 :items="LevelOptions"
                 value-key="Value"
                 label-key="Label"

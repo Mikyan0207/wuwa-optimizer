@@ -12,12 +12,14 @@ export interface CharacterSet {
   maxRequired: number
 }
 
-export function useCharacterSets(echoes: Echo[]) {
+export function useCharacterSets(echoes: Ref<(Echo | undefined)[]>) {
+  const Echoes = computed(() => toValue(echoes))
+
   const ActiveSets = computed<CharacterSet[]>(() => {
     const setCounts = new Map<string, { count: number, sonata: Sonata }>()
 
-    echoes.forEach((echo) => {
-      if (echo.Sonata) {
+    Echoes.value.forEach((echo) => {
+      if (echo?.Sonata) {
         echo.Sonata.forEach((sonata) => {
           if (sonata.IsSelected) {
             const key = sonata.Name

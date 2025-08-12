@@ -12,6 +12,7 @@ const { TrackEvent } = useAnalytics()
 
 const EchoesStore = useEchoesStore()
 const WeaponsStore = useWeaponsStore()
+const BuildsStore = useBuildsStore()
 
 const SelectedFile = ref<File | undefined>(undefined)
 const IsScanning = ref<boolean>(false)
@@ -90,44 +91,12 @@ function OnConfirmClicked() {
     EchoesStore.AddOrUpdate(echo, ImportedCharacter.value!.Id)
   })
 
-  const weapon = WeaponsStore.CreateFromGameId(ImportedWeapon.value!.GameId)
-
-  console.log(weapon)
-
-  const BuildsStore = useBuildsStore()
-  const existingDefaultBuild = BuildsStore.GetDefaultBuild(ImportedCharacter.value!.Id)
-
-  if (existingDefaultBuild
-    && (!existingDefaultBuild.WeaponId || existingDefaultBuild.WeaponId === undefined)
-    && (!existingDefaultBuild.Echoes || existingDefaultBuild.Echoes.length === 0
-      || existingDefaultBuild.Echoes.every(echo => echo.GameId === -1))) {
-    BuildsStore.DeleteBuild(existingDefaultBuild.Id)
-  }
-
-  const existingBuilds = BuildsStore.GetBuildsByCharacter(ImportedCharacter.value!.Id)
-  const equippedEchoes = ImportedEchoes.value.map(echo => echo.GameId)
-
-  const existingActiveBuild = existingBuilds.find(build =>
-    build.IsDefault
-    && build.WeaponId === weapon?.Id
-    && build.Echoes.length === equippedEchoes.length
-    && build.Echoes.every(echo => equippedEchoes.includes(echo.GameId)),
-  )
-
-  if (existingActiveBuild) {
-    BuildsStore.DeleteBuild(existingActiveBuild.Id)
-  }
-
-  const importedBuild = BuildsStore.CreateBuild(
+  BuildsStore.CreateBuild(
     'Imported Build',
-    ImportedCharacter.value!.Id,
-    weapon?.Id,
+    ImportedCharacter.value,
+    WeaponsStore.CreateFromGameId(ImportedWeapon.value!.GameId),
     ImportedEchoes.value,
   )
-
-  if (importedBuild) {
-    BuildsStore.SetDefaultBuild(importedBuild.Id)
-  }
 }
 </script>
 

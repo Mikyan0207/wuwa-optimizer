@@ -1,4 +1,3 @@
-import type Weapon from '~/Core/Interfaces/Weapon'
 import type { BaseWeapon } from '~/Core/Interfaces/Weapon'
 import Tesseract from 'tesseract.js'
 import { WEAPON_LEVEL_REGION, WEAPON_NAME_REGION } from '~/Core/Scanner/Regions'

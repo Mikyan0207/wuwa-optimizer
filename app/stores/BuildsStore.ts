@@ -1,15 +1,16 @@
 import type Build from '~/Core/Interfaces/Build'
+import type { BuildWithDependencies } from '~/Core/Interfaces/Build'
+import type { BaseCharacter, PartialCharacter } from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
+import type { PartialWeapon } from '~/Core/Interfaces/Weapon'
 import { useLocalStorage } from '@vueuse/core'
 import { defineStore, skipHydrate } from 'pinia'
 import { v4 as uuidv4 } from 'uuid'
-import { useScoreCalculator } from '~/composables/calculators/UseScoreCalculator'
 
 export const useBuildsStore = defineStore('BuildsStore', () => {
   const Builds = useLocalStorage<Build[]>('Builds', [])
-  const EchoesStore = useEchoesStore()
-  const CharactersStore = useCharactersStore()
-  const ScoreCalculator = useScoreCalculator()
+
+  const WeaponsStore = useWeaponsStore()
 
   function GetBuildsByCharacter(characterId: number): Build[] {
     return Builds.value
@@ -27,56 +28,70 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     )
   }
 
-  function CreateBuild(name: string, characterId: number, weaponId?: string, echoes?: Echo[], description?: string): Build | undefined {
-    if (BuildExists(characterId, name, echoes))
-      return Builds.value.find(build => build.CharacterId === characterId && build.Name === name)
+  async function GetBuildWithDependencies(buildId: string): Promise<BuildWithDependencies | undefined> {
+    const build = GetBuild(buildId)
+    if (!build)
+      return undefined
+
+    const [weapon] = await Promise.all([
+      build.WeaponId ? WeaponsStore.GetById(build.WeaponId) : undefined,
+    ])
+
+    return {
+      ...build,
+      Weapon: weapon,
+    }
+  }
+
+  async function GetDefaultBuildWithDependencies(characterId: number): Promise<BuildWithDependencies | undefined> {
+    const build = GetDefaultBuild(characterId)
+    if (!build)
+      return undefined
+
+    return GetBuildWithDependencies(build.Id)
+  }
+
+  async function GetBuildsByCharacterWithDependencies(characterId: number): Promise<BuildWithDependencies[]> {
+    const builds = GetBuildsByCharacter(characterId)
+
+    const buildsWithObjects = await Promise.all(
+      builds.map(build => GetBuildWithDependencies(build.Id)),
+    )
+
+    return buildsWithObjects.filter(Boolean) as BuildWithDependencies[]
+  }
+
+  function CreateBuild(
+    name: string,
+    character?: BaseCharacter | PartialCharacter,
+    weapon?: PartialWeapon,
+    echoes?: Echo[],
+    makeDefault: boolean = true,
+  ): Build | undefined {
+    if (!weapon || !character)
+      return undefined
 
     const buildId = uuidv4()
+    const order = GetOrder(character?.Id ?? -1)
 
     const build: Build = {
       Id: buildId,
-      CharacterId: characterId,
+      CharacterId: character.Id,
       Name: name,
-      Description: description,
-      WeaponId: weaponId,
+      WeaponId: weapon.Id,
       Echoes: echoes?.map(echo => ({
         ...echo,
         Id: uuidv4(),
         BuildId: buildId,
       })) ?? [],
-      CreatedAt: new Date(Date.now()),
-      UpdatedAt: new Date(Date.now()),
-      IsDefault: false,
-      Order: GetOrder(characterId),
+      CreatedAt: new Date(),
+      UpdatedAt: new Date(),
+      IsDefault: makeDefault,
+      Order: order,
     }
 
     Builds.value.push(build)
-
-    CalculateScore(build)
-
     return build
-  }
-
-  function CalculateScore(build: Build) {
-    const character = CharactersStore.GetById(build.CharacterId)
-    if (!character) {
-      return
-    }
-
-    const score = ScoreCalculator.GetCharacterScore(character, build)
-    if (!score) {
-      return
-    }
-
-    UpdateBuild(build.Id, {
-      Score: score.Score,
-      Note: score.Note,
-      Echoes: build.Echoes.map((echo, idx) => ({
-        ...echo,
-        Score: score.EchoesScores[idx]?.Score,
-        Note: score.EchoesScores[idx]?.Grade,
-      })),
-    })
   }
 
   function UpdateBuild(buildId: string, data: Partial<Build>) {
@@ -84,14 +99,6 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
 
     if (index === -1)
       return
-
-    if (data.Echoes) {
-      data.Echoes.forEach((echo) => {
-        if (echo.Id) {
-          EchoesStore.Update(echo.Id, echo)
-        }
-      })
-    }
 
     Builds.value[index] = {
       ...Builds.value[index],
@@ -109,12 +116,21 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     if (!targetBuild)
       return
 
-    // Mettre à jour seulement les builds du même personnage
     Builds.value.forEach((build) => {
       if (build.CharacterId === targetBuild.CharacterId) {
         build.IsDefault = build.Id === buildId
       }
     })
+  }
+
+  function LoadBuild(buildId: string, makeDefault: boolean = true) {
+    const build = GetBuild(buildId)
+
+    if (!build)
+      return
+
+    if (makeDefault)
+      SetDefaultBuild(build.Id)
   }
 
   function GetOrder(characterId: number): number {
@@ -126,34 +142,18 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     return Math.max(...builds.map(b => b.Order || 0)) + 1
   }
 
-  function BuildExists(characterId: number, name: string, echoes?: Echo[]): boolean {
-    return Builds.value.some(b => b.CharacterId === characterId
-      && b.Name === name
-      && b.Echoes.every((echo, index) => echo.GameId === echoes?.[index]?.GameId
-        && echo.Id === echoes?.[index]?.Id
-        && echo.Statistics.every((stat, i) => stat.Value === echoes?.[index]?.Statistics?.[i]?.Value)),
-    )
-  }
-
-  function LoadBuild(buildId: string) {
-    const build = GetBuild(buildId)
-
-    if (!build)
-      return
-
-    SetDefaultBuild(build.Id)
-  }
-
   return {
     Builds: skipHydrate(Builds),
     GetBuildsByCharacter,
     GetBuild,
     GetDefaultBuild,
+    GetBuildWithDependencies,
+    GetDefaultBuildWithDependencies,
+    GetBuildsByCharacterWithDependencies,
     CreateBuild,
     UpdateBuild,
     DeleteBuild,
     SetDefaultBuild,
     LoadBuild,
-    CalculateScore,
   }
 })

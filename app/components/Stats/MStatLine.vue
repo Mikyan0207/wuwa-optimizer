@@ -42,7 +42,7 @@ const FormattedValue = computed(() => {
   const isMainStat = props.isMainStat
 
   if (!IsPercentageStat(props.stat.Type))
-    return props.stat.Value.toString()
+    return props.stat.Value.toFixed(1)
 
   const decimals = isMainStat === true ? 2 : 1
   return `${props.stat.Value.toFixed(decimals)}%`

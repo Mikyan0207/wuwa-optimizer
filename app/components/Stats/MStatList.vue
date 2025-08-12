@@ -30,7 +30,7 @@ withDefaults(defineProps<StatDisplayProps>(), {
         :show-wanted-highlight="showWantedHighlight"
       />
       <div v-else class="h-8 flex items-center justify-center">
-        <USkeleton class="h-1 w-full rounded" />
+        <USkeleton class="h-3 w-full rounded-sm" />
       </div>
     </div>
   </div>

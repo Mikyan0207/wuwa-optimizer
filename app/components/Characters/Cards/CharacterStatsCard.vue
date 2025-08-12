@@ -6,18 +6,11 @@ import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
 const { CurrentCharacter } = useCharacter()
-const { DefaultBuild, GetStats, Score, Note } = useBuild()
+const { CurrentBuild, CurrentStats, Score, Note } = useBuild()
 const { t } = useI18n()
 
 const GetCharacterScoreNoteColor = computed(() => {
-  return GetTotalGradeColor(DefaultBuild.value?.Note || ScoreGrade.F)
-})
-
-const Stats = computed(() => {
-  if (!CurrentCharacter.value)
-    return []
-
-  return GetStats()
+  return GetTotalGradeColor(CurrentBuild.value?.Note || ScoreGrade.F)
 })
 </script>
 
@@ -39,9 +32,9 @@ const Stats = computed(() => {
     </div>
 
     <MStatList
-      v-if="Stats"
-      :stats="Stats"
-      :stats-count="Stats.length"
+      v-if="CurrentStats"
+      :stats="CurrentStats"
+      :stats-count="CurrentStats.length"
       :weights="CurrentCharacter.StatsWeights"
       :show-roll-value="true"
       :show-wanted-highlight="true"

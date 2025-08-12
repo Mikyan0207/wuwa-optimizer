@@ -8,7 +8,7 @@ import { GetCharacterBackground } from '~/Core/Utils/CharacterUtils'
 import { useBuildsStore } from '~/stores/BuildsStore'
 
 const { CurrentCharacter } = useCharacter()
-const { DefaultBuild, CurrentEchoes } = useBuild()
+const { CurrentBuild, CurrentEchoes, ReorderEchoes } = useBuild()
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 const ShowScreenShotBackground = ref<boolean>(false)
@@ -26,7 +26,7 @@ async function SaveCurrentBuild() {
 
   const build = BuildsStore.CreateBuild(
     'Current Build',
-    CurrentCharacter.value.Id,
+    CurrentCharacter.value,
   )
 
   if (build) {
@@ -47,26 +47,8 @@ async function SaveCurrentBuild() {
 
 const DraggableEchoes = computed({
   get: () => CurrentEchoes.value,
-  set: (newOrder: any[]) => {
-    if (CurrentCharacter.value && DefaultBuild.value) {
-      const updatedEchoes = [...(DefaultBuild.value.Echoes || [])]
-
-      newOrder.forEach((echo, index) => {
-        if (echo.GameId !== -1) {
-          const echoDataIndex = updatedEchoes.findIndex(e => e.GameId === echo.GameId)
-          if (echoDataIndex >= 0) {
-            updatedEchoes[echoDataIndex] = {
-              ...updatedEchoes[echoDataIndex],
-              EquipedSlot: index,
-            } as Echo
-          }
-        }
-      })
-
-      BuildsStore.UpdateBuild(DefaultBuild.value.Id, {
-        Echoes: updatedEchoes,
-      })
-    }
+  set: (newOrder: Echo[]) => {
+    ReorderEchoes(newOrder)
   },
 })
 
@@ -112,7 +94,7 @@ function OnTakeScreenShotClicked() {
                 class="col-span-1"
                 :delay="100"
                 :character="CurrentCharacter"
-                :build="DefaultBuild"
+                :build="CurrentBuild"
               />
 
               <!-- Weapon & Skills Container -->
@@ -120,7 +102,7 @@ function OnTakeScreenShotClicked() {
                 <!-- Weapon Card -->
                 <CharacterWeaponCard
                   class="row-span-1"
-                  :build="DefaultBuild"
+                  :build="CurrentBuild"
                 />
 
                 <!-- Skills Card -->
@@ -143,7 +125,7 @@ function OnTakeScreenShotClicked() {
               chosen-class="scale-102"
               drag-class="scale-106"
               class="contents transition-all duration-150"
-              item-key="Id"
+              :item-key="(item: Echo, index: number) => item?.Id || `slot-${index}`"
             >
               <template #item="{ element: echo, index: idx }">
                 <MEchoCard

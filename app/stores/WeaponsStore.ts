@@ -78,7 +78,7 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     const weaponToAdd: PartialWeapon = {
       Id: uuidv4(),
       GameId: gameId,
-      Level: 1,
+      Level: 90,
       Rank: 1,
     }
 

@@ -1,4 +1,5 @@
 import type { ScoreGrade } from '../Enums/ScoreGrade'
+import type Weapon from './Weapon'
 import type Echo from '~/Core/Interfaces/Echo'
 
 export default interface Build {
@@ -14,4 +15,8 @@ export default interface Build {
   UpdatedAt: Date
   IsDefault?: boolean
   Order?: number
+}
+
+export interface BuildWithDependencies extends Build {
+  Weapon?: Weapon
 }

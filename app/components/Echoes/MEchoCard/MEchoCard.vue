@@ -3,7 +3,7 @@ import type { StatType } from '~/Core/Enums/StatType'
 import type Echo from '~/Core/Interfaces/Echo'
 
 interface EchoCardProps {
-  echo: Echo
+  echo: Echo | undefined
   equipedSlot: number
   showScore?: boolean
   showMenu?: boolean
@@ -28,7 +28,7 @@ withDefaults(defineProps<EchoCardProps>(), {
       <MEchoCardHeader :echo="echo" />
       <MEchoStats :echo="echo" :weights="weights" class="mt-4" />
       <USeparator v-if="showScore" class="w-full" />
-      <MEchoScore :show="showScore" :score="echo.Score" :note="echo.Note" class="px-2" />
+      <MEchoScore :show="showScore" :score="echo?.Score" :note="echo?.Note" class="px-2" />
     </div>
   </MCard>
 </template>

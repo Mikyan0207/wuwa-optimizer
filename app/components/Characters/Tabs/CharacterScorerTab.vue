@@ -17,7 +17,15 @@ const { CurrentCharacter, CurrentWeapon, CurrentBuild, CurrentEchoes } = storeTo
 
 const { TakeScreenShotAsync } = useScreenshot(CharacterInfoRef)
 
-CurrentCharacterStore.SetCharacter(Number.parseInt((Route.params as { id: string }).id))
+onMounted(() => {
+  const id = Number.parseInt((Route.params as { id: string }).id)
+
+  if (!id || Number.isNaN(id)) {
+    return
+  }
+
+  CurrentCharacterStore.SetCharacter(id)
+})
 
 async function SaveCurrentBuild() {
 }

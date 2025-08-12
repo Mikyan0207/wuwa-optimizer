@@ -105,11 +105,7 @@ export default defineNuxtConfig({
         target: 'esnext',
       },
     },
-    prerender: {
-      crawlLinks: true,
-      routes: ['/'],
-
-    },
+    routeRules: { '/': { prerender: true } },
   },
 
   eslint: {

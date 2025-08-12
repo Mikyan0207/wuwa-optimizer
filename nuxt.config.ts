@@ -105,7 +105,10 @@ export default defineNuxtConfig({
         target: 'esnext',
       },
     },
-    routeRules: { '/': { prerender: true } },
+    routeRules: {
+      '/': { prerender: true },
+      '/characters/**': { swr: 1800 },
+    },
   },
 
   eslint: {

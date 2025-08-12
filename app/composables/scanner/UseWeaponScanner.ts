@@ -48,7 +48,7 @@ export function useWeaponScanner() {
         return { weapon, score: 1000 }
       }
 
-      const bestDistance = LevenshteinDistance(name, GetFilteredText(weaponName, /[a-z' ]+/i).toLowerCase())
+      const bestDistance = LevenshteinDistance(name.toLowerCase(), GetFilteredText(weaponName, /[a-z' ]+/i).toLowerCase())
 
       return { weapon, score: bestDistance }
     }))

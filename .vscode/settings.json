@@ -7,12 +7,13 @@
   },
 
   // Disable the default formatter, use eslint instead
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
 
   // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
+    "source.organizeImports": "never",
+    "source.fixAll": "never"
   },
 
   // Silent the stylistic rules in you IDE, but still auto fix them

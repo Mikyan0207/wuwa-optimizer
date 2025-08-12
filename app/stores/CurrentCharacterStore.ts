@@ -3,7 +3,7 @@ import type Character from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import type Statistic from '~/Core/Interfaces/Statistic'
 import type Weapon from '~/Core/Interfaces/Weapon'
-import { defineStore } from 'pinia'
+import { defineStore, skipHydrate } from 'pinia'
 import { useScoreCalculator } from '~/composables/calculators/UseScoreCalculator'
 import { useStatsCalculator } from '~/composables/calculators/UseStatsCalculator'
 import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
@@ -43,24 +43,20 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
     if (!CharacterId.value)
       return
 
-    try {
-      const defaultBuild = BuildsStore.GetDefaultBuild(CharacterId.value)
+    const defaultBuild = BuildsStore.GetDefaultBuild(CharacterId.value)
 
-      const [character, weapon] = await Promise.all([
-        CharactersStore.GetById(CharacterId.value),
-        WeaponsStore.GetById(defaultBuild?.WeaponId ?? ''),
-      ])
+    const [character, weapon] = await Promise.all([
+      CharactersStore.GetById(CharacterId.value),
+      WeaponsStore.GetById(defaultBuild?.WeaponId ?? ''),
+    ])
 
-      CurrentCharacter.value = character
-      CurrentBuild.value = defaultBuild || undefined
-      CurrentWeapon.value = weapon || undefined
-      CurrentEchoes.value = Array.from({ length: 5 }, (_, index) =>
-        defaultBuild?.Echoes[index] || undefined)
+    CurrentCharacter.value = character
+    CurrentBuild.value = defaultBuild || undefined
+    CurrentWeapon.value = weapon || undefined
+    CurrentEchoes.value = Array.from({ length: 5 }, (_, index) =>
+      defaultBuild?.Echoes[index] || undefined)
 
-      await UpdateStatsAndScore()
-    }
-    catch (error) {
-    }
+    await UpdateStatsAndScore()
   }
 
   async function UpdateStatsAndScore() {
@@ -130,6 +126,50 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
     await UpdateStatsAndScore()
   }
 
+  function CanUnlockSequence(sequenceIndex: number): boolean {
+    if (!CurrentCharacter.value)
+      return false
+
+    const sequence = CurrentCharacter.value.Sequences[sequenceIndex]
+    if (!sequence)
+      return false
+
+    if (sequence.Unlocked)
+      return true
+
+    if (sequenceIndex === 0)
+      return true
+
+    const previousSequence = CurrentCharacter.value.Sequences[sequenceIndex - 1]
+    return previousSequence?.Unlocked === true
+  }
+
+  function ToggleSequence(sequenceIndex: number) {
+    if (!CurrentCharacter.value) {
+      return
+    }
+
+    const sequence = CurrentCharacter.value.Sequences[sequenceIndex]
+    if (!sequence) {
+      return
+    }
+
+    if (CanUnlockSequence(sequenceIndex)) {
+      sequence.Unlocked = !sequence.Unlocked
+
+      if (!sequence.Unlocked) {
+        for (let i = sequenceIndex + 1; i < CurrentCharacter.value.Sequences.length; i++) {
+          const nextSequence = CurrentCharacter.value.Sequences[i]
+          if (nextSequence) {
+            nextSequence.Unlocked = false
+          }
+        }
+      }
+
+      CurrentCharacter.value = { ...CurrentCharacter.value }
+    }
+  }
+
   function Reset() {
     CharacterId.value = undefined
     CurrentCharacter.value = undefined
@@ -142,14 +182,14 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
   }
 
   return {
-    CharacterId: readonly(CharacterId),
-    CurrentCharacter,
-    CurrentBuild,
-    CurrentWeapon,
-    CurrentEchoes,
-    CurrentStats,
-    Score,
-    Note,
+    CharacterId: skipHydrate(readonly(CharacterId)),
+    CurrentCharacter: skipHydrate(CurrentCharacter),
+    CurrentBuild: skipHydrate(CurrentBuild),
+    CurrentWeapon: skipHydrate(CurrentWeapon),
+    CurrentEchoes: skipHydrate(CurrentEchoes),
+    CurrentStats: skipHydrate(CurrentStats),
+    Score: skipHydrate(Score),
+    Note: skipHydrate(Note),
 
     HasCharacter,
     HasBuild,
@@ -161,5 +201,7 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
     ReorderEchoes,
     LoadBuild,
     Reset,
+    CanUnlockSequence,
+    ToggleSequence,
   }
 })

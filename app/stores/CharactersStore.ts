@@ -1,5 +1,5 @@
-import type { BaseCharacter, PartialCharacter } from '~/Core/Interfaces/Character'
 import type Character from '~/Core/Interfaces/Character'
+import type { BaseCharacter, PartialCharacter } from '~/Core/Interfaces/Character'
 import type Sequence from '~/Core/Interfaces/Sequence'
 import type Skill from '~/Core/Interfaces/Skill'
 import { defineStore, skipHydrate } from 'pinia'

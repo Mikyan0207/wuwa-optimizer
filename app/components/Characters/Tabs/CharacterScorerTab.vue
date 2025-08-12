@@ -19,9 +19,7 @@ const Toast = useToast()
 
 const { TakeScreenShotAsync } = useScreenshot(CharacterInfoRef)
 
-const CharacterId = ref<number>(Number.parseInt((Route.params as { id: string }).id))
-
-CurrentCharacterStore.SetCharacter(CharacterId.value)
+CurrentCharacterStore.SetCharacter(Number.parseInt((Route.params as { id: string }).id))
 
 async function SaveCurrentBuild() {
 }

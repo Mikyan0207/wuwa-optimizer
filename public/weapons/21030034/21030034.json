@@ -1,0 +1,16 @@
+{
+  "GameId": 21030034,
+  "Name": "Pistols#26",
+  "Type": "PISTOLS",
+  "Rarity": "FOUR_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 387.5
+  },
+  "SecondaryStatistic": {
+    "Type": "ATTACK_PERCENTAGE",
+    "Value": 36.45
+  }
+}

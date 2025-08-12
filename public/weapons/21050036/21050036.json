@@ -1,0 +1,22 @@
+{
+  "GameId": 21050036,
+  "Name": "Stellar Symphony",
+  "Type": "RECTIFIER",
+  "Rarity": "FIVE_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 412.5
+  },
+  "SecondaryStatistic": {
+    "Type": "ENERGY_REGENERATION",
+    "Value": 77.04
+  },
+  "ExtraStatistics": [
+    {
+      "Type": "HP_PERCENTAGE",
+      "Value": 12
+    }
+  ]
+}

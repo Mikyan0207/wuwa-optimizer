@@ -1,16 +1,17 @@
 import type Weapon from '~/Core/Interfaces/Weapon'
+import type { BaseWeapon } from '~/Core/Interfaces/Weapon'
 import Tesseract from 'tesseract.js'
 import { WEAPON_LEVEL_REGION, WEAPON_NAME_REGION } from '~/Core/Scanner/Regions'
 import { LevenshteinDistance } from '~/Core/Utils/StringUtils'
-import { TemplateWeapons } from '~/Core/Weapons'
 
 export function useWeaponScanner() {
   let NameWorker: Tesseract.Worker | undefined
   let LevelWorker: Tesseract.Worker | undefined
 
   const BaseContext = ref<CanvasRenderingContext2D | null>(null)
+  const WeaponsStore = useWeaponsStore()
 
-  const weaponNamesCache = new Map<Weapon, string>()
+  const weaponNamesCache = new Map<BaseWeapon, string>()
 
   async function LoadAsync() {
     NameWorker = await Tesseract.createWorker('eng', 1)
@@ -20,8 +21,10 @@ export function useWeaponScanner() {
       tessedit_char_whitelist: '0123456789',
     })
 
-    for (const weapon of TemplateWeapons) {
-      const name = weapon.Name.toLowerCase()
+    const weapons = await WeaponsStore.GetAll()
+
+    for (const weapon of weapons) {
+      const name = weapon.Name
       weaponNamesCache.set(weapon, name)
     }
   }
@@ -30,7 +33,7 @@ export function useWeaponScanner() {
     BaseContext.value = context
   }
 
-  async function ScanWeapon(): Promise<Weapon | undefined> {
+  async function ScanWeapon(): Promise<BaseWeapon | undefined> {
     if (BaseContext.value === null) {
       return undefined
     }
@@ -38,11 +41,14 @@ export function useWeaponScanner() {
     return await GetWeaponAsync()
   }
 
-  async function GetWeaponAsync(): Promise<Weapon | undefined> {
+  async function GetWeaponAsync(): Promise<BaseWeapon | undefined> {
     const weaponName = await GetWeaponNameAsync()
 
-    const results = await Promise.all(TemplateWeapons.map(async (weapon) => {
-      const name = weaponNamesCache.get(weapon)!
+    const results = await Promise.all(weaponNamesCache.entries().map(async ([weapon, name]) => {
+      if (name === undefined) {
+        return { weapon, score: 1000 }
+      }
+
       const bestDistance = LevenshteinDistance(name, GetFilteredText(weaponName, /[a-z' ]+/i).toLowerCase())
 
       return { weapon, score: bestDistance }

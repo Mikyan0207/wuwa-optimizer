@@ -1,7 +1,7 @@
 import type Statistic from '../Interfaces/Statistic'
-import type Character from '~/Core/Interfaces/Character'
+import type { BaseCharacter } from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
-import type Weapon from '~/Core/Interfaces/Weapon'
+import type { BaseWeapon } from '~/Core/Interfaces/Weapon'
 
 export enum ScannerStatus {
   IDLE = 'IDLE',
@@ -25,12 +25,13 @@ export interface ScannerError {
   details?: string
   suggestions?: string[]
   timestamp: Date
+  raw?: any
 }
 
 export interface ScanResult {
   status: ScannerResultStatus
-  character?: Character
-  weapon?: Weapon
+  character?: BaseCharacter
+  weapon?: BaseWeapon
   echoes?: Echo[]
   echoesStats?: Statistic[]
   error?: ScannerError

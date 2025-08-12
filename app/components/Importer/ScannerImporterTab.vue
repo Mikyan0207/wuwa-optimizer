@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import type { BaseCharacter } from '~/Core/Interfaces/Character'
 import type Character from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import type Weapon from '~/Core/Interfaces/Weapon'
+import type { BaseWeapon } from '~/Core/Interfaces/Weapon'
 import { useAnalytics } from '~/composables/core/UseAnalytics'
 import { useScanner } from '~/composables/scanner/UseScanner'
 import { ScannerStatus as ScannerStatusType } from '~/Core/Scanner/ScannerTypes'
@@ -14,8 +16,8 @@ const WeaponsStore = useWeaponsStore()
 const SelectedFile = ref<File | undefined>(undefined)
 const IsScanning = ref<boolean>(false)
 
-const ImportedCharacter = ref<Character | undefined>(undefined)
-const ImportedWeapon = ref<Weapon | undefined>(undefined)
+const ImportedCharacter = ref<BaseCharacter | undefined>(undefined)
+const ImportedWeapon = ref<BaseWeapon | undefined>(undefined)
 const ImportedEchoes = ref<Echo[]>([])
 
 const Scanner = await useScanner()
@@ -58,6 +60,8 @@ async function OnFileUploaded() {
     await Scanner.LoadAsync(SelectedFile.value)
     const result = await Scanner.ScanAll()
 
+    console.warn(result)
+
     ImportedCharacter.value = result.character
     ImportedEchoes.value = result.echoes || []
     ImportedWeapon.value = result.weapon
@@ -87,6 +91,8 @@ function OnConfirmClicked() {
   })
 
   const weapon = WeaponsStore.CreateFromGameId(ImportedWeapon.value!.GameId)
+
+  console.log(weapon)
 
   const BuildsStore = useBuildsStore()
   const existingDefaultBuild = BuildsStore.GetDefaultBuild(ImportedCharacter.value!.Id)
@@ -165,11 +171,11 @@ function OnConfirmClicked() {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <MCharacterCard
             v-if="ImportedCharacter"
-            :character="ImportedCharacter"
+            :character="ImportedCharacter as Character"
           />
           <MWeaponCard
             v-if="ImportedWeapon"
-            :weapon="ImportedWeapon"
+            :weapon="ImportedWeapon as Weapon"
             :show-menu="false"
           />
         </div>

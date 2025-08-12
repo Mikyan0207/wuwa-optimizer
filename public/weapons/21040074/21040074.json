@@ -1,0 +1,16 @@
+{
+  "GameId": 21040074,
+  "Name": "Stonard",
+  "Type": "GAUNTLETS",
+  "Rarity": "FOUR_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 412.5
+  },
+  "SecondaryStatistic": {
+    "Type": "CRIT_RATE",
+    "Value": 20.25
+  }
+}

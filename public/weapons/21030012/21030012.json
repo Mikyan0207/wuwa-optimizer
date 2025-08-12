@@ -1,0 +1,16 @@
+{
+  "GameId": 21030012,
+  "Name": "Tyro Pistols",
+  "Type": "PISTOLS",
+  "Rarity": "TWO_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 275
+  },
+  "SecondaryStatistic": {
+    "Type": "ATTACK_PERCENTAGE",
+    "Value": 14.85
+  }
+}

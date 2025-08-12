@@ -1,4 +1,4 @@
-import type { KeyPointVector, Mat } from '@techstark/opencv-js'
+import type { BFMatcher, KeyPointVector, Mat, ORB } from '@techstark/opencv-js'
 import type Echo from '~/Core/Interfaces/Echo'
 import type Sonata from '~/Core/Interfaces/Sonata'
 import type { Rectangle } from '~/Core/Scanner/Rectangle'
@@ -10,10 +10,14 @@ import { ECHO_REGIONS } from '~/Core/Scanner/Regions'
 import { Sonatas } from '~/Core/Sonatas'
 import { GetEchoIcon, GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
+export async function getOpenCv() {
+  return await cvReadyPromise
+}
+
 export async function useEchoesScanner() {
   const BaseContext = ref<CanvasRenderingContext2D | null>(null)
   let TesseractWorker: Tesseract.Worker | undefined
-  const cv = await cvReadyPromise
+  let cv: typeof cvReadyPromise
 
   const EchoIconsCache = new Map<Echo, Mat>()
   const SonataIconsCache = new Map<Sonata, Mat>()
@@ -21,11 +25,13 @@ export async function useEchoesScanner() {
   const OrbDescriptorsCache = new Map<Echo, { keypoints: KeyPointVector, descriptors: Mat }>()
   const SonataDescriptorsCache = new Map<Sonata, { keypoints: KeyPointVector, descriptors: Mat }>()
 
-  let orb: cvReadyPromise.ORB | null = null
-  let bf: cvReadyPromise.BFMatcher | null = null
+  let orb: ORB | null = null
+  let bf: BFMatcher | null = null
 
   async function LoadAsync() {
     TesseractWorker = await Tesseract.createWorker('eng', 1)
+
+    cv = await getOpenCv()
 
     orb = new cv.ORB(500)
     bf = new cv.BFMatcher()

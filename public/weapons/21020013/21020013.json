@@ -1,0 +1,16 @@
+{
+  "GameId": 21020013,
+  "Name": "Sword Of Night",
+  "Type": "SWORD",
+  "Rarity": "THREE_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 325
+  },
+  "SecondaryStatistic": {
+    "Type": "ATTACK_PERCENTAGE",
+    "Value": 24.3
+  }
+}

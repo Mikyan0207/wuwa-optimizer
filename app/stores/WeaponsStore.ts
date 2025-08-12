@@ -1,49 +1,102 @@
+import type { BaseWeapon, PartialWeapon } from '~/Core/Interfaces/Weapon'
 import type Weapon from '~/Core/Interfaces/Weapon'
-import { skipHydrate } from 'pinia'
+import { defineStore, skipHydrate } from 'pinia'
 import { v4 as uuidv4 } from 'uuid'
-import { TemplateWeapons } from '~/Core/Weapons'
 
 export const useWeaponsStore = defineStore('WeaponsStore', () => {
-  const DefaultWeapons = ref<Weapon[]>(TemplateWeapons)
-  const Weapons = useLocalStorage<Weapon[]>('Weapons', [])
+  const Weapons = useLocalStorage<Map<string, PartialWeapon>>('Weapons', new Map())
+  const BaseWeapons = ref<BaseWeapon[]>([])
+  const CachedWeapons = ref<Map<number, Weapon>>(new Map())
 
-  function GetById(weaponId: string | undefined): Weapon | undefined {
-    return Weapons.value.find(x => x.Id === weaponId)
+  async function GetBaseById(id: number): Promise<BaseWeapon> {
+    const weapon = BaseWeapons.value.find(w => w.GameId === id)
+
+    if (weapon) {
+      return weapon
+    }
+
+    const data = await $fetch<BaseWeapon>(`/weapons/${id}/${id}.json`)
+
+    if (data) {
+      BaseWeapons.value.push(data)
+    }
+
+    return data
   }
 
-  function GetByGameId(gameId: number): Weapon | undefined {
-    return DefaultWeapons.value.find(x => x.GameId === gameId)
-  }
+  async function GetById(id: string): Promise<Weapon | undefined> {
+    const weapon = Weapons.value.get(id)
 
-  function Add(weapon: Weapon) {
-    Weapons.value.push(weapon)
-  }
-
-  function CreateFromGameId(gameId: number | undefined): Weapon | undefined {
-    if (!gameId)
+    if (!weapon) {
       return undefined
+    }
 
-    const weapon = GetByGameId(gameId)
+    return Merge(weapon, await GetBaseById(weapon.GameId))
+  }
 
-    if (!weapon)
+  async function GetByGameId(gameId: number): Promise<BaseWeapon> {
+    if (CachedWeapons.value.has(gameId)) {
+      return CachedWeapons.value.get(gameId)!
+    }
+
+    return GetBaseById(gameId)
+  }
+
+  async function GetAll(): Promise<BaseWeapon[]> {
+    const data = await $fetch<number[]>('/weapons/weapons.json')
+
+    return Promise.all(data.map(id => GetBaseById(id)))
+  }
+
+  async function UpdateById(weaponId: string, data: Partial<PartialWeapon>) {
+    const weapon = await GetById(weaponId)
+
+    if (weapon) {
+      Weapons.value.set(weaponId, {
+        ...weapon,
+        ...data,
+      })
+    }
+  }
+
+  function Merge(partial: PartialWeapon | undefined, base: BaseWeapon): Weapon {
+    return {
+      ...base,
+      ...partial,
+      Level: partial?.Level ?? 1,
+      Rank: partial?.Rank ?? 1,
+    }
+  }
+
+  function CreateFromGameId(gameId: number): Weapon | undefined {
+    const weapon = BaseWeapons.value.find(w => w.GameId === gameId)
+
+    if (!weapon) {
       return undefined
+    }
 
-    const weaponId = uuidv4()
-    const weaponToAdd = {
-      ...weapon,
-      Id: weaponId,
-    } as Weapon
+    const weaponToAdd: PartialWeapon = {
+      Id: uuidv4(),
+      GameId: gameId,
+      Level: 1,
+      Rank: 1,
+    }
 
-    Weapons.value.push(weaponToAdd)
+    Weapons.value.set(weaponToAdd.Id!, weaponToAdd)
 
-    return weaponToAdd
+    return Merge(weaponToAdd, weapon)
+  }
+
+  if (import.meta.hot) {
+    import.meta.hot.accept(acceptHMRUpdate(useWeaponsStore, import.meta.hot))
   }
 
   return {
     Weapons: skipHydrate(Weapons),
+    GetAll,
     GetById,
     GetByGameId,
-    Add,
+    UpdateById,
     CreateFromGameId,
   }
 })

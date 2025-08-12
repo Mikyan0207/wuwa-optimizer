@@ -1,7 +1,7 @@
-import type Character from '~/Core/Interfaces/Character'
+import type { BaseCharacter } from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import type Statistic from '~/Core/Interfaces/Statistic'
-import type Weapon from '~/Core/Interfaces/Weapon'
+import type { BaseWeapon } from '~/Core/Interfaces/Weapon'
 import type { ScanResult } from '~/Core/Scanner/ScannerTypes'
 import { useCharacterScanner } from '~/composables/scanner/UseCharacterScanner'
 import { useEchoesScanner } from '~/composables/scanner/UseEchoesScanner'
@@ -46,7 +46,7 @@ export async function useScanner() {
     EchoesStatsScanner.SetContext(BaseContext.value)
     WeaponScanner.SetContext(BaseContext.value)
 
-    return Promise.all([
+    return await Promise.all([
       CharacterScanner.LoadAsync(),
       EchoesScanner.LoadAsync(),
       EchoesStatsScanner.LoadAsync(),
@@ -64,7 +64,7 @@ export async function useScanner() {
       BaseContext.value!.clearRect(0, 0, image.width, image.height)
       BaseContext.value!.drawImage(image, 0, 0)
 
-      ScannerState.SetProgress(60)
+      ScannerState.SetProgress(20)
 
       await Promise.all([
         CharacterScanner.LoadAsync(),
@@ -73,7 +73,6 @@ export async function useScanner() {
         WeaponScanner.LoadAsync(),
       ])
 
-      ScannerState.SetProgress(100)
       ScannerState.SetReady()
     }
     catch (error) {
@@ -91,6 +90,8 @@ export async function useScanner() {
     try {
       const startTime = performance.now()
 
+      ScannerState.SetProgress(50)
+
       const [character, echoes, echoesStats, weapon] = await Promise.all([
         ScanCharacter(),
         ScanEchoes(),
@@ -98,7 +99,7 @@ export async function useScanner() {
         ScanWeapon(),
       ])
 
-      ScannerState.SetProgress(90)
+      ScannerState.SetProgress(70)
 
       const endTime = performance.now()
       const totalTime = (endTime - startTime) / 1000
@@ -115,6 +116,8 @@ export async function useScanner() {
           echo.Statistics = stats.slice(2)
         }
       }
+
+      ScannerState.SetProgress(100)
 
       const result: ScanResult = {
         status: ScannerResultStatus.SUCCESS,
@@ -134,6 +137,7 @@ export async function useScanner() {
           message: 'Scan failed',
           details: error instanceof Error ? error.message : 'Unknown error',
           timestamp: new Date(),
+          raw: error,
         },
       }
 
@@ -142,7 +146,7 @@ export async function useScanner() {
     }
   }
 
-  async function ScanCharacter(): Promise<Character | undefined> {
+  async function ScanCharacter(): Promise<BaseCharacter | undefined> {
     if (!CharacterScanner) {
       throw new Error('Character scanner not loaded')
     }
@@ -166,7 +170,7 @@ export async function useScanner() {
     return EchoesStatsScanner.ScanEchoesStats()
   }
 
-  async function ScanWeapon(): Promise<Weapon | undefined> {
+  async function ScanWeapon(): Promise<BaseWeapon | undefined> {
     if (!WeaponScanner) {
       throw new Error('Weapon scanner not loaded')
     }

@@ -1,6 +1,5 @@
 import type { BaseCharacter } from '~/Core/Interfaces/Character'
 import Tesseract from 'tesseract.js'
-import { TemplateCharacters } from '~/Core/Characters'
 import { CHARACTER_NAME_REGION } from '~/Core/Scanner/Regions'
 import { LevenshteinDistance } from '~/Core/Utils/StringUtils'
 

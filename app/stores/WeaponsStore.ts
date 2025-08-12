@@ -8,6 +8,8 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
   const BaseWeapons = ref<BaseWeapon[]>([])
   const CachedWeapons = ref<Map<number, Weapon>>(new Map())
 
+  const PendingRequests = ref<Map<number, Promise<BaseWeapon>>>(new Map())
+
   async function GetBaseById(id: number): Promise<BaseWeapon> {
     const weapon = BaseWeapons.value.find(w => w.GameId === id)
 
@@ -15,13 +17,22 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
       return weapon
     }
 
-    const data = await $fetch<BaseWeapon>(`/weapons/${id}/${id}.json`)
-
-    if (data) {
-      BaseWeapons.value.push(data)
+    if (PendingRequests.value.has(id)) {
+      return PendingRequests.value.get(id)!
     }
 
-    return data
+    const promise = $fetch<BaseWeapon>(`/weapons/${id}/${id}.json`).then((data) => {
+      if (data) {
+        BaseWeapons.value.push(data)
+      }
+      return data
+    }).finally(() => {
+      PendingRequests.value.delete(id)
+    })
+
+    PendingRequests.value.set(id, promise)
+
+    return promise
   }
 
   async function GetById(id: string): Promise<Weapon | undefined> {

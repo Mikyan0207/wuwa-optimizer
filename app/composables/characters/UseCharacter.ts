@@ -8,16 +8,11 @@ export function useCharacter(character?: Character | undefined) {
   const CharacterId = computed(() => character?.Id ?? Number.parseInt((Route.params as { id: string }).id))
   const CurrentCharacter = ref<Character | undefined>(undefined)
 
-  async function GetCurrentCharacterAsync() {
-    if (CharacterId.value) {
-      CurrentCharacter.value = await CharactersStore.GetById(CharacterId.value)
-    }
-  }
+  onMounted(async () => {
+    if (!CharacterId.value)
+      return
 
-  watchEffect(() => {
-    CurrentCharacter.value = undefined
-
-    GetCurrentCharacterAsync()
+    CurrentCharacter.value = await CharactersStore.GetById(CharacterId.value)
   })
 
   const StatsWeights = computed(() =>

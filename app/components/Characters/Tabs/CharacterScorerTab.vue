@@ -2,13 +2,11 @@
 import type Echo from '~/Core/Interfaces/Echo'
 import VueDraggable from 'vuedraggable'
 import { useBuild } from '~/composables/builds/UseBuild'
-import { useCharacter } from '~/composables/characters/UseCharacter'
 import { useScreenshot } from '~/composables/core/UseScreenshot'
 import { GetCharacterBackground } from '~/Core/Utils/CharacterUtils'
 import { useBuildsStore } from '~/stores/BuildsStore'
 
-const { CurrentCharacter } = useCharacter()
-const { CurrentBuild, CurrentEchoes, ReorderEchoes } = useBuild()
+const { CurrentCharacter, CurrentBuild, CurrentEchoes, ReorderEchoes } = useBuild()
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 const ShowScreenShotBackground = ref<boolean>(false)

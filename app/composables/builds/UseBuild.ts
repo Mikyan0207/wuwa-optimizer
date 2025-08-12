@@ -2,8 +2,8 @@ import type { BuildWithDependencies } from '~/Core/Interfaces/Build'
 import type Echo from '~/Core/Interfaces/Echo'
 import { useScoreCalculator } from '~/composables/calculators/UseScoreCalculator'
 import { useStatsCalculator } from '~/composables/calculators/UseStatsCalculator'
-import { useCharacter } from '~/composables/characters/UseCharacter'
 import { useBuildsStore } from '~/stores/BuildsStore'
+import { useCharacter } from '../characters/UseCharacter'
 
 export function useBuild() {
   const { CurrentCharacter } = useCharacter()
@@ -16,6 +16,16 @@ export function useBuild() {
 
   const CurrentWeapon = computed(() => {
     return CurrentBuild.value?.Weapon
+  })
+
+  watch(CurrentCharacter, async (newCharacter, oldCharacter) => {
+    if (newCharacter?.Id === oldCharacter?.Id)
+      return
+
+    if (!CurrentCharacter.value || CurrentBuild.value)
+      return
+
+    CurrentBuild.value = await BuildsStore.GetDefaultBuildWithDependencies(CurrentCharacter.value.Id)
   })
 
   const CurrentStats = computed(() => {
@@ -33,12 +43,6 @@ export function useBuild() {
     return Array.from({ length: 5 }, (_, index) => {
       return CurrentBuild.value?.Echoes?.[index] || undefined
     })
-  })
-
-  watchEffect(async () => {
-    if (CurrentCharacter.value) {
-      CurrentBuild.value = await BuildsStore.GetDefaultBuildWithDependencies(CurrentCharacter.value.Id)
-    }
   })
 
   function UpdateEcho(slot: number, echo: Partial<Echo>) {
@@ -90,6 +94,7 @@ export function useBuild() {
   }
 
   return {
+    CurrentCharacter,
     CurrentBuild,
     CurrentWeapon,
     CurrentEchoes,

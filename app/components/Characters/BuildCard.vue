@@ -1,16 +1,12 @@
 <script setup lang="ts">
 import type Build from '~/Core/Interfaces/Build'
+import type { BuildWithDependencies } from '~/Core/Interfaces/Build'
 import type Sonata from '~/Core/Interfaces/Sonata'
 import { GetTotalGradeColor } from '~/composables/calculators/UseScoreCalculator'
-import { useCharacter } from '~/composables/characters/UseCharacter'
-import { GetCharacterIcon } from '~/Core/Utils/CharacterUtils'
-import { GetBackgroundColor, GetHighlightColor, GetSecondaryColor } from '~/Core/Utils/ColorUtils'
 import { GetSonataIcon } from '~/Core/Utils/EchoUtils'
 
 interface Props {
-  build: Build
-  isSelected?: boolean
-  isOtherCharacter?: boolean
+  build: BuildWithDependencies
 }
 
 const props = defineProps<Props>()
@@ -19,19 +15,10 @@ const emit = defineEmits<{
   edit: [build: Build]
   delete: [build: Build]
   setDefault: [build: Build]
-  navigateToCharacter: [characterId: number]
   editingChange: [isEditing: boolean]
 }>()
 
-const WeaponsStore = useWeaponsStore()
-const { CurrentCharacter } = useCharacter()
 const { t } = useI18n()
-
-const weapon = computed(() => {
-  if (!props.build.WeaponId)
-    return null
-  return WeaponsStore.GetById(props.build.WeaponId)
-})
 
 const ActiveSets = computed(() => {
   const setCounts = new Map<string, { count: number, sonata: Sonata }>()
@@ -83,12 +70,11 @@ watch(IsDropdownOpen, (newValue) => {
 })
 
 function StartEditingName() {
-  if (props.isOtherCharacter) {
-    return
-  }
   IsEditingName.value = true
   EditedName.value = props.build.Name
+
   emit('editingChange', true)
+
   nextTick(() => {
     NameInput.value?.focus()
     NameInput.value?.select()
@@ -108,21 +94,14 @@ function CancelEdit() {
   IsEditingName.value = false
   emit('editingChange', false)
 }
-
-function HandleCharacterClick() {
-  if (props.isOtherCharacter) {
-    emit('navigateToCharacter', props.build.CharacterId)
-  }
-}
 </script>
 
 <template>
   <UCard
-    v-if="CurrentCharacter"
     v-motion-pop
     class="group transition-all duration-200 h-full flex flex-col"
     :class="[
-      isSelected ? 'ring ring-gold-400/50 bg-neutral-900' : '',
+      build.IsDefault ? 'ring ring-gold-400/50 bg-neutral-900' : '',
       IsEditingName ? 'cursor-default' : 'cursor-pointer',
     ]"
     :ui="{
@@ -133,59 +112,6 @@ function HandleCharacterClick() {
     <div class="flex-1 flex flex-col justify-between h-full">
       <!-- Content -->
       <div class="flex-1 flex flex-col">
-        <!-- Character indicator for other character builds -->
-        <div v-if="isOtherCharacter" class="flex items-center justify-between mb-2">
-          <div
-            class="flex items-center gap-2 p-1.5 bg-blue-500/10 rounded-sm cursor-pointer hover:bg-blue-500/20 transition-colors"
-            @click="HandleCharacterClick"
-          >
-            <NuxtImg
-              v-if="CurrentCharacter"
-              :src="GetCharacterIcon(CurrentCharacter)"
-              :alt="t(`${CurrentCharacter.Id}_name`)"
-              class="w-5 h-5 object-cover rounded-sm"
-            />
-            <span class="text-xs text-blue-400 font-medium">
-              {{ t(`${CurrentCharacter.Id}_name`) }}
-            </span>
-            <UIcon name="i-solar-arrow-right-broken" class="w-3 h-3 text-blue-400" />
-          </div>
-
-          <!-- Actions -->
-          <div
-            class="transition-all duration-75 opacity-0 group-hover:opacity-100"
-            :class="{
-              'opacity-100': IsDropdownOpen || IsHovered,
-            }"
-            @mouseenter="IsHovered = true"
-            @mouseleave="IsHovered = false"
-          >
-            <UDropdownMenu
-              :items="[
-                {
-                  label: isOtherCharacter ? `Copy to ${t(`${CurrentCharacter.Id}_name`)}` : 'Equip',
-                  icon: isOtherCharacter ? 'i-solar-copy-broken' : 'i-solar-star-broken',
-                  onSelect: () => emit('load', build),
-                },
-                {
-                  label: 'Delete',
-                  icon: 'i-solar-trash-bin-trash-broken',
-                  onSelect: () => emit('delete', build),
-                },
-              ]"
-              @update:open="(v: boolean) => IsDropdownOpen = v"
-            >
-              <UButton
-                color="neutral"
-                variant="ghost"
-                icon="i-solar-menu-dots-broken"
-                size="sm"
-                @click.stop
-              />
-            </UDropdownMenu>
-          </div>
-        </div>
-
         <!-- Header -->
         <div class="space-y-6 mb-2">
           <div class="flex items-center justify-between">
@@ -193,7 +119,6 @@ function HandleCharacterClick() {
               <div v-if="!IsEditingName" class="flex-1 min-w-0">
                 <h3
                   class="font-semibold text-lg text-gray-100 truncate"
-                  :class="isOtherCharacter ? '' : 'cursor-pointer hover:text-gray-300 transition-colors'"
                   @click="StartEditingName"
                 >
                   {{ build.Name }}
@@ -212,7 +137,7 @@ function HandleCharacterClick() {
                 >
               </div>
               <UBadge
-                v-if="build.IsDefault || isSelected"
+                v-if="build.IsDefault"
                 color="success"
                 variant="subtle"
                 size="sm"
@@ -224,7 +149,6 @@ function HandleCharacterClick() {
 
             <!-- Actions for current character builds -->
             <div
-              v-if="!isOtherCharacter"
               class="transition-all duration-75 opacity-0 group-hover:opacity-100"
               :class="{
                 'opacity-100': IsDropdownOpen || IsHovered,
@@ -257,16 +181,12 @@ function HandleCharacterClick() {
               </UDropdownMenu>
             </div>
           </div>
-
-          <p v-if="build.Description" class="text-sm text-gray-400 truncate mt-1">
-            {{ build.Description }}
-          </p>
         </div>
 
         <!-- Equipment Preview -->
         <div class="space-y-6 flex-1 flex flex-col">
           <!-- Weapon -->
-          <div v-if="weapon" class="space-y-2">
+          <div v-if="build.Weapon" class="space-y-2">
             <div class="flex items-center gap-2">
               <div class="w-1 h-4 bg-blue-400 rounded-full" />
               <span class="text-xs font-medium text-gray-400 uppercase tracking-wide">Weapon</span>
@@ -275,44 +195,19 @@ function HandleCharacterClick() {
             <div class="flex items-center gap-3">
               <!-- Weapon Icon Container -->
               <div class="relative shrink-0">
-                <div class="w-20 h-20 rounded-sm bg-neutral-800/30 flex items-center justify-center relative overflow-hidden border border-gray-600/50">
-                  <!-- Weapon Icon - Cover -->
-                  <NuxtImg
-                    :src="`/images/weapons/${weapon.Icon}`"
-                    :alt="weapon.Name"
-                    class="w-full h-full object-cover"
-                  />
-
-                  <!-- Rarity Border Effect -->
-                  <div class="absolute inset-0 pointer-events-none">
-                    <div class="absolute bottom-0 w-full">
-                      <div class="relative w-full flex items-center">
-                        <div class="absolute mt-auto h-2 w-full -bottom-1">
-                          <div
-                            class="absolute bottom-0 h-1.5 w-full blur-sm"
-                            :class="GetBackgroundColor(weapon.Rarity)"
-                          />
-                          <div
-                            class="absolute bottom-0 h-1 w-full blur"
-                            :class="GetSecondaryColor(weapon.Rarity)"
-                          />
-                        </div>
-                      </div>
-                      <div class="h-[2px]" :class="GetHighlightColor(weapon.Rarity)" />
-                    </div>
-                  </div>
-                </div>
+                <!-- Weapon Icon - Cover -->
+                <MWeaponIconAlt :weapon="build.Weapon" />
               </div>
 
               <!-- Weapon Info -->
               <div class="flex-1 min-w-0">
                 <div class="text-sm text-gray-200 truncate mb-1">
-                  {{ weapon.Name }}
+                  {{ t(`${build.Weapon.GameId}_name`) }}
                 </div>
                 <div class="flex items-center gap-2 text-xs text-gray-400">
-                  <span>Lv.{{ weapon.Level }}</span>
+                  <span>Lv.{{ build.Weapon.Level }}</span>
                   <span>•</span>
-                  <span>R{{ weapon.Rank }}</span>
+                  <span>R{{ build.Weapon.Rank }}</span>
                 </div>
               </div>
             </div>

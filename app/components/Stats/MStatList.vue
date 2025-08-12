@@ -10,15 +10,11 @@ interface StatDisplayProps {
   showWantedHighlight?: boolean
 }
 
-const props = withDefaults(defineProps<StatDisplayProps>(), {
+withDefaults(defineProps<StatDisplayProps>(), {
   statsCount: 5,
   showRollValue: false,
   showWantedHighlight: false,
 })
-
-const EffectiveWeights = computed(() =>
-  props.weights,
-)
 </script>
 
 <template>
@@ -29,7 +25,7 @@ const EffectiveWeights = computed(() =>
         v-motion-slide-left
         :delay="idx * 75"
         :stat="stats[idx]"
-        :weights="EffectiveWeights"
+        :weights="weights"
         :show-roll-value="showRollValue"
         :show-wanted-highlight="showWantedHighlight"
       />

@@ -1,4 +1,5 @@
 import type Weapon from '~/Core/Interfaces/Weapon'
+import { skipHydrate } from 'pinia'
 import { v4 as uuidv4 } from 'uuid'
 import { TemplateWeapons } from '~/Core/Weapons'
 
@@ -39,7 +40,7 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
   }
 
   return {
-    Weapons,
+    Weapons: skipHydrate(Weapons),
     GetById,
     GetByGameId,
     Add,

@@ -201,7 +201,7 @@ function UpdateSubStatValue(index: number, value: string) {
         <NuxtImg :src="`/images/echoes/${displayedEcho?.Icon}`" class="w-20 h-20 rounded-lg" />
         <div class="flex-1">
           <h4 class="text-white font-semibold text-lg mb-1">
-            {{ t(`${displayedEcho?.Id}_name`) }}
+            {{ t(`${displayedEcho?.GameId}_name`) }}
           </h4>
           <div class="flex items-center gap-2 mb-2">
             <UBadge variant="soft" color="info" size="sm">
@@ -241,7 +241,7 @@ function UpdateSubStatValue(index: number, value: string) {
           <div class="grid grid-cols-2 gap-3">
             <UFormField name="Level" label="Enhancement Level">
               <USelectMenu
-                :model-value="state.Level"
+                :model-value="state.Level ?? 25"
                 :items="LevelOptions"
                 value-key="Value"
                 label-key="Label"

@@ -6,17 +6,24 @@ import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
 const { CurrentCharacter } = useCharacter()
-const { DefaultBuild, Stats, Score, Note } = useBuild()
+const { DefaultBuild, GetStats, Score, Note } = useBuild()
 const { t } = useI18n()
 
 const GetCharacterScoreNoteColor = computed(() => {
   return GetTotalGradeColor(DefaultBuild.value?.Note || ScoreGrade.F)
 })
+
+const Stats = computed(() => {
+  if (!CurrentCharacter.value)
+    return []
+
+  return GetStats()
+})
 </script>
 
 <template>
   <MCard
-    v-if="CurrentCharacter && DefaultBuild && Stats"
+    v-if="CurrentCharacter"
     :border-lines-count="3"
   >
     <div class="flex flex-col gap-1 mb-3">
@@ -32,6 +39,7 @@ const GetCharacterScoreNoteColor = computed(() => {
     </div>
 
     <MStatList
+      v-if="Stats"
       :stats="Stats"
       :stats-count="Stats.length"
       :weights="CurrentCharacter.StatsWeights"

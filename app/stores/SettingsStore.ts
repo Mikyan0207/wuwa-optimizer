@@ -1,6 +1,6 @@
 import type Settings from '~/Core/Interfaces/Settings'
 import { useLocalStorage } from '@vueuse/core'
-import { defineStore } from 'pinia'
+import { defineStore, skipHydrate } from 'pinia'
 
 const DefaultSettings: Settings = {
   General: {
@@ -27,7 +27,7 @@ export const useSettingsStore = defineStore('SettingsStore', () => {
   }
 
   return {
-    Settings,
+    Settings: skipHydrate(Settings),
     GetSetting,
     UpdateSetting,
     ResetSettings,

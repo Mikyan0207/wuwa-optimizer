@@ -88,12 +88,12 @@ export function useBuild() {
     return base
   })
 
-  const Stats = computed(() => {
-    if (!DefaultBuild.value || !CurrentCharacter.value)
+  function GetStats() {
+    if (!CurrentCharacter.value)
       return undefined
 
     return StatsCalculator.CalculateTotalStats(CurrentCharacter.value, DefaultBuild.value)
-  })
+  }
 
   function UpdateEcho(slot: number, echo: Partial<Echo>) {
     if (!DefaultBuild.value)
@@ -108,14 +108,12 @@ export function useBuild() {
         ...existingEcho,
         ...echo,
         BuildId: DefaultBuild.value.Id,
-        EquipedSlot: slot,
       } as Echo
     }
     else {
       updatedEchoes.push({
         ...echo,
         BuildId: DefaultBuild.value.Id,
-        EquipedSlot: slot,
       } as Echo)
     }
 
@@ -125,14 +123,14 @@ export function useBuild() {
   }
 
   function GetEchoBySlot(slot: number) {
-    return CurrentEchoes.value.find((x: Echo) => x.EquipedSlot === slot)
+    return CurrentEchoes.value[slot]
   }
 
   return {
     DefaultBuild,
     CurrentWeapon,
     CurrentEchoes,
-    Stats,
+    GetStats,
     Score,
     Note,
     UpdateEcho,

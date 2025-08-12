@@ -149,7 +149,7 @@ function OnTakeScreenShotClicked() {
                 <MEchoCard
                   v-motion-slide-bottom
                   :delay="200 + (idx * 25)"
-                  :equiped-slot="echo.EquipedSlot || idx"
+                  :equiped-slot="idx"
                   :echo="echo"
                 />
               </template>

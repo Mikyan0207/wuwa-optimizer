@@ -71,6 +71,9 @@ importers:
       '@iconify-json/heroicons':
         specifier: ^1.2.2
         version: 1.2.2
+      '@iconify-json/line-md':
+        specifier: ^1.2.11
+        version: 1.2.11
       '@iconify-json/lucide':
         specifier: ^1.2.60
         version: 1.2.60
@@ -1011,6 +1014,9 @@ packages:
 
   '@iconify-json/heroicons@1.2.2':
     resolution: {integrity: sha512-qoW4pXr5kTTL6juEjgTs83OJIwpePu7q1tdtKVEdj+i0zyyVHgg/dd9grsXJQnpTpBt6/VwNjrXBvFjRsKPENg==}
+
+  '@iconify-json/line-md@1.2.11':
+    resolution: {integrity: sha512-JYczKuKvTq/Pf9rSCoxwdBbAiWqceNrb3EtM3acD4YkzCAdp3co+CdNE/pb5lTURGbIA9GrGuqentHqVwXyVWA==}
 
   '@iconify-json/lucide@1.2.60':
     resolution: {integrity: sha512-iVhpjcJkrR65jaJCJAFr02FkL73Qth039MgDJOcuKYOl32183qgAeHmo44DI2SzkYURGpc0GMwnhRPpQPOaChg==}
@@ -7659,6 +7665,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/heroicons@1.2.2':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/line-md@1.2.11':
     dependencies:
       '@iconify/types': 2.0.0
 

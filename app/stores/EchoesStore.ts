@@ -1,5 +1,5 @@
 import type Echo from '~/Core/Interfaces/Echo'
-import { defineStore } from 'pinia'
+import { defineStore, skipHydrate } from 'pinia'
 import { TemplateEchoes } from '~/Core/Echoes'
 
 export const useEchoesStore = defineStore('EchoesStore', () => {
@@ -76,7 +76,7 @@ export const useEchoesStore = defineStore('EchoesStore', () => {
   }
 
   return {
-    Echoes,
+    Echoes: skipHydrate(Echoes),
     GetById,
     GetByGameId,
     GetEquipedBy,

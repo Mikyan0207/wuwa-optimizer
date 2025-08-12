@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type Echo from '~/Core/Interfaces/Echo'
 import type Sonata from '~/Core/Interfaces/Sonata'
+import { v4 as uuidv4 } from 'uuid'
 import { z } from 'zod'
 import { useBuild } from '~/composables/builds/UseBuild'
 import { EchoCost } from '~/Core/Enums/EchoCost'
@@ -9,6 +10,7 @@ import { StatType } from '~/Core/Enums/StatType'
 
 interface EchoFormProps {
   echoSlot: number
+  echo: Echo | undefined
   mode?: 'create' | 'edit'
   open?: boolean
 }
@@ -22,7 +24,7 @@ const emits = defineEmits<{
 }>()
 
 const EchoesStore = useEchoesStore()
-const { CurrentEchoes, UpdateEcho } = useBuild()
+const { UpdateEcho } = useBuild()
 
 const Steps = [
   { id: 'echo', title: 'Echo', description: 'Select your Echo and Sonata effect.' },
@@ -39,7 +41,8 @@ const Filters = reactive({
 })
 
 const State = reactive({
-  EchoId: -1,
+  EchoGameId: -1,
+  EchoId: '',
   Rarity: Rarity.FIVE_STARS,
   Level: 25,
   MainStat: {
@@ -61,12 +64,12 @@ const State = reactive({
 })
 
 const EchoSelectionSchema = z.object({
-  EchoId: z.number().min(0, 'Please select a valid Echo.'),
+  EchoGameId: z.number().min(0, 'Please select a valid Echo.'),
   Cost: z.enum(EchoCost),
 })
 
 const SonataSelectionSchema = z.object({
-  EchoId: z.number().min(0, 'Please select a valid Echo.'),
+  EchoGameId: z.number().min(0, 'Please select a valid Echo.'),
   Cost: z.enum(EchoCost),
   Sonata: z.object({
     Name: z.string().min(1, 'Please select a Sonata effect.'),
@@ -74,7 +77,7 @@ const SonataSelectionSchema = z.object({
 })
 
 const StatsConfigurationSchema = z.object({
-  EchoId: z.number().min(0, 'Please select a valid Echo.'),
+  EchoGameId: z.number().min(0, 'Please select a valid Echo.'),
   Cost: z.enum(EchoCost),
   Level: z.number().min(1).max(25, 'Level must be between 1 and 25.'),
   Rarity: z.enum(Rarity),
@@ -119,9 +122,9 @@ const ValidationSchemas = {
 const ValidationErrors = ref<Record<string, string[]>>({})
 
 const ValidationRules: Record<number, () => boolean> = {
-  0: () => State.EchoId !== -1,
-  1: () => State.EchoId !== -1 && State.Sonata.Name !== '',
-  2: () => State.EchoId !== -1 && State.Sonata.Name !== '' && State.MainStat.Type !== StatType.NONE && State.SecondaryStat.Type !== StatType.NONE,
+  0: () => State.EchoGameId !== -1,
+  1: () => State.EchoGameId !== -1 && State.Sonata.Name !== '',
+  2: () => State.EchoGameId !== -1 && State.Sonata.Name !== '' && State.MainStat.Type !== StatType.NONE && State.SecondaryStat.Type !== StatType.NONE,
 }
 
 const IsFormValid = computed(() => {
@@ -136,12 +139,13 @@ const FormSteps = computed(() => Steps.map((step, index) => ({
 })))
 
 const CurrentEcho = computed<Echo | undefined>(() =>
-  props.mode === 'edit' ? CurrentEchoes.value.find(x => x.EquipedSlot === props.echoSlot) : undefined,
+  props.mode === 'edit' ? props.echo : undefined,
 )
 
 onMounted(() => {
-  if (props.mode === 'edit' && CurrentEcho.value !== undefined && CurrentEcho.value.GameId !== -1) {
-    State.EchoId = CurrentEcho.value.GameId
+  if (props.mode === 'edit' && CurrentEcho.value !== undefined && CurrentEcho.value.Id !== undefined) {
+    State.EchoGameId = CurrentEcho.value.GameId
+    State.EchoId = CurrentEcho.value.Id
     State.MainStat.Type = CurrentEcho.value.MainStatistic!.Type
     State.MainStat.Value = CurrentEcho.value.MainStatistic!.Value.toFixed(1)
     State.SecondaryStat.Type = CurrentEcho.value.SecondaryStatistic!.Type
@@ -167,7 +171,7 @@ onMounted(() => {
       }
     })
 
-    if (State.EchoId !== -1 && State.Sonata.Name !== '') {
+    if (State.EchoGameId !== -1 && State.Sonata.Name !== '') {
       DisplayedEcho.value = CurrentEcho.value
       CurrentStep.value = 2
     }
@@ -192,7 +196,7 @@ function NavigateStep(direction: 'next' | 'previous') {
 }
 
 function HandleEchoSelection(echoId: number, cost: EchoCost) {
-  State.EchoId = echoId
+  State.EchoGameId = echoId
   State.Cost = cost
   DisplayedEcho.value = EchoesStore.GetByGameId(echoId)
   NavigateStep('next')
@@ -219,7 +223,7 @@ function OnSubmit() {
     return
   }
 
-  const e = unref(EchoesStore.GetByGameId(State.EchoId))
+  const e = unref(EchoesStore.GetByGameId(State.EchoGameId))
 
   if (!e) {
     return OnClose()
@@ -231,6 +235,7 @@ function OnSubmit() {
 
   UpdateEcho(props.echoSlot, {
     ...e,
+    Id: props.mode === 'create' ? uuidv4() : State.EchoId,
     Rarity: State.Rarity,
     Level: State.Level,
     MainStatistic: {
@@ -309,10 +314,10 @@ const SubmitButtonLabel = computed(() => props.mode === 'create' ? 'Create Echo'
       <!-- Step 1: Echo Selection -->
       <MEchoFormEchoStep
         v-if="CurrentStep === 0"
-        :state="{ EchoId: State.EchoId, Cost: State.Cost }"
+        :state="{ EchoId: State.EchoGameId, Cost: State.Cost }"
         :filters="Filters"
         :errors="GetFieldErrors('EchoId')"
-        @update:state="(newState: { EchoId: number; Cost: EchoCost }) => { State.EchoId = newState.EchoId; State.Cost = newState.Cost }"
+        @update:state="(newState: { EchoId: number; Cost: EchoCost }) => { State.EchoGameId = newState.EchoId; State.Cost = newState.Cost }"
         @update:filters="(newFilters: typeof Filters) => Object.assign(Filters, newFilters)"
         @select-echo="HandleEchoSelection"
       />

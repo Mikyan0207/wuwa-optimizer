@@ -10,9 +10,9 @@ import { Sonatas } from '~/Core/Sonatas'
 export function useStatsCalculator() {
   const WeaponsStore = useWeaponsStore()
 
-  function CalculateTotalStats(character: Character, build: Build): Statistic[] {
-    const weapon = WeaponsStore.GetById(build.WeaponId ?? '')
-    const echoes = build.Echoes?.filter(echo => echo.Id !== undefined) || []
+  function CalculateTotalStats(character: Character, build?: Build): Statistic[] {
+    const weapon = WeaponsStore.GetById(build?.WeaponId ?? '')
+    const echoes = build?.Echoes?.filter(echo => echo.Id !== undefined) || []
 
     if (!character)
       return []
@@ -26,16 +26,16 @@ export function useStatsCalculator() {
   function CalculateMainStats(character: Character, weapon: Weapon | undefined, echoes: Echo[]): Statistic[] {
     const allStats = GetAllStats(character, weapon, echoes)
 
-    const baseAtk = character.Stats.find(stat => stat.Type === StatType.ATTACK)?.Value || 0
+    const baseAtk = character.BaseStats.find(stat => stat.Type === StatType.ATTACK)?.Value || 0
     const weaponAtk = weapon?.MainStatistic?.Value || 0
     const flatAtk = SumStatsByType(allStats, StatType.ATTACK)
     const percentAtk = SumStatsByType(allStats, StatType.ATTACK_PERCENTAGE)
 
-    const baseHp = character.Stats.find(stat => stat.Type === StatType.HP)?.Value || 0
+    const baseHp = character.BaseStats.find(stat => stat.Type === StatType.HP)?.Value || 0
     const flatHp = SumStatsByType(allStats, StatType.HP)
     const percentHp = SumStatsByType(allStats, StatType.HP_PERCENTAGE)
 
-    const baseDef = character.Stats.find(stat => stat.Type === StatType.DEF)?.Value || 0
+    const baseDef = character.BaseStats.find(stat => stat.Type === StatType.DEF)?.Value || 0
     const flatDef = SumStatsByType(allStats, StatType.DEF)
     const percentDef = SumStatsByType(allStats, StatType.DEF_PERCENTAGE)
 
@@ -49,7 +49,7 @@ export function useStatsCalculator() {
   function CalculateOtherStats(character: Character, weapon: Weapon | undefined, echoes: Echo[]): Statistic[] {
     const allStats = GetAllStats(character, weapon, echoes)
 
-    const baseStats = character.Stats.filter(stat =>
+    const baseStats = character.BaseStats.filter(stat =>
       ![StatType.HP, StatType.ATTACK, StatType.DEF].includes(stat.Type),
     )
 

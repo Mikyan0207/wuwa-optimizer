@@ -3,62 +3,57 @@
   "Rarity": "FIVE_STARS",
   "Icon": "Rover_Havoc_Icon.webp",
   "SplashArt": "Rover_Havoc_Portrait.webp",
-  "AnimatedArt": {
-    "Skeleton": "fuluoluo.skel",
-    "Atlas": "fuluoluo.atlas",
-    "Scale": 2.5
-  },
   "WeaponType": "SWORD",
   "Type": "HAVOC",
   "Level": 90,
   "BaseStats": [
     {
-      "Value": 10825,
-      "Type": "HP"
+      "Type": "HP",
+      "Value": 10825
     },
     {
-      "Value": 1258.8866,
-      "Type": "DEF"
+      "Type": "DEF",
+      "Value": 1258.8866
     },
     {
-      "Value": 412.5,
-      "Type": "ATTACK"
+      "Type": "ATTACK",
+      "Value": 412.5
     },
     {
-      "Value": 5,
-      "Type": "CRIT_RATE"
+      "Type": "CRIT_RATE",
+      "Value": 5
     },
     {
-      "Value": 150,
-      "Type": "CRIT_DMG"
+      "Type": "CRIT_DMG",
+      "Value": 150
     },
     {
-      "Value": 100,
-      "Type": "ENERGY_REGENERATION"
+      "Type": "ENERGY_REGENERATION",
+      "Value": 100
     },
     {
-      "Value": 0,
-      "Type": "HEALING_BONUS"
+      "Type": "HEALING_BONUS",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "BASIC_ATTACK_DMG_AMPLIFICATION"
+      "Type": "BASIC_ATTACK_DMG_AMPLIFICATION",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "HEAVY_ATTACK_DMG_AMPLIFICATION"
+      "Type": "HEAVY_ATTACK_DMG_AMPLIFICATION",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "RESONANCE_SKILL_DMG_AMPLIFICATION"
+      "Type": "RESONANCE_SKILL_DMG_AMPLIFICATION",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "RESONANCE_LIBERATION_DMG_AMPLIFICATION"
+      "Type": "RESONANCE_LIBERATION_DMG_AMPLIFICATION",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "HAVOC_DMG_BONUS"
+      "Type": "HAVOC_DMG_BONUS",
+      "Value": 0
     }
   ],
   "BaseSequences": [
@@ -104,13 +99,21 @@
       "Id": "Basic_Attack_Bonus_Stat_01",
       "Level": 10,
       "Icon": "Icon_Attribute_Havoc_DMG_Bonus.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "HAVOC_DMG_BONUS",
+        "Value": 1.8
+      }
     },
     {
       "Id": "Basic_Attack_Bonus_Stat_02",
       "Level": 10,
       "Icon": "Icon_Attribute_Havoc_DMG_Bonus.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "HAVOC_DMG_BONUS",
+        "Value": 4.2
+      }
     },
     {
       "Id": "Forte_Circuit",
@@ -140,13 +143,21 @@
       "Id": "Intro_Skill_Bonus_Stat_01",
       "Level": 10,
       "Icon": "Icon_Attribute_Havoc_DMG_Bonus.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "HAVOC_DMG_BONUS",
+        "Value": 1.8
+      }
     },
     {
       "Id": "Intro_Skill_Bonus_Stat_02",
       "Level": 10,
       "Icon": "Icon_Attribute_Havoc_DMG_Bonus.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "HAVOC_DMG_BONUS",
+        "Value": 4.2
+      }
     },
     {
       "Id": "Outro_Skill",
@@ -164,13 +175,21 @@
       "Id": "Resonance_Liberation_Bonus_Stat_01",
       "Level": 10,
       "Icon": "Icon_Attribute_Attack.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 1.8
+      }
     },
     {
       "Id": "Resonance_Liberation_Bonus_Stat_02",
       "Level": 10,
       "Icon": "Icon_Attribute_Attack.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 4.2
+      }
     },
     {
       "Id": "Resonance_Skill",
@@ -182,13 +201,21 @@
       "Id": "Resonance_Skill_Bonus_Stat_01",
       "Level": 10,
       "Icon": "Icon_Attribute_Attack.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 1.8
+      }
     },
     {
       "Id": "Resonance_Skill_Bonus_Stat_02",
       "Level": 10,
       "Icon": "Icon_Attribute_Attack.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 4.2
+      }
     }
   ],
   "BaseStatsWeights": {

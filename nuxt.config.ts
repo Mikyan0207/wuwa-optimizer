@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     'nuxt-gtag',
   ],
 
-  ssr: false,
+  ssr: true,
 
   components: [
     '~/components',
@@ -108,6 +108,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: ['/'],
+
     },
   },
 

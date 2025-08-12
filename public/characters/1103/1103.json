@@ -3,64 +3,57 @@
   "Rarity": "FOUR_STARS",
   "Icon": "Baizhi_Icon.webp",
   "SplashArt": "Baizhi_Portrait.webp",
-  "AnimatedArt": {
-    "Skeleton": "kelaita.skel",
-    "Atlas": "kelaita.atlas",
-    "OffsetX": 125,
-    "OffsetY": 350,
-    "Scale": 2.25
-  },
   "WeaponType": "RECTIFIER",
   "Type": "GLACIO",
   "Level": 90,
   "BaseStats": [
     {
-      "Value": 12812.5,
-      "Type": "HP"
+      "Type": "HP",
+      "Value": 12812.5
     },
     {
-      "Value": 1002.2204,
-      "Type": "DEF"
+      "Type": "DEF",
+      "Value": 1002.2204
     },
     {
-      "Value": 212.5,
-      "Type": "ATTACK"
+      "Type": "ATTACK",
+      "Value": 212.5
     },
     {
-      "Value": 5,
-      "Type": "CRIT_RATE"
+      "Type": "CRIT_RATE",
+      "Value": 5
     },
     {
-      "Value": 150,
-      "Type": "CRIT_DMG"
+      "Type": "CRIT_DMG",
+      "Value": 150
     },
     {
-      "Value": 100,
-      "Type": "ENERGY_REGENERATION"
+      "Type": "ENERGY_REGENERATION",
+      "Value": 100
     },
     {
-      "Value": 0,
-      "Type": "HEALING_BONUS"
+      "Type": "HEALING_BONUS",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "BASIC_ATTACK_DMG_AMPLIFICATION"
+      "Type": "BASIC_ATTACK_DMG_AMPLIFICATION",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "HEAVY_ATTACK_DMG_AMPLIFICATION"
+      "Type": "HEAVY_ATTACK_DMG_AMPLIFICATION",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "RESONANCE_SKILL_DMG_AMPLIFICATION"
+      "Type": "RESONANCE_SKILL_DMG_AMPLIFICATION",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "RESONANCE_LIBERATION_DMG_AMPLIFICATION"
+      "Type": "RESONANCE_LIBERATION_DMG_AMPLIFICATION",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "GLACIO_DMG_BONUS"
+      "Type": "GLACIO_DMG_BONUS",
+      "Value": 0
     }
   ],
   "BaseSequences": [
@@ -106,13 +99,21 @@
       "Id": "Basic_Attack_Bonus_Stat_01",
       "Level": 10,
       "Icon": "Icon_Attribute_Healing_Bonus.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "HEALING_BONUS",
+        "Value": 1.8
+      }
     },
     {
       "Id": "Basic_Attack_Bonus_Stat_02",
       "Level": 10,
       "Icon": "Icon_Attribute_Healing_Bonus.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "HEALING_BONUS",
+        "Value": 4.2
+      }
     },
     {
       "Id": "Forte_Circuit",
@@ -142,13 +143,21 @@
       "Id": "Intro_Skill_Bonus_Stat_01",
       "Level": 10,
       "Icon": "Icon_Attribute_Healing_Bonus.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "HEALING_BONUS",
+        "Value": 1.8
+      }
     },
     {
       "Id": "Intro_Skill_Bonus_Stat_02",
       "Level": 10,
       "Icon": "Icon_Attribute_Healing_Bonus.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "HEALING_BONUS",
+        "Value": 4.2
+      }
     },
     {
       "Id": "Outro_Skill",
@@ -166,13 +175,21 @@
       "Id": "Resonance_Liberation_Bonus_Stat_01",
       "Level": 10,
       "Icon": "Icon_Attribute_Crit_Rate.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "CRIT_RATE",
+        "Value": 2
+      }
     },
     {
       "Id": "Resonance_Liberation_Bonus_Stat_02",
       "Level": 10,
       "Icon": "Icon_Attribute_Crit_Rate.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "CRIT_RATE",
+        "Value": 4
+      }
     },
     {
       "Id": "Resonance_Skill",
@@ -184,13 +201,21 @@
       "Id": "Resonance_Skill_Bonus_Stat_01",
       "Level": 10,
       "Icon": "Icon_Attribute_Crit_Rate.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "CRIT_RATE",
+        "Value": 2
+      }
     },
     {
       "Id": "Resonance_Skill_Bonus_Stat_02",
       "Level": 10,
       "Icon": "Icon_Attribute_Crit_Rate.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "CRIT_RATE",
+        "Value": 4
+      }
     }
   ],
   "BaseStatsWeights": {

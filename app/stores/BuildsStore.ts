@@ -1,7 +1,7 @@
 import type Build from '~/Core/Interfaces/Build'
 import type Echo from '~/Core/Interfaces/Echo'
 import { useLocalStorage } from '@vueuse/core'
-import { defineStore } from 'pinia'
+import { defineStore, skipHydrate } from 'pinia'
 import { v4 as uuidv4 } from 'uuid'
 import { useScoreCalculator } from '~/composables/calculators/UseScoreCalculator'
 
@@ -145,7 +145,7 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
   }
 
   return {
-    Builds,
+    Builds: skipHydrate(Builds),
     GetBuildsByCharacter,
     GetBuild,
     GetDefaultBuild,

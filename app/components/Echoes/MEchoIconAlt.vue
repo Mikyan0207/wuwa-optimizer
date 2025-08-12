@@ -8,7 +8,7 @@ interface EchoIconAltProps {
 
 const props = defineProps<EchoIconAltProps>()
 
-const IsValidEcho = computed(() => props.echo && props.echo.GameId !== -1)
+const IsValidEcho = computed(() => props.echo && (props.echo.GameId !== -1 || props.echo.Id !== undefined))
 const SelectedSonata = computed(() => props.echo && props.echo.Sonata.find(x => x.IsSelected === true))
 
 // const { Background, Secondary, Highlight } = useRarityEffects(props.echo?.Rarity ?? Rarity.THREE_STARS)

@@ -81,7 +81,7 @@ function HandleSkillToggle() {
         </div>
 
         <p class="mt-2 text-xs text-gray-300">
-          <i18n-t keypath="skill_description_template">
+          <i18n-t keypath="skill_description_template" scope="global">
             <template #type>
               <span class="text-amber-500">{{ StatName }}</span>
             </template>

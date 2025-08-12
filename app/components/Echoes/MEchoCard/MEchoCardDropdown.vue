@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import type Echo from '~/Core/Interfaces/Echo'
 import { useBuild } from '~/composables/builds/UseBuild'
 
 interface EchoDropdownProps {
   echoSlot: number
+  echo: Echo | undefined
 }
 
 const props = defineProps<EchoDropdownProps>()
@@ -47,12 +49,14 @@ function OnClose() {
       <MEchoForm
         v-if="selectedAction === 0"
         :echo-slot="echoSlot"
+        :echo="echo"
         mode="edit"
         @close="OnClose"
       />
       <MEchoForm
         v-else-if="selectedAction === 1"
         :echo-slot="echoSlot"
+        :echo="echo"
         @close="OnClose"
       />
       <!-- <EchoUnequipForm

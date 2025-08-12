@@ -13,8 +13,10 @@ interface SkillTree {
 }
 
 export function UseSkillTree(character: Character) {
+  const CurrentCharacter = computed(() => toValue(character))
+
   function FindSkill(skillId: string): Skill | undefined {
-    return character.Skills?.find(skill =>
+    return CurrentCharacter.value.Skills?.find(skill =>
       skill.Id === skillId
       || skill.Id.replace(' ', '_') === skillId,
     )

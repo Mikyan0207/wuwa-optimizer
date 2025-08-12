@@ -3,64 +3,57 @@
   "Rarity": "FIVE_STARS",
   "Icon": "Calcharo_Icon.webp",
   "SplashArt": "Calcharo_Portrait.webp",
-  "AnimatedArt": {
-    "Skeleton": "katixiya.skel",
-    "Atlas": "katixiya.atlas",
-    "OffsetX": 0,
-    "OffsetY": 0,
-    "Scale": 2.5
-  },
   "WeaponType": "BROADBLADE",
   "Type": "ELECTRO",
   "Level": 90,
   "BaseStats": [
     {
-      "Value": 10500,
-      "Type": "HP"
+      "Type": "HP",
+      "Value": 10500
     },
     {
-      "Value": 1185.5534,
-      "Type": "DEF"
+      "Type": "DEF",
+      "Value": 1185.5534
     },
     {
-      "Value": 437.5,
-      "Type": "ATTACK"
+      "Type": "ATTACK",
+      "Value": 437.5
     },
     {
-      "Value": 5,
-      "Type": "CRIT_RATE"
+      "Type": "CRIT_RATE",
+      "Value": 5
     },
     {
-      "Value": 150,
-      "Type": "CRIT_DMG"
+      "Type": "CRIT_DMG",
+      "Value": 150
     },
     {
-      "Value": 100,
-      "Type": "ENERGY_REGENERATION"
+      "Type": "ENERGY_REGENERATION",
+      "Value": 100
     },
     {
-      "Value": 0,
-      "Type": "HEALING_BONUS"
+      "Type": "HEALING_BONUS",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "BASIC_ATTACK_DMG_AMPLIFICATION"
+      "Type": "BASIC_ATTACK_DMG_AMPLIFICATION",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "HEAVY_ATTACK_DMG_AMPLIFICATION"
+      "Type": "HEAVY_ATTACK_DMG_AMPLIFICATION",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "RESONANCE_SKILL_DMG_AMPLIFICATION"
+      "Type": "RESONANCE_SKILL_DMG_AMPLIFICATION",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "RESONANCE_LIBERATION_DMG_AMPLIFICATION"
+      "Type": "RESONANCE_LIBERATION_DMG_AMPLIFICATION",
+      "Value": 0
     },
     {
-      "Value": 0,
-      "Type": "ELECTRO_DMG_BONUS"
+      "Type": "ELECTRO_DMG_BONUS",
+      "Value": 0
     }
   ],
   "BaseSequences": [
@@ -106,13 +99,21 @@
       "Id": "Basic_Attack_Bonus_Stat_01",
       "Level": 10,
       "Icon": "Icon_Attribute_Crit_DMG.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "CRIT_DMG",
+        "Value": 2.4
+      }
     },
     {
       "Id": "Basic_Attack_Bonus_Stat_02",
       "Level": 10,
       "Icon": "Icon_Attribute_Crit_DMG.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "CRIT_DMG",
+        "Value": 5.6
+      }
     },
     {
       "Id": "Forte_Circuit",
@@ -142,13 +143,21 @@
       "Id": "Intro_Skill_Bonus_Stat_01",
       "Level": 10,
       "Icon": "Icon_Attribute_Crit_DMG.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "CRIT_DMG",
+        "Value": 2.4
+      }
     },
     {
       "Id": "Intro_Skill_Bonus_Stat_02",
       "Level": 10,
       "Icon": "Icon_Attribute_Crit_DMG.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "CRIT_DMG",
+        "Value": 5.6
+      }
     },
     {
       "Id": "Outro_Skill",
@@ -166,13 +175,21 @@
       "Id": "Resonance_Liberation_Bonus_Stat_01",
       "Level": 10,
       "Icon": "Icon_Attribute_Attack.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 1.8
+      }
     },
     {
       "Id": "Resonance_Liberation_Bonus_Stat_02",
       "Level": 10,
       "Icon": "Icon_Attribute_Attack.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 4.2
+      }
     },
     {
       "Id": "Resonance_Skill",
@@ -184,13 +201,21 @@
       "Id": "Resonance_Skill_Bonus_Stat_01",
       "Level": 10,
       "Icon": "Icon_Attribute_Attack.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 1.8
+      }
     },
     {
       "Id": "Resonance_Skill_Bonus_Stat_02",
       "Level": 10,
       "Icon": "Icon_Attribute_Attack.webp",
-      "Unlocked": true
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 4.2
+      }
     }
   ],
   "BaseStatsWeights": {

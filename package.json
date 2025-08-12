@@ -50,7 +50,6 @@
     "@vueuse/core": "^13.6.0",
     "@vueuse/motion": "^3.0.3",
     "@vueuse/nuxt": "^13.6.0",
-    "consola": "^3.4.2",
     "nuxt": "^4.0.2",
     "nuxt-gtag": "3.0.3",
     "pinia": "^3.0.3",

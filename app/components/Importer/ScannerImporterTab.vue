@@ -7,13 +7,8 @@ import type { BaseWeapon } from '~/Core/Interfaces/Weapon'
 import { useAnalytics } from '~/composables/core/UseAnalytics'
 import { useScanner } from '~/composables/scanner/UseScanner'
 import { ScannerStatus as ScannerStatusType } from '~/Core/Scanner/ScannerTypes'
-import { consola, LogLevels } from 'consola'
 
 const { TrackEvent } = useAnalytics()
-
-const Logger = consola.create({
-  level: process.env.NODE_ENV === 'production' ? LogLevels.warn : LogLevels.info,
-})
 
 const EchoesStore = useEchoesStore()
 const WeaponsStore = useWeaponsStore()
@@ -77,7 +72,6 @@ async function OnFileUploaded() {
     })
   }
   catch (error) {
-    Logger.error(error)
     TrackEvent('scanner_import_error', { error })
   }
   finally {

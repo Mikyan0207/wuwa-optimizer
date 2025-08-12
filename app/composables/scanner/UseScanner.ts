@@ -9,13 +9,8 @@ import { useEchoesStatsScanner } from '~/composables/scanner/UseEchoesStatsScann
 import { useScannerState } from '~/composables/scanner/UseScannerState'
 import { useWeaponScanner } from '~/composables/scanner/UseWeaponScanner'
 import { ScannerResultStatus } from '~/Core/Scanner/ScannerTypes'
-import { consola, LogLevels } from 'consola'
 
 export async function useScanner() {
-  const Logger = consola.create({
-    level: process.env.NODE_ENV === 'production' ? LogLevels.warn : LogLevels.info,
-  })
-
   const BaseCanvas = ref<HTMLCanvasElement | null>(null)
   const BaseContext = ref<CanvasRenderingContext2D | null>(null)
   const ScannerState = useScannerState()
@@ -108,8 +103,6 @@ export async function useScanner() {
 
       const endTime = performance.now()
       const totalTime = (endTime - startTime) / 1000
-
-      Logger.info(`🕐 Scan completed in ${totalTime.toFixed(2)} seconds`)
 
       for (let i = 0; i < echoes.length; i++) {
         const echo = echoes[i]

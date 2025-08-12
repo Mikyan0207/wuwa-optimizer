@@ -6,7 +6,6 @@ import { z } from 'zod'
 import { EchoCost } from '~/Core/Enums/EchoCost'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { StatType } from '~/Core/Enums/StatType'
-import { consola, LogLevels } from 'consola'
 
 interface EchoFormProps {
   echoSlot: number
@@ -23,10 +22,6 @@ const props = withDefaults(defineProps<EchoFormProps>(), {
 const emits = defineEmits<{
   close: []
 }>()
-
-const Logger = consola.create({
-  level: process.env.NODE_ENV === 'production' ? LogLevels.warn : LogLevels.info,
-})
 
 const EchoesStore = useEchoesStore()
 
@@ -189,7 +184,6 @@ function NavigateStep(direction: 'next' | 'previous') {
     const validation = ValidateCurrentStep()
 
     if (!validation.isValid) {
-      Logger.warn('Validation failed:', validation.errors)
       return
     }
   }
@@ -221,7 +215,6 @@ function HandleStateUpdate(newState: Partial<typeof State>) {
 async function OnSubmit() {
   const validation = ValidateCurrentStep()
   if (!validation.isValid) {
-    Logger.error('Form validation failed:', validation.errors)
     return
   }
 

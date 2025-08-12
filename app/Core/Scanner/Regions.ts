@@ -36,8 +36,8 @@ export const ECHO_REGIONS = {
     },
     SUB_STATS: [
       { NAME: new Rectangle(440, 881, 235, 41), VALUE: new Rectangle(685, 881, 68, 41) },
-      { NAME: new Rectangle(440, 916, 238, 41), VALUE: new Rectangle(685, 916, 68, 41) },
-      { NAME: new Rectangle(440, 952, 238, 41), VALUE: new Rectangle(685, 950, 68, 41) },
+      { NAME: new Rectangle(440, 916, 238, 36), VALUE: new Rectangle(685, 916, 68, 41) },
+      { NAME: new Rectangle(440, 953, 238, 36), VALUE: new Rectangle(685, 953, 68, 41) },
       { NAME: new Rectangle(440, 984, 238, 41), VALUE: new Rectangle(685, 984, 68, 41) },
       { NAME: new Rectangle(440, 1019, 238, 41), VALUE: new Rectangle(685, 1019, 68, 41) },
     ],

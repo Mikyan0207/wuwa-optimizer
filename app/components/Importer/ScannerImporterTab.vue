@@ -61,8 +61,6 @@ async function OnFileUploaded() {
     await Scanner.LoadAsync(SelectedFile.value)
     const result = await Scanner.ScanAll()
 
-    console.warn(result)
-
     ImportedCharacter.value = result.character
     ImportedEchoes.value = result.echoes || []
     ImportedWeapon.value = result.weapon
@@ -83,7 +81,7 @@ async function OnFileUploaded() {
 }
 
 async function OnConfirmClicked() {
-  if (ImportedCharacter.value === undefined || ImportedWeapon.value === undefined || ImportedEchoes.value === undefined) {
+  if (ImportedCharacter.value === undefined) {
     return
   }
 
@@ -94,7 +92,7 @@ async function OnConfirmClicked() {
   BuildsStore.CreateBuild(
     'Imported Build',
     ImportedCharacter.value,
-    WeaponsStore.CreateFromGameId(ImportedWeapon.value!.GameId),
+    ImportedWeapon.value ? WeaponsStore.CreateFromGameId(ImportedWeapon.value.GameId) : undefined,
     ImportedEchoes.value,
   )
 }
@@ -126,7 +124,7 @@ async function OnConfirmClicked() {
       </div>
 
       <!-- Results Section -->
-      <div v-if="ImportedCharacter && ImportedWeapon && ImportedEchoes.length > 0" class="w-full">
+      <div v-if="ImportedCharacter" class="w-full">
         <h3 class="text-lg font-medium mb-4">
           Scan Results
         </h3>
@@ -149,7 +147,7 @@ async function OnConfirmClicked() {
           />
         </div>
 
-        <div class="mb-6">
+        <div v-if="ImportedEchoes.length > 0" class="mb-6">
           <h4 class="text-md font-medium mb-3">
             Echoes
           </h4>

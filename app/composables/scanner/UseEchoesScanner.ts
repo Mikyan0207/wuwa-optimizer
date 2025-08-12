@@ -206,6 +206,10 @@ export async function useEchoesScanner() {
       const results = await Promise.all(matchPromises)
       const bestMatch = results.sort((a, b) => b.score - a.score)[0]
 
+      if (bestMatch?.score === 0) {
+        return undefined
+      }
+
       return bestMatch?.echo
     }
     finally {

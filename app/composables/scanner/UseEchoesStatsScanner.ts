@@ -14,7 +14,7 @@ export async function useEchoesStatsScanner() {
   let TesseractWorker: Tesseract.Worker | undefined
 
   async function LoadAsync() {
-    TesseractWorker = await Tesseract.createWorker()
+    TesseractWorker = await Tesseract.createWorker('eng', 1)
   }
 
   function SetContext(context: CanvasRenderingContext2D | null) {
@@ -48,7 +48,22 @@ export async function useEchoesStatsScanner() {
 
   function GetStatistic(name: string, value: string, echoCost: EchoCost, isMainStat: boolean = false) {
     let statType = GetStatTypeFromName(name || StatType.NONE)
-    const statValue = Number.parseFloat(GetFilteredText(value, /\d*\.\d+|\d+/))
+
+    if (statType === StatType.NONE) {
+      return {
+        Type: StatType.NONE,
+        Value: 0,
+      }
+    }
+
+    const statValue = Number.parseFloat(GetFilteredText(value, /\b\d+(?:\.\d+)?\b/))
+
+    if (Number.isNaN(statValue) && !isMainStat) {
+      return {
+        Type: StatType.NONE,
+        Value: 0,
+      }
+    }
 
     if ((IsFloatingPointNumber(statValue) || isMainStat) && statType === StatType.HP) {
       statType = StatType.HP_PERCENTAGE
@@ -62,7 +77,7 @@ export async function useEchoesStatsScanner() {
 
     const closestStatValue = GetClosestStatValue(
       statType,
-      Number.parseFloat(GetFilteredText(value, /\d*\.\d+|\d+/)),
+      statValue,
       echoCost,
       isMainStat,
     )

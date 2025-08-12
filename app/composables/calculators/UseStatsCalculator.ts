@@ -9,7 +9,6 @@ import { Sonatas } from '~/Core/Sonatas'
 
 export function useStatsCalculator() {
   function CalculateTotalStats(character: Character, weapon: Weapon | undefined, build: Build): Statistic[] {
-    console.warn(build)
     if (!character)
       return []
 

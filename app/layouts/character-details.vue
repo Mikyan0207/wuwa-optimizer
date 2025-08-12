@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { useCharacter } from '~/composables/characters/UseCharacter'
 import { GetCharacterBackground } from '~/Core/Utils/CharacterUtils'
 
-const { CurrentCharacter } = useCharacter()
+const CurrentCharacterStore = useCurrentCharacterStore()
+
+const { CurrentCharacter } = storeToRefs(CurrentCharacterStore)
 </script>
 
 <template>

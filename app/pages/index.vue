@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type Character from '~/Core/Interfaces/Character'
-import { useMetaTags } from '~/composables/core/UseMetaTags'
 import { TemplateCharacters } from '~/Core/Characters'
 import { ReleaseState } from '~/Core/Enums/ReleaseState'
 import { ScorerGameVersion } from '~/Core/Versions'
@@ -10,12 +9,14 @@ definePageMeta({
   layout: 'default',
 })
 
-const { SetEmbedMetaTags } = useMetaTags()
-
-SetEmbedMetaTags(
-  'Wuthering Waves Optimizer',
-  'The ultimate Wuthering Waves optimizer tool. Calculate character builds, evaluate echoes, maximize your damage with our comprehensive calculator.',
-)
+useSeoMeta({
+  title: 'Wuthering Waves Optimizer',
+  ogTitle: 'Wuthering Waves Optimizer',
+  description: 'The ultimate Wuthering Waves optimizer tool. Calculate character builds, evaluate echoes, maximize your damage with our comprehensive calculator.',
+  ogDescription: 'The ultimate Wuthering Waves optimizer tool. Calculate character builds, evaluate echoes, maximize your damage with our comprehensive calculator.',
+  ogImage: '/images/wuwa-optimizer-showcase-00.webp',
+  twitterCard: 'summary_large_image',
+})
 
 function OnCharacterClicked(characterId: number | undefined) {
   navigateTo(`/characters/${characterId}`)

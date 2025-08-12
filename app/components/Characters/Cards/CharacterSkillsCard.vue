@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useCharacter } from '~/composables/characters/UseCharacter'
+const CurrentCharacterStore = useCurrentCharacterStore()
 
-const { CurrentCharacter } = useCharacter()
+const { CurrentCharacter } = storeToRefs(CurrentCharacterStore)
 </script>
 
 <template>

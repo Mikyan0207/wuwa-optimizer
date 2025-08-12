@@ -2,9 +2,10 @@
 import type Build from '~/Core/Interfaces/Build'
 import type { BuildWithDependencies } from '~/Core/Interfaces/Build'
 import VueDraggable from 'vuedraggable'
-import { useCharacter } from '~/composables/characters/UseCharacter'
 
-const { CurrentCharacter } = useCharacter()
+const CurrentCharacterStore = useCurrentCharacterStore()
+
+const { CurrentCharacter } = storeToRefs(CurrentCharacterStore)
 const BuildsStore = useBuildsStore()
 const Toast = useToast()
 

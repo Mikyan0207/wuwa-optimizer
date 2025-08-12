@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { useCharacter } from '~/composables/characters/UseCharacter'
 import { GetSequenceIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
 
-const { CurrentCharacter } = useCharacter()
+const CurrentCharacterStore = useCurrentCharacterStore()
+
+const { CurrentCharacter } = storeToRefs(CurrentCharacterStore)
 </script>
 
 <template>

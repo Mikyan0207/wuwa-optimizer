@@ -15,8 +15,6 @@ const CurrentCharacterStore = useCurrentCharacterStore()
 
 const { CurrentCharacter, CurrentWeapon, CurrentBuild, CurrentEchoes } = storeToRefs(CurrentCharacterStore)
 
-const Toast = useToast()
-
 const { TakeScreenShotAsync } = useScreenshot(CharacterInfoRef)
 
 CurrentCharacterStore.SetCharacter(Number.parseInt((Route.params as { id: string }).id))

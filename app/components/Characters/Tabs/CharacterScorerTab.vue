@@ -1,52 +1,34 @@
 <script setup lang="ts">
 import type Echo from '~/Core/Interfaces/Echo'
 import VueDraggable from 'vuedraggable'
-import { useBuild } from '~/composables/builds/UseBuild'
 import { useScreenshot } from '~/composables/core/UseScreenshot'
 import { GetCharacterBackground } from '~/Core/Utils/CharacterUtils'
-import { useBuildsStore } from '~/stores/BuildsStore'
-
-const { CurrentCharacter, CurrentBuild, CurrentEchoes, ReorderEchoes } = useBuild()
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 const ShowScreenShotBackground = ref<boolean>(false)
 const ForceStaticArt = ref<boolean>(false)
 
-const BuildsStore = useBuildsStore()
+const Route = useRoute()
 const SettingsStore = useSettingsStore()
+
+const CurrentCharacterStore = useCurrentCharacterStore()
+
+const { CurrentCharacter, CurrentWeapon, CurrentBuild, CurrentEchoes } = storeToRefs(CurrentCharacterStore)
+
 const Toast = useToast()
+
 const { TakeScreenShotAsync } = useScreenshot(CharacterInfoRef)
 
+const CharacterId = ref<number>(Number.parseInt((Route.params as { id: string }).id))
+
+CurrentCharacterStore.SetCharacter(CharacterId.value)
+
 async function SaveCurrentBuild() {
-  if (!CurrentCharacter.value) {
-    return
-  }
-
-  const build = BuildsStore.CreateBuild(
-    'Current Build',
-    CurrentCharacter.value,
-  )
-
-  if (build) {
-    Toast.add({
-      title: 'Build saved!',
-      description: `"${build.Name}" has been saved successfully.`,
-      color: 'success',
-    })
-  }
-  else {
-    Toast.add({
-      title: 'Build already exists!',
-      description: 'A build with the same configuration already exists.',
-      color: 'warning',
-    })
-  }
 }
 
 const DraggableEchoes = computed({
   get: () => CurrentEchoes.value,
-  set: (newOrder: Echo[]) => {
-    ReorderEchoes(newOrder)
+  set: (_newOrder: Echo[]) => {
   },
 })
 
@@ -100,7 +82,7 @@ function OnTakeScreenShotClicked() {
                 <!-- Weapon Card -->
                 <CharacterWeaponCard
                   class="row-span-1"
-                  :build="CurrentBuild"
+                  :weapon="CurrentWeapon"
                 />
 
                 <!-- Skills Card -->
@@ -123,14 +105,15 @@ function OnTakeScreenShotClicked() {
               chosen-class="scale-102"
               drag-class="scale-106"
               class="contents transition-all duration-150"
-              :item-key="(item: Echo, index: number) => item?.Id || `slot-${index}`"
+              :item-key="(item: Echo, index: number) => `slot-${index}`"
             >
               <template #item="{ element: echo, index: idx }">
                 <MEchoCard
                   v-motion-slide-bottom
                   :delay="200 + (idx * 25)"
-                  :equiped-slot="idx"
                   :echo="echo"
+                  :echo-slot="idx"
+                  :weights="CurrentCharacter.StatsWeights"
                 />
               </template>
             </VueDraggable>

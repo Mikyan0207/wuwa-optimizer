@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import type Echo from '~/Core/Interfaces/Echo'
-import { useBuild } from '~/composables/builds/UseBuild'
 
 interface EchoDropdownProps {
-  echoSlot: number
   echo: Echo | undefined
+  echoSlot: number
 }
 
 const props = defineProps<EchoDropdownProps>()
 
-const { GetEchoBySlot } = useBuild()
-const CurrentEcho = computed(() => GetEchoBySlot(props.echoSlot))
+const emits = defineEmits<{
+  close: []
+}>()
 
 const DropdownRef = ref()
 
@@ -18,7 +18,7 @@ const Actions = computed(() => [
   {
     label: 'Edit',
     icon: 'solar:pen-new-square-broken',
-    disabled: CurrentEcho.value === undefined,
+    disabled: props.echo === undefined,
     onExecute() {
     },
   },
@@ -32,7 +32,7 @@ const Actions = computed(() => [
     label: 'Unequip',
     icon: 'solar:notification-remove-broken',
     color: 'error',
-    disabled: CurrentEcho.value === undefined || CurrentEcho.value.GameId === -1,
+    disabled: props.echo === undefined || props.echo.GameId === -1,
     onExecute() {
     },
   },
@@ -40,6 +40,7 @@ const Actions = computed(() => [
 
 function OnClose() {
   DropdownRef.value?.CloseSlideover()
+  emits('close')
 }
 </script>
 

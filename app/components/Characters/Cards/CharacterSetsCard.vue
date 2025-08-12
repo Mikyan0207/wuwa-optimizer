@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { useBuild } from '~/composables/builds/UseBuild'
 import { useCharacterSets } from '~/composables/characters/UseCharacterSets'
 
-const { CurrentEchoes } = useBuild()
+const CurrentCharacterStore = useCurrentCharacterStore()
+
+const { CurrentEchoes } = storeToRefs(CurrentCharacterStore)
 const { ActiveSets } = useCharacterSets(CurrentEchoes)
 </script>
 

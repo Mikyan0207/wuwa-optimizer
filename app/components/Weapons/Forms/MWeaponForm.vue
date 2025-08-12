@@ -2,8 +2,6 @@
 import type Weapon from '~/Core/Interfaces/Weapon'
 import { v4 as uuidv4 } from 'uuid'
 import { z } from 'zod'
-import { useBuild } from '~/composables/builds/UseBuild'
-import { useCharacter } from '~/composables/characters/UseCharacter'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { StatType } from '~/Core/Enums/StatType'
 import { TemplateWeapons } from '~/Core/Weapons'
@@ -11,6 +9,7 @@ import { TemplateWeapons } from '~/Core/Weapons'
 interface WeaponFormProps {
   mode?: 'create' | 'edit'
   open?: boolean
+  weapon?: Weapon
 }
 
 const props = withDefaults(defineProps<WeaponFormProps>(), {
@@ -21,10 +20,11 @@ const emits = defineEmits<{
   close: []
 }>()
 
-const { CurrentWeapon } = useBuild()
-const { CurrentCharacter } = useCharacter()
+const CurrentCharacterStore = useCurrentCharacterStore()
 const WeaponsStore = useWeaponsStore()
 const { t } = useI18n()
+
+const { CurrentCharacter } = storeToRefs(CurrentCharacterStore)
 
 const Steps = [
   { id: 'weapon', title: 'Weapon', description: 'Select your weapon type and model.' },
@@ -102,25 +102,25 @@ const AvailableWeapons = computed(() => {
 })
 
 onMounted(() => {
-  if (props.mode === 'edit' && CurrentWeapon.value) {
-    State.Id = CurrentWeapon.value.Id
-    State.GameId = CurrentWeapon.value.GameId
-    State.Level = CurrentWeapon.value.Level
-    State.Rank = CurrentWeapon.value.Rank
-    State.Rarity = CurrentWeapon.value.Rarity
+  if (props.mode === 'edit' && props.weapon) {
+    State.Id = props.weapon.Id
+    State.GameId = props.weapon.GameId
+    State.Level = props.weapon.Level
+    State.Rank = props.weapon.Rank
+    State.Rarity = props.weapon.Rarity
 
-    if (CurrentWeapon.value.MainStatistic) {
-      State.MainStat.Type = CurrentWeapon.value.MainStatistic.Type
-      State.MainStat.Value = CurrentWeapon.value.MainStatistic.Value.toFixed(1)
+    if (props.weapon.MainStatistic) {
+      State.MainStat.Type = props.weapon.MainStatistic.Type
+      State.MainStat.Value = props.weapon.MainStatistic.Value.toFixed(1)
     }
 
-    if (CurrentWeapon.value.SecondaryStatistic) {
-      State.SecondaryStat.Type = CurrentWeapon.value.SecondaryStatistic.Type
-      State.SecondaryStat.Value = CurrentWeapon.value.SecondaryStatistic.Value.toFixed(1)
+    if (props.weapon.SecondaryStatistic) {
+      State.SecondaryStat.Type = props.weapon.SecondaryStatistic.Type
+      State.SecondaryStat.Value = props.weapon.SecondaryStatistic.Value.toFixed(1)
     }
 
     if (State.GameId !== -1) {
-      DisplayedWeapon.value = CurrentWeapon.value
+      DisplayedWeapon.value = props.weapon
       CurrentStep.value = 1
     }
   }
@@ -187,9 +187,9 @@ function OnSubmit() {
   let weaponId: string
   let isNewWeapon: boolean
 
-  if (props.mode === 'edit' && CurrentWeapon.value) {
-    if (CurrentWeapon.value.GameId === State.GameId && CurrentWeapon.value.Id) {
-      weaponId = CurrentWeapon.value.Id
+  if (props.mode === 'edit' && props.weapon) {
+    if (props.weapon.GameId === State.GameId && props.weapon.Id) {
+      weaponId = props.weapon.Id
       isNewWeapon = false
     }
     else {
@@ -221,8 +221,9 @@ function OnSubmit() {
   if (isNewWeapon) {
     WeaponsStore.Add(weaponToCreate)
   }
-
-  CurrentWeapon.value = weaponToCreate
+  else {
+    WeaponsStore.UpdateById(weaponToCreate.Id!, weaponToCreate)
+  }
 
   return OnClose()
 }

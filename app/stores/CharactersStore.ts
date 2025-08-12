@@ -5,7 +5,7 @@ import type Skill from '~/Core/Interfaces/Skill'
 import { defineStore, skipHydrate } from 'pinia'
 
 export const useCharactersStore = defineStore('CharactersStore', () => {
-  const Characters = useLocalStorage<Map<number, PartialCharacter>>('Characters', new Map())
+  const Characters = useLocalStorage<Record<number, PartialCharacter>>('Characters', {})
   const BaseCharacters = ref<BaseCharacter[]>([])
   const CachedCharacters = ref<Map<number, Character>>(new Map())
 
@@ -42,20 +42,20 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     }
 
     const base = await GetBaseById(gameId)
-    const partial = Characters.value.get(gameId)
+    const partial = Characters.value[gameId]
 
     if (!partial) {
-      Characters.value.set(gameId, {
+      Characters.value[gameId] = {
         Id: gameId,
         Level: 90,
         Stats: [],
         Sequences: [],
         Skills: [],
         StatsWeights: {},
-      })
+      }
     }
 
-    const character = Merge(Characters.value.get(gameId), base)
+    const character = Merge(Characters.value[gameId], base)
 
     CachedCharacters.value.set(gameId, character)
 
@@ -72,10 +72,10 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     const character = await GetById(characterId)
 
     if (character) {
-      Characters.value.set(character.Id, {
+      Characters.value[character.Id] = {
         ...character,
         ...data,
-      })
+      }
     }
   }
 

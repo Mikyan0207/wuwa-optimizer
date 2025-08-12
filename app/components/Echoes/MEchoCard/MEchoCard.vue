@@ -4,7 +4,7 @@ import type Echo from '~/Core/Interfaces/Echo'
 
 interface EchoCardProps {
   echo: Echo | undefined
-  equipedSlot: number
+  echoSlot: number
   showScore?: boolean
   showMenu?: boolean
   weights?: Record<StatType, number>
@@ -23,7 +23,7 @@ withDefaults(defineProps<EchoCardProps>(), {
     :show-border-lines="true"
     :border-lines-count="3"
   >
-    <MEchoCardDropdown v-if="showMenu" :echo-slot="equipedSlot" :echo="echo" />
+    <MEchoCardDropdown v-if="showMenu" :echo="echo" :echo-slot="echoSlot" />
     <div class="w-full flex flex-col items-center gap-2">
       <MEchoCardHeader :echo="echo" />
       <MEchoStats :echo="echo" :weights="weights" class="mt-4" />

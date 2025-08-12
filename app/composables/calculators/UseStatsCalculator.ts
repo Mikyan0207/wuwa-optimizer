@@ -8,14 +8,12 @@ import { StatType } from '~/Core/Enums/StatType'
 import { Sonatas } from '~/Core/Sonatas'
 
 export function useStatsCalculator() {
-  const WeaponsStore = useWeaponsStore()
-
-  function CalculateTotalStats(character: Character, build?: Build): Statistic[] {
-    const weapon = WeaponsStore.GetById(build?.WeaponId ?? '')
-    const echoes = build?.Echoes?.filter(echo => echo.Id !== undefined) || []
-
+  function CalculateTotalStats(character: Character, weapon: Weapon | undefined, build: Build): Statistic[] {
+    console.warn(build)
     if (!character)
       return []
+
+    const echoes = build.Echoes.filter(echo => echo !== undefined && echo.Id !== undefined)
 
     return [
       ...CalculateMainStats(character, weapon, echoes),

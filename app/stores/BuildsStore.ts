@@ -6,11 +6,15 @@ import type { PartialWeapon } from '~/Core/Interfaces/Weapon'
 import { useLocalStorage } from '@vueuse/core'
 import { defineStore, skipHydrate } from 'pinia'
 import { v4 as uuidv4 } from 'uuid'
+import { useScoreCalculator } from '~/composables/calculators/UseScoreCalculator'
+import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 
 export const useBuildsStore = defineStore('BuildsStore', () => {
   const Builds = useLocalStorage<Build[]>('Builds', [])
 
+  const CharactersStore = useCharactersStore()
   const WeaponsStore = useWeaponsStore()
+  const ScoreCalculator = useScoreCalculator()
 
   function GetBuildsByCharacter(characterId: number): Build[] {
     return Builds.value
@@ -33,14 +37,18 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     if (!build)
       return undefined
 
-    const [weapon] = await Promise.all([
+    const [character, weapon] = await Promise.all([
+      build.CharacterId ? CharactersStore.GetById(build.CharacterId) : undefined,
       build.WeaponId ? WeaponsStore.GetById(build.WeaponId) : undefined,
     ])
 
-    return {
+    const buildWithDependencies: BuildWithDependencies = {
       ...build,
+      Character: character,
       Weapon: weapon,
     }
+
+    return buildWithDependencies
   }
 
   async function GetDefaultBuildWithDependencies(characterId: number): Promise<BuildWithDependencies | undefined> {
@@ -103,8 +111,18 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     Builds.value[index] = {
       ...Builds.value[index],
       ...data,
-      UpdatedAt: new Date(),
+      UpdatedAt: new Date(Date.now()),
     } as Build
+  }
+
+  function UpdateEcho(buildId: string, echoSlot: number, data: Partial<Echo>) {
+    const index = Builds.value.findIndex(build => build.Id === buildId)
+    if (index === -1)
+      return
+
+    UpdateBuild(buildId, {
+      Echoes: Builds.value[index]!.Echoes.map((echo, idx) => idx === echoSlot ? { ...echo, ...data } : echo),
+    })
   }
 
   function DeleteBuild(buildId: string) {
@@ -142,6 +160,30 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     return Math.max(...builds.map(b => b.Order || 0)) + 1
   }
 
+  function GetScore(build: BuildWithDependencies) {
+    const result = ScoreCalculator.GetBuildScore(build)
+    if (!result)
+      return undefined
+
+    return result
+  }
+
+  function RecalculateScore(build: BuildWithDependencies) {
+    const result = ScoreCalculator.GetBuildScore(build)
+    if (!result)
+      return
+
+    UpdateBuild(build.Id, {
+      Score: result.Score,
+      Note: result.Note,
+      Echoes: build.Echoes.map((echo, idx) => ({
+        ...echo,
+        Score: result.EchoesScores[idx]?.Score ?? 0,
+        Note: result.EchoesScores[idx]?.Grade ?? ScoreGrade.F,
+      })),
+    })
+  }
+
   return {
     Builds: skipHydrate(Builds),
     GetBuildsByCharacter,
@@ -152,8 +194,11 @@ export const useBuildsStore = defineStore('BuildsStore', () => {
     GetBuildsByCharacterWithDependencies,
     CreateBuild,
     UpdateBuild,
+    UpdateEcho,
     DeleteBuild,
     SetDefaultBuild,
     LoadBuild,
+    GetScore,
+    RecalculateScore,
   }
 })

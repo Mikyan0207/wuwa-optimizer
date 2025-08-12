@@ -1,20 +1,17 @@
 <script setup lang="ts">
 import type Weapon from '~/Core/Interfaces/Weapon'
-import { useBuild } from '~/composables/builds/UseBuild'
 
 interface WeaponCardMenuProps {
   weapon: Weapon | undefined
 }
 
-defineProps<WeaponCardMenuProps>()
-
-const { CurrentWeapon } = useBuild()
+const props = defineProps<WeaponCardMenuProps>()
 
 const Actions = computed(() => [
   {
     label: 'Edit',
     icon: 'solar:pen-new-square-broken',
-    disabled: CurrentWeapon.value === undefined,
+    disabled: props.weapon === undefined,
     onExecute() {
     },
   },
@@ -28,7 +25,7 @@ const Actions = computed(() => [
     label: 'Remove',
     icon: 'solar:notification-remove-broken',
     color: 'error',
-    disabled: CurrentWeapon.value === undefined,
+    disabled: props.weapon === undefined,
     onExecute() {
     },
   },
@@ -41,10 +38,13 @@ const Actions = computed(() => [
       <MWeaponForm
         v-if="selectedAction === 0"
         mode="edit"
+        :weapon="weapon"
         @close="onClose"
       />
       <MWeaponForm
         v-else-if="selectedAction === 1"
+        mode="create"
+        :weapon="weapon"
         @close="onClose"
       />
       <!-- <WeaponRemoveForm

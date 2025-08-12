@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import type Weapon from '~/Core/Interfaces/Weapon'
 import { slideRight, useMotion } from '@vueuse/motion'
-import { useBuild } from '~/composables/builds/UseBuild'
 import { useSettingsStore } from '~/stores/SettingsStore'
 
-const { CurrentWeapon } = useBuild()
+defineProps<{
+  weapon: Weapon | undefined
+}>()
+
 const SettingsStore = useSettingsStore()
 
 const Target = ref<HTMLElement | null>(null)
@@ -18,6 +21,6 @@ if (AnimationsEnabled.value) {
 <template>
   <MWeaponCard
     ref="Target"
-    :weapon="CurrentWeapon"
+    :weapon="weapon"
   />
 </template>

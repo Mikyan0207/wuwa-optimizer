@@ -4,7 +4,7 @@ import { defineStore, skipHydrate } from 'pinia'
 import { v4 as uuidv4 } from 'uuid'
 
 export const useWeaponsStore = defineStore('WeaponsStore', () => {
-  const Weapons = useLocalStorage<Map<string, PartialWeapon>>('Weapons', new Map())
+  const Weapons = useLocalStorage<Record<string, PartialWeapon>>('Weapons', {})
   const BaseWeapons = ref<BaseWeapon[]>([])
   const CachedWeapons = ref<Map<number, Weapon>>(new Map())
 
@@ -36,7 +36,7 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
   }
 
   async function GetById(id: string): Promise<Weapon | undefined> {
-    const weapon = Weapons.value.get(id)
+    const weapon = Weapons.value[id]
 
     if (!weapon) {
       return undefined
@@ -59,22 +59,26 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     return Promise.all(data.map(id => GetBaseById(id)))
   }
 
+  async function Add(weapon: Weapon) {
+    Weapons.value[weapon.Id!] = weapon
+  }
+
   async function UpdateById(weaponId: string, data: Partial<PartialWeapon>) {
     const weapon = await GetById(weaponId)
 
     if (weapon) {
-      Weapons.value.set(weaponId, {
+      Weapons.value[weaponId] = {
         ...weapon,
         ...data,
-      })
+      }
     }
   }
 
   function Merge(partial: PartialWeapon | undefined, base: BaseWeapon): Weapon {
     return {
       ...base,
-      ...partial,
-      Level: partial?.Level ?? 1,
+      Id: partial?.Id,
+      Level: partial?.Level ?? base.Level,
       Rank: partial?.Rank ?? 1,
     }
   }
@@ -93,7 +97,7 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
       Rank: 1,
     }
 
-    Weapons.value.set(weaponToAdd.Id!, weaponToAdd)
+    Weapons.value[weaponToAdd.Id!] = weaponToAdd
 
     return Merge(weaponToAdd, weapon)
   }
@@ -108,6 +112,7 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     GetById,
     GetBaseById,
     GetByGameId,
+    Add,
     UpdateById,
     CreateFromGameId,
   }

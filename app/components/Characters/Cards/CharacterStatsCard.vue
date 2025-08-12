@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { useBuild } from '~/composables/builds/UseBuild'
 import { GetTotalGradeColor } from '~/composables/calculators/UseScoreCalculator'
-import { useCharacter } from '~/composables/characters/UseCharacter'
 import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
-const { CurrentCharacter } = useCharacter()
-const { CurrentBuild, CurrentStats, Score, Note } = useBuild()
+const CurrentCharacterStore = useCurrentCharacterStore()
+
+const { CurrentCharacter, CurrentBuild, CurrentStats, Score, Note } = storeToRefs(CurrentCharacterStore)
 const { t } = useI18n()
 
 const GetCharacterScoreNoteColor = computed(() => {
@@ -32,7 +31,6 @@ const GetCharacterScoreNoteColor = computed(() => {
     </div>
 
     <MStatList
-      v-if="CurrentStats"
       :stats="CurrentStats"
       :stats-count="CurrentStats.length"
       :weights="CurrentCharacter.StatsWeights"

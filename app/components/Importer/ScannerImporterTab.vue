@@ -82,7 +82,7 @@ async function OnFileUploaded() {
   }
 }
 
-function OnConfirmClicked() {
+async function OnConfirmClicked() {
   if (ImportedCharacter.value === undefined || ImportedWeapon.value === undefined || ImportedEchoes.value === undefined) {
     return
   }
@@ -155,10 +155,10 @@ function OnConfirmClicked() {
           </h4>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
             <MEchoCard
-              v-for="echo in ImportedEchoes"
+              v-for="(echo, idx) in ImportedEchoes"
               :key="echo.Id"
               :echo="echo"
-              :equiped-slot="echo.EquipedSlot || 0"
+              :echo-slot="idx"
               :show-score="false"
               :show-menu="false"
             />

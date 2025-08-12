@@ -3,7 +3,6 @@ import type Echo from '~/Core/Interfaces/Echo'
 import type Sonata from '~/Core/Interfaces/Sonata'
 import { v4 as uuidv4 } from 'uuid'
 import { z } from 'zod'
-import { useBuild } from '~/composables/builds/UseBuild'
 import { EchoCost } from '~/Core/Enums/EchoCost'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { StatType } from '~/Core/Enums/StatType'
@@ -11,6 +10,7 @@ import { StatType } from '~/Core/Enums/StatType'
 interface EchoFormProps {
   echoSlot: number
   echo: Echo | undefined
+  buildId?: string | undefined
   mode?: 'create' | 'edit'
   open?: boolean
 }
@@ -24,7 +24,8 @@ const emits = defineEmits<{
 }>()
 
 const EchoesStore = useEchoesStore()
-const { UpdateEcho } = useBuild()
+
+const CurrentCharacterStore = useCurrentCharacterStore()
 
 const Steps = [
   { id: 'echo', title: 'Echo', description: 'Select your Echo and Sonata effect.' },
@@ -212,7 +213,7 @@ function HandleStateUpdate(newState: Partial<typeof State>) {
   ValidateCurrentStep()
 }
 
-function OnSubmit() {
+async function OnSubmit() {
   const validation = ValidateCurrentStep()
   if (!validation.isValid) {
     console.error('Form validation failed:', validation.errors)
@@ -231,9 +232,7 @@ function OnSubmit() {
 
   DisplayedEcho.value = e
 
-  e.Sonata.forEach(s => s.IsSelected = s.Name === State.Sonata.Name)
-
-  UpdateEcho(props.echoSlot, {
+  CurrentCharacterStore.UpdateEcho(props.echoSlot, {
     ...e,
     Id: props.mode === 'create' ? uuidv4() : State.EchoId,
     Rarity: State.Rarity,
@@ -252,6 +251,10 @@ function OnSubmit() {
         Type: s.Type,
         Value: Number.parseFloat(s.Value),
       })),
+    Sonata: e.Sonata.map(s => ({
+      ...s,
+      IsSelected: s.Name === State.Sonata.Name,
+    })),
   })
 
   return OnClose()

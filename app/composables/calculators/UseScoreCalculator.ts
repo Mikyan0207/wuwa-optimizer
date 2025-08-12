@@ -1,6 +1,5 @@
 import type { StatType } from '~/Core/Enums/StatType'
-import type Build from '~/Core/Interfaces/Build'
-import type Character from '~/Core/Interfaces/Character'
+import type { BuildWithDependencies } from '~/Core/Interfaces/Build'
 import type Echo from '~/Core/Interfaces/Echo'
 import type IStatistic from '~/Core/Interfaces/Statistic'
 import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
@@ -175,11 +174,8 @@ export function GetTotalGradeColor(grade: ScoreGrade): string {
 }
 
 export function useScoreCalculator() {
-  const BuildsStore = useBuildsStore()
-  const CharactersStore = useCharactersStore()
-
-  function GetCharacterScore(character: Character | undefined, buildOrBuildId?: Build | string): ICharacterRatingResult {
-    if (character === undefined) {
+  function GetBuildScore(build?: BuildWithDependencies): ICharacterRatingResult {
+    if (build?.Character === undefined) {
       return {
         Score: 0,
         EchoesScores: [],
@@ -187,21 +183,7 @@ export function useScoreCalculator() {
       }
     }
 
-    let echoes: Echo[] = []
-
-    if (buildOrBuildId) {
-      if (typeof buildOrBuildId === 'string') {
-        const build = BuildsStore.GetBuild(buildOrBuildId)
-        if (build?.Echoes) {
-          echoes = build.Echoes.filter(echo => echo.Id !== undefined)
-        }
-      }
-      else {
-        echoes = buildOrBuildId.Echoes?.filter(echo => echo.Id !== undefined) || []
-      }
-    }
-
-    const echoesScores = CalculateEchoesScore(echoes, character.StatsWeights || {})
+    const echoesScores = CalculateEchoesScore(build.Echoes, build.Character.StatsWeights || {})
     const totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0)
 
     return {
@@ -209,21 +191,6 @@ export function useScoreCalculator() {
       EchoesScores: echoesScores,
       Note: GetCharacterNote(totalScore),
     }
-  }
-
-  function GetBuildScore(buildId: string): ICharacterRatingResult {
-    const build = BuildsStore.GetBuild(buildId)
-    if (!build) {
-      return {
-        Score: 0,
-        EchoesScores: [],
-        Note: ScoreGrade.F,
-      }
-    }
-
-    const character = CharactersStore.GetById(build.CharacterId)
-
-    return GetCharacterScore(character, build)
   }
 
   function CalculateEchoesScore(echoes: Echo[], weights: Record<StatType, number>): IEchoRatingResult[] {
@@ -286,7 +253,6 @@ export function useScoreCalculator() {
   }
 
   return {
-    GetCharacterScore,
     GetBuildScore,
     GetEchoGrade,
     GetTotalGrade,

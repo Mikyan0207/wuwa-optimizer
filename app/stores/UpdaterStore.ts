@@ -23,7 +23,6 @@ export const useUpdaterStore = defineStore('UpdaterStore', () => {
     localStorage.clear()
 
     console.warn('Migration: Cleared all data for version', CURRENT_VERSION)
-    Version.value = CURRENT_VERSION
   }
 
   return {

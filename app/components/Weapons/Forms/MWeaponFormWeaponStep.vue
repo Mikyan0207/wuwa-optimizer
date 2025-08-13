@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type Weapon from '~/Core/Interfaces/Weapon'
+import type { BaseWeapon } from '~/Core/Interfaces/Weapon'
 import { Rarity } from '~/Core/Enums/Rarity'
+import { GetWeaponIcon } from '~/Core/Utils/WeaponUtils'
 
 interface WeaponFormWeaponStepProps {
-  availableWeapons: Weapon[]
+  availableWeapons: BaseWeapon[]
   selectedWeaponId: number
   errors: string[]
 }
@@ -65,7 +66,7 @@ function SelectWeapon(weaponId: number) {
             <div class="relative flex items-center justify-center overflow-clip">
               <div class="w-32 h-32">
                 <NuxtImg
-                  width="160" height="160" :src="`/images/weapons/${weapon.Icon}`" style="color: transparent;"
+                  width="160" height="160" :src="GetWeaponIcon(weapon)" style="color: transparent;"
                   class="w-full h-full object-cover"
                 />
               </div>

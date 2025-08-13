@@ -54,7 +54,7 @@
     </div>
 
     <main class="ml-[3.5em] mt-[6em] w-full min-h-screen h-full">
-      <slot />
+      <NuxtPage />
     </main>
 
     <!-- Footer -->

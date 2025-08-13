@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type Weapon from '~/Core/Interfaces/Weapon'
-import type { PartialWeapon } from '~/Core/Interfaces/Weapon'
+import type { BaseWeapon, PartialWeapon } from '~/Core/Interfaces/Weapon'
 import { v4 as uuidv4 } from 'uuid'
 import { z } from 'zod'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { StatType } from '~/Core/Enums/StatType'
-import { TemplateWeapons } from '~/Core/Weapons'
+import { BaseWeapons } from '~/Core/Weapons'
 
 interface WeaponFormProps {
   mode?: 'create' | 'edit'
@@ -33,7 +33,7 @@ const Steps = [
 ]
 
 const CurrentStep = ref(0)
-const DisplayedWeapon = ref<Weapon | undefined>(undefined)
+const DisplayedWeapon = ref<BaseWeapon | undefined>(undefined)
 
 const State = reactive({
   Id: undefined as string | undefined,
@@ -86,8 +86,8 @@ const FormSteps = computed(() => Steps.map((step, index) => ({
 })))
 
 const AvailableWeapons = computed(() => {
-  return TemplateWeapons
-    .filter((weapon: Weapon) => {
+  return BaseWeapons
+    .filter((weapon: BaseWeapon) => {
       if (weapon.Type !== CurrentCharacter.value?.WeaponType) {
         return false
       }
@@ -145,7 +145,7 @@ function NavigateStep(direction: 'next' | 'previous') {
 
 function HandleWeaponSelection(weaponId: number) {
   State.GameId = weaponId
-  const selectedWeapon = TemplateWeapons.find(w => w.GameId === weaponId)
+  const selectedWeapon = BaseWeapons.find(w => w.GameId === weaponId)
   if (selectedWeapon) {
     DisplayedWeapon.value = selectedWeapon
     State.Rarity = selectedWeapon.Rarity

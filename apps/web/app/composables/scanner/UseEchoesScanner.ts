@@ -114,7 +114,7 @@ export async function useEchoesScanner() {
       ECHO_REGIONS.ECHO_5,
     ]
 
-    const echoPromises = echoSlots.map(async (echoRegions, slotIndex) => {
+    const echoPromises = echoSlots.map(async (echoRegions) => {
       try {
         const costText = await GetText(GetRegion(echoRegions.COST))
         const cost = GetCostFromText(costText)
@@ -137,6 +137,8 @@ export async function useEchoesScanner() {
         return echo
       }
       catch (error) {
+        console.error(error)
+
         return null
       }
     })
@@ -332,7 +334,7 @@ export async function useEchoesScanner() {
         resolve(img)
       }
       img.onerror = (error) => {
-        reject(new Error(`Failed to load sonata icon: ${sonata.Name} (${iconPath})`))
+        reject(new Error(`Failed to load sonata icon: ${sonata.Name} (${iconPath}), ${error}`))
       }
       img.src = iconPath
     })

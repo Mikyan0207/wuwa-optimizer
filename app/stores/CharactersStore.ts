@@ -9,8 +9,6 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
   const BaseCharacters = ref<BaseCharacter[]>([])
   const CachedCharacters = ref<Map<number, Character>>(new Map())
 
-  const PendingRequests = ref<Map<number, Promise<BaseCharacter>>>(new Map())
-
   async function GetBaseById(id: number): Promise<BaseCharacter> {
     const character = BaseCharacters.value.find(c => c.Id === id)
 
@@ -18,22 +16,13 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
       return character
     }
 
-    if (PendingRequests.value.has(id)) {
-      return PendingRequests.value.get(id)!
+    const baseCharacter = await $fetch<BaseCharacter>(`/api/characters/${id}`)
+
+    if (baseCharacter) {
+      BaseCharacters.value.push(baseCharacter)
     }
 
-    const promise = $fetch<BaseCharacter>(`/characters/${id}/${id}.json`).then((data) => {
-      if (data) {
-        BaseCharacters.value.push(data)
-      }
-      return data
-    }).finally(() => {
-      PendingRequests.value.delete(id)
-    })
-
-    PendingRequests.value.set(id, promise)
-
-    return promise
+    return baseCharacter
   }
 
   async function GetById(gameId: number): Promise<Character> {
@@ -142,6 +131,7 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
 
   return {
     Characters: skipHydrate(Characters),
+    CachedCharacters,
     GetAll,
     GetById,
     GetBaseById,

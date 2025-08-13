@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GetSequenceIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
+import { GetSequenceIcon, GetSplashArt, HasSplashArt } from '~/Core/Utils/CharacterUtils'
 
 const CurrentCharacterStore = useCurrentCharacterStore()
 
@@ -8,7 +8,6 @@ const { CurrentCharacter } = storeToRefs(CurrentCharacterStore)
 
 <template>
   <MCard
-    v-if="CurrentCharacter"
     class="relative overflow-hidden"
     :border-lines-count="3"
   >
@@ -23,7 +22,7 @@ const { CurrentCharacter } = storeToRefs(CurrentCharacterStore)
       <NuxtImg :src="`${GetCharacterWeaponTypeIcon(CurrentCharacter)}`" class="h-8 w-8 object-cover" fit="cover" />
     </div> -->
     <div class="absolute left-4 top-4 z-20">
-      <div class="flex flex-col gap-3">
+      <div v-if="CurrentCharacter" class="flex flex-col gap-3">
         <div
           v-for="(s, index) in CurrentCharacter.Sequences"
           :key="`sequence-${index}-${s.Unlocked}`"
@@ -49,8 +48,10 @@ const { CurrentCharacter } = storeToRefs(CurrentCharacterStore)
       </div>
     </div>
     <NuxtImg
+      v-if="CurrentCharacter && HasSplashArt(CurrentCharacter)"
       :src="`${GetSplashArt(CurrentCharacter)}`"
       class="absolute inset-0 z-10 h-full w-full object-cover"
     />
+    <USkeleton v-else class="absolute inset-0 z-10 h-full w-full object-cover" />
   </MCard>
 </template>

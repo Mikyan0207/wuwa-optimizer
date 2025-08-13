@@ -3,7 +3,7 @@ import type Character from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import type Statistic from '~/Core/Interfaces/Statistic'
 import type Weapon from '~/Core/Interfaces/Weapon'
-import { defineStore, skipHydrate } from 'pinia'
+import { defineStore } from 'pinia'
 import { useScoreCalculator } from '~/composables/calculators/UseScoreCalculator'
 import { useStatsCalculator } from '~/composables/calculators/UseStatsCalculator'
 import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
@@ -31,32 +31,36 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
   const HasBuild = computed(() => CurrentBuild.value !== undefined)
   const HasWeapon = computed(() => CurrentWeapon.value !== undefined)
 
-  async function SetCharacter(characterId: number) {
-    if (CharacterId.value === characterId)
-      return
-
+  async function GetAsync(characterId: number): Promise<Character | undefined> {
     CharacterId.value = characterId
+
     await LoadCharacter()
+    return CurrentCharacter.value
   }
 
   async function LoadCharacter() {
     if (!CharacterId.value)
       return
 
-    const defaultBuild = BuildsStore.GetDefaultBuild(CharacterId.value)
+    try {
+      const defaultBuild = BuildsStore.GetDefaultBuild(CharacterId.value)
 
-    const [character, weapon] = await Promise.all([
-      CharactersStore.GetById(CharacterId.value),
-      WeaponsStore.GetById(defaultBuild?.WeaponId ?? ''),
-    ])
+      const [character, weapon] = await Promise.all([
+        CharactersStore.GetById(CharacterId.value),
+        WeaponsStore.GetById(defaultBuild?.WeaponId ?? ''),
+      ])
 
-    CurrentCharacter.value = character
-    CurrentBuild.value = defaultBuild || undefined
-    CurrentWeapon.value = weapon || undefined
-    CurrentEchoes.value = Array.from({ length: 5 }, (_, index) =>
-      defaultBuild?.Echoes[index] || undefined)
+      CurrentCharacter.value = character
+      CurrentBuild.value = defaultBuild || undefined
+      CurrentWeapon.value = weapon || undefined
+      CurrentEchoes.value = Array.from({ length: 5 }, (_, index) =>
+        defaultBuild?.Echoes[index] || undefined)
 
-    await UpdateStatsAndScore()
+      await UpdateStatsAndScore()
+    }
+    catch (error) {
+      console.error(error)
+    }
   }
 
   async function UpdateStatsAndScore() {
@@ -182,20 +186,20 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
   }
 
   return {
-    CharacterId: skipHydrate(readonly(CharacterId)),
-    CurrentCharacter: skipHydrate(CurrentCharacter),
-    CurrentBuild: skipHydrate(CurrentBuild),
-    CurrentWeapon: skipHydrate(CurrentWeapon),
-    CurrentEchoes: skipHydrate(CurrentEchoes),
-    CurrentStats: skipHydrate(CurrentStats),
-    Score: skipHydrate(Score),
-    Note: skipHydrate(Note),
+    CharacterId,
+    CurrentCharacter,
+    CurrentBuild,
+    CurrentWeapon,
+    CurrentEchoes,
+    CurrentStats,
+    Score,
+    Note,
 
     HasCharacter,
     HasBuild,
     HasWeapon,
 
-    SetCharacter,
+    GetAsync,
     LoadCharacter,
     UpdateEcho,
     ReorderEchoes,

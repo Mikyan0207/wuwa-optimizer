@@ -100,6 +100,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-01-15',
 
   nitro: {
+    storage: {
+      data: {
+        driver: 'fs',
+        base: 'public/',
+      },
+    },
     esbuild: {
       options: {
         target: 'esnext',
@@ -107,7 +113,6 @@ export default defineNuxtConfig({
     },
     routeRules: {
       '/': { prerender: true },
-      '/characters/**': { swr: 1800 },
     },
   },
 

@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { GetCharacterBackground } from '~/Core/Utils/CharacterUtils'
+import { GetCharacterBackgroundFromId } from '~/Core/Utils/CharacterUtils'
 
-const CurrentCharacterStore = useCurrentCharacterStore()
-
-const { CurrentCharacter } = storeToRefs(CurrentCharacterStore)
+const Route = useRoute()
+const Id = computed<number>(() => Number.parseInt((Route.params as { id: string }).id))
 </script>
 
 <template>
@@ -13,7 +12,7 @@ const { CurrentCharacter } = storeToRefs(CurrentCharacterStore)
       <div
         class=" fixed inset-0 h-full w-full bg-neutral-900/65"
       />
-      <NuxtImg v-if="CurrentCharacter" :src="GetCharacterBackground(CurrentCharacter)" class="h-full w-full object-cover" />
+      <NuxtImg :src="GetCharacterBackgroundFromId(Id)" class="h-full w-full object-cover" />
     </div>
 
     <div class="fixed grid grid-cols-[3.5em_1em_3em_1fr] pointer-events-none grid-rows-[3em_1em_3em_1fr] w-full h-full z-1">

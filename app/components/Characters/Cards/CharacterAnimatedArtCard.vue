@@ -13,14 +13,12 @@ const { Initialize, LoadSpineModel, IsSpineLoaded } = useAnimatedArt(CurrentChar
 const ShowOverlay = ref(true)
 
 onMounted(() => {
-  if (import.meta.client) {
-    nextTick(() => {
-      setTimeout(() => {
-        Initialize()
-        LoadSpineModel()
-      }, 2500)
-    })
-  }
+  nextTick(() => {
+    setTimeout(() => {
+      Initialize()
+      LoadSpineModel()
+    }, 2500)
+  })
 })
 </script>
 

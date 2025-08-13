@@ -74,8 +74,16 @@ export function GetSplashArt(character: Character) {
   return `/characters/${character.Id}/images/${character.SplashArt.replace('.webp', '')}.webp`
 }
 
+export function HasSplashArt(character: Character) {
+  return character.SplashArt !== undefined
+}
+
 export function GetCharacterBackground(character: Character) {
   return `/characters/${character.Id}/images/Background.webp`
+}
+
+export function GetCharacterBackgroundFromId(id: number) {
+  return `/characters/${id}/images/Background.webp`
 }
 
 export function GetCharacterAnimatedArt(character: Character): AnimatedArt {

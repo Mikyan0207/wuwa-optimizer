@@ -3,14 +3,11 @@
   "private": true,
   "packageManager": "pnpm@10.14.0",
   "scripts": {
-    "build": "nuxi build",
-    "dev:pwa": "VITE_PLUGIN_PWA=true nuxi dev",
     "dev": "nuxi dev",
-    "generate": "nuxi generate",
+    "build": "nuxi build",
+    "preview": "npx nuxthub preview",
     "prepare": "nuxi prepare",
     "cleanup": "nuxi cleanup",
-    "start": "node .output/server/index.mjs",
-    "start:generate": "npx serve .output/public",
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit"
   },

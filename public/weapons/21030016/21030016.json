@@ -1,0 +1,16 @@
+{
+  "GameId": 21030016,
+  "Name": "The Last Dance",
+  "Type": "PISTOLS",
+  "Rarity": "FIVE_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 500
+  },
+  "SecondaryStatistic": {
+    "Type": "CRIT_DMG",
+    "Value": 72
+  }
+}

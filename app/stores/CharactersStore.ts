@@ -1,69 +1,140 @@
 import type Character from '~/Core/Interfaces/Character'
-import { useLocalStorage } from '@vueuse/core'
-import { defineStore } from 'pinia'
-import { TemplateCharacters } from '~/Core/Characters'
-import { CharacterMigrationService } from '~/Core/Services/CharacterMigrationService'
+import type { BaseCharacter, PartialCharacter } from '~/Core/Interfaces/Character'
+import type Sequence from '~/Core/Interfaces/Sequence'
+import type Skill from '~/Core/Interfaces/Skill'
+import { defineStore, skipHydrate } from 'pinia'
 
 export const useCharactersStore = defineStore('CharactersStore', () => {
-  const Characters = useLocalStorage<Character[]>('Characters', [])
-  const MigrationService = new CharacterMigrationService()
+  const Characters = useLocalStorage<Record<number, PartialCharacter>>('Characters', {})
+  const BaseCharacters = ref<BaseCharacter[]>([])
+  const CachedCharacters = ref<Map<number, Character>>(new Map())
 
-  async function Migration() {
-    if (MigrationService.NeedsMigration()) {
-      try {
-        Characters.value = await MigrationService.MigrateCharacters()
+  async function GetBaseById(id: number): Promise<BaseCharacter> {
+    const character = BaseCharacters.value.find(c => c.Id === id)
+
+    if (character) {
+      return character
+    }
+
+    const baseCharacter = await $fetch<BaseCharacter>(`/characters/${id}/${id}.json`)
+
+    if (baseCharacter) {
+      BaseCharacters.value.push(baseCharacter)
+    }
+
+    return baseCharacter
+  }
+
+  async function GetById(gameId: number): Promise<Character> {
+    if (CachedCharacters.value.has(gameId)) {
+      return CachedCharacters.value.get(gameId)!
+    }
+
+    const base = await GetBaseById(gameId)
+    const partial = Characters.value[gameId]
+
+    if (!partial) {
+      Characters.value[gameId] = {
+        Id: gameId,
+        Level: 90,
+        Stats: [],
+        Sequences: [],
+        Skills: [],
+        StatsWeights: {},
       }
-      catch (error) {
-        console.error('Migration failed:', error)
-      }
-      finally {
-        MigrationService.CleanUp()
+    }
+
+    const character = Merge(Characters.value[gameId], base)
+
+    CachedCharacters.value.set(gameId, character)
+
+    return character
+  }
+
+  async function GetAll(): Promise<BaseCharacter[]> {
+    const data = await $fetch<number[]>('/characters/characters.json')
+
+    return Promise.all(data.map(id => GetBaseById(id)))
+  }
+
+  async function UpdateById(characterId: number, data: Partial<PartialCharacter>) {
+    const character = await GetById(characterId)
+
+    if (character) {
+      Characters.value[character.Id] = {
+        ...character,
+        ...data,
       }
     }
   }
 
-  function Get(characterId: number | undefined): Character {
-    const c = Characters.value.find(x => x.Id === characterId)
-    if (c !== undefined) {
-      return c
+  function Merge(partial: PartialCharacter | undefined, base: BaseCharacter): Character {
+    return {
+      ...base,
+      Level: partial?.Level ?? 90,
+      Stats: partial?.Stats ?? [],
+      Sequences: MergeSequences(partial, base),
+      Skills: MergeSkills(partial, base),
+      StatsWeights: MergeStatsWeights(partial, base),
     }
-
-    const ct = TemplateCharacters.find(x => x.Id === characterId)
-    if (ct !== undefined) {
-      Characters.value.push(ct)
-    }
-
-    return Characters.value.find(x => x.Id === characterId)!
   }
 
-  function Update(characterId: number, data: Partial<Character>) {
-    const index = Characters.value.findIndex(c => c.Id === characterId)
-    if (index === -1 || Characters.value === undefined)
-      return
+  function MergeSequences(partial: PartialCharacter | undefined, base: BaseCharacter): Sequence[] {
+    const sequences = base.BaseSequences
 
-    Characters.value[index] = {
-      ...Characters.value[index],
-      ...data,
-    } as Character
-  }
-
-  function AddOrUpdate(character: Character) {
-    if (!Characters.value)
-      return
-
-    const exists = Characters.value.some(c => c.Id === character.Id)
-    if (exists) {
-      return Update(character.Id, character)
+    if (partial?.Sequences) {
+      partial.Sequences.forEach((sequence) => {
+        const baseSequence = sequences.find(s => s.Name === sequence.Name)
+        if (baseSequence) {
+          sequence.Unlocked = sequence.Unlocked ?? baseSequence.Unlocked
+        }
+      })
     }
 
-    Characters.value.push(character)
+    return sequences
+  }
+
+  function MergeStatsWeights(partial: PartialCharacter | undefined, base: BaseCharacter): Record<string, number> {
+    const statsWeights = base.BaseStatsWeights
+
+    // if (partial?.StatsWeights) {
+    //   Object.keys(partial.StatsWeights).forEach((key) => {
+    //     const baseWeight = statsWeights[key]
+    //     if (baseWeight) {
+    //       statsWeights[key] = partial.StatsWeights[key] ?? baseWeight
+    //     }
+    //   })
+    // }
+
+    return statsWeights
+  }
+
+  function MergeSkills(partial: PartialCharacter | undefined, base: BaseCharacter): Skill[] {
+    const skills = base.BaseSkills
+
+    if (partial?.Skills) {
+      partial.Skills.forEach((skill) => {
+        const baseSkill = skills.find(s => s.Id === skill.Id)
+        if (baseSkill) {
+          skill.Level = baseSkill.Level > skill.Level ? baseSkill.Level : skill.Level
+          skill.Unlocked = skill.Unlocked ?? baseSkill.Unlocked
+        }
+      })
+    }
+
+    return skills
+  }
+
+  if (import.meta.hot) {
+    import.meta.hot.accept(acceptHMRUpdate(useCharactersStore, import.meta.hot))
   }
 
   return {
-    Characters,
-    Get,
-    Update,
-    AddOrUpdate,
-    Migration,
+    Characters: skipHydrate(Characters),
+    CachedCharacters,
+    GetAll,
+    GetById,
+    GetBaseById,
+    UpdateById,
   }
 })

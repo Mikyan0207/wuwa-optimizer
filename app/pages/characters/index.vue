@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import type { BaseCharacter } from '~/Core/Interfaces/Character'
 import type Character from '~/Core/Interfaces/Character'
-import { TemplateCharacters } from '~/Core/Characters'
 import { CharacterType } from '~/Core/Enums/CharacterType'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { ReleaseState } from '~/Core/Enums/ReleaseState'
@@ -50,10 +50,16 @@ const SelectedCharacterType = ref<CharacterType>(CharacterType.ALL)
 const SelectedCharacterRarity = ref<Rarity>(Rarity.ALL)
 const SelectedCharacterSort = ref<string>(CharacterSortOptions[1]!)
 
+const CharactersStore = useCharactersStore()
+const Characters = ref<BaseCharacter[]>([])
 const CharactersList = computed(() => FilterCharacters())
 
+onMounted(async () => {
+  Characters.value = await CharactersStore.GetAll()
+})
+
 function FilterCharacters() {
-  return TemplateCharacters
+  return Characters.value
     .filter((character) => {
       const matchesType = SelectedWeaponType.value === WeaponType.ALL || character.WeaponType === SelectedWeaponType.value
       const matchesRarity = SelectedCharacterRarity.value === Rarity.ALL || character.Rarity === SelectedCharacterRarity.value
@@ -79,7 +85,7 @@ function OnCharacterClicked(characterId: number | undefined) {
   navigateTo(`/characters/${characterId}`)
 }
 
-function IsCharacterAvailable(character: Character) {
+function IsCharacterAvailable(character: BaseCharacter) {
   return character.ReleaseState !== ReleaseState.UPCOMING
     && character.ReleaseState !== ReleaseState.UNKNOWN
 }
@@ -92,12 +98,13 @@ function IsCharacterAvailable(character: Character) {
       <WeaponTypeFilter @selected="(wt: WeaponType) => SelectedWeaponType = wt" />
       <RarityFilter @selected="(r: Rarity) => SelectedCharacterRarity = r" />
     </div>
-    <div class="flex flex-wrap w-full items-center justify-center gap-2">
-      <CharacterIcon
+    <div v-if="CharactersList.length > 0" class="flex flex-wrap w-full items-center justify-center gap-2">
+      <MCharacterIcon
         v-for="(c, idx) in CharactersList"
-        :key="c.Id" v-motion-pop
+        :key="c.Id"
+        v-motion-pop
         :delay="100 + (idx * 20)"
-        :character="c"
+        :character="c as Character"
         :class="{ 'cursor-pointer': IsCharacterAvailable(c) }"
         @click.prevent="IsCharacterAvailable(c) ? OnCharacterClicked(c.Id) : null"
       />

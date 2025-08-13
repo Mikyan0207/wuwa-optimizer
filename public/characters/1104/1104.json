@@ -1,0 +1,239 @@
+{
+  "Id": 1104,
+  "Rarity": "FIVE_STARS",
+  "Icon": "Lingyang_Icon.webp",
+  "SplashArt": "Lingyang_Portrait.webp",
+  "WeaponType": "GAUNTLETS",
+  "Type": "GLACIO",
+  "Level": 90,
+  "BaseStats": [
+    {
+      "Type": "HP",
+      "Value": 10387.5
+    },
+    {
+      "Type": "DEF",
+      "Value": 1209.9978
+    },
+    {
+      "Type": "ATTACK",
+      "Value": 437.5
+    },
+    {
+      "Type": "CRIT_RATE",
+      "Value": 5
+    },
+    {
+      "Type": "CRIT_DMG",
+      "Value": 150
+    },
+    {
+      "Type": "ENERGY_REGENERATION",
+      "Value": 100
+    },
+    {
+      "Type": "HEALING_BONUS",
+      "Value": 0
+    },
+    {
+      "Type": "BASIC_ATTACK_DMG_AMPLIFICATION",
+      "Value": 0
+    },
+    {
+      "Type": "HEAVY_ATTACK_DMG_AMPLIFICATION",
+      "Value": 0
+    },
+    {
+      "Type": "RESONANCE_SKILL_DMG_AMPLIFICATION",
+      "Value": 0
+    },
+    {
+      "Type": "RESONANCE_LIBERATION_DMG_AMPLIFICATION",
+      "Value": 0
+    },
+    {
+      "Type": "GLACIO_DMG_BONUS",
+      "Value": 0
+    }
+  ],
+  "BaseSequences": [
+    {
+      "Name": "",
+      "Icon": "Lingyang_Sequence_Node_01.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Lingyang_Sequence_Node_02.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Lingyang_Sequence_Node_03.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Lingyang_Sequence_Node_04.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Lingyang_Sequence_Node_05.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Lingyang_Sequence_Node_06.webp",
+      "Unlocked": false
+    }
+  ],
+  "BaseSkills": [
+    {
+      "Id": "Basic_Attack",
+      "Level": 10,
+      "Icon": "Skill_Gauntlets.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Basic_Attack_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Glacio_DMG_Bonus.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "GLACIO_DMG_BONUS",
+        "Value": 1.8
+      }
+    },
+    {
+      "Id": "Basic_Attack_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Glacio_DMG_Bonus.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "GLACIO_DMG_BONUS",
+        "Value": 4.2
+      }
+    },
+    {
+      "Id": "Forte_Circuit",
+      "Level": 10,
+      "Icon": "Lingyang_Forte_Circuit.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Inherent_Skill_01",
+      "Level": 10,
+      "Icon": "Lingyang_Inherent_Skill_01.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Inherent_Skill_02",
+      "Level": 10,
+      "Icon": "Lingyang_Inherent_Skill_02.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Intro_Skill",
+      "Level": 10,
+      "Icon": "Lingyang_Intro_Skill.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Intro_Skill_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Glacio_DMG_Bonus.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "GLACIO_DMG_BONUS",
+        "Value": 1.8
+      }
+    },
+    {
+      "Id": "Intro_Skill_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Glacio_DMG_Bonus.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "GLACIO_DMG_BONUS",
+        "Value": 4.2
+      }
+    },
+    {
+      "Id": "Outro_Skill",
+      "Level": 10,
+      "Icon": "Lingyang_Outro_Skill.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Liberation",
+      "Level": 10,
+      "Icon": "Lingyang_Resonance_Liberation.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Liberation_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 1.8
+      }
+    },
+    {
+      "Id": "Resonance_Liberation_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 4.2
+      }
+    },
+    {
+      "Id": "Resonance_Skill",
+      "Level": 10,
+      "Icon": "Lingyang_Resonance_Skill.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Skill_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 1.8
+      }
+    },
+    {
+      "Id": "Resonance_Skill_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 4.2
+      }
+    }
+  ],
+  "BaseStatsWeights": {
+    "NONE": 0,
+    "CRIT_DMG": 1,
+    "CRIT_RATE": 1,
+    "ATTACK": 0,
+    "ATTACK_PERCENTAGE": 0.8,
+    "HP": 0,
+    "HP_PERCENTAGE": 0,
+    "HEALING_BONUS": 0,
+    "DEF": 0,
+    "DEF_PERCENTAGE": 0,
+    "ENERGY_REGENERATION": 0.7,
+    "BASIC_ATTACK_DMG_AMPLIFICATION": 0.3,
+    "HEAVY_ATTACK_DMG_AMPLIFICATION": 0.4,
+    "RESONANCE_LIBERATION_DMG_AMPLIFICATION": 0.6,
+    "RESONANCE_SKILL_DMG_AMPLIFICATION": 0.9,
+    "GLACIO_DMG_BONUS": 1
+  }
+}

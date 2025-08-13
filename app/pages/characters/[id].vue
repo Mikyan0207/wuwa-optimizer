@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import type { TabsItem } from '@nuxt/ui'
+
 definePageMeta({
-  layout: 'default',
+  layout: 'character-details',
 })
 
 const SelectedTab = ref<string>('0')
@@ -8,14 +10,7 @@ const SelectedTab = ref<string>('0')
 const Route = useRoute()
 const { t } = useI18n()
 
-const CharacterId = computed<string | undefined>(() => {
-  if (Route.params
-    && typeof (Route.params as Record<string, unknown>).id === 'string') {
-    return (Route.params as { id: string }).id
-  }
-
-  return undefined
-})
+const CharacterId = ref<number | undefined>(Number.parseInt(Route.params.id as string))
 
 const CharacterName = computed(() => {
   if (CharacterId.value) {
@@ -24,9 +19,10 @@ const CharacterName = computed(() => {
   return 'Character'
 })
 
-const IsCharacterAvailable = computed(() => {
-  return CharacterId.value
-    && Number(CharacterId.value) < 2000
+onMounted(() => {
+  if (!CharacterId.value) {
+    navigateTo('/characters')
+  }
 })
 
 useHead({
@@ -55,55 +51,39 @@ useHead({
   ],
 })
 
-onMounted(() => {
-  if (!CharacterId.value
-    || Number(CharacterId.value) >= 2000) {
-    navigateTo('/characters')
-  }
-})
-
 const TabItems = [{
   label: 'Scorer',
   icon: 'i-solar-calculator-minimalistic-broken',
   disabled: false,
-},
-// {
-//   label: 'Ascension',
-//   icon: 'i-material-symbols:arrow-upload-progress-rounded',
-// },
-{
+  slot: 'scorer' as const,
+}, {
   label: 'Builds',
   icon: 'i-solar-settings-minimalistic-broken',
   disabled: false,
-}]
+  slot: 'builds' as const,
+}] as TabsItem[]
 </script>
 
 <template>
-  <div v-if="IsCharacterAvailable">
-    <Suspense>
-      <template #default>
-        <div class="mx-auto mb-4 xl:max-w-[100rem] px-8 text-sm text-gray-300">
-          <UTabs
-            v-model="SelectedTab"
-            :items="TabItems"
-            color="neutral"
-            class="max-w-7xl xl:max-w-[100rem] mx-auto"
-            :default-value="0"
-            :ui="{
-              list: 'rounded-none border-neutral-600',
-              indicator: 'rounded-none bg-neutral-300',
-            }"
-          >
-            <template #content>
-              <CharacterScorerTab v-if="SelectedTab === '0'" />
-              <CharacterBuildsTab v-if="SelectedTab === '1'" />
-            </template>
-          </UTabs>
-        </div>
+  <div class="mx-auto mb-4 xl:max-w-[100rem] px-8 text-sm text-gray-300">
+    <UTabs
+      v-model="SelectedTab"
+      :unmount-on-hide="false"
+      :items="TabItems"
+      color="neutral"
+      class="max-w-7xl xl:max-w-[100rem] mx-auto"
+      :default-value="0"
+      :ui="{
+        list: 'rounded-none border-neutral-600',
+        indicator: 'rounded-none bg-neutral-300',
+      }"
+    >
+      <template #scorer>
+        <CharacterScorerTab />
       </template>
-      <template #fallback>
-        <div />
+      <template #builds>
+        <CharacterBuildsTab />
       </template>
-    </Suspense>
+    </UTabs>
   </div>
 </template>

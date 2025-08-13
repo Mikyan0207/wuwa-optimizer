@@ -1,0 +1,17 @@
+{
+  "GameId": 21050066,
+  "Name": "Lethean Elegy",
+  "Type": "RECTIFIER",
+  "Rarity": "FIVE_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 587.5
+  },
+  "SecondaryStatistic": {
+    "Type": "CRIT_RATE",
+    "Value": 24.3
+  },
+  "ReleaseState": "NEW"
+}

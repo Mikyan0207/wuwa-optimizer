@@ -1,0 +1,16 @@
+{
+  "GameId": 21020046,
+  "Name": "Bloodpact's Pledge",
+  "Type": "SWORD",
+  "Rarity": "FIVE_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 587.5
+  },
+  "SecondaryStatistic": {
+    "Type": "ENERGY_REGENERATION",
+    "Value": 38.88
+  }
+}

@@ -2,7 +2,7 @@ import type Weapon from '../Interfaces/Weapon'
 import { WeaponType } from '../Enums/WeaponType'
 
 export function GetWeaponIcon(weapon: Weapon) {
-  return `/images/weapons/${weapon.Icon}`
+  return `/weapons/${weapon.GameId}/images/${weapon.GameId}_Icon.webp`
 }
 
 export function GetTypeIcon(weapon: Weapon) {

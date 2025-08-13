@@ -41,21 +41,30 @@ const TabItems = [{
 <template>
   <div>
     <div class="mx-auto mb-4 xl:max-w-7xl px-8 text-gray-300">
-      <UTabs
-        v-model="SelectedTab"
-        :items="TabItems"
-        color="neutral"
-        class="max-w-7xl xl:max-w-[100rem] mx-auto"
-        default-value="0"
-        :ui="{
-          list: 'rounded-none border-neutral-600',
-          indicator: 'rounded-none bg-neutral-300',
-        }"
-      >
-        <template #content>
-          <ScannerImporterTab />
+      <ClientOnly>
+        <UTabs
+          v-model="SelectedTab"
+          :items="TabItems"
+          color="neutral"
+          class="max-w-7xl xl:max-w-[100rem] mx-auto"
+          default-value="0"
+          :ui="{
+            list: 'rounded-none border-neutral-600',
+            indicator: 'rounded-none bg-neutral-300',
+          }"
+        >
+          <template #content>
+            <ScannerImporterTab />
+          </template>
+        </UTabs>
+        <template #fallback>
+          <div class="flex items-center justify-center w-full h-full overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <UProgress class="w-[50%]" animation="swing" />
+            </div>
+          </div>
         </template>
-      </UTabs>
+      </ClientOnly>
     </div>
   </div>
 </template>

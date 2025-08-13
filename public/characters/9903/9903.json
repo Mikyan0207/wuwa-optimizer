@@ -1,0 +1,14 @@
+{
+  "Id": 9903,
+  "Rarity": "FIVE_STARS",
+  "Icon": "Galbrena_Icon.webp",
+  "SplashArt": "Galbrena_Portrait.webp",
+  "ReleaseState": "UNKNOWN",
+  "WeaponType": "GAUNTLETS",
+  "Type": "NONE",
+  "Level": 90,
+  "BaseStats": [],
+  "BaseSequences": [],
+  "BaseSkills": [],
+  "BaseStatsWeights": {}
+}

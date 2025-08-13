@@ -1,0 +1,29 @@
+import { defineStore } from 'pinia'
+
+export const useUpdaterStore = defineStore('UpdaterStore', () => {
+  const CURRENT_VERSION = '1.0.1'
+  const VERSION_KEY = 'wuwa-optimizer-version'
+  const Version = useLocalStorage<string>(VERSION_KEY, '')
+
+  function Migrate(): void {
+    if (Version.value === CURRENT_VERSION) {
+      return
+    }
+
+    if (!Version.value || Version.value !== CURRENT_VERSION) {
+      ClearAllData()
+    }
+
+    Version.value = CURRENT_VERSION
+
+    // TODO: Migrate future versions here
+  }
+
+  function ClearAllData(): void {
+    localStorage.clear()
+  }
+
+  return {
+    Migrate,
+  }
+})

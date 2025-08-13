@@ -1,0 +1,16 @@
+{
+  "GameId": 21010012,
+  "Name": "Tyro Broadblade",
+  "Type": "BROADBLADE",
+  "Rarity": "TWO_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 275
+  },
+  "SecondaryStatistic": {
+    "Type": "ATTACK_PERCENTAGE",
+    "Value": 14.85
+  }
+}

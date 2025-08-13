@@ -1,18 +1,12 @@
 <script setup lang="ts">
 import type Event from '~/Core/Interfaces/Event'
 import type Weapon from '~/Core/Interfaces/Weapon'
+import type { EventInfo } from '~/stores/EventsStore'
 import { ReleaseState } from '~/Core/Enums/ReleaseState'
 import { GetWeaponIcon } from '~/Core/Utils/WeaponUtils'
 
 interface Props {
-  event: Event & {
-    left: number
-    width: number
-    top: number
-    weapon?: Weapon
-    isFirst: boolean
-    isLast: boolean
-  }
+  event: EventInfo
 }
 
 defineProps<Props>()
@@ -51,7 +45,7 @@ function OnEventClick(event: Event) {
     <div class="flex items-center gap-2 h-full">
       <img
         v-if="event.weapon"
-        :src="GetWeaponIcon(event.weapon)"
+        :src="GetWeaponIcon(event.weapon as Weapon)"
         :alt="t(`${event.WeaponId}_name`)"
         class="w-auto h-full object-cover rounded-full"
       >

@@ -1,5 +1,13 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: false,
+})
+
 const router = useRouter()
+
+onMounted(() => {
+  router.push('/')
+})
 </script>
 
 <template>

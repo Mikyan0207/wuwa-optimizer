@@ -18,3 +18,11 @@ export function LevenshteinDistance(a: string, b: string): number {
 
   return dp[a.length]![b.length]!
 }
+
+export function Capitalize(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+export function CapitalizeWords(str: string, separator: string = ' '): string {
+  return str.split(separator).map(word => Capitalize(word)).join(separator)
+}

@@ -1,18 +1,21 @@
 <script setup lang="ts">
-import { AppName } from './Core'
+import { useAnalytics } from '~/composables/core/UseAnalytics'
+import { AppName } from './Core/Versions'
 
 useHead({
   title: AppName,
 })
 
-const CharactersStore = useCharactersStore()
-const SonatasStore = useSonatasStore()
-const EchoesStore = useEchoesStore()
+const UpdaterStore = useUpdaterStore()
+const route = useRoute()
+const { AutoTrackPageView } = useAnalytics()
 
-onMounted(async () => {
-  await CharactersStore.Migration()
-  await SonatasStore.Migration()
-  await EchoesStore.Migration()
+watch(() => route.path, () => {
+  AutoTrackPageView()
+}, { immediate: true })
+
+onMounted(() => {
+  UpdaterStore.Migrate()
 })
 </script>
 

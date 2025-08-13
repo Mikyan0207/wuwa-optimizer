@@ -6,19 +6,36 @@ import type Sequence from './Sequence'
 import type Skill from './Skill'
 import type Statistic from './Statistic'
 
-export default interface Character {
+export default interface Character extends BaseCharacter, PartialCharacter {}
+
+export interface BaseCharacter {
   Id: number
   Icon: string
   SplashArt: string
+  AnimatedArt?: AnimatedArt
   Rarity: Rarity
   ReleaseState?: ReleaseState
   Type: CharacterType
-  WeaponType?: WeaponType
-  EquipedWeapon?: number
+  WeaponType: WeaponType
+  BaseStats: Statistic[]
+  BaseSequences: Sequence[]
+  BaseSkills: Skill[]
+  BaseStatsWeights: Record<string, number>
+}
+
+export interface PartialCharacter {
+  Id: number
   Level: number
   Stats: Statistic[]
   Sequences: Sequence[]
   Skills: Skill[]
-  EquipedEchoes: number[]
-  StatsWeights?: Record<string, number>
+  StatsWeights: Record<string, number>
+}
+
+export interface AnimatedArt {
+  Skeleton: string
+  Atlas: string
+  OffsetX?: number
+  OffsetY?: number
+  Scale?: number
 }

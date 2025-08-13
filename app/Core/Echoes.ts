@@ -4,7 +4,7 @@ import { Rarity } from './Enums/Rarity'
 import { Celestial_Light, Dream_of_the_Lost, Empyrean_Anthem, Eternal_Radiance, Flaming_Clawprint, Freezing_Frost, Frosty_Resolve, Gusts_of_Welkin, Havoc_Eclipse, Lingering_Tunes, Midnight_Veil, Molten_Rift, Moonlit_Clouds, Rejuvenating_Glow, Sierra_Gale, Tidebreaking_Courage, Void_Thunder, Windward_Pilgrimage } from './Sonatas'
 
 export const Empty_Echo: Echo = {
-  Id: -1,
+  GameId: -1,
   Icon: '',
   Rarity: Rarity.FOUR_STARS,
   Cost: EchoCost.ONE_COST,
@@ -15,7 +15,7 @@ export const Empty_Echo: Echo = {
 
 export const Echoes: Echo[] = [
   {
-    Id: 6000039,
+    GameId: 6000039,
     Icon: 'Tempest_Mephis_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -26,7 +26,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000042,
+    GameId: 6000042,
     Icon: 'Crownless_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -37,7 +37,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000043,
+    GameId: 6000043,
     Icon: 'Feilian_Beringal_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -48,7 +48,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000044,
+    GameId: 6000044,
     Icon: 'Lampylumen_Myriad_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -59,7 +59,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000045,
+    GameId: 6000045,
     Icon: 'Mourning_Aix_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -70,7 +70,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000048,
+    GameId: 6000048,
     Icon: 'Mech_Abomination_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -81,7 +81,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000052,
+    GameId: 6000052,
     Icon: 'Impermanence_Heron_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -92,7 +92,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000053,
+    GameId: 6000053,
     Icon: 'Dreamless_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -103,7 +103,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000059,
+    GameId: 6000059,
     Icon: 'Jue_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -114,7 +114,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000060,
+    GameId: 6000060,
     Icon: 'Fallacy_Of_No_Return_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -125,7 +125,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000082,
+    GameId: 6000082,
     Icon: 'Lorelei_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -136,7 +136,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000083,
+    GameId: 6000083,
     Icon: 'Sentry_Construct_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -147,7 +147,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000084,
+    GameId: 6000084,
     Icon: 'Dragon_Of_Dirge_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -158,7 +158,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000085,
+    GameId: 6000085,
     Icon: 'Hecate_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -169,7 +169,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000086,
+    GameId: 6000086,
     Icon: 'Nightmare_Feilian_Beringal_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -181,7 +181,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000087,
+    GameId: 6000087,
     Icon: 'Nightmare_Impermanence_Heron_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -193,7 +193,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000088,
+    GameId: 6000088,
     Icon: 'Nightmare_Thundering_Mephis_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -205,7 +205,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000089,
+    GameId: 6000089,
     Icon: 'Nightmare_Tempest_Mephis_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -218,7 +218,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000090,
+    GameId: 6000090,
     Icon: 'Nightmare_Crownless_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -230,7 +230,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000091,
+    GameId: 6000091,
     Icon: 'Nightmare_Inferno_Rider_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -242,7 +242,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000092,
+    GameId: 6000092,
     Icon: 'Nightmare_Mourning_Aix_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -254,7 +254,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000105,
+    GameId: 6000105,
     Icon: 'Nightmare_Lampylumen_Myriad_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -267,7 +267,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000106,
+    GameId: 6000106,
     Icon: 'Reminiscence_Fleurdelys_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -279,7 +279,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000113,
+    GameId: 6000113,
     Icon: 'Nightmare_Kelpie_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -292,7 +292,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000114,
+    GameId: 6000114,
     Icon: 'Lioness_Of_Glory_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -303,7 +303,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000115,
+    GameId: 6000115,
     Icon: 'Nightmare_Hecate_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -315,7 +315,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000116,
+    GameId: 6000116,
     Icon: 'Reminiscence_Fenrico_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -326,7 +326,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390080003,
+    GameId: 390080003,
     Icon: 'Thundering_Mephis_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -337,7 +337,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390080005,
+    GameId: 390080005,
     Icon: 'Bell_Borne_Geochelone_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -349,7 +349,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390080007,
+    GameId: 390080007,
     Icon: 'Inferno_Rider_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.FOUR_COST,
@@ -360,7 +360,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000040,
+    GameId: 6000040,
     Icon: 'Hoochief_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -372,7 +372,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000046,
+    GameId: 6000046,
     Icon: 'Carapace_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -384,7 +384,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000049,
+    GameId: 6000049,
     Icon: 'Autopuppet_Scout_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -396,7 +396,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000056,
+    GameId: 6000056,
     Icon: 'Glacio_Dreadmane_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -408,7 +408,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000057,
+    GameId: 6000057,
     Icon: 'Lumiscale_Construct_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -420,7 +420,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000058,
+    GameId: 6000058,
     Icon: 'Lightcrusher_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -431,7 +431,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000073,
+    GameId: 6000073,
     Icon: 'Questless_Knight_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -443,7 +443,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000074,
+    GameId: 6000074,
     Icon: 'Diurnus_Knight_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -455,7 +455,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000075,
+    GameId: 6000075,
     Icon: 'Nocturnus_Knight_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -467,19 +467,20 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000076,
+    GameId: 6000076,
     Icon: 'Abyssal_Patricius_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
     Level: 0,
     Sonata: [
+      Eternal_Radiance,
       Frosty_Resolve,
       Empyrean_Anthem,
     ],
     Statistics: [],
   },
   {
-    Id: 6000077,
+    GameId: 6000077,
     Icon: 'Abyssal_Gladius_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -491,7 +492,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000078,
+    GameId: 6000078,
     Icon: 'Abyssal_Mercator_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -503,7 +504,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000079,
+    GameId: 6000079,
     Icon: 'Chop_Chop_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -516,7 +517,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000080,
+    GameId: 6000080,
     Icon: 'Vitreum_Dancer_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -528,7 +529,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000081,
+    GameId: 6000081,
     Icon: 'Cuddle_Wuddle_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -540,7 +541,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000096,
+    GameId: 6000096,
     Icon: 'Rage_Against_The_Statue_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -552,7 +553,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000097,
+    GameId: 6000097,
     Icon: 'Hurriclaw_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -564,7 +565,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000104,
+    GameId: 6000104,
     Icon: 'Capitaneus_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -577,7 +578,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000111,
+    GameId: 6000111,
     Icon: 'Pilgrim\'s_Shell_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -589,7 +590,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000112,
+    GameId: 6000112,
     Icon: 'Kerasaur_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -601,7 +602,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000119,
+    GameId: 6000119,
     Icon: 'Nightmare_Tambourinist_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -613,7 +614,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077004,
+    GameId: 390077004,
     Icon: 'Violet_Feathered_Heron_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -625,7 +626,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077005,
+    GameId: 390077005,
     Icon: 'Cyan_Feathered_Heron_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -637,7 +638,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077021,
+    GameId: 390077021,
     Icon: 'Stonewall_Bracer_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -649,7 +650,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077022,
+    GameId: 390077022,
     Icon: 'Flautist_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -661,7 +662,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077023,
+    GameId: 390077023,
     Icon: 'Tambourinist_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -673,7 +674,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077024,
+    GameId: 390077024,
     Icon: 'Rocksteady_Guardian_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -685,7 +686,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077025,
+    GameId: 390077025,
     Icon: 'Chasm_Guardian_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -697,7 +698,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077028,
+    GameId: 390077028,
     Icon: 'Viridblaze_Saurian_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -709,7 +710,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077029,
+    GameId: 390077029,
     Icon: 'Roseshroom_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -721,7 +722,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077033,
+    GameId: 390077033,
     Icon: 'Havoc_Dreadmane_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -733,7 +734,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077038,
+    GameId: 390077038,
     Icon: 'Spearback_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.THREE_COST,
@@ -745,7 +746,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000038,
+    GameId: 6000038,
     Icon: 'Hooscamp_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -757,7 +758,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000041,
+    GameId: 6000041,
     Icon: 'Diamondclaw_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -769,7 +770,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000047,
+    GameId: 6000047,
     Icon: 'Chirpuff_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -781,7 +782,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000050,
+    GameId: 6000050,
     Icon: 'Traffic_Illuminator_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -794,7 +795,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000051,
+    GameId: 6000051,
     Icon: 'Clang_Bang_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -806,7 +807,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000054,
+    GameId: 6000054,
     Icon: 'Lava_Larva_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -818,7 +819,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000055,
+    GameId: 6000055,
     Icon: 'Dwarf_Cassowary_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -830,7 +831,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000061,
+    GameId: 6000061,
     Icon: 'Galescourge_Stalker_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -842,7 +843,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000062,
+    GameId: 6000062,
     Icon: 'Voltscourge_Stalker_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -854,7 +855,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000063,
+    GameId: 6000063,
     Icon: 'Frostscourge_Stalker_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -866,7 +867,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000064,
+    GameId: 6000064,
     Icon: 'Chop_Chop_Headless_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -878,7 +879,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000065,
+    GameId: 6000065,
     Icon: 'Chop_Chop_Leftless_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -890,7 +891,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000066,
+    GameId: 6000066,
     Icon: 'Chop_Chop_Rightless_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -902,7 +903,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000067,
+    GameId: 6000067,
     Icon: 'Fae_Ignis_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -915,7 +916,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000068,
+    GameId: 6000068,
     Icon: 'Nimbus_Wraith_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -927,7 +928,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000069,
+    GameId: 6000069,
     Icon: 'Hocus_Pocus_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -939,7 +940,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000070,
+    GameId: 6000070,
     Icon: 'Lottie_Lost_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -951,7 +952,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000071,
+    GameId: 6000071,
     Icon: 'Diggy_Duggy_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -963,7 +964,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000072,
+    GameId: 6000072,
     Icon: 'Chest_Mimic_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -976,7 +977,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000093,
+    GameId: 6000093,
     Icon: 'Golden_Junrock_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -988,7 +989,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000094,
+    GameId: 6000094,
     Icon: 'Calcified_Junrock_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1000,7 +1001,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000095,
+    GameId: 6000095,
     Icon: 'Aero_Prism_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1012,7 +1013,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000098,
+    GameId: 6000098,
     Icon: 'La_Guardia_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1025,7 +1026,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000099,
+    GameId: 6000099,
     Icon: 'Sagittario_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1038,7 +1039,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000100,
+    GameId: 6000100,
     Icon: 'Sacerdos_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1050,7 +1051,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000101,
+    GameId: 6000101,
     Icon: 'Aero_Drake_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1063,7 +1064,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000102,
+    GameId: 6000102,
     Icon: 'Electro_Drake_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1076,7 +1077,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000103,
+    GameId: 6000103,
     Icon: 'Glacio_Drake_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1088,7 +1089,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000107,
+    GameId: 6000107,
     Icon: 'Fusion_Drake_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1100,7 +1101,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000108,
+    GameId: 6000108,
     Icon: 'Spectro_Drake_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1112,7 +1113,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000109,
+    GameId: 6000109,
     Icon: 'Havoc_Drake_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1124,7 +1125,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000110,
+    GameId: 6000110,
     Icon: 'Devotee\'s_Flesh_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1137,7 +1138,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000117,
+    GameId: 6000117,
     Icon: 'Nightmare_Havoc_Warrior_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1149,7 +1150,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 6000118,
+    GameId: 6000118,
     Icon: 'Nightmare_Glacio_Predator_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1161,7 +1162,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070051,
+    GameId: 390070051,
     Icon: 'Vanguard_Junrock_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1174,7 +1175,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070052,
+    GameId: 390070052,
     Icon: 'Fission_Junrock_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1187,7 +1188,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070053,
+    GameId: 390070053,
     Icon: 'Electro_Predator_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1199,7 +1200,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070064,
+    GameId: 390070064,
     Icon: 'Fusion_Warrior_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1212,7 +1213,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070065,
+    GameId: 390070065,
     Icon: 'Havoc_Warrior_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1224,7 +1225,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070066,
+    GameId: 390070066,
     Icon: 'Snip_Snap_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1237,7 +1238,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070067,
+    GameId: 390070067,
     Icon: 'Zig_Zag_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1250,7 +1251,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070068,
+    GameId: 390070068,
     Icon: 'Whiff_Whaff_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1263,7 +1264,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070069,
+    GameId: 390070069,
     Icon: 'Tick_Tack_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1276,7 +1277,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070070,
+    GameId: 390070070,
     Icon: 'Glacio_Predator_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1288,7 +1289,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070071,
+    GameId: 390070071,
     Icon: 'Aero_Predator_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1300,7 +1301,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070074,
+    GameId: 390070074,
     Icon: 'Cruisewing_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1313,7 +1314,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070075,
+    GameId: 390070075,
     Icon: 'Sabyr_Boar_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1326,7 +1327,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070076,
+    GameId: 390070076,
     Icon: 'Gulpuff_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1338,7 +1339,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070077,
+    GameId: 390070077,
     Icon: 'Excarat_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1350,7 +1351,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070078,
+    GameId: 390070078,
     Icon: 'Baby_Viridblaze_Saurian_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1363,7 +1364,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070079,
+    GameId: 390070079,
     Icon: 'Young_Roseshroom_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1375,7 +1376,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070100,
+    GameId: 390070100,
     Icon: 'Fusion_Dreadmane_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1387,7 +1388,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390070105,
+    GameId: 390070105,
     Icon: 'Hoartoise_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1399,7 +1400,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077012,
+    GameId: 390077012,
     Icon: 'Fusion_Prism_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1412,7 +1413,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077013,
+    GameId: 390077013,
     Icon: 'Glacio_Prism_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1425,7 +1426,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077016,
+    GameId: 390077016,
     Icon: 'Spectro_Prism_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,
@@ -1438,7 +1439,7 @@ export const Echoes: Echo[] = [
     Statistics: [],
   },
   {
-    Id: 390077017,
+    GameId: 390077017,
     Icon: 'Havoc_Prism_Icon.webp',
     Rarity: Rarity.FIVE_STARS,
     Cost: EchoCost.ONE_COST,

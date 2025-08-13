@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const Route = useRoute()
-const { t, setLocale, locale } = useI18n()
+const { t, setLocale } = useI18n()
 
 const Routes = computed(() => {
   const pathSegments = Route.path.split('/').filter(p => p !== undefined && p.length !== 0)

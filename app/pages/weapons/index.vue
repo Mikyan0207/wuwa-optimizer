@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import type Weapon from '~/Core/Interfaces/Weapon'
+import type { BaseWeapon } from '~/Core/Interfaces/Weapon'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { WeaponType } from '~/Core/Enums/WeaponType'
 import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
-import { TemplateWeapons } from '~/Core/Weapons'
 
 useHead({
   title: 'Weapons - Wuthering Waves Optimizer',
@@ -44,8 +45,14 @@ const SelectedWeaponType = ref<WeaponType>(WeaponType.ALL)
 const SelectedWeaponRarity = ref<Rarity>(Rarity.ALL)
 const SelectedWeaponSort = ref<string>(WeaponSortOptions[0]!)
 
+const Weapons = ref<BaseWeapon[]>([])
+
+onMounted(async () => {
+  Weapons.value = await WeaponsStore.GetAll()
+})
+
 const WeaponsList = computed(() => {
-  return (SelectedTab.value === '0' ? WeaponsStore.GetWeapons().filter(x => x.EquipedBy !== undefined) : TemplateWeapons)
+  return Weapons.value
     .filter((weapon) => {
       const matchesType = SelectedWeaponType.value === WeaponType.ALL || weapon.Type === SelectedWeaponType.value
       const matchesRarity = SelectedWeaponRarity.value === Rarity.ALL || weapon.Rarity === SelectedWeaponRarity.value
@@ -68,13 +75,14 @@ const WeaponsList = computed(() => {
 })
 
 const TabItems = [
-  {
-    label: 'Equiped Weapons',
-    disabled: false,
-  },
+  // {
+  //   label: 'Equiped Weapons',
+  //   disabled: false,
+  // },
   {
     label: 'Weapons',
     disabled: false,
+    slot: 'weapons' as const,
   },
 ]
 </script>
@@ -91,7 +99,7 @@ const TabItems = [
         indicator: 'rounded-none bg-neutral-300',
       }"
     >
-      <template #content>
+      <template #weapons>
         <div class="w-full">
           <div class="w-full flex flex-wrap items-center justify-between gap-2 mb-8 mt-4">
             <UInput v-model="SearchValue" placeholder="Search weapon..." />
@@ -102,11 +110,8 @@ const TabItems = [
               <RarityFilter @selected="(r: Rarity) => SelectedWeaponRarity = r" />
             </div>
           </div>
-          <div v-if="SelectedTab === '0'" class="mx-auto w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-center gap-2 mb-8 md:max-w-xl lg:max-w-full">
-            <WeaponIcon v-for="w in WeaponsList" :key="w.Id" variant="equiped" :weapon="w" :character-id="w.EquipedBy" />
-          </div>
-          <div v-if="SelectedTab === '1'" class="mx-auto w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-center gap-2 mb-8 md:max-w-xl lg:max-w-full">
-            <WeaponIcon v-for="w in WeaponsList" :key="w.Id" variant="normal" :weapon="w" />
+          <div class="mx-auto w-full flex flex-wrap items-center justify-start gap-2">
+            <MWeaponIcon v-for="w in WeaponsList" :key="w.GameId" :weapon="w as Weapon" />
           </div>
         </div>
       </template>

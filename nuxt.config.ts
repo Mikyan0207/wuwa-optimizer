@@ -1,4 +1,4 @@
-import { AppDescription } from './app/Core'
+import { AppDescription } from './app/Core/Versions'
 
 export default defineNuxtConfig({
   modules: [
@@ -18,20 +18,34 @@ export default defineNuxtConfig({
 
   components: [
     '~/components',
+    '~/components/Base',
+    '~/components/Stats',
+
+    // Characters
     '~/components/Characters',
-    '~/components/Characters/Tabs',
     '~/components/Characters/Cards',
+    '~/components/Characters/Tabs',
+    '~/components/Characters/MCharacterCard',
+
+    // Echoes
     '~/components/Echoes',
-    '~/components/Echoes/Forms',
+    '~/components/Echoes/MEchoCard',
+    '~/components/Echoes/MEchoForm',
+
     '~/components/Filters',
     '~/components/Importer',
-    '~/components/Importer/Cards',
-    '~/components/Interface',
     '~/components/Navigation',
+    '~/components/Settings',
     '~/components/Skills',
+
+    // Weapons
     '~/components/Weapons',
+    '~/components/Weapons/MWeaponCard',
     '~/components/Weapons/Forms',
     '~/components/Events',
+
+    // Sonatas
+    '~/components/Sonatas',
   ],
 
   devtools: {
@@ -49,6 +63,9 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: AppDescription },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
+        { property: 'og:url', content: 'https://wuwa-optimizer.com' },
+        { property: 'twitter:url', content: 'https://wuwa-optimizer.com' },
+        { name: 'canonical', content: 'https://wuwa-optimizer.com' },
       ],
     },
     pageTransition: {
@@ -83,14 +100,19 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-01-15',
 
   nitro: {
+    storage: {
+      data: {
+        driver: 'fs',
+        base: 'public/',
+      },
+    },
     esbuild: {
       options: {
         target: 'esnext',
       },
     },
-    prerender: {
-      crawlLinks: true,
-      routes: ['/'],
+    routeRules: {
+      '/': { prerender: true },
     },
   },
 

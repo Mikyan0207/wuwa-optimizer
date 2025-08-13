@@ -336,3 +336,8 @@ export const Sonatas_2_0: Sonata[] = [
   Flaming_Clawprint,
   Dream_of_the_Lost,
 ]
+
+export const TemplateSonatas: Sonata[] = [
+  ...Sonatas_1_0,
+  ...Sonatas_2_0,
+]

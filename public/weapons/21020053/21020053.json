@@ -1,0 +1,16 @@
+{
+  "GameId": 21020053,
+  "Name": "Guardian Sword",
+  "Type": "SWORD",
+  "Rarity": "THREE_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 300
+  },
+  "SecondaryStatistic": {
+    "Type": "HP_PERCENTAGE",
+    "Value": 30.38
+  }
+}

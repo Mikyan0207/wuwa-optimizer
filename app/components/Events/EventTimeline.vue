@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import type Character from '~/Core/Interfaces/Character'
-import type Event from '~/Core/Interfaces/Event'
-import type Weapon from '~/Core/Interfaces/Weapon'
+import type { EventInfo } from '~/stores/EventsStore'
 import { computed, onMounted, ref } from 'vue'
-import { TemplateCharacters } from '~/Core/Characters'
-import { TemplateWeapons } from '~/Core/Weapons'
-import { UseEventsStore } from '~/stores/EventsStore'
+import { GetDaysBetween, UseEventsStore } from '~/stores/EventsStore'
 
 const DayWidth = 32
 const EventHeight = 30
@@ -37,35 +33,7 @@ const TimelineEnd = new Date(Today.getFullYear(), Today.getMonth() + 3, 0)
 const TimelineRef = ref<HTMLElement>()
 const EventsStore = UseEventsStore()
 
-const TimelineEvents = computed(() => {
-  const events = EventsStore.AllEvents.filter((event: Event) =>
-    event.StartDate >= TimelineStart && event.EndDate <= TimelineEnd,
-  )
-
-  const sortedEvents = events.sort((a, b) => a.StartDate.getTime() - b.StartDate.getTime())
-
-  const result: Array<Event & { left: number, width: number, top: number, character?: Character, weapon?: Weapon, isFirst: boolean, isLast: boolean }> = []
-
-  sortedEvents.forEach((event, eventIndex) => {
-    const startOffset = GetDaysBetween(TimelineStart, event.StartDate)
-    const duration = GetDaysBetween(event.StartDate, event.EndDate)
-    const character = event.Type === 'character' ? TemplateCharacters.find(c => c.Id === event.CharacterId) : undefined
-    const weapon = event.Type === 'weapon' ? TemplateWeapons.find(w => w.Id === event.WeaponId) : undefined
-
-    result.push({
-      ...event,
-      left: startOffset * DayWidth,
-      width: duration * DayWidth,
-      top: eventIndex * (EventHeight + EventSpacing),
-      character,
-      weapon,
-      isFirst: eventIndex === 0,
-      isLast: eventIndex === sortedEvents.length - 1,
-    })
-  })
-
-  return result.filter(event => event.character || event.weapon)
-})
+const TimelineEvents = ref<EventInfo[]>([])
 
 const TimelineMonths = computed(() => {
   const months: Array<{ key: string, name: string, left: number, width: number }> = []
@@ -121,13 +89,10 @@ const TodayPosition = computed(() => {
   return (daysFromStart + hoursProgress) * DayWidth
 })
 
-function GetDaysBetween(start: Date, end: Date): number {
-  const timeDiff = end.getTime() - start.getTime()
-  return Math.floor(timeDiff / (1000 * 3600 * 24))
-}
-
-onMounted(() => {
+onMounted(async () => {
   EventsStore.UpdateEventStatuses()
+
+  TimelineEvents.value = await EventsStore.GetEvents(TimelineStart, TimelineEnd)
 
   if (TimelineRef.value) {
     const scrollTo = TodayPosition.value - (TimelineRef.value.clientWidth / 2)

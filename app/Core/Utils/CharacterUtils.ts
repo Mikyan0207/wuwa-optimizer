@@ -1,11 +1,12 @@
 import type Character from '../Interfaces/Character'
+import type { AnimatedArt } from '../Interfaces/Character'
 import type Sequence from '../Interfaces/Sequence'
 import { CharacterType } from '../Enums/CharacterType'
 import { Rarity } from '../Enums/Rarity'
 import { WeaponType } from '../Enums/WeaponType'
 
 export function GetCharacterIcon(character: Character) {
-  return `/images/characters/${character.Id}/${character.Icon}`
+  return `/characters/${character.Id}/images/${character.Icon}`
 }
 
 export function GetRarityIcon(character: Character) {
@@ -45,7 +46,7 @@ export function GetSequenceLevel(character: Character) {
 }
 
 export function GetSequenceIcon(character: Character, sequence: Sequence) {
-  return `/images/characters/${character.Id}/${sequence.Icon}`
+  return `/characters/${character.Id}/images/${sequence.Icon}`
 }
 
 export function GetCharacterTypeIcon(character: Character) {
@@ -70,5 +71,31 @@ export function GetCharacterTypeIcon(character: Character) {
 }
 
 export function GetSplashArt(character: Character) {
-  return `/images/characters/${character.Id}/${character.SplashArt}`
+  return `/characters/${character.Id}/images/${character.SplashArt.replace('.webp', '')}.webp`
+}
+
+export function HasSplashArt(character: Character) {
+  return character.SplashArt !== undefined
+}
+
+export function GetCharacterBackground(character: Character) {
+  return `/characters/${character.Id}/images/Background.webp`
+}
+
+export function GetCharacterBackgroundFromId(id: number) {
+  return `/characters/${id}/images/Background.webp`
+}
+
+export function GetCharacterAnimatedArt(character: Character): AnimatedArt {
+  return {
+    Skeleton: `/characters/${character.Id}/animated/${character.AnimatedArt?.Skeleton}`,
+    Atlas: `/characters/${character.Id}/animated/${character.AnimatedArt?.Atlas}`,
+    OffsetX: character.AnimatedArt?.OffsetX ?? 0,
+    OffsetY: character.AnimatedArt?.OffsetY ?? 0,
+    Scale: character.AnimatedArt?.Scale ?? 1.5,
+  }
+}
+
+export function HasAnimatedArt(character: Character) {
+  return character.AnimatedArt !== undefined
 }

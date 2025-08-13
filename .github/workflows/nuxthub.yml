@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
-      url: ${{ steps.deploy.outputs.deployment-url }}
     permissions:
       contents: read
       id-token: write

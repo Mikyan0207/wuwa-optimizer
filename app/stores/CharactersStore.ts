@@ -16,7 +16,7 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
       return character
     }
 
-    const baseCharacter = await $fetch<BaseCharacter>(`/api/characters/${id}`)
+    const baseCharacter = await $fetch<BaseCharacter>(`/characters/${id}/${id}.json`)
 
     if (baseCharacter) {
       BaseCharacters.value.push(baseCharacter)

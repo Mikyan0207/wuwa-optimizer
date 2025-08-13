@@ -29,11 +29,6 @@ onMounted(() => {
     :border-lines-count="3"
   >
     <div class="absolute inset-0 z-20 from-black/25 via-transparent to-transparent bg-gradient-to-bl" />
-    <NuxtImg
-      fit="cover"
-      src="/images/character-bg-placeholder.webp"
-      class="absolute top--25% z-0 h-200% w-200% rotate-180 object-cover blur-lg"
-    />
     <div
       v-if="ShowOverlay"
       class="absolute left-4 top-4 z-20 transition-opacity duration-300"

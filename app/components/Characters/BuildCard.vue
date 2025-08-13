@@ -97,18 +97,7 @@ function CancelEdit() {
 </script>
 
 <template>
-  <UCard
-    v-motion-pop
-    class="group transition-all duration-200 h-full flex flex-col"
-    :class="[
-      build.IsDefault ? 'ring ring-gold-400/50 bg-neutral-900' : '',
-      IsEditingName ? 'cursor-default' : 'cursor-pointer',
-    ]"
-    :ui="{
-      root: 'rounded-xs border-0 h-full',
-      body: 'h-full',
-    }"
-  >
+  <MCard v-motion-pop>
     <div class="flex-1 flex flex-col justify-between h-full">
       <!-- Content -->
       <div class="flex-1 flex flex-col">
@@ -313,11 +302,7 @@ function CancelEdit() {
             </span>
           </div>
         </div>
-
-        <div class="flex items-center gap-2">
-          <span class="text-xs text-gray-600">{{ new Date(build.UpdatedAt).toLocaleDateString() }}</span>
-        </div>
       </div>
     </div>
-  </UCard>
+  </MCard>
 </template>

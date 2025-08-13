@@ -32,6 +32,7 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
   const HasWeapon = computed(() => CurrentWeapon.value !== undefined)
 
   async function GetAsync(characterId: number): Promise<Character | undefined> {
+    Reset()
     CharacterId.value = characterId
 
     await LoadCharacter()

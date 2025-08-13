@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type Weapon from '~/Core/Interfaces/Weapon'
+import type { PartialWeapon } from '~/Core/Interfaces/Weapon'
 import { v4 as uuidv4 } from 'uuid'
 import { z } from 'zod'
 import { Rarity } from '~/Core/Enums/Rarity'
@@ -166,7 +167,7 @@ function HandleStateUpdate(newState: Partial<typeof State>) {
   ValidateCurrentStep()
 }
 
-function OnSubmit() {
+async function OnSubmit() {
   const validation = ValidateCurrentStep()
   if (!validation.isValid) {
     return
@@ -174,11 +175,6 @@ function OnSubmit() {
 
   if (!IsFormValid.value) {
     return
-  }
-
-  const selectedWeapon = TemplateWeapons.find(w => w.GameId === State.GameId)
-  if (!selectedWeapon) {
-    return OnClose()
   }
 
   let weaponId: string
@@ -199,27 +195,35 @@ function OnSubmit() {
     isNewWeapon = true
   }
 
-  const weaponToCreate: Weapon = {
-    ...selectedWeapon,
+  const weaponToCreate: PartialWeapon = {
     Id: weaponId,
+    GameId: State.GameId,
     Level: State.Level,
     Rank: State.Rank,
-    Rarity: State.Rarity,
-    MainStatistic: {
-      Type: State.MainStat.Type,
-      Value: Number.parseFloat(State.MainStat.Value),
-    },
-    SecondaryStatistic: {
-      Type: State.SecondaryStat.Type,
-      Value: Number.parseFloat(State.SecondaryStat.Value),
-    },
   }
 
   if (isNewWeapon) {
-    WeaponsStore.Add(weaponToCreate)
+    const weapon = await WeaponsStore.CreateFromGameId(State.GameId)
+
+    if (weapon) {
+      await WeaponsStore.UpdateById(weaponId, weaponToCreate)
+      await CurrentCharacterStore.SetWeapon(weapon)
+    }
   }
   else {
-    WeaponsStore.UpdateById(weaponToCreate.Id!, weaponToCreate)
+    const updateData: Partial<PartialWeapon> = {
+      Level: State.Level,
+      Rank: State.Rank,
+    }
+
+    await WeaponsStore.UpdateById(weaponId, updateData)
+
+    if (CurrentCharacterStore.HasWeapon && CurrentCharacterStore.CurrentWeapon?.Id === weaponId) {
+      await CurrentCharacterStore.UpdateWeapon(weaponId, {
+        Level: State.Level,
+        Rank: State.Rank,
+      })
+    }
   }
 
   return OnClose()

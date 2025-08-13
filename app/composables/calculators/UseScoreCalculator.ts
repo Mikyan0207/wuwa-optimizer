@@ -1,7 +1,10 @@
 import type { StatType } from '~/Core/Enums/StatType'
 import type { BuildWithDependencies } from '~/Core/Interfaces/Build'
+import type Build from '~/Core/Interfaces/Build'
+import type Character from '~/Core/Interfaces/Character'
 import type Echo from '~/Core/Interfaces/Echo'
 import type IStatistic from '~/Core/Interfaces/Statistic'
+import type Weapon from '~/Core/Interfaces/Weapon'
 import { ScoreGrade } from '~/Core/Enums/ScoreGrade'
 import { SUB_STAT_VALUES } from '~/Core/Statistics'
 
@@ -174,8 +177,8 @@ export function GetTotalGradeColor(grade: ScoreGrade): string {
 }
 
 export function useScoreCalculator() {
-  function GetBuildScore(build?: BuildWithDependencies): ICharacterRatingResult {
-    if (build?.Character === undefined) {
+  function GetBuildScore(character?: Character, weapon?: Weapon, build?: Build): ICharacterRatingResult {
+    if (character === undefined) {
       return {
         Score: 0,
         EchoesScores: [],
@@ -183,7 +186,7 @@ export function useScoreCalculator() {
       }
     }
 
-    const echoesScores = CalculateEchoesScore(build.Echoes, build.Character.StatsWeights || {})
+    const echoesScores = CalculateEchoesScore(build?.Echoes ?? [], character.StatsWeights || {})
     const totalScore = echoesScores.reduce((acc, echoScore) => acc + echoScore.Score, 0)
 
     return {

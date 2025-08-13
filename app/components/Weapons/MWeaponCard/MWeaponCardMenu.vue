@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { DropdownAction } from '~/components/Base/MDropdown.vue'
 import type Weapon from '~/Core/Interfaces/Weapon'
 
 interface WeaponCardMenuProps {
@@ -7,29 +8,30 @@ interface WeaponCardMenuProps {
 
 const props = defineProps<WeaponCardMenuProps>()
 
+const WeaponsStore = useWeaponsStore()
+
 const Actions = computed(() => [
   {
     label: 'Edit',
     icon: 'solar:pen-new-square-broken',
     disabled: props.weapon === undefined,
-    onExecute() {
-    },
   },
   {
     label: 'Create',
     icon: 'solar:add-square-broken',
-    onExecute() {
-    },
   },
   {
     label: 'Remove',
     icon: 'solar:notification-remove-broken',
     color: 'error',
     disabled: props.weapon === undefined,
-    onExecute() {
+    onExecute: () => {
+      if (props.weapon?.Id) {
+        WeaponsStore.DeleteById(props.weapon.Id)
+      }
     },
   },
-])
+] as DropdownAction[])
 </script>
 
 <template>

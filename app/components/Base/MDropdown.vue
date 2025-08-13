@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '#ui/types'
 
-interface DropdownAction {
+export interface DropdownAction {
   label: string
   icon: string
   color?: string
   disabled?: boolean
-  onExecute: () => void
+  onExecute?: () => void
 }
 
 interface DropdownMenuProps {
@@ -29,7 +29,7 @@ const IsHovered = ref(false)
 const SelectedAction = ref<number>()
 
 const IsSlideoverOpen = computed({
-  get: () => SelectedAction.value !== undefined,
+  get: () => SelectedAction.value !== undefined && props.actions[SelectedAction.value]?.onExecute === undefined,
   set: (value) => {
     if (!value)
       SelectedAction.value = undefined

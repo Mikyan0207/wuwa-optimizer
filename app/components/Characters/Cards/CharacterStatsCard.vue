@@ -5,11 +5,11 @@ import { GetRarityAsNumber } from '~/Core/Utils/RarityUtils'
 
 const CurrentCharacterStore = useCurrentCharacterStore()
 
-const { CurrentCharacter, CurrentBuild, CurrentStats, Score, Note } = storeToRefs(CurrentCharacterStore)
+const { CurrentCharacter, CurrentStats, Score, Note } = storeToRefs(CurrentCharacterStore)
 const { t } = useI18n()
 
 const GetCharacterScoreNoteColor = computed(() => {
-  return GetTotalGradeColor(CurrentBuild.value?.Note || ScoreGrade.F)
+  return GetTotalGradeColor(Note.value || ScoreGrade.F)
 })
 </script>
 

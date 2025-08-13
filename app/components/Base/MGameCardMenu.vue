@@ -1,13 +1,9 @@
 <script setup lang="ts" generic="T">
+import type { DropdownAction } from './MDropdown.vue'
+
 interface GameCardMenuProps<T> {
   item: T | undefined
-  actions: Array<{
-    label: string
-    icon: string
-    color?: string
-    disabled?: boolean
-    onExecute: () => void
-  }>
+  actions: DropdownAction[]
 }
 
 defineProps<GameCardMenuProps<T>>()

@@ -19,7 +19,7 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
   const CurrentEchoes = ref<(Echo | undefined)[]>([])
   const CurrentStats = ref<Statistic[]>([])
   const Score = ref<number>(0)
-  const Note = ref<string>(ScoreGrade.F)
+  const Note = ref<ScoreGrade>(ScoreGrade.F)
 
   const BuildsStore = useBuildsStore()
   const CharactersStore = useCharactersStore()
@@ -75,11 +75,18 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
 
     CurrentStats.value = StatsCalculator.CalculateTotalStats(CurrentCharacter.value, CurrentWeapon.value, CurrentBuild.value)
 
-    const scoreResult = ScoreCalculator.GetBuildScore(CurrentBuild.value)
+    const scoreResult = ScoreCalculator.GetBuildScore(CurrentCharacter.value, CurrentWeapon.value, CurrentBuild.value)
     if (scoreResult) {
       Score.value = scoreResult.Score
       Note.value = scoreResult.Note
     }
+
+    CurrentEchoes.value.forEach((echo, index) => {
+      if (echo) {
+        echo.Score = scoreResult.EchoesScores[index]?.Score ?? 0
+        echo.Note = scoreResult.EchoesScores[index]?.Grade ?? ScoreGrade.F
+      }
+    })
   }
 
   async function UpdateEcho(slot: number, echoData: Partial<Echo>) {
@@ -126,6 +133,30 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
     CurrentBuild.value = build
     CurrentWeapon.value = build.Weapon || undefined
     CurrentEchoes.value = Array.from({ length: 5 }, (_, index) => build.Echoes[index] || undefined)
+
+    await UpdateStatsAndScore()
+  }
+
+  async function UpdateWeapon(weaponId: string, weaponData: Partial<Weapon>) {
+    if (!CurrentWeapon.value || CurrentWeapon.value.Id !== weaponId) {
+      return
+    }
+
+    CurrentWeapon.value = { ...CurrentWeapon.value, ...weaponData }
+
+    if (CurrentBuild.value && CurrentBuild.value.WeaponId === weaponId) {
+      await UpdateStatsAndScore()
+    }
+  }
+
+  async function SetWeapon(weapon: Weapon) {
+    if (!CurrentBuild.value) {
+      return
+    }
+
+    BuildsStore.UpdateBuild(CurrentBuild.value.Id, { WeaponId: weapon.Id })
+
+    CurrentWeapon.value = weapon
 
     await UpdateStatsAndScore()
   }
@@ -182,7 +213,7 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
     CurrentEchoes.value = []
     CurrentStats.value = []
     Score.value = 0
-    Note.value = 'F'
+    Note.value = ScoreGrade.F
   }
 
   return {
@@ -207,5 +238,7 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
     Reset,
     CanUnlockSequence,
     ToggleSequence,
+    UpdateWeapon,
+    SetWeapon,
   }
 })

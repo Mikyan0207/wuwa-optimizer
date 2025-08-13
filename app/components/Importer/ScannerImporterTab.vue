@@ -85,13 +85,14 @@ async function OnConfirmClicked() {
   }
 
   ImportedEchoes.value.forEach((echo) => {
+    echo.Level = (echo.Statistics?.length ?? 0) * 5
     EchoesStore.AddOrUpdate(echo, ImportedCharacter.value!.Id)
   })
 
   BuildsStore.CreateBuild(
     'Imported Build',
     ImportedCharacter.value,
-    ImportedWeapon.value ? WeaponsStore.CreateFromGameId(ImportedWeapon.value.GameId) : undefined,
+    ImportedWeapon.value ? await WeaponsStore.CreateFromGameId(ImportedWeapon.value.GameId) : undefined,
     ImportedEchoes.value,
   )
 }

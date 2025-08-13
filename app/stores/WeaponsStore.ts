@@ -83,11 +83,11 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     }
   }
 
-  function CreateFromGameId(gameId: number): Weapon | undefined {
-    const weapon = BaseWeapons.value.find(w => w.GameId === gameId)
+  async function CreateFromGameId(gameId: number): Promise<Weapon | undefined> {
+    let weapon = BaseWeapons.value.find(w => w.GameId === gameId)
 
     if (!weapon) {
-      return undefined
+      weapon = await GetBaseById(gameId)
     }
 
     const weaponToAdd: PartialWeapon = {
@@ -100,6 +100,10 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     Weapons.value[weaponToAdd.Id!] = weaponToAdd
 
     return Merge(weaponToAdd, weapon)
+  }
+
+  function DeleteById(weaponId: string) {
+    delete Weapons.value[weaponId]
   }
 
   if (import.meta.hot) {
@@ -115,5 +119,6 @@ export const useWeaponsStore = defineStore('WeaponsStore', () => {
     Add,
     UpdateById,
     CreateFromGameId,
+    DeleteById,
   }
 })

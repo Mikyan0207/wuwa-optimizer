@@ -2,6 +2,7 @@
 import type { StatType } from '~/Core/Enums/StatType'
 import type Weapon from '~/Core/Interfaces/Weapon'
 import { Rarity } from '~/Core/Enums/Rarity'
+import { GetWeaponIcon } from '~/Core/Utils/WeaponUtils'
 
 interface WeaponFormEnhancementStepProps {
   displayedWeapon: Weapon | undefined
@@ -60,7 +61,7 @@ function UpdateState(newState: Partial<WeaponFormEnhancementStepProps['state']>)
     <!-- Weapon Info Header -->
     <div class="p-4 border-b border-white/10">
       <div class="flex items-center gap-3">
-        <NuxtImg :src="`/images/weapons/${displayedWeapon?.Icon}`" class="w-20 h-20 rounded-lg" />
+        <NuxtImg v-if="displayedWeapon" :src="GetWeaponIcon(displayedWeapon)" class="w-20 h-20 rounded-lg" />
         <div class="flex-1">
           <h4 class="text-white font-semibold text-lg mb-1">
             {{ displayedWeapon ? t(`${displayedWeapon.GameId}_name`) : 'Unknown Weapon' }}
@@ -101,7 +102,7 @@ function UpdateState(newState: Partial<WeaponFormEnhancementStepProps['state']>)
                   :max="90"
                   :step="1"
                   class="w-full"
-                  @update="(value: number) => UpdateState({ Level: value })"
+                  @update:model-value="(value) => UpdateState({ Level: value as number })"
                 />
                 <UInput
                   :value="`${state.Level}/90`"
@@ -128,7 +129,7 @@ function UpdateState(newState: Partial<WeaponFormEnhancementStepProps['state']>)
                   :max="5"
                   :step="1"
                   class="w-full"
-                  @update="(value: number) => UpdateState({ Rank: value })"
+                  @update:model-value="(value) => UpdateState({ Rank: value as number })"
                 />
                 <UInput
                   :value="`${state.Rank}/5`"

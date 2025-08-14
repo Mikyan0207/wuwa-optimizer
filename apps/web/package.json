@@ -12,7 +12,8 @@
     "cleanup": "nuxi cleanup",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "check-types": "vue-tsc --noEmit"
+    "check-types": "vue-tsc --noEmit",
+    "clean": "rmdir /s /q node_modules .nuxt dist"
   },
   "dependencies": {
     "@nuxt/image": "^1.11.0",

@@ -1,15 +1,16 @@
 {
-	"name": "@wuwa-optimizer",
-	"version": "0.0.0",
-	"private": true,
-	"scripts": {
-		"build": "turbo run build",
-		"dev": "turbo run dev",
-		"lint": "turbo run lint",
-		"check-types": "turbo run check-types"
-	},
-	"packageManager": "pnpm@10.14.0",
-	"devDependencies": {
-		"turbo": "^2.5.5"
-	}
+    "name": "@wuwa-optimizer",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "build": "turbo run build",
+        "dev": "turbo run dev",
+        "lint": "turbo run lint",
+        "check-types": "turbo run check-types",
+        "clean": "rmdir /s /q node_modules",
+    },
+    "packageManager": "pnpm@10.14.0",
+    "devDependencies": {
+        "turbo": "^2.5.5"
+    }
 }

@@ -7,6 +7,9 @@
         "./base": "./base.js",
         "./nuxt": "./nuxt.js"
     },
+    "scripts": {
+        "clean": "rmdir /s /q node_modules"
+    },
     "devDependencies": {
         "@antfu/eslint-config": "^5.1.0",
         "@eslint/js": "^9.31.0",

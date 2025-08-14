@@ -25,7 +25,7 @@ const { t } = useI18n()
         :item="weapon"
         :get-name="(weapon: Weapon) => t(`${weapon.GameId}_name`)"
         :get-level="(weapon: Weapon) => weapon.Level"
-        :get-additional-info="(weapon: Weapon) => `R${weapon.Rank || 1}`"
+        :get-additional-info="(weapon: Weapon) => `R${weapon.Rank || 0}`"
       />
     </template>
 

@@ -88,6 +88,8 @@ export async function useScanner() {
 
   async function ScanAll(): Promise<ScanResult> {
     try {
+      const startTime = performance.now()
+
       ScannerState.SetProgress(50)
 
       const [character, echoes, echoesStats, weapon] = await Promise.all([
@@ -98,6 +100,9 @@ export async function useScanner() {
       ])
 
       ScannerState.SetProgress(70)
+
+      const endTime = performance.now()
+      const totalTime = (endTime - startTime) / 1000
 
       for (let i = 0; i < echoes.length; i++) {
         const echo = echoes[i]
@@ -123,8 +128,6 @@ export async function useScanner() {
       return result
     }
     catch (error) {
-      console.error('Scan failed', error)
-
       const scanError: ScanResult = {
         status: ScannerResultStatus.ERROR,
         error: {

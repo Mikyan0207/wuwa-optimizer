@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type Character from '~/Core/Interfaces/Character'
-import type { BaseCharacter } from '~/Core/Interfaces/Character'
-import type Weapon from '~/Core/Interfaces/Weapon'
+import { TemplateCharacters } from '~/Core/Characters'
 import { ReleaseState } from '~/Core/Enums/ReleaseState'
 import { ScorerGameVersion } from '~/Core/Versions'
+import { TemplateWeapons } from '~/Core/Weapons'
 
 definePageMeta({
   layout: 'default',
@@ -18,19 +18,16 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
-const CharactersStore = useCharactersStore()
-const WeaponsStore = useWeaponsStore()
-
 function OnCharacterClicked(characterId: number | undefined) {
   navigateTo(`/characters/${characterId}`)
 }
 
-const AddedCharacters = computed(() => CharactersStore.GetAll().filter(x => x.ReleaseState === ReleaseState.NEW))
-const UpcomingCharacters = computed(() => CharactersStore.GetAll().filter(x => x.ReleaseState === ReleaseState.UPCOMING || x.ReleaseState === ReleaseState.UNKNOWN))
-const AddedWeapons = computed(() => WeaponsStore.GetAll().filter(x => x.ReleaseState === ReleaseState.NEW))
-const UpcomingWeapons = computed(() => WeaponsStore.GetAll().filter(x => x.ReleaseState === ReleaseState.UPCOMING))
+const AddedCharacters = computed(() => TemplateCharacters.filter(x => x.ReleaseState === ReleaseState.NEW))
+const UpcomingCharacters = computed(() => TemplateCharacters.filter(x => x.ReleaseState === ReleaseState.UPCOMING || x.ReleaseState === ReleaseState.UNKNOWN))
+const AddedWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseState === ReleaseState.NEW))
+const UpcomingWeapons = computed(() => TemplateWeapons.filter(x => x.ReleaseState === ReleaseState.UPCOMING))
 
-function IsCharacterAvailable(character: BaseCharacter) {
+function IsCharacterAvailable(character: Character) {
   return character.ReleaseState === ReleaseState.RELEASED || character.ReleaseState === ReleaseState.NEW
 }
 </script>
@@ -63,15 +60,15 @@ function IsCharacterAvailable(character: BaseCharacter) {
             :key="c.Id"
             v-motion-pop
             :delay="250"
-            :character="c as Character"
+            :character="c"
             :class="{ 'cursor-pointer': IsCharacterAvailable(c) }"
             @click.prevent="IsCharacterAvailable(c) ? OnCharacterClicked(c.Id) : null"
           />
           <MWeaponIcon
             v-for="w in AddedWeapons"
-            :key="w.GameId"
+            :key="w.Id"
             v-motion-pop
-            :weapon="w as Weapon"
+            :weapon="w"
             class="cursor-default"
           />
           <MCharacterIcon
@@ -79,15 +76,15 @@ function IsCharacterAvailable(character: BaseCharacter) {
             :key="c.Id"
             v-motion-pop
             :delay="250"
-            :character="c as Character"
+            :character="c"
             :class="{ 'cursor-pointer': IsCharacterAvailable(c) }"
             @click.prevent="IsCharacterAvailable(c) ? OnCharacterClicked(c.Id) : null"
           />
           <MWeaponIcon
             v-for="w in UpcomingWeapons"
-            :key="w.GameId"
+            :key="w.Id"
             v-motion-pop
-            :weapon="w as Weapon"
+            :weapon="w"
             class="cursor-default"
           />
         </div>

@@ -1,0 +1,16 @@
+{
+  "GameId": 21010011,
+  "Name": "Training Broadblade",
+  "Type": "BROADBLADE",
+  "Rarity": "ONE_STAR",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 250
+  },
+  "SecondaryStatistic": {
+    "Type": "ATTACK_PERCENTAGE",
+    "Value": 11.47
+  }
+}

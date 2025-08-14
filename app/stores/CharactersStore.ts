@@ -3,22 +3,34 @@ import type { BaseCharacter, PartialCharacter } from '~/Core/Interfaces/Characte
 import type Sequence from '~/Core/Interfaces/Sequence'
 import type Skill from '~/Core/Interfaces/Skill'
 import { defineStore, skipHydrate } from 'pinia'
-import { BaseCharacters } from '~/Core/Characters'
 
 export const useCharactersStore = defineStore('CharactersStore', () => {
   const Characters = useLocalStorage<Record<number, PartialCharacter>>('Characters', {})
+  const BaseCharacters = ref<BaseCharacter[]>([])
   const CachedCharacters = ref<Map<number, Character>>(new Map())
 
-  function GetBaseById(id: number): BaseCharacter {
-    return BaseCharacters.find(c => c.Id === id)!
+  async function GetBaseById(id: number): Promise<BaseCharacter> {
+    const character = BaseCharacters.value.find(c => c.Id === id)
+
+    if (character) {
+      return character
+    }
+
+    const baseCharacter = await $fetch<BaseCharacter>(`/characters/${id}/${id}.json`)
+
+    if (baseCharacter) {
+      BaseCharacters.value.push(baseCharacter)
+    }
+
+    return baseCharacter
   }
 
-  function GetById(gameId: number): Character {
+  async function GetById(gameId: number): Promise<Character> {
     if (CachedCharacters.value.has(gameId)) {
       return CachedCharacters.value.get(gameId)!
     }
 
-    const base = GetBaseById(gameId)
+    const base = await GetBaseById(gameId)
     const partial = Characters.value[gameId]
 
     if (!partial) {
@@ -39,12 +51,14 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
     return character
   }
 
-  function GetAll(): BaseCharacter[] {
-    return BaseCharacters
+  async function GetAll(): Promise<BaseCharacter[]> {
+    const data = await $fetch<number[]>('/characters/characters.json')
+
+    return Promise.all(data.map(id => GetBaseById(id)))
   }
 
-  function UpdateById(characterId: number, data: Partial<PartialCharacter>) {
-    const character = GetById(characterId)
+  async function UpdateById(characterId: number, data: Partial<PartialCharacter>) {
+    const character = await GetById(characterId)
 
     if (character) {
       Characters.value[character.Id] = {

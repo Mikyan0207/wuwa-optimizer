@@ -31,23 +31,25 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
   const HasBuild = computed(() => CurrentBuild.value !== undefined)
   const HasWeapon = computed(() => CurrentWeapon.value !== undefined)
 
-  function GetAsync(characterId: number): Character | undefined {
+  async function GetAsync(characterId: number): Promise<Character | undefined> {
     Reset()
     CharacterId.value = characterId
 
-    LoadCharacter()
+    await LoadCharacter()
     return CurrentCharacter.value
   }
 
-  function LoadCharacter() {
+  async function LoadCharacter() {
     if (!CharacterId.value)
       return
 
     try {
       const defaultBuild = BuildsStore.GetDefaultBuild(CharacterId.value)
 
-      const character = CharactersStore.GetById(CharacterId.value)
-      const weapon = WeaponsStore.GetById(defaultBuild?.WeaponId ?? '')
+      const [character, weapon] = await Promise.all([
+        CharactersStore.GetById(CharacterId.value),
+        WeaponsStore.GetById(defaultBuild?.WeaponId ?? ''),
+      ])
 
       CurrentCharacter.value = character
       CurrentBuild.value = defaultBuild || undefined
@@ -55,14 +57,14 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
       CurrentEchoes.value = Array.from({ length: 5 }, (_, index) =>
         defaultBuild?.Echoes[index] || undefined)
 
-      UpdateStatsAndScore()
+      await UpdateStatsAndScore()
     }
     catch (error) {
       console.error(error)
     }
   }
 
-  function UpdateStatsAndScore() {
+  async function UpdateStatsAndScore() {
     if (!CurrentCharacter.value) {
       return
     }
@@ -101,7 +103,7 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
     CurrentBuild.value.Echoes = updatedEchoes
     CurrentEchoes.value = Array.from({ length: 5 }, (_, index) => updatedEchoes[index] || undefined)
 
-    UpdateStatsAndScore()
+    await UpdateStatsAndScore()
   }
 
   async function ReorderEchoes(newOrder: Echo[]) {
@@ -116,7 +118,7 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
     CurrentEchoes.value = Array.from({ length: 5 }, (_, index) =>
       filteredOrder[index] || undefined)
 
-    UpdateStatsAndScore()
+    await UpdateStatsAndScore()
   }
 
   async function LoadBuild(buildId: string) {
@@ -133,7 +135,7 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
     CurrentWeapon.value = build.Weapon || undefined
     CurrentEchoes.value = Array.from({ length: 5 }, (_, index) => build.Echoes[index] || undefined)
 
-    UpdateStatsAndScore()
+    await UpdateStatsAndScore()
   }
 
   async function UpdateWeapon(weaponId: string, weaponData: Partial<Weapon>) {
@@ -144,7 +146,7 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
     CurrentWeapon.value = { ...CurrentWeapon.value, ...weaponData }
 
     if (CurrentBuild.value && CurrentBuild.value.WeaponId === weaponId) {
-      UpdateStatsAndScore()
+      await UpdateStatsAndScore()
     }
   }
 
@@ -157,7 +159,7 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
 
     CurrentWeapon.value = weapon
 
-    UpdateStatsAndScore()
+    await UpdateStatsAndScore()
   }
 
   function CanUnlockSequence(sequenceIndex: number): boolean {

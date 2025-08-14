@@ -16,13 +16,14 @@ export function useCharacterScanner() {
   async function LoadAsync() {
     NameWorker = await Tesseract.createWorker('eng', 1)
 
-    Characters.value = CharactersStore.GetAll()
+    const characters = await CharactersStore.GetAll()
 
-    for (const character of Characters.value) {
+    for (const character of characters) {
       const name = character.Icon.split('_')[0]?.toLowerCase() || ''
-
       CharacterNamesCache.set(character, name)
     }
+
+    Characters.value = characters
   }
 
   function SetContext(context: CanvasRenderingContext2D | null) {

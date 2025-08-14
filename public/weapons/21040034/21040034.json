@@ -1,0 +1,16 @@
+{
+  "GameId": 21040034,
+  "Name": "Gauntlets#21d",
+  "Type": "GAUNTLETS",
+  "Rarity": "FOUR_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 387.5
+  },
+  "SecondaryStatistic": {
+    "Type": "ENERGY_REGENERATION",
+    "Value": 38.88
+  }
+}

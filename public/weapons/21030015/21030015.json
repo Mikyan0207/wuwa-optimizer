@@ -1,0 +1,16 @@
+{
+  "GameId": 21030015,
+  "Name": "Static Mist",
+  "Type": "PISTOLS",
+  "Rarity": "FIVE_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 587.5
+  },
+  "SecondaryStatistic": {
+    "Type": "CRIT_RATE",
+    "Value": 24.3
+  }
+}

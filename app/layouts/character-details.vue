@@ -42,7 +42,7 @@ const Id = computed<number>(() => Number.parseInt((Route.params as { id: string 
 
     <div class="flex flex-row flex-1">
       <main class="ml-[3.5em] mt-[6em] w-full">
-        <NuxtPage />
+        <slot />
       </main>
     </div>
 

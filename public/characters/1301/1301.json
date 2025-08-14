@@ -1,0 +1,239 @@
+{
+  "Id": 1301,
+  "Rarity": "FIVE_STARS",
+  "Icon": "Calcharo_Icon.webp",
+  "SplashArt": "Calcharo_Portrait.webp",
+  "WeaponType": "BROADBLADE",
+  "Type": "ELECTRO",
+  "Level": 90,
+  "BaseStats": [
+    {
+      "Type": "HP",
+      "Value": 10500
+    },
+    {
+      "Type": "DEF",
+      "Value": 1185.5534
+    },
+    {
+      "Type": "ATTACK",
+      "Value": 437.5
+    },
+    {
+      "Type": "CRIT_RATE",
+      "Value": 5
+    },
+    {
+      "Type": "CRIT_DMG",
+      "Value": 150
+    },
+    {
+      "Type": "ENERGY_REGENERATION",
+      "Value": 100
+    },
+    {
+      "Type": "HEALING_BONUS",
+      "Value": 0
+    },
+    {
+      "Type": "BASIC_ATTACK_DMG_AMPLIFICATION",
+      "Value": 0
+    },
+    {
+      "Type": "HEAVY_ATTACK_DMG_AMPLIFICATION",
+      "Value": 0
+    },
+    {
+      "Type": "RESONANCE_SKILL_DMG_AMPLIFICATION",
+      "Value": 0
+    },
+    {
+      "Type": "RESONANCE_LIBERATION_DMG_AMPLIFICATION",
+      "Value": 0
+    },
+    {
+      "Type": "ELECTRO_DMG_BONUS",
+      "Value": 0
+    }
+  ],
+  "BaseSequences": [
+    {
+      "Name": "",
+      "Icon": "Calcharo_Sequence_Node_01.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Calcharo_Sequence_Node_02.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Calcharo_Sequence_Node_03.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Calcharo_Sequence_Node_04.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Calcharo_Sequence_Node_05.webp",
+      "Unlocked": false
+    },
+    {
+      "Name": "",
+      "Icon": "Calcharo_Sequence_Node_06.webp",
+      "Unlocked": false
+    }
+  ],
+  "BaseSkills": [
+    {
+      "Id": "Basic_Attack",
+      "Level": 10,
+      "Icon": "Skill_Broadblade.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Basic_Attack_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Crit_DMG.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "CRIT_DMG",
+        "Value": 2.4
+      }
+    },
+    {
+      "Id": "Basic_Attack_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Crit_DMG.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "CRIT_DMG",
+        "Value": 5.6
+      }
+    },
+    {
+      "Id": "Forte_Circuit",
+      "Level": 10,
+      "Icon": "Calcharo_Forte_Circuit.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Inherent_Skill_01",
+      "Level": 10,
+      "Icon": "Calcharo_Inherent_Skill_01.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Inherent_Skill_02",
+      "Level": 10,
+      "Icon": "Calcharo_Inherent_Skill_02.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Intro_Skill",
+      "Level": 10,
+      "Icon": "Calcharo_Intro_Skill.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Intro_Skill_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Crit_DMG.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "CRIT_DMG",
+        "Value": 2.4
+      }
+    },
+    {
+      "Id": "Intro_Skill_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Crit_DMG.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "CRIT_DMG",
+        "Value": 5.6
+      }
+    },
+    {
+      "Id": "Outro_Skill",
+      "Level": 10,
+      "Icon": "Calcharo_Outro_Skill.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Liberation",
+      "Level": 10,
+      "Icon": "Calcharo_Resonance_Liberation.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Liberation_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 1.8
+      }
+    },
+    {
+      "Id": "Resonance_Liberation_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 4.2
+      }
+    },
+    {
+      "Id": "Resonance_Skill",
+      "Level": 10,
+      "Icon": "Calcharo_Resonance_Skill.webp",
+      "Unlocked": true
+    },
+    {
+      "Id": "Resonance_Skill_Bonus_Stat_01",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 1.8
+      }
+    },
+    {
+      "Id": "Resonance_Skill_Bonus_Stat_02",
+      "Level": 10,
+      "Icon": "Icon_Attribute_Attack.webp",
+      "Unlocked": true,
+      "Stat": {
+        "Type": "ATTACK_PERCENTAGE",
+        "Value": 4.2
+      }
+    }
+  ],
+  "BaseStatsWeights": {
+    "NONE": 0,
+    "CRIT_DMG": 1,
+    "CRIT_RATE": 1,
+    "ATTACK": 0,
+    "ATTACK_PERCENTAGE": 0.8,
+    "HP": 0,
+    "HP_PERCENTAGE": 0,
+    "HEALING_BONUS": 0,
+    "DEF": 0,
+    "DEF_PERCENTAGE": 0,
+    "ENERGY_REGENERATION": 0.6,
+    "BASIC_ATTACK_DMG_AMPLIFICATION": 0.5,
+    "HEAVY_ATTACK_DMG_AMPLIFICATION": 0.7,
+    "RESONANCE_LIBERATION_DMG_AMPLIFICATION": 0.8,
+    "RESONANCE_SKILL_DMG_AMPLIFICATION": 0.6,
+    "ELECTRO_DMG_BONUS": 1
+  }
+}

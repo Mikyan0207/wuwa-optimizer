@@ -1,0 +1,16 @@
+{
+  "GameId": 21050016,
+  "Name": "Stringmaster",
+  "Type": "RECTIFIER",
+  "Rarity": "FIVE_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 500
+  },
+  "SecondaryStatistic": {
+    "Type": "CRIT_RATE",
+    "Value": 36
+  }
+}

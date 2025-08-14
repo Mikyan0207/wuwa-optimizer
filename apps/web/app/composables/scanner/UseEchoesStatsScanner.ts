@@ -116,7 +116,10 @@ export async function useEchoesStatsScanner() {
         return key as StatType
       }
 
-      if (distance <= 2) {
+      if (distance <= 1) {
+        return key as StatType
+      }
+      else if (distance <= 2) {
         return key as StatType
       }
     }

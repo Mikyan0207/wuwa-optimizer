@@ -37,7 +37,7 @@ export async function useEchoesScanner() {
     bf = new cv.BFMatcher()
 
     const echoIconPromises = TemplateEchoes.map(echo => LoadEchoIcon(echo, 186, 186))
-    const sonataIconPromises = Sonatas.map(sonata => LoadSonataIcon(sonata, 186, 186))
+    const sonataIconPromises = Sonatas.map(sonata => LoadSonataIcon(sonata, 126, 126))
 
     const [echoIcons, sonataIcons] = await Promise.all([
       Promise.all(echoIconPromises),
@@ -160,7 +160,14 @@ export async function useEchoesScanner() {
     const region = GetRegion(iconRegion)
     const srcMat = ConvertToGrayScale(region)
 
-    return await FindSonata(srcMat)
+    const upscaledMat = UpscaleToSize(srcMat, 126, 126)
+
+    try {
+      return await FindSonata(upscaledMat)
+    } finally {
+      srcMat.delete()
+      upscaledMat.delete()
+    }
   }
 
   async function FindEcho(srcMat: Mat, echoes: Echo[]) {
@@ -258,6 +265,12 @@ export async function useEchoesScanner() {
 
     cv.resize(mat, upscaled, new cv.Size(targetSize, targetSize), 0, 0, cv.INTER_CUBIC)
 
+    return upscaled
+  }
+
+  function UpscaleToSize(mat: Mat, targetWidth: number, targetHeight: number): Mat {
+    const upscaled = new cv.Mat()
+    cv.resize(mat, upscaled, new cv.Size(targetWidth, targetHeight), 0, 0, cv.INTER_CUBIC)
     return upscaled
   }
 

@@ -1,4 +1,4 @@
-import { domToBlob } from 'modern-screenshot'
+import { domToBlob } from "modern-screenshot"
 
 export function useScreenshot(htmlRef: Ref<HTMLElement | null>) {
   const HtmlElement = computed(() => toValue(htmlRef))
@@ -39,34 +39,35 @@ export function useScreenshot(htmlRef: Ref<HTMLElement | null>) {
         width: targetWidth,
         style: {
           transform: `scale(${scale})`,
-          transformOrigin: 'top left',
-          imageRendering: 'crisp-edges',
+          transformOrigin: "top left",
+          imageRendering: "crisp-edges",
         },
         quality: 1,
-        type: 'image/png',
-        backgroundColor: '#000000',
+        type: "image/png",
+        backgroundColor: "#000000",
       })
 
       if (blob) {
         const url = URL.createObjectURL(blob)
-        window.open(url, '_blank')
+        window.open(url, "_blank")
 
         setTimeout(() => {
           URL.revokeObjectURL(url)
-        }, 1000)
+        }, 1000 * 60) // 1 minute
 
         Toast.add({
-          title: 'Screenshot generated!',
+          title: "Screenshot generated!",
           description: `Generated image (${targetWidth}x${targetHeight}) opened in new tab.`,
-          color: 'success',
+          color: "success",
         })
       }
     }
     catch (error) {
+      console.error(error)
       Toast.add({
-        title: 'Screenshot failed',
-        description: 'Failed to generate high-quality screenshot.',
-        color: 'error',
+        title: "Screenshot failed",
+        description: "Failed to generate high-quality screenshot.",
+        color: "error",
       })
     }
     finally {

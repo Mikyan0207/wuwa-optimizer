@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import type Character from '~/Core/Interfaces/Character'
-import type { BaseCharacter } from '~/Core/Interfaces/Character'
-import type Weapon from '~/Core/Interfaces/Weapon'
-import { ReleaseState } from '~/Core/Enums/ReleaseState'
-import { ScorerGameVersion } from '~/Core/Versions'
+import type Character from "~/Core/Interfaces/Character"
+import type { BaseCharacter } from "~/Core/Interfaces/Character"
+import type Weapon from "~/Core/Interfaces/Weapon"
+import { ReleaseState } from "~/Core/Enums/ReleaseState"
+import { ScorerGameVersion } from "~/Core/Versions"
 
 definePageMeta({
-  layout: 'default',
+  layout: "default",
 })
 
 useSeoMeta({
-  title: 'Wuthering Waves Optimizer',
-  ogTitle: 'Wuthering Waves Optimizer',
-  description: 'The ultimate Wuthering Waves optimizer tool. Calculate character builds, evaluate echoes, maximize your damage with our comprehensive calculator.',
-  ogDescription: 'The ultimate Wuthering Waves optimizer tool. Calculate character builds, evaluate echoes, maximize your damage with our comprehensive calculator.',
-  ogImage: '/images/wuwa-optimizer-showcase-00.webp',
-  twitterCard: 'summary_large_image',
+  title: "Wuthering Waves Optimizer",
+  ogTitle: "Wuthering Waves Optimizer",
+  description: "The ultimate Wuthering Waves optimizer tool. Calculate character builds, evaluate echoes, maximize your damage with our comprehensive calculator.",
+  ogDescription: "The ultimate Wuthering Waves optimizer tool. Calculate character builds, evaluate echoes, maximize your damage with our comprehensive calculator.",
+  ogImage: "/images/wuwa-optimizer-showcase-00.webp",
+  twitterCard: "summary_large_image",
 })
 
 const CharactersStore = useCharactersStore()
@@ -313,7 +313,7 @@ function IsCharacterAvailable(character: BaseCharacter) {
         <NuxtImg
           v-motion-pop
           src="/images/wuwa-optimizer-showcase-01.png"
-          class="w-full"
+          class="w-full mx-auto rounded-br-xl"
         />
       </div>
     </UCard>

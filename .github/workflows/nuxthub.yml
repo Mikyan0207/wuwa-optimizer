@@ -41,6 +41,7 @@ jobs:
       - name: Deploy to NuxtHub (Dev)
         uses: nuxt-hub/action@v1
         with:
+          directory: ./apps/web/dist
           project-key: wuwa-optimizer-wniz
 
   preview-deploy:
@@ -77,7 +78,7 @@ jobs:
       - name: Deploy to NuxtHub (Preview)
         uses: nuxt-hub/action@v1
         with:
-          output-directory: ./apps/web/dist
+          directory: ./apps/web/dist
           project-key: wuwa-optimizer-wniz
 
   production-deploy:
@@ -114,7 +115,7 @@ jobs:
       - name: Deploy to NuxtHub (Production)
         uses: nuxt-hub/action@v1
         with:
-          output-directory: ./apps/web/dist
+          directory: ./apps/web/dist
           project-key: wuwa-optimizer-wniz
 
   cache:

@@ -1,0 +1,16 @@
+{
+  "GameId": 21010084,
+  "Name": "Waning Redshift",
+  "Type": "BROADBLADE",
+  "Rarity": "FOUR_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 462.5
+  },
+  "SecondaryStatistic": {
+    "Type": "ATTACK_PERCENTAGE",
+    "Value": 18.23
+  }
+}

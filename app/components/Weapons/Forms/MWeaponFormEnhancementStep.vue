@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { StatType } from '~/Core/Enums/StatType'
-import type { BaseWeapon } from '~/Core/Interfaces/Weapon'
+import type Weapon from '~/Core/Interfaces/Weapon'
 import { Rarity } from '~/Core/Enums/Rarity'
 import { GetWeaponIcon } from '~/Core/Utils/WeaponUtils'
 
 interface WeaponFormEnhancementStepProps {
-  displayedWeapon: BaseWeapon | undefined
+  displayedWeapon: Weapon | undefined
   state: {
     Level: number
     Rank: number

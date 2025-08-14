@@ -1,4 +1,4 @@
-import type { BaseCharacter } from './Interfaces/Character'
+import type Character from './Interfaces/Character'
 import { CharacterType } from './Enums/CharacterType'
 import { Rarity } from './Enums/Rarity'
 import { ReleaseState } from './Enums/ReleaseState'
@@ -6,14 +6,15 @@ import { StatType } from './Enums/StatType'
 import { WeaponType } from './Enums/WeaponType'
 
 // 1102
-export const Sanhua: BaseCharacter = {
+export const Sanhua: Character = {
   Id: 1102,
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Sanhua_Icon.webp',
   SplashArt: 'Sanhua_Portrait.webp',
   WeaponType: WeaponType.SWORD,
   Type: CharacterType.GLACIO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10062.5,
       Type: StatType.HP,
@@ -63,7 +64,7 @@ export const Sanhua: BaseCharacter = {
       Type: StatType.GLACIO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Sanhua_Sequence_Node_01.webp',
@@ -95,7 +96,7 @@ export const Sanhua: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -225,7 +226,7 @@ export const Sanhua: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -246,14 +247,15 @@ export const Sanhua: BaseCharacter = {
 }
 
 // 1103
-export const Baizhi: BaseCharacter = {
+export const Baizhi: Character = {
   Id: 1103,
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Baizhi_Icon.webp',
   SplashArt: 'Baizhi_Portrait.webp',
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.GLACIO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 12812.5,
       Type: StatType.HP,
@@ -303,7 +305,7 @@ export const Baizhi: BaseCharacter = {
       Type: StatType.GLACIO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Baizhi_Sequence_Node_01.webp',
@@ -335,7 +337,7 @@ export const Baizhi: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -465,7 +467,7 @@ export const Baizhi: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0,
     [StatType.CRIT_RATE]: 0.3,
@@ -486,14 +488,15 @@ export const Baizhi: BaseCharacter = {
 }
 
 // 1104
-export const Lingyang: BaseCharacter = {
+export const Lingyang: Character = {
   Id: 1104,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Lingyang_Icon.webp',
   SplashArt: 'Lingyang_Portrait.webp',
   WeaponType: WeaponType.GAUNTLETS,
   Type: CharacterType.GLACIO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10387.5,
       Type: StatType.HP,
@@ -543,7 +546,7 @@ export const Lingyang: BaseCharacter = {
       Type: StatType.GLACIO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Lingyang_Sequence_Node_01.webp',
@@ -575,7 +578,7 @@ export const Lingyang: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -705,7 +708,7 @@ export const Lingyang: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -726,14 +729,15 @@ export const Lingyang: BaseCharacter = {
 }
 
 // 1105
-export const Zhezhi: BaseCharacter = {
+export const Zhezhi: Character = {
   Id: 1105,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Zhezhi_Icon.webp',
   SplashArt: 'Zhezhi_Portrait.webp',
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.GLACIO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 12250.0,
       Type: StatType.HP,
@@ -783,7 +787,7 @@ export const Zhezhi: BaseCharacter = {
       Type: StatType.GLACIO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Zhezhi_Sequence_Node_01.webp',
@@ -815,7 +819,7 @@ export const Zhezhi: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -945,7 +949,7 @@ export const Zhezhi: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -966,14 +970,15 @@ export const Zhezhi: BaseCharacter = {
 }
 
 // 1106
-export const Youhu: BaseCharacter = {
+export const Youhu: Character = {
   Id: 1106,
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Youhu_Icon.webp',
   SplashArt: 'Youhu_Portrait.webp',
   WeaponType: WeaponType.GAUNTLETS,
   Type: CharacterType.GLACIO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 9975.0,
       Type: StatType.HP,
@@ -1023,7 +1028,7 @@ export const Youhu: BaseCharacter = {
       Type: StatType.GLACIO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Youhu_Sequence_Node_01.webp',
@@ -1055,7 +1060,7 @@ export const Youhu: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -1185,7 +1190,7 @@ export const Youhu: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -1206,7 +1211,7 @@ export const Youhu: BaseCharacter = {
 }
 
 // 1107
-export const Carlotta: BaseCharacter = {
+export const Carlotta: Character = {
   Id: 1107,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Carlotta_Icon.webp',
@@ -1220,7 +1225,8 @@ export const Carlotta: BaseCharacter = {
   },
   WeaponType: WeaponType.PISTOLS,
   Type: CharacterType.GLACIO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 12450.0,
       Type: StatType.HP,
@@ -1270,7 +1276,7 @@ export const Carlotta: BaseCharacter = {
       Type: StatType.GLACIO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Carlotta_Sequence_Node_01.webp',
@@ -1302,7 +1308,7 @@ export const Carlotta: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -1432,7 +1438,7 @@ export const Carlotta: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -1453,14 +1459,15 @@ export const Carlotta: BaseCharacter = {
 }
 
 // 1202
-export const Chixia: BaseCharacter = {
+export const Chixia: Character = {
   Id: 1202,
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Chixia_Icon.webp',
   SplashArt: 'Chixia_Portrait.webp',
   WeaponType: WeaponType.PISTOLS,
   Type: CharacterType.FUSION,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 9087.5,
       Type: StatType.HP,
@@ -1510,7 +1517,7 @@ export const Chixia: BaseCharacter = {
       Type: StatType.FUSION_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Chixia_Sequence_Node_01.webp',
@@ -1542,7 +1549,7 @@ export const Chixia: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -1672,7 +1679,7 @@ export const Chixia: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -1693,14 +1700,15 @@ export const Chixia: BaseCharacter = {
 }
 
 // 1203
-export const Encore: BaseCharacter = {
+export const Encore: Character = {
   Id: 1203,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Encore_Icon.webp',
   SplashArt: 'Encore_Portrait.webp',
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.FUSION,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10512.5,
       Type: StatType.HP,
@@ -1750,7 +1758,7 @@ export const Encore: BaseCharacter = {
       Type: StatType.FUSION_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Encore_Sequence_Node_01.webp',
@@ -1782,7 +1790,7 @@ export const Encore: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -1912,7 +1920,7 @@ export const Encore: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -1933,14 +1941,15 @@ export const Encore: BaseCharacter = {
 }
 
 // 1204
-export const Mortefi: BaseCharacter = {
+export const Mortefi: Character = {
   Id: 1204,
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Mortefi_Icon.webp',
   SplashArt: 'Mortefi_Portrait.webp',
   WeaponType: WeaponType.PISTOLS,
   Type: CharacterType.FUSION,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10025.0,
       Type: StatType.HP,
@@ -1990,7 +1999,7 @@ export const Mortefi: BaseCharacter = {
       Type: StatType.FUSION_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Mortefi_Sequence_Node_01.webp',
@@ -2022,7 +2031,7 @@ export const Mortefi: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -2152,7 +2161,7 @@ export const Mortefi: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -2173,14 +2182,15 @@ export const Mortefi: BaseCharacter = {
 }
 
 // 1205
-export const Changli: BaseCharacter = {
+export const Changli: Character = {
   Id: 1205,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Changli_Icon.webp',
   SplashArt: 'Changli_Portrait.webp',
   WeaponType: WeaponType.SWORD,
   Type: CharacterType.FUSION,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10387.5,
       Type: StatType.HP,
@@ -2230,7 +2240,7 @@ export const Changli: BaseCharacter = {
       Type: StatType.FUSION_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Changli_Sequence_Node_01.webp',
@@ -2262,7 +2272,7 @@ export const Changli: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -2392,7 +2402,7 @@ export const Changli: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -2413,14 +2423,15 @@ export const Changli: BaseCharacter = {
 }
 
 // 1206
-export const Brant: BaseCharacter = {
+export const Brant: Character = {
   Id: 1206,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Brant_Icon.webp',
   SplashArt: 'Brant_Portrait.webp',
   WeaponType: WeaponType.SWORD,
   Type: CharacterType.FUSION,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 11675.0,
       Type: StatType.HP,
@@ -2470,7 +2481,7 @@ export const Brant: BaseCharacter = {
       Type: StatType.FUSION_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Brant_Sequence_Node_01.webp',
@@ -2502,7 +2513,7 @@ export const Brant: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -2632,7 +2643,7 @@ export const Brant: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0.4,
     [StatType.CRIT_RATE]: 0.4,
@@ -2653,7 +2664,7 @@ export const Brant: BaseCharacter = {
 }
 
 // 1207
-export const Lupa: BaseCharacter = {
+export const Lupa: Character = {
   Id: 1207,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Lupa_Icon.webp',
@@ -2664,7 +2675,8 @@ export const Lupa: BaseCharacter = {
   },
   WeaponType: WeaponType.BROADBLADE,
   Type: CharacterType.FUSION,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 11912.5,
       Type: StatType.HP,
@@ -2714,7 +2726,7 @@ export const Lupa: BaseCharacter = {
       Type: StatType.FUSION_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Lupa_Sequence_Node_01.webp',
@@ -2746,7 +2758,7 @@ export const Lupa: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -2876,7 +2888,7 @@ export const Lupa: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -2897,14 +2909,15 @@ export const Lupa: BaseCharacter = {
 }
 
 // 1301
-export const Calcharo: BaseCharacter = {
+export const Calcharo: Character = {
   Id: 1301,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Calcharo_Icon.webp',
   SplashArt: 'Calcharo_Portrait.webp',
   WeaponType: WeaponType.BROADBLADE,
   Type: CharacterType.ELECTRO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10500.0,
       Type: StatType.HP,
@@ -2954,7 +2967,7 @@ export const Calcharo: BaseCharacter = {
       Type: StatType.ELECTRO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Calcharo_Sequence_Node_01.webp',
@@ -2986,7 +2999,7 @@ export const Calcharo: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -3116,7 +3129,7 @@ export const Calcharo: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -3137,14 +3150,15 @@ export const Calcharo: BaseCharacter = {
 }
 
 // 1302
-export const Yinlin: BaseCharacter = {
+export const Yinlin: Character = {
   Id: 1302,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Yinlin_Icon.webp',
   SplashArt: 'Yinlin_Portrait.webp',
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.ELECTRO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 11000.0,
       Type: StatType.HP,
@@ -3194,7 +3208,7 @@ export const Yinlin: BaseCharacter = {
       Type: StatType.ELECTRO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Yinlin_Sequence_Node_01.webp',
@@ -3226,7 +3240,7 @@ export const Yinlin: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -3356,7 +3370,7 @@ export const Yinlin: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -3377,14 +3391,15 @@ export const Yinlin: BaseCharacter = {
 }
 
 // 1303
-export const Yuanwu: BaseCharacter = {
+export const Yuanwu: Character = {
   Id: 1303,
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Yuanwu_Icon.webp',
   SplashArt: 'Yuanwu_Portrait.webp',
   WeaponType: WeaponType.GAUNTLETS,
   Type: CharacterType.ELECTRO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 8525.0,
       Type: StatType.HP,
@@ -3434,7 +3449,7 @@ export const Yuanwu: BaseCharacter = {
       Type: StatType.ELECTRO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Yuanwu_Sequence_Node_01.webp',
@@ -3466,7 +3481,7 @@ export const Yuanwu: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -3596,7 +3611,7 @@ export const Yuanwu: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0.4,
     [StatType.CRIT_RATE]: 0.4,
@@ -3617,14 +3632,15 @@ export const Yuanwu: BaseCharacter = {
 }
 
 // 1304
-export const Jinhsi: BaseCharacter = {
+export const Jinhsi: Character = {
   Id: 1304,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Jinhsi_Icon.webp',
   SplashArt: 'Jinhsi_Portrait.webp',
   WeaponType: WeaponType.BROADBLADE,
   Type: CharacterType.SPECTRO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10825.0,
       Type: StatType.HP,
@@ -3674,7 +3690,7 @@ export const Jinhsi: BaseCharacter = {
       Type: StatType.SPECTRO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Jinhsi_Sequence_Node_01.webp',
@@ -3706,7 +3722,7 @@ export const Jinhsi: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -3836,7 +3852,7 @@ export const Jinhsi: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -3857,14 +3873,15 @@ export const Jinhsi: BaseCharacter = {
 }
 
 // 1305
-export const Xiangli_Yao: BaseCharacter = {
+export const Xiangli_Yao: Character = {
   Id: 1305,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Xiangli_Yao_Icon.webp',
   SplashArt: 'Xiangli_Yao_Portrait.webp',
   WeaponType: WeaponType.GAUNTLETS,
   Type: CharacterType.ELECTRO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10625.0,
       Type: StatType.HP,
@@ -3914,7 +3931,7 @@ export const Xiangli_Yao: BaseCharacter = {
       Type: StatType.ELECTRO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Xiangli_Yao_Sequence_Node_01.webp',
@@ -3946,7 +3963,7 @@ export const Xiangli_Yao: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -4076,7 +4093,7 @@ export const Xiangli_Yao: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -4097,14 +4114,15 @@ export const Xiangli_Yao: BaseCharacter = {
 }
 
 // 1402
-export const Yangyang: BaseCharacter = {
+export const Yangyang: Character = {
   Id: 1402,
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Yangyang_Icon.webp',
   SplashArt: 'Yangyang_Portrait.webp',
   WeaponType: WeaponType.SWORD,
   Type: CharacterType.AERO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10200.0,
       Type: StatType.HP,
@@ -4154,7 +4172,7 @@ export const Yangyang: BaseCharacter = {
       Type: StatType.AERO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Yangyang_Sequence_Node_01.webp',
@@ -4186,7 +4204,7 @@ export const Yangyang: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -4316,7 +4334,7 @@ export const Yangyang: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0.4,
     [StatType.CRIT_RATE]: 0.4,
@@ -4337,14 +4355,15 @@ export const Yangyang: BaseCharacter = {
 }
 
 // 1403
-export const Aalto: BaseCharacter = {
+export const Aalto: Character = {
   Id: 1403,
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Aalto_Icon.webp',
   SplashArt: 'Aalto_Portrait.webp',
   WeaponType: WeaponType.PISTOLS,
   Type: CharacterType.AERO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 9850.0,
       Type: StatType.HP,
@@ -4394,7 +4413,7 @@ export const Aalto: BaseCharacter = {
       Type: StatType.AERO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Aalto_Sequence_Node_01.webp',
@@ -4426,7 +4445,7 @@ export const Aalto: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -4556,7 +4575,7 @@ export const Aalto: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -4577,14 +4596,15 @@ export const Aalto: BaseCharacter = {
 }
 
 // 1404
-export const Jiyan: BaseCharacter = {
+export const Jiyan: Character = {
   Id: 1404,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Jiyan_Icon.webp',
   SplashArt: 'Jiyan_Portrait.webp',
   WeaponType: WeaponType.BROADBLADE,
   Type: CharacterType.AERO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10487.5,
       Type: StatType.HP,
@@ -4634,7 +4654,7 @@ export const Jiyan: BaseCharacter = {
       Type: StatType.AERO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Jiyan_Sequence_Node_01.webp',
@@ -4666,7 +4686,7 @@ export const Jiyan: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -4796,7 +4816,7 @@ export const Jiyan: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -4817,14 +4837,15 @@ export const Jiyan: BaseCharacter = {
 }
 
 // 1405
-export const Jianxin: BaseCharacter = {
+export const Jianxin: Character = {
   Id: 1405,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Jianxin_Icon.webp',
   SplashArt: 'Jianxin_Portrait.webp',
   WeaponType: WeaponType.GAUNTLETS,
   Type: CharacterType.AERO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 14112.5,
       Type: StatType.HP,
@@ -4874,7 +4895,7 @@ export const Jianxin: BaseCharacter = {
       Type: StatType.AERO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Jianxin_Sequence_Node_01.webp',
@@ -4906,7 +4927,7 @@ export const Jianxin: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -5036,7 +5057,7 @@ export const Jianxin: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1.0,
     [StatType.CRIT_RATE]: 1.0,
@@ -5057,14 +5078,15 @@ export const Jianxin: BaseCharacter = {
 }
 
 // 1407
-export const Ciaccona: BaseCharacter = {
+export const Ciaccona: Character = {
   Id: 1407,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Ciaccona_Icon.webp',
   SplashArt: 'Ciaccona_Portrait.webp',
   WeaponType: WeaponType.PISTOLS,
   Type: CharacterType.AERO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 12237.5,
       Type: StatType.HP,
@@ -5114,7 +5136,7 @@ export const Ciaccona: BaseCharacter = {
       Type: StatType.AERO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Ciaccona_Sequence_Node_01.webp',
@@ -5146,7 +5168,7 @@ export const Ciaccona: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -5276,7 +5298,7 @@ export const Ciaccona: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -5297,14 +5319,15 @@ export const Ciaccona: BaseCharacter = {
 }
 
 // 1408
-export const Rover_Aero: BaseCharacter = {
+export const Rover_Aero: Character = {
   Id: 1408,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Rover_Aero_Icon.webp',
   SplashArt: 'Rover_Aero_Portrait.webp',
   WeaponType: WeaponType.SWORD,
   Type: CharacterType.AERO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10775.0,
       Type: StatType.HP,
@@ -5354,7 +5377,7 @@ export const Rover_Aero: BaseCharacter = {
       Type: StatType.AERO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Rover_Aero_Sequence_Node_01.webp',
@@ -5386,7 +5409,7 @@ export const Rover_Aero: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -5516,7 +5539,7 @@ export const Rover_Aero: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -5537,7 +5560,7 @@ export const Rover_Aero: BaseCharacter = {
 }
 
 // 1409
-export const Cartethyia: BaseCharacter = {
+export const Cartethyia: Character = {
   Id: 1409,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Cartethyia_Icon.webp',
@@ -5551,7 +5574,8 @@ export const Cartethyia: BaseCharacter = {
   },
   WeaponType: WeaponType.SWORD,
   Type: CharacterType.AERO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 14800.0,
       Type: StatType.HP,
@@ -5601,7 +5625,7 @@ export const Cartethyia: BaseCharacter = {
       Type: StatType.AERO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Cartethyia_Sequence_Node_01.webp',
@@ -5633,7 +5657,7 @@ export const Cartethyia: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -5763,7 +5787,7 @@ export const Cartethyia: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0.8,
     [StatType.CRIT_RATE]: 0.8,
@@ -5784,14 +5808,15 @@ export const Cartethyia: BaseCharacter = {
 }
 
 // 1502
-export const Rover_Spectro: BaseCharacter = {
+export const Rover_Spectro: Character = {
   Id: 1502,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Rover_Spectro_Icon.webp',
   SplashArt: 'Rover_Spectro_Portrait.webp',
   WeaponType: WeaponType.SWORD,
   Type: CharacterType.SPECTRO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 11400.0,
       Type: StatType.HP,
@@ -5841,7 +5866,7 @@ export const Rover_Spectro: BaseCharacter = {
       Type: StatType.SPECTRO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Rover_Spectro_Sequence_Node_01.webp',
@@ -5873,7 +5898,7 @@ export const Rover_Spectro: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -6003,7 +6028,7 @@ export const Rover_Spectro: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -6024,14 +6049,15 @@ export const Rover_Spectro: BaseCharacter = {
 }
 
 // 1503
-export const Verina: BaseCharacter = {
+export const Verina: Character = {
   Id: 1503,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Verina_Icon.webp',
   SplashArt: 'Verina_Portrait.webp',
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.SPECTRO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 14237.5,
       Type: StatType.HP,
@@ -6081,7 +6107,7 @@ export const Verina: BaseCharacter = {
       Type: StatType.SPECTRO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Verina_Sequence_Node_01.webp',
@@ -6113,7 +6139,7 @@ export const Verina: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -6243,7 +6269,7 @@ export const Verina: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0,
     [StatType.CRIT_RATE]: 0.3,
@@ -6264,14 +6290,15 @@ export const Verina: BaseCharacter = {
 }
 
 // 1504
-export const Lumi: BaseCharacter = {
+export const Lumi: Character = {
   Id: 1504,
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Lumi_Icon.webp',
   SplashArt: 'Lumi_Portrait.webp',
   WeaponType: WeaponType.BROADBLADE,
   Type: CharacterType.ELECTRO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 8500.0,
       Type: StatType.HP,
@@ -6321,7 +6348,7 @@ export const Lumi: BaseCharacter = {
       Type: StatType.ELECTRO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Lumi_Sequence_Node_01.webp',
@@ -6353,7 +6380,7 @@ export const Lumi: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -6483,7 +6510,7 @@ export const Lumi: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -6504,7 +6531,7 @@ export const Lumi: BaseCharacter = {
 }
 
 // 1505
-export const Shorekeeper: BaseCharacter = {
+export const Shorekeeper: Character = {
   Id: 1505,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Shorekeeper_Icon.webp',
@@ -6518,7 +6545,8 @@ export const Shorekeeper: BaseCharacter = {
   },
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.SPECTRO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 16712.5,
       Type: StatType.HP,
@@ -6568,7 +6596,7 @@ export const Shorekeeper: BaseCharacter = {
       Type: StatType.SPECTRO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Shorekeeper_Sequence_Node_01.webp',
@@ -6600,7 +6628,7 @@ export const Shorekeeper: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -6730,7 +6758,7 @@ export const Shorekeeper: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 0.3,
     [StatType.CRIT_RATE]: 0.3,
@@ -6751,7 +6779,7 @@ export const Shorekeeper: BaseCharacter = {
 }
 
 // 1506
-export const Phoebe: BaseCharacter = {
+export const Phoebe: Character = {
   Id: 1506,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Phoebe_Icon.webp',
@@ -6764,7 +6792,8 @@ export const Phoebe: BaseCharacter = {
   },
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.SPECTRO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10825.0,
       Type: StatType.HP,
@@ -6814,7 +6843,7 @@ export const Phoebe: BaseCharacter = {
       Type: StatType.SPECTRO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Phoebe_Sequence_Node_01.webp',
@@ -6846,7 +6875,7 @@ export const Phoebe: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -6976,7 +7005,7 @@ export const Phoebe: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -6997,7 +7026,7 @@ export const Phoebe: BaseCharacter = {
 }
 
 // 1507
-export const Zani: BaseCharacter = {
+export const Zani: Character = {
   Id: 1507,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Zani_Icon.webp',
@@ -7010,7 +7039,8 @@ export const Zani: BaseCharacter = {
   },
   WeaponType: WeaponType.GAUNTLETS,
   Type: CharacterType.SPECTRO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10775.0,
       Type: StatType.HP,
@@ -7060,7 +7090,7 @@ export const Zani: BaseCharacter = {
       Type: StatType.SPECTRO_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Zani_Sequence_Node_01.webp',
@@ -7092,7 +7122,7 @@ export const Zani: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -7222,7 +7252,7 @@ export const Zani: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -7243,14 +7273,15 @@ export const Zani: BaseCharacter = {
 }
 
 // 1601
-export const Taoqi: BaseCharacter = {
+export const Taoqi: Character = {
   Id: 1601,
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Taoqi_Icon.webp',
   SplashArt: 'Taoqi_Portrait.webp',
   WeaponType: WeaponType.BROADBLADE,
   Type: CharacterType.HAVOC,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 8950.0,
       Type: StatType.HP,
@@ -7300,7 +7331,7 @@ export const Taoqi: BaseCharacter = {
       Type: StatType.HAVOC_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Taoqi_Sequence_Node_01.webp',
@@ -7332,7 +7363,7 @@ export const Taoqi: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -7462,7 +7493,7 @@ export const Taoqi: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -7483,14 +7514,15 @@ export const Taoqi: BaseCharacter = {
 }
 
 // 1602
-export const Danjin: BaseCharacter = {
+export const Danjin: Character = {
   Id: 1602,
   Rarity: Rarity.FOUR_STARS,
   Icon: 'Danjin_Icon.webp',
   SplashArt: 'Danjin_Portrait.webp',
   WeaponType: WeaponType.SWORD,
   Type: CharacterType.HAVOC,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 9437.5,
       Type: StatType.HP,
@@ -7540,7 +7572,7 @@ export const Danjin: BaseCharacter = {
       Type: StatType.HAVOC_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Danjin_Sequence_Node_01.webp',
@@ -7572,7 +7604,7 @@ export const Danjin: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -7702,7 +7734,7 @@ export const Danjin: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -7723,14 +7755,15 @@ export const Danjin: BaseCharacter = {
 }
 
 // 1603
-export const Camellya: BaseCharacter = {
+export const Camellya: Character = {
   Id: 1603,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Camellya_Icon.webp',
   SplashArt: 'Camellya_Portrait.webp',
   WeaponType: WeaponType.SWORD,
   Type: CharacterType.HAVOC,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10325.0,
       Type: StatType.HP,
@@ -7780,7 +7813,7 @@ export const Camellya: BaseCharacter = {
       Type: StatType.HAVOC_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Camellya_Sequence_Node_01.webp',
@@ -7812,7 +7845,7 @@ export const Camellya: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -7942,7 +7975,7 @@ export const Camellya: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -7963,14 +7996,15 @@ export const Camellya: BaseCharacter = {
 }
 
 // 1604
-export const Rover_Havoc: BaseCharacter = {
+export const Rover_Havoc: Character = {
   Id: 1604,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Rover_Havoc_Icon.webp',
   SplashArt: 'Rover_Havoc_Portrait.webp',
   WeaponType: WeaponType.SWORD,
   Type: CharacterType.HAVOC,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10825.0,
       Type: StatType.HP,
@@ -8020,7 +8054,7 @@ export const Rover_Havoc: BaseCharacter = {
       Type: StatType.HAVOC_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Rover_Havoc_Sequence_Node_01.webp',
@@ -8052,7 +8086,7 @@ export const Rover_Havoc: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -8182,7 +8216,7 @@ export const Rover_Havoc: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -8203,14 +8237,15 @@ export const Rover_Havoc: BaseCharacter = {
 }
 
 // 1606
-export const Roccia: BaseCharacter = {
+export const Roccia: Character = {
   Id: 1606,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Roccia_Icon.webp',
   SplashArt: 'Roccia_Portrait.webp',
   WeaponType: WeaponType.GAUNTLETS,
   Type: CharacterType.HAVOC,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 12250.0,
       Type: StatType.HP,
@@ -8260,7 +8295,7 @@ export const Roccia: BaseCharacter = {
       Type: StatType.HAVOC_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Roccia_Sequence_Node_01.webp',
@@ -8292,7 +8327,7 @@ export const Roccia: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -8422,7 +8457,7 @@ export const Roccia: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -8443,14 +8478,15 @@ export const Roccia: BaseCharacter = {
 }
 
 // 1607
-export const Cantarella: BaseCharacter = {
+export const Cantarella: Character = {
   Id: 1607,
   Rarity: Rarity.FIVE_STARS,
   Icon: 'Cantarella_Icon.webp',
   SplashArt: 'Cantarella_Portrait.webp',
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.HAVOC,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 11600.0,
       Type: StatType.HP,
@@ -8500,7 +8536,7 @@ export const Cantarella: BaseCharacter = {
       Type: StatType.HAVOC_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Cantarella_Sequence_Node_01.webp',
@@ -8532,7 +8568,7 @@ export const Cantarella: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -8662,7 +8698,7 @@ export const Cantarella: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -8683,7 +8719,7 @@ export const Cantarella: BaseCharacter = {
 }
 
 // 1608
-export const Phrolova: BaseCharacter = {
+export const Phrolova: Character = {
   Id: 1608,
   Rarity: Rarity.FIVE_STARS,
   ReleaseState: ReleaseState.NEW,
@@ -8696,7 +8732,8 @@ export const Phrolova: BaseCharacter = {
   },
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.HAVOC,
-  BaseStats: [
+  Level: 90,
+  Stats: [
     {
       Value: 10775.0,
       Type: StatType.HP,
@@ -8746,7 +8783,7 @@ export const Phrolova: BaseCharacter = {
       Type: StatType.HAVOC_DMG_BONUS,
     },
   ],
-  BaseSequences: [
+  Sequences: [
     {
       Name: '',
       Icon: 'Phrolova_Sequence_Node_01.webp',
@@ -8778,7 +8815,7 @@ export const Phrolova: BaseCharacter = {
       Unlocked: false,
     },
   ],
-  BaseSkills: [
+  Skills: [
     {
       Id: 'Basic_Attack',
       Level: 10,
@@ -8908,7 +8945,7 @@ export const Phrolova: BaseCharacter = {
       },
     },
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
     [StatType.NONE]: 0,
     [StatType.CRIT_DMG]: 1,
     [StatType.CRIT_RATE]: 1,
@@ -8929,7 +8966,7 @@ export const Phrolova: BaseCharacter = {
 }
 
 // 9901
-export const Augusta: BaseCharacter = {
+export const Augusta: Character = {
   Id: 9901,
   Rarity: Rarity.FIVE_STARS,
   ReleaseState: ReleaseState.UPCOMING,
@@ -8937,19 +8974,20 @@ export const Augusta: BaseCharacter = {
   SplashArt: 'Augusta_Portrait.webp',
   WeaponType: WeaponType.BROADBLADE,
   Type: CharacterType.ELECTRO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
   ],
-  BaseSequences: [
+  Sequences: [
   ],
-  BaseSkills: [
+  Skills: [
 
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
   },
 }
 
 // 9902
-export const Iuno: BaseCharacter = {
+export const Iuno: Character = {
   Id: 9902,
   Rarity: Rarity.FIVE_STARS,
   ReleaseState: ReleaseState.UPCOMING,
@@ -8957,18 +8995,19 @@ export const Iuno: BaseCharacter = {
   SplashArt: 'Iuno_Portrait.webp',
   WeaponType: WeaponType.GAUNTLETS,
   Type: CharacterType.AERO,
-  BaseStats: [
+  Level: 90,
+  Stats: [
   ],
-  BaseSequences: [
+  Sequences: [
   ],
-  BaseSkills: [
+  Skills: [
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
   },
 }
 
 // 9903
-export const Galbrena: BaseCharacter = {
+export const Galbrena: Character = {
   Id: 9903,
   Rarity: Rarity.FIVE_STARS,
   ReleaseState: ReleaseState.UNKNOWN,
@@ -8976,18 +9015,19 @@ export const Galbrena: BaseCharacter = {
   SplashArt: 'Galbrena_Portrait.webp',
   WeaponType: WeaponType.GAUNTLETS,
   Type: CharacterType.NONE,
-  BaseStats: [
+  Level: 90,
+  Stats: [
   ],
-  BaseSequences: [
+  Sequences: [
   ],
-  BaseSkills: [
+  Skills: [
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
   },
 }
 
 // 9904
-export const Qiuyuan: BaseCharacter = {
+export const Qiuyuan: Character = {
   Id: 9904,
   Rarity: Rarity.FIVE_STARS,
   ReleaseState: ReleaseState.UNKNOWN,
@@ -8995,18 +9035,19 @@ export const Qiuyuan: BaseCharacter = {
   SplashArt: 'Qiuyuan_Portrait.webp',
   WeaponType: WeaponType.NONE,
   Type: CharacterType.NONE,
-  BaseStats: [
+  Level: 90,
+  Stats: [
   ],
-  BaseSequences: [
+  Sequences: [
   ],
-  BaseSkills: [
+  Skills: [
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
   },
 }
 
 // 9905
-export const Chisa: BaseCharacter = {
+export const Chisa: Character = {
   Id: 9905,
   Rarity: Rarity.FIVE_STARS,
   ReleaseState: ReleaseState.UNKNOWN,
@@ -9014,17 +9055,18 @@ export const Chisa: BaseCharacter = {
   SplashArt: 'Chisa_Portrait.webp',
   WeaponType: WeaponType.NONE,
   Type: CharacterType.NONE,
-  BaseStats: [
+  Level: 90,
+  Stats: [
   ],
-  BaseSequences: [
+  Sequences: [
   ],
-  BaseSkills: [
+  Skills: [
   ],
-  BaseStatsWeights: {
+  StatsWeights: {
   },
 }
 
-export const BaseCharacters: BaseCharacter[] = [
+export const TemplateCharacters: Character[] = [
   Sanhua,
   Baizhi,
   Lingyang,

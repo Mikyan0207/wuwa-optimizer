@@ -18,10 +18,7 @@ const { CurrentCharacter, CurrentWeapon, CurrentBuild, CurrentEchoes } = storeTo
 const { TakeScreenShotAsync } = useScreenshot(CharacterInfoRef)
 
 const Id = computed<number>(() => Number.parseInt((Route.params as { id: string }).id))
-
-const { status } = useAsyncData(`character-${Id.value}`, async () => {
-  return await CurrentCharacterStore.GetAsync(Id.value)
-}, {
+const { status } = useAsyncData(`character-${Id.value}`, () => CurrentCharacterStore.GetAsync(Id.value), {
   server: false,
 })
 
@@ -44,7 +41,7 @@ function OnTakeScreenShotClicked() {
 
 <template>
   <div v-if="status === 'success' && CurrentCharacter !== undefined">
-    <div class="mb-14 xl:mb-4 mt-2 relative mx-auto my-2">
+    <div v-if="CurrentCharacter !== undefined" class="mb-14 xl:mb-4 mt-2 relative mx-auto my-2">
       <div ref="CharacterInfoRef" class="relative p-0.25">
         <div v-if="ShowScreenShotBackground" class="absolute inset-0 blur-sm">
           <div class="absolute -top-5 -left-5 -right-5 -bottom-5 bg-neutral-900/75" />

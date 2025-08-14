@@ -1,0 +1,16 @@
+{
+  "GameId": 21050017,
+  "Name": "Call Of The Abyss",
+  "Type": "RECTIFIER",
+  "Rarity": "FOUR_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 337.5
+  },
+  "SecondaryStatistic": {
+    "Type": "ENERGY_REGENERATION",
+    "Value": 51.84
+  }
+}

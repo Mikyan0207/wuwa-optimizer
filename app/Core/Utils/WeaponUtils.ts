@@ -1,8 +1,7 @@
 import type Weapon from '../Interfaces/Weapon'
-import type { BaseWeapon } from '../Interfaces/Weapon'
 import { WeaponType } from '../Enums/WeaponType'
 
-export function GetWeaponIcon(weapon: Weapon | BaseWeapon) {
+export function GetWeaponIcon(weapon: Weapon) {
   return `/weapons/${weapon.GameId}/images/${weapon.GameId}_Icon.webp`
 }
 

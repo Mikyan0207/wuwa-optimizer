@@ -1,0 +1,16 @@
+{
+  "GameId": 21040043,
+  "Name": "Gauntlets Of Voyager",
+  "Type": "GAUNTLETS",
+  "Rarity": "THREE_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 325
+  },
+  "SecondaryStatistic": {
+    "Type": "DEF_PERCENTAGE",
+    "Value": 30.78
+  }
+}

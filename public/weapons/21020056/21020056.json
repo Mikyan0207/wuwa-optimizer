@@ -1,0 +1,16 @@
+{
+  "GameId": 21020056,
+  "Name": "Defier's Thorn",
+  "Type": "SWORD",
+  "Rarity": "FIVE_STARS",
+  "Level": 0,
+  "Rank": 1,
+  "MainStatistic": {
+    "Type": "ATTACK",
+    "Value": 412.5
+  },
+  "SecondaryStatistic": {
+    "Type": "HP_PERCENTAGE",
+    "Value": 72.23
+  }
+}

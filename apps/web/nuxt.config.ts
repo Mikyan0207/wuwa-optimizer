@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     "nuxt-gtag",
   ],
 
-  ssr: true,
+  ssr: false,
 
   components: [
     "~/components",

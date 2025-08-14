@@ -19,22 +19,16 @@ const Actions = computed(() => [
     label: 'Edit',
     icon: 'solar:pen-new-square-broken',
     disabled: props.echo === undefined,
-    onExecute() {
-    },
   },
   {
     label: 'New',
     icon: 'solar:add-square-broken',
-    onExecute() {
-    },
   },
   {
     label: 'Unequip',
     icon: 'solar:notification-remove-broken',
     color: 'error',
     disabled: props.echo === undefined || props.echo.GameId === -1,
-    onExecute() {
-    },
   },
 ])
 

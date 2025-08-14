@@ -25,6 +25,9 @@
             ]
         },
         "clean": {
+            "dependsOn": [
+                "^clean"
+            ],
             "cache": false
         }
     }

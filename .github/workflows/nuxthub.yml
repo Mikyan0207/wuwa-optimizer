@@ -147,4 +147,4 @@ jobs:
             ${{ runner.os }}-turbo-
 
       - name: Build cache
-        run: pnpm build --filter=web --force
+        run: pnpm build

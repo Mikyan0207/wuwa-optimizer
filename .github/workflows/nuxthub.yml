@@ -31,7 +31,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build application (dev)
-        run: pnpm build --filter=web
+        run: pnpm build --filter @wuwa-optimizer/web
         env:
           NODE_ENV: development
           NUXT_PUBLIC_APP_ENV: development
@@ -39,7 +39,7 @@ jobs:
       - name: Deploy to NuxtHub (Dev)
         uses: nuxt-hub/action@v1
         with:
-          project-key: wuwa-optimizer-wniz-dev
+          project-key: wuwa-optimizer-wniz
 
   preview-deploy:
     name: "Deploy Preview Environment"
@@ -67,7 +67,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build application (preview)
-        run: pnpm build --filter=web
+        run: pnpm build --filter @wuwa-optimizer/web
         env:
           NODE_ENV: preview
           NUXT_PUBLIC_APP_ENV: preview
@@ -76,7 +76,7 @@ jobs:
         uses: nuxt-hub/action@v1
         with:
           output-directory: ./apps/web/dist
-          project-key: wuwa-optimizer-wniz-preview
+          project-key: wuwa-optimizer-wniz
 
   production-deploy:
     name: "Deploy Production"
@@ -104,7 +104,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build application (production)
-        run: pnpm build --filter=web
+        run: pnpm build --filter @wuwa-optimizer/web
         env:
           NODE_ENV: production
           NUXT_PUBLIC_APP_ENV: production

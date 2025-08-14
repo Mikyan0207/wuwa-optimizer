@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     'nuxt-gtag',
   ],
 
-  ssr: false,
+  ssr: true,
 
   components: [
     '~/components',
@@ -49,7 +49,7 @@ export default defineNuxtConfig({
   ],
 
   devtools: {
-    enabled: false,
+    enabled: true,
   },
   app: {
     head: {
@@ -97,15 +97,9 @@ export default defineNuxtConfig({
     typedPages: true,
   },
 
-  compatibilityDate: '2025-01-15',
+  compatibilityDate: '2025-07-10',
 
   nitro: {
-    storage: {
-      data: {
-        driver: 'fs',
-        base: 'public/',
-      },
-    },
     esbuild: {
       options: {
         target: 'esnext',
@@ -113,6 +107,9 @@ export default defineNuxtConfig({
     },
     routeRules: {
       '/': { prerender: true },
+      '/characters/**': { prerender: true },
+      '/echoes/**': { prerender: true },
+      '/weapons/**': { prerender: true },
     },
   },
 

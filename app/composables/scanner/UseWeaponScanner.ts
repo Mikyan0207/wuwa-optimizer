@@ -20,7 +20,7 @@ export function useWeaponScanner() {
       tessedit_char_whitelist: '0123456789',
     })
 
-    const weapons = await WeaponsStore.GetAll()
+    const weapons = WeaponsStore.GetAll()
 
     for (const weapon of weapons) {
       const name = weapon.Name

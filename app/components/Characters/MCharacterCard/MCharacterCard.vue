@@ -17,7 +17,7 @@ const { t } = useI18n()
       <MGameCardHeader
         :item="character"
         :get-name="(char: Character) => t(`${char.Id}_name`)"
-        :get-level="(char: Character) => char.Level"
+        :get-level="(char: Character) => char.Level ?? 90"
       />
     </template>
 

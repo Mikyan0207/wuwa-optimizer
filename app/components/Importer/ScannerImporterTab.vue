@@ -24,6 +24,10 @@ const ImportedEchoes = ref<Echo[]>([])
 const Scanner = await useScanner()
 
 onMounted(async () => {
+  if (import.meta.server) {
+    return
+  }
+
   await Scanner.Initialize()
 })
 
@@ -72,6 +76,7 @@ async function OnFileUploaded() {
     })
   }
   catch (error) {
+    console.error(error)
     TrackEvent('scanner_import_error', { error })
   }
   finally {
@@ -92,7 +97,7 @@ async function OnConfirmClicked() {
   BuildsStore.CreateBuild(
     'Imported Build',
     ImportedCharacter.value,
-    ImportedWeapon.value ? await WeaponsStore.CreateFromGameId(ImportedWeapon.value.GameId) : undefined,
+    ImportedWeapon.value ? WeaponsStore.CreateFromGameId(ImportedWeapon.value.GameId) : undefined,
     ImportedEchoes.value,
   )
 }

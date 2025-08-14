@@ -7,7 +7,7 @@
         "dev": "turbo run dev",
         "lint": "turbo run lint",
         "check-types": "turbo run check-types",
-        "clean": "rmdir /s /q node_modules",
+        "clean": "rmdir /s /q node_modules"
     },
     "packageManager": "pnpm@10.14.0",
     "devDependencies": {

@@ -1,16 +1,20 @@
 name: Deploy to NuxtHub
-on: push
+on:
+  push:
+    branches: [main, develop, feature/*]
+  pull_request:
+    branches: [main, develop]
+
 
 jobs:
-  deploy:
-    name: "Deploy to NuxtHub"
+  dev-deploy:
+    name: "Deploy Dev Environment"
     runs-on: ubuntu-latest
-    environment:
-      name: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
+    if: github.ref == 'refs/heads/develop'
+    environment: development
     permissions:
       contents: read
       id-token: write
-
     steps:
       - uses: actions/checkout@v4
 
@@ -26,13 +30,121 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
-      - name: Build application
-        run: pnpm build
+      - name: Build application (dev)
+        run: pnpm build --filter=web
+        env:
+          NODE_ENV: development
+          NUXT_PUBLIC_APP_ENV: development
 
-      - name: Deploy to NuxtHub
+      - name: Deploy to NuxtHub (Dev)
         uses: nuxt-hub/action@v1
-        id: deploy
         with:
+          project-key: wuwa-optimizer-wniz-dev
+
+  preview-deploy:
+    name: "Deploy Preview Environment"
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    environment: preview
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.14.0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build application (preview)
+        run: pnpm build --filter=web
+        env:
+          NODE_ENV: preview
+          NUXT_PUBLIC_APP_ENV: preview
+
+      - name: Deploy to NuxtHub (Preview)
+        uses: nuxt-hub/action@v1
+        with:
+          output-directory: ./apps/web/dist
+          project-key: wuwa-optimizer-wniz-preview
+
+  production-deploy:
+    name: "Deploy Production"
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.14.0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build application (production)
+        run: pnpm build --filter=web
+        env:
+          NODE_ENV: production
+          NUXT_PUBLIC_APP_ENV: production
+
+      - name: Deploy to NuxtHub (Production)
+        uses: nuxt-hub/action@v1
+        with:
+          output-directory: ./apps/web/dist
           project-key: wuwa-optimizer-wniz
+
+  cache:
+    name: "Cache Turborepo"
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.14.0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Setup Turborepo
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
+      - name: Build cache
+        run: pnpm build --filter=web --force

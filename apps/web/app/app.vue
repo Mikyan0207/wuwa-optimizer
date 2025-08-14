@@ -8,7 +8,9 @@ useHead({
 
 const UpdaterStore = useUpdaterStore()
 const route = useRoute()
-const { AutoTrackPageView } = useAnalytics()
+const {
+  AutoTrackPageView
+ } = useAnalytics()
 
 watch(() => route.path, () => {
   AutoTrackPageView()

@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "./.nuxt/tsconfig.json",
+    "@wuwa-optimizer/tsconfig-wuwa/nuxt.json"
+  ]
+}

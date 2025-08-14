@@ -1,2 +1,13 @@
+packages:
+  - apps/*
+  - packages/*
+
 onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@tailwindcss/oxide'
+  - esbuild
   - sharp
+  - tesseract.js
+  - unrs-resolver
+  - vue-demi
+  - workerd

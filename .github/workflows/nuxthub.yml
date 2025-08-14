@@ -6,12 +6,18 @@ on:
     branches: [main, develop]
 
 
+env:
+  NODE_VERSION: 24
+  PNPM_VERSION: 10.14.0
+
 jobs:
   dev-deploy:
     name: "Deploy Dev Environment"
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/develop'
-    environment: development
+    environment:
+      name: development
+      url: ${{ steps.dev-deploy.outputs.deployment-url }}
     permissions:
       contents: read
       id-token: write
@@ -21,12 +27,12 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.14.0
+          version: ${{ env.PNPM_VERSION }}
 
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -36,10 +42,10 @@ jobs:
         run: pnpm build --filter @wuwa-optimizer/web
         env:
           NODE_ENV: development
-          NUXT_PUBLIC_APP_ENV: development
 
       - name: Deploy to NuxtHub (Dev)
         uses: nuxt-hub/action@v1
+        id: dev-deploy
         with:
           directory: ./apps/web/dist
           project-key: wuwa-optimizer-wniz
@@ -48,7 +54,9 @@ jobs:
     name: "Deploy Preview Environment"
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
-    environment: preview
+    environment:
+      name: preview
+      url: ${{ steps.preview-deploy.outputs.deployment-url }}
     permissions:
       contents: read
       id-token: write
@@ -58,12 +66,12 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.14.0
+          version: ${{ env.PNPM_VERSION }}
 
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -73,10 +81,10 @@ jobs:
         run: pnpm build --filter @wuwa-optimizer/web
         env:
           NODE_ENV: preview
-          NUXT_PUBLIC_APP_ENV: preview
 
       - name: Deploy to NuxtHub (Preview)
         uses: nuxt-hub/action@v1
+        id: preview-deploy
         with:
           directory: ./apps/web/dist
           project-key: wuwa-optimizer-wniz
@@ -85,7 +93,9 @@ jobs:
     name: "Deploy Production"
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    environment: production
+    environment:
+      name: production
+      url: ${{ steps.production-deploy.outputs.deployment-url }}
     permissions:
       contents: read
       id-token: write
@@ -95,12 +105,12 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.14.0
+          version: ${{ env.PNPM_VERSION }}
 
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -110,10 +120,10 @@ jobs:
         run: pnpm build --filter @wuwa-optimizer/web
         env:
           NODE_ENV: production
-          NUXT_PUBLIC_APP_ENV: production
 
       - name: Deploy to NuxtHub (Production)
         uses: nuxt-hub/action@v1
+        id: production-deploy
         with:
           directory: ./apps/web/dist
           project-key: wuwa-optimizer-wniz
@@ -128,12 +138,12 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.14.0
+          version: ${{ env.PNPM_VERSION }}
 
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
 
       - name: Install dependencies

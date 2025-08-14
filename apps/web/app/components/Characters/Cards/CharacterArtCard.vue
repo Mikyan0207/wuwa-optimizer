@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GetSequenceIcon, GetSplashArt, HasSplashArt } from '~/Core/Utils/CharacterUtils'
+import { GetSequenceIcon, GetSplashArt, HasSplashArt } from "~/Core/Utils/CharacterUtils"
 
 const CurrentCharacterStore = useCurrentCharacterStore()
 
@@ -38,6 +38,7 @@ const { CurrentCharacter } = storeToRefs(CurrentCharacterStore)
             :src="GetSequenceIcon(CurrentCharacter, s)"
             class="w-full h-full object-cover transition-all duration-200"
             :class="{ 'opacity-30': s.Unlocked === false }"
+            :alt="`${CurrentCharacter.Id} - S${index}`"
           />
         </div>
       </div>
@@ -46,6 +47,7 @@ const { CurrentCharacter } = storeToRefs(CurrentCharacterStore)
       v-if="CurrentCharacter && HasSplashArt(CurrentCharacter)"
       :src="`${GetSplashArt(CurrentCharacter)}`"
       class="absolute inset-0 z-10 h-full w-full object-cover"
+      :alt="`${CurrentCharacter.Id} - Splash Art`"
     />
     <USkeleton v-else class="absolute inset-0 z-10 h-full w-full object-cover" />
   </MCard>

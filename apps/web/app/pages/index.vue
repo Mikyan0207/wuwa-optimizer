@@ -38,16 +38,19 @@ function IsCharacterAvailable(character: BaseCharacter) {
 <template>
   <div class="flex flex-col mx-auto gap-2 mb-12 px-8 x:px-0 xl:container">
     <!-- Hero Section -->
-    <UCard
+    <MCard
       v-motion-pop
       :delay="50"
       class="col-span-3"
-      :ui="{
-        root: 'rounded-none rounded-br-xl border-0 relative overflow-clip',
-        body: 'p-0 sm:p-0 h-full',
-      }"
+      :show-border-lines="false"
     >
-      <NuxtImg v-motion-slide-right :delay="200" src="/characters/1506/images/Phoebe_Full_Sprite.webp" class="absolute -top-10 -right-55 object-cover" />
+      <NuxtImg
+        v-motion-slide-right
+        :delay="200"
+        src="/characters/1506/images/Phoebe_Full_Sprite.webp"
+        class="absolute -top-10 -right-55 object-cover"
+        alt="Phoebe - Full Sprite"
+      />
       <div v-motion-slide-top :delay="250" class="flex justify-between gap-6 xl:gap-8 flex-col p-4 h-full">
         <div class="flex flex-col">
           <h1 class="text-xl xl:text-3xl font-semibold tracking-tight text-gold-500">
@@ -92,17 +95,14 @@ function IsCharacterAvailable(character: BaseCharacter) {
           />
         </div>
       </div>
-    </UCard>
+    </MCard>
 
     <div class="grid grid-cols-3 gap-2">
       <!-- Import Section -->
-      <UCard
+      <MCard
         v-motion-pop
         :delay="100"
-        :ui="{
-          root: 'rounded-none rounded-br-xl border-0',
-          body: 'p-4 sm:p-4',
-        }"
+        :show-border-lines="false"
       >
         <div class="flex flex-col gap-4 h-full">
           <div class="flex items-center gap-3">
@@ -110,9 +110,9 @@ function IsCharacterAvailable(character: BaseCharacter) {
               <UIcon name="solar:import-broken" class="w-5 h-5 text-primary-400" />
             </div>
             <div>
-              <h3 class="font-semibold text-gray-100">
+              <h2 class="font-semibold text-gray-100">
                 Auto Import
-              </h3>
+              </h2>
               <p class="text-xs text-gray-400">
                 Scan your characters
               </p>
@@ -148,16 +148,13 @@ function IsCharacterAvailable(character: BaseCharacter) {
             Start Import
           </UButton>
         </div>
-      </UCard>
+      </MCard>
 
       <!-- Characters Section -->
-      <UCard
+      <MCard
         v-motion-pop
         :delay="150"
-        :ui="{
-          root: 'rounded-none rounded-br-xl border-0',
-          body: 'p-4 sm:p-4',
-        }"
+        :show-border-lines="false"
       >
         <div class="flex flex-col gap-4 h-full">
           <div class="flex items-center gap-3">
@@ -165,9 +162,9 @@ function IsCharacterAvailable(character: BaseCharacter) {
               <UIcon name="solar:soundwave-circle-broken" class="w-5 h-5 text-blue-400" />
             </div>
             <div>
-              <h3 class="font-semibold text-gray-100">
+              <h2 class="font-semibold text-gray-100">
                 Character Management
-              </h3>
+              </h2>
               <p class="text-xs text-gray-400">
                 Optimize your builds
               </p>
@@ -203,16 +200,13 @@ function IsCharacterAvailable(character: BaseCharacter) {
             View Characters
           </UButton>
         </div>
-      </UCard>
+      </MCard>
 
       <!-- Echoes Section -->
-      <UCard
+      <MCard
         v-motion-pop
         :delay="200"
-        :ui="{
-          root: 'rounded-none rounded-br-xl border-0',
-          body: 'p-4 sm:p-4',
-        }"
+        :show-border-lines="false"
       >
         <div class="flex flex-col gap-4 h-full">
           <div class="flex items-center gap-3">
@@ -220,9 +214,9 @@ function IsCharacterAvailable(character: BaseCharacter) {
               <UIcon name="game-icons:squid-head" class="w-5 h-5 text-emerald-400" />
             </div>
             <div>
-              <h3 class="font-semibold text-gray-100">
+              <h2 class="font-semibold text-gray-100">
                 Echo Management
-              </h3>
+              </h2>
               <p class="text-xs text-gray-400">
                 Analyze your collection
               </p>
@@ -258,30 +252,24 @@ function IsCharacterAvailable(character: BaseCharacter) {
             View Echoes
           </UButton>
         </div>
-      </UCard>
+      </MCard>
     </div>
     <!-- Character Banners Timeline -->
-    <UCard
+    <MCard
       v-motion-pop
       class="col-span-6"
       :delay="250"
-      :ui="{
-        root: 'rounded-none rounded-br-xl border-0 h-full relative',
-        body: 'p-4 sm:p-4 h-full',
-      }"
+      :show-border-lines="false"
     >
       <EventTimeline />
-    </UCard>
+    </MCard>
 
     <!-- Scoring System Section -->
-    <UCard
+    <MCard
       v-motion-pop
       class="col-span-6"
       :delay="300"
-      :ui="{
-        root: 'rounded-none rounded-br-xl border-0',
-        body: 'p-4 sm:p-4',
-      }"
+      :show-border-lines="false"
     >
       <div class="flex flex-col gap-4">
         <div class="flex items-center gap-3">
@@ -290,9 +278,9 @@ function IsCharacterAvailable(character: BaseCharacter) {
           </div>
           <div class="flex items-center gap-3">
             <div>
-              <h3 class="font-semibold text-gray-100">
+              <h2 class="font-semibold text-gray-100">
                 Scoring System
-              </h3>
+              </h2>
               <p class="text-xs text-gray-400">
                 Character-specific evaluation
               </p>
@@ -312,10 +300,11 @@ function IsCharacterAvailable(character: BaseCharacter) {
 
         <NuxtImg
           v-motion-pop
-          src="/images/wuwa-optimizer-showcase-01.png"
+          src="/images/wuwa-optimizer-showcase-01.webp"
           class="w-full mx-auto rounded-br-xl"
+          alt="Scoring System Showcase"
         />
       </div>
-    </UCard>
+    </MCard>
   </div>
 </template>

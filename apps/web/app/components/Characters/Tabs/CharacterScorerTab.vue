@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type Echo from '~/Core/Interfaces/Echo'
-import VueDraggable from 'vuedraggable'
-import { useScreenshot } from '~/composables/core/UseScreenshot'
-import { GetCharacterBackground } from '~/Core/Utils/CharacterUtils'
+import type Echo from "~/Core/Interfaces/Echo"
+import VueDraggable from "vuedraggable"
+import { useScreenshot } from "~/composables/core/UseScreenshot"
+import { GetCharacterBackground } from "~/Core/Utils/CharacterUtils"
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 const ShowScreenShotBackground = ref<boolean>(false)
@@ -48,7 +48,11 @@ function OnTakeScreenShotClicked() {
       <div ref="CharacterInfoRef" class="relative p-0.25">
         <div v-if="ShowScreenShotBackground" class="absolute inset-0 blur-sm">
           <div class="absolute -top-5 -left-5 -right-5 -bottom-5 bg-neutral-900/75" />
-          <NuxtImg :src="GetCharacterBackground(CurrentCharacter)" class="h-full w-full object-cover" />
+          <NuxtImg
+            :src="GetCharacterBackground(CurrentCharacter)"
+            class="h-full w-full object-cover"
+            :alt="`${Id} - Background`"
+          />
         </div>
 
         <!-- Main Layout Grid -->

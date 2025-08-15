@@ -47,7 +47,7 @@ export async function useEchoesStatsScanner() {
   }
 
   function GetStatistic(name: string, value: string, echoCost: EchoCost, isMainStat: boolean = false) {
-    let statType = GetStatTypeFromName(name || StatType.NONE)
+    let statType = GetStatTypeFromName(name || StatType.NONE, isMainStat)
 
     if (statType === StatType.NONE) {
       return {
@@ -88,7 +88,7 @@ export async function useEchoesStatsScanner() {
     }
   }
 
-  function GetStatTypeFromName(name: string) {
+  function GetStatTypeFromName(name: string, isMainStat: boolean = false) {
     const lowerCaseName = name.toLocaleLowerCase()
 
     for (const [key, value] of Object.entries(STAT_NAMES)) {
@@ -116,7 +116,10 @@ export async function useEchoesStatsScanner() {
         return key as StatType
       }
 
-      if (distance <= 2) {
+      if (distance <= 1 && isMainStat) {
+        return key as StatType
+      }
+      if (distance <= 2 && !isMainStat) {
         return key as StatType
       }
     }

@@ -3892,6 +3892,11 @@ export const Xiangli_Yao: BaseCharacter = {
   Rarity: Rarity.FIVE_STARS,
   Icon: "Xiangli_Yao_Icon.webp",
   SplashArt: "Xiangli_Yao_Portrait.webp",
+  AnimatedArt: {
+    Skeleton: "xiangliyao.skel",
+    Atlas: "xiangliyao.atlas",
+    Scale: 1.75,
+  },
   WeaponType: WeaponType.GAUNTLETS,
   Type: CharacterType.ELECTRO,
   BaseStats: [
@@ -4124,6 +4129,75 @@ export const Xiangli_Yao: BaseCharacter = {
     [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
     [StatType.ELECTRO_DMG_BONUS]: 1.0,
   },
+}
+
+// 1306
+export const Augusta: BaseCharacter = {
+  Id: 1306,
+  Rarity: Rarity.FIVE_STARS,
+  ReleaseState: ReleaseState.UPCOMING,
+  Icon: "Augusta_Icon.webp",
+  SplashArt: "Augusta_Portrait.webp",
+  AnimatedArt: {
+    Skeleton: "aogusita.skel",
+    Atlas: "aogusita.atlas",
+    OffsetX: 50,
+  },
+  WeaponType: WeaponType.BROADBLADE,
+  Type: CharacterType.ELECTRO,
+  BaseStats: [
+    {
+      Value: 10300.0,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1112.2202,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 462.5,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.ELECTRO_DMG_BONUS,
+    },
+  ],
+  BaseSequences: [],
+  BaseSkills: [],
+  BaseStatsWeights: {},
 }
 
 // 1402
@@ -5811,6 +5885,75 @@ export const Cartethyia: BaseCharacter = {
     [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
     [StatType.AERO_DMG_BONUS]: 1.0,
   },
+}
+
+// 1410
+export const Iuno: BaseCharacter = {
+  Id: 1410,
+  Rarity: Rarity.FIVE_STARS,
+  ReleaseState: ReleaseState.UPCOMING,
+  Icon: "Iuno_Icon.webp",
+  SplashArt: "Iuno_Portrait.webp",
+  AnimatedArt: {
+    Skeleton: "younuo.skel",
+    Atlas: "younuo.atlas",
+    OffsetY: 100,
+  },
+  WeaponType: WeaponType.GAUNTLETS,
+  Type: CharacterType.AERO,
+  BaseStats: [
+    {
+      Value: 10525.0,
+      Type: StatType.HP,
+    },
+    {
+      Value: 1124.4424,
+      Type: StatType.DEF,
+    },
+    {
+      Value: 450.0,
+      Type: StatType.ATTACK,
+    },
+    {
+      Value: 5,
+      Type: StatType.CRIT_RATE,
+    },
+    {
+      Value: 150,
+      Type: StatType.CRIT_DMG,
+    },
+    {
+      Value: 100,
+      Type: StatType.ENERGY_REGENERATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEALING_BONUS,
+    },
+    {
+      Value: 0,
+      Type: StatType.BASIC_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.HEAVY_ATTACK_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_SKILL_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION,
+    },
+    {
+      Value: 0,
+      Type: StatType.AERO_DMG_BONUS,
+    },
+  ],
+  BaseSequences: [],
+  BaseSkills: [],
+  BaseStatsWeights: {},
 }
 
 // 1502
@@ -8955,45 +9098,6 @@ export const Phrolova: BaseCharacter = {
     [StatType.RESONANCE_LIBERATION_DMG_AMPLIFICATION]: 0.6,
     [StatType.RESONANCE_SKILL_DMG_AMPLIFICATION]: 0,
     [StatType.HAVOC_DMG_BONUS]: 1.0,
-  },
-}
-
-// 9901
-export const Augusta: BaseCharacter = {
-  Id: 9901,
-  Rarity: Rarity.FIVE_STARS,
-  ReleaseState: ReleaseState.UPCOMING,
-  Icon: "Augusta_Icon.webp",
-  SplashArt: "Augusta_Portrait.webp",
-  WeaponType: WeaponType.BROADBLADE,
-  Type: CharacterType.ELECTRO,
-  BaseStats: [
-  ],
-  BaseSequences: [
-  ],
-  BaseSkills: [
-
-  ],
-  BaseStatsWeights: {
-  },
-}
-
-// 9902
-export const Iuno: BaseCharacter = {
-  Id: 9902,
-  Rarity: Rarity.FIVE_STARS,
-  ReleaseState: ReleaseState.UPCOMING,
-  Icon: "Iuno_Icon.webp",
-  SplashArt: "Iuno_Portrait.webp",
-  WeaponType: WeaponType.GAUNTLETS,
-  Type: CharacterType.AERO,
-  BaseStats: [
-  ],
-  BaseSequences: [
-  ],
-  BaseSkills: [
-  ],
-  BaseStatsWeights: {
   },
 }
 

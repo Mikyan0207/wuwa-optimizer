@@ -66,7 +66,7 @@ function IsCharacterAvailable(character: BaseCharacter) {
             :key="c.Id"
             v-motion-pop
             :delay="250"
-            :character="c as Character"
+            :character="(c as Character)"
             :class="{ 'cursor-pointer': IsCharacterAvailable(c) }"
             @click.prevent="IsCharacterAvailable(c) ? OnCharacterClicked(c.Id) : null"
           />
@@ -74,7 +74,7 @@ function IsCharacterAvailable(character: BaseCharacter) {
             v-for="w in AddedWeapons"
             :key="w.GameId"
             v-motion-pop
-            :weapon="w as Weapon"
+            :weapon="(w as Weapon)"
             class="cursor-default"
           />
           <MCharacterIcon
@@ -82,7 +82,7 @@ function IsCharacterAvailable(character: BaseCharacter) {
             :key="c.Id"
             v-motion-pop
             :delay="250"
-            :character="c as Character"
+            :character="(c as Character)"
             :class="{ 'cursor-pointer': IsCharacterAvailable(c) }"
             @click.prevent="IsCharacterAvailable(c) ? OnCharacterClicked(c.Id) : null"
           />
@@ -90,7 +90,7 @@ function IsCharacterAvailable(character: BaseCharacter) {
             v-for="w in UpcomingWeapons"
             :key="w.GameId"
             v-motion-pop
-            :weapon="w as Weapon"
+            :weapon="(w as Weapon)"
             class="cursor-default"
           />
         </div>

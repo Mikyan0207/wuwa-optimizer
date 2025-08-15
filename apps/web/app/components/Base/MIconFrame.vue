@@ -34,18 +34,6 @@ const SizeClasses = computed(() => {
   }
 })
 
-const CardClasses = computed(() => ({
-  "group relative transition-all duration-100": true,
-  "cursor-pointer": props.clickable,
-  "select-none": true,
-  "hover:scale-105": props.clickable && props.animated,
-}))
-
-const ContainerClasses = computed(() => ({
-  "relative flex items-center justify-center overflow-clip": true,
-  [SizeClasses.value]: true,
-}))
-
 const DefaultBackground = computed(() => props.background || "bg-neutral-800")
 const DefaultSecondary = computed(() => props.secondary || "bg-neutral-700")
 const DefaultHighlight = computed(() => props.highlight || "bg-neutral-600")
@@ -53,10 +41,10 @@ const DefaultHighlight = computed(() => props.highlight || "bg-neutral-600")
 
 <template>
   <MCard
-    :class="CardClasses"
     padding="none"
+    class="group relative select-none transition-all duration-100"
   >
-    <div :class="ContainerClasses">
+    <div class="relative flex items-center justify-center overflow-clip" :class="[SizeClasses]">
       <!-- Status Badge (NEW, UPCOMING, etc.) -->
       <div v-if="showStatusBadge && releaseStatus" class="absolute left-1 top-0 z-2">
         <UBadge

@@ -1,46 +1,46 @@
 <script setup lang="ts">
-import type { NavigationMenuItem } from '@nuxt/ui'
+import type { NavigationMenuItem } from "@nuxt/ui"
 
 const IsSettingsOpen = ref(false)
 
 const SectionItems = ref<NavigationMenuItem[][]>([
   [{
-    label: 'Home',
-    icon: 'solar:home-smile-broken',
-    type: 'link',
-    to: '/',
+    label: "Home",
+    icon: "solar:home-smile-broken",
+    type: "link",
+    to: "/",
   }],
   [{
-    label: 'Characters',
-    icon: 'solar:soundwave-circle-broken',
-    type: 'link',
-    to: '/characters',
+    label: "Characters",
+    icon: "solar:soundwave-circle-broken",
+    type: "link",
+    to: "/characters",
   }, {
-    label: 'Weapons',
-    icon: 'material-symbols:swords-outline-rounded',
-    type: 'link',
-    to: '/weapons',
+    label: "Weapons",
+    icon: "material-symbols:swords-outline-rounded",
+    type: "link",
+    to: "/weapons",
   }, {
-    label: 'Echoes',
-    icon: 'game-icons:squid-head',
-    type: 'link',
-    to: '/echoes',
+    label: "Echoes",
+    icon: "game-icons:squid-head",
+    type: "link",
+    to: "/echoes",
   }],
   [{
-    label: 'Import',
-    icon: 'solar:import-broken',
-    type: 'link',
-    to: '/imports',
+    label: "Import",
+    icon: "solar:import-broken",
+    type: "link",
+    to: "/imports",
   }],
 
 ])
 
 const BottomSectionItems = ref<NavigationMenuItem[][]>([
   [{
-    label: 'Roadmap',
-    icon: 'solar:map-broken',
-    type: 'link',
-    to: '/roadmap',
+    label: "Roadmap",
+    icon: "solar:map-broken",
+    type: "link",
+    to: "/roadmap",
   }],
 ])
 
@@ -71,12 +71,21 @@ function OpenSettings() {
         :tooltip="true"
         class="w-min mx-auto"
       />
-      <div
-        class="w-min mx-auto hover:text-primary-400 cursor-pointer"
-        @click="OpenSettings"
+      <UTooltip
+        text="Settings"
+        :content="{
+          align: 'end',
+          side: 'right',
+          sideOffset: 8,
+        }"
       >
-        <MIcon name="solar:settings-broken" class="w-5 h-5" />
-      </div>
+        <div
+          class="w-min mx-auto hover:text-neutral-100 text-neutral-500 cursor-pointer"
+          @click="OpenSettings"
+        >
+          <MIcon name="solar:settings-broken" class="w-5 h-5" />
+        </div>
+      </UTooltip>
     </div>
 
     <!-- Settings Slideover -->

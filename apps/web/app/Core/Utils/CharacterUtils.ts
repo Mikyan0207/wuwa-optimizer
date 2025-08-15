@@ -1,16 +1,16 @@
-import type Character from '../Interfaces/Character'
-import type { AnimatedArt } from '../Interfaces/Character'
-import type Sequence from '../Interfaces/Sequence'
-import { CharacterType } from '../Enums/CharacterType'
-import { Rarity } from '../Enums/Rarity'
-import { WeaponType } from '../Enums/WeaponType'
+import type Character from "../Interfaces/Character"
+import type { AnimatedArt } from "../Interfaces/Character"
+import type Sequence from "../Interfaces/Sequence"
+import { CharacterType } from "../Enums/CharacterType"
+import { Rarity } from "../Enums/Rarity"
+import { WeaponType } from "../Enums/WeaponType"
 
 export function GetCharacterIcon(character: Character) {
   return `/characters/${character.Id}/images/${character.Icon}`
 }
 
 export function GetRarityIcon(character: Character) {
-  const basePath = '/images/icons/'
+  const basePath = "/images/icons/"
 
   switch (character.Rarity) {
     case Rarity.FIVE_STARS:
@@ -25,7 +25,7 @@ export function GetRarityIcon(character: Character) {
 }
 
 export function GetCharacterWeaponTypeIcon(character: Character) {
-  const basePath = '/images/icons/'
+  const basePath = "/images/icons/"
 
   switch (character.WeaponType) {
     case WeaponType.PISTOLS:
@@ -45,12 +45,15 @@ export function GetSequenceLevel(character: Character) {
   return character.Sequences.filter(s => s.Unlocked === true).length ?? 0
 }
 
+// TODO: Use a unified sequence icon path, only based on the character id.
+// We don't need to save a sequence icon, we can just use the index: `Sequence_Node_01.webp` etc.
 export function GetSequenceIcon(character: Character, sequence: Sequence) {
+  // return `/characters/${character.Id}/images/Sequence_Node_${index.toString().padStart(2, "0")}.webp`
   return `/characters/${character.Id}/images/${sequence.Icon}`
 }
 
 export function GetCharacterTypeIcon(character: Character) {
-  const basePath = '/images/icons/'
+  const basePath = "/images/icons/"
 
   switch (character.Type) {
     case CharacterType.GLACIO:
@@ -66,12 +69,13 @@ export function GetCharacterTypeIcon(character: Character) {
     case CharacterType.ELECTRO:
       return `${basePath}Electro.webp`
     default:
-      return 'None'
+      return "None"
   }
 }
 
+// TODO: Use a unified splash art path, only based on the character id.
 export function GetSplashArt(character: Character) {
-  return `/characters/${character.Id}/images/${character.SplashArt.replace('.webp', '')}.webp`
+  return `/characters/${character.Id}/images/${character.SplashArt.replace(".webp", "")}.webp`
 }
 
 export function HasSplashArt(character: Character) {

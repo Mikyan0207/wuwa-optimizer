@@ -3645,6 +3645,13 @@ export const Jinhsi: BaseCharacter = {
   Rarity: Rarity.FIVE_STARS,
   Icon: "Jinhsi_Icon.webp",
   SplashArt: "Jinhsi_Portrait.webp",
+  AnimatedArt: {
+    Skeleton: "jinxi.skel",
+    Atlas: "jinxi.atlas",
+    OffsetY: 475,
+    OffsetX: 10,
+    Scale: 1.95,
+  },
   WeaponType: WeaponType.BROADBLADE,
   Type: CharacterType.SPECTRO,
   BaseStats: [

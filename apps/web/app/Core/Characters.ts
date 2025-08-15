@@ -3160,6 +3160,11 @@ export const Yinlin: BaseCharacter = {
   Rarity: Rarity.FIVE_STARS,
   Icon: "Yinlin_Icon.webp",
   SplashArt: "Yinlin_Portrait.webp",
+  AnimatedArt: {
+    Skeleton: "yinlin.skel",
+    Atlas: "yinlin.atlas",
+    OffsetY: 100,
+  },
   WeaponType: WeaponType.RECTIFIER,
   Type: CharacterType.ELECTRO,
   BaseStats: [

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type Character from '~/Core/Interfaces/Character'
-import { useGameIcon } from '~/composables/core/UseGameIcon'
-import { useRarityEffects } from '~/composables/core/UseRarityEffects'
-import { ReleaseState } from '~/Core/Enums/ReleaseState'
+import type Character from "~/Core/Interfaces/Character"
+import { useGameIcon } from "~/composables/core/UseGameIcon"
+import { useRarityEffects } from "~/composables/core/UseRarityEffects"
+import { ReleaseState } from "~/Core/Enums/ReleaseState"
 
 interface CharacterIconProps {
   character: Character

@@ -1,20 +1,20 @@
-import type Statistic from '~/Core/Interfaces/Statistic'
-import type { Rectangle } from '~/Core/Scanner/Rectangle'
-import Tesseract from 'tesseract.js'
-import { EchoCost } from '~/Core/Enums/EchoCost'
-import { StatType } from '~/Core/Enums/StatType'
-import { ECHO_REGIONS } from '~/Core/Scanner/Regions'
-import { FOUR_COST_MAIN_STATS_VALUES, ONE_COST_MAIN_STATS_VALUES, STAT_NAMES, SUB_STAT_VALUES, THREE_COST_MAIN_STATS_VALUES } from '~/Core/Statistics'
-import { IsFloatingPointNumber } from '~/Core/Utils/NumberUtils'
-import { GetSecondaryStat } from '~/Core/Utils/StatsUtils'
-import { LevenshteinDistance } from '~/Core/Utils/StringUtils'
+import type Statistic from "~/Core/Interfaces/Statistic"
+import type { Rectangle } from "~/Core/Scanner/Rectangle"
+import Tesseract from "tesseract.js"
+import { EchoCost } from "~/Core/Enums/EchoCost"
+import { StatType } from "~/Core/Enums/StatType"
+import { ECHO_REGIONS } from "~/Core/Scanner/Regions"
+import { FOUR_COST_MAIN_STATS_VALUES, ONE_COST_MAIN_STATS_VALUES, STAT_NAMES, SUB_STAT_VALUES, THREE_COST_MAIN_STATS_VALUES } from "~/Core/Statistics"
+import { IsFloatingPointNumber } from "~/Core/Utils/NumberUtils"
+import { GetSecondaryStat } from "~/Core/Utils/StatsUtils"
+import { LevenshteinDistance } from "~/Core/Utils/StringUtils"
 
 export async function useEchoesStatsScanner() {
   const BaseContext = ref<CanvasRenderingContext2D | null>(null)
   let TesseractWorker: Tesseract.Worker | undefined
 
   async function LoadAsync() {
-    TesseractWorker = await Tesseract.createWorker('eng', 1)
+    TesseractWorker = await Tesseract.createWorker("eng", 1)
   }
 
   function SetContext(context: CanvasRenderingContext2D | null) {
@@ -47,7 +47,7 @@ export async function useEchoesStatsScanner() {
   }
 
   function GetStatistic(name: string, value: string, echoCost: EchoCost, isMainStat: boolean = false) {
-    let statType = GetStatTypeFromName(name || StatType.NONE)
+    let statType = GetStatTypeFromName(name || StatType.NONE, isMainStat)
 
     if (statType === StatType.NONE) {
       return {
@@ -68,7 +68,7 @@ export async function useEchoesStatsScanner() {
     if ((IsFloatingPointNumber(statValue) || isMainStat) && statType === StatType.HP) {
       statType = StatType.HP_PERCENTAGE
     }
-    else if ((IsFloatingPointNumber(statValue) || isMainStat || value.includes('%')) && statType === StatType.DEF) {
+    else if ((IsFloatingPointNumber(statValue) || isMainStat || value.includes("%")) && statType === StatType.DEF) {
       statType = StatType.DEF_PERCENTAGE
     }
     else if ((IsFloatingPointNumber(statValue) || isMainStat) && statType === StatType.ATTACK) {
@@ -88,27 +88,27 @@ export async function useEchoesStatsScanner() {
     }
   }
 
-  function GetStatTypeFromName(name: string) {
+  function GetStatTypeFromName(name: string, isMainStat: boolean = false) {
     const lowerCaseName = name.toLocaleLowerCase()
 
     for (const [key, value] of Object.entries(STAT_NAMES)) {
       const lowerCaseValue = value.toLowerCase()
 
       // If HP is on the first line, its detected as 1???
-      if (lowerCaseName === 'hp' || lowerCaseName === '1') {
+      if (lowerCaseName === "hp" || lowerCaseName === "1") {
         return StatType.HP
       }
 
-      const isResonanceSkill = lowerCaseName.includes('resonance') && lowerCaseName.includes('skill')
-      const isResonanceLib = lowerCaseName.includes('resonance') && lowerCaseName.includes('liberation')
-      const isBasicOrHeavy = lowerCaseName.startsWith('basic') || lowerCaseName.startsWith('heavy')
+      const isResonanceSkill = lowerCaseName.includes("resonance") && lowerCaseName.includes("skill")
+      const isResonanceLib = lowerCaseName.includes("resonance") && lowerCaseName.includes("liberation")
+      const isBasicOrHeavy = lowerCaseName.startsWith("basic") || lowerCaseName.startsWith("heavy")
       const distance = LevenshteinDistance(lowerCaseValue, lowerCaseName)
 
-      if (isResonanceLib && lowerCaseValue.includes('lib')) {
+      if (isResonanceLib && lowerCaseValue.includes("lib")) {
         return key as StatType
       }
 
-      if (isResonanceSkill && lowerCaseValue.includes('skill')) {
+      if (isResonanceSkill && lowerCaseValue.includes("skill")) {
         return key as StatType
       }
 
@@ -116,7 +116,10 @@ export async function useEchoesStatsScanner() {
         return key as StatType
       }
 
-      if (distance <= 2) {
+      if (distance <= 1 && isMainStat) {
+        return key as StatType
+      }
+      if (distance <= 2 && !isMainStat) {
         return key as StatType
       }
     }
@@ -164,16 +167,16 @@ export async function useEchoesStatsScanner() {
 
     const trimmed = GetFilteredText(text, /\d/g).trim()
 
-    if (trimmed === '4')
+    if (trimmed === "4")
       return EchoCost.FOUR_COST
-    if (trimmed === '3')
+    if (trimmed === "3")
       return EchoCost.THREE_COST
 
     return EchoCost.ONE_COST
   }
 
   function GetRegion(rect: Rectangle) {
-    const temp = document.createElement('canvas')
+    const temp = document.createElement("canvas")
 
     temp.width = rect.Width
     temp.height = rect.Height
@@ -184,14 +187,14 @@ export async function useEchoesStatsScanner() {
   }
 
   function DrawOnCanvasFromRegion(canvas: HTMLCanvasElement, data: ImageData) {
-    const refCtx = canvas.getContext('2d', { willReadFrequently: true })!
+    const refCtx = canvas.getContext("2d", { willReadFrequently: true })!
     refCtx.clearRect(0, 0, canvas.width, canvas.height)
     refCtx.putImageData(data, 0, 0)
   }
 
   async function GetText(canvas: HTMLCanvasElement) {
     if (TesseractWorker === undefined) {
-      return ''
+      return ""
     }
 
     const { data } = await TesseractWorker.recognize(canvas)
@@ -202,7 +205,7 @@ export async function useEchoesStatsScanner() {
     const match = text.match(filter)
 
     if (match) {
-      return match[0] || ''
+      return match[0] || ""
     }
 
     return text

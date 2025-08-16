@@ -16,7 +16,7 @@ const CurrentCharacterStore = useCurrentCharacterStore()
 
 const { CurrentWeapon, CurrentBuild, CurrentEchoes } = storeToRefs(CurrentCharacterStore)
 
-const { TakeScreenShotAsync } = useScreenshot(CharacterInfoRef)
+// const { TakeScreenShotAsync } = useScreenshot(CharacterInfoRef)
 
 const Id = computed<number>(() => Number.parseInt((Route.params as { id: string }).id))
 
@@ -48,13 +48,13 @@ const DraggableEchoes = computed({
 })
 
 function OnTakeScreenShotClicked() {
-  TakeScreenShotAsync(() => {
-    ForceStaticArt.value = true
-    ShowScreenShotBackground.value = true
-  }, () => {
-    ShowScreenShotBackground.value = false
-    ForceStaticArt.value = false
-  })
+//   TakeScreenShotAsync(() => {
+//     ForceStaticArt.value = true
+//     ShowScreenShotBackground.value = true
+//   }, () => {
+//     ShowScreenShotBackground.value = false
+//     ForceStaticArt.value = false
+//   })
 }
 </script>
 

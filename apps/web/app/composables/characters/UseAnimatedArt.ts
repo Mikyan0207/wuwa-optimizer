@@ -1,5 +1,9 @@
+/* eslint-disable perfectionist/sort-imports */
+/* eslint-disable import/no-duplicates */
+
+import "pixi-spine"
+
 import type Character from "~/Core/Interfaces/Character"
-import { Loader } from "@pixi/loaders"
 import { Spine } from "pixi-spine"
 import * as PIXI from "pixi.js"
 import { GetCharacterAnimatedArt, HasAnimatedArt } from "~/Core/Utils/CharacterUtils"
@@ -10,7 +14,6 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
 
   const CanvasRef = computed(() => toValue(canvasRef))
   const App = ref<PIXI.Application | undefined>(undefined)
-  const LoaderInstance = ref<Loader>()
   const SpineAnimation = ref<Spine>()
   const IsSpineLoaded = ref(false)
 
@@ -43,17 +46,14 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
     }
   }
 
-  function LoadSpineModel() {
+  async function LoadSpineModel() {
     if (!App.value || !CurrentCharacter.value || import.meta.server)
       return
 
     if (!AnimatedArt.value)
       return
 
-    if (!LoaderInstance.value)
-      LoaderInstance.value = new Loader()
-
-    const cachedResource = LoaderInstance.value.resources[`${CurrentCharacter.value.Id}`]
+    const cachedResource = PIXI.Assets.cache.get(`${CurrentCharacter.value.Id}`)
 
     if (cachedResource && cachedResource.spineData) {
       SpineAnimation.value = new Spine(cachedResource.spineData)
@@ -70,31 +70,25 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
       return
     }
 
-    LoaderInstance
-      .value
-      .add(`${CurrentCharacter.value.Id}`, AnimatedArt.value.Skeleton, {
-        metadata: {
-          spineAtlasFile: AnimatedArt.value.Atlas,
-        },
-      })
-      .load((_, resources) => {
-        if (!CurrentCharacter.value)
-          return
+    await PIXI.Assets.load(AnimatedArt.value.Atlas)
+    await PIXI.Assets.load(AnimatedArt.value.Skeleton)
 
-        const resource = resources[`${CurrentCharacter.value.Id}`]
-        if (resource && resource.spineData) {
-          SpineAnimation.value = new Spine(resource.spineData)
+    if (!CurrentCharacter.value)
+      return
 
-          AdjustSpineToContainer(AnimatedArt.value!.OffsetX ?? 0, AnimatedArt.value!.OffsetY ?? 0)
+    const resource = PIXI.Assets.get(AnimatedArt.value.Skeleton)
+    if (resource && resource.spineData) {
+      SpineAnimation.value = new Spine(resource.spineData)
 
-          if (SpineAnimation.value.state.hasAnimation("idle")) {
-            SpineAnimation.value.state.setAnimation(0, "idle", true)
-          }
+      AdjustSpineToContainer(AnimatedArt.value!.OffsetX ?? 0, AnimatedArt.value!.OffsetY ?? 0)
 
-          App.value!.stage.addChild(SpineAnimation.value)
-          IsSpineLoaded.value = true
-        }
-      })
+      if (SpineAnimation.value.state.hasAnimation("idle")) {
+        SpineAnimation.value.state.setAnimation(0, "idle", true)
+      }
+
+      App.value!.stage.addChild(SpineAnimation.value)
+      IsSpineLoaded.value = true
+    }
   }
 
   function AdjustSpineToContainer(offsetX: number, offsetY: number) {

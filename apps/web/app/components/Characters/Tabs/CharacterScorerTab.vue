@@ -27,11 +27,11 @@ const { data: CurrentCharacter, error, pending } = useAsyncData(
       return CurrentCharacterStore.GetAsync(Id.value)
     } catch (err) {
       console.error('Failed to fetch character:', err)
-      return undefined
+      return null
     }
   },
   {
-    default: () => undefined,
+    default: () => null,
     server: false,
     lazy: true,
   }
@@ -59,7 +59,7 @@ function OnTakeScreenShotClicked() {
 </script>
 
 <template>
-  <div v-if="!pending && CurrentCharacter !== undefined">
+  <div v-if="!pending && CurrentCharacter">
     <div class="mb-14 xl:mb-4 mt-2 relative mx-auto my-2">
       <div ref="CharacterInfoRef" class="relative p-0.25">
         <div v-if="ShowScreenShotBackground" class="absolute inset-0 blur-sm">

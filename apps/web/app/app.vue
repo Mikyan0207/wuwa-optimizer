@@ -23,9 +23,11 @@ onMounted(() => {
 
 <template>
   <UApp>
-    <NuxtLayout class="min-h-screen">
-      <NuxtPage />
-    </NuxtLayout>
+    <Suspense>
+      <NuxtLayout class="min-h-screen">
+        <NuxtPage />
+      </NuxtLayout>
+    </Suspense>
   </UApp>
 </template>
 

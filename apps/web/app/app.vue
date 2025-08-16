@@ -8,17 +8,23 @@ useHead({
 
 const UpdaterStore = useUpdaterStore()
 const route = useRoute()
+
 const {
   AutoTrackPageView
  } = useAnalytics()
 
 watch(() => route.path, () => {
   AutoTrackPageView()
-}, { immediate: true })
+})
 
 onMounted(() => {
+  if (import.meta.server) {
+    return
+  }
+
   UpdaterStore.Migrate()
 })
+
 </script>
 
 <template>

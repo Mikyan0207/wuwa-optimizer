@@ -31,7 +31,7 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
   const HasBuild = computed(() => CurrentBuild.value !== undefined)
   const HasWeapon = computed(() => CurrentWeapon.value !== undefined)
 
-  function GetAsync(characterId: number): Character | undefined {
+  function Get(characterId: number): Character | undefined {
     Reset()
     CharacterId.value = characterId
 
@@ -229,7 +229,7 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
     HasBuild,
     HasWeapon,
 
-    GetAsync,
+    Get,
     LoadCharacter,
     UpdateEcho,
     ReorderEchoes,

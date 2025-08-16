@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useAnimatedArt } from '~/composables/characters/UseAnimatedArt'
-import { GetSequenceIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
+import { useAnimatedArt } from "~/composables/characters/UseAnimatedArt"
+import { GetSequenceIcon, GetSplashArt } from "~/Core/Utils/CharacterUtils"
 
 const CanvasRef = ref<HTMLCanvasElement>()
 
@@ -13,13 +13,13 @@ const { Initialize, LoadSpineModel, IsSpineLoaded } = useAnimatedArt(CurrentChar
 const ShowOverlay = ref(true)
 
 onMounted(() => {
-  nextTick(() => {
-    setTimeout(() => {
-      Initialize()
-      LoadSpineModel()
-    }, 2500)
-  })
-})
+  if (import.meta.server) {
+      return
+  }
+
+  Initialize()
+  LoadSpineModel()
+}, await nextTick())
 </script>
 
 <template>

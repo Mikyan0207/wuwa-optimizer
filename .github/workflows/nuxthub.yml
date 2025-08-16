@@ -1,10 +1,7 @@
 name: Deploy to NuxtHub
 on:
-  push:
-    branches: [main, develop, feature/*, fix/*]
   pull_request:
     branches: [main, develop]
-
 
 env:
   NODE_VERSION: 24
@@ -48,7 +45,6 @@ jobs:
         id: dev-deploy
         with:
           directory: ./apps/web/dist
-          project-key: wuwa-optimizer-wniz
 
   preview-deploy:
     name: "Deploy Preview Environment"
@@ -87,7 +83,6 @@ jobs:
         id: preview-deploy
         with:
           directory: ./apps/web/dist
-          project-key: wuwa-optimizer-wniz
 
   production-deploy:
     name: "Deploy Production"
@@ -126,7 +121,6 @@ jobs:
         id: production-deploy
         with:
           directory: ./apps/web/dist
-          project-key: wuwa-optimizer-wniz
 
   cache:
     name: "Cache Turborepo"

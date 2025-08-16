@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type Build from '~/Core/Interfaces/Build'
 import type { BuildWithDependencies } from '~/Core/Interfaces/Build'
-import VueDraggable from 'vuedraggable'
+// import VueDraggable from 'vuedraggable'
 
 const CurrentCharacterStore = useCurrentCharacterStore()
 
@@ -88,7 +88,7 @@ function HandleEditingChange(isEditing: boolean) {
         </h3>
       </div>
       <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <VueDraggable
+        <!-- <VueDraggable
           v-model="DraggableBuilds"
           :animation="200"
           ghost-class="opacity-65"
@@ -108,7 +108,7 @@ function HandleEditingChange(isEditing: boolean) {
               @editing-change="HandleEditingChange"
             />
           </template>
-        </VueDraggable>
+        </VueDraggable> -->
       </div>
     </div>
   </div>

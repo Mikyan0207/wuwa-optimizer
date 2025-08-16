@@ -70,13 +70,13 @@ function OnTakeScreenShotClicked() {
         <!-- Main Layout Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-1 auto-rows-auto">
           <!-- Character Art Card -->
-          <CharacterAnimatedArtCard
+          <!-- <CharacterAnimatedArtCard
             v-if="CurrentCharacter && !ForceStaticArt && SettingsStore.GetSetting('Characters').EnableAnimatedArt && HasAnimatedArt(CurrentCharacter)"
             :character="CurrentCharacter"
             class="md:col-span-1 xl:col-span-2"
-          />
+          /> -->
           <CharacterArtCard
-            v-else
+            v-if="CurrentCharacter"
             :character="CurrentCharacter"
             class="md:col-span-1 xl:col-span-2"
           />

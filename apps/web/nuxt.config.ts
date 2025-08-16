@@ -144,8 +144,7 @@ export default defineNuxtConfig({
   },
 
   gtag: {
-    // eslint-disable-next-line node/prefer-global/process
-    enabled: process.env.NUXT_SITE_ENV === "production",
+    enabled: import.meta.env.NUXT_SITE_ENV === "production",
     id: "G-Z51E9PE81V",
     config: {
       page_title: "Wuthering Waves Optimizer",

@@ -40,6 +40,14 @@ function OnTakeScreenShotClicked() {
     ForceStaticArt.value = false
   })
 }
+
+// Dynamic import for client-side only component
+const AnimatedArtCard = defineAsyncComponent(() => {
+  if (import.meta.client) {
+    return import("~/components/Characters/Cards/CharacterAnimatedArtCard.vue")
+  }
+  return Promise.resolve({ default: null })
+})
 </script>
 
 <template>
@@ -55,7 +63,7 @@ function OnTakeScreenShotClicked() {
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-1 auto-rows-auto">
           <!-- Character Art Card -->
           <ClientOnly>
-            <CharacterAnimatedArtCard
+            <AnimatedArtCard
               v-if="CurrentCharacter && !ForceStaticArt && SettingsStore.GetSetting('Characters').EnableAnimatedArt && HasAnimatedArt(CurrentCharacter)"
               :character="CurrentCharacter"
               class="md:col-span-1 xl:col-span-2"

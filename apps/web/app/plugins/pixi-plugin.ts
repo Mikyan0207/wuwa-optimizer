@@ -3,7 +3,7 @@ import * as PIXI from "pixi.js"
 
 export default defineNuxtPlugin({
   name: "pixi-plugin",
-  enforce: "post",
+  enforce: "pre",
   setup() {
     return {
         provide: {

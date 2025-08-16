@@ -28,12 +28,12 @@ const CardClasses = computed(() => ({
 }))
 
 const ContentClasses = computed(() => {
-  const baseClasses = "w-full h-full flex flex-col"
+  const baseClasses = "h-full w-full"
 
   const paddingClasses = {
     default: "p-4",
     compact: "p-2",
-    none: "p-0",
+    none: "p-0!",
     detailed: "p-6",
   }
 
@@ -45,15 +45,13 @@ const ContentClasses = computed(() => {
   <UCard
     :class="CardClasses"
     :ui="{
-      body: 'p-0 sm:p-0 w-full h-full',
+      body: `${ContentClasses}`,
     }"
   >
     <MBorderLines
       v-if="showBorderLines"
       :count="borderLinesCount"
     />
-    <div :class="ContentClasses">
-      <slot />
-    </div>
+    <slot />
   </UCard>
 </template>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type Echo from "~/Core/Interfaces/Echo"
-import VueDraggable from "vuedraggable"
 import { useScreenshot } from "~/composables/core/UseScreenshot"
-import { GetCharacterBackground } from "~/Core/Utils/CharacterUtils"
+import { GetCharacterBackground, HasAnimatedArt } from "~/Core/Utils/CharacterUtils"
+import type Character from "~/Core/Interfaces/Character"
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 const ShowScreenShotBackground = ref<boolean>(false)
@@ -13,20 +13,21 @@ const SettingsStore = useSettingsStore()
 
 const CurrentCharacterStore = useCurrentCharacterStore()
 
-const { CurrentCharacter, CurrentWeapon, CurrentBuild, CurrentEchoes } = storeToRefs(CurrentCharacterStore)
+const { CurrentWeapon, CurrentBuild, CurrentEchoes } = storeToRefs(CurrentCharacterStore)
 
 const { TakeScreenShotAsync } = useScreenshot(CharacterInfoRef)
 
 const Id = computed<number>(() => Number.parseInt((Route.params as { id: string }).id))
 
-const { status } = useAsyncData(`character-${Id.value}`, async () => {
-  return await CurrentCharacterStore.GetAsync(Id.value)
-}, {
-  server: false,
+const CurrentCharacter = ref<Character | undefined>(undefined)
+
+onMounted(() => {
+  CurrentCharacter.value = CurrentCharacterStore.Get(Id.value)
 })
 
+
 const DraggableEchoes = computed({
-  get: () => CurrentEchoes.value,
+  get: () => CurrentEchoes.value ?? [],
   set: (_newOrder: Echo[]) => {
   },
 })
@@ -40,26 +41,24 @@ function OnTakeScreenShotClicked() {
     ForceStaticArt.value = false
   })
 }
+
+
 </script>
 
 <template>
-  <div v-if="status === 'success' && CurrentCharacter !== undefined">
+  <div v-if="CurrentCharacter">
     <div class="mb-14 xl:mb-4 mt-2 relative mx-auto my-2">
       <div ref="CharacterInfoRef" class="relative p-0.25">
         <div v-if="ShowScreenShotBackground" class="absolute inset-0 blur-sm">
           <div class="absolute -top-5 -left-5 -right-5 -bottom-5 bg-neutral-900/75" />
-          <NuxtImg
-            :src="GetCharacterBackground(CurrentCharacter)"
-            class="h-full w-full object-cover"
-            :alt="`${Id} - Background`"
-          />
+          <NuxtImg :src="GetCharacterBackground(CurrentCharacter)" class="h-full w-full object-cover" />
         </div>
 
         <!-- Main Layout Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-1 auto-rows-auto">
           <!-- Character Art Card -->
           <CharacterAnimatedArtCard
-            v-if="CurrentCharacter && !ForceStaticArt && SettingsStore.GetSetting('Characters').EnableAnimatedArt"
+            v-if="CurrentCharacter && !ForceStaticArt && SettingsStore.GetSetting('Characters').EnableAnimatedArt && HasAnimatedArt(CurrentCharacter)"
             :character="CurrentCharacter"
             class="md:col-span-1 xl:col-span-2"
           />

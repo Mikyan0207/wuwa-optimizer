@@ -117,7 +117,6 @@ export const useCharactersStore = defineStore('CharactersStore', () => {
 
   return {
     Characters: skipHydrate(Characters),
-    CachedCharacters,
     GetAll,
     GetById,
     GetBaseById,

@@ -10,7 +10,7 @@ const SelectedTab = ref<string>('0')
 const Route = useRoute()
 const { t } = useI18n()
 
-const CharacterId = ref<number | undefined>(Number.parseInt(Route.params.id as string))
+const CharacterId = ref<number | undefined>(Number.parseInt((Route.params as { id: string }).id))
 
 const CharacterName = computed(() => {
   if (CharacterId.value) {
@@ -25,30 +25,13 @@ onMounted(() => {
   }
 })
 
-useHead({
+useSeoMeta({
   title: computed(() => `${CharacterName.value} - Wuthering Waves Optimizer`),
-  meta: [
-    {
-      name: 'description',
-      content: computed(() => `Optimize your ${CharacterName.value} builds with our Wuthering Waves stats calculator. Compare echoes, weapons and sequences to maximize your damage.`),
-    },
-    {
-      name: 'keywords',
-      content: computed(() => `${CharacterName.value}, WuWa builds, Wuthering Waves, character optimization, echo calculator`),
-    },
-    {
-      property: 'og:title',
-      content: computed(() => `${CharacterName.value} Builds - Wuthering Waves Optimizer`),
-    },
-    {
-      property: 'og:description',
-      content: computed(() => `Optimize your ${CharacterName.value} builds with our Wuthering Waves stats calculator.`),
-    },
-    {
-      property: 'og:type',
-      content: 'website',
-    },
-  ],
+  description: computed(() => `Optimize your ${CharacterName.value} builds with our Wuthering Waves stats calculator. Compare echoes, weapons and sequences to maximize your damage.`),
+  keywords: computed(() => `${CharacterName.value}, WuWa builds, Wuthering Waves, character optimization, echo calculator`),
+  ogTitle: computed(() => `${CharacterName.value} Builds - Wuthering Waves Optimizer`),
+  ogDescription: computed(() => `Optimize your ${CharacterName.value} builds with our Wuthering Waves stats calculator.`),
+  ogType: 'website',
 })
 
 const TabItems = [{

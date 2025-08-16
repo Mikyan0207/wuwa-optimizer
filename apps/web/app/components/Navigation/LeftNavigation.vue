@@ -88,7 +88,6 @@ function OpenSettings() {
       </UTooltip>
     </div>
 
-    <!-- Settings Slideover -->
     <USlideover v-model:open="IsSettingsOpen" side="left">
       <template #header>
         <div class="flex items-center gap-3">

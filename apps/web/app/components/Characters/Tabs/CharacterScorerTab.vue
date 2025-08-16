@@ -14,17 +14,32 @@ const SettingsStore = useSettingsStore()
 
 const CurrentCharacterStore = useCurrentCharacterStore()
 
-const { CurrentCharacter, CurrentWeapon, CurrentBuild, CurrentEchoes } = storeToRefs(CurrentCharacterStore)
+const { CurrentWeapon, CurrentBuild, CurrentEchoes } = storeToRefs(CurrentCharacterStore)
 
 const { TakeScreenShotAsync } = useScreenshot(CharacterInfoRef)
 
 const Id = computed<number>(() => Number.parseInt((Route.params as { id: string }).id))
 
-const { status } = useAsyncData(`character-${Id.value}`, async () => {
-  return await CurrentCharacterStore.GetAsync(Id.value)
-}, {
-  server: false,
-})
+const { data: CurrentCharacter, error, pending } = useAsyncData(
+  `character-${Id.value}`,
+  async () => {
+    try {
+      return CurrentCharacterStore.GetAsync(Id.value)
+    } catch (err) {
+      console.error('Failed to fetch character:', err)
+      return undefined
+    }
+  },
+  {
+    default: () => undefined,
+    server: false,
+    lazy: true,
+  }
+)
+
+if (error.value) {
+  console.error('Character fetch error:', error.value)
+}
 
 const DraggableEchoes = computed({
   get: () => CurrentEchoes.value,
@@ -44,7 +59,7 @@ function OnTakeScreenShotClicked() {
 </script>
 
 <template>
-  <div v-if="status === 'success' && CurrentCharacter !== undefined">
+  <div v-if="!pending && CurrentCharacter !== undefined">
     <div class="mb-14 xl:mb-4 mt-2 relative mx-auto my-2">
       <div ref="CharacterInfoRef" class="relative p-0.25">
         <div v-if="ShowScreenShotBackground" class="absolute inset-0 blur-sm">

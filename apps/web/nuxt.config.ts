@@ -19,6 +19,7 @@ export default defineNuxtConfig({
 
   plugins: [
     { src: "~/plugins/pixi-plugin.ts", mode: "client" },
+    { src: "~/plugins/vue-draggable-plugin.ts", mode: "client" },
   ],
 
   ssr: true,
@@ -87,11 +88,6 @@ export default defineNuxtConfig({
   site: {
     url: "https://wuwa-optimizer.com",
     name: "Wuthering Waves Optimizer",
-  },
-  colorMode: {
-    preference: "dark",
-    fallback: "dark",
-    classPrefix: "",
   },
 
   future: {
@@ -190,7 +186,7 @@ export default defineNuxtConfig({
     enabled: true,
     urls: () => {
       return BaseCharacters
-        .filter(c => c.Id < 9000 && c.ReleaseState !== ReleaseState.UNKNOWN)
+        .filter(c => c !== undefined && c.Id < 9000 && c.ReleaseState !== ReleaseState.UNKNOWN)
         .map(c => `/characters/${c.Id}`)
     },
   },

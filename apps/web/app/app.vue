@@ -8,26 +8,30 @@ useHead({
 
 const UpdaterStore = useUpdaterStore()
 const route = useRoute()
+
 const {
   AutoTrackPageView
  } = useAnalytics()
 
 watch(() => route.path, () => {
   AutoTrackPageView()
-}, { immediate: true })
+})
 
 onMounted(() => {
+  if (import.meta.server) {
+    return
+  }
+
   UpdaterStore.Migrate()
 })
+
 </script>
 
 <template>
   <UApp>
-    <Suspense>
-      <NuxtLayout class="min-h-screen">
-        <NuxtPage />
-      </NuxtLayout>
-    </Suspense>
+    <NuxtLayout class="min-h-screen">
+      <NuxtPage />
+    </NuxtLayout>
   </UApp>
 </template>
 

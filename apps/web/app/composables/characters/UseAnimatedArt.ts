@@ -1,13 +1,13 @@
-import type { TextureSource } from "pixi.js"
 import type Character from "~/Core/Interfaces/Character"
 import { Spine } from "pixi-spine"
-import { Application, Assets } from "pixi.js"
-
 import { GetCharacterAnimatedArt, HasAnimatedArt } from "~/Core/Utils/CharacterUtils"
+import type { Application } from "pixi.js"
+
 
 export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef: Ref<HTMLCanvasElement | undefined>) {
   const CurrentCharacter = computed(() => toValue(character))
   const AnimatedArt = computed(() => GetAnimatedArt())
+  const { $Pixi } = useNuxtApp()
 
   const CanvasRef = computed(() => toValue(canvasRef))
   const App = ref<Application | undefined>(undefined)
@@ -25,7 +25,7 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
 
     const rect = container.getBoundingClientRect()
 
-    App.value = new Application({
+    App.value = new $Pixi.Application({
       view: CanvasRef.value,
       width: rect.width,
       height: rect.height,
@@ -50,7 +50,7 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
     if (!AnimatedArt.value)
       return
 
-    const cachedResource = Assets.cache.get(`${CurrentCharacter.value.Id}-skeleton`)
+    const cachedResource = $Pixi.Assets.cache.get(`${CurrentCharacter.value.Id}-skeleton`)
 
     if (cachedResource && cachedResource.spineData) {
       SpineAnimation.value = new Spine(cachedResource.spineData)
@@ -67,12 +67,12 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
       return
     }
 
-    Assets.addBundle(`${CurrentCharacter.value.Id}`, {
+    $Pixi.Assets.addBundle(`${CurrentCharacter.value.Id}`, {
       atlas: AnimatedArt.value.Atlas,
       skeleton: AnimatedArt.value.Skeleton,
     })
 
-    const bundle = await Assets.loadBundle(`${CurrentCharacter.value.Id}`) as { atlas: TextureSource, skeleton: any }
+    const bundle = await $Pixi.Assets.loadBundle(`${CurrentCharacter.value.Id}`) as { atlas: any, skeleton: any }
 
     if (bundle.skeleton && bundle.atlas) {
       SpineAnimation.value = new Spine(bundle.skeleton.spineData)

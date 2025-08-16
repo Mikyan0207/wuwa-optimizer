@@ -17,6 +17,10 @@ export default defineNuxtConfig({
     "@nuxtjs/seo",
   ],
 
+  plugins: [
+    { src: "~/plugins/pixi-plugin.ts", mode: "client" },
+  ],
+
   ssr: true,
 
   components: [

@@ -58,7 +58,7 @@ export const useCurrentCharacterStore = defineStore('CurrentCharacterStore', () 
       UpdateStatsAndScore()
     }
     catch (error) {
-      console.error(error)
+      //console.error(error)
     }
   }
 

@@ -1,5 +1,7 @@
 name: Deploy to NuxtHub
 on:
+  push:
+    branches: [main, develop]
   pull_request:
     branches: [main, develop]
 

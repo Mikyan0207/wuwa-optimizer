@@ -17,9 +17,13 @@ onMounted(() => {
       return
   }
 
-  Initialize()
-  LoadSpineModel()
-}, await nextTick())
+  nextTick(() => {
+    setTimeout(() => {
+      Initialize()
+      LoadSpineModel()
+    }, 2500)
+  })
+})
 </script>
 
 <template>

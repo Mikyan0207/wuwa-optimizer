@@ -176,14 +176,18 @@ export default defineNuxtConfig({
     enabled: true,
   },
   robots: {
+    enabled: true,
     blockAiBots: true,
     blockNonSeoBots: true,
+    disallow: ["/characters/*/images/*", "/characters/*/animated/*", "/weapons/*/images/*", "/images/*"],
   },
   schemaOrg: {
     enabled: false,
   },
   sitemap: {
     enabled: true,
+    discoverImages: false,
+    discoverVideos: false,
     urls: () => {
       return BaseCharacters
         .filter(c => c !== undefined && c.Id < 9000 && c.ReleaseState !== ReleaseState.UNKNOWN)

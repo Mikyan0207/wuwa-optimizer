@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type Weapon from '~/Core/Interfaces/Weapon'
-import { useGameIcon } from '~/composables/core/UseGameIcon'
-import { useRarityEffects } from '~/composables/core/UseRarityEffects'
-import { ReleaseState } from '~/Core/Enums/ReleaseState'
+import type Weapon from "~/Core/Interfaces/Weapon"
+import { useGameIcon } from "~/composables/core/UseGameIcon"
+import { useRarityEffects } from "~/composables/core/UseRarityEffects"
+import { ReleaseState } from "~/Core/Enums/ReleaseState"
 
 interface WeaponIconProps {
   weapon: Weapon

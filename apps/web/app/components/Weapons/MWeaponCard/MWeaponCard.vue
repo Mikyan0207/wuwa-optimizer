@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type Weapon from '~/Core/Interfaces/Weapon'
-import { GetWeaponIcon } from '~/Core/Utils/WeaponUtils'
+import type Weapon from "~/Core/Interfaces/Weapon"
+import { GetWeaponIcon } from "~/Core/Utils/WeaponUtils"
 
 interface WeaponCardProps {
   weapon: Weapon | undefined
@@ -49,6 +49,7 @@ const { t } = useI18n()
         :item="weapon"
         :get-image-src="(weapon: Weapon) => GetWeaponIcon(weapon)"
         :get-image-alt="(weapon: Weapon) => t(`${weapon.GameId}_name`)"
+        class="h-full w-auto"
       />
     </template>
   </MGameCard>

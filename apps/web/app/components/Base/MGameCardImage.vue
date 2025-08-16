@@ -14,7 +14,7 @@ defineProps<GameCardImageProps<T>>()
     :src="getImageSrc(item)"
     :alt="getImageAlt(item)"
     fit="cover"
-    class="object-contain flex-shrink-0 border-l border-neutral-800 h-full w-auto"
+    class="object-cover flex-shrink-0 border-l border-neutral-800 h-full w-auto"
   />
-  <USkeleton v-else class="h-full w-[4em] flex-shrink-0" />
+  <USkeleton v-else class="h-full w-auto flex-shrink-0" />
 </template>

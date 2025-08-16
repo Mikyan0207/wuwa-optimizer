@@ -53,7 +53,7 @@
       <DynamicHeader class="col-start-4 ml-[3em] pointer-events-auto" />
     </div>
 
-    <main class="ml-[3.5em] mt-[6em] w-full min-h-screen h-full">
+    <main class="pl-[3.5em] mt-[6em] w-full min-h-screen h-full">
       <NuxtPage />
     </main>
 

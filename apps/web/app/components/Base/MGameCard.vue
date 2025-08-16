@@ -16,8 +16,8 @@ withDefaults(defineProps<GameCardProps>(), {
     <!-- Optional Menu Dropdown -->
     <slot v-if="showMenu" name="menu" />
 
-    <div class="h-full w-full flex justify-between items-start gap-4">
-      <div class="flex flex-col gap-1 flex-1 min-w-0 p-4">
+    <div class="h-full w-full grid grid-cols-3 gap-4">
+      <div class="flex flex-col gap-1 p-4 col-span-2">
         <!-- Header Slot -->
         <slot name="header" />
 

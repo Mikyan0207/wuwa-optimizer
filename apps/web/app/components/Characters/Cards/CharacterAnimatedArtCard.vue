@@ -56,6 +56,7 @@ onMounted(() => {
             :src="GetSequenceIcon(CurrentCharacter, s)"
             class="w-full h-full object-cover transition-all duration-200"
             :class="{ 'opacity-30': !s.Unlocked }"
+            :alt="`${CurrentCharacter.Id} - S${index}`"
           />
         </div>
       </div>
@@ -73,11 +74,13 @@ onMounted(() => {
       :src="`${GetSplashArt(CurrentCharacter)}`"
       class="absolute inset-0 z-10 h-full w-full object-cover transition-opacity duration-500"
       :class="{ 'opacity-0': IsSpineLoaded }"
+      :alt="`${CurrentCharacter.Id} - Splash Art`"
     />
     <canvas
       ref="CanvasRef"
       class="absolute inset-0 z-10 h-full w-full transition-opacity duration-500"
       :class="{ 'opacity-0': !IsSpineLoaded }"
+      :alt="`${CurrentCharacter.Id} - Animated Splash Art`"
     />
   </MCard>
 </template>

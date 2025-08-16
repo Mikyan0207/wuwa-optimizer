@@ -19,7 +19,7 @@ onMounted(() => {
       LoadSpineModel()
     }, 2500)
   })
-})
+}, await nextTick())
 </script>
 
 <template>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type Echo from "~/Core/Interfaces/Echo"
+import { CharacterAnimatedArtCard } from "#components"
 import VueDraggable from "vuedraggable"
 import { useScreenshot } from "~/composables/core/UseScreenshot"
 import { GetCharacterBackground, HasAnimatedArt } from "~/Core/Utils/CharacterUtils"
@@ -40,14 +41,6 @@ function OnTakeScreenShotClicked() {
     ForceStaticArt.value = false
   })
 }
-
-// Dynamic import for client-side only component
-const AnimatedArtCard = defineAsyncComponent(() => {
-  if (import.meta.client) {
-    return import("~/components/Characters/Cards/CharacterAnimatedArtCard.vue")
-  }
-  return Promise.resolve({ default: null })
-})
 </script>
 
 <template>
@@ -62,18 +55,16 @@ const AnimatedArtCard = defineAsyncComponent(() => {
         <!-- Main Layout Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-1 auto-rows-auto">
           <!-- Character Art Card -->
-          <ClientOnly>
-            <AnimatedArtCard
-              v-if="CurrentCharacter && !ForceStaticArt && SettingsStore.GetSetting('Characters').EnableAnimatedArt && HasAnimatedArt(CurrentCharacter)"
-              :character="CurrentCharacter"
-              class="md:col-span-1 xl:col-span-2"
-            />
-            <CharacterArtCard
-              v-else
-              :character="CurrentCharacter"
-              class="md:col-span-1 xl:col-span-2"
-            />
-          </ClientOnly>
+          <CharacterAnimatedArtCard
+            v-if="CurrentCharacter && !ForceStaticArt && SettingsStore.GetSetting('Characters').EnableAnimatedArt && HasAnimatedArt(CurrentCharacter)"
+            :character="CurrentCharacter"
+            class="md:col-span-1 xl:col-span-2"
+          />
+          <CharacterArtCard
+            v-else
+            :character="CurrentCharacter"
+            class="md:col-span-1 xl:col-span-2"
+          />
 
           <!-- Stats & Weapon/Skills Container -->
           <div class="md:col-span-1 xl:col-span-3 grid grid-cols-1 xl:grid-cols-2 gap-1">

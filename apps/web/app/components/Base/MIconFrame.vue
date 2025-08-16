@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ReleaseState } from '~/Core/Enums/ReleaseState'
-import { UpcomingGameVersion } from '~/Core/Versions'
+import { ReleaseState } from "~/Core/Enums/ReleaseState"
+import { UpcomingGameVersion } from "~/Core/Versions"
 
 interface IconFrameProps {
   background?: string
@@ -9,7 +9,7 @@ interface IconFrameProps {
 
   releaseStatus?: ReleaseState
 
-  size?: 'sm' | 'md' | 'lg'
+  size?: "sm" | "md" | "lg"
   showRarityGlow?: boolean
   showStatusBadge?: boolean
   showBorderLines?: boolean
@@ -18,7 +18,7 @@ interface IconFrameProps {
 }
 
 const props = withDefaults(defineProps<IconFrameProps>(), {
-  size: 'md',
+  size: "md",
   showRarityGlow: true,
   showStatusBadge: true,
   showBorderLines: true,
@@ -28,41 +28,23 @@ const props = withDefaults(defineProps<IconFrameProps>(), {
 
 const SizeClasses = computed(() => {
   switch (props.size) {
-    case 'sm': return 'min-h-24 w-24'
-    case 'lg': return 'min-h-40 w-40'
-    default: return 'min-h-32 w-32'
+    case "sm": return "min-h-24 w-24"
+    case "lg": return "min-h-40 w-40"
+    default: return "min-h-32 w-32"
   }
 })
 
-const CardClasses = computed(() => ({
-  'group relative transition-all duration-100': true,
-  'cursor-pointer': props.clickable,
-  'select-none': true,
-  'hover:scale-105': props.clickable && props.animated,
-}))
-
-const ContainerClasses = computed(() => ({
-  'relative flex items-center justify-center overflow-clip': true,
-  [SizeClasses.value]: true,
-}))
-
-const DefaultBackground = computed(() => props.background || 'bg-neutral-800')
-const DefaultSecondary = computed(() => props.secondary || 'bg-neutral-700')
-const DefaultHighlight = computed(() => props.highlight || 'bg-neutral-600')
+const DefaultBackground = computed(() => props.background || "bg-neutral-800")
+const DefaultSecondary = computed(() => props.secondary || "bg-neutral-700")
+const DefaultHighlight = computed(() => props.highlight || "bg-neutral-600")
 </script>
 
 <template>
-  <UCard
-    :class="CardClasses"
-    :ui="{
-      root: 'rounded-none rounded-br-xl border-0',
-      body: 'p-0 sm:p-0',
-    }"
+  <MCard
+    padding="none"
+    class="group relative select-none transition-all duration-100"
   >
-    <!-- Border Lines -->
-    <MBorderLines v-if="showBorderLines" :count="1" />
-
-    <div :class="ContainerClasses">
+    <div class="relative flex items-center justify-center overflow-clip" :class="[SizeClasses]">
       <!-- Status Badge (NEW, UPCOMING, etc.) -->
       <div v-if="showStatusBadge && releaseStatus" class="absolute left-1 top-0 z-2">
         <UBadge
@@ -131,5 +113,5 @@ const DefaultHighlight = computed(() => props.highlight || 'bg-neutral-600')
     <div class="py-1 text-center text-xs">
       <slot name="name" />
     </div>
-  </UCard>
+  </MCard>
 </template>

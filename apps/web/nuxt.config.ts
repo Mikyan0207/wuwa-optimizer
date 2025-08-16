@@ -1,3 +1,5 @@
+import { BaseCharacters } from "./app/Core/Characters"
+import { ReleaseState } from "./app/Core/Enums/ReleaseState"
 import { AppDescription } from "./app/Core/Versions"
 
 export default defineNuxtConfig({
@@ -12,9 +14,10 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@nuxthub/core",
     "nuxt-gtag",
+    "@nuxtjs/seo",
   ],
 
-  ssr: false,
+  ssr: true,
 
   components: [
     "~/components",
@@ -76,16 +79,15 @@ export default defineNuxtConfig({
   css: [
     "~/assets/css/main.css",
   ],
+
+  site: {
+    url: "https://wuwa-optimizer.com",
+    name: "Wuthering Waves Optimizer",
+  },
   colorMode: {
     preference: "dark",
     fallback: "dark",
     classPrefix: "",
-  },
-
-  runtimeConfig: {
-    public: {
-      siteUrl: "https://wuwa-optimizer.com",
-    },
   },
 
   future: {
@@ -105,11 +107,9 @@ export default defineNuxtConfig({
         target: "esnext",
       },
     },
-    routeRules: {
-      "/": { prerender: true },
-      "/characters/**": { prerender: true },
-      "/echoes/**": { prerender: true },
-      "/weapons/**": { prerender: true },
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/sitemap.xml"],
     },
   },
 
@@ -141,7 +141,7 @@ export default defineNuxtConfig({
 
   gtag: {
     // eslint-disable-next-line node/prefer-global/process
-    enabled: process.env.NODE_ENV === "production",
+    enabled: process.env.NUXT_SITE_ENV === "production",
     id: "G-Z51E9PE81V",
     config: {
       page_title: "Wuthering Waves Optimizer",
@@ -172,5 +172,23 @@ export default defineNuxtConfig({
       cookieKey: "wuwa-optimizer-locale",
     },
     defaultLocale: "en",
+  },
+  ogImage: {
+    enabled: true,
+  },
+  robots: {
+    blockAiBots: true,
+    blockNonSeoBots: true,
+  },
+  schemaOrg: {
+    enabled: false,
+  },
+  sitemap: {
+    enabled: true,
+    urls: () => {
+      return BaseCharacters
+        .filter(c => c.Id < 9000 && c.ReleaseState !== ReleaseState.UNKNOWN)
+        .map(c => `/characters/${c.Id}`)
+    },
   },
 })

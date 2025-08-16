@@ -1,8 +1,8 @@
-import type Character from '~/Core/Interfaces/Character'
-import { Loader } from '@pixi/loaders'
-import { Spine } from 'pixi-spine'
-import * as PIXI from 'pixi.js'
-import { GetCharacterAnimatedArt, HasAnimatedArt } from '~/Core/Utils/CharacterUtils'
+import type Character from "~/Core/Interfaces/Character"
+import { Loader } from "@pixi/loaders"
+import { Spine } from "pixi-spine"
+import * as PIXI from "pixi.js"
+import { GetCharacterAnimatedArt, HasAnimatedArt } from "~/Core/Utils/CharacterUtils"
 
 export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef: Ref<HTMLCanvasElement | undefined>) {
   const CurrentCharacter = computed(() => toValue(character))
@@ -15,7 +15,7 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
   const IsSpineLoaded = ref(false)
 
   function Initialize() {
-    if (App.value || !CanvasRef.value)
+    if (App.value || !CanvasRef.value || import.meta.server)
       return
 
     const container = CanvasRef.value.parentElement
@@ -33,7 +33,7 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
       antialias: true,
       resolution: window.devicePixelRatio || 1,
       autoDensity: true,
-      powerPreference: 'high-performance',
+      powerPreference: "high-performance",
     })
   }
 
@@ -44,7 +44,7 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
   }
 
   function LoadSpineModel() {
-    if (!App.value || !CurrentCharacter.value)
+    if (!App.value || !CurrentCharacter.value || import.meta.server)
       return
 
     if (!AnimatedArt.value)
@@ -60,8 +60,8 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
 
       AdjustSpineToContainer(AnimatedArt.value.OffsetX ?? 0, AnimatedArt.value.OffsetY ?? 0)
 
-      if (SpineAnimation.value.state.hasAnimation('idle')) {
-        SpineAnimation.value.state.setAnimation(0, 'idle', true)
+      if (SpineAnimation.value.state.hasAnimation("idle")) {
+        SpineAnimation.value.state.setAnimation(0, "idle", true)
       }
 
       App.value!.stage.addChild(SpineAnimation.value)
@@ -87,8 +87,8 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
 
           AdjustSpineToContainer(AnimatedArt.value!.OffsetX ?? 0, AnimatedArt.value!.OffsetY ?? 0)
 
-          if (SpineAnimation.value.state.hasAnimation('idle')) {
-            SpineAnimation.value.state.setAnimation(0, 'idle', true)
+          if (SpineAnimation.value.state.hasAnimation("idle")) {
+            SpineAnimation.value.state.setAnimation(0, "idle", true)
           }
 
           App.value!.stage.addChild(SpineAnimation.value)

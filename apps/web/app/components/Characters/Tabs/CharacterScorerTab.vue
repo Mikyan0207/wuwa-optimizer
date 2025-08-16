@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type Echo from '~/Core/Interfaces/Echo'
-import VueDraggable from 'vuedraggable'
-import { useScreenshot } from '~/composables/core/UseScreenshot'
-import { GetCharacterBackground } from '~/Core/Utils/CharacterUtils'
+import type Echo from "~/Core/Interfaces/Echo"
+import VueDraggable from "vuedraggable"
+import { useScreenshot } from "~/composables/core/UseScreenshot"
+import { GetCharacterBackground, HasAnimatedArt } from "~/Core/Utils/CharacterUtils"
 
 const CharacterInfoRef = ref<HTMLElement | null>(null)
 const ShowScreenShotBackground = ref<boolean>(false)
@@ -55,7 +55,7 @@ function OnTakeScreenShotClicked() {
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-1 auto-rows-auto">
           <!-- Character Art Card -->
           <CharacterAnimatedArtCard
-            v-if="CurrentCharacter && !ForceStaticArt && SettingsStore.GetSetting('Characters').EnableAnimatedArt"
+            v-if="CurrentCharacter && !ForceStaticArt && SettingsStore.GetSetting('Characters').EnableAnimatedArt && HasAnimatedArt(CurrentCharacter)"
             :character="CurrentCharacter"
             class="md:col-span-1 xl:col-span-2"
           />

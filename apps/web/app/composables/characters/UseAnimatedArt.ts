@@ -5,6 +5,19 @@ import type Character from "~/Core/Interfaces/Character"
 import * as PIXI from "pixi.js"
 import { GetCharacterAnimatedArt, HasAnimatedArt } from "~/Core/Utils/CharacterUtils"
 
+// Check if 'console' is undefined and, if so, create a basic fallback.
+if (typeof console === "undefined") {
+  // Define a global 'console' object.
+  (window as any).console = {
+    // Provide a no-op function for 'log' and other common methods.
+    log: () => {},
+    warn: () => {},
+    error: () => {},
+    info: () => {},
+    debug: () => {},
+  }
+}
+
 export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef: Ref<HTMLCanvasElement | undefined>) {
   const CurrentCharacter = computed(() => toValue(character))
   const AnimatedArt = computed(() => GetAnimatedArt())

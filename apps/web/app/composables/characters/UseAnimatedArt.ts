@@ -1,8 +1,8 @@
-/* eslint-disable perfectionist/sort-imports */
-import { Spine } from "pixi-spine"
-
+import type { TextureSource } from "pixi.js"
 import type Character from "~/Core/Interfaces/Character"
-import * as PIXI from "pixi.js"
+import { Spine } from "pixi-spine"
+import { Application, Assets } from "pixi.js"
+
 import { GetCharacterAnimatedArt, HasAnimatedArt } from "~/Core/Utils/CharacterUtils"
 
 export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef: Ref<HTMLCanvasElement | undefined>) {
@@ -10,7 +10,7 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
   const AnimatedArt = computed(() => GetAnimatedArt())
 
   const CanvasRef = computed(() => toValue(canvasRef))
-  const App = ref<PIXI.Application | undefined>(undefined)
+  const App = ref<Application | undefined>(undefined)
   const SpineAnimation = ref<Spine>()
   const IsSpineLoaded = ref(false)
 
@@ -25,7 +25,7 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
 
     const rect = container.getBoundingClientRect()
 
-    App.value = new PIXI.Application({
+    App.value = new Application({
       view: CanvasRef.value,
       width: rect.width,
       height: rect.height,
@@ -50,7 +50,7 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
     if (!AnimatedArt.value)
       return
 
-    const cachedResource = PIXI.Assets.cache.get(`${CurrentCharacter.value.Id}-skeleton`)
+    const cachedResource = Assets.cache.get(`${CurrentCharacter.value.Id}-skeleton`)
 
     if (cachedResource && cachedResource.spineData) {
       SpineAnimation.value = new Spine(cachedResource.spineData)
@@ -67,12 +67,12 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
       return
     }
 
-    PIXI.Assets.addBundle(`${CurrentCharacter.value.Id}`, {
+    Assets.addBundle(`${CurrentCharacter.value.Id}`, {
       atlas: AnimatedArt.value.Atlas,
       skeleton: AnimatedArt.value.Skeleton,
     })
 
-    const bundle = await PIXI.Assets.loadBundle(`${CurrentCharacter.value.Id}`) as { atlas: PIXI.TextureSource, skeleton: any }
+    const bundle = await Assets.loadBundle(`${CurrentCharacter.value.Id}`) as { atlas: TextureSource, skeleton: any }
 
     if (bundle.skeleton && bundle.atlas) {
       SpineAnimation.value = new Spine(bundle.skeleton.spineData)

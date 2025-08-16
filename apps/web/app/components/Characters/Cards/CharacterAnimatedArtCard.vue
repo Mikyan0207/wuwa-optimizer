@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useAnimatedArt } from '~/composables/characters/UseAnimatedArt'
-import { GetSequenceIcon, GetSplashArt } from '~/Core/Utils/CharacterUtils'
+import { useAnimatedArt } from "~/composables/characters/UseAnimatedArt"
+import { GetSequenceIcon, GetSplashArt } from "~/Core/Utils/CharacterUtils"
 
 const CanvasRef = ref<HTMLCanvasElement>()
 

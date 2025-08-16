@@ -1,10 +1,7 @@
 /* eslint-disable perfectionist/sort-imports */
-/* eslint-disable import/no-duplicates */
-
-import "pixi-spine"
+import { Spine } from "pixi-spine"
 
 import type Character from "~/Core/Interfaces/Character"
-import { Spine } from "pixi-spine"
 import * as PIXI from "pixi.js"
 import { GetCharacterAnimatedArt, HasAnimatedArt } from "~/Core/Utils/CharacterUtils"
 
@@ -53,7 +50,7 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
     if (!AnimatedArt.value)
       return
 
-    const cachedResource = PIXI.Assets.cache.get(`${CurrentCharacter.value.Id}`)
+    const cachedResource = PIXI.Assets.cache.get(`${CurrentCharacter.value.Id}-skeleton`)
 
     if (cachedResource && cachedResource.spineData) {
       SpineAnimation.value = new Spine(cachedResource.spineData)
@@ -70,15 +67,15 @@ export function useAnimatedArt(character: Ref<Character | undefined>, canvasRef:
       return
     }
 
-    await PIXI.Assets.load(AnimatedArt.value.Atlas)
-    await PIXI.Assets.load(AnimatedArt.value.Skeleton)
+    PIXI.Assets.addBundle(`${CurrentCharacter.value.Id}`, {
+      atlas: AnimatedArt.value.Atlas,
+      skeleton: AnimatedArt.value.Skeleton,
+    })
 
-    if (!CurrentCharacter.value)
-      return
+    const bundle = await PIXI.Assets.loadBundle(`${CurrentCharacter.value.Id}`) as { atlas: PIXI.TextureSource, skeleton: any }
 
-    const resource = PIXI.Assets.get(AnimatedArt.value.Skeleton)
-    if (resource && resource.spineData) {
-      SpineAnimation.value = new Spine(resource.spineData)
+    if (bundle.skeleton && bundle.atlas) {
+      SpineAnimation.value = new Spine(bundle.skeleton.spineData)
 
       AdjustSpineToContainer(AnimatedArt.value!.OffsetX ?? 0, AnimatedArt.value!.OffsetY ?? 0)
 
